@@ -6,9 +6,12 @@
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/materialize.css')!!}" media="screen,projection" />
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/maintenance.css')!!}" media="screen,projection"/>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
       <!--JAVASCRIPT -->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+
       @yield('jqueryscript')
     </head>
 
@@ -68,27 +71,28 @@
     <div class="col s10 push-s2 grey darken-4">
     @yield('title1')
     <?php
-    if (isset($message)){
-        if($message != null && $message == '1')
+    if (Session::get('message') != null){
+        if(Session::get('message') == '1')
           echo "<script> 
                   var toastContent = $('<span>RECORD ADDED!</span>');
                   Materialize.toast(toastContent, 5000, 'add');
                 </script>";
-        elseif($message != null && $message == '2')
+        elseif(Session::get('message') == '2')
           echo "<script> 
                   var toastContent = $('<span>RECORD EDITED!</span>');
                   Materialize.toast(toastContent, 5000, 'edit');
                 </script>";
-        elseif($message != null && $message == '3')
+        elseif(Session::get('message') == '3')
           echo "<script> 
                   var toastContent = $('<span>RECORD DELETED!</span>');
                   Materialize.toast(toastContent, 5000, 'delete');
                 </script>";
-        elseif($message != null && $message == '-1')
+        elseif(Session::get('message') == '-1')
           echo "<script> 
                   var toastContent = $('<span>ERROR!</span>');
                   Materialize.toast(toastContent, 5000, 'delete');
                 </script>";
+        Session::forget('message');
       }
     ?>
     <div id="alertMsg">WORKING</div>

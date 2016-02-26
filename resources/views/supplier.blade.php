@@ -7,8 +7,11 @@ Manage Supplier
 
 @section('jqueryscript')
 <script type="text/javascript">
-$(function(){      
-    $("#button").click(function(){
+$(function(){   
+
+    $("#tableOutput").DataTable();
+
+    $(".edit").click(function(){
       $('#modal1').openModal();
       var selected = this.id;
       var keyID = $("#tdID"+selected).val();
@@ -22,39 +25,8 @@ $(function(){
       $("#edit_province").val(keyProvince);
       $("#edit_contactNo").val(keyContactNo);
       $("#edit_email").val(keyEmail);
-      var temp = $("#edit_ID").val();
-      alert(temp);
     });
-
-    $("#button") .click(function(){
-      
-      $("#formOutput").load("/tryLoad", function(responseTxt, statusTxt){
-        if (statusTxt == "success"){
-          alert("success");
-        }
-        else if (statusTxt == "error"){
-          alert(responseTxt);
-        }
-      });
-    });
-
-    $("button").click(function(){
-      $.get("/tryLoad",
-      {
-      },
-      function(data, status){
-
-          var ob = JSON.parse(data);
-          for (var i = 0; i < ob.supplier.length; i++) {
-            $("#formOutput").val($("#formOutput").val()+"<tr><td>"+ob.supplier[i].SupplierName+"</td><tr><td>"+ob.supplier[i].SupplierContactNo+"</td></tr>");
-          };
-      });
-    });
-
 });
-</script>
-<script type="text/javascript">
-
 </script>
 @endsection
 
@@ -98,6 +70,7 @@ $(function(){
     
         <div class="row">
     <form class="col s12" action="/confirmSupplier" method="POST">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row">
                 <div class="input-field col s8">
                   <input id="supplier_name" type="text" class="validate" name="add_name">
@@ -190,7 +163,7 @@ $(function(){
 <div>
 
         <!-- DATA TABLE -->
-        <table class="highlight responsive-table">
+        <table class="highlight responsive-table" id="tableOutput">
         <thead>
           <tr>
               <th></th>
@@ -204,10 +177,10 @@ $(function(){
         <tbody>
         <div id="formOutput" value="asd">
           @foreach($results as $key => $result)
-           <!-- <input type="hidden" class="items" id="tdID{{$key}}" value="{{$result->SupplierID}}"
+           <input type="hidden" class="items" id="tdID{{$key}}" value="{{$result->SupplierID}}"
             <tr>
               <td>
-                  <button id="{{$key}}" value="{{$key}}"/>
+                  <button id="{{$key}}" value="{{$key}}" class="edit" />
                   <label for="{{$key}}" class="left">Edit/Delete</label>
               </td>
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
@@ -215,7 +188,7 @@ $(function(){
               <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
               <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
             </tr>
-          @endforeach-->
+          @endforeach
             </div>
         </tbody>
       </table>
@@ -229,6 +202,7 @@ $(function(){
      <!-- LINYA LANG--><div class="divider"></div><!-- LINYA LANG-->
           <div class="row">
           <form class="col s12" action="/confirmSupplier" method="POST">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" id="edit_ID" name="edit_ID">
               <div class="row">
                   <div class="input-field col s8">
@@ -326,9 +300,5 @@ $(function(){
           </ul>
         </div> 
 
-      </div>
-
-      <button class="btn-flat red waves-effect waves-light white-text col s2" name="refresh" id="refresh" >Refresh
-            <i class="material-icons left">Refresh</i>
-      
+      </div>      
 @endsection

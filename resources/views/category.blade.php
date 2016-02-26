@@ -5,6 +5,25 @@
 Manage Category
 @endsection
 
+@section('jqueryscript')
+<script type="text/javascript">
+$(function(){
+
+	$('#tableOutput').DataTable();
+
+    $(".edit").click(function(){
+      $('#modal3').openModal();
+      var selected = this.id;
+      var keyID = $("#tdID"+selected).val();
+      var keyName = $("#tdname"+selected).text();
+      alert(keyName);
+      $("#edit_ID").val(keyID);
+      $("#edit_name").val(keyName);
+    });
+});
+</script>
+@endsection
+
 @section('title1')
 <h1 class="left col s6 push-s1 white-text" style="font-size: 45px">Manage Category</h2>
 @endsection
@@ -27,6 +46,7 @@ Manage Category
 			      			<div class="divider"></div>
 			        <div class="row">
 					    <form class="col s12" action="/confirmCategory" method="POST">
+					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						    <div class="row">
 						       	<div class="input-field col s5">
 						        	<input id="category" type="text" class="validate" name="add_name">
@@ -49,28 +69,23 @@ Manage Category
 
 	<!--***************************************************DATA TABLE **************************************-->
 <div class="row">
-	<table class="responsive-table">
+	<table class="responsive-table" id="tableOutput">
         <thead>
           <tr>
-          	  <th></th>
+          	  <th>EDIT</th>
               <th data-field="id">Category</th>
-              <th data-field="name">Subcategory</th>
           </tr>
         </thead>
 
         <tbody>
         	@foreach($results as $key => $result)
+        		<input type="hidden" class="items" id="tdID{{$key}}" value="{{$result->CategoryID}}">
 	            <tr>
 	          	<td>
-	          		<input name="group1" type="radio" id="test{{$key}}" value="{{$key}}" onclick="myJavascriptFunction(this.value);"/>
-	                 <label for="test{{$key}}" class="left">Edit</label>
+	          		<button id="{{$key}}" value="{{$key}}" class="edit" />
+                  <label for="{{$key}}" class="left">Edit/Delete</label>
 	            </td>
-	            <td>{{$result->CategoryName}}</td>
-	            <td>
-	            	@foreach($result->subCategory as $key2 => $subResult)
-	            		{{$subResult->SubCategoryName}},&nbsp;
-	            	@endforeach
-	            </td>
+	            <td id="tdname{{$key}}">{{$result->CategoryName}}</td>
 	          </tr>
          	@endforeach
         </tbody>
@@ -79,17 +94,7 @@ Manage Category
 	<!--***************************************************END DATA TABLE **************************************-->
 
 	<!--*************************************************** PAGINATION **************************************-->
-		<div class="center">
-          <ul class="pagination">
-            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-            <li class="active"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="#!">2</a></li>
-            <li class="waves-effect"><a href="#!">3</a></li>
-            <li class="waves-effect"><a href="#!">4</a></li>
-            <li class="waves-effect"><a href="#!">5</a></li>
-            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-          </ul>
-        </div>
+		
     <!--*************************************************** END PAGINATION **************************************--> 
     
     <!--*************************************************** EDIT ************************************************-->
@@ -100,11 +105,12 @@ Manage Category
 		      							<div class="divider"></div>
 		     		<div class="row">
 					    <form class="col s12" action="/confirmCategory" method="POST">
-					    	<input type="hidden" name="edit_ID" value="{{isset($_GET['keyID']) ? $results[$_GET['keyID']]->CategoryID : 'None'}}">
+					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					    	<input type="hidden" name="edit_ID" id="edit_ID">
 						    <div class="row">
 						       	<div class="input-field col s5">
-						        	<input id="category" type="text" class="validate" name="edit_name" value="{{isset($_GET['keyID']) ? $results[$_GET['keyID']]->CategoryName : 'None'}}">
-						         	<label for="category">Category</label>
+						        	<input type="text" class="validate" name="edit_name" id="edit_name">
+						         	<label for="edit_name">Category</label>
 						        </div>
 						    </div>
 					</div>
@@ -134,13 +140,4 @@ Manage Category
 			    $('select').material_select();
 			  });
 			</script>
-
-		<script>
-        function myJavascriptFunction(keyVal) { 
-          //var keyVal = document.querySelector('input[name="group1"]:checked').value;
-          var javascriptVariable = keyVal;
-          window.location.href = "category?keyID=" + javascriptVariable; 
-        }
-      	</script>
-      	<?php if (isset($_GET['keyID'])) echo "<script>$('#modal3').openModal();</script>";?>
 @endsection
