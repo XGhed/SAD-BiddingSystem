@@ -9,7 +9,17 @@ Manage Category
 <script type="text/javascript">
 $(function(){
 
-	$('#tableOutput').DataTable();
+	$("#tableOutput").DataTable({
+      "lengthChange": false,
+      "pageLength": 7,
+      "columns": [
+        { "searchable": false },
+        null,
+        null,
+        null,
+        null
+      ] 
+    });
 
     $(".edit").click(function(){
       $('#modal3').openModal();
