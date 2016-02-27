@@ -95,7 +95,6 @@
         Session::forget('message');
       }
     ?>
-    <div id="alertMsg">WORKING</div>
     <div class="col s10 push-s1 white hoverable">
         @yield('supplier')
         @yield('accounts')
@@ -112,5 +111,39 @@
     </div>
     </div>
     </div>
+
+    <script type="text/javascript">
+$(function(){   
+
+    $("#tableOutput").DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null,
+        null,
+        null,
+        null
+      ] 
+    });
+
+    $(".edit").click(function(){
+      $('#modal1').openModal();
+      var selected = this.id;
+      var keyID = $("#tdID"+selected).val();
+      var keyName = $("#tdname"+selected).text();
+      var keyName = $("#tdname"+selected).text();
+      var keyProvince = $("#tdprovince"+selected).text();
+      var keyContactNo = $("#tdcontactno"+selected).text();
+      var keyEmail = $("#tdemail"+selected).text();
+      $("#edit_ID").val(keyID);
+      $("#edit_name").val(keyName);
+      $("#edit_province").val(keyProvince);
+      $("#edit_contactNo").val(keyContactNo);
+      $("#edit_email").val(keyEmail);
+    });
+});
+</script>
+
 </body>
 </html>

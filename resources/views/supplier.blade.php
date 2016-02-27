@@ -5,41 +5,6 @@
 Manage Supplier
 @endsection
 
-@section('jqueryscript')
-<script type="text/javascript">
-$(function(){   
-
-    $("#tableOutput").DataTable({
-      "lengthChange": false,
-      "pageLength": 7,
-      "columns": [
-        { "searchable": false },
-        null,
-        null,
-        null,
-        null
-      ] 
-    });
-
-    $(".edit").click(function(){
-      $('#modal1').openModal();
-      var selected = this.id;
-      var keyID = $("#tdID"+selected).val();
-      var keyName = $("#tdname"+selected).text();
-      var keyName = $("#tdname"+selected).text();
-      var keyProvince = $("#tdprovince"+selected).text();
-      var keyContactNo = $("#tdcontactno"+selected).text();
-      var keyEmail = $("#tdemail"+selected).text();
-      $("#edit_ID").val(keyID);
-      $("#edit_name").val(keyName);
-      $("#edit_province").val(keyProvince);
-      $("#edit_contactNo").val(keyContactNo);
-      $("#edit_email").val(keyEmail);
-    });
-});
-</script>
-@endsection
-
 @section('title1')
 <h1 class="left col s6 push-s1 white-text" style="font-size: 45px">Manage Supplier</h1>
 @endsection
@@ -53,18 +18,6 @@ $(function(){
 
 <div class="row">
     
-
-<!--*************************** SEARCH ***************************
-        <div class="input-field col s6">
-            <input id="search" type="search" required>
-              <label for="search"><i class="material-icons">search</i></label>
-              <i class="material-icons">close</i>
-        </div>
-      </form>
-    </div>
--->
-
-
 <!--***************************ADD BUTTON***************************-->
 <div class="col s8">
 <!-- MODAL TRIGGER-->
@@ -72,13 +25,13 @@ $(function(){
 
   <!-- Modal Structure -->
   <div id="addBtn" class="modal modal-fixed-footer">
-    <div class="modal-content">
+    <div class="modal-content" >
       <h4><i class="medium material-icons left">face</i>Add Supplier</h4>
 
    <!-- LINYA LANG--><div class="divider"></div><!-- LINYA LANG-->
 
     
-        <div class="row">
+        
     <form class="col s12" action="/confirmSupplier" method="POST">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row">
@@ -131,17 +84,15 @@ $(function(){
             </div>
 
             <div class="row">
-                <div class="input-field col s8">
+                <div class="input-field col s6">
                   <input id="contact_num" type="text" class="validate" name="add_contactNo">
                   <label for="contact_num">Contact Number</label>
                 </div>
-            </div>
 
-            <div class="row">
-              <div class="input-field col s8">
+                <div class="input-field col s6">
                   <input id="eAddress" type="email" class="validate" name="add_email">
                   <label for="eAddress">Email Address</label>
-              </div>
+        
             </div>
           </div><!--*************************** ROW ***************************-->
         </div> <!--*************************** MODAL CONTENT ***************************-->
@@ -155,20 +106,6 @@ $(function(){
 
 </div>
 
-      <div class="col s4">
-      <form>
-        <div class="input-field col s12">
-          <select>
-            <option disabled selected>Filter</option>
-            <option value="1">Name</option>
-            <option value="2">Address</option>
-            <option value="3">Contact Number</option>
-            <option value="3">Email Address</option>
-          </select>
-            <label>Filter By</label> <!-- BASAHIN MO TO. SEARCH O FILTER?-->
-        </div>
-      </form>
-    </div>
 
 <div>
 
@@ -190,8 +127,8 @@ $(function(){
            <input type="hidden" class="items" id="tdID{{$key}}" value="{{$result->SupplierID}}">
             <tr>
               <td>
-                  <button id="{{$key}}" value="{{$key}}" class="edit" />
-                  <label for="{{$key}}" class="left">Edit/Delete</label>
+                  <button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" />
+                  <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
               </td>
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
               <td id="tdprovince{{$key}}">{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
@@ -210,7 +147,7 @@ $(function(){
       <div class="modal-content">
         <h4><i class="medium material-icons left">edit</i>Edit</h4>
      <!-- LINYA LANG--><div class="divider"></div><!-- LINYA LANG-->
-          <div class="row">
+         
           <form class="col s12" action="/confirmSupplier" method="POST">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" id="edit_ID" name="edit_ID">
@@ -264,18 +201,16 @@ $(function(){
               </div>
 
               <div class="row">
-                  <div class="input-field col s8">
+                  <div class="input-field col s6">
                     <input type="text" class="validate" id="edit_contactNo" name="edit_contactNo">
                     <label for="edit_contactNo">Contact Number</label>
                   </div>
-              </div>
 
-              <div class="row">
-                <div class="input-field col s8">
+                  <div class="input-field col s6">
                     <input type="email" class="validate" id="edit_email" name="edit_email">
                     <label for="edit_email">Email Address</label>
                 </div>
-              </div>
+              
             </div><!--*************************** ROW ***************************-->
           </div> <!--*************************** MODAL CONTENT ***************************-->
 
@@ -302,13 +237,6 @@ $(function(){
           </div> <!--MODAL BODY-->
       </div>
 
-
-    <!--*************************************************** PAGINATION **************************************-->
-        <div class="center">
-          <ul class="pagination">
-            
-          </ul>
-        </div> 
 
       </div>      
 @endsection

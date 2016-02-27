@@ -5,35 +5,6 @@
 Manage Category
 @endsection
 
-@section('jqueryscript')
-<script type="text/javascript">
-$(function(){
-
-	$("#tableOutput").DataTable({
-      "lengthChange": false,
-      "pageLength": 7,
-      "columns": [
-        { "searchable": false },
-        null,
-        null,
-        null,
-        null
-      ] 
-    });
-
-    $(".edit").click(function(){
-      $('#modal3').openModal();
-      var selected = this.id;
-      var keyID = $("#tdID"+selected).val();
-      var keyName = $("#tdname"+selected).text();
-      alert(keyName);
-      $("#edit_ID").val(keyID);
-      $("#edit_name").val(keyName);
-    });
-});
-</script>
-@endsection
-
 @section('title1')
 <h1 class="left col s6 push-s1 white-text" style="font-size: 45px">Manage Category</h2>
 @endsection
@@ -92,8 +63,8 @@ $(function(){
         		<input type="hidden" class="items" id="tdID{{$key}}" value="{{$result->CategoryID}}">
 	            <tr>
 	          	<td>
-	          		<button id="{{$key}}" value="{{$key}}" class="edit" />
-                  <label for="{{$key}}" class="left">Edit/Delete</label>
+	          		<button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" />
+                  <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
 	            </td>
 	            <td id="tdname{{$key}}">{{$result->CategoryName}}</td>
 	          </tr>
@@ -103,9 +74,6 @@ $(function(){
 </div>
 	<!--***************************************************END DATA TABLE **************************************-->
 
-	<!--*************************************************** PAGINATION **************************************-->
-		
-    <!--*************************************************** END PAGINATION **************************************--> 
     
     <!--*************************************************** EDIT ************************************************-->
     			  
