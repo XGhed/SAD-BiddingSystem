@@ -5,6 +5,44 @@
 Manage Supplier
 @endsection
 
+@section('jqueryscript')
+<script type="text/javascript">
+
+$(function(){   
+
+    $("#tableOutput").DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null,
+        null,
+        null,
+        null
+      ] 
+    });
+    
+});
+
+$(function(){   
+    $('#tableOutput').on('click', '.edit', function(){
+       $('#modal1').openModal();
+        var selected = this.id;
+        var keyID = $("#tdID"+selected).val();
+        var keyName = $("#tdname"+selected).text();
+        var keyProvince = $("#tdprovince"+selected).text();
+        var keyContactNo = $("#tdcontactno"+selected).text();
+        var keyEmail = $("#tdemail"+selected).text();
+        $("#edit_ID").val(keyID);
+        $("#edit_name").val(keyName);
+        $("#edit_province").val(keyProvince);
+        $("#edit_contactNo").val(keyContactNo);
+        $("#edit_email").val(keyEmail);
+    });
+});
+</script>
+@endsection
+
 @section('title1')
 <h1 class="left col s6 push-s1 white-text" style="font-size: 45px">Manage Supplier</h1>
 @endsection
@@ -124,10 +162,10 @@ Manage Supplier
         <tbody>
         <div id="formOutput" value="asd">
           @foreach($results as $key => $result)
-           <input type="hidden" class="items" id="tdID{{$key}}" value="{{$result->SupplierID}}">
             <tr>
               <td>
-                  <button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" />
+                <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
+                  <button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" onclick="asd()" />
                   <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
               </td>
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>

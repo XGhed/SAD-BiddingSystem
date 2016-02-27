@@ -5,6 +5,35 @@
 Manage Category
 @endsection
 
+@section('jqueryscript')
+<script type="text/javascript">
+
+$(function(){   
+
+    $("#tableOutput").DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null
+      ] 
+    });
+    
+});
+
+$(function(){   
+    $(".edit").click(function(){
+      $('#modal3').openModal();
+      var selected = this.id;
+      var keyID = $("#tdID"+selected).val();
+      var keyName = $("#tdname"+selected).text();
+      $("#edit_ID").val(keyID);
+      $("#edit_name").val(keyName);
+    });
+});
+</script>
+@endsection
+
 @section('title1')
 <h1 class="left col s6 push-s1 white-text" style="font-size: 45px">Manage Category</h2>
 @endsection
@@ -60,9 +89,9 @@ Manage Category
 
         <tbody>
         	@foreach($results as $key => $result)
-        		<input type="hidden" class="items" id="tdID{{$key}}" value="{{$result->CategoryID}}">
 	            <tr>
 	          	<td>
+	          		<input type="hidden" class="items" id="tdID{{$key}}" value="{{$result->CategoryID}}">
 	          		<button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" />
                   <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
 	            </td>
