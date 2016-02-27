@@ -162,10 +162,10 @@ $(function(){
         <tbody>
         <div id="formOutput" value="asd">
           @foreach($results as $key => $result)
+            <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
             <tr>
               <td>
-                <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
-                  <button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" onclick="asd()" />
+                  <button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" />
                   <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
               </td>
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>

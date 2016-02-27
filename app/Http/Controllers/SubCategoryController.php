@@ -7,6 +7,7 @@ use App\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use Session;
 
 class SubCategoryController extends Controller
 {
@@ -20,18 +21,18 @@ class SubCategoryController extends Controller
 
 		if (isset($_POST['add'])) {
 			$this->insertSubCategory($request);
-			$results = App\Category::all();
-			return view('subcategory')->with ('results', $results)->with ('message', '1');
+			Session::put('message', '1');
+			return redirect('subcategory');
 		}
 		elseif (isset($_POST['edit'])) {
 	        $this->updateSubCategory($request);
-	        $results = App\Category::all();
-			return view('subcategory')->with ('results', $results)->with ('message', '2');
+	        Session::put('message', '2');
+			return redirect('subcategory');
 	    }
 	    elseif (isset($_POST['delete'])) {
 	        $this->deleteSubCategory($request);
-	        $results = App\Category::all();
-			return view('subcategory')->with ('results', $results)->with ('message', '3');
+	        Session::put('message', '3');
+			return redirect('subcategory');
 	    }
     }
 
@@ -45,7 +46,8 @@ class SubCategoryController extends Controller
 		try {
 			$subCategory->save();
 		} catch (Exception $e) {
-			return view('subCategory')->with ('results', $results)->with ('message', '-1');
+			Session::put('message', '-1');
+			return redirect('subcategory');
 		}
 	}
 
@@ -59,7 +61,8 @@ class SubCategoryController extends Controller
 		try {
 			$subcategory->save();
 		} catch (Exception $e) {
-			return view('subcategory')->with ('results', $results)->with ('message', '-1');
+			Session::put('message', '-1');
+			return redirect('subcategory');
 		}
 	}
 
@@ -70,7 +73,8 @@ class SubCategoryController extends Controller
 		try {
 			$subcategory->delete();
 		} catch (Exception $e) {
-			return view('subcategory')->with ('results', $results)->with ('message', '-1');
+			Session::put('message', '-1');
+			return redirect('subcategory');
 		}
 	}
 }
