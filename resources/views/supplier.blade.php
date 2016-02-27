@@ -177,7 +177,7 @@ $(function(){
         <tbody>
         <div id="formOutput" value="asd">
           @foreach($results as $key => $result)
-           <input type="hidden" class="items" id="tdID{{$key}}" value="{{$result->SupplierID}}"
+           <input type="hidden" class="items" id="tdID{{$key}}" value="{{$result->SupplierID}}">
             <tr>
               <td>
                   <button id="{{$key}}" value="{{$key}}" class="edit" />
