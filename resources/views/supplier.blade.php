@@ -75,8 +75,8 @@ Manage Supplier
             <tr>
               <td>
                 <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
-                  <button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" onclick="asd()" />
-                  <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
+                  <button id="{{$key}}" value="{{$key}}" class="edit btn colorBtn z-depth-3" onclick="asd()" />
+                  <label for="{{$key}}" class="left" style="cursor: pointer;">Edit/Delete</label>
               </td>
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
               <td id="tdprovince{{$key}}">{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>

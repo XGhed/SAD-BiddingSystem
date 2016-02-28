@@ -8118,6 +8118,7 @@ small {
 }
 
 .btn:hover, .btn-large:hover {
+  color: #ffffff;
   background-color: #ABABAB; /* BINAGO KO TO */
 }
 

@@ -128,26 +128,9 @@ $(function(){
 		      <h4><i class="medium material-icons left">edit</i>Edit</h4>
 		      							<div class="divider"></div>
 		      	<form action="/confirmSubCategory" method="POST">
-		      		<input type="hidden" name="_token" value="{{ csrf_token() }}">	
-			     		<div class="row">
-			     			<div class="input-field col s6 pull-s1">
-							    <input id="edit_name" type="text" class="validate disabled"  readonly name="edit_old_cat" >
-				          		<label for="edit_name">Category</label>
-							  </div>
-						</div>
-							
+		      		<input type="hidden" name="_token" value="{{ csrf_token() }}">								
 						<div class="row">
 							<div class="input-field col s6 push-s1">
-							    <select id="edit_old_subcat" name="edit_old_subcat" onchange="updateEditText();">
-							      <option disabled selected>Choose Subcategory</option>
-							    	<?php
-							    		if (isset ($_GET['keyID'])){
-							    			foreach ($results[$_GET['keyID']]->subCategory as $key => $result) {
-							    				echo "<option id='sub_ID$key' value='$result->SubCategoryID'>$result->SubCategoryName</option>";
-							    			}
-							    		}
-							    	?>
-							    </select>
 							    <label>Subcategory</label>
 							</div>
 						</div>
