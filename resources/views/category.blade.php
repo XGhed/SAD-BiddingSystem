@@ -265,6 +265,15 @@ $(function(){
 					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					    	<input type="hidden" name="edit_ID" id="edit_ID2">
 							    <div class="row">
+								    <div class="input-field col s5">
+									    <select>
+									      <option value="" disabled selected>Subcategory</option>
+									      <option value="1">Option 1</option>
+									    </select>
+									    <label>Choose Subcategory</label>
+									  </div>
+								</div>	  
+								<div class="row">	  	
 							       	<div class="input-field col s5">
 							        	<input type="text" class="validate" name="edit_name" id="edit_name2">
 							         	<label for="edit_name2">Subcategory</label>
