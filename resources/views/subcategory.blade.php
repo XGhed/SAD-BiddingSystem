@@ -100,9 +100,9 @@ $(function(){
 
         <tbody>
         	@foreach($results as $key => $result)
-        		<input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
 				<tr>
 					<td>
+						<input type="hidden" id="tdID{{$key}}" value="{{$result->CategoryID}}">
 		          		<button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" />
                   		<label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
 		            </td>

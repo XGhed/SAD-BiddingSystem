@@ -5,6 +5,33 @@
 Manage keyword
 @endsection
 
+@section('jqueryscript')
+<script type="text/javascript">
+$(function(){   
+
+    $("#tableOutput").DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null
+      ] 
+    });
+});
+
+$(function(){   
+    $('#tableOutput').on('click', '.edit', function(){
+      $('#modal3').openModal();
+      var selected = this.id;
+      var keyID = $("#tdID"+selected).val();
+      var keyName = $("#tdname"+selected).text();
+      $("#edit_ID").val(keyID);
+      $("#edit_name").val(keyName);
+    });
+});
+</script>
+@endsection
+
 @section('title1')
 <h1 class="left col s6 push-s1 white-text" style="font-size: 45px">Manage keyword</h2>
 @endsection
@@ -26,6 +53,7 @@ Manage keyword
                   <div class="divider"></div>
               <div class="row">
               <form class="col s12" action="/confirmKeyword" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                <div class="input-field col s6">
                   <input id="keyword" type="text" class="validate" name="add_name">
                   <label for="keyword">Keyword</label>
@@ -47,7 +75,7 @@ Manage keyword
 
   <!--***************************************************DATA TABLE **************************************-->
 <div class="row">
-  <table class="responsive-table">
+  <table class="responsive-table" id="tableOutput">
         <thead>
           <tr>
               <th></th>
@@ -59,10 +87,11 @@ Manage keyword
           @foreach($results as $key => $result)
             <tr>
               <td>
-                <input name="group1" type="radio" id="addID{{$key}}" value="{{$key}}" onclick="myJavascriptFunction(this.value);"/>
-                   <label for="addID{{$key}}" class="left">Edit</label>
+                <input type="hidden" id="tdID{{$key}}" value="{{$result->KeywordID}}">
+                <button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" />
+                  <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
               </td>
-            <td>{{$result->KeywordName}}</td>
+            <td id="tdname{{$key}}">{{$result->KeywordName}}</td>
              </tr>
           @endforeach
         </tbody>
@@ -71,17 +100,7 @@ Manage keyword
   <!--********************** END DATA TABLE  *******-->
 
   <!--********************** PAGINATION **************-->
-    <div class="center">
-          <ul class="pagination">
-            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-            <li class="active"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="#!">2</a></li>
-            <li class="waves-effect"><a href="#!">3</a></li>
-            <li class="waves-effect"><a href="#!">4</a></li>
-            <li class="waves-effect"><a href="#!">5</a></li>
-            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-          </ul>
-        </div>
+
     <!--********************* END PAGINATION *************************--> 
     
     <!--*************************************************** EDIT ************************************************-->
@@ -92,11 +111,12 @@ Manage keyword
         <div class="modal-content">
           <h4><i class="medium material-icons left">edit</i>Edit</h4>
                         <div class="divider"></div>
-            <form>
-                <input type="hidden" name="edit_ID" value="{{isset($_GET['keyID']) ? $results[$_GET['keyID']]->KeywordID : 'None'}}">
+            <form action="/confirmKeyword" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="edit_ID" id="edit_ID">
                 <div class="input-field col s6">
-                  <input id="Place" type="text" class="validate" name="edit_name" value="{{isset($_GET['keyID']) ? $results[$_GET['keyID']]->KeywordName : 'None'}}">
-                  <label for="Place">Edit Keyword</label>
+                  <input id="edit_name" type="text" class="validate" name="edit_name" >
+                  <label for="edit_name">Edit Keyword</label>
                 </div>
         </div>
 
