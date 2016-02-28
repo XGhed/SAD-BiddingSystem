@@ -43,7 +43,7 @@ Manage Supplier
 @endsection
 
 @section('title1')
-<h1 class="left col s6 push-s1 white-text" style="font-size: 45px">Manage Supplier</h1>
+<h1 class="left col s6 push-s1 white-text" style="font-size: 40px">Manage Supplier</h1>
 @endsection
 
 
@@ -58,7 +58,7 @@ Manage Supplier
 <div>
 
         <!-- DATA TABLE -->
-        <table class="highlight responsive-table" id="tableOutput">
+        <table class="highlight responsive-table centered" id="tableOutput">
         <thead>
           <tr>
               <th>Manage</th>
@@ -66,6 +66,7 @@ Manage Supplier
               <th data-field="Address">Address</th>
               <th data-field="Contact number">Contact number</th>
               <th data-field="Email Address">Email Address</th>
+              <th data-field="Status">Status</th>
           </tr>
         </thead>
 
@@ -82,6 +83,7 @@ Manage Supplier
               <td id="tdprovince{{$key}}">{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
               <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
               <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
+        
             </tr>
           @endforeach
             </div>

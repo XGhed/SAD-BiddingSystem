@@ -19,7 +19,7 @@
 <div class="navbar-fixed">
 <nav>
     <div class="nav-wrapper grey darken-3">
-      <a href="#!" class="brand-logo center">Bidding Management System</a>
+      <a href="#!" class="brand-logo center"><i class="material-icons left">business</i>Bidding Management System</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="sass.html">Hello Admin</a></li>
@@ -35,13 +35,12 @@
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
             <li>
-              <a class="white-text collapsible-header"><i class="material-icons">build</i>Maintenance<i class="tiny material-icons right">arrow_drop_down</i></a>
+              <a class="white-text collapsible-header"><i class="material-icons left ">build</i>Maintenance<i class="material-icons right">arrow_drop_down</i></a>
               <div class="collapsible-body">
                   <div class="divider"></div>
                 <ul>
                   <li><a class="white-text" href="/supplier">Supplier</a></li>
                   <li><a class="white-text" href="/category" >Category</a></li>
-                  <li><a class="white-text" href="/subcategory" >Subcategory</a></li>
                   <li><a class="white-text" href="/keyword">Keyword</a></li>
                   <!-- <li><a class="white-text" href="/item">Item</a></li>-->
                   <li><a class="white-text" href="/accountType">Account Type</a></li>
@@ -54,10 +53,10 @@
             </li>
           </ul>
         </li>       
-        <li><a class="white-text collapsible-header" href="/registerItem"><i class="material-icons">input</i>Register Items</a></li>
-        <li><a class="white-text collapsible-header" href="/bidEvent"><i class="material-icons">gavel</i>Bidding Event</a></li>
-        <li><a class="white-text collapsible-header" href="#!"><i class="material-icons">receipt</i>Reports</a></li>
-        <li><a class="right white-text collapsible-header" href="/home"><i class="material-icons">exit_to_app</i>Log out</a></li>
+        <li><a class="white-text" href="/registerItem"><i class="material-icons left">input</i>Register Items</a></li>
+        <li><a class="white-text" href="/bidEvent"><i class="material-icons left">gavel</i>Bidding Event</a></li>
+        <li><a class="white-text" href="#!"><i class="material-icons left">receipt</i>Reports</a></li>
+        <li><a class="right white-text" href="/home"><i class="material-icons left">exit_to_app</i>Log out</a></li>
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu right"></i></a>
     
