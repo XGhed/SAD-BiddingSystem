@@ -11638,7 +11638,7 @@
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.searchPlaceholder
 			 */
-			"sSearchPlaceholder": "Seach here",
+			"sSearchPlaceholder": "",
 	
 	
 			/**
