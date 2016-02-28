@@ -7,7 +7,6 @@ Manage Category
 
 @section('jqueryscript')
 <script type="text/javascript">
-
 $(function(){   
 
     $("#tableOutput").DataTable({
@@ -18,11 +17,10 @@ $(function(){
         null
       ] 
     });
-    
 });
 
 $(function(){   
-    $(".edit").click(function(){
+    $('#tableOutput').on('click', '.edit', function(){
       $('#modal3').openModal();
       var selected = this.id;
       var keyID = $("#tdID"+selected).val();

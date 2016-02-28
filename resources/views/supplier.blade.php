@@ -181,6 +181,42 @@ Manage Supplier
 </div>
 
 
+<<<<<<< HEAD
+=======
+<div>
+
+        <!-- DATA TABLE -->
+        <table class="highlight responsive-table" id="tableOutput">
+        <thead>
+          <tr>
+              <th></th>
+              <th data-field="Name">Name</th>
+              <th data-field="Address">Address</th>
+              <th data-field="Contact number">Contact number</th>
+              <th data-field="Email Address">Email Address</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <div id="formOutput" value="asd">
+          @foreach($results as $key => $result)
+            <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
+            <tr>
+              <td>
+                  <button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" />
+                  <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
+              </td>
+              <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
+              <td id="tdprovince{{$key}}">{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
+              <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
+              <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
+            </tr>
+          @endforeach
+            </div>
+        </tbody>
+      </table>
+</div>
+>>>>>>> af7fa35677d76af48b5aec7d5a4ca5c7033921e9
 <!-- ***************************************************EDIT**************************************-->
 
     <!-- Modal Structure -->
