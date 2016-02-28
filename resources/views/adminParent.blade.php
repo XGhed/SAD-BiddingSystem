@@ -16,16 +16,20 @@
     </head>
 
 <body style="background-color: #212121">
-
-<div class="row">
- <!--*******************SIDE NAVIGATOR PANEL********************************************* -->
-
-
-      <ul id="slide-out" class="side-nav fixed grey darken-3">
-                <!-- admin info-->
+<div class="navbar-fixed">
+<nav>
+    <div class="nav-wrapper grey darken-3">
+      <a href="#!" class="brand-logo center">Bidding Management System</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sass.html">Hello Admin</a></li>
+        <li><a href="badges.html">ewan pa</a></li>
+      </ul>
+       <ul id="slide-out" id="mobile-demo" class="side-nav fixed grey darken-3">
+                <!-- admin info -->
+              <div class="row"></div>
               <div class="grey darken-3">
-              <center> <img class="circle responsive-img z-depth-3" src="icons/1x1.jpg"></center>
-              <center class="white-text"> Hello Nigguh!!!!</center>
+              <center> <img class="circle responsive-img z-depth-3" src="icons/1x1.jpg"></center> 
               </div>
 
         <li class="no-padding">
@@ -55,7 +59,7 @@
         <li><a class="white-text collapsible-header" href="#!"><i class="material-icons">receipt</i>Reports</a></li>
         <li><a class="right white-text collapsible-header" href="/home"><i class="material-icons">exit_to_app</i>Log out</a></li>
       </ul>
-      <a href="#" data-activates="slide-out" class="button-collapse "><i class="large mdi-navigation-menu"></i></a>
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu right"></i></a>
     
 
         <script>
@@ -66,6 +70,14 @@
         });
 
         </script>
+
+    </div>
+  </nav>
+  </div>
+
+<div class="row">
+ <!--*******************SIDE NAVIGATOR PANEL********************************************* -->
+      
 
  <!--*******************SIDE NAVIGATOR PANEL********************************************* -->
     <div class="col s10 push-s2 grey darken-4">

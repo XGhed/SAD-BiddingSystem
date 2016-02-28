@@ -7,39 +7,38 @@ Manage Supplier
 
 @section('jqueryscript')
 <script type="text/javascript">
+    $(function (){   
 
-$(function(){   
-
-    $("#tableOutput").DataTable({
-      "lengthChange": false,
-      "pageLength": 5,
-      "columns": [
-        { "searchable": false },
-        null,
-        null,
-        null,
-        null
-      ] 
+        $("#tableOutput").DataTable({
+          "lengthChange": false,
+          "pageLength": 5,
+          "columns": [
+            { "searchable": false },
+            null,
+            null,
+            null,
+            null
+          ] 
+        });
+        
     });
-    
-});
 
-$(function(){   
-    $('#tableOutput').on('click', '.edit', function(){
-       $('#modal1').openModal();
-        var selected = this.id;
-        var keyID = $("#tdID"+selected).val();
-        var keyName = $("#tdname"+selected).text();
-        var keyProvince = $("#tdprovince"+selected).text();
-        var keyContactNo = $("#tdcontactno"+selected).text();
-        var keyEmail = $("#tdemail"+selected).text();
-        $("#edit_ID").val(keyID);
-        $("#edit_name").val(keyName);
-        $("#edit_province").val(keyProvince);
-        $("#edit_contactNo").val(keyContactNo);
-        $("#edit_email").val(keyEmail);
+    $(function(){   
+        $('#tableOutput').on('click', '.edit', function(){
+           $('#modal1').openModal();
+            var selected = this.id;
+            var keyID = $("#tdID"+selected).val();
+            var keyName = $("#tdname"+selected).text();
+            var keyProvince = $("#tdprovince"+selected).text();
+            var keyContactNo = $("#tdcontactno"+selected).text();
+            var keyEmail = $("#tdemail"+selected).text();
+            $("#edit_ID").val(keyID);
+            $("#edit_name").val(keyName);
+            $("#edit_province").val(keyProvince);
+            $("#edit_contactNo").val(keyContactNo);
+            $("#edit_email").val(keyEmail);
+        });
     });
-});
 </script>
 @endsection
 
@@ -49,17 +48,55 @@ $(function(){
 
 
 @section('supplier')
+<div>
+<h3 class="center" style="font-size: 30px;">Supplier Info</h3>
+<div class="divider"></div>
+</div>
 
 
-<br>
-<br>
+
+<div>
+
+        <!-- DATA TABLE -->
+        <table class="highlight responsive-table" id="tableOutput">
+        <thead>
+          <tr>
+              <th>Manage</th>
+              <th data-field="Name">Name</th>
+              <th data-field="Address">Address</th>
+              <th data-field="Contact number">Contact number</th>
+              <th data-field="Email Address">Email Address</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <div id="formOutput" value="asd">
+          @foreach($results as $key => $result)
+            <tr>
+              <td>
+                <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
+                  <button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" onclick="asd()" />
+                  <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
+              </td>
+              <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
+              <td id="tdprovince{{$key}}">{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
+              <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
+              <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
+            </tr>
+          @endforeach
+            </div>
+        </tbody>
+      </table>
+</div>
+
+
 
 <div class="row">
     
 <!--***************************ADD BUTTON***************************-->
-<div class="col s8">
+<div class="col s3 right">
 <!-- MODAL TRIGGER-->
-  <a class="modal-trigger waves-effect waves-light btn z-depth-5 left" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
+  <a class="modal-trigger waves-effect waves-light btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
 
   <!-- Modal Structure -->
   <div id="addBtn" class="modal modal-fixed-footer">
@@ -141,43 +178,9 @@ $(function(){
         </div>
     </form>  
         </div> <!--MODAL BODY-->
-
 </div>
 
 
-<div>
-
-        <!-- DATA TABLE -->
-        <table class="highlight responsive-table" id="tableOutput">
-        <thead>
-          <tr>
-              <th></th>
-              <th data-field="Name">Name</th>
-              <th data-field="Address">Address</th>
-              <th data-field="Contact number">Contact number</th>
-              <th data-field="Email Address">Email Address</th>
-          </tr>
-        </thead>
-
-        <tbody>
-        <div id="formOutput" value="asd">
-          @foreach($results as $key => $result)
-            <tr>
-              <td>
-                <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
-                  <button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" onclick="asd()" />
-                  <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
-              </td>
-              <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
-              <td id="tdprovince{{$key}}">{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
-              <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
-              <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
-            </tr>
-          @endforeach
-            </div>
-        </tbody>
-      </table>
-</div>
 <!-- ***************************************************EDIT**************************************-->
 
     <!-- Modal Structure -->

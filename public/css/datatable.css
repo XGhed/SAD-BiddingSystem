@@ -282,7 +282,7 @@ table.dataTable td {
   float: left;
 }
 .dataTables_wrapper .dataTables_filter {
-  float: right;
+  float: left;
   text-align: right;
 }
 .dataTables_wrapper .dataTables_filter input {
@@ -294,8 +294,8 @@ table.dataTable td {
   padding-top: 0.755em;
 }
 .dataTables_wrapper .dataTables_paginate {
-  float: right;
-  text-align: right;
+  float: left;
+  text-align: left;
   padding-top: 0.25em;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {

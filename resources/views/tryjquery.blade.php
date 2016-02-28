@@ -13,7 +13,7 @@ Manage Supplier
 @section('supplier')
 <table>
 	<tr>
-		<td id="td1">Fuck me</td>
+		<td id="td1">haha</td>
 	</tr>
 </table>
 

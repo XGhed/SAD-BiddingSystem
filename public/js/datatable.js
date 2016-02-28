@@ -541,7 +541,7 @@
 			var n = $('<div/>')
 				.css( {
 					position: 'fixed',
-					top: 0,
+					top: 5,
 					left: 0,
 					height: 1,
 					width: 1,
@@ -11638,7 +11638,7 @@
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.searchPlaceholder
 			 */
-			"sSearchPlaceholder": "",
+			"sSearchPlaceholder": "Seach here",
 	
 	
 			/**
