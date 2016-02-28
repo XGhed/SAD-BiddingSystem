@@ -8035,7 +8035,7 @@ small {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: #f6b2b5;
+  background-color: #212121; /* BINAGO KO TO */
   will-change: left, right;
 }
 
