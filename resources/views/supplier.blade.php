@@ -181,8 +181,6 @@ Manage Supplier
 </div>
 
 
-<<<<<<< HEAD
-=======
 <div>
 
         <!-- DATA TABLE -->
@@ -216,7 +214,7 @@ Manage Supplier
         </tbody>
       </table>
 </div>
->>>>>>> af7fa35677d76af48b5aec7d5a4ca5c7033921e9
+
 <!-- ***************************************************EDIT**************************************-->
 
     <!-- Modal Structure -->
