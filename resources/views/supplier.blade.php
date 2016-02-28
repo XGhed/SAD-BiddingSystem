@@ -62,6 +62,7 @@ Manage Supplier
         <thead>
           <tr>
               <th>Manage</th>
+              <!--<th></th>-->
               <th data-field="Name">Name</th>
               <th data-field="Address">Address</th>
               <th data-field="Contact number">Contact number</th>
@@ -74,10 +75,15 @@ Manage Supplier
           @foreach($results as $key => $result)
             <tr>
               <td>
-                <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
-                  <button id="{{$key}}" value="{{$key}}" class="edit btn colorBtn z-depth-3" onclick="asd()" />
-                  <label for="{{$key}}" class="left" style="cursor: pointer;">Edit/Delete</label>
+                    <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
+                    <button id="{{$key}}" value="{{$key}}" class="edit btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
               </td>
+
+           <!--   <td>
+                <input type="hidden" id="" value="">
+                <button id="" value="" class="btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+              </td> -->
+
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
               <td id="tdprovince{{$key}}">{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
               <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
@@ -194,7 +200,7 @@ Manage Supplier
               <div class="row">
                   <div class="input-field col s8">
                     <input id="edit_name" type="text" class="validate" name="edit_name">
-                    <label for="edit_name">Supplier's Name</label>
+                    <label class="active" for="edit_name" >Supplier's Name</label>
                   </div>
               </div>
 
@@ -248,7 +254,7 @@ Manage Supplier
 
                   <div class="input-field col s6">
                     <input type="email" class="validate" id="edit_email" name="edit_email">
-                    <label for="edit_email">Email Address</label>
+                    <label class="active" for="edit_email">Email Address</label>
                 </div>
               
             </div><!--*************************** ROW ***************************-->
@@ -257,11 +263,6 @@ Manage Supplier
           <div class="modal-footer">
                 <button class="btn-flat green waves-effect waves-light white-text col s2" type="submit" name="edit">
                 <i class="material-icons left">edit</i>Change</button>
-
-                <button class="btn-flat red waves-effect waves-light white-text col s2" type="submit" name="delete">Delete
-            <i class="material-icons left">delete</i>
-
-          </button>
           </div>
       </form>
             <script>
@@ -273,6 +274,7 @@ Manage Supplier
                 $(document).ready(function() {
                   $('select').material_select();
                 });
+
             </script>
           </div> <!--MODAL BODY-->
       </div>

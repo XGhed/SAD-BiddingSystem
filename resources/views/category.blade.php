@@ -147,7 +147,7 @@ $(function(){
 						    <div class="row">
 						       	<div class="input-field col s5">
 						        	<input type="text" class="validate" name="edit_name" id="edit_name1">
-						         	<label for="edit_name1">Category</label>
+						         	<label class="active" for="edit_name1">Category</label>
 						        </div>
 						    </div>
 					</div>
