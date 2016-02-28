@@ -54,9 +54,9 @@ class SubCategoryController extends Controller
 	public function updateSubCategory(Request $request){
 
 		$subcategory = new App\SubCategory;
-		$subcategory = App\SubCategory::find($request->input('edit_old_subcat'));
+		$subcategory = App\SubCategory::find($request->input('edit_ID'));
 
-		$subcategory->SubCategoryName = $request->input('edit_new_subcat');
+		$subcategory->SubCategoryName = $request->input('edit_name');
 
 		try {
 			$subcategory->save();
@@ -68,7 +68,7 @@ class SubCategoryController extends Controller
 
 	public function deleteSubCategory(Request $request){
 		$subcategory = new App\SubCategory;
-		$subcategory = App\SubCategory::find($request->input('edit_old_subcat'));
+		$subcategory = App\SubCategory::find($request->input('edit_ID'));
 		
 		try {
 			$subcategory->delete();

@@ -30,6 +30,30 @@ $(function(){
       $("#edit_name1").val(keyName);
     });
 });
+
+$(function(){   
+
+    $("#tableOutput2").DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null,
+        null
+      ] 
+    });
+});
+
+$(function(){   
+    $('#tableOutput2').on('click', '.edit2', function(){
+      $('#modal4').openModal();
+      var selected = this.id;
+      var keyID = $("#tdID2"+selected).val();
+      var keyName = $("#tdname2"+selected).text();
+      $("#edit_ID2").val(keyID);
+      $("#edit_name2").val(keyName);
+    });
+});
 </script>
 @endsection
 
@@ -162,7 +186,7 @@ $(function(){
 <div id="subcatTab" class="col s12">
     		<!--***************************************************DATA TABLE **************************************-->
 			<div class="row">
-				<table class="responsive-table" id="tableOutput">
+				<table class="responsive-table" id="tableOutput2">
 			        <thead>
 			          <tr>
 			          	  <th>Manage</th>
@@ -173,19 +197,16 @@ $(function(){
 
 			        <tbody>
 			        	@foreach($results as $key => $result)
-			        		<input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
-							<tr>
-								<td>
-					          		<button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" />
-			                  		<label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
-					            </td>
-					            <td>
-					            	@foreach($result->subCategory as $key2 => $subResult)
-					            		{{$subResult->SubCategoryName}},&nbsp;
-					            	@endforeach
-					            </td>
-					          </tr>
-						@endforeach
+						            <tr>
+						          	<td>
+						          		<input type="hidden" class="items" id="tdID2{{$key}}" value="{{$result->CategoryID}}">
+						          		<button id="{{$key}}" value="{{$key}}" class="edit2 btn blue z-depth-3" />
+					                  <label for="2{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
+						            </td>
+						            <td id="tdname2{{$key}}">{{$result->CategoryName}}</td>
+						            <td id="tddesc2{{$key}}"></td>
+						          </tr>
+					         	@endforeach
 			        </tbody>
 			      </table>
 			</div>
@@ -235,26 +256,18 @@ $(function(){
 
     <!--*************************************************** SUBCAT EDIT ************************************************-->  
 
- 		<div id="modal3" class="modal modal-fixed-footer">
+ 		<div id="modal4" class="modal modal-fixed-footer">
 		    <div class="modal-content">
 		      <h4><i class="medium material-icons left">edit</i>Edit</h4>
 		      							<div class="divider"></div>
 		     		<div class="row">
 					    <form class="col s12" action="/confirmCategory" method="POST">
 					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					    	<input type="hidden" name="edit_ID" id="edit_ID1">
+					    	<input type="hidden" name="edit_ID" id="edit_ID2">
 							    <div class="row">
-							   		 <div class="input-field col s6">
-									    <select>
-										      <option value="" disabled selected>Choose your subcategory</option>
-										      <option value="1">Option 1</option>
-									    </select>
-									    <label>Subcategory</label>
-									  </div>
-
 							       	<div class="input-field col s5">
-							        	<input type="text" class="validate" name="edit_name" id="edit_name1">
-							         	<label for="edit_name1">Subcategory</label>
+							        	<input type="text" class="validate" name="edit_name" id="edit_name2">
+							         	<label for="edit_name2">Subcategory</label>
 							        </div>
 							    </div>
 					</div>
