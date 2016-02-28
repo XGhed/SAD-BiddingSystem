@@ -7,6 +7,7 @@ use App\Keyword;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use Session;
 
 class KeywordController extends Controller
 {
@@ -21,18 +22,18 @@ class KeywordController extends Controller
 
 		if (isset($_POST['add'])) {
 			$this->insertKeyword($request);
-			$results = App\Keyword::all();
-			return view('keyword')->with ('results', $results)->with ('message', '1');
+			Session::put('message', '1');
+			return redirect('keyword');
 		}
 		elseif (isset($_POST['edit'])) {
 	        $this->updateKeyword($request);
-	        $results = App\Keyword::all();
-			return view('keyword')->with ('results', $results)->with ('message', '2');
+	        Session::put('message', '2');
+			return redirect('keyword');
 	    }
 	    elseif (isset($_POST['delete'])) {
 	        $this->deleteKeyword($request);
-	        $results = App\Keyword::all();
-			return view('keyword')->with ('results', $results)->with ('message', '3');
+	        Session::put('message', '3');
+			return redirect('keyword');
 	    }
     }
 
@@ -45,7 +46,8 @@ class KeywordController extends Controller
 		try {
 			$keyword->save();
 		} catch (Exception $e) {
-			return view('keyword')->with ('results', $results)->with ('message', '-1');
+			Session::put('message', '-1');
+			return redirect('keyword');
 		}
 	}
 
@@ -59,7 +61,8 @@ class KeywordController extends Controller
 		try {
 			$keyword->save();
 		} catch (Exception $e) {
-			return view('keyword')->with ('results', $results)->with ('message', '-1');
+			Session::put('message', '-1');
+			return redirect('keyword');
 		}
 	}
 
@@ -70,7 +73,8 @@ class KeywordController extends Controller
 		try {
 			$keyword->delete();
 		} catch (Exception $e) {
-			return view('keyword')->with ('results', $results)->with ('message', '-1');
+			Session::put('message', '-1');
+			return redirect('keyword');
 		}
 	}
 }

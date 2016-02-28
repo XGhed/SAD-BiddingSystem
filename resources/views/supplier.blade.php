@@ -43,7 +43,7 @@ Manage Supplier
 @endsection
 
 @section('title1')
-<h1 class="left col s6 push-s1 grey-text text-lighten-2" style="font-size: 40px">Manage Supplier</h1>
+<h1 class="left col s6 push-s1 white-text" style="font-size: 40px">Manage Supplier</h1>
 @endsection
 
 
@@ -55,42 +55,38 @@ Manage Supplier
 
 
 
-<div >
+<div>
 
         <!-- DATA TABLE -->
-        <div class="row">
-            <table class="highlight responsive-table" id="tableOutput">
-            <thead>
-              <tr>
-                  <th>Manage</th>
-                  <th data-field="Name">Name</th>
-                  <th data-field="Address">Address</th>
-                  <th data-field="Contact number">Contact number</th>
-                  <th data-field="Email Address">Email Address</th>
-                  <th data-field="Status">Status</th>
-              </tr>
-            </thead>
+        <table class="highlight responsive-table" id="tableOutput">
+        <thead>
+          <tr>
+              <th>Manage</th>
+              <th data-field="Name">Name</th>
+              <th data-field="Address">Address</th>
+              <th data-field="Contact number">Contact number</th>
+              <th data-field="Email Address">Email Address</th>
+          </tr>
+        </thead>
 
-            <tbody>
-            <div id="formOutput" value="asd">
-              @foreach($results as $key => $result)
-                <tr>
-                  <td>
-                    <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
-                      <button id="{{$key}}" value="{{$key}}" class="edit btn colorBtn z-depth-3" onclick="asd()" />
-                      <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
-                  </td>
-                  <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
-                  <td id="tdprovince{{$key}}">{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
-                  <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
-                  <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
-
-                </tr>
-              @endforeach
-                </div>
-            </tbody>
-          </table>
-    </div>
+        <tbody>
+        <div id="formOutput" value="asd">
+          @foreach($results as $key => $result)
+            <tr>
+              <td>
+                <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
+                  <button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" onclick="asd()" />
+                  <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
+              </td>
+              <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
+              <td id="tdprovince{{$key}}">{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
+              <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
+              <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
+            </tr>
+          @endforeach
+            </div>
+        </tbody>
+      </table>
 </div>
 
 
@@ -100,7 +96,7 @@ Manage Supplier
 <!--***************************ADD BUTTON***************************-->
 <div class="col s3 right">
 <!-- MODAL TRIGGER-->
-  <a class="modal-trigger waves-effect waves-light btn colorBtn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
+  <a class="modal-trigger waves-effect waves-light btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
 
   <!-- Modal Structure -->
   <div id="addBtn" class="modal modal-fixed-footer">
@@ -276,10 +272,6 @@ Manage Supplier
                 //SELECT FORM
                 $(document).ready(function() {
                   $('select').material_select();
-                });
-
-                $(".input-field").focus(function editModal(){
-                  $(this).parent().addClass("active");
                 });
             </script>
           </div> <!--MODAL BODY-->
