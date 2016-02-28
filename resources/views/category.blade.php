@@ -33,14 +33,14 @@ $(function(){
 @endsection
 
 @section('title1')
-<h1 class="left col s6 push-s1 white-text" style="font-size: 45px">Manage Category</h2>
+<h2 class="left col s6 push-s1 white-text" style="font-size: 45px">Manage Category</h2>
 @endsection
 
 
 @section('category')
     <div class="col s10 push-s1" >
       <ul class="tabs">
-        <li class="tab col s3"><a class="black-text hoverable" href="#catTab">Category</a></li>
+        <li class="tab col s3"><a class="black-text blockquote" href="#catTab">Category</a></li>
         <li class="tab col s3"><a class="black-text" href="#subcatTab" >Subcategory</a></li>
 
       </ul>

@@ -19,7 +19,7 @@
 <div class="navbar-fixed">
 <nav>
     <div class="nav-wrapper grey darken-3">
-      <a href="#!" class="brand-logo center"><i class="material-icons left">business</i>Bidding Management System</a>
+      <a href="#!" class="brand-logo center"><i class="material-icons left">gavel</i>Bidding Management System</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="sass.html">Hello Admin</a></li>
@@ -54,7 +54,7 @@
           </ul>
         </li>       
         <li><a class="white-text" href="/registerItem"><i class="material-icons left">input</i>Register Items</a></li>
-        <li><a class="white-text" href="/bidEvent"><i class="material-icons left">gavel</i>Bidding Event</a></li>
+        <li><a class="white-text" href="/bidEvent"><i class="material-icons left">today</i>Bidding Event</a></li>
         <li><a class="white-text" href="#!"><i class="material-icons left">receipt</i>Reports</a></li>
         <li><a class="right white-text" href="/home"><i class="material-icons left">exit_to_app</i>Log out</a></li>
       </ul>

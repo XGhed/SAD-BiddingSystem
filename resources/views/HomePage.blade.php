@@ -61,7 +61,7 @@
     <div class="slider">
       <ul class="slides">
         <li>
-          <img src="icons/Auction_pic3.png">
+          <img src="icons/Auction_pic5.jpg">
           <div class="caption center-align">
             <h3 class="white-text text-accent-2">Welcome to Online Bidding!</h3>
             <h5 class="light grey-text text-lighten-3">Join now at our site.</h5>
