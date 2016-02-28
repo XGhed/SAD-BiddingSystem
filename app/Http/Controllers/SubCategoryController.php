@@ -11,28 +11,22 @@ use Session;
 
 class SubCategoryController extends Controller
 {
-    public function manageSubCategory(){
-
-       $results = App\Category::all();
-       return view('subcategory')->with ('results', $results);
-    }
-
     public function confirmSubCategory(Request $request){
 
 		if (isset($_POST['add'])) {
 			$this->insertSubCategory($request);
 			Session::put('message', '1');
-			return redirect('subcategory');
+			return redirect('category');
 		}
 		elseif (isset($_POST['edit'])) {
 	        $this->updateSubCategory($request);
 	        Session::put('message', '2');
-			return redirect('subcategory');
+			return redirect('category');
 	    }
 	    elseif (isset($_POST['delete'])) {
 	        $this->deleteSubCategory($request);
 	        Session::put('message', '3');
-			return redirect('subcategory');
+			return redirect('category');
 	    }
     }
 
@@ -47,7 +41,7 @@ class SubCategoryController extends Controller
 			$subCategory->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
-			return redirect('subcategory');
+			return redirect('category');
 		}
 	}
 
@@ -62,7 +56,7 @@ class SubCategoryController extends Controller
 			$subcategory->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
-			return redirect('subcategory');
+			return redirect('category');
 		}
 	}
 
@@ -74,7 +68,7 @@ class SubCategoryController extends Controller
 			$subcategory->delete();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
-			return redirect('subcategory');
+			return redirect('category');
 		}
 	}
 }

@@ -196,14 +196,14 @@ $(function(){
 			        </thead>
 
 			        <tbody>
-			        	@foreach($results as $key => $result)
+			        	@foreach($results2 as $key => $result)
 						            <tr>
 						          	<td>
-						          		<input type="hidden" class="items" id="tdID2{{$key}}" value="{{$result->CategoryID}}">
+						          		<input type="hidden" class="items" id="tdID2{{$key}}" value="{{$result->SubCategoryID}}">
 						          		<button id="{{$key}}" value="{{$key}}" class="edit2 btn blue z-depth-3" />
 					                  <label for="2{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
 						            </td>
-						            <td id="tdname2{{$key}}">{{$result->CategoryName}}</td>
+						            <td id="tdname2{{$key}}">{{$result->SubCategoryName}}</td>
 						            <td id="tddesc2{{$key}}"></td>
 						          </tr>
 					         	@endforeach
@@ -261,7 +261,7 @@ $(function(){
 		      <h4><i class="medium material-icons left">edit</i>Edit</h4>
 		      							<div class="divider"></div>
 		     		<div class="row">
-					    <form class="col s12" action="/confirmCategory" method="POST">
+					    <form class="col s12" action="/confirmSubCategory" method="POST">
 					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					    	<input type="hidden" name="edit_ID" id="edit_ID2">
 							    <div class="row">
