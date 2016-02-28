@@ -79,8 +79,8 @@ Manage Supplier
                     <button id="{{$key}}" value="{{$key}}" class="edit btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
               </td>
 
-           <!--   <td>
-                <input type="hidden" id="" value="">
+            <!-- PAG NILAGAY KO AGAD UNG DELETE, HINDI MAG FUFUNCTION UNG EDIT KAYA NAKA COMMENT MUNA TO
+                <!--<input type="hidden" id="" value="">
                 <button id="" value="" class="btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
               </td> -->
 
@@ -199,7 +199,7 @@ Manage Supplier
               <input type="hidden" id="edit_ID" name="edit_ID">
               <div class="row">
                   <div class="input-field col s8">
-                    <input id="edit_name" type="text" class="validate" name="edit_name">
+                    <input value=" " id="edit_name" type="text" class="validate" name="edit_name">
                     <label class="active" for="edit_name" >Supplier's Name</label>
                   </div>
               </div>
@@ -248,12 +248,12 @@ Manage Supplier
 
               <div class="row">
                   <div class="input-field col s6">
-                    <input type="text" class="validate" id="edit_contactNo" name="edit_contactNo">
-                    <label for="edit_contactNo">Contact Number</label>
+                    <input value=" " type="text" class="validate" id="edit_contactNo" name="edit_contactNo">
+                    <label class="active" for="edit_contactNo">Contact Number</label>
                   </div>
 
                   <div class="input-field col s6">
-                    <input type="email" class="validate" id="edit_email" name="edit_email">
+                    <input value=". " type="email" class="validate" id="edit_email" name="edit_email">
                     <label class="active" for="edit_email">Email Address</label>
                 </div>
               

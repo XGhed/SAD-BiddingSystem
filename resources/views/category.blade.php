@@ -72,14 +72,14 @@ $(function(){
     <div class="col s10 push-s1" >
       <ul class="tabs">
         <li class="tab col s3"><a class="black-text blockquote" href="#catTab">Category</a></li>
-        <li class="tab col s3"><a class="black-text" href="#subcatTab" >Subcategory</a></li>
+        <li class="tab col s3"><a class="black-text blockquote" href="#subcatTab" >Subcategory</a></li>
 
       </ul>
     </div>
     <div id= "catTab" class="col s12">
 	    		<!--***************************************************DATA TABLE **************************************-->
 					<div class="col s12">
-						<table class="responsive-table" id="tableOutput1">
+						<table class="responsive-table highlight centered" id="tableOutput1">
 					        <thead>
 					          <tr>
 					          	  <th>Manage</th>
@@ -93,8 +93,8 @@ $(function(){
 						            <tr>
 						          	<td>
 						          		<input type="hidden" class="items" id="tdID1{{$key}}" value="{{$result->CategoryID}}">
-						          		<button id="{{$key}}" value="{{$key}}" class="edit1 btn blue z-depth-3" />
-					                  <label for="1{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
+						          		<button id="{{$key}}" value="{{$key}}" class="edit1 btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+						          		<button id="" value="" class="edit btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
 						            </td>
 						            <td id="tdname1{{$key}}">{{$result->CategoryName}}</td>
 						            <td id="tddesc1{{$key}}"></td>
@@ -146,8 +146,8 @@ $(function(){
 					    	<input type="hidden" name="edit_ID" id="edit_ID1">
 						    <div class="row">
 						       	<div class="input-field col s5">
-						        	<input type="text" class="validate" name="edit_name" id="edit_name1">
-						         	<label for="edit_name1">Category</label>
+						        	<input value=" "type="text" class="validate" name="edit_name" id="edit_name1">
+						         	<label class="active" for="edit_name1">Category</label>
 						        </div>
 						    </div>
 					</div>
@@ -156,10 +156,7 @@ $(function(){
 
 		    <div class="modal-footer">
 		    	<button class="btn-flat green waves-effect waves-light white-text col s2" type="submit" name="edit">
-                <i class="material-icons left">edit</i>Change</button>
-
-                <button class="btn-flat red waves-effect waves-light white-text col s2" type="submit" name="delete">Delete
-            <i class="material-icons left">delete</i></button></form> 
+                <i class="material-icons left">edit</i>Change</button> 
 		    </div>
 		    </form>
 		  </div>
@@ -185,8 +182,8 @@ $(function(){
 
 <div id="subcatTab" class="col s12">
     		<!--***************************************************DATA TABLE **************************************-->
-			<div class="row">
-				<table class="responsive-table" id="tableOutput2">
+			<div class="col s12">
+				<table class="responsive-table highlight centered" id="tableOutput2">
 			        <thead>
 			          <tr>
 			          	  <th>Manage</th>
@@ -197,16 +194,18 @@ $(function(){
 
 			        <tbody>
 			        	@foreach($results2 as $key => $result)
-						            <tr>
-						          	<td>
-						          		<input type="hidden" class="items" id="tdID2{{$key}}" value="{{$result->SubCategoryID}}">
-						          		<button id="{{$key}}" value="{{$key}}" class="edit2 btn blue z-depth-3" />
-					                  <label for="2{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
-						            </td>
-						            <td id="tdname2{{$key}}">{{$result->SubCategoryName}}</td>
-						            <td id="tddesc2{{$key}}"></td>
-						          </tr>
-					         	@endforeach
+						 <tr>
+						   <td>
+						       <input type="hidden" class="items" id="tdID2{{$key}}" value="{{$result->SubCategoryID}}">
+						          	<button id="{{$key}}" value="{{$key}}" class="edit2 btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+
+						          	<button id="" value="" class=" btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+						    </td>
+
+						   <td id="tdname2{{$key}}">{{$result->SubCategoryName}}</td>
+						   <td id="tddesc2{{$key}}"></td>
+						</tr>
+					    @endforeach
 			        </tbody>
 			      </table>
 			</div>
@@ -263,20 +262,11 @@ $(function(){
 		     		<div class="row">
 					    <form class="col s12" action="/confirmSubCategory" method="POST">
 					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					    	<input type="hidden" name="edit_ID" id="edit_ID2">
-							    <div class="row">
-								    <div class="input-field col s5">
-									    <select>
-									      <option value="" disabled selected>Subcategory</option>
-									      <option value="1">Option 1</option>
-									    </select>
-									    <label>Choose Subcategory</label>
-									  </div>
-								</div>	  
+					    	<input type="hidden" name="edit_ID" id="edit_ID2">  
 								<div class="row">	  	
 							       	<div class="input-field col s5">
-							        	<input type="text" class="validate" name="edit_name" id="edit_name2">
-							         	<label for="edit_name2">Subcategory</label>
+							        	<input value=" " type="text" class="validate" name="edit_name" id="edit_name2">
+							         	<label class="active" for="edit_name2">Subcategory</label>
 							        </div>
 							    </div>
 					</div>
@@ -286,9 +276,6 @@ $(function(){
 			    <div class="modal-footer">
 			    	<button class="btn-flat green waves-effect waves-light white-text col s2" type="submit" name="edit">
 	                <i class="material-icons left">edit</i>Change</button>
-
-	                <button class="btn-flat red waves-effect waves-light white-text col s2" type="submit" name="delete">Delete
-	            <i class="material-icons left">delete</i></button></form> 
 			    </div>
 		    </form>
 		 	</div>
