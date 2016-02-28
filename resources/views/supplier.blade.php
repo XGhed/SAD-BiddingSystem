@@ -29,12 +29,12 @@ Manage Supplier
             var selected = this.id;
             var keyID = $("#tdID"+selected).val();
             var keyName = $("#tdname"+selected).text();
-            var keyProvince = $("#tdprovince"+selected).text();
+            //var keyProvince = $("#tdprovince"+selected).text();
             var keyContactNo = $("#tdcontactno"+selected).text();
             var keyEmail = $("#tdemail"+selected).text();
             $("#edit_ID").val(keyID);
             $("#edit_name").val(keyName);
-            $("#edit_province").val(keyProvince);
+            //$("#edit_province").val(keyProvince);
             $("#edit_contactNo").val(keyContactNo);
             $("#edit_email").val(keyEmail);
         });
@@ -85,9 +85,13 @@ Manage Supplier
               </td> -->
 
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
-              <td id="tdprovince{{$key}}">{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
+              <td>{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
               <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
               <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
+              <!--<input type="hidden" id="tdprovince{{$key}}" value="{{$result->Province_Address}}" >
+              <input type="hidden" id="tdcity{{$key}}" value="{{$result->City_Address}}" >
+              <input type="hidden" id="tdbarangay{{$key}}" value="{{$result->Barangay_Address}}" >
+              <input type="hidden" id="tdstreet{{$key}}" value="{{$result->Street_Address}}" >  futurePurposes-->
             </tr>
           @endforeach
             </div>
@@ -248,12 +252,12 @@ Manage Supplier
 
               <div class="row">
                   <div class="input-field col s6">
-                    <input value=" " type="text" class="validate" id="edit_contactNo" name="edit_contactNo">
+                    <input type="text" class="validate" id="edit_contactNo" name="edit_contactNo">
                     <label class="active" for="edit_contactNo">Contact Number</label>
                   </div>
 
                   <div class="input-field col s6">
-                    <input value=". " type="email" class="validate" id="edit_email" name="edit_email">
+                    <input type="email" class="validate" id="edit_email" name="edit_email">
                     <label class="active" for="edit_email">Email Address</label>
                 </div>
               
