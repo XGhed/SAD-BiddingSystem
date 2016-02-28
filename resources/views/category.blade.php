@@ -199,7 +199,7 @@ $(function(){
 			        	@foreach($results as $key => $result)
 						            <tr>
 						          	<td>
-						          		<input type="hidden" class="items" id="tdID2{{$key}}" value="{{$result->CategoryID}}">
+						          		<input type="hidden" class="items" id="tdID2{{$key}}" value="{{$result->SubCategoryID}}">
 						          		<button id="{{$key}}" value="{{$key}}" class="edit2 btn blue z-depth-3" />
 					                  <label for="2{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
 						            </td>
@@ -265,6 +265,15 @@ $(function(){
 					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					    	<input type="hidden" name="edit_ID" id="edit_ID2">
 							    <div class="row">
+								    <div class="input-field col s5">
+									    <select>
+									      <option value="" disabled selected>Subcategory</option>
+									      <option value="1">Option 1</option>
+									    </select>
+									    <label>Choose Subcategory</label>
+									  </div>
+								</div>	  
+								<div class="row">	  	
 							       	<div class="input-field col s5">
 							        	<input type="text" class="validate" name="edit_name" id="edit_name2">
 							         	<label for="edit_name2">Subcategory</label>
