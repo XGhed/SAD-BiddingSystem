@@ -9,24 +9,25 @@ Manage Category
 <script type="text/javascript">
 $(function(){   
 
-    $("#tableOutput").DataTable({
+    $("#tableOutput1").DataTable({
       "lengthChange": false,
       "pageLength": 5,
       "columns": [
         { "searchable": false },
+        null,
         null
       ] 
     });
 });
 
 $(function(){   
-    $('#tableOutput').on('click', '.edit', function(){
+    $('#tableOutput1').on('click', '.edit1', function(){
       $('#modal3').openModal();
       var selected = this.id;
-      var keyID = $("#tdID"+selected).val();
-      var keyName = $("#tdname"+selected).text();
-      $("#edit_ID").val(keyID);
-      $("#edit_name").val(keyName);
+      var keyID = $("#tdID1"+selected).val();
+      var keyName = $("#tdname1"+selected).text();
+      $("#edit_ID1").val(keyID);
+      $("#edit_name1").val(keyName);
     });
 });
 </script>
@@ -48,7 +49,7 @@ $(function(){
     <div id= "catTab" class="col s12">
 	    		<!--***************************************************DATA TABLE **************************************-->
 					<div class="col s12">
-						<table class="responsive-table" id="tableOutput">
+						<table class="responsive-table" id="tableOutput1">
 					        <thead>
 					          <tr>
 					          	  <th>Manage</th>
@@ -61,11 +62,12 @@ $(function(){
 					        	@foreach($results as $key => $result)
 						            <tr>
 						          	<td>
-						          		<input type="hidden" class="items" id="tdID{{$key}}" value="{{$result->CategoryID}}">
-						          		<button id="{{$key}}" value="{{$key}}" class="edit btn blue z-depth-3" />
-					                  <label for="{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
+						          		<input type="hidden" class="items" id="tdID1{{$key}}" value="{{$result->CategoryID}}">
+						          		<button id="{{$key}}" value="{{$key}}" class="edit1 btn blue z-depth-3" />
+					                  <label for="1{{$key}}" class="left white-text" style="cursor: pointer;">Edit/Delete</label>
 						            </td>
-						            <td id="tdname{{$key}}">{{$result->CategoryName}}</td>
+						            <td id="tdname1{{$key}}">{{$result->CategoryName}}</td>
+						            <td id="tddesc1{{$key}}"></td>
 						          </tr>
 					         	@endforeach
 					        </tbody>
@@ -194,7 +196,7 @@ $(function(){
 
 
     
-    <!--*************************************************** EDIT ************************************************-->
+    <!--*************************************************** CAT EDIT ************************************************-->
     			  
 		  <div id="modal3" class="modal modal-fixed-footer">
 		    <div class="modal-content">
@@ -203,11 +205,11 @@ $(function(){
 		     		<div class="row">
 					    <form class="col s12" action="/confirmCategory" method="POST">
 					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					    	<input type="hidden" name="edit_ID" id="edit_ID">
+					    	<input type="hidden" name="edit_ID" id="edit_ID1">
 						    <div class="row">
 						       	<div class="input-field col s5">
-						        	<input type="text" class="validate" name="edit_name" id="edit_name">
-						         	<label for="edit_name">Category</label>
+						        	<input type="text" class="validate" name="edit_name" id="edit_name1">
+						         	<label for="edit_name1">Category</label>
 						        </div>
 						    </div>
 					</div>
@@ -223,7 +225,56 @@ $(function(){
 		    </div>
 		    </form>
 		  </div>
-    <!--*************************************************** END EDIT ************************************************-->  
+    <!--*************************************************** CAT END EDIT ************************************************-->  
+
+    <!--*************************************************** SUBCAT EDIT ************************************************-->  
+
+    <div id="modal4" class="modal modal-fixed-footer">
+		    <div class="modal-content">
+		      <h4><i class="medium material-icons left">edit</i>Edit</h4>
+		      							<div class="divider"></div>
+		      	<form action="/confirmSubCategory" method="POST">
+		      		<input type="hidden" name="_token" value="{{ csrf_token() }}">	
+			     		<div class="row">
+			     			<div class="input-field col s6 pull-s1">
+							    <input id="edit_name" type="text" class="validate disabled"  readonly name="edit_old_cat" >
+				          		<label for="edit_name">Category</label>
+							  </div>
+						</div>
+							
+						<div class="row">
+							<div class="input-field col s6 push-s1">
+							    <select id="edit_old_subcat" name="edit_old_subcat" onchange="updateEditText();">
+							      <option disabled selected>Choose Subcategory</option>
+							    	<?php
+							    		if (isset ($_GET['keyID'])){
+							    			foreach ($results[$_GET['keyID']]->subCategory as $key => $result) {
+							    				echo "<option id='sub_ID$key' value='$result->SubCategoryID'>$result->SubCategoryName</option>";
+							    			}
+							    		}
+							    	?>
+							    </select>
+							    <label>Subcategory</label>
+							</div>
+						</div>
+
+						<div class="input-field col s6">
+				          <input id="edit_new_sub" type="text" class="validate" name="edit_new_subcat">
+				          <label for="edit_new_sub">New Subcategory</label>
+				        </div>
+		    </div>
+
+
+		    <div class="modal-footer">
+		      <button class="btn-flat green waves-effect waves-light white-text col s2" type="submit" name="edit">
+                <i class="material-icons left">edit</i>Change</button>
+
+                <button class="btn-flat red waves-effect waves-light white-text col s2" type="submit" name="delete">Delete
+            <i class="material-icons left">delete</i></button></form> 
+		    </div>
+		  </div>
+
+		  <!--*************************************************** SUBCAT END EDIT ************************************************-->  
 
 			<script>
 
