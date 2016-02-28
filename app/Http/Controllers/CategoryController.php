@@ -69,7 +69,7 @@ class CategoryController extends Controller
 
 	public function deleteCategory(Request $request){
 		$category = new App\Category;
-		$category = App\Category::find($request->input('edit_ID'));
+		$category = App\Category::find($request->input('del_ID'));
 		
 		try {
 			$category->delete();

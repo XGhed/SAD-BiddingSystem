@@ -92,9 +92,11 @@ $(function(){
 					        	@foreach($results as $key => $result)
 						            <tr>
 						          	<td>
-						          		<input type="hidden" class="items" id="tdID1{{$key}}" value="{{$result->CategoryID}}">
-						          		<button id="{{$key}}" value="{{$key}}" class="edit1 btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
-						          		<button id="" value="" class="edit btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+						          		<form action="/confirmCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+						          		<input type="hidden" class="items" id="tdID1{{$key}}" name="del_ID" value="{{$result->CategoryID}}">
+						          		<button type="button" id="{{$key}}" value="{{$key}}" class="edit1 btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+						          		<button type="submit" name="delete" class="btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+						          		</form>
 						            </td>
 						            <td id="tdname1{{$key}}">{{$result->CategoryName}}</td>
 						            <td id="tddesc1{{$key}}"></td>
@@ -116,8 +118,7 @@ $(function(){
 				      <h4><i class="medium material-icons left">dns</i>Add Category</h4>
 				      			<div class="divider"></div>
 				        <div class="row">
-						    <form class="col s12" action="/confirmCategory" method="POST">
-						    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						    <form class="col s12" action="/confirmCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
 							    <div class="row">
 							       	<div class="input-field col s5">
 							        	<input id="category" type="text" class="validate" name="add_name">
@@ -196,10 +197,11 @@ $(function(){
 			        	@foreach($results2 as $key => $result)
 						 <tr>
 						   <td>
-						       <input type="hidden" class="items" id="tdID2{{$key}}" value="{{$result->SubCategoryID}}">
-						          	<button id="{{$key}}" value="{{$key}}" class="edit2 btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
-
-						          	<button id="" value="" class=" btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+						   		<form action="/confirmSubCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+						       <input type="hidden" class="items" id="tdID2{{$key}}" name="del_ID" value="{{$result->SubCategoryID}}">
+					          	<button id="{{$key}}" value="{{$key}}" class="edit2 btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+								<button type="submit" name="delete" class=" btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+								</form>
 						    </td>
 
 						   <td id="tdname2{{$key}}">{{$result->SubCategoryName}}</td>

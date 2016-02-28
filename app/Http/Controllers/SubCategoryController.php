@@ -62,7 +62,7 @@ class SubCategoryController extends Controller
 
 	public function deleteSubCategory(Request $request){
 		$subcategory = new App\SubCategory;
-		$subcategory = App\SubCategory::find($request->input('edit_ID'));
+		$subcategory = App\SubCategory::find($request->input('del_ID'));
 		
 		try {
 			$subcategory->delete();
