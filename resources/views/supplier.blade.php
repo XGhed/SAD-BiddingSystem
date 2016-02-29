@@ -11,7 +11,7 @@ Manage Supplier
 
         $("#tableOutput").DataTable({
           "lengthChange": false,
-          "pageLength": 5,
+          "pageLength": 3,
           "columns": [
             { "searchable": false },
             null,
@@ -43,27 +43,17 @@ Manage Supplier
 @endsection
 
 @section('title1')
-<h1 class="left col s6 push-s1 white-text" style="font-size: 40px">Manage Supplier</h1>
+<h1 class="left col s6 push-s1 white-text" style="font-size: 28px">Manage Supplier</h1>
 @endsection
 
 
 @section('supplier')
-<div>
-<h3 class="center" style="font-size: 30px;">Supplier Info</h3>
-<div class="divider"></div>
-</div>
-
-
-
-<div>
-
         <!-- DATA TABLE -->
-        <table class="highlight responsive-table" id="tableOutput">
+        <table class="highlight responsive-table centered" id="tableOutput">
         <thead>
           <tr>
-              <th>Manage</th>
-              <!--<th></th>-->
-              <th data-field="Name">Name</th>
+              <th data-field="Manage" style="cursor: default;">Manage</th>
+              <th data-field="Name" >Name</th>
               <th data-field="Address">Address</th>
               <th data-field="Contact number">Contact number</th>
               <th data-field="Email Address">Email Address</th>
@@ -75,14 +65,16 @@ Manage Supplier
           @foreach($results as $key => $result)
             <tr>
               <td>
+                <div class="row">
+                  <div class="col s4 pull-s1">
                     <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
-                    <button id="{{$key}}" value="{{$key}}" class="edit btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+                    <button id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+                    </div>
+                  <div class="col s4 push-s2">    
+                    <button id="" value="" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                    </div>
+                </div>
               </td>
-
-            <!-- PAG NILAGAY KO AGAD UNG DELETE, HINDI MAG FUFUNCTION UNG EDIT KAYA NAKA COMMENT MUNA TO
-                <!--<input type="hidden" id="" value="">
-                <button id="" value="" class="btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
-              </td> -->
 
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
               <td>{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
@@ -97,99 +89,99 @@ Manage Supplier
             </div>
         </tbody>
       </table>
-</div>
 
 
 
-<div class="row">
-    
+
+
+  <div class="row">  
 <!--***************************ADD BUTTON***************************-->
-<div class="col s3 right">
-<!-- MODAL TRIGGER-->
-  <a class="modal-trigger waves-effect waves-light btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
+    <div class="col s3 right">
+    <!-- MODAL TRIGGER-->
+      <a class="modal-trigger waves-effect waves-light grey darken-3 btn z-depth-5 white-text" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
 
-  <!-- Modal Structure -->
-  <div id="addBtn" class="modal modal-fixed-footer">
-    <div class="modal-content" >
-      <h4><i class="medium material-icons left">face</i>Add Supplier</h4>
+      <!-- Modal Structure -->
+      <div id="addBtn" class="modal modal-fixed-footer">
+        <div class="modal-content" >
+          <h4><i class="medium material-icons left">face</i>Add Supplier</h4>
 
-   <!-- LINYA LANG--><div class="divider"></div><!-- LINYA LANG-->
+       <!-- LINYA LANG--><div class="divider"></div><!-- LINYA LANG-->
 
-    
         
-    <form class="col s12" action="/confirmSupplier" method="POST">
-      <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="row">
-                <div class="input-field col s8">
-                  <input id="supplier_name" type="text" class="validate" name="add_name">
-                  <label for="supplier_name">Supplier's Name</label>
+            
+        <form class="col s12" action="/confirmSupplier" method="POST">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="row">
+                    <div class="input-field col s8">
+                      <input id="supplier_name" type="text" class="validate" name="add_name">
+                      <label for="supplier_name">Supplier's Name</label>
+                    </div>
                 </div>
+
+                <div class="row">
+                    <div class="input-field col s3">
+                      <select name="add_province">
+                        <option value="" disabled selected>Province</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                      </select>
+                      <label>Province</label>
+                    </div>
+
+                    <div class="input-field col s3">
+                      <select name="add_city">
+                        <option value="" disabled selected>City</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                      </select>
+                      <label>City/Municipality</label>
+                    </div>
+
+                    <div class="input-field col s3">
+                      <select name="add_barangay">
+                        <option value="" disabled selected>Barangay</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                      </select>
+                      <label>Barangay</label>
+                    </div>
+
+                    <div class="input-field col s3">
+                      <select name="add_street">
+                        <option value="" disabled selected>Street</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                      </select>
+                      <label>Street</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                      <input id="contact_num" type="text" class="validate" name="add_contactNo">
+                      <label for="contact_num">Contact Number</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                      <input id="eAddress" type="email" class="validate" name="add_email">
+                      <label for="eAddress">Email Address</label>
+            
+                </div>
+              </div><!--*************************** ROW ***************************-->
+            </div> <!--*************************** MODAL CONTENT ***************************-->
+
+            <div class="modal-footer">
+                  <button class="btn waves-effect waves-light green darken-2 white-text" type="submit" name="add">
+                  <i class="material-icons left">add</i>Add Supplier</button>
             </div>
-
-            <div class="row">
-                <div class="input-field col s3">
-                  <select name="add_province">
-                    <option value="" disabled selected>Province</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                  <label>Province</label>
-                </div>
-
-                <div class="input-field col s3">
-                  <select name="add_city">
-                    <option value="" disabled selected>City</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                  <label>City/Municipality</label>
-                </div>
-
-                <div class="input-field col s3">
-                  <select name="add_barangay">
-                    <option value="" disabled selected>Barangay</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                  <label>Barangay</label>
-                </div>
-
-                <div class="input-field col s3">
-                  <select name="add_street">
-                    <option value="" disabled selected>Street</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                  <label>Street</label>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="input-field col s6">
-                  <input id="contact_num" type="text" class="validate" name="add_contactNo">
-                  <label for="contact_num">Contact Number</label>
-                </div>
-
-                <div class="input-field col s6">
-                  <input id="eAddress" type="email" class="validate" name="add_email">
-                  <label for="eAddress">Email Address</label>
-        
-            </div>
-          </div><!--*************************** ROW ***************************-->
-        </div> <!--*************************** MODAL CONTENT ***************************-->
-
-        <div class="modal-footer">
-              <button class="btn waves-effect waves-light green darken-2 white-text" type="submit" name="add">
-              <i class="material-icons left">add</i>Add Supplier</button>
-        </div>
-    </form>  
-        </div> <!--MODAL BODY-->
-</div>
-
+        </form>  
+            </div> <!--MODAL BODY-->
+    </div>
+  </div>
 <!-- ***************************************************EDIT**************************************-->
 
     <!-- Modal Structure -->
@@ -252,12 +244,12 @@ Manage Supplier
 
               <div class="row">
                   <div class="input-field col s6">
-                    <input type="text" class="validate" id="edit_contactNo" name="edit_contactNo">
+                    <input value =" " type="text" class="validate" id="edit_contactNo" name="edit_contactNo">
                     <label class="active" for="edit_contactNo">Contact Number</label>
                   </div>
 
                   <div class="input-field col s6">
-                    <input type="email" class="validate" id="edit_email" name="edit_email">
+                    <input value ="0" type="email" class="validate" id="edit_email" name="edit_email">
                     <label class="active" for="edit_email">Email Address</label>
                 </div>
               
@@ -284,5 +276,5 @@ Manage Supplier
       </div>
 
 
-      </div>      
+      
 @endsection

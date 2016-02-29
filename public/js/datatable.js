@@ -11308,7 +11308,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Next",
+				"sNext": "<img src='icons/materialIcons/ic_chevron_right_black_24dp_1x.png'></img>",
 	
 	
 				/**
@@ -11329,9 +11329,9 @@
 				 *          }
 				 *        }
 				 *      } );
-				 *    } );
+				 *    } );			
 				 */
-				"sPrevious": "Previous"
+				"sPrevious": "<img src='icons/materialIcons/ic_chevron_left_black_24dp_1x.png'></img>"
 			},
 	
 			/**
@@ -11386,7 +11386,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "_START_ - _END_ of _TOTAL_ ",
 	
 	
 			/**
@@ -11638,7 +11638,7 @@
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.searchPlaceholder
 			 */
-			"sSearchPlaceholder": "Search",
+			"sSearchPlaceholder": "Search here",
 	
 	
 			/**

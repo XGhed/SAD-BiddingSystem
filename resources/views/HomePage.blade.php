@@ -45,17 +45,17 @@
                     </div>
                  </div>
               </ul>
-
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>Log In</li>
                 <li><a href="#" data-activates="slide-out" class="button-collapse show-on-large">
                 <i class="mdi-action-account-box show-on-large"></i>
                 </a></li>
               </ul>
+
+              <a href="#" data-activates="slide-out" class="button-collapse right"><i class="mdi-action-account-box show-on-large right"></i></a>
           </div>
         </nav>
       </div>
-<!--***************************************************** END LOG IN *****************************************************-->
       
 <!--***************************************************** SLIDER ***************************************************** -->
     <div class="slider">
@@ -71,39 +71,45 @@
           <img src="icons/Auction_pic4.jpg">
           <div class="caption left-align">
             <h3 >About Us</h3>
-            <h5 class="light white-text text-lighten-3">Online kami kasi shit ka shit sila shit tong SAD</h5>
-            <h5 class="light white-text text-lighten-3">Online kami kasi shit ka shit sila shit tong SAD</h5>
-            <h5 class="light white-text text-lighten-3">Online kami kasi shit ka shit sila shit tong SAD</h5>
+            <h5 class="light white-text text-lighten-3">The number 1 online bidding website</h5>
+            <h5 class="light white-text text-lighten-3">Register and Bid now!</h5>
+            <h5 class="light white-text text-lighten-3"></h5>
           </div>
         </li>
         <li>
           <img src="icons/home_screen3.png">
           <div class="caption left-align">
-            <h3>About You</h3>
-            <h5 class="light white-text text-lighten-3">fuck you fuck you fuck you</h5>
-            <h5 class="light white-text text-lighten-3">fuck you fuck you fuck you</h5>
-            <h5 class="light white-text text-lighten-3">fuck you fuck you fuck you</h5>
+            <h3 class="black-text">Contact Us</h3>
+            <h5 class="light black-text text-lighten-3">Tel: 838-5847-551 </h5>
+            <h5 class="light black-text text-lighten-3">Website: localhost:8000. (hehehe)</h5>
+            <h5 class="light black-text text-lighten-3">Site Address: #4 Wednesday St. Pacita 1</h5> 
+            <h5 class="light black-text text-lighten-3">Brgy. San Vicente, San Pedro, Laguna</h5>
+          </div>
+        </li>
+        <li>
+          <img src="icons/hihi.png">
+          <div class="caption center-align">
+            <h3 class="red-text text-accent-4">Group Members:</h3>
+            <h5 class="red-text text-accent-4">Joanne Dasig taga Pasig</h5>
+            <h5 class="red-text text-accent-4">Tine tine tine tine Gallego </h5>
+            <h5 class="red-text text-accent-4">Clarise Rosales, Asawa ni</h5> 
+            <h5 class="red-text text-accent-4">Gelo, Boyao pambansang manliligaw</h5>
+            <h5 class="red-text text-accent-4">Muming</h5>
+            <h5 class="red-text text-accent-4">Ghed na hindi na niniwala sa forever</h5>
           </div>
         </li>
       </ul>
     </div>
-<!--***************************************************** SLIDER ***************************************************** -->
+
+
 
 <footer class="page-footer grey darken-4">
-          <div class="container">
             <div class="row">
               <div class="col l6 s12">
                 <h5 class="white-text">Contact Us</h5>
                 <p class="grey-text text-lighten-4">dito sa bahay. #4 wed street pacita 1 brgy san vicente san pedro laguna</p>
               </div>
             </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2014 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
-          </div>
 </footer>
 
 

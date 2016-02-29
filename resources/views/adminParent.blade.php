@@ -16,20 +16,25 @@
     </head>
 
 <body style="background-color: #212121">
+
+
 <div class="navbar-fixed">
 <nav>
     <div class="nav-wrapper grey darken-3">
       <a href="#!" class="brand-logo center"><i class="material-icons left">gavel</i>Bidding Management System</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Hello Admin</a></li>
+        <li><a href="http://localhost:8000/">Hello Admin</a></li>
         <li><a href="badges.html">ewan pa</a></li>
       </ul>
-       <ul id="slide-out" id="mobile-demo" class="side-nav fixed grey darken-3">
+       <ul id="slide-out" id="mobile-demo" class="side-nav fixed grey darken-3" onmouseover="showScroll(this)" onmouseout="hideScroll(this)">
                 <!-- admin info -->
-              <div class="row"></div>
-              <div class="grey darken-3">
-              <center> <img class="circle responsive-img z-depth-3" src="icons/1x1.jpg"></center> 
+                <div class="row"></div>
+                <div class="row"></div>
+              <div class="row">
+                <div class="col s10 grey darken-3 push-s1">
+                  <center><img class="circle responsive-img z-depth-3" alt="AdminPic" src="icons/Admin_pic.jpg"></center> 
+                </div>
               </div>
 
         <li class="no-padding">
@@ -63,11 +68,19 @@
 
         <script>
         $('.button-collapse').sideNav({
-            menuWidth: 280, // Default is 240
+            menuWidth: 270, // Default is 240
             edge: 'left', // Choose the horizontal origin
             closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
         });
 
+
+        function hideScroll(x) {
+             x.style.overflow = "hidden";
+          }
+
+          function showScroll(x) {
+              x.style.overflow = "auto";
+          }
         </script>
 
     </div>

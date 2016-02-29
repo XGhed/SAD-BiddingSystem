@@ -1,7 +1,5 @@
 @extends('adminParent')
 
-@section('category')
-<br> 
-<br>
-pakyu ka
+@section('')
+
   @endsection

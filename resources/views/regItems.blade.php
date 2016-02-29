@@ -12,12 +12,62 @@ Register Items
 
 
 @section('regItems')
+<!-- *************************************** ITEM TABLE ***************************************-->
+<table class="centered highlight responsive-table">
+        <thead>
+          <tr>
+              <th>Manage</th>
+              <th data-field="id">Item ID</th>
+              <th data-field="category">Category</th>
+              <th data-field="name">Item Name</th>
+              <th data-field="price">Item Description</th>
+              <th data-field="size">Item Size</th>
+              <th data-field="color">Item Color</th>
+          </tr>
+        </thead>
 
-<br>
-<br>
+        <tbody>
+          <tr>
+         	<td>
+	         	<form action="/" method="POST"><input type="hidden" name="" value="{{ csrf_token() }}">
+					<input type="hidden" class="items" id="" name="" value="">
+						<button type="button" id="" value="" class=" btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+
+						<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+				</form>
+          	</td>
+
+          	<td>
+          		id
+          	</td>
+
+          	<td>
+          		category
+          	</td>
+
+          	<td>
+          		name
+          	</td>
+
+          	<td>
+          		desc
+          	</td>
+
+          	<td>
+          		size
+          	</td>
+
+          	<td>
+          		color
+          	</td>
+          </tr>
+        </tbody>
+      </table>
+<!-- *************************************** END ITEM TABLE ***************************************-->
+
 <div class="row">
-<div class="col s8">
-  <a class="modal-trigger waves-effect waves-light btn" href="#addBtn"><i class="material-icons left">add</i>Add Items</a>
+<div class="col s3 right ">
+  <a class="modal-trigger waves-effect waves-light btn grey darken-3" href="#addBtn"><i class="material-icons left">add</i>Add Items</a>
 
   <div id="addBtn" class="modal modal-fixed-footer">
     <div class="modal-content">
@@ -91,96 +141,12 @@ Register Items
     </div>
   </div>
   </div>
-
-  <div class="col s4">
-      <form>
-        <div class="input-field col s12">
-          <select>
-            <option disabled selected>Filter</option>
-            <option value="1">ID</option>
-            <option value="2">Category</option>
-            <option value="3">Name</option>
-          </select>
-            <label>Filter By</label> <!-- BASAHIN MO TO. SEARCH O FILTER?-->
-        </div>
-      </form>
-    </div>
 </div>
 
 
-<!-- *************************************** ITEM TABLE ***************************************-->
-<table>
-        <thead>
-          <tr>
-              <th></th>
-              <th data-field="id">Item ID</th>
-              <th data-field="category">Category</th>
-              <th data-field="name">Item Name</th>
-              <th data-field="price">Item Description</th>
-              <th data-field="size">Item Size</th>
-              <th data-field="color">Item Color</th>
-          </tr>
-        </thead>
 
-        <tbody>
-          <tr>
-          	<td>
-          		<input name="group1" type="radio" id="test1" value="" onclick=""/>
-                 <label for="test1" class="left">Edit</label>
-            </td>
-            <td>06969</td>
-            <td>Gadgets</td>
-            <td>Iphone4s</td>
-            <td>Sira ung home button</td>
-            <td>null(ung common na iphone 4s na size)</td>
-            <td>silver</td>
-          </tr>
-          <tr>
-            <td>
-          		<input name="group1" type="radio" id="test2" value="" onclick=""/>
-                 <label for="test2" class="left">Edit</label>
-            </td>
-            <td>06969</td>
-            <td>Gadgets</td>
-            <td>Iphone4s</td>
-            <td>Sira ung home button</td>
-            <td>null(ung common na iphone 4s na size)</td>
-            <td>silver</td>
-          </tr>
-          <tr>
-            <td>
-          		<input name="group1" type="radio" id="test3" value="" onclick=""/>
-                 <label for="test3" class="left">Edit</label>
-            </td>
-            <td>06969</td>
-            <td>Gadgets</td>
-            <td>Iphone4s</td>
-            <td>Sira ung home button</td>
-            <td>null(ung common na iphone 4s na size)</td>
-            <td>silver</td>
-          </tr>
-        </tbody>
-      </table>
-<!-- *************************************** END ITEM TABLE ***************************************-->
-
-	<!--*************************************************** PAGINATION **************************************-->
-		<div class="center">
-          <ul class="pagination">
-            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-            <li class="active"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="#!">2</a></li>
-            <li class="waves-effect"><a href="#!">3</a></li>
-            <li class="waves-effect"><a href="#!">4</a></li>
-            <li class="waves-effect"><a href="#!">5</a></li>
-            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-          </ul>
-        </div>
-    <!--*************************************************** END PAGINATION **************************************--> 
     
-    <!--*************************************************** EDIT ************************************************-->
-    	
-		<a class="modal-trigger waves-effect waves-light btn" href="#modal3">EDIT MODAL //LIPAT MO NA LANG SA RADIO</a>
-		  
+    <!--*************************************************** EDIT ************************************************-->		  
 		  <div id="modal3" class="modal modal-fixed-footer">
 		    <div class="modal-content">
 		      <h4><i class="medium material-icons left">edit</i>Edit</h4>

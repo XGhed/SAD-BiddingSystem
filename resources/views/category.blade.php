@@ -11,7 +11,7 @@ $(function(){
 
     $("#tableOutput1").DataTable({
       "lengthChange": false,
-      "pageLength": 5,
+      "pageLength": 3,
       "columns": [
         { "searchable": false },
         null,
@@ -35,7 +35,7 @@ $(function(){
 
     $("#tableOutput2").DataTable({
       "lengthChange": false,
-      "pageLength": 5,
+      "pageLength": 3,
       "columns": [
         { "searchable": false },
         null,
@@ -61,7 +61,7 @@ $(function(){
 
 
 @section('title1')
-<h2 class="left col s6 push-s1 white-text" style="font-size: 45px">Manage Category</h2>
+<h2 class="left col s6 push-s1 white-text" style="font-size: 28px">Manage Category</h2>
 @endsection
 
 
@@ -76,14 +76,15 @@ $(function(){
 
       </ul>
     </div>
+
     <div id= "catTab" class="col s12">
 	    		<!--***************************************************DATA TABLE **************************************-->
 					<div class="col s12">
 						<table class="responsive-table highlight centered" id="tableOutput1">
 					        <thead>
 					          <tr>
-					          	  <th>Manage</th>
-					              <th data-field="id">Category</th>
+					          	  <th style="cursor: default;">Manage</th>
+					              <th>Category</th>
 					              <th>Description</th>
 					          </tr>
 					        </thead>
@@ -94,8 +95,8 @@ $(function(){
 						          	<td>
 						          		<form action="/confirmCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
 						          		<input type="hidden" class="items" id="tdID1{{$key}}" name="del_ID" value="{{$result->CategoryID}}">
-						          		<button type="button" id="{{$key}}" value="{{$key}}" class="edit1 btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
-						          		<button type="submit" name="delete" class="btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+						          		<button type="button" id="{{$key}}" value="{{$key}}" class="edit1 btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+						          		<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
 						          		</form>
 						            </td>
 						            <td id="tdname1{{$key}}">{{$result->CategoryName}}</td>
@@ -111,7 +112,7 @@ $(function(){
 	<!--*************************************************** ADDCATEGORY **************************************-->
 		<div class="col s4 right">
 			 <!-- Modal Trigger -->
-				  <a class="modal-trigger waves-effect waves-light btn z-depth-5 left" href="#modal1"><i class="material-icons left">add</i>Add Category</a>
+				  <a class="modal-trigger grey darken-3 waves-effect waves-light btn z-depth-5 left white-text" href="#modal1"><i class="material-icons left">add</i>Add Category</a>
 				  <!-- Modal Structure -->
 				  <div id="modal1" class="modal modal-fixed-footer">
 				    <div class="modal-content">
@@ -181,15 +182,15 @@ $(function(){
     <!-- *************************************************** SUB CATEGORY ***************************************************-->
 
 
-<div id="subcatTab" class="col s12">
-    		<!--***************************************************DATA TABLE **************************************-->
+ <div id="subcatTab" class="col s12">
+	    		<!--***************************************************DATA TABLE **************************************-->
 			<div class="col s12">
 				<table class="responsive-table highlight centered" id="tableOutput2">
 			        <thead>
 			          <tr>
-			          	  <th>Manage</th>
-			              <th data-field="name">Subcategory</th>
-			              <th data-field="desc">Description</th>
+			          	  <th style="cursor: default;">Manage</th>
+			              <th>Subcategory</th>
+			              <th>Description</th>
 			          </tr>
 			        </thead>
 
@@ -199,8 +200,8 @@ $(function(){
 						   <td>
 						   		<form action="/confirmSubCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
 						       <input type="hidden" class="items" id="tdID2{{$key}}" name="del_ID" value="{{$result->SubCategoryID}}">
-					          	<button type="button" id="{{$key}}" value="{{$key}}" class="edit2 btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
-								<button type="submit" name="delete" class=" btn btn-floating btn-large waves-effect waves-light green z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+					          	<button type="button" id="{{$key}}" value="{{$key}}" class="edit2 btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+								<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
 								</form>
 						    </td>
 
@@ -211,13 +212,15 @@ $(function(){
 			        </tbody>
 			      </table>
 			</div>
+
+
 			<!--***************************************************END DATA TABLE **************************************-->
 
 			<!--***************************************************ADD SUBCATEGORY **************************************-->
 				<div class="row">
 					<div class="col s4 right">
 						 <!-- Modal Trigger -->
-							  <a class="modal-trigger waves-effect waves-light btn" href="#modal2"><i class="material-icons left">add</i>Add Subcategory</a>
+							  <a class="modal-trigger grey darken-3 waves-effect waves-light btn white-text" href="#modal2"><i class="material-icons left">add</i>Add Subcategory</a>
 
 							  <!-- Modal Structure -->
 							<div id="modal2" class="modal modal-fixed-footer">
