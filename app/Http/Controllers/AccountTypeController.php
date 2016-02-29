@@ -21,18 +21,18 @@ class AccountTypeController extends Controller
 
 		if (isset($_POST['add'])) {
 			$this->insertAccountType($request);
-			$results = App\AccountType::all();
-			return view('accountType')->with ('results', $results)->with ('message', '1');
+			Session::put('message', '1');
+			return redirect('accountType');
 		}
 		elseif (isset($_POST['edit'])) {
 	        $this->updateAccountType($request);
-	        $results = App\AccountType::all();
-			return view('accountType')->with ('results', $results)->with ('message', '2');
+	        Session::put('message', '2');
+			return redirect('accountType');
 	    }
 	    elseif (isset($_POST['delete'])) {
 	        $this->deleteAccountType($request);
-	        $results = App\AccountType::all();
-			return view('accountType')->with ('results', $results)->with ('message', '3');
+	        Session::put('message', '3');
+			return redirect('accountType');
 	    }
     }
 
@@ -45,7 +45,8 @@ class AccountTypeController extends Controller
 		try {
 			$accountType->save();
 		} catch (Exception $e) {
-			return view('accountType')->with ('results', $results)->with ('message', '-1');
+			Session::put('message', '-1');
+			return redirect('accountType');
 		}
 	}
 
@@ -59,7 +60,8 @@ class AccountTypeController extends Controller
 		try {
 			$accountType->save();
 		} catch (Exception $e) {
-			return view('accountType')->with ('results', $results)->with ('message', '-1');
+			Session::put('message', '-1');
+			return redirect('accountType');
 		}
 	}
 
@@ -70,7 +72,8 @@ class AccountTypeController extends Controller
 		try {
 			$accountType->delete();
 		} catch (Exception $e) {
-			return view('accountType')->with ('results', $results)->with ('message', '-1');
+			Session::put('message', '-1');
+			return redirect('accountType');
 		}
 	}
 }

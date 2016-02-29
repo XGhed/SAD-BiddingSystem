@@ -7,38 +7,31 @@ Manage Account Type
 
 @section('jqueryscript')
 <script type="text/javascript">
-    $(function (){   
+$(function(){   
 
-        $("#tableOutput").DataTable({
-          "lengthChange": false,
-          "pageLength": 3,
-          "columns": [
-            { "searchable": false },
-            null,
-            null,
-            null,
-            null
-          ] 
-        });
-        
+    $("#tableOutput").DataTable({
+      "lengthChange": false,
+      "pageLength": 3,
+      "columns": [
+        { "searchable": false },
+        null,
+        null
+      ] 
     });
+});
 
-    $(function(){   
-        $('#tableOutput').on('click', '.edit', function(){
-           $('#modal1').openModal();
-            var selected = this.id;
-            var keyID = $("#tdID"+selected).val();
-            //var keyName = $("#tdname"+selected).text();
-            //var keyProvince = $("#tdprovince"+selected).text();
-            //var keyContactNo = $("#tdcontactno"+selected).text();
-            //var keyEmail = $("#tdemail"+selected).text();
-            //$("#edit_ID").val(keyID);
-            //$("#edit_name").val(keyName);
-            //$("#edit_province").val(keyProvince);
-            //$("#edit_contactNo").val(keyContactNo);
-            //$("#edit_email").val(keyEmail);
-        });
+$(function(){   
+    $('#tableOutput').on('click', '.edit', function(){
+      $('#modal3').openModal();
+      var selected = this.id;
+      var keyID = $("#tdID"+selected).val();
+      var keyName = $("#tdname"+selected).text();
+      var keyDesc = $("#tddesc"+selected).text();
+      $("#edit_ID").val(keyID);
+      $("#edit_name").val(keyName);
+      $("#edit_desc").val(keyDesc);
     });
+});
 </script>
 @endsection
 
@@ -68,17 +61,19 @@ Manage Account Type
               <td>
                 <div class="row">
                   <div class="col s4 pull-s1">
-                    <input type="hidden" id="test{{$key}}" value="{{$key}}">
-                    <button id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+                    <form action="/confirmAccountType" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" id="test{{$key}}" name="del_ID" value="{{$key}}">
+                    <button type="button" id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
                     </div>
-                  <div class="col s4 push-s2">    
-                    <button id="" value="" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                    <div class="col s4 push-s2">    
+                    <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                    </form>
                     </div>
                 </div>
               </td>
 
-              <td>{{$result->AccountTypeName}}</td>
-              <td>description baby</td>
+              <td id="tdname{{$key}}">{{$result->AccountTypeName}}</td>
+              <td id="tddesc{{$key}}">description baby</td>
             </tr>
           @endforeach
             </div>
@@ -99,9 +94,9 @@ Manage Account Type
         				<div class="divider"></div>
         	<form class="red" action="/confirmAccountType" method="POST">
     	      	<div class="input-field col s6">
-    	          <input id="acctype" type="text" class="validate" name="add_name">
-    	          <label for="acctype">Account Type</label>
-    	        </div>			
+                <input id="acctype" type="text" class="validate" name="add_name">
+                <label for="acctype">Account Type</label>
+              </div>    	
         
       </div>
 
@@ -128,21 +123,22 @@ Manage Account Type
 		    <div class="modal-content">
 		      <h4><i class="medium material-icons left">edit</i>Edit</h4>
 		      							<div class="divider"></div>
-		      	<form action="/confirmAccountType" method="POST">							
-            <input type="hidden" name="edit_ID" value="{{isset($_GET['keyID']) ? $results[$_GET['keyID']]->AccountTypeID : 'None'}}">
+		      	<form action="/confirmAccountType" method="POST">	<input type="hidden" name="_token" value="{{ csrf_token() }}">						
+            <input type="hidden" name="edit_ID" id="edit_ID">
 						<div class="input-field col s6">
-				          <input id="new_sub" type="text" class="validate" name="edit_name" value="{{isset($_GET['keyID']) ? $results[$_GET['keyID']]->AccountTypeName : 'None'}}">
-				          <label for="new_sub">Account type</label>
+				          <input id="edit_name" type="text" class="validate" name="edit_name">
+				          <label for="edit_name">Account type</label>
 				        </div>
+            <div class="input-field col s6">
+              <input id="edit_desc" type="text" class="validate" name="edit_desc">
+              <label for="edit_desc">Account Description</label>
+            </div>
 		    </div>
 
 
 		    <div class="modal-footer">
 		      <button class="btn-flat green waves-effect waves-light white-text col s2" type="submit" name="edit">
                 <i class="material-icons left">edit</i>Change</button>
-
-                <button class="btn-flat red waves-effect waves-light white-text col s2" type="submit" name="delete">Delete
-            <i class="material-icons left">delete</i></button>
         </form>	
 		    </div>
 		  </div>
