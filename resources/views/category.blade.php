@@ -97,10 +97,14 @@ $(function(){
 					        	@foreach($results as $key => $result)
 						            <tr>
 						          	<td>
-						          		<form action="/confirmCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
-						          		<input type="hidden" class="items" id="tdID1{{$key}}" name="del_ID" value="{{$result->CategoryID}}">
-						          		<button type="button" id="{{$key}}" value="{{$key}}" class="edit1 btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
-						          		<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+						          		<form class="row " action="/confirmCategory" method="POST">
+						          			<div class="center">
+						          				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						          				<button type="button" id="{{$key}}" value="{{$key}}" class="edit1 btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped center" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+
+						          				<input type="hidden" class="items" id="tdID1{{$key}}" name="del_ID" value="{{$result->CategoryID}}">
+						          				<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+						          			</div>
 						          		</form>
 						            </td>
 						            <td id="tdname1{{$key}}">{{$result->CategoryName}}</td>

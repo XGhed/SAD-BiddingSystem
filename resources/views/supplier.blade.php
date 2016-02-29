@@ -65,11 +65,10 @@ Manage Supplier
           @foreach($results as $key => $result)
             <tr>
               <td>
-                  <div class="col s4">
+                  <div class="center">
                     <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
                     <button id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
-                    </div>
-                  <div class="col s4">    
+                     
                     <button id="" value="" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                     </div>
               </td>
