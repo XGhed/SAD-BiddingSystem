@@ -17,8 +17,9 @@ class SupplierController extends Controller
     public function manageSupplier(){
 
        $results = App\Supplier::all();
+       $provinces = App\Province::orderBy('ProvinceName')->get();
 
-       return view('supplier')->with ('results', $results);
+       return view('supplier')->with ('results', $results)->with ('provinces', $provinces);
     }
 
     public function confirmSupplier(Request $request){

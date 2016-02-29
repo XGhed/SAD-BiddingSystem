@@ -119,9 +119,9 @@ Manage Supplier
                     <div class="input-field col s3">
                       <select name="add_province">
                         <option value="" disabled selected>Province</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        @foreach($provinces as $key => $province)
+                          <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
+                        @endforeach
                       </select>
                       <label>Province</label>
                     </div>
@@ -129,9 +129,9 @@ Manage Supplier
                     <div class="input-field col s3">
                       <select name="add_city">
                         <option value="" disabled selected>City</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        @foreach($provinces as $key => $province)
+                          <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
+                        @endforeach
                       </select>
                       <label>City/Municipality</label>
                     </div>
