@@ -98,7 +98,7 @@ Manage Supplier
 <!--***************************ADD BUTTON***************************-->
     <div class="col s3 right">
     <!-- MODAL TRIGGER-->
-      <a class="modal-trigger waves-effect waves-light grey darken-3 btn z-depth-5 white-text" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
+      <a class="modal-trigger waves-effect waves-light grey darken-3 btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
 
       <!-- Modal Structure -->
       <div id="addBtn" class="modal modal-fixed-footer">

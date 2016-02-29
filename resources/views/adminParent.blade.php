@@ -50,7 +50,6 @@
                   <!-- <li><a class="white-text" href="/item">Item</a></li>-->
                   <li><a class="white-text" href="/accountType">Account Type</a></li>
                   <li><a class="white-text" href="/paymentMethod">Payment Method</a></li>
-                  <li><a class="white-text" href="/deliveryCompany">Company Delivery</a></li>
                   <li><a class="white-text" href="/deliveryParty">3rd Party Delivery</a></li>
                   <div class="divider"></div>
                 </ul>

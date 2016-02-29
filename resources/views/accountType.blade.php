@@ -37,8 +37,6 @@ $(function(){
 
 @section('title1')
 <h1 class="left col s6 push-s1 white-text" style="font-size: 28px">Manage Account Type</h2>
-
-
 @endsection
 
 
@@ -60,12 +58,12 @@ $(function(){
             <tr>
               <td>
                 <div class="row">
-                  <div class="col s4 pull-s1">
+                  <div class="col s4 push-s2">
                     <form action="/confirmAccountType" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="test{{$key}}" name="del_ID" value="{{$key}}">
                     <button type="button" id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
                     </div>
-                    <div class="col s4 push-s2">    
+                    <div class="col s4">    
                     <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                     </form>
                     </div>
@@ -85,7 +83,7 @@ $(function(){
 <div class="row">
 <!-- ***************************************** ADD ACCTYPE *****************************************-->
     <div class="col s3 right">
-	<a class="modal-trigger waves-effect waves-light btn" href="#modal1">Add Account Type</a>
+	<a class="modal-trigger waves-effect waves-light btn grey darken-3" href="#modal1"><i class="material-icons left">add</i>Add Account Type</a>
 
   	<div id="modal1" class="modal modal-fixed-footer">
     
@@ -123,16 +121,21 @@ $(function(){
 		    <div class="modal-content">
 		      <h4><i class="medium material-icons left">edit</i>Edit</h4>
 		      							<div class="divider"></div>
-		      	<form action="/confirmAccountType" method="POST">	<input type="hidden" name="_token" value="{{ csrf_token() }}">						
-            <input type="hidden" name="edit_ID" id="edit_ID">
-						<div class="input-field col s6">
-				          <input id="edit_name" type="text" class="validate" name="edit_name">
-				          <label for="edit_name">Account type</label>
-				        </div>
-            <div class="input-field col s6">
-              <input id="edit_desc" type="text" class="validate" name="edit_desc">
-              <label for="edit_desc">Account Description</label>
-            </div>
+		      	<form action="/confirmAccountType" method="POST" class="row col s12">	
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">						
+              <input type="hidden" name="edit_ID" id="edit_ID">
+                  <div class="row">
+        						<div class="input-field col s6">
+        				          <input value=" " id="edit_name" type="text" class="validate" name="edit_name">
+        				          <label class="active" for="edit_name">Account type</label>
+    				        </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s10">
+                      <input value=" " id="edit_desc" type="text" class="validate" name="edit_desc">
+                      <label class="active" for="edit_desc">Account Description</label>
+                    </div>
+                  </div>
 		    </div>
 
 

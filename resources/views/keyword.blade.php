@@ -74,7 +74,7 @@ $(function(){
 <!--*************************************************** ADDkeyword **************************************-->
   <div class="col s3 right">
 
-        <a class="modal-trigger waves-effect waves-light btn z-depth-5 left" href="#modal1"><i class="material-icons left">add</i>Add Keyword</a>
+        <a class="modal-trigger waves-effect waves-light grey darken-3 btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Keyword</a>
 
         <div id="modal1" class="modal modal-fixed-footer">
           <div class="modal-content">

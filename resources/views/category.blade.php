@@ -112,7 +112,7 @@ $(function(){
 	<!--*************************************************** ADDCATEGORY **************************************-->
 		<div class="col s4 right">
 			 <!-- Modal Trigger -->
-				  <a class="modal-trigger grey darken-3 waves-effect waves-light btn z-depth-5 left white-text" href="#modal1"><i class="material-icons left">add</i>Add Category</a>
+				  <a class="modal-trigger grey darken-3 waves-effect waves-light btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Category</a>
 				  <!-- Modal Structure -->
 				  <div id="modal1" class="modal modal-fixed-footer">
 				    <div class="modal-content">
@@ -220,7 +220,7 @@ $(function(){
 				<div class="row">
 					<div class="col s4 right">
 						 <!-- Modal Trigger -->
-							  <a class="modal-trigger grey darken-3 waves-effect waves-light btn white-text" href="#modal2"><i class="material-icons left">add</i>Add Subcategory</a>
+							  <a class="modal-trigger grey darken-3 waves-effect waves-light btn" href="#modal2"><i class="material-icons left">add</i>Add Subcategory</a>
 
 							  <!-- Modal Structure -->
 							<div id="modal2" class="modal modal-fixed-footer">
