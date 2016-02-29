@@ -18,11 +18,12 @@ Register Items
           <tr>
               <th>Manage</th>
               <th data-field="id">Item ID</th>
+              <th data-field="name">Name</th>
+              <th data-field="price">Description</th>
+              <th data-field="size">Size</th>
               <th data-field="category">Category</th>
-              <th data-field="name">Item Name</th>
-              <th data-field="price">Item Description</th>
-              <th data-field="size">Item Size</th>
-              <th data-field="color">Item Color</th>
+              <th data-field="subcategory">Subcategory</th>
+              <th data-field="color">Color</th>
           </tr>
         </thead>
 
@@ -38,27 +39,52 @@ Register Items
           	</td>
 
           	<td>
-          		id
+          		0002
           	</td>
 
           	<td>
-          		category
+          		kompyuter
           	</td>
 
           	<td>
-          		name
+          		galing sa kapitbahay ng pinsan ng nanay ko.
           	</td>
 
           	<td>
-          		desc
+          		20x51x12
           	</td>
 
           	<td>
-          		size
+          		<div class="input-field col s10">
+				    <select>
+				      <option value="" disabled selected>Category</option>
+				      <option value="1">Option 1</option>
+				      <option value="2">Option 2</option>
+				      <option value="3">Option 3</option>
+				    </select>
+				  </div>
           	</td>
 
           	<td>
-          		color
+          		<div class="input-field col s10">
+				    <select>
+				      <option value="" disabled selected>SubCategory</option>
+				      <option value="1">Option 1</option>
+				      <option value="2">Option 2</option>
+				      <option value="3">Option 3</option>
+				    </select>
+				  </div>
+          	</td>
+
+          	<td>
+          		<div class="input-field col s10">
+				    <select>
+				      <option value="" disabled selected>Color</option>
+				      <option value="1">Black</option>
+				      <option value="2">Brown</option>
+				      <option value="3">Pink</option>
+				    </select>
+				  </div>
           	</td>
           </tr>
         </tbody>
