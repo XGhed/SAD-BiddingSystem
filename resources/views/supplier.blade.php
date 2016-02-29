@@ -49,7 +49,7 @@ Manage Supplier
 
 @section('supplier')
         <!-- DATA TABLE -->
-        <table class="highlight responsive-table centered" id="tableOutput">
+      <table class="highlight responsive-table centered" id="tableOutput">
         <thead>
           <tr>
               <th style="cursor: default;">Manage</th>
@@ -65,14 +65,15 @@ Manage Supplier
           @foreach($results as $key => $result)
             <tr>
               <td>
-                  <div class="center">
-                    <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
-                    <button id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
-                     
-                    <button id="" value="" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                    <div class="col s12">
+                      <div class="col s4">
+                        <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
+                        <button id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+                      </div>
+                      <input type="hidden" id="" name="del_ID" value="">
+                      <button id="" value="" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                     </div>
               </td>
-
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
               <td>{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
               <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
@@ -110,12 +111,12 @@ Manage Supplier
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="input-field col s8">
-                      <input id="supplier_name" type="text" class="validate" name="add_name">
+                      <input id="supplier_name" type="text" class="validate" name="add_name" length="30" maxlength="30">
                       <label for="supplier_name">Supplier's Name</label>
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row col s12">
                     <div class="input-field col s3">
                       <select name="add_province">
                         <option value="" disabled selected>Province</option>
@@ -136,35 +137,20 @@ Manage Supplier
                       <label>City/Municipality</label>
                     </div>
 
-                    <div class="input-field col s3">
-                      <select name="add_barangay">
-                        <option value="" disabled selected>Barangay</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                      </select>
-                      <label>Barangay</label>
-                    </div>
-
-                    <div class="input-field col s3">
-                      <select name="add_street">
-                        <option value="" disabled selected>Street</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                      </select>
-                      <label>Street</label>
-                    </div>
+                      <div class="input-field col s6">
+                        <input id="add_barangay" type="text" class="validate" name="add_barangay" length="30" maxlength="30">
+                        <label for="add_barangay">Brgy and Street Address</label>
+                      </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s6">
-                      <input id="contact_num" type="text" class="validate" name="add_contactNo">
+                      <input id="contact_num" type="text" class="validate" name="add_contactNo" length="30" maxlength="30">
                       <label for="contact_num">Contact Number</label>
                     </div>
 
                     <div class="input-field col s6">
-                      <input id="eAddress" type="email" class="validate" name="add_email">
+                      <input id="eAddress" type="email" class="validate" name="add_email" length="30" maxlength="30">
                       <label for="eAddress">Email Address</label>
             
                 </div>
@@ -192,7 +178,7 @@ Manage Supplier
               <input type="hidden" id="edit_ID" name="edit_ID">
               <div class="row">
                   <div class="input-field col s8">
-                    <input value=" " id="edit_name" type="text" class="validate" name="edit_name">
+                    <input value=" " id="edit_name" type="text" class="validate" name="edit_name" length="30" maxlength="30">
                     <label class="active" for="edit_name" >Supplier's Name</label>
                   </div>
               </div>
@@ -218,35 +204,20 @@ Manage Supplier
                     <label>City/Municipality</label>
                   </div>
 
-                  <div class="input-field col s3">
-                    <select id="edit_barangay" name="edit_barangay">
-                      <option selected></option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
-                    </select>
-                    <label>Barangay</label>
-                  </div>
-
-                  <div class="input-field col s3">
-                    <select id="edit_street" name="edit_street">
-                      <option selected></option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
-                    </select>
-                    <label>Street</label>
+                  <div class="input-field col s6">
+                    <input id="edit_barangay" type="text" class="validate" name="edit_barangay" length="30" maxlength="30">
+                    <label for="edit_barangay">Brgy and Street Address</label>
                   </div>
               </div>
 
               <div class="row">
                   <div class="input-field col s6">
-                    <input value =" " type="text" class="validate" id="edit_contactNo" name="edit_contactNo">
+                    <input value =" " type="text" class="validate" id="edit_contactNo" name="edit_contactNo" length="30" maxlength="30">
                     <label class="active" for="edit_contactNo">Contact Number</label>
                   </div>
 
                   <div class="input-field col s6">
-                    <input value ="0" type="email" class="validate" id="edit_email" name="edit_email">
+                    <input value ="0" type="email" class="validate" id="edit_email" name="edit_email" length="30" maxlength="30">
                     <label class="active" for="edit_email">Email Address</label>
                 </div>
               

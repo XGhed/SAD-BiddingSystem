@@ -40,10 +40,10 @@ $(function(){
 @section('keyword')
 
   <!--***************************************************DATA TABLE **************************************-->
-<table class="highlight responsive-table centered" id="tableOutput">
+<table class="highlight responsive-table centered bordered" id="tableOutput">
         <thead>
           <tr>
-              <th data-field="Manage" style="cursor: default;">Manage</th>
+              <th style="cursor: default;">Manage</th>
               <th>Keyword</th>
           </tr>
         </thead>
@@ -53,13 +53,13 @@ $(function(){
           @foreach($results as $key => $result)
             <tr>
               <td>
-                <div class="row">
-                    <form action="/confirmKeyword" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" id="tdID{{$key}}" name="del_ID" value="{{$result->KeywordID}}">
-                    <button type="button" id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
-                    <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                    <form class="row col s12" action="/confirmKeyword" method="POST">
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                      <button type="button" id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+
+                      <input type="hidden" id="tdID{{$key}}" name="del_ID" value="{{$result->KeywordID}}">
+                      <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                     </form>
-                </div>
               </td>
               <td id="tdname{{$key}}">{{$result->KeywordName}}</td>
             </tr>

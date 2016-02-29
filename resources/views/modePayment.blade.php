@@ -56,16 +56,15 @@ $(function(){
 
             <tr>
               <td>
-                <div class="row">
-                  <div class="col s4">
-                    <form action="" method="POST"><input type="hidden" name="_token" value="">
-                    <input type="hidden" id="" name="del_ID" value="">
-                    <button type="button" id="" value="" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="">edit</i></button>
-                    </div>
-                    <div class="col s4">    
-                    <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                  <div class="row col s12">
+                    <form action="" method="POST">
+                          <input type="hidden" name="_token" value="">
+                          <button type="button" id="" value="" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="  top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="">edit</i></button>
+                     
+                      <input type="hidden" id="" name="del_ID" value="">
+                      <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                     </form>
-                    </div>
+                  </div>
                 </div>
               </td>
 

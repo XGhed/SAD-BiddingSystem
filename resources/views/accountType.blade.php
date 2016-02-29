@@ -43,40 +43,42 @@ $(function(){
 @section('accountType')
 
 <!-- ***************************************** DATA TABLE *****************************************-->
-<table class="highlight responsive-table centered" id="tableOutput">
-        <thead>
-          <tr>
-              <th data-field="Manage" style="cursor: default;">Manage</th>
-              <th data-field="Name" >Account Type</th>
-              <th data-field="Address">Description</th>
-          </tr>
-        </thead>
+  <table class="highlight responsive-table centered" id="tableOutput">
+    <thead>
+        <tr>
+          <th style="cursor: default;">Manage</th>
+          <th>Account Type</th>
+          <th>Description</th>
+          <th>Tax Rate</th>
+          <th>Discount</th>
+        </tr>
+    </thead>
 
-        <tbody>
-        <div id="formOutput" value="asd">
-          @foreach($results as $key => $result)
-            <tr>
-              <td>
-                <div class="row">
-                  <div class="col s4 push-s2">
-                    <form action="/confirmAccountType" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" id="test{{$key}}" name="del_ID" value="{{$key}}">
-                    <button type="button" id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+          <tbody>
+          <div id="formOutput" value="asd">
+            @foreach($results as $key => $result)
+              <tr>
+                <td>
+                   <div class="col s12">
+                      <div class="row col s4">
+                      <form action="/confirmAccountType" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" id="test{{$key}}" name="del_ID" value="{{$key}}">
+                          <button type="button" id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
                     </div>
-                    <div class="col s4">    
-                    <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
-                    </form>
-                    </div>
-                </div>
-              </td>
+                      <div class="col s4">    
+                      <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                      </form>
+                      </div>
+                  </div>
+                </td>
 
-              <td id="tdname{{$key}}">{{$result->AccountTypeName}}</td>
-              <td id="tddesc{{$key}}">description baby</td>
-            </tr>
-          @endforeach
-            </div>
-        </tbody>
-</table>
+                <td id="tdname{{$key}}">{{$result->AccountTypeName}}</td>
+                <td id="tddesc{{$key}}">description baby</td>
+              </tr>
+            @endforeach
+              </div>
+          </tbody>
+  </table>
 <!-- ***************************************** END DATA TABLE *****************************************-->
 
 
@@ -92,16 +94,26 @@ $(function(){
         				<div class="divider"></div>
         	<form  action="/confirmAccountType" method="POST" class="row col s12">
               <div class="row">
-    	      	<div class="input-field col s6">
-                <input id="acctype" type="text" class="validate" name="add_name">
-                <label for="acctype">Account Type</label>
-              </div>    	
+      	      	<div class="input-field col s6">
+                  <input id="acctype" type="text" class="validate" name="add_name">
+                  <label for="acctype">Account Type</label>
+                </div>    	
               </div>
               <div class="row">
-                  <div class="input-field col s10">
-                    <input id="add_desc" type="text" class="validate" name="add_desc">
-                    <label for="add_desc">Description</label>
-                  </div>
+                <div class="input-field col s10">
+                  <input id="add_desc" type="text" class="validate" name="add_desc">
+                  <label for="add_desc">Description</label>
+                </div>
+              </div>
+
+                <div class="input-field col s5">
+                  <input id="taxRate" type="text" class="validate" name="taxRate">
+                  <label for="taxRate">Tax Rate</label>
+                </div>
+
+                <div class="input-field col s5">
+                  <input id="discount" type="text" class="validate" name="discount">
+                  <label for="discount">Discount</label>
                 </div>
       </div>
 
