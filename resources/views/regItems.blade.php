@@ -18,11 +18,8 @@ Register Items
           <tr>
               <th>Manage</th>
               <th data-field="id">Item ID</th>
-              <th data-field="name">Name</th>
               <th data-field="price">Description</th>
               <th data-field="size">Size</th>
-              <th data-field="category">Category</th>
-              <th data-field="subcategory">Subcategory</th>
               <th data-field="color">Color</th>
           </tr>
         </thead>
@@ -31,10 +28,12 @@ Register Items
           <tr>
          	<td>
 	         	<form action="/" method="POST"><input type="hidden" name="" value="{{ csrf_token() }}">
-					<input type="hidden" class="items" id="" name="" value="">
-						<button type="button" id="" value="" class=" btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+	         		<div class="center">
+						<input type="hidden" class="items" id="" name="" value="">
+							<button type="button" id="" value="" class=" btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
 
-						<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+							<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+					</div>
 				</form>
           	</td>
 
@@ -43,11 +42,7 @@ Register Items
           	</td>
 
           	<td>
-          		kompyuter
-          	</td>
-
-          	<td>
-          		galing sa kapitbahay ng pinsan ng nanay ko.
+          		kompyuter na green sira mouse
           	</td>
 
           	<td>
@@ -57,32 +52,10 @@ Register Items
           	<td>
           		<div class="input-field col s10">
 				    <select>
-				      <option value="" disabled selected>Category</option>
-				      <option value="1">Option 1</option>
-				      <option value="2">Option 2</option>
-				      <option value="3">Option 3</option>
-				    </select>
-				  </div>
-          	</td>
-
-          	<td>
-          		<div class="input-field col s10">
-				    <select>
-				      <option value="" disabled selected>SubCategory</option>
-				      <option value="1">Option 1</option>
-				      <option value="2">Option 2</option>
-				      <option value="3">Option 3</option>
-				    </select>
-				  </div>
-          	</td>
-
-          	<td>
-          		<div class="input-field col s10">
-				    <select>
 				      <option value="" disabled selected>Color</option>
-				      <option value="1">Black</option>
-				      <option value="2">Brown</option>
-				      <option value="3">Pink</option>
+				      <option value="1">Option 1</option>
+				      <option value="2">Option 2</option>
+				      <option value="3">Option 3</option>
 				    </select>
 				  </div>
           	</td>
@@ -101,13 +74,6 @@ Register Items
       			<div class="divider"></div>
       	<div class="row">
 		    <form class="col s12">
-		      <div class="row">
-		        <div class="input-field col s6 center">
-		          <input id="item_name" type="text" class="validate">
-		          <label for="item_name">Item Name</label>
-		        </div>
-		      </div>
-
 		      <div class="row">
 		        <div class="input-field col s6">
 		          <i class="material-icons prefix">mode_edit</i>
@@ -134,30 +100,6 @@ Register Items
 				    <label>Color</label>
 				</div>
 			  </div>
-
-			  <div class="row">
-			      <div class="input-field col s5">
-				    <select>
-				      <option value="" disabled selected>Choose Category</option>
-				      <option value="1">Category1</option>
-				      <option value="2">Category2</option>
-				      <option value="3">Category3</option>
-				    </select>
-				    <label>Category</label>
-				  </div>
-			  </div>
-
-			  <div class="row">
-				<div class="input-field col s5">
-					<select>
-						<option value="" disabled selected>Choose SubCategory</option>
-						<option value="1">SubCategory1</option>
-						<option value="2">SubCategory2</option>
-						<option value="3">SubCategory3</option>
-					</select>
-					<label>Category</label>
-				</div>
-			</div>
     </form>
   </div>
 
@@ -179,14 +121,7 @@ Register Items
 		      							<div class="divider"></div>
 		     		<div class="row">
 					    <form class="col s12">
-						    <div class="row">
-						        <div class="input-field col s6 center">
-						          <input id="item_name" type="text" class="validate">
-						          <label for="item_name">Item Name</label>
-						        </div>
-						      </div>
-
-						      <div class="row">
+							      <div class="row">
 						        <div class="input-field col s6">
 						          <i class="material-icons prefix">mode_edit</i>
 						          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
@@ -212,30 +147,6 @@ Register Items
 								    <label>Color</label>
 								</div>
 							  </div>
-
-							  <div class="row">
-							      <div class="input-field col s5">
-								    <select>
-								      <option value="" disabled selected>Choose Category</option>
-								      <option value="1">Category1</option>
-								      <option value="2">Category2</option>
-								      <option value="3">Category3</option>
-								    </select>
-								    <label>Category</label>
-								  </div>
-							  </div>
-
-							  <div class="row">
-							      <div class="input-field col s5">
-								    <select>
-								      <option value="" disabled selected>Choose SubCategory</option>
-								      <option value="1">SubCategory1</option>
-								      <option value="2">SubCategory2</option>
-								      <option value="3">SubCategory3</option>
-								    </select>
-								    <label>Category</label>
-								  </div>
-							  </div>
 					    </form>
 					</div>
 		    </div>
@@ -243,7 +154,6 @@ Register Items
 
 		    <div class="modal-footer">
 		      <a href="#!" class="modal-action modal-close waves-effect waves-green btn"><i class="medium material-icons left">done</i>Edit</a>
-		      <a href="#!" class="modal-action modal-close waves-effect waves-green btn"><i class="medium material-icons left">delete</i>Delete</a>
 		    </div>
 		  </div>
     <!--*************************************************** END EDIT ************************************************-->  

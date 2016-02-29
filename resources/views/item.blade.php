@@ -5,181 +5,126 @@
 Manage Items
 @endsection
 
+
+@section('jqueryscript')
+<script type="text/javascript">
+$(function(){   
+
+    $("#tableOutput1").DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null,
+        null
+      ] 
+    });
+});
+
+$(function(){   
+    $('#tableOutput1').on('click', '.edit', function(){
+      $('#modal3').openModal();
+      var selected = this.id;
+      var keyID = $("#tdID1"+selected).val();
+      var keyName = $("#tdname1"+selected).text();
+      var keyDesc = $("#tddesc1"+selected).text();
+      $("#edit_ID1").val(keyID);
+      $("#edit_name1").val(keyName);
+      $("#edit_desc1").val(keyDesc);
+    });
+});
+
+</script>
+@endsection
+
 @section('title1')
 <h1 class="left col s6 push-s1 white-text" style="font-size: 45px">Manage Items</h2>
 @endsection
 
 
 @section('items')
-<br>
-<br>
-
-<div class="row">
-<!--*************************************************** ADDCATEGORY **************************************-->
-  <div class="col s4">
-     <!-- Modal Trigger -->
-        <a class="modal-trigger waves-effect waves-light btn" href="#modal1"><i class="material-icons left">add</i>Add Category</a>
-
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal modal-fixed-footer">
-          <div class="modal-content">
-            <h4><i class="medium material-icons left">dns</i>Add Category</h4>
-                  <div class="divider"></div>
-              <div class="row">
-              <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s5">
-                      <input id="category" type="text" class="validate">
-                      <label for="category">Category</label>
-                    </div>
-                </div>
-              </form>
-          </div>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn "><i class="material-icons left">done</i>Confirm</a>
-          </div>
-        </div>
-  </div>
-<!--***************************************************END ADDCATEGORY **************************************-->
-
-<!--***************************************************ADD SUBCATEGORY **************************************-->
-  <div class="col s4">
-     <!-- Modal Trigger -->
-        <a class="modal-trigger waves-effect waves-light btn" href="#modal2"><i class="material-icons left">add</i>Add Subcategory</a>
-
-        <!-- Modal Structure -->
-        <div id="modal2" class="modal modal-fixed-footer">
-          <div class="modal-content">
-            <h4><i class="medium material-icons left">dns</i>Add Subcategory</h4>
-                  <div class="divider"></div>
-              <div class="row">
-              <form class="col s12">    
-                  <div class="row">
-                    <div class="input-field col s7">
-                    <select>
-                      <option value="" disabled selected>Choose your Category</option>
-                      <option value="1">Category1</option>
-                      <option value="2">Category2</option>
-                      <option value="3">Category3</option>
-                    </select>
-                  </div>
-               </div>
-
-              <div class="row">
-                  <div class="input-field col s6">
-                      <input id="category" type="text" class="validate">
-                      <label for="category">Name of Subcategory</label>
-                  </div>
-              </div> 
-             </form>
-          </div>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn"><i class="material-icons left">done</i>Confirm</a>
-          </div>
-        </div>
-  </div>
-
-  <!--***************************************************END SUBCATEGORY **************************************-->
-</div>
-
-
-  <!--***************************************************DATA TABLE **************************************-->
-<div class="row">
-  <table class="responsive-table">
+<table class="highlight responsive-table centered" id="tableOutput">
         <thead>
           <tr>
-              <th></th>
-              <th data-field="id">Category</th>
-              <th data-field="name">Subcategory</th>
+              <th data-field="Manage" style="cursor: default;">Manage</th>
+              <th>Item Id</th>
+              <th>Item Subcategory</th>
+              <th>Item Name</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td>
-              <input name="group1" type="radio" id="test1" value="" onclick=""/>
-                 <label for="test1" class="left">Edit</label>
-            </td>
-            <td>Cat</td>
-            <td>Subcat1,Subcat2,Subcat3</td>
-          </tr>
-          <tr>
-            <td>
-              <input name="group1" type="radio" id="test2" value="" onclick=""/>
-                 <label for="test2" class="left">Edit</label>
-            </td>
-            <td>Dog</td>
-            <td>
-              <p>Subcat1</p>
-              <p>Subcat2</p>
-              <p>Subcat3</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input name="group1" type="radio" id="test3" value="" onclick=""/>
-                 <label for="test3" class="left">Edit</label>
-            </td>
-            <td>Mouse</td>
-            <td>Subcat1</td>
-          </tr>
+        <div id="formOutput" value="">     
+            <tr>
+              <td>
+                <div class="row">
+                    <form action="/" method="POST">
+                      <input type="hidden" name="_token" value="">
+                      <input type="hidden" id="" name="del_ID" value="">
+                        <button type="button" id="" value="" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+                        <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                    </form>
+                </div>
+              </td>
+              <td id=""></td>
+            </tr>
+            </div>
         </tbody>
-      </table>
-</div>
-  <!--***************************************************END DATA TABLE **************************************-->
+</table>
 
-  <!--*************************************************** PAGINATION **************************************-->
-    <div class="center">
-          <ul class="pagination">
-            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-            <li class="active"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="#!">2</a></li>
-            <li class="waves-effect"><a href="#!">3</a></li>
-            <li class="waves-effect"><a href="#!">4</a></li>
-            <li class="waves-effect"><a href="#!">5</a></li>
-            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-          </ul>
+<div class="row">
+<!--*************************************************** ADDkeyword **************************************-->
+  <div class="col s3 right">
+
+        <a class="modal-trigger waves-effect waves-light grey darken-3 btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Item</a>
+
+        <div id="modal1" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4><i class="medium material-icons left">label</i>Add Item</h4>
+                  <div class="divider"></div>
+              <div class="row">
+              <form class="col s12" action="/confirmKeyword" method="POST">
+                <input type="hidden" name="_token" value="">
+                  <div class="input-field col s6">
+                    <input id="itemName" type="text" class="validate" name="add_name">
+                    <label for="itemName">Item Name</label>
+                  </div> 
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button class="modal-action modal-close white-text waves-effect waves-green btn-flat green" type="submit" name="add">
+                  <i class="material-icons left">done</i>Add Item</button></form>
+          </div>
         </div>
-    <!--*************************************************** END PAGINATION **************************************--> 
-    
-    <!--*************************************************** EDIT ************************************************-->
-      
-    <a class="modal-trigger waves-effect waves-light btn" href="#modal3">EDIT MODAL //LIPAT MO NA LANG SA RADIO</a>
-      
+  </div>
+<!--*************************************************** END ADDCOMPANY **************************************-->
+</div>
+
+<!--*************************************************** EDIT ************************************************-->
       <div id="modal3" class="modal modal-fixed-footer">
         <div class="modal-content">
           <h4><i class="medium material-icons left">edit</i>Edit</h4>
                         <div class="divider"></div>
-            <div class="row">
-              <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s5">
-                      <input id="category" type="text" class="validate">
-                      <label for="category">Category</label>
+            <form action="" method="POST" class="row col s12">
+                <input type="hidden" name="_token" value="">
+                <input type="hidden" name="edit_ID" id="edit_ID">
+                  <div class="row"></div>
+                    <div class="input-field col s6">
+                      <input value=" "id="edit_name" type="text" class="validate" name="edit_name" >
+                      <label for="edit_name">Edit Name</label>
                     </div>
-                </div>
-                      <div class="divider"></div>
-                <h5 class="center"><i class="material-icons">dns</i>Subcategory</h5>
-                  <div class="row">
-                  <!--LOOP MO NA LANG KUNG ILAN UNG SUB CAT NIYA-->
-                      <div class="input-field col s5">
-                        <input id="category" type="text" class="validate">
-                        <label for="category">Subcategory</label>
-                      </div>
-                  </div>
-              </form>
-          </div>
         </div>
 
 
         <div class="modal-footer">
-          <a href="#!" class="modal-action modal-close waves-effect waves-green btn"><i class="medium material-icons left">done</i>Edit</a>
-          <a href="#!" class="modal-action modal-close waves-effect waves-green btn"><i class="medium material-icons left">delete</i>Delete</a>
+          <button class="btn-flat green waves-effect waves-light white-text col s2" type="submit" name="edit">
+                <i class="material-icons left">edit</i>Change</button>
+            </form>
         </div>
       </div>
-    <!--*************************************************** END EDIT ************************************************-->    
+    <!--*************************************************** END EDIT ************************************************-->
+
+
       <script>
 
       //MODAL

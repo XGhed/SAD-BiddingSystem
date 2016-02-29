@@ -11,7 +11,7 @@ $(function(){
 
     $("#tableOutput1").DataTable({
       "lengthChange": false,
-      "pageLength": 3,
+      "pageLength": 5,
       "columns": [
         { "searchable": false },
         null,
@@ -37,7 +37,7 @@ $(function(){
 
     $("#tableOutput2").DataTable({
       "lengthChange": false,
-      "pageLength": 3,
+      "pageLength": 5,
       "columns": [
         { "searchable": false },
         null,

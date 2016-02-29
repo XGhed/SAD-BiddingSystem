@@ -11,7 +11,7 @@ $(function(){
 
     $("#tableOutput").DataTable({
       "lengthChange": false,
-      "pageLength": 3,
+      "pageLength": 5,
       "columns": [
         { "searchable": false },
         null
@@ -95,8 +95,6 @@ $(function(){
         </div>
   </div>
 <!--*************************************************** END ADDCOMPANY **************************************-->
-
-
 </div>
 
 
