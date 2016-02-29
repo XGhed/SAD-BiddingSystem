@@ -162,13 +162,13 @@ $(function(){
 					    	<input type="hidden" name="edit_ID" id="edit_ID1">
 							    <div class="row">
 							       	<div class="input-field col s5">
-							        	<input value=" " type="text" class="validate" name="edit_name" id="edit_name1">
+							        	<input value=" " id="edit_name1" type="text" class="validate" name="edit_name">
 							         	<label class="active" for="edit_name1">Category</label>
 							        </div>
 							    </div>
 							    <div class="row">
 									<div class="input-field col s10">
-										<input value=" " id="add_desc" type="text" class="validate" name="add_desc1">
+										<input value=" " id="edit_desc1" type="text" class="validate" name="edit_desc">
 										<label class="active" for="add_desc">Description</label>
 									</div>
 								</div>
@@ -304,7 +304,7 @@ $(function(){
 							    </div>
 							    <div class="row">
 							       	<div class="input-field col s10">
-							        	<input value=" " type="text" class="validate" name="edit_name" id="edit_name2">
+							        	<input value=" " type="text" class="validate" name="edit_desc" id="edit_desc2">
 							         	<label class="active" for="edit_desc2">Description</label>
 							        </div>
 						    	</div>

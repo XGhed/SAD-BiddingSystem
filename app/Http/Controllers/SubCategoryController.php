@@ -48,14 +48,14 @@ class SubCategoryController extends Controller
 
 	public function updateSubCategory(Request $request){
 
-		$subcategory = new App\SubCategory;
-		$subcategory = App\SubCategory::find($request->input('edit_ID'));
+		$subCategory = new App\SubCategory;
+		$subCategory = App\SubCategory::find($request->input('edit_ID'));
 
-		$subcategory->SubCategoryName = $request->input('edit_name');
+		$subCategory->SubCategoryName = $request->input('edit_name');
 		$subCategory->Description = $request->input('edit_desc');
 
 		try {
-			$subcategory->save();
+			$subCategory->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
 			return redirect('category');
@@ -63,11 +63,11 @@ class SubCategoryController extends Controller
 	}
 
 	public function deleteSubCategory(Request $request){
-		$subcategory = new App\SubCategory;
-		$subcategory = App\SubCategory::find($request->input('del_ID'));
+		$subCategory = new App\SubCategory;
+		$subCategory = App\SubCategory::find($request->input('del_ID'));
 		
 		try {
-			$subcategory->delete();
+			$subCategory->delete();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
 			return redirect('category');
