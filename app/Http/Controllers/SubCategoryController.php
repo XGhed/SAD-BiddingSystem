@@ -52,7 +52,7 @@ class SubCategoryController extends Controller
 		$subcategory = App\SubCategory::find($request->input('edit_ID'));
 
 		$subcategory->SubCategoryName = $request->input('edit_name');
-		$subCategory->Description = $request->input('add_desc');
+		$subCategory->Description = $request->input('edit_desc');
 
 		try {
 			$subcategory->save();

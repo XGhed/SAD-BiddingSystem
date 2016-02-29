@@ -11,7 +11,7 @@ $(function(){
 
     $("#tableOutput1").DataTable({
       "lengthChange": false,
-      "pageLength": 5,
+      "pageLength": 3,
       "columns": [
         { "searchable": false },
         null,
@@ -98,14 +98,9 @@ $(function(){
 						            <tr>
 						          	<td>
 						          		<form action="/confirmCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
-						          			<div class="col s4 push-s2">	
-						          			<input type="hidden" class="items" id="tdID1{{$key}}" name="del_ID" value="{{$result->CategoryID}}">
-						          			
-						          				<button type="button" id="{{$key}}" value="{{$key}}" class="edit1 btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
-						          			</div>
-						          			<div class="col s4">
-						          				<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
-						          			</div>
+						          		<input type="hidden" class="items" id="tdID1{{$key}}" name="del_ID" value="{{$result->CategoryID}}">
+						          		<button type="button" id="{{$key}}" value="{{$key}}" class="edit1 btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+						          		<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
 						          		</form>
 						            </td>
 						            <td id="tdname1{{$key}}">{{$result->CategoryName}}</td>

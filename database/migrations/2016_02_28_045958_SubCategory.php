@@ -11,7 +11,7 @@ class SubCategory extends Migration
     Schema::create('SubCategory', function(Blueprint $table)
     {
         $table->increments('SubCategoryID');
-        $table->string('SubcategoryName', 30);
+        $table->string('SubCategoryName', 30);
         $table->string('Description', 30);
         $table->boolean('Status');
         $table->softDeletes();
