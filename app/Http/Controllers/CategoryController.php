@@ -43,6 +43,7 @@ class CategoryController extends Controller
 		$category = new App\Category;
 
 		$category->CategoryName = $request->input('add_name');
+		$category->Description = $request->input('add_desc');
 
 		try {
 			$category->save();
@@ -58,6 +59,7 @@ class CategoryController extends Controller
 		$category = App\Category::find($request->input('edit_ID'));
 
 		$category->CategoryName = $request->input('edit_name');
+		$category->Description = $request->input('edit_desc');
 
 		try {
 			$category->save();
