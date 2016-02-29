@@ -45,7 +45,6 @@ $(function(){
           <tr>
               <th data-field="Manage" style="cursor: default;">Manage</th>
               <th>Keyword</th>
-              <th>Description</th>
           </tr>
         </thead>
 
@@ -86,13 +85,7 @@ $(function(){
                   <div class="input-field col s6">
                     <input id="keyword" type="text" class="validate" name="add_name">
                     <label for="keyword">Keyword</label>
-                  </div>
-                <div class="row">
-                  <div class="input-field col s10">
-                    <input id="add_desc" type="text" class="validate" name="add_desc">
-                    <label for="add_desc">Description</label>
-                  </div>
-                </div>  
+                  </div> 
           </div>
           </div>
           <div class="modal-footer">
