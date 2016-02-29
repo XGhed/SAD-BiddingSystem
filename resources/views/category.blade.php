@@ -126,6 +126,12 @@ $(function(){
 							         	<label for="category">Category</label>
 							        </div>
 							    </div>
+							    <div class="row">
+									<div class="input-field col s10">
+										<input id="add_desc" type="text" class="validate" name="add_desc">
+										<label for="add_desc">Description</label>
+									</div>
+								</div>
 						</div>
 				    </div>
 				    <div class="modal-footer">
@@ -146,12 +152,19 @@ $(function(){
 					    <form class="col s12" action="/confirmCategory" method="POST">
 					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					    	<input type="hidden" name="edit_ID" id="edit_ID1">
-						    <div class="row">
-						       	<div class="input-field col s5">
-						        	<input value=" "type="text" class="validate" name="edit_name" id="edit_name1">
-						         	<label class="active" for="edit_name1">Category</label>
-						        </div>
-						    </div>
+							    <div class="row">
+							       	<div class="input-field col s5">
+							        	<input value=" " type="text" class="validate" name="edit_name" id="edit_name1">
+							         	<label class="active" for="edit_name1">Category</label>
+							        </div>
+							    </div>
+							    <div class="row">
+									<div class="input-field col s10">
+										<input value=" " id="add_desc" type="text" class="validate" name="add_desc1">
+										<label class="active" for="add_desc">Description</label>
+									</div>
+								</div>
+
 					</div>
 		    </div>
 
@@ -246,6 +259,13 @@ $(function(){
 												        <input id="add_name" type="text" class="validate" name="add_name">
 												        <label for="add_name">Name of Subcategory</label>
 												</div>
+
+												<div class="row">
+												    <div class="input-field col s10">
+												        <input id="add_desc" type="text" class="validate" name="add_desc">
+												        <label for="add_desc">Description</label>
+													</div>
+												</div>
 									</div> 
 								</div>
 							</div>
@@ -269,11 +289,17 @@ $(function(){
 					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					    	<input type="hidden" name="edit_ID" id="edit_ID2">  
 								<div class="row">	  	
-							       	<div class="input-field col s5">
+							       	<div class="input-field col s6">
 							        	<input value=" " type="text" class="validate" name="edit_name" id="edit_name2">
 							         	<label class="active" for="edit_name2">Subcategory</label>
 							        </div>
 							    </div>
+							    <div class="row">
+							       	<div class="input-field col s10">
+							        	<input value=" " type="text" class="validate" name="edit_name" id="edit_name2">
+							         	<label class="active" for="edit_desc2">Description</label>
+							        </div>
+						    	</div>
 					</div>
 		    </div>
 

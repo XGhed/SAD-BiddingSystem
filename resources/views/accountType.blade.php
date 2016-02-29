@@ -90,12 +90,19 @@ $(function(){
       <div class="modal-content">
         <h4><i class="medium material-icons left">account_box</i>Add Account Type</h4>
         				<div class="divider"></div>
-        	<form class="red" action="/confirmAccountType" method="POST">
+        	<form  action="/confirmAccountType" method="POST" class="row col s12">
+              <div class="row">
     	      	<div class="input-field col s6">
                 <input id="acctype" type="text" class="validate" name="add_name">
                 <label for="acctype">Account Type</label>
               </div>    	
-        
+              </div>
+              <div class="row">
+                  <div class="input-field col s10">
+                    <input id="add_desc" type="text" class="validate" name="add_desc">
+                    <label for="add_desc">Description</label>
+                  </div>
+                </div>
       </div>
 
       <div class="modal-footer">

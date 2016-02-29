@@ -88,9 +88,17 @@ $(function(){
                   <div class="divider"></div>
               <div class="row">
                 <form class="col s12" action="" method="">
-                 <div class="input-field col s6">
-                    <input id="keyword" type="text" class="validate">
-                    <label for="keyword">Edit Payment Method</label>
+                  <div class="row">
+                   <div class="input-field col s6">
+                      <input id="keyword" type="text" class="validate">
+                      <label for="keyword">Edit Payment Method</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s10">
+                      <input id="add_desc" type="text" class="validate" name="add_desc">
+                      <label for="add_desc">Description</label>
+                    </div>
                   </div>
               </div>
           </div>
