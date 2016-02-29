@@ -18,7 +18,9 @@ class Supplier extends Migration
         $table->string('City_Address', 30);
         $table->string('SupplierEmail', 30);
         $table->string('SupplierContactNo', 30);
-        $table->boolean('Status');
+        $table->boolean('Status')->default(1);
+        $table->integer('ProvinceID')->unsigned();
+        $table->foreign('ProvinceID')->references('ProvinceID')->on('Province');
         $table->softDeletes();
     });
 }

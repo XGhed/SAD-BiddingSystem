@@ -13,7 +13,7 @@ class Category extends Migration
         $table->increments('CategoryID');
         $table->string('CategoryName', 30);
         $table->string('Description', 30);
-        $table->boolean('Status');
+        $table->boolean('Status')->default(1);
         $table->softDeletes();
     });
 }

@@ -25,6 +25,8 @@ class Account extends Migration
         $table->String('Account_EmailAdd', 30);
         $table->String('Username', 30);
         $table->String('Password', 30);
+        $table->integer('ProvinceID')->unsigned();
+        $table->foreign('ProvinceID')->references('ProvinceID')->on('Province');
         $table->integer('AccountTypeID')->unsigned();
         $table->foreign('AccountTypeID')->references('AccountTypeID')->on('AccountType');
     });
