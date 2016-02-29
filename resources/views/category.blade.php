@@ -26,8 +26,10 @@ $(function(){
       var selected = this.id;
       var keyID = $("#tdID1"+selected).val();
       var keyName = $("#tdname1"+selected).text();
+      var keyDesc = $("#tddesc1"+selected).text();
       $("#edit_ID1").val(keyID);
       $("#edit_name1").val(keyName);
+      $("#edit_desc1").val(keyDesc);
     });
 });
 
@@ -50,8 +52,10 @@ $(function(){
       var selected = this.id;
       var keyID = $("#tdID2"+selected).val();
       var keyName = $("#tdname2"+selected).text();
+      var keyDesc = $("#tddesc2"+selected).text();
       $("#edit_ID2").val(keyID);
       $("#edit_name2").val(keyName);
+      $("#edit_desc2").val(keyDesc);
     });
 });
 </script>
@@ -100,7 +104,7 @@ $(function(){
 						          		</form>
 						            </td>
 						            <td id="tdname1{{$key}}">{{$result->CategoryName}}</td>
-						            <td id="tddesc1{{$key}}"></td>
+						            <td id="tddesc1{{$key}}">{{$result->Description}}</td>
 						          </tr>
 					         	@endforeach
 					        </tbody>
@@ -219,7 +223,7 @@ $(function(){
 						    </td>
 
 						   <td id="tdname2{{$key}}">{{$result->SubCategoryName}}</td>
-						   <td id="tddesc2{{$key}}"></td>
+						   <td id="tddesc2{{$key}}">{{$result->Description}}</td>
 						</tr>
 					    @endforeach
 			        </tbody>
