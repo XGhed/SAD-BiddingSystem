@@ -29,6 +29,8 @@ Route::post('/confirmAccountType', 'AccountTypeController@confirmAccountType');
 
 Route::post('/confirmKeyword', 'KeywordController@confirmKeyword');
 
+Route::post('/cityOptions', 'SupplierController@cityOptions');
+
 
 Route::get('/supplier', 'SupplierController@manageSupplier');
 

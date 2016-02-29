@@ -93,4 +93,12 @@ class SupplierController extends Controller
 			return redirect('supplier');
 		}
 	}
+
+	public function cityOptions(Request $request){
+		$results = App\Supplier::all();
+		$provinces = App\Province::orderBy('ProvinceName')->get();
+		$cities = App\Province::where('ProvinceID', $request->input('prov_ID'))->orderBy('ProvinceName')->get();
+
+		return view('supplier')->with ('results', $results)->with ('provinces', $provinces)->with ('cities', $cities);
+	}
 }

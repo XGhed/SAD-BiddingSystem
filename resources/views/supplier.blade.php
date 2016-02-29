@@ -39,6 +39,10 @@ Manage Supplier
             $("#edit_email").val(keyEmail);
         });
     });
+
+    $("#prov").click(function(){
+        $("#cityOptions").load("/loadCities");
+    });
 </script>
 @endsection
 
@@ -118,7 +122,7 @@ Manage Supplier
                 <div class="row">
                     <div class="input-field col s3">
                       <select name="add_province">
-                        <option value="" disabled selected>Province</option>
+                        <option id="prov" value="" disabled selected>Province</option>
                         @foreach($provinces as $key => $province)
                           <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
                         @endforeach
@@ -129,9 +133,8 @@ Manage Supplier
                     <div class="input-field col s3">
                       <select name="add_city">
                         <option value="" disabled selected>City</option>
-                        @foreach($provinces as $key => $province)
-                          <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
-                        @endforeach
+                          <div id="cityOptions">
+                          </div>
                       </select>
                       <label>City/Municipality</label>
                     </div>
