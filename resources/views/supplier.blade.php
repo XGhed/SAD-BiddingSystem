@@ -11,7 +11,7 @@ Manage Supplier
 
         $("#tableOutput").DataTable({
           "lengthChange": false,
-          "pageLength": 3,
+          "pageLength": 5,
           "columns": [
             { "searchable": false },
             null,
@@ -52,11 +52,11 @@ Manage Supplier
         <table class="highlight responsive-table centered" id="tableOutput">
         <thead>
           <tr>
-              <th data-field="Manage" style="cursor: default;">Manage</th>
-              <th data-field="Name" >Name</th>
-              <th data-field="Address">Address</th>
-              <th data-field="Contact number">Contact number</th>
-              <th data-field="Email Address">Email Address</th>
+              <th style="cursor: default;">Manage</th>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Contact number</th>
+              <th>Email Address</th>
           </tr>
         </thead>
 
@@ -65,15 +65,13 @@ Manage Supplier
           @foreach($results as $key => $result)
             <tr>
               <td>
-                <div class="row">
-                  <div class="col s4 pull-s1">
+                  <div class="col s4">
                     <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
                     <button id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
                     </div>
-                  <div class="col s4 push-s2">    
+                  <div class="col s4">    
                     <button id="" value="" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                     </div>
-                </div>
               </td>
 
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
