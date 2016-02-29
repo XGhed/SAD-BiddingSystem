@@ -68,7 +68,7 @@ class KeywordController extends Controller
 
 	public function deleteKeyword(Request $request){
 		$keyword = new App\Keyword;
-		$keyword = App\Keyword::find($request->input('edit_ID'));
+		$keyword = App\Keyword::find($request->input('del_ID'));
 		
 		try {
 			$keyword->delete();

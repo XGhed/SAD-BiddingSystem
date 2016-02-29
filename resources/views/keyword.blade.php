@@ -55,10 +55,11 @@ $(function(){
             <tr>
               <td>
                 <div class="row">
-                    <input type="hidden" id="tdID{{$key}}" value="{{$result->KeywordID}}">
-                    <button id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
-                    
-                    <button id="" value="" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                    <form action="/confirmKeyword" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" id="tdID{{$key}}" name="del_ID" value="{{$result->KeywordID}}">
+                    <button type="button" id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+                    <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                    </form>
                 </div>
               </td>
               <td id="tdname{{$key}}">{{$result->KeywordName}}</td>
