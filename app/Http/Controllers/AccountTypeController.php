@@ -7,6 +7,7 @@ use App\AccountType;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use Session;
 
 class AccountTypeController extends Controller
 {
@@ -41,6 +42,9 @@ class AccountTypeController extends Controller
 		$accountType = new App\AccountType;
 
 		$accountType->AccountTypeName = $request->input('add_name');
+		$accountType->Description = $request->input('add_desc');
+		$accountType->TaxRate = $request->input('add_tax');
+		$accountType->Discount = $request->input('add_disc');
 
 		try {
 			$accountType->save();
@@ -56,6 +60,9 @@ class AccountTypeController extends Controller
 		$accountType = App\AccountType::find($request->input('edit_ID'));
 
 		$accountType->AccountTypeName = $request->input('edit_name');
+		$accountType->Description = $request->input('edit_desc');
+		$accountType->TaxRate = $request->input('edit_tax');
+		$accountType->Discount = $request->input('edit_disc');
 
 		try {
 			$accountType->save();
@@ -67,7 +74,7 @@ class AccountTypeController extends Controller
 
 	public function deleteAccountType(Request $request){
 		$accountType = new App\AccountType;
-		$accountType = App\AccountType::find($request->input('edit_ID'));
+		$accountType = App\AccountType::find($request->input('del_ID'));
 		
 		try {
 			$accountType->delete();

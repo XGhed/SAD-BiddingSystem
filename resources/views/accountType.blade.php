@@ -15,6 +15,8 @@ $(function(){
       "columns": [
         { "searchable": false },
         null,
+        null,
+        null,
         null
       ] 
     });
@@ -27,9 +29,13 @@ $(function(){
       var keyID = $("#tdID"+selected).val();
       var keyName = $("#tdname"+selected).text();
       var keyDesc = $("#tddesc"+selected).text();
+      var keyTax = $("#tdtax"+selected).text();
+      var keyDisc = $("#tddisc"+selected).text();
       $("#edit_ID").val(keyID);
       $("#edit_name").val(keyName);
       $("#edit_desc").val(keyDesc);
+      $("#edit_tax").val(keyTax);
+      $("#edit_disc").val(keyDisc);
     });
 });
 </script>
@@ -62,18 +68,19 @@ $(function(){
                    <div class="col s12">
                       <div class="row col s4">
                       <form action="/confirmAccountType" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" id="test{{$key}}" name="del_ID" value="{{$key}}">
-                          <button type="button" id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
-                    </div>
+                      <button type="button" id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+                      </div>
                       <div class="col s4">    
                       <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
-                      </form>
                       </div>
-                  </div>
-                </td>
-
-                <td id="tdname{{$key}}">{{$result->AccountTypeName}}</td>
-                <td id="tddesc{{$key}}">description baby</td>
+                      </div>
+                      </td>
+                      <input type="hidden" id="tdID{{$key}}" name="del_ID" value="{{$result->AccountTypeID}}">
+                      <td id="tdname{{$key}}">{{$result->AccountTypeName}}</td>
+                      <td id="tddesc{{$key}}">{{$result->Description}}</td>
+                      <td id="tdtax{{$key}}">{{$result->TaxRate}}</td>
+                      <td id="tddisc{{$key}}">{{$result->Discount}}</td>
+                      </form>
               </tr>
             @endforeach
               </div>
@@ -92,7 +99,7 @@ $(function(){
       <div class="modal-content">
         <h4><i class="medium material-icons left">account_box</i>Add Account Type</h4>
         				<div class="divider"></div>
-        	<form  action="/confirmAccountType" method="POST" class="row col s12">
+        	<form  action="/confirmAccountType" method="POST" class="row col s12"><input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="row">
       	      	<div class="input-field col s6">
                   <input id="acctype" type="text" class="validate" name="add_name">
@@ -107,13 +114,13 @@ $(function(){
               </div>
 
                 <div class="input-field col s5">
-                  <input id="taxRate" type="text" class="validate" name="taxRate">
-                  <label for="taxRate">Tax Rate</label>
+                  <input id="add_tax" type="text" class="validate" name="add_tax">
+                  <label for="add_tax">Tax Rate</label>
                 </div>
 
                 <div class="input-field col s5">
-                  <input id="discount" type="text" class="validate" name="discount">
-                  <label for="discount">Discount</label>
+                  <input id="add_disc" type="text" class="validate" name="add_disc">
+                  <label for="add_disc">Discount</label>
                 </div>
       </div>
 
@@ -140,8 +147,7 @@ $(function(){
 		    <div class="modal-content">
 		      <h4><i class="medium material-icons left">edit</i>Edit</h4>
 		      							<div class="divider"></div>
-		      	<form action="/confirmAccountType" method="POST" class="row col s12">	
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">						
+		      	<form action="/confirmAccountType" method="POST" class="row col s12"><input type="hidden" name="_token" value="{{ csrf_token() }}">						
               <input type="hidden" name="edit_ID" id="edit_ID">
                   <div class="row">
         						<div class="input-field col s6">
@@ -153,6 +159,18 @@ $(function(){
                     <div class="input-field col s10">
                       <input value=" " id="edit_desc" type="text" class="validate" name="edit_desc">
                       <label class="active" for="edit_desc">Account Description</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s10">
+                      <input value=" " id="edit_tax" type="text" class="validate" name="edit_tax">
+                      <label class="active" for="edit_tax">Account Description</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s10">
+                      <input value=" " id="edit_disc" type="text" class="validate" name="edit_disc">
+                      <label class="active" for="edit_disc">Account Description</label>
                     </div>
                   </div>
 		    </div>

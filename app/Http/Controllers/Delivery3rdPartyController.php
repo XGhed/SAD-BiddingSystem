@@ -40,7 +40,7 @@ class Delivery3rdPartyController extends Controller
 
 		$delveryParty = new App\Delivery_3rdParty;
 
-		$deliveryParty->3rdPartyName = $request->input('add_name');
+		$deliveryParty->PartyName = $request->input('add_name');
 
 		try {
 			$deliveryParty->save();
@@ -54,7 +54,7 @@ class Delivery3rdPartyController extends Controller
 		$deliveryParty = new App\Delivery_3rdParty;
 		$deliveryParty = App\Delivery_3rdParty::find($request->input('edit_ID'));
 
-		$deliveryParty->Delivery3rdPartyName = $request->input('edit_name');
+		$deliveryParty->PartyName = $request->input('edit_name');
 
 		try {
 			$deliveryParty->save();
