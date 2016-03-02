@@ -38,18 +38,15 @@ Manage Supplier
             $("#edit_contactNo").val(keyContactNo);
             $("#edit_email").val(keyEmail);
         });
-    });
-
-
-
-    
+    });    
 
     $(function(){   
         $("#prov").change(function(){
           $provID = $("#prov").val();
-          $.get('/cityOptions?provID=' + '1', function(data){
+          $.get('/cityOptions?provID=' + $provID, function(data){
+            var output = [];
             $.each(data, function(index, subcatObj){
-              $("#cityz").append(""+ subcatObj.CityName +"</option>");
+              $("#add_city").append("<option value='". subcatObj.CityID ."'>"+ subcatObj.CityName +"</option>");//TANGINA BAT AYAW MAG APPEND
             });
           });
         });
@@ -143,7 +140,7 @@ Manage Supplier
                     </div>
 
                     <div class="input-field col s3">
-                      <select name="add_city" id="cityz">
+                      <select name="add_city" id="add_city">
                         <option value="" disabled selected>City</option>
                         
                       </select>
