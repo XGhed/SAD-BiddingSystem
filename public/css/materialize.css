@@ -8540,7 +8540,7 @@ a.waves-effect .waves-ripple {
 }
 
 .collapsible-body {
-  background-color: white; /*DINAGDAG KO LANG*/
+  background-color: transparent; /*DINAGDAG KO LANG*/
   display: none;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
@@ -8574,7 +8574,7 @@ a.waves-effect .waves-ripple {
 
 .side-nav .collapsible-body {
   border: 0;
-  background-color: #424242; /* BINAGO KO TO */
+  background-color: transparent; /* BINAGO KO TO */
 
 }
 
@@ -9827,7 +9827,7 @@ select {
 }
 
 .side-nav li:hover, .side-nav li.active {
-  background-color: #212121; /* BINAGO KO TO */
+  background-color: #49575f; /* BINAGO KO TO */
 }
 
 .side-nav a {
@@ -9876,12 +9876,12 @@ select {
 
 .side-nav .collapsible-body li.active,
 .side-nav.fixed .collapsible-body li.active {
-  background-color: #ee6e73;
+  background-color: transparent;
 }
 
 .side-nav .collapsible-body li.active a,
 .side-nav.fixed .collapsible-body li.active a {
-  color: #fff;
+  color: #ffffff;
 }
 
 #sidenav-overlay {
