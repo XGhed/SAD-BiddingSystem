@@ -40,8 +40,19 @@ Manage Supplier
         });
     });
 
-    $("#prov").click(function(){
-        $("#cityOptions").load("/loadCities");
+
+
+    
+
+    $(function(){   
+        $("#prov").change(function(){
+          $provID = $("#prov").val();
+          $.get('/cityOptions?provID=' + '1', function(data){
+            $.each(data, function(index, subcatObj){
+              $("#cityz").append(""+ subcatObj.CityName +"</option>");
+            });
+          });
+        });
     });
 </script>
 @endsection
@@ -122,8 +133,8 @@ Manage Supplier
 
                 <div class="row col s12">
                     <div class="input-field col s3">
-                      <select name="add_province">
-                        <option id="prov" value="" disabled selected>Province</option>
+                      <select name="add_province" id="prov" >
+                        <option value="" disabled selected>Province</option>
                         @foreach($provinces as $key => $province)
                           <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
                         @endforeach
@@ -132,10 +143,9 @@ Manage Supplier
                     </div>
 
                     <div class="input-field col s3">
-                      <select name="add_city">
+                      <select name="add_city" id="cityz">
                         <option value="" disabled selected>City</option>
-                          <div id="cityOptions">
-                          </div>
+                        
                       </select>
                       <label>City/Municipality</label>
                     </div>

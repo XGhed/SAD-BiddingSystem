@@ -12,6 +12,8 @@
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript" src="js/datatable.js"></script>
 
+      <meta name="csrf-token" content="{{ csrf_token() }}">
+
       @yield('jqueryscript')
     </head>
 
@@ -33,7 +35,7 @@
                 <div class="row"></div>
               <div class="row">
                 <div class="col s10 grey darken-3 push-s1">
-                  <center><img class="circle responsive-img z-depth-3" alt="AdminPic" src="icons/Admin_pic.jpg"></center> 
+                  <!--<center><img class="circle responsive-img z-depth-3" alt="AdminPic" src="icons/Admin_pic.jpg"></center> -->
                 </div>
               </div>
 
