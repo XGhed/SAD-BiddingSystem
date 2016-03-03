@@ -43,10 +43,20 @@ Manage Supplier
     $(function(){   
         $("#prov").change(function(){
           $provID = $("#prov").val();
+
           $.get('/cityOptions?provID=' + $provID, function(data){
-            var output = [];
+            var $selectDropdown = 
+              $("#add_city")
+                .empty()
+                .html(' ');
             $.each(data, function(index, subcatObj){
-              $("#add_city").append("<option value='". subcatObj.CityID ."'>"+ subcatObj.CityName +"</option>");//TANGINA BAT AYAW MAG APPEND
+              //$("#add_city").append("<option></option>");//TANGINA BAT AYAW MAG APPEND
+                $selectDropdown.append(
+                  $("<option></option>")
+                    .attr("value",subcatObj.CityID)
+                    .text(subcatObj.CityName)
+                );
+                $("#add_city").material_select();
             });
           });
         });

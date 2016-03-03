@@ -44,6 +44,8 @@ Route::get('/accountType', 'AccountTypeController@manageAccountType');
 
 Route::get('/keyword', 'KeywordController@ManageKeyword');
 
+Route::get('/item', 'ItemController@manageItem');
+
 
 Route::get('/registerItem', 'PageController@regItems');		//ILIPAT KAPAG MAY ITEM CONTROLLER NA
 

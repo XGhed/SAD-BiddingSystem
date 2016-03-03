@@ -34,7 +34,7 @@
                 <div class="row"></div>
               <div class="row">
                 <div class="col s10 transparent push-s1">
-                  <center><img class="circle responsive-img z-depth-3" alt="AdminPic" src="icons/Admin_pic.jpg"></center>
+                  <!--<center><img class="circle responsive-img z-depth-3" alt="AdminPic" src="icons/Admin_pic.jpg"></center>-->
                 </div>
               </div>
 

@@ -130,7 +130,7 @@ $(function(){
 						    <form class="col s12" action="/confirmCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
 							    <div class="row">
 							       	<div class="input-field col s5">
-							        	<input id="category" type="text" class="validate" name="add_name">
+							        	<input id="category" type="text" class="validate" name="add_name" pattern ="[A-Za-z ]+" title = "Letters only!">
 							         	<label for="category">Category</label>
 							        </div>
 							    </div>
@@ -162,7 +162,7 @@ $(function(){
 					    	<input type="hidden" name="edit_ID" id="edit_ID1">
 							    <div class="row">
 							       	<div class="input-field col s5">
-							        	<input value=" " id="edit_name1" type="text" class="validate" name="edit_name">
+							        	<input value=" " id="edit_name1" type="text" class="validate" name="edit_name" pattern ="[A-Za-z ]+" title = "Letters only!">
 							         	<label class="active" for="edit_name1">Category</label>
 							        </div>
 							    </div>
@@ -298,7 +298,7 @@ $(function(){
 					    	<input type="hidden" name="edit_ID" id="edit_ID2">  
 								<div class="row">	  	
 							       	<div class="input-field col s6">
-							        	<input value=" " type="text" class="validate" name="edit_name" id="edit_name2">
+							        	<input value=" " type="text" class="validate" name="edit_name" id="edit_name2" pattern ="[A-Za-z ]+" title = "Letters only!">
 							         	<label class="active" for="edit_name2">Subcategory</label>
 							        </div>
 							    </div>
