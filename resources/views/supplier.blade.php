@@ -50,7 +50,6 @@ Manage Supplier
                 .empty()
                 .html(' ');
             $.each(data, function(index, subcatObj){
-              //$("#add_city").append("<option></option>");//TANGINA BAT AYAW MAG APPEND
                 $selectDropdown.append(
                   $("<option></option>")
                     .attr("value",subcatObj.CityID)
@@ -97,13 +96,13 @@ Manage Supplier
                     </div>
               </td>
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
-              <td>{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
+              <td>{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp; {{$result->Street_Address}}</td>
               <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
               <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
-              <!--<input type="hidden" id="tdprovince{{$key}}" value="{{$result->Province_Address}}" >
+              <input type="hidden" id="tdprovince{{$key}}" value="{{$result->Province_Address}}" >
               <input type="hidden" id="tdcity{{$key}}" value="{{$result->City_Address}}" >
               <input type="hidden" id="tdbarangay{{$key}}" value="{{$result->Barangay_Address}}" >
-              <input type="hidden" id="tdstreet{{$key}}" value="{{$result->Street_Address}}" >  futurePurposes-->
+              <input type="hidden" id="tdstreet{{$key}}" value="{{$result->Street_Address}}" >
             </tr>
           @endforeach
             </div>
