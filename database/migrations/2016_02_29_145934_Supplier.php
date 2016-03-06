@@ -12,14 +12,12 @@ class Supplier extends Migration
     {
         $table->increments('SupplierID');
         $table->string('SupplierName', 30);
-        $table->string('Province_Address', 30);
         $table->string('Barangay_Street_Address', 30);
-        $table->string('City_Address', 30);
         $table->string('SupplierEmail', 30);
         $table->string('SupplierContactNo', 11);
         $table->boolean('Status')->default(1);
-        $table->integer('ProvinceID')->unsigned();
-        $table->foreign('ProvinceID')->references('ProvinceID')->on('Province');
+        $table->integer('CityID')->unsigned();
+        $table->foreign('CityID')->references('CityID')->on('City');
         $table->softDeletes();
     });
 }
