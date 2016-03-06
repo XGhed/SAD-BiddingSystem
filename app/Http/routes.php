@@ -29,7 +29,7 @@ Route::post('/confirmAccountType', 'AccountTypeController@confirmAccountType');
 
 Route::post('/confirmKeyword', 'KeywordController@confirmKeyword');
 
-Route::post('/cityOptions', 'SupplierController@cityOptions');
+Route::get('/cityOptions', 'DropDowns@cityOptions');
 
 
 Route::get('/supplier', 'SupplierController@manageSupplier');
@@ -43,6 +43,8 @@ Route::get('/deliveryParty', 'Delivery3rdPartyController@manageDelivery3rdParty'
 Route::get('/accountType', 'AccountTypeController@manageAccountType');
 
 Route::get('/keyword', 'KeywordController@ManageKeyword');
+
+Route::get('/item', 'ItemController@manageItem');
 
 
 Route::get('/registerItem', 'PageController@regItems');		//ILIPAT KAPAG MAY ITEM CONTROLLER NA

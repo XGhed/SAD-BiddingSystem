@@ -38,10 +38,27 @@ Manage Supplier
             $("#edit_contactNo").val(keyContactNo);
             $("#edit_email").val(keyEmail);
         });
-    });
+    });    
 
-    $("#prov").click(function(){
-        $("#cityOptions").load("/loadCities");
+    $(function(){   
+        $("#prov").change(function(){
+          $provID = $("#prov").val();
+
+          $.get('/cityOptions?provID=' + $provID, function(data){
+            var $selectDropdown = 
+              $("#add_city")
+                .empty()
+                .html(' ');
+            $.each(data, function(index, subcatObj){
+                $selectDropdown.append(
+                  $("<option></option>")
+                    .attr("value",subcatObj.CityID)
+                    .text(subcatObj.CityName)
+                );
+                $("#add_city").material_select();
+            });
+          });
+        });
     });
 </script>
 @endsection
@@ -79,13 +96,13 @@ Manage Supplier
                     </div>
               </td>
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
-              <td>{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp {{$result->Street_Address}}</td>
+              <td>{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp; {{$result->Street_Address}}</td>
               <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
               <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
-              <!--<input type="hidden" id="tdprovince{{$key}}" value="{{$result->Province_Address}}" >
+              <input type="hidden" id="tdprovince{{$key}}" value="{{$result->Province_Address}}" >
               <input type="hidden" id="tdcity{{$key}}" value="{{$result->City_Address}}" >
               <input type="hidden" id="tdbarangay{{$key}}" value="{{$result->Barangay_Address}}" >
-              <input type="hidden" id="tdstreet{{$key}}" value="{{$result->Street_Address}}" >  futurePurposes-->
+              <input type="hidden" id="tdstreet{{$key}}" value="{{$result->Street_Address}}" >
             </tr>
           @endforeach
             </div>
@@ -122,8 +139,8 @@ Manage Supplier
 
                 <div class="row col s12">
                     <div class="input-field col s3">
-                      <select name="add_province">
-                        <option id="prov" value="" disabled selected>Province</option>
+                      <select name="add_province" id="prov" >
+                        <option value="" disabled selected>Province</option>
                         @foreach($provinces as $key => $province)
                           <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
                         @endforeach
@@ -132,10 +149,9 @@ Manage Supplier
                     </div>
 
                     <div class="input-field col s3">
-                      <select name="add_city">
+                      <select name="add_city" id="add_city">
                         <option value="" disabled selected>City</option>
-                          <div id="cityOptions">
-                          </div>
+                        
                       </select>
                       <label>City/Municipality</label>
                     </div>

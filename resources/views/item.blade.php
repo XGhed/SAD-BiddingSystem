@@ -48,7 +48,7 @@ $(function(){
           <tr>
               <th data-field="Manage" style="cursor: default;">Manage</th>
               <th>Item Id</th>
-              <th>Item Subcategory</th>
+              <th>Subcategory</th>
               <th>Item Name</th>
           </tr>
         </thead>
@@ -73,7 +73,7 @@ $(function(){
 </table>
 
 <div class="row">
-<!--*************************************************** ADDkeyword **************************************-->
+<!--*************************************************** ADD ITEM **************************************-->
   <div class="col s3 right">
 
         <a class="modal-trigger waves-effect waves-light grey darken-3 btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Item</a>
@@ -89,6 +89,14 @@ $(function(){
                     <input id="itemName" type="text" class="validate" name="add_name">
                     <label for="itemName">Item Name</label>
                   </div> 
+
+                  <div class="input-field col s3">
+                      <select name="add_sub" id="add_sub" >
+                        <option value="" disabled selected>Subcategory</option>
+                       
+                      </select>
+                      <label>Subcategory</label>
+                    </div>
           </div>
           </div>
           <div class="modal-footer">
@@ -112,6 +120,15 @@ $(function(){
                     <div class="input-field col s6">
                       <input value=" "id="edit_name" type="text" class="validate" name="edit_name" >
                       <label for="edit_name">Edit Name</label>
+                    </div>
+
+                    <div class="input-field col s3">
+                      <select name="add_sub" id="sub" >
+                        <option value="" disabled selected>Subcategory</option>
+
+                          <option value=""></option>
+                      </select>
+                      <label>Province</label>
                     </div>
         </div>
 

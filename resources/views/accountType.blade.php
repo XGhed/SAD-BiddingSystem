@@ -102,7 +102,7 @@ $(function(){
         	<form  action="/confirmAccountType" method="POST" class="row col s12"><input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="row">
       	      	<div class="input-field col s6">
-                  <input id="acctype" type="text" class="validate" name="add_name">
+                  <input id="acctype" type="text" class="validate" name="add_name" pattern ="[A-Za-z ]+" title = "Letters only!">
                   <label for="acctype">Account Type</label>
                 </div>    	
               </div>
@@ -114,12 +114,12 @@ $(function(){
               </div>
 
                 <div class="input-field col s5">
-                  <input id="add_tax" type="text" class="validate" name="add_tax">
+                  <input id="add_tax" type="text" class="validate" name="add_tax" pattern ="[0-9]+" title = "Numbers only!">
                   <label for="add_tax">Tax Rate</label>
                 </div>
 
                 <div class="input-field col s5">
-                  <input id="add_disc" type="text" class="validate" name="add_disc">
+                  <input id="add_disc" type="text" class="validate" name="add_disc" pattern ="[0-9]+" title = "Numbers only!">
                   <label for="add_disc">Discount</label>
                 </div>
       </div>
@@ -151,7 +151,7 @@ $(function(){
               <input type="hidden" name="edit_ID" id="edit_ID">
                   <div class="row">
         						<div class="input-field col s6">
-        				          <input value=" " id="edit_name" type="text" class="validate" name="edit_name">
+        				          <input value=" " id="edit_name" type="text" class="validate" name="edit_name" pattern ="[A-Za-z ]+" title = "Letters only!">
         				          <label class="active" for="edit_name">Account type</label>
     				        </div>
                   </div>
@@ -163,13 +163,13 @@ $(function(){
                   </div>
                   <div class="row">
                     <div class="input-field col s10">
-                      <input value=" " id="edit_tax" type="text" class="validate" name="edit_tax">
+                      <input value=" " id="edit_tax" type="text" class="validate" name="edit_tax" pattern ="[0-9]+" title = "Numbers only!">
                       <label class="active" for="edit_tax">Account Description</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s10">
-                      <input value=" " id="edit_disc" type="text" class="validate" name="edit_disc">
+                      <input value=" " id="edit_disc" type="text" class="validate" name="edit_disc" pattern ="[0-9]+" title = "Numbers only!">
                       <label class="active" for="edit_disc">Account Description</label>
                     </div>
                   </div>

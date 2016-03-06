@@ -36,9 +36,6 @@ Manage Delivery
 
 
 @section('deliveryParty')
-<br>
-<br>
-
 <div class="row">
 <!--*************************************************** ADDCOMPANY **************************************-->
   <div class="col s8">
