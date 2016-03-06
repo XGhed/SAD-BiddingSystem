@@ -78,6 +78,7 @@ Manage Supplier
               <th>Address</th>
               <th>Contact number</th>
               <th>Email Address</th>
+              <th>Active/Inactive</th>
           </tr>
         </thead>
 
@@ -99,6 +100,14 @@ Manage Supplier
               <td>{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp; {{$result->Street_Address}}</td>
               <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
               <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
+              <td><div class="switch">
+    <label>
+      Off
+      <input type="checkbox">
+      <span class="lever"></span>
+      On
+    </label>
+  </div></td>
               <input type="hidden" id="tdprovince{{$key}}" value="{{$result->Province_Address}}" >
               <input type="hidden" id="tdcity{{$key}}" value="{{$result->City_Address}}" >
               <input type="hidden" id="tdbarangay{{$key}}" value="{{$result->Barangay_Address}}" >
