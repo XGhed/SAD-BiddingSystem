@@ -17,7 +17,7 @@
       @yield('jqueryscript')
     </head>
 
-<body style="background-image: url('icons/greyBackground.jpg');">
+<body style="background-image: url('icons/background6.jpg');">
 
 
 <div class="navbar-fixed">

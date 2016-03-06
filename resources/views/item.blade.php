@@ -50,6 +50,7 @@ $(function(){
               <th>Item Id</th>
               <th>Subcategory</th>
               <th>Item Name</th>
+              <th>Active/Inactive</th>
           </tr>
         </thead>
 
@@ -66,7 +67,17 @@ $(function(){
                     </form>
                 </div>
               </td>
-              <td id=""></td>
+              <td>
+                  <div class="switch">
+                    <label>
+                      Off
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                      On
+                    </label>
+                  </div>
+              </td>
+            </tr>
             </tr>
             </div>
         </tbody>
