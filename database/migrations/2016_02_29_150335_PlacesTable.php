@@ -12,6 +12,7 @@ class PlacesTable extends Migration
     {
         $table->increments('PlaceID');
         $table->string('PlaceName', 30);
+        $table->string('DeliveryDays', 30);
         $table->string('Restrict_Status', 30);
     });
 }

@@ -12,6 +12,8 @@ class ModeOfPaymentType extends Migration
     {
         $table->increments('PaymentTypeID');
         $table->string('PaymentTypeName', 30);
+        $table->string('Description');
+        $table->string('Note');
         $table->softDeletes();
     });
 }

@@ -33,8 +33,8 @@
                 <div class="row"></div>
               <div class="row">
                 <div class="col s10 grey darken-3 push-s1">
-                  <center><img class="circle responsive-img z-depth-3" alt="AdminPic" src="icons/Admin_pic.jpg"></center> 
-                </div>
+                  <!--<center><img class="circle responsive-img z-depth-3" alt="AdminPic" src="icons/Admin_pic.jpg"></center> 
+                --></div>
               </div>
 
         <li class="no-padding">

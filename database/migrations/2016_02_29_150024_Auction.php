@@ -13,6 +13,8 @@ class Auction extends Migration
         $table->increments('AuctionID');
         $table->dateTime('StartDateTime');
         $table->dateTime('EndDateTime');
+        $table->time('TimeExtension');
+        $table->time('MaxTimeExtension');
     });
 }
 

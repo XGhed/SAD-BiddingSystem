@@ -11,7 +11,6 @@ class Deliver extends Migration
     Schema::create('Deliver', function(Blueprint $table)
     {
         $table->increments('DeliverID');
-        $table->dateTime('ExpectedDate');
         $table->integer('DeliveryType')->unsigned();
         $table->foreign('DeliveryType')->references('DeliveryTypeID')->on('DeliveryType');
     });

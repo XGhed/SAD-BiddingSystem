@@ -16,6 +16,7 @@ return array(
     'ClaimType' => $baseDir . '/database/migrations/2016_02_29_150626_ClaimType.php',
     'Container' => $baseDir . '/database/migrations/2016_02_29_150039_Container.php',
     'ContainerItem' => $baseDir . '/database/migrations/2016_02_29_150229_Container_Item.php',
+    'Contract' => $baseDir . '/database/migrations/2016_03_03_201309_Contract.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'Deliver' => $baseDir . '/database/migrations/2016_02_29_150549_Deliver.php',
     'DeliveryCompany' => $baseDir . '/database/migrations/2016_02_29_150513_Delivery_Company.php',

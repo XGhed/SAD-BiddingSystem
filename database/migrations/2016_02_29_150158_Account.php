@@ -16,15 +16,14 @@ class Account extends Migration
         $table->string('Account_Lname', 30);
         $table->string('Account_Province_Address', 30);
         $table->string('Account_Barangay_Address', 30);
-        $table->string('Account_Street_Address', 30);
-        $table->string('Account_City_Address', 30);
+        $table->string('Barangay_Street_Address', 30);
         $table->dateTime('AccountBirthdate', 30);
         $table->String('Account_Occupation', 30);
         $table->String('Account_Gender', 30);
-        $table->String('Account_ContactNo', 15);
+        $table->String('Account_ContactNo', 11);
         $table->String('Account_EmailAdd', 30);
         $table->String('Username', 30);
-        $table->String('Password', 30);
+        $table->String('Password', 15);
         $table->integer('ProvinceID')->unsigned();
         $table->foreign('ProvinceID')->references('ProvinceID')->on('Province');
         $table->integer('AccountTypeID')->unsigned();
