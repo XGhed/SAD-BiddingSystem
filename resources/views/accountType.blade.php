@@ -57,6 +57,7 @@ $(function(){
           <th>Description</th>
           <th>Tax Rate</th>
           <th>Discount</th>
+          <th>Active/Inactive</th>
         </tr>
     </thead>
 
@@ -80,6 +81,17 @@ $(function(){
                       <td id="tddesc{{$key}}">{{$result->Description}}</td>
                       <td id="tdtax{{$key}}">{{$result->TaxRate}}</td>
                       <td id="tddisc{{$key}}">{{$result->Discount}}</td>
+                      <td>
+                          <div class="switch">
+                            <label>
+                              Off
+                              <input type="checkbox">
+                              <span class="lever"></span>
+                              On
+                            </label>
+                          </div>
+                      </td>
+            </tr>
                       </form>
               </tr>
             @endforeach

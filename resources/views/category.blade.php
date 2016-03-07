@@ -90,6 +90,7 @@ $(function(){
 					          	  <th style="cursor: default;">Manage</th>
 					              <th>Category</th>
 					              <th>Description</th>
+					              <th>Active/Inactive</th>
 					          </tr>
 					        </thead>
 
@@ -109,6 +110,16 @@ $(function(){
 						            </td>
 						            <td id="tdname1{{$key}}">{{$result->CategoryName}}</td>
 						            <td id="tddesc1{{$key}}">{{$result->Description}}</td>
+						            <td>
+					                  <div class="switch">
+					                    <label>
+					                      Off
+					                      <input type="checkbox">
+					                      <span class="lever"></span>
+					                      On
+					                    </label>
+					                  </div>
+					              </td>
 						          </tr>
 					         	@endforeach
 					        </tbody>

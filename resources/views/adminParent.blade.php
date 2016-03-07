@@ -17,13 +17,13 @@
       @yield('jqueryscript')
     </head>
 
-<body style="background-image: url('icons/background4.jpg');">
+<body style="background-image: url('icons/background6.jpg');">
 
 
 <div class="navbar-fixed">
 <nav>
-    <div class="nav-wrapper" style="background-image: url('icons/background4.jpg');">
-      <a href="#!" class="brand-logo center black-text"><i class="material-icons left">gavel</i>Bidding Management System</a>
+    <div class="nav-wrapper" style="background-image: url('icons/greyBackground.jpg');">
+      <a href="#!" class="brand-logo center white-text"><i class="material-icons left">gavel</i>Bidding Management System</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="http://localhost:8000/" class="black-text">Hello Admin</a></li>

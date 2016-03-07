@@ -14,8 +14,6 @@ class Account extends Migration
         $table->string('Account_Fname', 30);
         $table->string('Account_Mname', 30)->nullable();
         $table->string('Account_Lname', 30);
-        $table->string('Account_Province_Address', 30);
-        $table->string('Account_Barangay_Address', 30);
         $table->string('Barangay_Street_Address', 30);
         $table->dateTime('AccountBirthdate', 30);
         $table->String('Account_Occupation', 30);
@@ -24,8 +22,8 @@ class Account extends Migration
         $table->String('Account_EmailAdd', 30);
         $table->String('Username', 30);
         $table->String('Password', 15);
-        $table->integer('ProvinceID')->unsigned();
-        $table->foreign('ProvinceID')->references('ProvinceID')->on('Province');
+        $table->integer('CityID')->unsigned();
+        $table->foreign('CityID')->references('CityID')->on('City');
         $table->integer('AccountTypeID')->unsigned();
         $table->foreign('AccountTypeID')->references('AccountTypeID')->on('AccountType');
     });
