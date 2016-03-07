@@ -101,8 +101,7 @@ Manage Supplier
               <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
               <input type="hidden" id="tdprovince{{$key}}" value="{{$result->Province_Address}}" >
               <input type="hidden" id="tdcity{{$key}}" value="{{$result->City_Address}}" >
-              <input type="hidden" id="tdbarangay{{$key}}" value="{{$result->Barangay_Address}}" >
-              <input type="hidden" id="tdstreet{{$key}}" value="{{$result->Street_Address}}" >
+              <input type="hidden" id="tdbarangay{{$key}}" value="{{$result->Barangay_Street_Address}}" >
             </tr>
           @endforeach
             </div>
@@ -157,7 +156,7 @@ Manage Supplier
                     </div>
 
                       <div class="input-field col s6">
-                        <input id="add_barangay" type="text" class="validate" name="add_barangay" length="30" maxlength="30">
+                        <input id="add_barangay" type="text" class="validate" name="add_barangay_street" length="30" maxlength="30">
                         <label for="add_barangay">Brgy and Street Address</label>
                       </div>
                 </div>

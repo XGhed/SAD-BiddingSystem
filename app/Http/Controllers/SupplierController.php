@@ -48,8 +48,7 @@ class SupplierController extends Controller
 		$supplier->SupplierName = $request->input('add_name');
 		$supplier->Province_Address = $request->input('add_province');
 		$supplier->City_Address = $request->input('add_city');
-		$supplier->Barangay_Address = $request->input('add_barangay');
-		$supplier->Street_Address = $request->input('add_street');
+		$supplier->Barangay_Street_Address = $request->input('add_barangay_street');
 		$supplier->SupplierContactNo = $request->input('add_contactNo');
 		$supplier->SupplierEmail = $request->input('add_email');
 
