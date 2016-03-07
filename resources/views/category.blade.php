@@ -15,6 +15,7 @@ $(function(){
       "columns": [
         { "searchable": false },
         null,
+        null,
         null
       ] 
     });
@@ -40,6 +41,7 @@ $(function(){
       "pageLength": 5,
       "columns": [
         { "searchable": false },
+        null,
         null,
         null
       ] 
