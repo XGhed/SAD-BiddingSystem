@@ -42,7 +42,6 @@ $(function(){
       "columns": [
         { "searchable": false },
         null,
-        null,
         null
       ] 
     });
