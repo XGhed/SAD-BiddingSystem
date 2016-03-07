@@ -18,6 +18,18 @@ class SupplierController extends Controller
 
        $results = App\Supplier::all();
        $provinces = App\Province::orderBy('ProvinceName')->get();
+       $cities = App\City::all();
+
+       foreach ($results as $key => $result) {
+       	foreach ($cities as $key => $city) {
+       		if($city->CityID == $result->CityID){
+       			$result['ProvinceID'] = $city->province->ProvinceID;
+		       	$result['ProvinceName'] = $city->province->ProvinceName;
+		       	$result['CityID'] = $city->CityID;
+		       	$result['CityName'] = $city->CityName;
+       		}
+       	}
+       }
 
        return view('supplier')->with ('results', $results)->with ('provinces', $provinces);
     }
@@ -46,8 +58,7 @@ class SupplierController extends Controller
 		$supplier = new App\Supplier;
 
 		$supplier->SupplierName = $request->input('add_name');
-		$supplier->Province_Address = $request->input('add_province');
-		$supplier->City_Address = $request->input('add_city');
+		$supplier->CityID = $request->input('add_city');
 		$supplier->Barangay_Street_Address = $request->input('add_barangay_street');
 		$supplier->SupplierContactNo = $request->input('add_contactNo');
 		$supplier->SupplierEmail = $request->input('add_email');

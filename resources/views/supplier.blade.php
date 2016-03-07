@@ -29,7 +29,7 @@ Manage Supplier
             var selected = this.id;
             var keyID = $("#tdID"+selected).val();
             var keyName = $("#tdname"+selected).text();
-            //var keyProvince = $("#tdprovince"+selected).text();
+            //var keyProvince = $("#tdprovince"+selected).val();
             var keyContactNo = $("#tdcontactno"+selected).text();
             var keyEmail = $("#tdemail"+selected).text();
             $("#edit_ID").val(keyID);
@@ -90,19 +90,19 @@ Manage Supplier
                     <div class="col s12">
                       <div class="col s4">
                         <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
-                        <button id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+                        <button id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
                       </div>
                       <input type="hidden" id="" name="del_ID" value="">
                       <button id="" value="" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                     </div>
               </td>
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
-              <td>{{$result->Province_Address}},&nbsp; {{$result->City_Address}},&nbsp; {{$result->Barangay_Address}},&nbsp; {{$result->Street_Address}}</td>
+              <td>{{$result->Barangay_Street_Address}},&nbsp; {{$result->CityName}},&nbsp; {{$result->ProvinceName}} </td>
               <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
               <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
-              <input type="hidden" id="tdprovince{{$key}}" value="{{$result->Province_Address}}" >
-              <input type="hidden" id="tdcity{{$key}}" value="{{$result->City_Address}}" >
-              <input type="hidden" id="tdbarangay{{$key}}" value="{{$result->Barangay_Street_Address}}" >
+              <input type="hidden" id="tdprovince{{$key}}" value="{{$result->ProvinceID}}" >
+              <input type="hidden" id="tdcity{{$key}}" value="{{$result->CityID}}" >
+              <input type="hidden" id="tdbarangaystreet{{$key}}" value="{{$result->Barangay_Street_Address}}" >
               <td>
                   <div class="switch">
                     <label>
