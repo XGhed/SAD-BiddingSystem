@@ -94,9 +94,9 @@ Manage Supplier
               <td>
                     <div class="col s12">
                       <div class="col s4">
+                        <button id="{{$key}}" value="{{$key}}" name="edit" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
                         <form action="confirmSupplier" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->SupplierID}}">
-                        <button id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
                       </div>
                       <input type="hidden" id="" name="del_ID" value="">
                       <button id="delete" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
