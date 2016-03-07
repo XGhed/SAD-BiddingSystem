@@ -30,13 +30,17 @@ Manage Supplier
             var selected = this.id;
             var keyID = $("#tdID"+selected).val();
             var keyName = $("#tdname"+selected).text();
-            //var keyProvince = $("#tdprovince"+selected).val();
+            var keyProvince = $("#tdprovince"+selected).val();
+            var keyBarangayStreet = $("#tdbarangaystreet"+selected).val();
             var keyContactNo = $("#tdcontactno"+selected).text();
             var keyEmail = $("#tdemail"+selected).text();
             $("#edit_ID").val(keyID);
             $("#edit_name").val(keyName);
-            //$("#edit_province").val(keyProvince);
+            $('#edit_province').prop('selected', false)
+                   .filter('[value="'+keyProvince+'"]')
+                   .prop('selected', true);
             $("#edit_contactNo").val(keyContactNo);
+            $("#edit_barangaystreet").val(keyBarangayStreet);
             $("#edit_email").val(keyEmail);
         });
     });    
@@ -90,11 +94,13 @@ Manage Supplier
               <td>
                     <div class="col s12">
                       <div class="col s4">
-                        <input type="hidden" id="tdID{{$key}}" value="{{$result->SupplierID}}">
+                        <form action="confirmSupplier" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->SupplierID}}">
                         <button id="{{$key}}" value="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
                       </div>
                       <input type="hidden" id="" name="del_ID" value="">
-                      <button id="" value="" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                      <button id="delete" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                      </form>
                     </div>
               </td>
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
@@ -216,10 +222,9 @@ Manage Supplier
               <div class="row">
                   <div class="input-field col s3">
                     <select id="edit_province" name="edit_province">
-                      <option selected></option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
+                      @foreach($provinces as $key => $province)
+                          <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
+                        @endforeach
                     </select>
                     <label>Province</label>
                   </div>
@@ -235,8 +240,8 @@ Manage Supplier
                   </div>
 
                   <div class="input-field col s6">
-                    <input id="edit_barangay" type="text" class="validate" name="edit_barangay" length="30" maxlength="30">
-                    <label for="edit_barangay">Brgy and Street Address</label>
+                    <input id="edit_barangaystreet" type="text" class="validate" name="edit_barangaystreet" length="30" maxlength="30">
+                    <label for="edit_barangaystreet">Brgy and Street Address</label>
                   </div>
               </div>
 
