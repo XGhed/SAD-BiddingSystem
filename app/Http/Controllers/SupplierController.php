@@ -20,7 +20,7 @@ class SupplierController extends Controller
        $provinces = App\Province::orderBy('ProvinceName')->get();
        $cities = App\City::all();
 
-       foreach ($results as $key => $result) {
+       /*foreach ($results as $key => $result) {
        	foreach ($cities as $key => $city) {
        		if($city->CityID == $result->CityID){
        			$result['ProvinceID'] = $city->province->ProvinceID;
@@ -29,7 +29,7 @@ class SupplierController extends Controller
 		       	$result['CityName'] = $city->CityName;
        		}
        	}
-       }
+       }*/
 
        return view('supplier')->with ('results', $results)->with ('provinces', $provinces);
     }
@@ -55,15 +55,15 @@ class SupplierController extends Controller
 
 	public function insertSupplier(Request $request){
 
-		$supplier = new App\Supplier;
-
-		$supplier->SupplierName = $request->input('add_name');
-		$supplier->CityID = $request->input('add_city');
-		$supplier->Barangay_Street_Address = $request->input('add_barangay_street');
-		$supplier->SupplierContactNo = $request->input('add_contactNo');
-		$supplier->SupplierEmail = $request->input('add_email');
-
 		try {
+			$supplier = new App\Supplier;
+
+			$supplier->SupplierName = $request->input('add_name');
+			$supplier->CityID = $request->input('add_city');
+			$supplier->Barangay_Street_Address = $request->input('add_barangay_street');
+			$supplier->SupplierContactNo = $request->input('add_contactNo');
+			$supplier->SupplierEmail = $request->input('add_email');
+
 			$supplier->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
@@ -73,18 +73,18 @@ class SupplierController extends Controller
 
 	public function updateSupplier(Request $request){
 
-		$supplier = new App\Supplier;
-		$supplier = App\Supplier::find($request->input('edit_ID'));
-
-		$supplier->SupplierName = $request->input('edit_name');
-		$supplier->Province_Address = $request->input('edit_province');
-		$supplier->City_Address = $request->input('edit_city');
-		$supplier->Barangay_Address = $request->input('edit_barangay');
-		$supplier->Street_Address = $request->input('edit_street');
-		$supplier->SupplierContactNo = $request->input('edit_contactNo');
-		$supplier->SupplierEmail = $request->input('edit_email');
-
 		try {
+			$supplier = new App\Supplier;
+			$supplier = App\Supplier::find($request->input('edit_ID'));
+
+			$supplier->SupplierName = $request->input('edit_name');
+			$supplier->Province_Address = $request->input('edit_province');
+			$supplier->City_Address = $request->input('edit_city');
+			$supplier->Barangay_Address = $request->input('edit_barangay');
+			$supplier->Street_Address = $request->input('edit_street');
+			$supplier->SupplierContactNo = $request->input('edit_contactNo');
+			$supplier->SupplierEmail = $request->input('edit_email');
+
 			$supplier->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
@@ -93,10 +93,10 @@ class SupplierController extends Controller
 	}
 
 	public function deleteSupplier(Request $request){
-		$supplier = new App\Supplier;
-		$supplier = App\Supplier::find($request->input('edit_ID'));
-		
 		try {
+			$supplier = new App\Supplier;
+			$supplier = App\Supplier::find($request->input('edit_ID'));
+		
 			$supplier->delete();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
