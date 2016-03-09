@@ -7474,6 +7474,8 @@ nav .input-field label.active {
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px;
     line-height: 64px;
+    background-color: transparent; /* BINAGO KO TO */
+    
   }
   .navbar-fixed {
     height: 64px;
@@ -9827,7 +9829,7 @@ select {
 }
 
 .side-nav li:hover, .side-nav li.active {
-  background-color: #49575f; /* BINAGO KO TO */
+  box-shadow: 0 12px 36px 16px rgba(0, 0, 0, 0.50); /* BINAGO KO TO */
 }
 
 .side-nav a {
@@ -9857,6 +9859,7 @@ select {
   left: 0;
   position: fixed;
   width: 16.66666667%;
+  box-shadow: 0 12px 36px 16px rgba(0, 0, 1, .8); /* BINAGO KO TO DINAGDAG KO LANG TO*/
 }
 
 .side-nav.fixed.right-aligned {

@@ -42,7 +42,7 @@ Route::get('/category', 'CategoryController@manageCategory');
 
 Route::get('/subcategory', 'SubCategoryController@manageSubcategory');
 
-Route::get('/deliveryParty', 'Delivery3rdPartyController@manageDelivery3rdParty');
+// Route::get('/deliveryParty', 'Delivery3rdPartyController@manageDelivery3rdParty');
 
 Route::get('/accountType', 'AccountTypeController@manageAccountType');
 
@@ -50,6 +50,7 @@ Route::get('/keyword', 'KeywordController@ManageKeyword');
 
 Route::get('/item', 'ItemController@manageItem');
 
+Route::get('/shipment', 'PageController@shipment');
 
 
 Route::get('/registration', 'PageController@registration');

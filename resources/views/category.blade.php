@@ -66,7 +66,7 @@ $(function(){
 
 
 @section('title1')
-<h2 class="left col s6 push-s1 white-text" style="font-size: 28px">Manage Category</h2>
+<h2 class="left col s6 push-s1 black-text" style="font-size: 28px">Manage Category</h2>
 @endsection
 
 
@@ -74,17 +74,25 @@ $(function(){
 
 
 @section('category')
+
     <div class="col s10 push-s1" >
       <ul class="tabs">
-        <li class="tab col s3"><a class="black-text blockquote" href="#catTab">Category</a></li>
-        <li class="tab col s3"><a class="black-text blockquote" href="#subcatTab" >Subcategory</a></li>
+        <li class="tab col s3"><a class="black-text" href="#catTab">Category</a></li>
+        <li class="tab col s3"><a class="black-text" href="#subcatTab" >Subcategory</a></li>
 
       </ul>
     </div>
 
+    
+
     <div id= "catTab" class="col s12">
-	    		<!--***************************************************DATA TABLE **************************************-->
+	    		<!--DATA TABLE -->
 					<div class="col s12">
+						<div class="right">
+							<div class="row"></div>
+							<a class="modal-trigger grey darken-3 waves-effect waves-light btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Category</a>
+						</div>
+
 						<table class="responsive-table highlight centered" id="tableOutput1">
 					        <thead>
 					          <tr>
@@ -126,14 +134,12 @@ $(function(){
 					        </tbody>
 					      </table>
 					</div>
-		<!--***************************************************END DATA TABLE **************************************-->
+		<!--END DATA TABLE -->
 
-		<div class="row">
-	<!--*************************************************** ADDCATEGORY **************************************-->
-		<div class="col s4 right">
-			 <!-- Modal Trigger -->
-				  <a class="modal-trigger grey darken-3 waves-effect waves-light btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Category</a>
-				  <!-- Modal Structure -->
+	<!-- ADDCATEGORY -->
+			 
+				  
+
 				  <div id="modal1" class="modal modal-fixed-footer">
 				    <div class="modal-content">
 				      <h4><i class="medium material-icons left">dns</i>Add Category</h4>
@@ -142,13 +148,13 @@ $(function(){
 						    <form class="col s12" action="/confirmCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
 							    <div class="row">
 							       	<div class="input-field col s5">
-							        	<input id="category" type="text" class="validate" name="add_name" pattern ="[A-Za-z ]+" title = "Letters only!">
+							        	<input id="category" type="text" class="validate" name="add_name" required>
 							         	<label for="category">Category</label>
 							        </div>
 							    </div>
 							    <div class="row">
 									<div class="input-field col s10">
-										<input id="add_desc" type="text" class="validate" name="add_desc">
+										<input id="add_desc" type="text" class="validate" name="add_desc" required>
 										<label for="add_desc">Description</label>
 									</div>
 								</div>
@@ -159,9 +165,8 @@ $(function(){
 	                	<i class="material-icons left">done</i>Add</button></form>
 				    </div>
 				  </div>
-		</div>
 	<!--*************************************************** END ADDCATEGORY **************************************-->
-		</div>
+		
 		    <!--*************************************************** CAT EDIT ************************************************-->
     			  
 		  <div id="modal3" class="modal modal-fixed-footer">
@@ -218,6 +223,10 @@ $(function(){
  <div id="subcatTab" class="col s12">
 	    		<!--***************************************************DATA TABLE **************************************-->
 			<div class="col s12">
+				<div class="right">
+							<div class="row"></div>
+					<a class="modal-trigger grey darken-3 waves-effect waves-light btn" href="#modal2"><i class="material-icons left">add</i>Add Subcategory</a>
+				</div>
 				<table class="responsive-table highlight centered" id="tableOutput2">
 			        <thead>
 			          <tr>
@@ -247,13 +256,11 @@ $(function(){
 			</div>
 
 
-			<!--***************************************************END DATA TABLE **************************************-->
+			<!--END DATA TABLE -->
 
-			<!--***************************************************ADD SUBCATEGORY **************************************-->
-				<div class="row">
-					<div class="col s4 right">
-						 <!-- Modal Trigger -->
-							  <a class="modal-trigger grey darken-3 waves-effect waves-light btn" href="#modal2"><i class="material-icons left">add</i>Add Subcategory</a>
+			<!--ADD SUBCATEGORY -->
+						
+							  
 
 							  <!-- Modal Structure -->
 							<div id="modal2" class="modal modal-fixed-footer">
@@ -265,7 +272,7 @@ $(function(){
 										    <input type="hidden" name="_token" value="{{ csrf_token() }}">	
 										      	<div class="row">
 											        <div class="input-field col s7">
-													    <select name="add_ID">
+													    <select name="add_ID" REQUIRED>
 													    	<option value="" disabled selected>Choose your Category</option>
 													    	@foreach($results as $key => $result)
 						            						<option id="{{$key}}" value="{{$result->CategoryID}}">{{$result->CategoryName}}</option>
@@ -275,14 +282,14 @@ $(function(){
 												 </div>
 
 												<div class="row">
-												    <div class="input-field col s6">
-												        <input id="add_name" type="text" class="validate" name="add_name">
+												    <div class="input-field col s6" >
+												        <input id="add_name" type="text" class="validate" name="add_name" REQUIRED>
 												        <label for="add_name">Name of Subcategory</label>
 												</div>
 
 												<div class="row">
 												    <div class="input-field col s10">
-												        <input id="add_desc" type="text" class="validate" name="add_desc">
+												        <input id="add_desc" type="text" class="validate" name="add_desc" REQUIRED>
 												        <label for="add_desc">Description</label>
 													</div>
 												</div>

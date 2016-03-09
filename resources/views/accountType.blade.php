@@ -48,7 +48,11 @@ $(function(){
 
 @section('accountType')
 
-<!-- ***************************************** DATA TABLE *****************************************-->
+  <div class="row"></div>
+    <div class="right">
+      <a class="modal-trigger waves-effect waves-light btn grey darken-3" href="#modal1"><i class="material-icons left">add</i>Add Account Type</a>
+    </div>
+<!--  DATA TABLE -->
   <table class="highlight responsive-table centered" id="tableOutput">
     <thead>
         <tr>
@@ -98,13 +102,10 @@ $(function(){
               </div>
           </tbody>
   </table>
-<!-- ***************************************** END DATA TABLE *****************************************-->
+<!--  END DATA TABLE -->
 
+<!--  ADD ACCTYPE -->
 
-<div class="row">
-<!-- ***************************************** ADD ACCTYPE *****************************************-->
-    <div class="col s3 right">
-	<a class="modal-trigger waves-effect waves-light btn grey darken-3" href="#modal1"><i class="material-icons left">add</i>Add Account Type</a>
 
   	<div id="modal1" class="modal modal-fixed-footer">
     
@@ -144,8 +145,7 @@ $(function(){
 
     </div>
 </div>
-</div>
-<!-- ***************************************** END ACCTYPE *****************************************-->
+<!--  END ACCTYPE -->
 
 
 

@@ -2,7 +2,7 @@
 
 
 @section('title')
-Manage Supplier
+Maintenance
 @endsection
 
 @section('jqueryscript')
@@ -89,11 +89,15 @@ Manage Supplier
 @endsection
 
 @section('title1')
-<h1 class="left col s6 push-s1 white-text" style="font-size: 28px">Manage Supplier</h1>
+<h1 class="left col s6 push-s1 black-text" style="font-size: 28px">Manage Supplier</h1>
 @endsection
 
 
 @section('supplier')
+<div class="row"></div>
+      <div class="right">
+        <a class="modal-trigger waves-effect waves-light grey darken-3 btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
+      </div>
         <!-- DATA TABLE -->
       <table class="highlight responsive-table centered" id="tableOutput">
         <thead>
@@ -112,21 +116,24 @@ Manage Supplier
           @foreach($results as $key => $result)
             <tr>
               <td>
-                    <div class="col s12">
+                    <div class="row col s12" >
                       <div class="col s4">
-                        <button id="{{$key}}" value="{{$key}}" name="edit" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
-                        <form action="confirmSupplier" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->SupplierID}}">
+                         <button id="{{$key}}" value="{{$key}}" name="edit" class="edit btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
+                          <form action="confirmSupplier" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+                         <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->SupplierID}}">
+                        </div>
+                      
+                      <div class="col s5">
+                        <input type="hidden" id="" name="del_ID" value="">
+                        <button id="delete" name="delete" class="btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                       </div>
-                      <input type="hidden" id="" name="del_ID" value="">
-                      <button id="delete" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                       </form>
                     </div>
               </td>
-              <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
-              <td>{{$result->Barangay_Street_Address}},&nbsp; {{$result->city->CityName}},&nbsp; {{$result->city->province->ProvinceName}} </td>
-              <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
-              <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
+              <td id="tdname{{$key}}" style="font-size: 14px">{{$result->SupplierName}}</td>
+              <td style="font-size: 14px">{{$result->Barangay_Street_Address}},&nbsp; {{$result->city->CityName}},&nbsp; {{$result->city->province->ProvinceName}} </td>
+              <td id="tdcontactno{{$key}}" style="font-size: 14px">{{$result->SupplierContactNo}}</td>
+              <td id="tdemail{{$key}}" style="font-size: 14px">{{$result->SupplierEmail}}</td>
               <input type="hidden" id="tdprovince{{$key}}" value="{{$result->city->province->ProvinceID}}" >
               <input type="hidden" id="tdcity{{$key}}" value="{{$result->city->CityID}}" >
               <input type="hidden" id="tdbarangaystreet{{$key}}" value="{{$result->Barangay_Street_Address}}" >
@@ -148,15 +155,8 @@ Manage Supplier
 
 
 
-
-
-  <div class="row">  
+ 
 <!--***************************ADD BUTTON***************************-->
-    <div class="col s3 right">
-    <!-- MODAL TRIGGER-->
-      <a class="modal-trigger waves-effect waves-light grey darken-3 btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
-
-      <!-- Modal Structure -->
       <div id="addBtn" class="modal modal-fixed-footer">
         <div class="modal-content" >
           <h4><i class="medium material-icons left">face</i>Add Supplier</h4>
@@ -169,14 +169,14 @@ Manage Supplier
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="input-field col s8">
-                      <input id="supplier_name" type="text" class="validate" name="add_name" length="30" maxlength="30">
+                      <input id="supplier_name" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
                       <label for="supplier_name">Supplier's Name</label>
                     </div>
                 </div>
 
                 <div class="row col s12">
                     <div class="input-field col s3">
-                      <select name="add_province" id="prov" >
+                      <select name="add_province" id="prov" REQUIRED>
                         <option value="" disabled selected>Province</option>
                         @foreach($provinces as $key => $province)
                           <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
@@ -186,7 +186,7 @@ Manage Supplier
                     </div>
 
                     <div class="input-field col s3">
-                      <select name="add_city" id="city">
+                      <select name="add_city" id="add_city" REQUIRED>
                         <option value="" disabled selected>City</option>
                         
                       </select>
@@ -194,18 +194,18 @@ Manage Supplier
                     </div>
 
                       <div class="input-field col s6">
-                        <input id="add_barangay" type="text" class="validate" name="add_barangay_street" length="30" maxlength="30">
+                        <input id="add_barangay" type="text" class="validate" name="add_barangay_street" length="30" maxlength="30" REQUIRED>
                         <label for="add_barangay">Brgy and Street Address</label>
                       </div>
                 </div>
 
                 <div class="row">
-                    <div class="input-field col s6">
-                      <input id="contact_num" type="text" class="validate" name="add_contactNo" length="30" maxlength="30">
+                    <div class="input-field col s6" REQUIRED>
+                      <input id="contact_num" type="text" class="validate" name="add_contactNo" length="30" maxlength="30" REQUIRED>
                       <label for="contact_num">Contact Number</label>
                     </div>
 
-                    <div class="input-field col s6">
+                    <div class="input-field col s6" REQUIRED>
                       <input id="eAddress" type="email" class="validate" name="add_email" length="30" maxlength="30">
                       <label for="eAddress">Email Address</label>
             
@@ -219,8 +219,9 @@ Manage Supplier
             </div>
         </form>  
             </div> <!--MODAL BODY-->
-    </div>
-  </div>
+
+
+
 <!-- ***************************************************EDIT**************************************-->
 
     <!-- Modal Structure -->
