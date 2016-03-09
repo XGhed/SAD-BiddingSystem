@@ -17,13 +17,13 @@
       @yield('jqueryscript')
     </head>
 
-<body style="background-image: url('icons/background6.jpg');">
+<body style="background-image: url('icons/background4.jpg');">
 
 
 <div class="navbar-fixed">
 <nav>
-    <div class="nav-wrapper" style="background-image: url('icons/greyBackground.jpg');">
-      <a href="#!" class="brand-logo center white-text"><i class="material-icons left">gavel</i>Bidding Management System</a>
+    <div class="nav-wrapper" style="background-image: url('icons/background4.jpg');">
+      <a href="#!" class="brand-logo center black-text"><i class="material-icons left">gavel</i>Bidding Management System</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="http://localhost:8000/" class="black-text">Hello Admin</a></li>
@@ -126,7 +126,6 @@
       }
     ?>
     <div class="col s10 push-s1 white hoverable">
-        @yield('supplier')
         @yield('accounts')
         @yield('category')
         @yield('subcategory')
@@ -138,6 +137,9 @@
         @yield('deliveryCompany')
         @yield('keyword')
         @yield('modePayment')
+    </div>
+    <div class="col s11 push-s1 white hoverable">
+        @yield('supplier')
     </div>
     </div>
     </div>
