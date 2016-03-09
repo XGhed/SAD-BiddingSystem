@@ -23,9 +23,9 @@ class PageController extends Controller
        return view('registration');
     }
 
-    public function paymentMethod(Request $request){
+    public function shipment(Request $request){
 
-       return view('modePayment');
+       return view('shipment');
     }
 
     public function keyword(Request $request){

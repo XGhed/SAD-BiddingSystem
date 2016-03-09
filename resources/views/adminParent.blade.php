@@ -20,51 +20,43 @@
 <body style="background-image: url('icons/background4.jpg');">
 
 
-<div class="navbar-fixed">
+<div class="navbar">
 <nav>
-    <div class="nav-wrapper" style="background-image: url('icons/background4.jpg');">
+    <div class="nav-wrapper">
       <a href="#!" class="brand-logo center black-text"><i class="material-icons left">gavel</i>Bidding Management System</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="http://localhost:8000/" class="black-text">Hello Admin</a></li>
       </ul>
-       <ul id="slide-out" id="mobile-demo" class="side-nav fixed transparent" onmouseover="showScroll(this)" onmouseout="hideScroll(this)">
+       <ul id="slide-out" id="mobile-demo" class="side-nav fixed"  style="background-image: url('icons/background4.jpg');" onmouseover="showScroll(this)" onmouseout="hideScroll(this)">
                 <!-- admin info -->
-                <div class="row"></div>
-                <div class="row"></div>
               <div class="row">
-
-                <div class="col s10 grey darken-3 push-s1">
-                  <!--<center><img class="circle responsive-img z-depth-3" alt="AdminPic" src="icons/Admin_pic.jpg"></center> 
-                --></div>
-
-                <div class="col s10 transparent push-s1">
-                  <!--<center><img class="circle responsive-img z-depth-3" alt="AdminPic" src="icons/Admin_pic.jpg"></center>-->
+                <div class="col s12 transparent">
+                  <center><img class="circle responsive-img" alt="AdminPic" src="icons/BMS2.png"></center>
                 </div>
-
               </div>
 
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
             <li>
               <a class="black-text collapsible-header"><i class="material-icons left ">build</i>Maintenance<i class="material-icons right">arrow_drop_down</i></a>
-              <div class="collapsible-body" style="background-image: url('icons/background4.jpg');">
+              <div class="collapsible-body">
                   <div class="divider"></div>
                 <ul>
                   <li><a class="black-text" href="/supplier">Supplier</a></li>
                   <li><a class="black-text" href="/category" >Category</a></li>
-                  <li><a class="black-text" href="/keyword">Keyword</a></li>
+              <!--<li><a class="black-text" href="/keyword">Keyword</a></li>-->
                   <li><a class="black-text" href="/item">Item</a></li>
                   <li><a class="black-text" href="/accountType">Account Type</a></li>
-                  <li><a class="black-text" href="/paymentMethod">Payment Method</a></li>
-                  <li><a class="black-text" href="/deliveryParty">3rd Party Delivery</a></li>
+              <!--<li><a class="black-text" href="/paymentMethod">Payment Method</a></li>-->
+                  <li><a class="black-text" href="/shipment">Shipment</a></li>
                   <div class="divider"></div>
                 </ul>
               </div>
             </li>
           </ul>
         </li>       
-        <li><a class="black-text" href="/registerItem"><i class="material-icons left">input</i>Register Items</a></li>
+        <li><a class="black-text" href="/registerItem"><i class="material-icons left">input</i>Record Items</a></li>
         <li><a class="black-text" href="/bidEvent"><i class="material-icons left">today</i>Bidding Event</a></li>
         <li><a class="black-text" href="#!"><i class="material-icons left">receipt</i>Reports</a></li>
         <li><a class="right black-text" href="/home"><i class="material-icons left">exit_to_app</i>Log out</a></li>
@@ -94,11 +86,7 @@
   </div>
 
 <div class="row">
- <!--*******************SIDE NAVIGATOR PANEL********************************************* -->
-      
-
- <!--*******************SIDE NAVIGATOR PANEL********************************************* -->
-    <div class="col s10 push-s2 transparent">
+    <div class="col s10 push-s2">
     @yield('title1')
     <?php
     if (Session::get('message') != null){
@@ -126,6 +114,7 @@
       }
     ?>
     <div class="col s10 push-s1 white hoverable">
+        @yield('supplier')
         @yield('accounts')
         @yield('category')
         @yield('subcategory')
@@ -138,9 +127,7 @@
         @yield('keyword')
         @yield('modePayment')
     </div>
-    <div class="col s11 push-s1 white hoverable">
-        @yield('supplier')
-    </div>
+
     </div>
     </div>
 
