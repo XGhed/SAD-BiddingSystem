@@ -27,35 +27,34 @@ $(function(){
     $('#tableOutput').on('click', '.edit', function(){
       $('#modal3').openModal();
       var selected = this.id;
-      var keyID = $("#tdID"+selected).val();
+      var keyID = $("#tdID"+selected).text();
       var keyName = $("#tdname"+selected).text();
-      var keyDesc = $("#tddesc"+selected).text();
+      var keyCat = $("#tdcatID"+selected).val();
+      var keySubCat = $("#tdsubcatID"+selected).val();
       $("#edit_ID").val(keyID);
       $("#edit_name").val(keyName);
-      $("#edit_desc").val(keyDesc);
+      $("#edit_cat").val(keyCat);
+      $("#edit_sub").val(keySubCat);
     });
 });
 
 $(function(){   
-        $("#cat").change(function(){
-
-          $('#modal3').on('change', '#catE', function(){
-              $.get('/subcatOptions?catID=' + $("#catE").val(), function(data){
-              var $selectDropdown = 
-                $("#edit_sub")
-                  .empty()
-                  .html(' ');
-              $.each(data, function(index, subcatObj){
-                  $selectDropdown.append(
-                    $("<option></option>")
-                      .attr("value",subcatObj.SubCategoryID)
-                      .text(subcatObj.SubCategoryName)
-                  );
-                  $("#edit_sub").material_select();
+      $('#modal3').on('change', '#edit_cat', function(){
+          $.get('/subcatOptions?catID=' + $("#edit_cat").val(), function(data){
+          var $selectDropdown = 
+            $("#edit_sub")
+              .empty()
+              .html(' ');
+          $.each(data, function(index, subcatObj){
+              $selectDropdown.append(
+                $("<option></option>")
+                  .attr("value",subcatObj.SubCategoryID)
+                  .text(subcatObj.SubCategoryName)
+              );
+              $("#edit_sub").material_select();
               });
-            });
-          });
-        });    
+        });
+      });
     });
 
 $(function(){   
@@ -104,10 +103,10 @@ $(function(){
               <tr>
                 <td>
                   <div class="row">
-                      <form action="/" method="POST">
-                        <input type="hidden" name="_token" value="">
-                        <input type="hidden" id="" name="del_ID" value="">
-                          <button type="button" id="" value="" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+                      <form action="/confirmItem" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" id="" name="del_ID" value="{{$result->ItemID}}">
+                          <button type="button" id="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
                           <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                       </form>
                   </div>
@@ -115,6 +114,8 @@ $(function(){
                 <td id="tdID{{$key}}">{{$result->ItemID}}</td>
                 <td id="tdsubcategoryname{{$key}}">{{$result->subCategory->SubCategoryName}}</td>
                 <td id="tdname{{$key}}">{{$result->ItemName}}</td>
+                <input type="hidden" id="tdcatID{{$key}}" value="{{$result->subCategory->category->CategoryID}}" />
+                <input type="hidden" id="tdsubcatID{{$key}}" value="{{$result->subCategory->SubCategoryID}}" />
                 <td>
                     <div class="switch">
                       <label>
@@ -143,8 +144,6 @@ $(function(){
                   <div class="divider"></div>
           <form class="col s12" action="/confirmItem" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="row">
-              <form class="col s12" action="/confirmKeyword" method="POST">
-                <input type="hidden" name="_token" value="">
                   <div class="input-field col s6">
                     <input id="itemName" type="text" class="validate" name="add_name">
                     <label for="itemName">Item Name</label>
@@ -174,7 +173,6 @@ $(function(){
                   <i class="material-icons left">done</i>Add Item</button></form>
           </div>
         </div>
-      </form>
   </div>
 <!--*************************************************** END ADDCOMPANY **************************************-->
 </div>
@@ -184,8 +182,7 @@ $(function(){
         <div class="modal-content">
           <h4><i class="medium material-icons left">edit</i>Edit</h4>
                         <div class="divider"></div>
-            <form action="" method="POST" class="row col s12">
-                <input type="hidden" name="_token" value="">
+            <form action="/confirmItem" method="POST" class="row col s12"><input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="edit_ID" id="edit_ID">
                   <div class="row"></div>
                     <div class="input-field col s6">
@@ -194,7 +191,7 @@ $(function(){
                     </div>
 
                     <div class="input-field col s3">
-                      <select name="add_cat" id="catE">
+                      <select name="edit_cat" id="edit_cat">
                         <option value="" disabled selected>Category</option>
                         @foreach($categories as $key => $category)
                           <option value="{{$category->CategoryID}}">{{$category->CategoryName}}</option>
@@ -204,12 +201,12 @@ $(function(){
                     </div>
 
                     <div class="input-field col s3">
-                      <select name="add_sub" id="edit_sub" >
+                      <select name="edit_sub" id="edit_sub" >
                         <option value="" disabled selected>Subcategory</option>
 
                           <option value=""></option>
                       </select>
-                      <label>Province</label>
+                      <label>SubCategory</label>
                     </div>
         </div>
 
