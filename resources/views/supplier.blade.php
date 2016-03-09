@@ -30,18 +30,38 @@ Manage Supplier
             var selected = this.id;
             var keyID = $("#tdID"+selected).val();
             var keyName = $("#tdname"+selected).text();
-            var keyProvince = $("#tdprovince"+selected).val();
+            //var keyProvince = $("#tdprovince"+selected).val();
             var keyBarangayStreet = $("#tdbarangaystreet"+selected).val();
             var keyContactNo = $("#tdcontactno"+selected).text();
             var keyEmail = $("#tdemail"+selected).text();
             $("#edit_ID").val(keyID);
             $("#edit_name").val(keyName);
-            $('#edit_province').prop('selected', false)
-                   .filter('[value="'+keyProvince+'"]')
-                   .prop('selected', true);
+            //$('#edit_province').prop('selected', false)
+              //     .filter('[value="'+keyProvince+'"]')
+                //   .prop('selected', true);
             $("#edit_contactNo").val(keyContactNo);
             $("#edit_barangaystreet").val(keyBarangayStreet);
             $("#edit_email").val(keyEmail);
+        });
+    });   
+
+    $(function(){   
+        $('#modal1').on('change', '#provE', function(){alert("WHY");
+
+          $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
+            var $selectDropdown = 
+              $("#cityE")
+                .empty()
+                .html(' ');
+            $.each(data, function(index, subcatObj){
+                $selectDropdown.append(
+                  $("<option></option>")
+                    .attr("value",subcatObj.CityID)
+                    .text(subcatObj.CityName)
+                );
+                $("#cityE").material_select();
+            });
+          });
         });
     });    
 
@@ -51,7 +71,7 @@ Manage Supplier
 
           $.get('/cityOptions?provID=' + $provID, function(data){
             var $selectDropdown = 
-              $("#add_city")
+              $("#city")
                 .empty()
                 .html(' ');
             $.each(data, function(index, subcatObj){
@@ -60,7 +80,7 @@ Manage Supplier
                     .attr("value",subcatObj.CityID)
                     .text(subcatObj.CityName)
                 );
-                $("#add_city").material_select();
+                $("#city").material_select();
             });
           });
         });
@@ -166,7 +186,7 @@ Manage Supplier
                     </div>
 
                     <div class="input-field col s3">
-                      <select name="add_city" id="add_city">
+                      <select name="add_city" id="city">
                         <option value="" disabled selected>City</option>
                         
                       </select>
@@ -221,23 +241,22 @@ Manage Supplier
 
               <div class="row">
                   <div class="input-field col s3">
-                    <select id="edit_province" name="edit_province">
-                      @foreach($provinces as $key => $province)
+                      <select name="edit_province" id="provE" >
+                        <option value="" disabled selected>Province</option>
+                        @foreach($provinces as $key => $province)
                           <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
                         @endforeach
-                    </select>
-                    <label>Province</label>
-                  </div>
+                      </select>
+                      <label>Province</label>
+                    </div>
 
                   <div class="input-field col s3">
-                    <select id="edit_city" name="edit_city">
-                      <option selected></option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
-                    </select>
-                    <label>City/Municipality</label>
-                  </div>
+                      <select name="edit_city" id="cityE">
+                        <option value="" disabled selected>City</option>
+                        
+                      </select>
+                      <label>City/Municipality</label>
+                    </div>
 
                   <div class="input-field col s6">
                     <input id="edit_barangaystreet" type="text" class="validate" name="edit_barangaystreet" length="30" maxlength="30">

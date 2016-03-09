@@ -22,4 +22,11 @@ class DropDowns extends Controller
 
         return \Response::json($cities);
     }
+
+    public function subcatOptions(){
+        $catID = Input::get('catID');
+        $subCategories = App\SubCategory::where('CategoryID', $catID)->get();
+
+        return \Response::json($subCategories);
+    }
 }

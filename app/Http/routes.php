@@ -29,7 +29,11 @@ Route::post('/confirmAccountType', 'AccountTypeController@confirmAccountType');
 
 Route::post('/confirmKeyword', 'KeywordController@confirmKeyword');
 
+Route::post('/confirmItem', 'ItemController@confirmItem');
+
 Route::get('/cityOptions', 'DropDowns@cityOptions');
+
+Route::get('/subcatOptions', 'DropDowns@subcatOptions');
 
 
 Route::get('/supplier', 'SupplierController@manageSupplier');
@@ -67,7 +71,6 @@ Route::get('/home', 'PageController@homepage');
 
 Route::get('/deliveryCompany', 'PageController@deliveryCompany');
 
-Route::get('/item', 'PageController@manageItem');
 
 
 

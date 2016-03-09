@@ -78,10 +78,8 @@ class SupplierController extends Controller
 			$supplier = App\Supplier::find($request->input('edit_ID'));
 
 			$supplier->SupplierName = $request->input('edit_name');
-			$supplier->Province_Address = $request->input('edit_province');
-			$supplier->City_Address = $request->input('edit_city');
-			$supplier->Barangay_Address = $request->input('edit_barangay');
-			$supplier->Street_Address = $request->input('edit_street');
+			$supplier->CityID = $request->input('edit_city');
+			$supplier->Barangay_Street_Address = $request->input('edit_barangaystreet');
 			$supplier->SupplierContactNo = $request->input('edit_contactNo');
 			$supplier->SupplierEmail = $request->input('edit_email');
 

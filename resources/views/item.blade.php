@@ -10,11 +10,13 @@ Manage Items
 <script type="text/javascript">
 $(function(){   
 
-    $("#tableOutput1").DataTable({
+    $("#tableOutput").DataTable({
       "lengthChange": false,
       "pageLength": 5,
       "columns": [
         { "searchable": false },
+        null,
+        null,
         null,
         null
       ] 
@@ -22,17 +24,38 @@ $(function(){
 });
 
 $(function(){   
-    $('#tableOutput1').on('click', '.edit', function(){
+    $('#tableOutput').on('click', '.edit', function(){
       $('#modal3').openModal();
       var selected = this.id;
-      var keyID = $("#tdID1"+selected).val();
-      var keyName = $("#tdname1"+selected).text();
-      var keyDesc = $("#tddesc1"+selected).text();
-      $("#edit_ID1").val(keyID);
-      $("#edit_name1").val(keyName);
-      $("#edit_desc1").val(keyDesc);
+      var keyID = $("#tdID"+selected).val();
+      var keyName = $("#tdname"+selected).text();
+      var keyDesc = $("#tddesc"+selected).text();
+      $("#edit_ID").val(keyID);
+      $("#edit_name").val(keyName);
+      $("#edit_desc").val(keyDesc);
     });
 });
+
+$(function(){   
+        $("#cat").change(function(){
+
+          $.get('/subcatOptions?catID=' + $("#cat").val(), function(data){
+            alert(data);
+            var $selectDropdown = 
+              $("#add_sub")
+                .empty()
+                .html(' ');
+            $.each(data, function(index, subcatObj){
+                $selectDropdown.append(
+                  $("<option></option>")
+                    .attr("value",subcatObj.SubCategoryID)
+                    .text(subcatObj.SubCategoryName)
+                );
+                $("#add_sub").material_select();
+            });
+          });
+        });
+    });
 
 </script>
 @endsection
@@ -56,29 +79,33 @@ $(function(){
 
         <tbody>
         <div id="formOutput" value="">     
-            <tr>
-              <td>
-                <div class="row">
-                    <form action="/" method="POST">
-                      <input type="hidden" name="_token" value="">
-                      <input type="hidden" id="" name="del_ID" value="">
-                        <button type="button" id="" value="" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
-                        <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
-                    </form>
-                </div>
-              </td>
-              <td>
-                  <div class="switch">
-                    <label>
-                      Off
-                      <input type="checkbox">
-                      <span class="lever"></span>
-                      On
-                    </label>
+            @foreach($results as $key => $result)
+              <tr>
+                <td>
+                  <div class="row">
+                      <form action="/" method="POST">
+                        <input type="hidden" name="_token" value="">
+                        <input type="hidden" id="" name="del_ID" value="">
+                          <button type="button" id="" value="" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+                          <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                      </form>
                   </div>
-              </td>
-            </tr>
-            </tr>
+                </td>
+                <td id="tdID{{$key}}">{{$result->ItemID}}</td>
+                <td id="tdsubcategoryname{{$key}}">{{$result->subCategory->SubCategoryName}}</td>
+                <td id="tdname{{$key}}">{{$result->ItemName}}</td>
+                <td>
+                    <div class="switch">
+                      <label>
+                        Off
+                        <input type="checkbox">
+                        <span class="lever"></span>
+                        On
+                      </label>
+                    </div>
+                </td>
+              </tr>
+            @endforeach
             </div>
         </tbody>
 </table>
@@ -93,6 +120,7 @@ $(function(){
           <div class="modal-content">
             <h4><i class="medium material-icons left">label</i>Add Item</h4>
                   <div class="divider"></div>
+          <form class="col s12" action="/confirmItem" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="row">
               <form class="col s12" action="/confirmKeyword" method="POST">
                 <input type="hidden" name="_token" value="">
@@ -100,6 +128,16 @@ $(function(){
                     <input id="itemName" type="text" class="validate" name="add_name">
                     <label for="itemName">Item Name</label>
                   </div> 
+
+                  <div class="input-field col s3">
+                      <select name="add_cat" id="cat">
+                        <option value="" disabled selected>Category</option>
+                        @foreach($categories as $key => $category)
+                          <option value="{{$category->CategoryID}}">{{$category->CategoryName}}</option>
+                        @endforeach
+                      </select>
+                      <label>Category</label>
+                    </div>
 
                   <div class="input-field col s3">
                       <select name="add_sub" id="add_sub" >
@@ -115,6 +153,7 @@ $(function(){
                   <i class="material-icons left">done</i>Add Item</button></form>
           </div>
         </div>
+      </form>
   </div>
 <!--*************************************************** END ADDCOMPANY **************************************-->
 </div>

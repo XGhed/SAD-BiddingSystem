@@ -14,6 +14,7 @@ class Items extends Migration
         $table->string('ItemName', 30);
         $table->integer('SubCategoryID')->unsigned();
         $table->foreign('SubCategoryID')->references('SubCategoryID')->on('SubCategory');
+        $table->softDeletes();
     });
 }
 

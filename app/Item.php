@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Item extends Model
 {
     use SoftDeletes;
@@ -15,6 +17,6 @@ class Item extends Model
 
     public function subCategory()
 	{
-	    return $this->hasOne('App\SubCategory', 'CategoryID');
+	    return $this->hasOne('App\SubCategory', 'SubCategoryID', 'SubCategoryID');
 	}
 }

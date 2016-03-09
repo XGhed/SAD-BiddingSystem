@@ -16,9 +16,10 @@ class ItemController extends Controller
     public function manageItem(){
 
        $results = App\Item::all();
+       $categories = App\Category::all();
        $subCategories = App\SubCategory::all();
 
-       return view('item')->with ('results', $results)->with ('subCategories', $subCategories);
+       return view('item')->with ('results', $results)->with ('subCategories', $subCategories)->with ('categories', $categories);
     }
 
     public function confirmItem(Request $request){

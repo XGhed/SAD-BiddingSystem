@@ -14,4 +14,9 @@ class SubCategory extends Model
     protected $primaryKey = 'SubCategoryID';
     protected $dates = ['deleted_at'];
     public $timestamps = false;
+
+    public function category()
+	{
+	    return $this->hasOne('App\Category', 'CategoryID', 'CategoryID');
+	}
 }//ALTER TABLE `category` ADD `deleted_at` DATETIME NULL DEFAULT NULL
