@@ -46,7 +46,7 @@ Manage Supplier
     });   
 
     $(function(){   
-        $('#modal1').on('change', '#provE', function(){alert("WHY");
+        $('#modal1').on('change', '#provE', function(){
 
           $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
             var $selectDropdown = 

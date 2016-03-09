@@ -39,8 +39,29 @@ $(function(){
 $(function(){   
         $("#cat").change(function(){
 
+          $('#modal3').on('change', '#catE', function(){
+              $.get('/subcatOptions?catID=' + $("#catE").val(), function(data){
+              var $selectDropdown = 
+                $("#edit_sub")
+                  .empty()
+                  .html(' ');
+              $.each(data, function(index, subcatObj){
+                  $selectDropdown.append(
+                    $("<option></option>")
+                      .attr("value",subcatObj.SubCategoryID)
+                      .text(subcatObj.SubCategoryName)
+                  );
+                  $("#edit_sub").material_select();
+              });
+            });
+          });
+        });    
+    });
+
+$(function(){   
+        $("#cat").change(function(){
+
           $.get('/subcatOptions?catID=' + $("#cat").val(), function(data){
-            alert(data);
             var $selectDropdown = 
               $("#add_sub")
                 .empty()
@@ -173,7 +194,17 @@ $(function(){
                     </div>
 
                     <div class="input-field col s3">
-                      <select name="add_sub" id="sub" >
+                      <select name="add_cat" id="catE">
+                        <option value="" disabled selected>Category</option>
+                        @foreach($categories as $key => $category)
+                          <option value="{{$category->CategoryID}}">{{$category->CategoryName}}</option>
+                        @endforeach
+                      </select>
+                      <label>Category</label>
+                    </div>
+
+                    <div class="input-field col s3">
+                      <select name="add_sub" id="edit_sub" >
                         <option value="" disabled selected>Subcategory</option>
 
                           <option value=""></option>
