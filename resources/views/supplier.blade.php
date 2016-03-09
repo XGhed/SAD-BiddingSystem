@@ -104,11 +104,11 @@ Manage Supplier
                     </div>
               </td>
               <td id="tdname{{$key}}">{{$result->SupplierName}}</td>
-              <td>{{$result->Barangay_Street_Address}},&nbsp; {{$result->CityName}},&nbsp; {{$result->ProvinceName}} </td>
+              <td>{{$result->Barangay_Street_Address}},&nbsp; {{$result->city->CityName}},&nbsp; {{$result->city->province->ProvinceName}} </td>
               <td id="tdcontactno{{$key}}">{{$result->SupplierContactNo}}</td>
               <td id="tdemail{{$key}}">{{$result->SupplierEmail}}</td>
-              <input type="hidden" id="tdprovince{{$key}}" value="{{$result->ProvinceID}}" >
-              <input type="hidden" id="tdcity{{$key}}" value="{{$result->CityID}}" >
+              <input type="hidden" id="tdprovince{{$key}}" value="{{$result->city->province->ProvinceID}}" >
+              <input type="hidden" id="tdcity{{$key}}" value="{{$result->city->CityID}}" >
               <input type="hidden" id="tdbarangaystreet{{$key}}" value="{{$result->Barangay_Street_Address}}" >
               <td>
                   <div class="switch">

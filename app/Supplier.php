@@ -14,4 +14,9 @@ class Supplier extends Model
     protected $primaryKey = 'SupplierID';
     protected $dates = ['deleted_at'];
     public $timestamps = false;
+
+    public function city()
+	{
+	    return $this->hasOne('App\City', 'CityID', 'CityID');
+	}
 }
