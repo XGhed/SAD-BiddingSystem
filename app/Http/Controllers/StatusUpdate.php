@@ -53,4 +53,41 @@ class StatusUpdate extends Controller
         }
         $accountType->save();
     }
+
+    public function Category(){
+        $category = new App\Category;
+        $category = App\Category::find(Input::get('categoryID'));
+
+        if ($category->Status == 1){
+            $category->Status = 0;
+        }
+        elseif ($category->Status == 0){
+            $category->Status = 1;
+        }
+        $category->save();
+
+        foreach ($category->subCategory as $key => $sub) {
+            $sub->Status = $category->Status;
+            $sub->save();
+        }
+    }
+
+    public function SubCategory(){
+        $subCategory = new App\SubCategory;
+        $subCategory = App\SubCategory::find(Input::get('subcategoryID'));
+
+        if ($subCategory->Status == 1){
+            $subCategory->Status = 0;
+            $subCategory->save();
+            return 1;
+        }
+        elseif ($subCategory->Status == 0 && $subCategory->category->Status == 1){
+            $subCategory->Status = 1;
+            $subCategory->save();
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
 }

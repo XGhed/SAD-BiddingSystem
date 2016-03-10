@@ -19,6 +19,15 @@ $(function(){
         null
       ] 
     });
+
+    $(".cat").click(function(){
+          $.get('/status_Category?categoryID=' + $(this).val(), function(data){
+              //NOTIFICATION HERE MUMING :*
+              var toastContent = $('<span>Status Changed!</span>');
+                  Materialize.toast(toastContent, 1500, 'edit');
+                  setTimeout(location.reload(), 1000);
+            });
+        });
 });
 
 $(function(){   
@@ -42,9 +51,27 @@ $(function(){
       "columns": [
         { "searchable": false },
         null,
+        null,
         null
       ] 
     });
+
+    $(".subcat").click(function(){
+    	var thisID = $(this).attr('id');
+    	
+          $.get('/status_SubCategory?subcategoryID=' + $(this).val(), function(data){
+              //NOTIFICATION HERE MUMING :*
+              if (data == 1){
+              	var toastContent = $('<span>Status Changed!</span>');
+                  Materialize.toast(toastContent, 1500, 'edit');
+              }
+              else if (data == 0){
+              	$("#" + thisID).prop('checked', false);
+              	var toastContent = $('<span>Category is inactive!</span>');
+                  Materialize.toast(toastContent, 1500, 'edit');
+              }
+            });
+        });
 });
 
 $(function(){   
@@ -123,7 +150,11 @@ $(function(){
 					                  <div class="switch">
 					                    <label>
 					                      Off
-					                      <input type="checkbox">
+					                      @if ($result->Status == 1)
+					                            <input class="cat" type="checkbox" id="tdstatus{{$key}}" value="{{$result->CategoryID}}" checked>
+					                        @elseif ($result->Status == 0)
+					                            <input class="cat" type="checkbox" id="tdstatus{{$key}}" value="{{$result->CategoryID}}" >
+					                        @endif
 					                      <span class="lever"></span>
 					                      On
 					                    </label>
@@ -233,6 +264,7 @@ $(function(){
 			          	  <th style="cursor: default;">Manage</th>
 			              <th>Subcategory</th>
 			              <th>Description</th>
+			              <th>Active/Inactive</th>
 			          </tr>
 			        </thead>
 
@@ -249,6 +281,20 @@ $(function(){
 
 						   <td id="tdname2{{$key}}">{{$result->SubCategoryName}}</td>
 						   <td id="tddesc2{{$key}}">{{$result->Description}}</td>
+						   <td>
+					                  <div class="switch">
+					                    <label>
+					                      Off
+					                      @if ($result->Status == 1)
+					                            <input class="subcat" type="checkbox" id="tdstatus2{{$key}}" value="{{$result->SubCategoryID}}" checked>
+					                        @elseif ($result->Status == 0)
+					                            <input class="subcat" type="checkbox" id="tdstatus2{{$key}}" value="{{$result->SubCategoryID}}" >
+					                        @endif
+					                      <span class="lever"></span>
+					                      On
+					                    </label>
+					                  </div>
+					              </td>
 						</tr>
 					    @endforeach
 			        </tbody>
