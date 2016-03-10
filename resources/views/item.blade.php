@@ -34,7 +34,10 @@ $(function(){
       $("#edit_ID").val(keyID);
       $("#edit_name").val(keyName);
       $("#edit_cat").val(keyCat);
+      $("#edit_cat").change();
       $("#edit_sub").val(keySubCat);
+      $("#edit_cat").material_select();
+      $("#edit_sub").material_select();
     });
 });
 

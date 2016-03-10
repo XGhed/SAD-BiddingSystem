@@ -30,15 +30,18 @@ Maintenance
             var selected = this.id;
             var keyID = $("#tdID"+selected).val();
             var keyName = $("#tdname"+selected).text();
-            //var keyProvince = $("#tdprovince"+selected).val();
+            var keyProvince = $("#tdprovince"+selected).val();
+            var keyCity = $("#tdcity"+selected).val();
             var keyBarangayStreet = $("#tdbarangaystreet"+selected).val();
             var keyContactNo = $("#tdcontactno"+selected).text();
             var keyEmail = $("#tdemail"+selected).text();
             $("#edit_ID").val(keyID);
             $("#edit_name").val(keyName);
-            //$('#edit_province').prop('selected', false)
-              //     .filter('[value="'+keyProvince+'"]')
-                //   .prop('selected', true);
+            $("#provE").val(keyProvince);
+            $("#provE").change();
+            $("#cityE").val(keyCity);
+            $("#provE").material_select();
+            $("#cityE").material_select();
             $("#edit_contactNo").val(keyContactNo);
             $("#edit_barangaystreet").val(keyBarangayStreet);
             $("#edit_email").val(keyEmail);
@@ -59,8 +62,8 @@ Maintenance
                     .attr("value",subcatObj.CityID)
                     .text(subcatObj.CityName)
                 );
-                $("#cityE").material_select();
             });
+            $("#cityE").material_select();
           });
         });
     });    
@@ -79,8 +82,8 @@ Maintenance
                     .attr("value",subcatObj.CityID)
                     .text(subcatObj.CityName)
                 );
-                $("#city").material_select();
             });
+            $("#city").material_select();
           });
         });
     });    
@@ -262,7 +265,7 @@ Maintenance
 
                   <div class="input-field col s6">
                     <input  value=" " id="edit_barangaystreet" type="text" class="validate" name="edit_barangaystreet" length="30" maxlength="30">
-                    <label class="active for="edit_barangaystreet">Brgy and Street Address</label>
+                    <label class="active" for="edit_barangaystreet">Brgy and Street Address</label>
                   </div>
               </div>
 
