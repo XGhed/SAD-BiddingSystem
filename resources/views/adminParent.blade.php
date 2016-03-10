@@ -25,7 +25,7 @@
 <div class="navbar">
 <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center white-text"><img src='icons/tangina.png' class="large">Bidding Management System</a>
+      <a href="#!" class="brand-logo center white-text"><i class="material-icons left">gavel</i>Bidding Management System</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="http://localhost:8000/" class="white-text">Hello Admin</a></li>
