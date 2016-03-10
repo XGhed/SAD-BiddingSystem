@@ -99,7 +99,7 @@
                 </script>";
         elseif(Session::get('message') == '2')
           echo "<script> 
-                  var toastContent = $('<span>RECORD EDITED!</span>');
+                  var toastContent = $('<span>RECORD UPDATED!</span>');
                   Materialize.toast(toastContent, 5000, 'edit');
                 </script>";
         elseif(Session::get('message') == '3')

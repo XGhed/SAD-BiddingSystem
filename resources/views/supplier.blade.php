@@ -97,7 +97,7 @@ Maintenance
 @section('supplier')
 <div class="row"></div>
       <div class="right">
-        <a class="modal-trigger waves-effect waves-light grey darken-3 btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
+        <a class="modal-trigger waves-effect waves-light green btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
       </div>
         <!-- DATA TABLE -->
       <table class="highlight responsive-table centered" id="tableOutput">
@@ -261,8 +261,8 @@ Maintenance
                     </div>
 
                   <div class="input-field col s6">
-                    <input id="edit_barangaystreet" type="text" class="validate" name="edit_barangaystreet" length="30" maxlength="30">
-                    <label for="edit_barangaystreet">Brgy and Street Address</label>
+                    <input  value=" " id="edit_barangaystreet" type="text" class="validate" name="edit_barangaystreet" length="30" maxlength="30">
+                    <label class="active for="edit_barangaystreet">Brgy and Street Address</label>
                   </div>
               </div>
 

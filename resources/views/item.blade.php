@@ -81,7 +81,7 @@ $(function(){
 @endsection
 
 @section('title1')
-<h1 class="left col s6 push-s1 white-text" style="font-size: 45px">Manage Items</h2>
+<h1 class="left col s6 push-s1 white-text" style="font-size: 28px">Manage Items</h2>
 @endsection
 
 
