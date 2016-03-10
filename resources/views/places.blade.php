@@ -2,11 +2,11 @@
 
 
 @section('title')
-Manage Category
+Maintenance
 @endsection
 
 @section('jqueryscript')
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(function(){   
 
     $("#tableOutput1").DataTable({
@@ -86,14 +86,14 @@ $(function(){
       $("#edit_desc2").val(keyDesc);
     });
 });
-</script>
+</script>-->
 @endsection
 
 
 
 
 @section('title1')
-<h2 class="left col s6 push-s1 white-text" style="font-size: 28px">Manage Category</h2>
+<h2 class="left col s6 push-s1 white-text" style="font-size: 28px">Manage Places</h2>
 @endsection
 
 
@@ -104,80 +104,65 @@ $(function(){
 
     <div class="col s10 push-s1" >
       <ul class="tabs">
-        <li class="tab col s3"><a class="black-text" href="#catTab">Category</a></li>
-        <li class="tab col s3"><a class="black-text" href="#subcatTab" >Subcategory</a></li>
+        <li class="tab col s3"><a class="black-text" href="#proTab">Province</a></li>
+        <li class="tab col s3"><a class="black-text" href="#ciTab">City</a></li>
 
       </ul>
     </div>
 
     
 
-    <div id= "catTab" class="col s12">
+    <div id= "proTab" class="col s12">
 	    		<!--DATA TABLE -->
 					<div class="col s12">
 						<div class="right">
 							<div class="row"></div>
-							<a class="modal-trigger grey darken-3 waves-effect waves-light btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Category</a>
+							<a class="modal-trigger green waves-effect waves-light btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Province</a>
 						</div>
 
 						<table class="responsive-table highlight centered" id="tableOutput1">
 					        <thead>
 					          <tr>
 					          	  <th style="cursor: default;">Manage</th>
-					              <th>Category</th>
+					              <th>Province</th>
 					              <th>Description</th>
-					              <th>Active/Inactive</th>
 					          </tr>
 					        </thead>
 
 					        <tbody>
-					        	@foreach($results as $key => $result)
+					        	
 						            <tr>
 						          	<td>
 						          		<form class="row " action="/confirmCategory" method="POST">
 						          			<div class="center">
-						          				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						          				<button type="button" id="{{$key}}" value="{{$key}}" class="edit1 btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped center" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+						          				<input type="hidden" name="_token" value="">
+						          				<button type="button" id="" value="" class="edit1 btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped center" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
 
-						          				<input type="hidden" class="items" id="tdID1{{$key}}" name="del_ID" value="{{$result->CategoryID}}">
+						          				<input type="hidden" class="items" id="" name="del_ID" value="">
 						          				<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
 						          			</div>
 						          		</form>
 						            </td>
-						            <td id="tdname1{{$key}}">{{$result->CategoryName}}</td>
-						            <td id="tddesc1{{$key}}">{{$result->Description}}</td>
-						            <td>
-					                  <div class="switch">
-					                    <label>
-					                      Off
-					                      @if ($result->Status == 1)
-					                            <input class="cat" type="checkbox" id="tdstatus{{$key}}" value="{{$result->CategoryID}}" checked>
-					                        @elseif ($result->Status == 0)
-					                            <input class="cat" type="checkbox" id="tdstatus{{$key}}" value="{{$result->CategoryID}}" >
-					                        @endif
-					                      <span class="lever"></span>
-					                      On
-					                    </label>
-					                  </div>
-					              </td>
+						            <td id=""></td>
+						            <td id=""></td>
 						          </tr>
-					         	@endforeach
+					         	
 					        </tbody>
 					      </table>
 					</div>
 		<!--END DATA TABLE -->
 
-	<!-- ADDCATEGORY -->
+	<!-- ADDPLACE -->
 				  <div id="modal1" class="modal modal-fixed-footer">
 				    <div class="modal-content">
-				      <h4><i class="medium material-icons left">dns</i>Add Category</h4>
+				      <h4><i class="medium material-icons left">location_on</i>Add Location</h4>
 				      			<div class="divider"></div>
 				        <div class="row">
-						    <form class="col s12" action="/confirmCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+						    <form class="col s12" action="" method="POST"><input type="hidden" name="" value="">
 							    <div class="row">
 							       	<div class="input-field col s5">
 							        	<input id="category" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
-							         	<label for="category">Category</label>
+							         	<label for="category">Province</label>
 							        </div>
 							    </div>
 							    <div class="row">
@@ -193,9 +178,9 @@ $(function(){
 	                	<i class="material-icons left">done</i>Add</button></form>
 				    </div>
 				  </div>
-	<!--*************************************************** END ADDCATEGORY **************************************-->
+	<!-- END ADDPLACES -->
 		
-		    <!--*************************************************** CAT EDIT ************************************************-->
+		    <!-- CAT EDIT -->
     			  
 		  <div id="modal3" class="modal modal-fixed-footer">
 		    <div class="modal-content">
@@ -203,12 +188,12 @@ $(function(){
 		      							<div class="divider"></div>
 		     		<div class="row">
 					    <form class="col s12" action="/confirmCategory" method="POST">
-					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					    	<input type="hidden" name="_token" value="">
 					    	<input type="hidden" name="edit_ID" id="edit_ID1">
 							    <div class="row">
 							       	<div class="input-field col s5">
 							        	<input value=" " id="edit_name1" type="text" class="validate" name="edit_name" pattern ="[A-Za-z ]+" length="30" maxlength="30" REQUIRED>
-							         	<label class="active" for="edit_name1">Category</label>
+							         	<label class="active" for="edit_name1">Province</label>
 							        </div>
 							    </div>
 							    <div class="row">
@@ -248,52 +233,39 @@ $(function(){
     <!-- *************************************************** SUB CATEGORY ***************************************************-->
 
 
- <div id="subcatTab" class="col s12">
+ <div id="ciTab" class="col s12">
 	    		<!--DATA TABLE -->
 			<div class="col s12">
 				<div class="right">
 							<div class="row"></div>
-					<a class="modal-trigger grey darken-3 waves-effect waves-light btn" href="#modal2"><i class="material-icons left">add</i>Add Subcategory</a>
+					<a class="modal-trigger grey darken-3 waves-effect waves-light btn" href="#modal2"><i class="material-icons left">add</i>Add City</a>
 				</div>
 				<table class="responsive-table highlight centered" id="tableOutput2">
 			        <thead>
 			          <tr>
 			          	  <th style="cursor: default;">Manage</th>
-			              <th>Subcategory</th>
+			              <th>City</th>
 			              <th>Description</th>
-			              <th>Active/Inactive</th>
+			              
 			          </tr>
 			        </thead>
 
 			        <tbody>
-			        	@foreach($results2 as $key => $result)
+			        	
 						 <tr>
 						   <td>
-						   		<form action="/confirmSubCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
-						       <input type="hidden" class="items" id="tdID2{{$key}}" name="del_ID" value="{{$result->SubCategoryID}}">
-					          	<button type="button" id="{{$key}}" value="{{$key}}" class="edit2 btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+						   		<form action="" method="POST">
+						   		<input type="hidden" name="" value="">
+						       <input type="hidden" class="items" id="" name="del_ID" value="">
+					          	<button type="button" id="" value="" class="edit2 btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
 								<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
 								</form>
 						    </td>
 
-						   <td id="tdname2{{$key}}">{{$result->SubCategoryName}}</td>
-						   <td id="tddesc2{{$key}}">{{$result->Description}}</td>
-						   <td>
-					                  <div class="switch">
-					                    <label>
-					                      Off
-					                      @if ($result->Status == 1)
-					                            <input class="subcat" type="checkbox" id="tdstatus2{{$key}}" value="{{$result->SubCategoryID}}" checked>
-					                        @elseif ($result->Status == 0)
-					                            <input class="subcat" type="checkbox" id="tdstatus2{{$key}}" value="{{$result->SubCategoryID}}" >
-					                        @endif
-					                      <span class="lever"></span>
-					                      On
-					                    </label>
-					                  </div>
-					              </td>
+						   <td id=""></td>
+						   <td id=""></td>
+						 
 						</tr>
-					    @endforeach
 			        </tbody>
 			      </table>
 			</div>
@@ -308,18 +280,18 @@ $(function(){
 							  <!-- Modal Structure -->
 							<div id="modal2" class="modal modal-fixed-footer">
 							    <div class="modal-content">
-							      <h4><i class="medium material-icons left">dns</i>Add Subcategory</h4>
+							      <h4><i class="medium material-icons left">location_on</i>Add City</h4>
 							      			<div class="divider"></div>
 							      	<div class="row">
-									    <form class="col s12" action="/confirmSubCategory" method="POST">
-										    <input type="hidden" name="_token" value="{{ csrf_token() }}">	
+									    <form class="col s12" action="" method="POST">
+										    <input type="hidden" name="_token" value="">	
 										      	<div class="row">
 											        <div class="input-field col s7">
 													    <select name="add_ID" REQUIRED>
-													    	<option value="" disabled selected>Choose your Category</option>
-													    	@foreach($results as $key => $result)
-						            						<option id="{{$key}}" value="{{$result->CategoryID}}">{{$result->CategoryName}}</option>
-					         								@endforeach
+													    	<option value="" disabled selected>Choose your Province</option>
+													    	
+						            						<option id="" value=""></option>
+					         								
 													    </select>
 													  </div>
 												 </div>
@@ -327,7 +299,7 @@ $(function(){
 												<div class="row">
 												    <div class="input-field col s6" >
 												        <input id="add_name" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
-												        <label for="add_name">Name of Subcategory</label>
+												        <label for="add_name">Name of City</label>
 												</div>
 
 												<div class="row">
@@ -356,12 +328,12 @@ $(function(){
 		      							<div class="divider"></div>
 		     		<div class="row">
 					    <form class="col s12" action="/confirmSubCategory" method="POST">
-					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					    	<input type="hidden" name="" value="">
 					    	<input type="hidden" name="edit_ID" id="edit_ID2">  
 								<div class="row">	  	
 							       	<div class="input-field col s6">
 							        	<input value=" " type="text" class="validate" name="edit_name" id="edit_name2" length="30" maxlength="30" REQUIRED>
-							         	<label class="active" for="edit_name2">Subcategory</label>
+							         	<label class="active" for="edit_name2">Name of City</label>
 							        </div>
 							    </div>
 							    <div class="row">
@@ -381,7 +353,7 @@ $(function(){
 		    </form>
 		 	</div>
 		</div>
-		 		  <!--*************************************************** SUBCAT END EDIT ************************************************-->  
+		 		  <!-- SUBCAT END EDIT -->  
 </div>
 
 			<script>

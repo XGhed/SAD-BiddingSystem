@@ -49,6 +49,8 @@ Route::get('/item', 'ItemController@manageItem');
 
 Route::get('/shipment', 'PageController@shipment');
 
+Route::get('/places', 'PageController@places');
+
 
 //AJAX
 Route::get('/cityOptions', 'DropDowns@cityOptions');

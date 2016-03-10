@@ -10,7 +10,7 @@ Maintenance
 @endsection
 
 
-@section('deliveryParty')
+@section('content')
 <div class="row"></div>
       <div class="right">
         <a class="modal-trigger waves-effect waves-light grey darken-3 btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Delivery Company</a>

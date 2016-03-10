@@ -25,7 +25,7 @@
 <div class="navbar">
 <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center white-text"><i class="material-icons left">gavel</i>Bidding Management System</a>
+      <a href="#!" class="brand-logo center white-text"><img src='icons/tangina.png' class="large">Bidding Management System</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="http://localhost:8000/" class="white-text">Hello Admin</a></li>
@@ -52,6 +52,7 @@
                   <li><a class="white-text" href="/accountType">Account Type</a></li>
               <!--<li><a class="white-text" href="/paymentMethod">Payment Method</a></li>-->
                   <li><a class="white-text" href="/shipment">Shipment</a></li>
+                  <li><a class="white-text" href="/places">Place</a></li>
                   <div class="divider"></div>
                 </ul>
               </div>
@@ -95,39 +96,28 @@
         if(Session::get('message') == '1')
           echo "<script> 
                   var toastContent = $('<span>RECORD ADDED!</span>');
-                  Materialize.toast(toastContent, 5000, 'add');
+                  Materialize.toast(toastContent, 1500, 'add');
                 </script>";
         elseif(Session::get('message') == '2')
           echo "<script> 
                   var toastContent = $('<span>RECORD UPDATED!</span>');
-                  Materialize.toast(toastContent, 5000, 'edit');
+                  Materialize.toast(toastContent, 1500, 'edit');
                 </script>";
         elseif(Session::get('message') == '3')
           echo "<script> 
                   var toastContent = $('<span>RECORD DELETED!</span>');
-                  Materialize.toast(toastContent, 5000, 'delete');
+                  Materialize.toast(toastContent, 1500, 'delete');
                 </script>";
         elseif(Session::get('message') == '-1')
           echo "<script> 
                   var toastContent = $('<span>ERROR!</span>');
-                  Materialize.toast(toastContent, 5000, 'delete');
+                  Materialize.toast(toastContent, 1500, 'delete');
                 </script>";
         Session::forget('message');
       }
     ?>
     <div class="col s10 push-s1 white hoverable">
-        @yield('supplier')
-        @yield('accounts')
-        @yield('category')
-        @yield('subcategory')
-        @yield('items')
-        @yield('regItems')
-        @yield('bidEvent')
-        @yield('accountType')
-        @yield('deliveryParty')
-        @yield('deliveryCompany')
-        @yield('keyword')
-        @yield('modePayment')
+        @yield('content')
     </div>
 
     </div>

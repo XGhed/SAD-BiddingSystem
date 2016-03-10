@@ -110,7 +110,7 @@ $(function(){
 @endsection
 
 
-@section('items')
+@section('content')
 <table class="highlight responsive-table centered" id="tableOutput">
         <thead>
           <tr>

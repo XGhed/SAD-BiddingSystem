@@ -119,7 +119,7 @@ Maintenance
 @endsection
 
 
-@section('supplier')
+@section('content')
 <div class="row"></div>
       <div class="right">
         <a class="modal-trigger waves-effect waves-light green btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
@@ -200,7 +200,7 @@ Maintenance
                 <div class="row">
                     <div class="input-field col s8">
                       <input id="supplier_name" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
-                      <label for="supplier_name">Supplier's Name</label>
+                      <label for="supplier_name" data-error="Invalid">Supplier's Name</label>
                     </div>
                 </div>
 
@@ -224,20 +224,20 @@ Maintenance
                     </div>
 
                       <div class="input-field col s6">
-                        <input id="add_barangay" type="text" class="validate" name="add_barangay_street" length="30" maxlength="30" REQUIRED>
-                        <label for="add_barangay">Brgy and Street Address</label>
+                        <input id="add_barangay" type="text" class="validate" name="add_barangay_street" length="50" maxlength="50" REQUIRED>
+                        <label for="add_barangay" data-error="Invalid">Brgy and Street Address</label>
                       </div>
                 </div>
 
                 <div class="row">
-                    <div class="input-field col s6">
-                      <input id="contact_num" type="text" class="validate" name="add_contactNo" length="30" maxlength="30" REQUIRED>
-                      <label for="contact_num">Contact Number</label>
+                    <div class="input-field col s4">
+                      <input id="contact_num" type="text" class="validate" name="add_contactNo" length="15" maxlength="15" REQUIRED>
+                      <label for="contact_num" data-error="Invalid">Contact Number</label>
                     </div>
 
-                    <div class="input-field col s6">
+                    <div class="input-field col s8">
                       <input id="eAddress" type="email" class="validate" name="add_email" length="30" maxlength="30" REQUIRED>
-                      <label for="eAddress">Email Address</label>
+                      <label for="eAddress" data-error="Invalid">Email Address</label>
             
                 </div>
               </div><!--*************************** ROW ***************************-->
@@ -265,14 +265,14 @@ Maintenance
               <input type="hidden" id="edit_ID" name="edit_ID">
               <div class="row">
                   <div class="input-field col s8">
-                    <input value=" " id="edit_name" type="text" class="validate" name="edit_name" length="30" maxlength="30">
+                    <input value=" " id="edit_name" type="text" class="validate" name="edit_name" length="30" maxlength="30" REQUIRED>
                     <label class="active" for="edit_name" >Supplier's Name</label>
                   </div>
               </div>
 
               <div class="row">
                   <div class="input-field col s3">
-                      <select name="edit_province" id="provE" >
+                      <select name="edit_province" id="provE" required>
                         <option value="" disabled selected>Province</option>
                         @foreach($provinces as $key => $province)
                           <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
@@ -282,7 +282,7 @@ Maintenance
                     </div>
 
                   <div class="input-field col s3">
-                      <select name="edit_city" id="cityE">
+                      <select name="edit_city" id="cityE" required>
                         <option value="" disabled selected>City</option>
                         
                       </select>
@@ -290,19 +290,19 @@ Maintenance
                     </div>
 
                   <div class="input-field col s6">
-                    <input  value=" " id="edit_barangaystreet" type="text" class="validate" name="edit_barangaystreet" length="30" maxlength="30">
+                    <input  value=" " id="edit_barangaystreet" type="text" class="validate" name="edit_barangaystreet" length="50" maxlength="50" REQUIRED>
                     <label class="active" for="edit_barangaystreet">Brgy and Street Address</label>
                   </div>
               </div>
 
               <div class="row">
-                  <div class="input-field col s6">
-                    <input value =" " type="text" class="validate" id="edit_contactNo" name="edit_contactNo" length="30" maxlength="30">
+                  <div class="input-field col s4">
+                    <input value =" " type="text" class="validate" id="edit_contactNo" name="edit_contactNo" length="15" maxlength="15" REQUIRED>
                     <label class="active" for="edit_contactNo">Contact Number</label>
                   </div>
 
-                  <div class="input-field col s6">
-                    <input value ="0" type="email" class="validate" id="edit_email" name="edit_email" length="30" maxlength="30">
+                  <div class="input-field col s8">
+                    <input value ="0" type="email" class="validate" id="edit_email" name="edit_email" length="30" maxlength="30" REQUIRED>
                     <label class="active" for="edit_email">Email Address</label>
                 </div>
               

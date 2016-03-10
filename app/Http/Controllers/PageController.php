@@ -23,6 +23,11 @@ class PageController extends Controller
        return view('registration');
     }
 
+    public function places(Request $request){
+
+       return view('places');
+    }
+
     public function shipment(Request $request){
 
        return view('shipment');

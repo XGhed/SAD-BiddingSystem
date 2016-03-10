@@ -55,7 +55,7 @@ $(function(){
 @endsection
 
 
-@section('accountType')
+@section('content')
 
   <div class="row"></div>
     <div class="right">
@@ -120,8 +120,6 @@ $(function(){
 <!--  END DATA TABLE -->
 
 <!--  ADD ACCTYPE -->
-
-
   	<div id="modal1" class="modal modal-fixed-footer">
     
       <div class="modal-content">
@@ -130,25 +128,25 @@ $(function(){
         	<form  action="/confirmAccountType" method="POST" class="row col s12"><input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="row">
       	      	<div class="input-field col s6">
-                  <input id="acctype" type="text" class="validate" name="add_name" pattern ="[A-Za-z ]+"  required>
+                  <input id="acctype" type="text" class="validate" name="add_name"  length="30" maxlength="30" REQUIRED>
                   <label for="acctype">Account Type</label>
                 </div>    	
               </div>
               <div class="row">
                 <div class="input-field col s10">
-                  <input id="add_desc" type="text" class="validate" name="add_desc">
+                  <input id="add_desc" type="text" class="validate" name="add_desc" length="30" maxlength="30" REQUIRED>
                   <label for="add_desc">Description</label>
                 </div>
               </div>
 
                 <div class="input-field col s5">
-                  <input id="add_tax"  type="number" class="validate"   min="0" max="100" name="add_tax" pattern ="[0-9]+" required/>
-                  <label for="add_tax">Tax Rate %</label>
+                  <input id="add_tax"  type="number" class="validate"   min="0" max="100" name="add_tax" pattern ="[0-9]{3}"  REQUIRED/>
+                  <label for="add_tax" data-error='Invalid'>Tax Rate %</label>
 
                 </div>
 
                 <div class="input-field col s5">
-                  <input id="add_disc" type="number" class="validate" name="add_disc" pattern ="[0-9]+" min="0" max="100" required>
+                  <input id="add_disc" type="number" class="validate" name="add_disc" pattern ="[0-9]{3}" min="0" max="100" REQUIRED>
                   <label for="add_disc">Discount %</label>
                 </div>
       </div>
@@ -179,22 +177,22 @@ $(function(){
               <input type="hidden" name="edit_ID" id="edit_ID">
                   <div class="row">
         						<div class="input-field col s6">
-        				          <input value=" " id="edit_name" type="text" class="validate" name="edit_name" pattern ="[A-Za-z ]+" REQUIRED>
+        				          <input value=" " id="edit_name" type="text" class="validate" name="edit_name" length="30" maxlength="30" REQUIRED>
         				          <label class="active" for="edit_name">Account type</label>
     				        </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s10">
-                      <input value=" " id="edit_desc" type="text" class="validate" name="edit_desc" REQUIRED>
+                      <input value=" " id="edit_desc" type="text" class="validate" name="edit_desc" length="30" maxlength="30" REQUIRED>
                       <label class="active" for="edit_desc">Account Description</label>
                     </div>
                   </div>
                     <div class="input-field col s5">
-                      <input id="edit_tax"  type="number" class="validate"   min="0" max="100" name="edit_tax" pattern ="[0-9]+" required/>
-                  <label for="edit_tax">Tax Rate %</label>
+                      <input id="edit_tax"  type="number" class="validate"   min="0" max="100" name="edit_tax" pattern ="[0-9]{3}" REQUIRED/>
+                  <label for="edit_tax" data-error='Invalid'>Tax Rate %</label>
                     </div>
                     <div class="input-field col s5">
-                      <input id="edit_disc" type="number" class="validate" name="edit_disc" pattern ="[0-9]+" min="0" max="100" required>
+                      <input id="edit_disc" type="number" class="validate" name="edit_disc" pattern ="[0-9]{3}" min="0" max="100"  REQUIRED>
                   <label for="edit_disc">Discount %</label>
                     </div>
                   
