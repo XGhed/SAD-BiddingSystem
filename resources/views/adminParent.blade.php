@@ -3,6 +3,7 @@
     <head>
     <title>@yield('title')</title>
       <!--CSS-->
+      <link rel="icon" href="icons/icon.png">
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/materialize.css')!!}" media="screen,projection" />
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/maintenance.css')!!}" media="screen,projection"/>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -17,18 +18,19 @@
       @yield('jqueryscript')
     </head>
 
-<body style="background-image: url('icons/background4.jpg');">
+<body style="background-image: url('icons/background10.jpg'); background-repeat: no-repeat;
+    background-attachment: fixed;">
 
 
 <div class="navbar">
 <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center black-text"><i class="material-icons left">gavel</i>Bidding Management System</a>
+      <a href="#!" class="brand-logo center white-text"><i class="material-icons left">gavel</i>Bidding Management System</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="http://localhost:8000/" class="black-text">Hello Admin</a></li>
+        <li><a href="http://localhost:8000/" class="white-text">Hello Admin</a></li>
       </ul>
-       <ul id="slide-out" id="mobile-demo" class="side-nav fixed"  style="background-image: url('icons/background4.jpg');" onmouseover="showScroll(this)" onmouseout="hideScroll(this)">
+       <ul id="slide-out" id="mobile-demo" class="side-nav fixed" style="background-image: url('icons/background10.jpg');" onmouseover="showScroll(this)" onmouseout="hideScroll(this)">
                 <!-- admin info -->
               <div class="row">
                 <div class="col s12 transparent">
@@ -39,27 +41,27 @@
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
             <li>
-              <a class="black-text collapsible-header"><i class="material-icons left ">build</i>Maintenance<i class="material-icons right">arrow_drop_down</i></a>
+              <a class="white-text collapsible-header" ><i class="material-icons left ">build</i>Maintenance<i class="material-icons right">arrow_drop_down</i></a>
               <div class="collapsible-body">
                   <div class="divider"></div>
                 <ul>
-                  <li><a class="black-text" href="/supplier">Supplier</a></li>
-                  <li><a class="black-text" href="/category" >Category</a></li>
-              <!--<li><a class="black-text" href="/keyword">Keyword</a></li>-->
-                  <li><a class="black-text" href="/item">Item</a></li>
-                  <li><a class="black-text" href="/accountType">Account Type</a></li>
-              <!--<li><a class="black-text" href="/paymentMethod">Payment Method</a></li>-->
-                  <li><a class="black-text" href="/shipment">Shipment</a></li>
+                  <li><a class="white-text" href="/supplier">Supplier</a></li>
+                  <li><a class="white-text" href="/category" >Category</a></li>
+              <!--<li><a class="white-text" href="/keyword">Keyword</a></li>-->
+                  <li><a class="white-text" href="/item">Item</a></li>
+                  <li><a class="white-text" href="/accountType">Account Type</a></li>
+              <!--<li><a class="white-text" href="/paymentMethod">Payment Method</a></li>-->
+                  <li><a class="white-text" href="/shipment">Shipment</a></li>
                   <div class="divider"></div>
                 </ul>
               </div>
             </li>
           </ul>
         </li>       
-        <li><a class="black-text" href="/registerItem"><i class="material-icons left">input</i>Record Items</a></li>
-        <li><a class="black-text" href="/bidEvent"><i class="material-icons left">today</i>Bidding Event</a></li>
-        <li><a class="black-text" href="#!"><i class="material-icons left">receipt</i>Reports</a></li>
-        <li><a class="right black-text" href="/home"><i class="material-icons left">exit_to_app</i>Log out</a></li>
+        <li><a class="white-text" href="/registerItem" ><i class="material-icons left">input</i>Record Items</a></li>
+        <li><a class="white-text" href="/bidEvent" ><i class="material-icons left">today</i>Bidding Event</a></li>
+        <li><a class="white-text" href="#!" ><i class="material-icons left">receipt</i>Reports</a></li>
+        <li><a class="right white-text" href="/home"><i class="material-icons left">exit_to_app</i>Log out</a></li>
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu right"></i></a>
     
