@@ -11,7 +11,7 @@ Schema::create('Payment', function(Blueprint $table)
     {
         $table->increments('PaymentID');
         $table->decimal('TotalPrice', 8, 2);
-        $table->string('DeliveryAddress_Street_Brgy',30);
+        $table->string('DeliveryAddress_Street_Brgy',50);
         $table->dateTime('PaymentDate');
         $table->integer('CityID')->unsigned();
         $table->foreign('CityID')->references('CityID')->on('City');

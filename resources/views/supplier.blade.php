@@ -66,10 +66,9 @@ Maintenance
     });    
 
     $(function(){   
-        $("#prov").change(function(){
-          $provID = $("#prov").val();
+        $('#addBtn').on('change', '#prov', function(){
 
-          $.get('/cityOptions?provID=' + $provID, function(data){
+          $.get('/cityOptions?provID=' + $("#prov").val(), function(data){
             var $selectDropdown = 
               $("#city")
                 .empty()
@@ -84,7 +83,9 @@ Maintenance
             });
           });
         });
-    });
+    });    
+
+    
 </script>
 @endsection
 
@@ -186,7 +187,7 @@ Maintenance
                     </div>
 
                     <div class="input-field col s3">
-                      <select name="add_city" id="add_city" REQUIRED>
+                      <select name="add_city" id="city" REQUIRED>
                         <option value="" disabled selected>City</option>
                         
                       </select>
