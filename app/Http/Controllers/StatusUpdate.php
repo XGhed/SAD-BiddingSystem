@@ -27,4 +27,17 @@ class StatusUpdate extends Controller
         }
         $supplier->save();
     }
+
+    public function Item(){
+        $item = new App\Item;
+        $item = App\Item::find(Input::get('itemID'));
+
+        if ($item->Status == 1){
+            $item->Status = 0;
+        }
+        elseif ($item->Status == 0){
+            $item->Status = 1;
+        }
+        $item->save();
+    }
 }

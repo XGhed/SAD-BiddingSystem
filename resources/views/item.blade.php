@@ -21,6 +21,14 @@ $(function(){
         null
       ] 
     });
+
+    $(":checkbox").click(function(){
+          $.get('/status_Item?itemID=' + $(this).val(), function(data){
+              //NOTIFICATION HERE MUMING :*
+              var toastContent = $('<span>Status Changed!</span>');
+                  Materialize.toast(toastContent, 1500, 'edit');
+            });
+        });
 });
 
 $(function(){   
@@ -137,7 +145,11 @@ $(function(){
                     <div class="switch">
                       <label>
                         Off
-                        <input type="checkbox">
+                        @if ($result->Status == 1)
+                            <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->ItemID}}" checked>
+                        @elseif ($result->Status == 0)
+                            <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->ItemID}}" >
+                        @endif
                         <span class="lever"></span>
                         On
                       </label>

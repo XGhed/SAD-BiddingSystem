@@ -57,6 +57,8 @@ Route::get('/subcatOptions', 'DropDowns@subcatOptions');
 
 Route::get('/status_Supplier', 'StatusUpdate@Supplier');
 
+Route::get('/status_Item', 'StatusUpdate@Item');
+
 
 
 Route::get('/registration', 'PageController@registration');
