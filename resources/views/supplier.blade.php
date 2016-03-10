@@ -201,13 +201,13 @@ Maintenance
                 </div>
 
                 <div class="row">
-                    <div class="input-field col s6" REQUIRED>
+                    <div class="input-field col s6">
                       <input id="contact_num" type="text" class="validate" name="add_contactNo" length="30" maxlength="30" REQUIRED>
                       <label for="contact_num">Contact Number</label>
                     </div>
 
-                    <div class="input-field col s6" REQUIRED>
-                      <input id="eAddress" type="email" class="validate" name="add_email" length="30" maxlength="30">
+                    <div class="input-field col s6">
+                      <input id="eAddress" type="email" class="validate" name="add_email" length="30" maxlength="30" REQUIRED>
                       <label for="eAddress">Email Address</label>
             
                 </div>

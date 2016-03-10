@@ -83,8 +83,8 @@ $(function(){
                       <input type="hidden" id="tdID{{$key}}" name="del_ID" value="{{$result->AccountTypeID}}">
                       <td id="tdname{{$key}}">{{$result->AccountTypeName}}</td>
                       <td id="tddesc{{$key}}">{{$result->Description}}</td>
-                      <td id="tdtax{{$key}}">{{$result->TaxRate}}</td>
-                      <td id="tddisc{{$key}}">{{$result->Discount}}</td>
+                      <td id="tdtax{{$key}}">{{$result->TaxRate}} %</td>
+                      <td id="tddisc{{$key}}">{{$result->Discount}} %</td>
                       <td>
                           <div class="switch">
                             <label>
@@ -115,7 +115,7 @@ $(function(){
         	<form  action="/confirmAccountType" method="POST" class="row col s12"><input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="row">
       	      	<div class="input-field col s6">
-                  <input id="acctype" type="text" class="validate" name="add_name" pattern ="[A-Za-z ]+" title = "Letters only!">
+                  <input id="acctype" type="text" class="validate" name="add_name" pattern ="[A-Za-z ]+"  required>
                   <label for="acctype">Account Type</label>
                 </div>    	
               </div>
@@ -127,18 +127,19 @@ $(function(){
               </div>
 
                 <div class="input-field col s5">
-                  <input id="add_tax" type="text" class="validate" name="add_tax" pattern ="[0-9]+" title = "Numbers only!">
-                  <label for="add_tax">Tax Rate</label>
+                  <input id="add_tax"  type="number" class="validate"   min="0" max="100" name="add_tax" pattern ="[0-9]+" required/>
+                  <label for="add_tax">Tax Rate %</label>
+
                 </div>
 
                 <div class="input-field col s5">
-                  <input id="add_disc" type="text" class="validate" name="add_disc" pattern ="[0-9]+" title = "Numbers only!">
-                  <label for="add_disc">Discount</label>
+                  <input id="add_disc" type="number" class="validate" name="add_disc" pattern ="[0-9]+" min="0" max="100" required>
+                  <label for="add_disc">Discount %</label>
                 </div>
       </div>
 
       <div class="modal-footer">
-     		<button class="modal-action modal-close waves-effect waves-green btn " type="submit" name="add">
+     		<button class="modal-action  waves-effect waves-green btn " type="submit" name="add">
                     <i class="material-icons left">done</i>Add</button>
      		</form>
       </div>
@@ -163,26 +164,26 @@ $(function(){
               <input type="hidden" name="edit_ID" id="edit_ID">
                   <div class="row">
         						<div class="input-field col s6">
-        				          <input value=" " id="edit_name" type="text" class="validate" name="edit_name" pattern ="[A-Za-z ]+" title = "Letters only!">
+        				          <input value=" " id="edit_name" type="text" class="validate" name="edit_name" pattern ="[A-Za-z ]+" REQUIRED>
         				          <label class="active" for="edit_name">Account type</label>
     				        </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s10">
-                      <input value=" " id="edit_desc" type="text" class="validate" name="edit_desc">
+                      <input value=" " id="edit_desc" type="text" class="validate" name="edit_desc" REQUIRED>
                       <label class="active" for="edit_desc">Account Description</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s10">
-                      <input value=" " id="edit_tax" type="text" class="validate" name="edit_tax" pattern ="[0-9]+" title = "Numbers only!">
-                      <label class="active" for="edit_tax">Account Description</label>
+                      <input value=" " id="edit_tax" type="text" class="validate" name="edit_tax" pattern ="[0-9]+" min="0" max="100"REQUIRED>
+                      <label class="active" for="edit_tax">Tax</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s10">
-                      <input value=" " id="edit_disc" type="text" class="validate" name="edit_disc" pattern ="[0-9]+" title = "Numbers only!">
-                      <label class="active" for="edit_disc">Account Description</label>
+                      <input value=" " id="edit_disc" type="text" class="validate" name="edit_disc" pattern ="[0-9]+" min="0" max="100" REQUIRED>
+                      <label class="active" for="edit_disc">Discount</label>
                     </div>
                   </div>
 		    </div>
