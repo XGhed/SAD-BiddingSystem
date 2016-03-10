@@ -161,7 +161,7 @@ $(function(){
 						</div>
 				    </div>
 				    <div class="modal-footer">
-				      <button class="modal-action modal-close waves-effect waves-green btn " type="submit" name="add">
+				      <button class="modal-action waves-effect waves-green btn " type="submit" name="add">
 	                	<i class="material-icons left">done</i>Add</button></form>
 				    </div>
 				  </div>
@@ -297,7 +297,7 @@ $(function(){
 								</div>
 							</div>
 								    <div class="modal-footer">
-								      <button class="modal-action modal-close waves-effect waves-green btn " type="submit" name="add">
+								      <button class="modal-action waves-effect waves-green btn " type="submit" name="add">
 					                	<i class="material-icons left">done</i>Confirm</button></form>
 								    </div>
 					</div>

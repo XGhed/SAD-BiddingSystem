@@ -27,8 +27,8 @@ Maintenance
         $(":checkbox").click(function(){
           $.get('/status_Supplier?supplierID=' + $(this).val(), function(data){
               //NOTIFICATION HERE MUMING :*
-              
-              alert("Fucking Done!");
+              var toastContent = $('<span>Status Changed!</span>');
+                  Materialize.toast(toastContent, 1500, 'edit');
             });
         });
     });
@@ -133,7 +133,7 @@ Maintenance
               <th>Address</th>
               <th>Contact number</th>
               <th>Email Address</th>
-              <th>Active/Inactive</th>
+              <th>Status</th>
           </tr>
         </thead>
 
@@ -166,14 +166,14 @@ Maintenance
               <td>
                   <div class="switch">
                     <label>
-                      Off
+                      Active
                         @if ($result->Status == 1)
                             <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->SupplierID}}" checked>
                         @elseif ($result->Status == 0)
                             <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->SupplierID}}" >
                         @endif
                       <span class="lever"></span>
-                      On
+                      Inactive
                     </label>
                   </div>
               </td>
