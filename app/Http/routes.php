@@ -59,6 +59,8 @@ Route::get('/status_Supplier', 'StatusUpdate@Supplier');
 
 Route::get('/status_Item', 'StatusUpdate@Item');
 
+Route::get('/status_AccountType', 'StatusUpdate@AccountType');
+
 
 
 Route::get('/registration', 'PageController@registration');

@@ -21,6 +21,14 @@ $(function(){
         null
       ] 
     });
+
+    $(":checkbox").click(function(){
+          $.get('/status_AccountType?accounttypeID=' + $(this).val(), function(data){
+              //NOTIFICATION HERE MUMING :*
+              var toastContent = $('<span>Status Changed!</span>');
+                  Materialize.toast(toastContent, 1500, 'edit');
+            });
+        });
 });
 
 $(function(){   
@@ -92,7 +100,11 @@ $(function(){
                           <div class="switch">
                             <label>
                               Off
-                              <input type="checkbox">
+                              @if ($result->Status == 1)
+                                  <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->AccountTypeID}}" checked>
+                              @elseif ($result->Status == 0)
+                                  <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->AccountTypeID}}" >
+                              @endif
                               <span class="lever"></span>
                               On
                             </label>

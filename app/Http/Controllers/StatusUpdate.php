@@ -40,4 +40,17 @@ class StatusUpdate extends Controller
         }
         $item->save();
     }
+
+    public function AccountType(){
+        $accountType = new App\AccountType;
+        $accountType = App\AccountType::find(Input::get('accounttypeID'));
+
+        if ($accountType->Status == 1){
+            $accountType->Status = 0;
+        }
+        elseif ($accountType->Status == 0){
+            $accountType->Status = 1;
+        }
+        $accountType->save();
+    }
 }
