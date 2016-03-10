@@ -34,10 +34,24 @@ $(function(){
       $("#edit_ID").val(keyID);
       $("#edit_name").val(keyName);
       $("#edit_cat").val(keyCat);
-      $("#edit_cat").change();
-      $("#edit_sub").val(keySubCat);
       $("#edit_cat").material_select();
-      $("#edit_sub").material_select();
+
+      $.get('/subcatOptions?catID=' + $("#edit_cat").val(), function(data){
+          var $selectDropdown = 
+            $("#edit_sub")
+              .empty()
+              .html(' ');
+          $.each(data, function(index, subcatObj){
+              $selectDropdown.append(
+                $("<option></option>")
+                  .attr("value",subcatObj.SubCategoryID)
+                  .text(subcatObj.SubCategoryName)
+              );
+              $("#edit_sub").val(keySubCat);
+              $("#edit_sub").material_select();
+              });
+        });
+
     });
 });
 

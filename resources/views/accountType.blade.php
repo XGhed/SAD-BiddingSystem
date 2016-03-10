@@ -17,6 +17,7 @@ $(function(){
         null,
         null,
         null,
+        null,
         null
       ] 
     });
@@ -29,8 +30,8 @@ $(function(){
       var keyID = $("#tdID"+selected).val();
       var keyName = $("#tdname"+selected).text();
       var keyDesc = $("#tddesc"+selected).text();
-      var keyTax = $("#tdtax"+selected).text();
-      var keyDisc = $("#tddisc"+selected).text();
+      var keyTax = $("#tdtax"+selected).val();
+      var keyDisc = $("#tddisc"+selected).val();
       $("#edit_ID").val(keyID);
       $("#edit_name").val(keyName);
       $("#edit_desc").val(keyDesc);
@@ -83,8 +84,10 @@ $(function(){
                       <input type="hidden" id="tdID{{$key}}" name="del_ID" value="{{$result->AccountTypeID}}">
                       <td id="tdname{{$key}}">{{$result->AccountTypeName}}</td>
                       <td id="tddesc{{$key}}">{{$result->Description}}</td>
-                      <td id="tdtax{{$key}}">{{$result->TaxRate}} %</td>
-                      <td id="tddisc{{$key}}">{{$result->Discount}} %</td>
+                      <td>{{$result->TaxRate}} %</td>
+                      <td>{{$result->Discount}} %</td>
+                      <input type="hidden" id="tdtax{{$key}}" value="{{$result->TaxRate}}" />
+                      <input type="hidden" id="tddisc{{$key}}" value="{{$result->Discount}}" />
                       <td>
                           <div class="switch">
                             <label>
@@ -174,18 +177,15 @@ $(function(){
                       <label class="active" for="edit_desc">Account Description</label>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="input-field col s10">
-                      <input value=" " id="edit_tax" type="text" class="validate" name="edit_tax" pattern ="[0-9]+" min="0" max="100"REQUIRED>
-                      <label class="active" for="edit_tax">Tax</label>
+                    <div class="input-field col s5">
+                      <input id="edit_tax"  type="number" class="validate"   min="0" max="100" name="edit_tax" pattern ="[0-9]+" required/>
+                  <label for="edit_tax">Tax Rate %</label>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s10">
-                      <input value=" " id="edit_disc" type="text" class="validate" name="edit_disc" pattern ="[0-9]+" min="0" max="100" REQUIRED>
-                      <label class="active" for="edit_disc">Discount</label>
+                    <div class="input-field col s5">
+                      <input id="edit_disc" type="number" class="validate" name="edit_disc" pattern ="[0-9]+" min="0" max="100" required>
+                  <label for="edit_disc">Discount %</label>
                     </div>
-                  </div>
+                  
 		    </div>
 
 

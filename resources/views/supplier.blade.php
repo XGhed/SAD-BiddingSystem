@@ -38,13 +38,26 @@ Maintenance
             $("#edit_ID").val(keyID);
             $("#edit_name").val(keyName);
             $("#provE").val(keyProvince);
-            $("#provE").change();
-            $("#cityE").val(keyCity);
             $("#provE").material_select();
-            $("#cityE").material_select();
             $("#edit_contactNo").val(keyContactNo);
             $("#edit_barangaystreet").val(keyBarangayStreet);
             $("#edit_email").val(keyEmail);
+
+            $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
+            var $selectDropdown = 
+              $("#cityE")
+                .empty()
+                .html(' ');
+            $.each(data, function(index, subcatObj){
+                $selectDropdown.append(
+                  $("<option></option>")
+                    .attr("value",subcatObj.CityID)
+                    .text(subcatObj.CityName)
+                );
+            });
+            $("#cityE").val(keyCity);
+            $("#cityE").material_select();
+            });
         });
     });   
 
