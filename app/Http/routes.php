@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-
+//POST
 Route::post('/confirmSupplier', 'SupplierController@confirmSupplier');
 
 Route::post('/confirmCategory', 'CategoryController@confirmCategory');
@@ -31,11 +31,8 @@ Route::post('/confirmKeyword', 'KeywordController@confirmKeyword');
 
 Route::post('/confirmItem', 'ItemController@confirmItem');
 
-Route::get('/cityOptions', 'DropDowns@cityOptions');
 
-Route::get('/subcatOptions', 'DropDowns@subcatOptions');
-
-
+//GET
 Route::get('/supplier', 'SupplierController@manageSupplier');
 
 Route::get('/category', 'CategoryController@manageCategory');
@@ -51,6 +48,15 @@ Route::get('/keyword', 'KeywordController@ManageKeyword');
 Route::get('/item', 'ItemController@manageItem');
 
 Route::get('/shipment', 'PageController@shipment');
+
+
+//AJAX
+Route::get('/cityOptions', 'DropDowns@cityOptions');
+
+Route::get('/subcatOptions', 'DropDowns@subcatOptions');
+
+Route::get('/status_Supplier', 'StatusUpdate@Supplier');
+
 
 
 Route::get('/registration', 'PageController@registration');
