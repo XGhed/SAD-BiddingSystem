@@ -11,8 +11,6 @@ class DeliveryCompany extends Migration
     Schema::create('Delivery_Company', function(Blueprint $table)
     {
         $table->increments('CompanyID');
-        $table->integer('PlaceID')->unsigned();
-        $table->foreign('PlaceID')->references('PlaceID')->on('PlacesTable');
     });
 }
 

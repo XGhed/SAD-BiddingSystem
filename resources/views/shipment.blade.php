@@ -9,6 +9,24 @@ Maintenance
 <h1 class="left col s6 push-s1 white-text" style="font-size: 28px">Manage Shipment</h1>
 @endsection
 
+@section('jqueryscript')
+<script type="text/javascript">
+$(function(){   
+
+    $("#tableOutput").DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null,
+        null,
+        null
+      ] 
+    });
+});
+</script>
+@endsection
+
 
 @section('content')
 <div class="row"></div>
@@ -27,40 +45,46 @@ Maintenance
         </thead>
 
         <tbody>
-        <div id="formOutput" value="">
+          @foreach($results as $key => $result)
             <tr>
               <td>
                     <div class="row col push-s2" >
                       <div class="col">
-                         <button id="" value="" name="edit" class="edit btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
-                          <form action="confirmSupplier" method="POST"><input type="hidden" name="_token" value="">
-                         <input type="hidden" name="edit_ID" id="" value="">
+                          <form action="confirmShipment" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
                         </div>
                       
                       <div class="col">
-                        <input type="hidden" id="" name="del_ID" value="">
+                        <input type="hidden" id="tdID{{$key}}" name="del_ID" value="{{$result->PartyID}}">
+                        <button id="{{$key}}" value="{{$key}}" name="edit" class="edit btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
                         <button id="delete" name="delete" class="btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                       </div>
                       </form>
                     </div>
               </td>
-              <td id="tdname">FedEx</td>
-              <td id="tdplaces">Bataa, Laguna, Pasig</td>
-              <input type="hidden" id="" value="" >
-              <input type="hidden" id="" value="" >
-              <input type="hidden" id="" value="" >
+              <td id="tdname{{$key}}">{{$result->PartyName}}</td>
               <td>
-                  <div class="switch">
-                    <label>
-                      Off
-                      <input type="checkbox">
-                      <span class="lever"></span>
-                      On
-                    </label>
-                  </div>
+                @foreach($result->province_ThirdParty as $key => $provThird)
+                  {{$provThird->province->ProvinceName}}
+                @endforeach
               </td>
+              <td>
+                <div class="switch">
+                  <label>
+                    Off
+                    @if ($result->Status == 1)
+                          <input class="cat" type="checkbox" id="tdstatus{{$key}}" value="{{$result->PartyID}}" checked>
+                      @elseif ($result->Status == 0)
+                          <input class="cat" type="checkbox" id="tdstatus{{$key}}" value="{{$result->PartyID}}" >
+                      @endif
+                    <span class="lever"></span>
+                    On
+                  </label>
+                </div>
+            </td>
             </tr>
             </div>
+          @endforeach
+            
         </tbody>
       </table>
 
@@ -68,7 +92,7 @@ Maintenance
 
  
 <!--***************************ADD BUTTON***************************-->
-      <div id="addBtn" class="modal modal-fixed-footer">
+      <div id="addBtn" class="modal modal-fixed-footer" style="width:800px; height:700px;">
         <div class="modal-content" >
           <h4><i class="medium material-icons left">business</i>Courier Company</h4>
 
@@ -76,8 +100,7 @@ Maintenance
 
         
             
-        <form class="col s12" action="" method="POST">
-          <input type="hidden" name="" value="">
+        <form class="col s12" action="/confirmShipment" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="input-field col s8">
                       <input id="company_name" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
@@ -113,14 +136,16 @@ Maintenance
                         </tr>
                       </thead>
                       <tbody style="overflow: auto;">
-                        <tr>
-                          <td>
-                            <div class="center">
-                              <input type="checkbox" class="filled-in" id="proBox" checked="checked"/>
-                              <label for="proBox">ProvinceName</label>
-                            </div>
-                          </td>
-                        </tr>
+                        @foreach($provinces as $key => $province)
+                          <tr>
+                            <td>
+                              <div class="left">
+                                <input type="checkbox" class="filled-in" id="add_prov{{$key}}" name="add_prov[]" value="{{$province->ProvinceID}}" />
+                                <label for="add_prov{{$key}}">{{$province->ProvinceName}}</label>
+                              </div>
+                            </td>
+                          </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -164,14 +189,16 @@ Maintenance
                         </tr>
                       </thead>
                       <tbody style="overflow: auto;">
-                        <tr>
-                          <td>
-                            <div class="center">
-                              <input type="checkbox" class="filled-in" id="checkbox1" checked="checked"/>
-                              <label for="checkbox1">RegionName</label>
-                            </div>
-                          </td>
-                        </tr>
+                        @foreach($provinces as $key => $province)
+                          <tr>
+                            <td>
+                              <div class="left">
+                                <input type="checkbox" class="filled-in" id="edit_prov{{$key}}" name="edit_prov[]" value="{{$province->ProvinceID}}" />
+                                <label for="add_prov{{$key}}">{{$province->ProvinceName}}</label>
+                              </div>
+                            </td>
+                          </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
