@@ -17,7 +17,7 @@ class Account extends Migration
         $table->string('Barangay_Street_Address', 50);
         $table->date('AccountBirthdate', 30);
         $table->String('Account_Occupation', 30);
-        $table->tinyInteger('Account_Gender');
+        $table->string('Account_Gender', 10);
         $table->String('Account_ContactNo', 15);
         $table->String('Account_EmailAdd', 30);
         $table->String('Username', 30);
