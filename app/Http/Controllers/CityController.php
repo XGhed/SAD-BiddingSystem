@@ -2,86 +2,74 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Category;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App;
+use Session;
 
 class CityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function confirmCity(Request $request){
+
+        if (isset($_POST['add'])) {
+            $this->insertCity($request);
+            Session::put('message', '1');
+            return redirect('places');
+        }
+        elseif (isset($_POST['edit'])) {
+            $this->updateCity($request);
+            Session::put('message', '2');
+            return redirect('places');
+        }
+        elseif (isset($_POST['delete'])) {
+            $this->deleteCity($request);
+            Session::put('message', '3');
+            return redirect('places');
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function insertCity(Request $request){
+
+        $city = new App\City;
+
+        $city->ProvinceID = $request->input('add_ID');
+        $city->CityName = $request->input('add_name');
+
+        try {
+            $city->save();
+        } catch (Exception $e) {
+            Session::put('message', '-1');
+            return redirect('places');
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function updateCity(Request $request){
+
+        $city = new App\City;
+        $city = App\City::find($request->input('edit_ID'));
+
+        $city->ProvinceID = $request->input('edit_ProvID');
+        $city->CityName = $request->input('edit_name');
+
+        try {
+            $city->save();
+        } catch (Exception $e) {
+            Session::put('message', '-1');
+            return redirect('places');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function deleteCity(Request $request){
+        $city = new App\City;
+        $city = App\City::find($request->input('del_ID'));
+        
+        try {
+            $city->delete();
+        } catch (Exception $e) {
+            Session::put('message', '-1');
+            return redirect('places');
+        }
     }
 }

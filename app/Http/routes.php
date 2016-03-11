@@ -33,6 +33,8 @@ Route::post('/confirmItem', 'ItemController@confirmItem');
 
 Route::post('/confirmProvince', 'ProvinceController@confirmProvince');
 
+Route::post('/confirmCity', 'CityController@confirmCity');
+
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');
