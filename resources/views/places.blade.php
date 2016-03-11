@@ -125,7 +125,6 @@ $(function(){
 					          <tr>
 					          	  <th style="cursor: default;">Manage</th>
 					              <th>Province</th>
-					              <th>Description</th>
 					          </tr>
 					        </thead>
 
@@ -143,7 +142,6 @@ $(function(){
 						          			</div>
 						          		</form>
 						            </td>
-						            <td id=""></td>
 						            <td id=""></td>
 						          </tr>
 					         	
@@ -165,12 +163,6 @@ $(function(){
 							         	<label for="category">Province</label>
 							        </div>
 							    </div>
-							    <div class="row">
-									<div class="input-field col s10">
-										<input id="add_desc" type="text" class="validate" name="add_desc" length="30" maxlength="30" REQUIRED>
-										<label for="add_desc">Description</label>
-									</div>
-								</div>
 						</div>
 				    </div>
 				    <div class="modal-footer">
@@ -180,14 +172,14 @@ $(function(){
 				  </div>
 	<!-- END ADDPLACES -->
 		
-		    <!-- CAT EDIT -->
+		    <!-- PLACES EDIT -->
     			  
 		  <div id="modal3" class="modal modal-fixed-footer">
 		    <div class="modal-content">
 		      <h4><i class="medium material-icons left">edit</i>Edit</h4>
 		      							<div class="divider"></div>
 		     		<div class="row">
-					    <form class="col s12" action="/confirmCategory" method="POST">
+					    <form class="col s12" action="/" method="POST">
 					    	<input type="hidden" name="_token" value="">
 					    	<input type="hidden" name="edit_ID" id="edit_ID1">
 							    <div class="row">
@@ -196,13 +188,6 @@ $(function(){
 							         	<label class="active" for="edit_name1">Province</label>
 							        </div>
 							    </div>
-							    <div class="row">
-									<div class="input-field col s10">
-										<input value=" " id="edit_desc1" type="text" class="validate" name="edit_desc" length="30" maxlength="30" REQUIRED>
-										<label class="active" for="add_desc">Description</label>
-									</div>
-								</div>
-
 					</div>
 		    </div>
 
@@ -238,15 +223,13 @@ $(function(){
 			<div class="col s12">
 				<div class="right">
 							<div class="row"></div>
-					<a class="modal-trigger grey darken-3 waves-effect waves-light btn" href="#modal2"><i class="material-icons left">add</i>Add City</a>
+					<a class="modal-trigger green waves-effect waves-light btn z-depth-5" href="#modal2"><i class="material-icons left">add</i>Add City</a>
 				</div>
 				<table class="responsive-table highlight centered" id="tableOutput2">
 			        <thead>
 			          <tr>
 			          	  <th style="cursor: default;">Manage</th>
-			              <th>City</th>
-			              <th>Description</th>
-			              
+			              <th>City</th>			              
 			          </tr>
 			        </thead>
 
@@ -261,10 +244,7 @@ $(function(){
 								<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
 								</form>
 						    </td>
-
-						   <td id=""></td>
-						   <td id=""></td>
-						 
+						   	<td id=""></td>
 						</tr>
 			        </tbody>
 			      </table>
@@ -273,10 +253,7 @@ $(function(){
 
 			<!--END DATA TABLE -->
 
-			<!--ADD SUBCATEGORY -->
-						
-							  
-
+			<!--ADD City -->
 							  <!-- Modal Structure -->
 							<div id="modal2" class="modal modal-fixed-footer">
 							    <div class="modal-content">
@@ -300,13 +277,6 @@ $(function(){
 												    <div class="input-field col s6" >
 												        <input id="add_name" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
 												        <label for="add_name">Name of City</label>
-												</div>
-
-												<div class="row">
-												    <div class="input-field col s10">
-												        <input id="add_desc" type="text" class="validate" name="add_desc" length="30" maxlength="30" REQUIRED>
-												        <label for="add_desc">Description</label>
-													</div>
 												</div>
 									</div> 
 								</div>
@@ -336,12 +306,6 @@ $(function(){
 							         	<label class="active" for="edit_name2">Name of City</label>
 							        </div>
 							    </div>
-							    <div class="row">
-							       	<div class="input-field col s10">
-							        	<input value=" " type="text" class="validate" name="edit_desc" id="edit_desc2" length="30" maxlength="30" REQUIRED>
-							         	<label class="active" for="edit_desc2">Description</label>
-							        </div>
-						    	</div>
 					</div>
 		    </div>
 
@@ -353,7 +317,7 @@ $(function(){
 		    </form>
 		 	</div>
 		</div>
-		 		  <!-- SUBCAT END EDIT -->  
+		 		  <!-- CITY END EDIT -->  
 </div>
 
 			<script>
