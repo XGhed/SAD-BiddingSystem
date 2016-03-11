@@ -21,11 +21,13 @@ $(function(){
     });
 
     $(".cat").click(function(){
+    	var toastContent = $('<span>Status Changed!</span>');
+                  Materialize.toast(toastContent, 1500, 'edit');
           $.get('/status_Category?categoryID=' + $(this).val(), function(data){
               //NOTIFICATION HERE MUMING :*
-              var toastContent = $('<span>Status Changed!</span>');
-                  Materialize.toast(toastContent, 1500, 'edit');
-                  setTimeout(location.reload(), 2000);
+              
+                  //setTimeout(location.reload(), 2000);
+                  location.reload();
             });
         });
 });

@@ -31,6 +31,8 @@ Route::post('/confirmKeyword', 'KeywordController@confirmKeyword');
 
 Route::post('/confirmItem', 'ItemController@confirmItem');
 
+Route::post('/confirmProvince', 'ProvinceController@confirmProvince');
+
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');
@@ -49,7 +51,7 @@ Route::get('/item', 'ItemController@manageItem');
 
 Route::get('/shipment', 'PageController@shipment');
 
-Route::get('/places', 'PageController@places');
+Route::get('/places', 'ProvinceController@manageProvince');
 
 
 //AJAX

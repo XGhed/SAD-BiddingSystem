@@ -6,7 +6,7 @@ Maintenance
 @endsection
 
 @section('jqueryscript')
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 $(function(){   
 
     $("#tableOutput1").DataTable({
@@ -14,20 +14,9 @@ $(function(){
       "pageLength": 5,
       "columns": [
         { "searchable": false },
-        null,
-        null,
         null
       ] 
     });
-
-    $(".cat").click(function(){
-          $.get('/status_Category?categoryID=' + $(this).val(), function(data){
-              //NOTIFICATION HERE MUMING :*
-              var toastContent = $('<span>Status Changed!</span>');
-                  Materialize.toast(toastContent, 1500, 'edit');
-                  setTimeout(location.reload(), 1000);
-            });
-        });
 });
 
 $(function(){   
@@ -39,7 +28,6 @@ $(function(){
       var keyDesc = $("#tddesc1"+selected).text();
       $("#edit_ID1").val(keyID);
       $("#edit_name1").val(keyName);
-      $("#edit_desc1").val(keyDesc);
     });
 });
 
@@ -55,23 +43,6 @@ $(function(){
         null
       ] 
     });
-
-    $(".subcat").click(function(){
-    	var thisID = $(this).attr('id');
-    	
-          $.get('/status_SubCategory?subcategoryID=' + $(this).val(), function(data){
-              //NOTIFICATION HERE MUMING :*
-              if (data == 1){
-              	var toastContent = $('<span>Status Changed!</span>');
-                  Materialize.toast(toastContent, 1500, 'edit');
-              }
-              else if (data == 0){
-              	$("#" + thisID).prop('checked', false);
-              	var toastContent = $('<span>Category is inactive!</span>');
-                  Materialize.toast(toastContent, 1500, 'edit');
-              }
-            });
-        });
 });
 
 $(function(){   
@@ -86,7 +57,7 @@ $(function(){
       $("#edit_desc2").val(keyDesc);
     });
 });
-</script>-->
+</script>
 @endsection
 
 
@@ -129,22 +100,22 @@ $(function(){
 					        </thead>
 
 					        <tbody>
-					        	
+					        	@foreach($results as $key => $result)
 						            <tr>
 						          	<td>
-						          		<form class="row " action="/confirmCategory" method="POST">
+						          		<form class="row " action="/confirmProvince" method="POST">
 						          			<div class="center">
-						          				<input type="hidden" name="_token" value="">
-						          				<button type="button" id="" value="" class="edit1 btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped center" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+						          				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						          				<button type="button" id="{{$key}}" value="{{$key}}" class="edit1 btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped center" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
 
-						          				<input type="hidden" class="items" id="" name="del_ID" value="">
-						          				<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+						          				<input type="hidden" class="items" id="tdID1{{$key}}" name="del_ID" value="{{$result->ProvinceID}}">
+						          				<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete_forever</i></button>
 						          			</div>
 						          		</form>
 						            </td>
-						            <td id=""></td>
+						            <td id="tdname1{{$key}}">{{$result->ProvinceName}}</td>
 						          </tr>
-					         	
+					         	@endforeach
 					        </tbody>
 					      </table>
 					</div>
@@ -179,8 +150,8 @@ $(function(){
 		      <h4><i class="medium material-icons left">edit</i>Edit</h4>
 		      							<div class="divider"></div>
 		     		<div class="row">
-					    <form class="col s12" action="/" method="POST">
-					    	<input type="hidden" name="_token" value="">
+					    <form class="col s12" action="/confirmProvince" method="POST">
+					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					    	<input type="hidden" name="edit_ID" id="edit_ID1">
 							    <div class="row">
 							       	<div class="input-field col s5">
