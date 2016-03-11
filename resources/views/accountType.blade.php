@@ -18,6 +18,7 @@ $(function(){
         null,
         null,
         null,
+        null,
         null
       ] 
     });
@@ -59,7 +60,7 @@ $(function(){
 
   <div class="row"></div>
     <div class="right">
-      <a class="modal-trigger waves-effect waves-light btn grey darken-3" href="#modal1"><i class="material-icons left">add</i>Add Account Type</a>
+      <a class="modal-trigger waves-effect waves-light btn green darken-2" href="#modal1"><i class="material-icons left">add</i>Add Account Type</a>
     </div>
 <!--  DATA TABLE -->
   <table class="highlight responsive-table centered" id="tableOutput">
@@ -70,7 +71,8 @@ $(function(){
           <th>Description</th>
           <th>Tax Rate</th>
           <th>Discount</th>
-          <th>Active/Inactive</th>
+          <th>Required Points</th>
+          <th>Status</th>
         </tr>
     </thead>
 
@@ -96,6 +98,7 @@ $(function(){
                       <td>{{$result->Discount}} %</td>
                       <input type="hidden" id="tdtax{{$key}}" value="{{$result->TaxRate}}" />
                       <input type="hidden" id="tddisc{{$key}}" value="{{$result->Discount}}" />
+                      <td>REQUIRED POINTS</td>
                       <td>
                           <div class="switch">
                             <label>
@@ -139,15 +142,19 @@ $(function(){
                 </div>
               </div>
 
-                <div class="input-field col s5">
+                <div class="input-field col s4">
                   <input id="add_tax"  type="number" class="validate"   min="0" max="100" name="add_tax" pattern ="[0-9]{3}"  REQUIRED/>
                   <label for="add_tax" data-error='Invalid'>Tax Rate %</label>
-
                 </div>
 
-                <div class="input-field col s5">
+                <div class="input-field col s4">
                   <input id="add_disc" type="number" class="validate" name="add_disc" pattern ="[0-9]{3}" min="0" max="100" REQUIRED>
                   <label for="add_disc">Discount %</label>
+                </div>
+
+                <div class="input-field col s4">
+                  <input id="add_points"  type="number" class="validate"  min="0" max="100" name="add_points" pattern ="[0-9]"  REQUIRED/>
+                  <label for="add_pints" data-error='Invalid'>Points</label>
                 </div>
       </div>
 
@@ -187,14 +194,19 @@ $(function(){
                       <label class="active" for="edit_desc">Account Description</label>
                     </div>
                   </div>
-                    <div class="input-field col s5">
+                    <div class="input-field col s4">
                       <input id="edit_tax"  type="number" class="validate"   min="0" max="100" name="edit_tax" pattern ="[0-9]{3}" REQUIRED/>
                   <label for="edit_tax" data-error='Invalid'>Tax Rate %</label>
                     </div>
-                    <div class="input-field col s5">
+                    <div class="input-field col s4">
                       <input id="edit_disc" type="number" class="validate" name="edit_disc" pattern ="[0-9]{3}" min="0" max="100"  REQUIRED>
                   <label for="edit_disc">Discount %</label>
                     </div>
+
+                    <div class="input-field col s4">
+                  <input id="add_points"  type="number" class="validate"  min="0" max="100" name="add_points" pattern ="[0-9]"  REQUIRED/>
+                  <label for="add_pints" data-error='Invalid'>Points</label>
+                </div>
                   
 		    </div>
 

@@ -203,7 +203,7 @@ $(function(){
 
 			        <tbody>
 			        	
-						 <@foreach($results2 as $key => $result)
+						 @foreach($results2 as $key => $result)
 						            <tr>
 						          	<td>
 						          		<form class="row " action="/confirmCity" method="POST">

@@ -111,6 +111,14 @@ $(function(){
 
 
 @section('content')
+
+<div class="right">
+              <div class="row"></div>
+          <a class="modal-trigger waves-effect waves-light green darken-2 btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Item</a>
+        </div>
+
+  
+
 <table class="highlight responsive-table centered" id="tableOutput">
         <thead>
           <tr>
@@ -165,8 +173,6 @@ $(function(){
 <!--*************************************************** ADD ITEM **************************************-->
   <div class="col s3 right">
 
-        <a class="modal-trigger waves-effect waves-light grey darken-3 btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Item</a>
-
         <div id="modal1" class="modal modal-fixed-footer">
           <div class="modal-content">
             <h4><i class="medium material-icons left">label</i>Add Item</h4>
@@ -177,8 +183,10 @@ $(function(){
                     <input id="itemName" type="text" class="validate" name="add_name">
                     <label for="itemName">Item Name</label>
                   </div> 
+              </div>
 
-                  <div class="input-field col s3">
+                <div class="row">
+                  <div class="input-field col s6">
                       <select name="add_cat" id="cat">
                         <option value="" disabled selected>Category</option>
                         @foreach($categories as $key => $category)
@@ -188,14 +196,13 @@ $(function(){
                       <label>Category</label>
                     </div>
 
-                  <div class="input-field col s3">
+                  <div class="input-field col s5">
                       <select name="add_sub" id="add_sub" >
                         <option value="" disabled selected>Subcategory</option>
-                       
                       </select>
                       <label>Subcategory</label>
                     </div>
-          </div>
+                </div>
           </div>
           <div class="modal-footer">
             <button class="modal-action modal-close white-text waves-effect waves-green btn-flat green" type="submit" name="add">

@@ -123,7 +123,7 @@ $(function(){
 					<div class="col s12">
 						<div class="right">
 							<div class="row"></div>
-							<a class="modal-trigger grey darken-3 waves-effect waves-light btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Category</a>
+							<a class="modal-trigger green darken-2 waves-effect waves-light btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Category</a>
 						</div>
 
 						<table class="responsive-table highlight centered" id="tableOutput1">
@@ -199,9 +199,9 @@ $(function(){
 	                	<i class="material-icons left">done</i>Add</button></form>
 				    </div>
 				  </div>
-	<!--*************************************************** END ADDCATEGORY **************************************-->
+	<!-- END ADDCATEGORY -->
 		
-		    <!--*************************************************** CAT EDIT ************************************************-->
+		    <!-- CAT EDIT -->
     			  
 		  <div id="modal3" class="modal modal-fixed-footer">
 		    <div class="modal-content">
@@ -233,8 +233,7 @@ $(function(){
                 <i class="material-icons left">edit</i>Change</button> 
 		    </div>
 		    </form>
-		  </div>
-    <!--*************************************************** CAT END EDIT ************************************************-->  
+		  </div> 
 </div>
 
 
@@ -259,7 +258,7 @@ $(function(){
 			<div class="col s12">
 				<div class="right">
 							<div class="row"></div>
-					<a class="modal-trigger grey darken-3 waves-effect waves-light btn" href="#modal2"><i class="material-icons left">add</i>Add Subcategory</a>
+					<a class="modal-trigger green darken-2 waves-effect waves-light btn" href="#modal2"><i class="material-icons left">add</i>Add Subcategory</a>
 				</div>
 				<table class="responsive-table highlight centered" id="tableOutput2">
 			        <thead>
@@ -276,8 +275,10 @@ $(function(){
 			        	@foreach($results2 as $key => $result)
 						 <tr>
 						   <td>
+						   		<div class="col s5">
 						   		<form action="/confirmSubCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
 						       <input type="hidden" class="items" id="tdID2{{$key}}" name="del_ID" value="{{$result->SubCategoryID}}">
+						       </div>
 					          	<button type="button" id="{{$key}}" value="{{$key}}" class="edit2 btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
 								<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete_forever</i></button>
 								</form>
