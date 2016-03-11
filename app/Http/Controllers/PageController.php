@@ -28,6 +28,11 @@ class PageController extends Controller
        return view('places');
     }
 
+    public function regContainer(Request $request){
+
+       return view('regContainer');
+    }
+
     public function shipment(Request $request){
 
        return view('shipment');

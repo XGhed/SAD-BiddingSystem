@@ -58,8 +58,22 @@
               </div>
             </li>
           </ul>
-        </li>       
-        <li><a class="white-text" href="/registerItem" ><i class="material-icons left">input</i>Record Items</a></li>
+        </li>
+        <li class="no-padding">
+          <ul class="collapsible collapsible-accordion">
+            <li>
+              <a class="white-text collapsible-header" ><i class="material-icons left">compare_arrows</i>Transactions<i class="material-icons right">arrow_drop_down</i></a>
+              <div class="collapsible-body">
+                  <div class="divider"></div>
+                <ul>
+                <li><a class="white-text" href="/registerContainer" ><i class="material-icons left">view_module</i>Record Container</a></li>
+                 <li><a class="white-text" href="/registerItem" ><i class="material-icons left">input</i>Record Items</a></li>
+                  <div class="divider"></div>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </li>
         <li><a class="white-text" href="/bidEvent" ><i class="material-icons left">today</i>Bidding Event</a></li>
         <li><a class="white-text" href="#!" ><i class="material-icons left">receipt</i>Reports</a></li>
         <li><a class="right white-text" href="/home"><i class="material-icons left">exit_to_app</i>Log out</a></li>

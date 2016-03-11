@@ -11,14 +11,15 @@ Register Items
 @endsection
 
 
-@section('regItems')
+@section('content')
 <!-- *************************************** ITEM TABLE ***************************************-->
 <table class="centered highlight responsive-table">
         <thead>
           <tr>
               <th>Manage</th>
-              <th data-field="id">Item ID</th>
-              <th data-field="price">Description</th>
+              <th data-field="id">ITEM ID</th>
+              <th data-field="id">CONTAINER ID</th>
+              <th data-field="desc">Description</th>
               <th data-field="size">Size</th>
               <th data-field="color">Color</th>
           </tr>
@@ -38,35 +39,32 @@ Register Items
           	</td>
 
           	<td>
-          		0002
+          		ITEM ID?
           	</td>
 
           	<td>
-          		kompyuter na green sira mouse
+          		CONTAINER ID?
           	</td>
 
           	<td>
-          		20x51x12
+          		kompyuter
           	</td>
 
           	<td>
-          		<div class="input-field col s10">
-				    <select>
-				      <option value="" disabled selected>Color</option>
-				      <option value="1">Option 1</option>
-				      <option value="2">Option 2</option>
-				      <option value="3">Option 3</option>
-				    </select>
-				  </div>
+          		20x12x50
+          	</td>
+
+          	<td>
+          		NIGGUH
           	</td>
           </tr>
         </tbody>
       </table>
-<!-- *************************************** END ITEM TABLE ***************************************-->
+<!--  END ITEM TABLE -->
 
 <div class="row">
 <div class="col s3 right ">
-  <a class="modal-trigger waves-effect waves-light btn grey darken-3" href="#addBtn"><i class="material-icons left">add</i>Add Items</a>
+  <a class="modal-trigger waves-effect waves-light btn green darken-2" href="#addBtn"><i class="material-icons left">add</i>Add Items</a>
 
   <div id="addBtn" class="modal modal-fixed-footer">
     <div class="modal-content">
@@ -74,32 +72,52 @@ Register Items
       			<div class="divider"></div>
       	<div class="row">
 		    <form class="col s12">
-		      <div class="row">
-		        <div class="input-field col s6">
-		          <i class="material-icons prefix">mode_edit</i>
-		          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-		          <label for="icon_prefix2">Item Description</label>
-		        </div>
-		      </div>
 
-		      <div class="row">
-		        <div class="input-field col s6">
-		          <input id="size" type="text" class="validate">
-		          <label for="size">Item Dimensions</label>
-		        </div>
-		      </div>
+		    	<div class="row">
+			   		<div class="input-field col s4">
+					    <select>
+					      <option value="" disabled selected>ID?</option>
+					      <option value="1">Option 1</option>
+					      <option value="2">Option 2</option>
+					      <option value="3">Option 3</option>
+					    </select>
+					    <label>ITEM</label>
+					</div>
 
-			  <div class="row">
-			    <div class="input-field col s5">
-				    <select>
-				      <option value="" disabled selected>Choose Color</option>
-				      <option value="1">Option 1</option>
-				      <option value="2">Option 2</option>
-				      <option value="3">Option 3</option>
-				    </select>
-				    <label>Color</label>
-				</div>
-			  </div>
+					<div class="input-field col s4">
+					    <select>
+					      <option value="" disabled selected>ID?</option>
+					      <option value="1">Option 1</option>
+					      <option value="2">Option 2</option>
+					      <option value="3">Option 3</option>
+					    </select>
+					    <label>CONTAINER</label>
+					</div>
+			  	</div>
+
+		      	<div class="row">
+		        	<div class="input-field col s8">
+		        	  <input id="size" type="text" class="validate">
+		        	  <label for="size">Item Description</label>
+		        	</div>
+		      	</div>
+
+		     	<div class="row">
+		       		<div class="input-field col s6">
+		        	  <input id="size" type="text" class="validate">
+		        	  <label for="size">Item Dimensions</label>
+		        	</div>
+
+			   		<div class="input-field col s5">
+					    <select>
+					      <option value="" disabled selected>Choose Color</option>
+					      <option value="1">Option 1</option>
+					      <option value="2">Option 2</option>
+					      <option value="3">Option 3</option>
+					    </select>
+					    <label>Color</label>
+					</div>
+			  	</div>
     </form>
   </div>
 
