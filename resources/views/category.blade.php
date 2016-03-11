@@ -283,7 +283,7 @@ $(function(){
 								</form>
 						    </td>
 
-						   <input type="hidden" id="tdCatID{{$key}}" value="$result->category->CategoryID" />
+						   <input type="hidden" id="tdCatID{{$key}}" value="{{$result->category->CategoryID}}" />
 						   <td id="tdname2{{$key}}">{{$result->SubCategoryName}}</td>
 						   <td>{{$result->category->CategoryName}}</td>
 						   <td id="tddesc2{{$key}}">{{$result->Description}}</td>
