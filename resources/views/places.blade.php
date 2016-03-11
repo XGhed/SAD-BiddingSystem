@@ -6,58 +6,7 @@ Maintenance
 @endsection
 
 @section('jqueryscript')
-<script type="text/javascript">
-$(function(){   
 
-    $("#tableOutput1").DataTable({
-      "lengthChange": false,
-      "pageLength": 5,
-      "columns": [
-        { "searchable": false },
-        null
-      ] 
-    });
-});
-
-$(function(){   
-    $('#tableOutput1').on('click', '.edit1', function(){
-      $('#modal3').openModal();
-      var selected = this.id;
-      var keyID = $("#tdID1"+selected).val();
-      var keyName = $("#tdname1"+selected).text();
-      var keyDesc = $("#tddesc1"+selected).text();
-      $("#edit_ID1").val(keyID);
-      $("#edit_name1").val(keyName);
-    });
-});
-
-$(function(){   
-
-    $("#tableOutput2").DataTable({
-      "lengthChange": false,
-      "pageLength": 5,
-      "columns": [
-        { "searchable": false },
-        null,
-        null,
-        null
-      ] 
-    });
-});
-
-$(function(){   
-    $('#tableOutput2').on('click', '.edit2', function(){
-      $('#modal4').openModal();
-      var selected = this.id;
-      var keyID = $("#tdID2"+selected).val();
-      var keyName = $("#tdname2"+selected).text();
-      var keyDesc = $("#tddesc2"+selected).text();
-      $("#edit_ID2").val(keyID);
-      $("#edit_name2").val(keyName);
-      $("#edit_desc2").val(keyDesc);
-    });
-});
-</script>
 @endsection
 
 
@@ -76,7 +25,7 @@ $(function(){
     <div class="col s10 push-s1" >
       <ul class="tabs">
         <li class="tab col s3"><a class="black-text" href="#proTab">Province</a></li>
-        <li class="tab col s3"><a class="black-text" href="#ciTab">City</a></li>
+        <li class="tab col s3"><a class="black-text" href="#cityTab">Municipality</a></li>
 
       </ul>
     </div>
@@ -84,11 +33,10 @@ $(function(){
     
 
     <div id= "proTab" class="col s12">
-	    		<!--DATA TABLE -->
 					<div class="col s12">
 						<div class="right">
 							<div class="row"></div>
-							<a class="modal-trigger green waves-effect waves-light btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Province</a>
+							<a class="modal-trigger green darken-2 waves-effect waves-light btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Province</a>
 						</div>
 
 						<table class="responsive-table highlight centered" id="tableOutput1">
@@ -100,40 +48,39 @@ $(function(){
 					        </thead>
 
 					        <tbody>
-					        	@foreach($results as $key => $result)
 						            <tr>
 						          	<td>
-						          		<form class="row " action="/confirmProvince" method="POST">
+						          		<form class="row " action="/" method="POST">
 						          			<div class="center">
-						          				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						          				<button type="button" id="{{$key}}" value="{{$key}}" class="edit1 btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped center" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+						          				<input type="hidden" name="_token" value="">
+						          				<button type="button" id="" value="" class="edit1 btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped center" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
 
-						          				<input type="hidden" class="items" id="tdID1{{$key}}" name="del_ID" value="{{$result->ProvinceID}}">
+						          				<input type="hidden" class="items" id="" name="del_ID" value="">
 						          				<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete_forever</i></button>
 						          			</div>
 						          		</form>
 						            </td>
-						            <td id="tdname1{{$key}}">{{$result->ProvinceName}}</td>
+						            <td></td>
+						            <td></td>
 						          </tr>
-					         	@endforeach
 					        </tbody>
 					      </table>
 					</div>
-		<!--END DATA TABLE -->
+	<!--END DATA TABLE -->
 
 	<!-- ADDPLACE -->
 				  <div id="modal1" class="modal modal-fixed-footer">
 				    <div class="modal-content">
-				      <h4><i class="medium material-icons left">location_on</i>Add Location</h4>
+				      <h4><i class="medium material-icons left">location_on</i>Add province</h4>
 				      			<div class="divider"></div>
 				        <div class="row">
-						    <form class="col s12" action="" method="POST"><input type="hidden" name="" value="">
+						    <form class="col s12" action="/" method="POST"><input type="hidden" name="" value="">
 							    <div class="row">
 							       	<div class="input-field col s5">
 							        	<input id="category" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
 							         	<label for="category">Province</label>
 							        </div>
-							    </div>
+								</div>
 						</div>
 				    </div>
 				    <div class="modal-footer">
@@ -141,24 +88,27 @@ $(function(){
 	                	<i class="material-icons left">done</i>Add</button></form>
 				    </div>
 				  </div>
-	<!-- END ADDPLACES -->
+	<!-- END ADD PLACE -->
+
+
+
 		
-		    <!-- PLACES EDIT -->
+	<!-- PROVINCE EDIT -->
     			  
 		  <div id="modal3" class="modal modal-fixed-footer">
 		    <div class="modal-content">
 		      <h4><i class="medium material-icons left">edit</i>Edit</h4>
 		      							<div class="divider"></div>
 		     		<div class="row">
-					    <form class="col s12" action="/confirmProvince" method="POST">
-					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					    <form class="col s12" action="/" method="POST">
+					    	<input type="hidden" name="" value="">
 					    	<input type="hidden" name="edit_ID" id="edit_ID1">
 							    <div class="row">
 							       	<div class="input-field col s5">
 							        	<input value=" " id="edit_name1" type="text" class="validate" name="edit_name" pattern ="[A-Za-z ]+" length="30" maxlength="30" REQUIRED>
-							         	<label class="active" for="edit_name1">Province</label>
+							         	<label class="active" for="edit_name1">Category</label>
 							        </div>
-							    </div>
+								</div>
 					</div>
 		    </div>
 
@@ -169,8 +119,7 @@ $(function(){
 		    </div>
 		    </form>
 		  </div>
-    <!--*************************************************** CAT END EDIT ************************************************-->  
-</div>
+	</div> <!-- end proTab -->
 
 
 
@@ -186,21 +135,21 @@ $(function(){
 
 
 
-    <!-- *************************************************** SUB CATEGORY ***************************************************-->
+    <!--  CITY -->
 
 
- <div id="ciTab" class="col s12">
-	    		<!--DATA TABLE -->
+ <div id="cityTab" class="col s12">
+	    		
 			<div class="col s12">
 				<div class="right">
 							<div class="row"></div>
-					<a class="modal-trigger green waves-effect waves-light btn z-depth-5" href="#modal2"><i class="material-icons left">add</i>Add City</a>
+					<a class="modal-trigger green darken-2 waves-effect waves-light btn" href="#modal2"><i class="material-icons left">add</i>Add City</a>
 				</div>
 				<table class="responsive-table highlight centered" id="tableOutput2">
 			        <thead>
 			          <tr>
 			          	  <th style="cursor: default;">Manage</th>
-			              <th>City</th>			              
+			              <th>City</th>
 			          </tr>
 			        </thead>
 
@@ -208,35 +157,35 @@ $(function(){
 			        	
 						 <tr>
 						   <td>
-						   		<form action="" method="POST">
-						   		<input type="hidden" name="" value="">
+						   		<form action="/" method="POST"><input type="hidden" name="_token" value="">
 						       <input type="hidden" class="items" id="" name="del_ID" value="">
 					          	<button type="button" id="" value="" class="edit2 btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
-								<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
+								<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete_forever</i></button>
 								</form>
 						    </td>
-						   	<td id=""></td>
+
+						   <td></td>
+						   <td></td>
 						</tr>
 			        </tbody>
 			      </table>
 			</div>
 
 
-			<!--END DATA TABLE -->
+	<!--END DATA TABLE -->
 
-			<!--ADD City -->
-							  <!-- Modal Structure -->
+	<!--ADD CITY -->
 							<div id="modal2" class="modal modal-fixed-footer">
 							    <div class="modal-content">
-							      <h4><i class="medium material-icons left">location_on</i>Add City</h4>
+							      <h4><i class="medium material-icons left">dns</i>Add City</h4>
 							      			<div class="divider"></div>
 							      	<div class="row">
-									    <form class="col s12" action="" method="POST">
+									    <form class="col s12" action="/" method="POST">
 										    <input type="hidden" name="_token" value="">	
 										      	<div class="row">
 											        <div class="input-field col s7">
 													    <select name="add_ID" REQUIRED>
-													    	<option value="" disabled selected>Choose your Province</option>
+													    	<option value="" disabled selected>Choose Province</option>
 													    	
 						            						<option id="" value=""></option>
 					         								
@@ -248,35 +197,41 @@ $(function(){
 												    <div class="input-field col s6" >
 												        <input id="add_name" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
 												        <label for="add_name">Name of City</label>
+													</div>
 												</div>
-									</div> 
+									</div>
 								</div>
-							</div>
+
 								    <div class="modal-footer">
 								      <button class="modal-action waves-effect waves-green btn " type="submit" name="add">
 					                	<i class="material-icons left">done</i>Confirm</button></form>
 								    </div>
-					</div>
-				</div>
-			<!--***************************************************END SUBCATEGORY **************************************-->
+							</div>
+	<!-- END CITY -->
 
 
-    <!--*************************************************** SUBCAT EDIT ************************************************-->  
+    <!-- CITY EDIT-->  
 
  		<div id="modal4" class="modal modal-fixed-footer">
 		    <div class="modal-content">
 		      <h4><i class="medium material-icons left">edit</i>Edit</h4>
 		      							<div class="divider"></div>
 		     		<div class="row">
-					    <form class="col s12" action="/confirmSubCategory" method="POST">
-					    	<input type="hidden" name="" value="">
+					    <form class="col s12" action="/" method="POST">
+					    	<input type="hidden" name="_token" value="">
 					    	<input type="hidden" name="edit_ID" id="edit_ID2">  
 								<div class="row">	  	
 							       	<div class="input-field col s6">
 							        	<input value=" " type="text" class="validate" name="edit_name" id="edit_name2" length="30" maxlength="30" REQUIRED>
-							         	<label class="active" for="edit_name2">Name of City</label>
+							         	<label class="active" for="edit_name2">City</label>
 							        </div>
 							    </div>
+							    <div class="row">
+							       	<div class="input-field col s10">
+							        	<input value=" " type="text" class="validate" name="edit_desc" id="edit_desc2" length="30" maxlength="30" REQUIRED>
+							         	<label class="active" for="edit_desc2">Description</label>
+							        </div>
+						    	</div>
 					</div>
 		    </div>
 
@@ -288,7 +243,7 @@ $(function(){
 		    </form>
 		 	</div>
 		</div>
-		 		  <!-- CITY END EDIT -->  
+	<!-- CITY END EDIT -->  
 </div>
 
 			<script>
@@ -304,4 +259,3 @@ $(function(){
 			</script>
 
 @endsection
-
