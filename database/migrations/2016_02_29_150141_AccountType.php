@@ -15,6 +15,7 @@ class AccountType extends Migration
         $table->string('Description', 30);
         $table->integer('TaxRate')->unsigned();
         $table->integer('Discount')->unsigned();
+        $table->integer('RequiredPoints')->unsigned();
         $table->boolean('Status')->default(1);
         $table->softDeletes();
     });

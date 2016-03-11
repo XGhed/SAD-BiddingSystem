@@ -35,6 +35,8 @@ Route::post('/confirmProvince', 'ProvinceController@confirmProvince');
 
 Route::post('/confirmCity', 'CityController@confirmCity');
 
+Route::post('/confirmShipment', 'ShipmentController@confirmShipment');
+
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');
@@ -51,7 +53,7 @@ Route::get('/keyword', 'KeywordController@ManageKeyword');
 
 Route::get('/item', 'ItemController@manageItem');
 
-Route::get('/shipment', 'PageController@shipment');
+Route::get('/shipment', 'ShipmentController@manageShipment');
 
 Route::get('/registerContainer', 'PageController@regContainer');
 
