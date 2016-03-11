@@ -5,18 +5,23 @@ use Illuminate\Database\Migrations\Migration;
 
 class ProvinceCompany extends Migration
 {
-    Schema::create('ProvinceCompany', function(Blueprint $table)
-    {
-        $table->primary(array('ProvinceID', 'CompanyID'));
-        $table->integer('ProvinceID')->unsigned();
-        $table->foreign('ProvinceID')->references('ProvinceID')->on('Province');
-        $table->integer('CompanyID')->unsigned();
-        $table->foreign('CompanyID')->references('CompanyID')->on('Delivery_Company');
-    });
-     public function down()
+     public function up()
 {
 
-    Schema::drop('ProvinceThirdParty');
+    Schema::create('ProvinceCompany', function(Blueprint $table)
+    {
+        $table->primary(array('ProvinceID','CompanyID'));
+        $table->integer('CompanyID')->unsigned();
+        $table->integer('ProvinceID')->unsigned();
+        $table->foreign('CompanyID')->references('CompanyID')->on('Delivery_Company');
+        $table->foreign('ProvinceID')->references('ProvinceID')->on('Province');
+    });
+}
+
+public function down()
+{
+
+    Schema::drop('ProvinceCompany');
     
 }
 }
