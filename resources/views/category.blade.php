@@ -54,6 +54,7 @@ $(function(){
         { "searchable": false },
         null,
         null,
+        null,
         null
       ] 
     });
@@ -83,9 +84,12 @@ $(function(){
       var keyID = $("#tdID2"+selected).val();
       var keyName = $("#tdname2"+selected).text();
       var keyDesc = $("#tddesc2"+selected).text();
+      var catID = $("#tdCatID"+selected).val();
       $("#edit_ID2").val(keyID);
       $("#edit_name2").val(keyName);
       $("#edit_desc2").val(keyDesc);
+      $("#edit_CatID").val(catID);
+      $("#edit_CatID").material_select();
     });
 });
 </script>
@@ -262,6 +266,7 @@ $(function(){
 			          <tr>
 			          	  <th style="cursor: default;">Manage</th>
 			              <th>Subcategory</th>
+			              <th>Category</th>
 			              <th>Description</th>
 			              <th>Active/Inactive</th>
 			          </tr>
@@ -278,7 +283,9 @@ $(function(){
 								</form>
 						    </td>
 
+						   <input type="hidden" id="tdCatID{{$key}}" value="$result->category->CategoryID" />
 						   <td id="tdname2{{$key}}">{{$result->SubCategoryName}}</td>
+						   <td>{{$result->category->CategoryName}}</td>
 						   <td id="tddesc2{{$key}}">{{$result->Description}}</td>
 						   <td>
 					                  <div class="switch">
@@ -360,6 +367,16 @@ $(function(){
 					    <form class="col s12" action="/confirmSubCategory" method="POST">
 					    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					    	<input type="hidden" name="edit_ID" id="edit_ID2">  
+					    	<div class="row">
+						        <div class="input-field col s7">
+								    <select id="edit_CatID" name="edit_CatID" REQUIRED>
+								    	<option value="" disabled selected>Choose your Category</option>
+								    	@foreach($results as $key => $result)
+	            						<option id="{{$key}}" value="{{$result->CategoryID}}">{{$result->CategoryName}}</option>
+         								@endforeach
+								    </select>
+								  </div>
+							 </div>
 								<div class="row">	  	
 							       	<div class="input-field col s6">
 							        	<input value=" " type="text" class="validate" name="edit_name" id="edit_name2" length="30" maxlength="30" REQUIRED>
