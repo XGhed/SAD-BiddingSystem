@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Category;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App;
+use Session;
 
 class ShipmentController extends Controller
 {
     public function manageShipment(){
 
-       $results = App\Shipment::all();
+       $results = App\ThirdParty::all();
        $provinces = App\Province::orderBy('ProvinceName')->get();
-       $cities = App\City::all();
 
        return view('shipment')->with ('results', $results)->with ('provinces', $provinces);
+       //return view('shipment')->with ('provinces', $provinces);
     }
 
     public function confirmShipment(Request $request){
@@ -40,15 +42,18 @@ class ShipmentController extends Controller
     public function insertShipment(Request $request){
 
         try {
-            $shipment = new App\Shipment;
-
-            $shipment->ShipmentName = $request->input('add_name');
-            $shipment->CityID = $request->input('add_city');
-            $shipment->Barangay_Street_Address = $request->input('add_barangay_street');
-            $shipment->ShipmentContactNo = $request->input('add_contactNo');
-            $shipment->ShipmentEmail = $request->input('add_email');
-
+            $shipment = new App\ThirdParty;
+            $shipment->PartyName = $request->input('add_name');
             $shipment->save();
+
+            foreach ($request->input('add_prov') as $key => $add_prov) {
+                $provThird = new App\ProvinceThirdParty;
+                $provThird->PartyID = $shipment->PartyID;
+                $provThird->ProvinceID = $add_prov;
+
+                $provThird->save();
+            }
+
         } catch (Exception $e) {
             Session::put('message', '-1');
             return redirect('shipment');
@@ -76,8 +81,12 @@ class ShipmentController extends Controller
 
     public function deleteShipment(Request $request){
         try {
-            $shipment = new App\Shipment;
-            $shipment = App\Shipment::find($request->input('edit_ID'));
+            $shipment = new App\ThirdParty;
+            $shipment = App\ThirdParty::find($request->input('del_ID'));
+
+            foreach ($shipment->province_ThirdParty as $key => $provThird) {
+                $provThird->delete();
+            }
         
             $shipment->delete();
         } catch (Exception $e) {

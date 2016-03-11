@@ -58,7 +58,7 @@ Route::get('/shipment', 'ShipmentController@manageShipment');
 Route::get('/registerContainer', 'PageController@regContainer');
 
 Route::get('/places', 'ProvinceController@manageProvince');
-
+//Route::get('/shipment', 'PageController@shipment');
 
 //AJAX
 Route::get('/cityOptions', 'DropDowns@cityOptions');
