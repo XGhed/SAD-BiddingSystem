@@ -13,8 +13,6 @@ class DeliveryThirdParty extends Migration
         $table->increments('PartyID');
         $table->string('PartyName', 30);
         $table->softDeletes();
-        $table->integer('ProvinceID')->unsigned();
-        $table->foreign('ProvinceID')->references('ProvinceID')->on('Province');
     });
 }
 
