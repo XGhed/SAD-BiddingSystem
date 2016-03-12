@@ -12,7 +12,12 @@ Transaction
 
 
 @section('content')
-<!-- *************************************** ITEM TABLE ***************************************-->
+<!--  Data TABLE-->
+<div class="row"></div>
+      <div class="right">
+        <a class="modal-trigger waves-effect waves-light green btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Record Container</a>
+      </div>
+
 <table class="centered highlight responsive-table">
         <thead>
           <tr>
@@ -51,10 +56,6 @@ Transaction
         </tbody>
       </table>
 <!-- *************************************** END ITEM TABLE ***************************************-->
-<div class="row">
-<div class="right ">
-  <a class="modal-trigger waves-effect waves-light btn green darken-2" href="#addBtn"><i class="material-icons left">add</i>Record Container</a>
-
   <div id="addBtn" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4><i class="medium material-icons left">view_module</i>Add Container</h4>
@@ -66,52 +67,24 @@ Transaction
 		          <label for="conName">Container Name</label>
 		          <input id="conName" type="text" class="validate">
 		        </div>
-		      </div>
-    		</form>
-  		</div>
-
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn "><i class="material-icons left">done</i>Confirm</a>
-    </div>
-  </div>
-  </div>
-</div>
-
-
-<div id="addBtn" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4><i class="medium material-icons left">add</i>Add Container</h4>
-            <div class="divider"></div>
-        <div class="row">
-        <form class="col s12">
+          </div>
 
           <div class="row">
             <div class="input-field col s4">
-              <select>
-                <option value="" disabled selected>Supplier</option>
-                @foreach($suppliers as $key => $result)
-              <option id="{{$key}}" value="{{$result->ItemID}}">{{$result->SupplierName}}</option>
-              @endforeach
-              </select>
-              <label>Supplier</label>
-          </div>
+              <input type="date" class="datepicker">
+              <label class="active">Date Arrived:</label>
+            </div>
+		      </div>
 
-          <!--DATE HERE-->
-
-          </div>
-    </form>
-  </div>
-
+    		</form>
+  		</div>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn "><i class="material-icons left">done</i>Confirm</a>
     </div>
   </div>
-  </div>
-</div>
     
-    <!-- EDIT *-->		  
+    <!-- EDIT -->		  
 		  <div id="modal3" class="modal modal-fixed-footer">
 		    <div class="modal-content">
 		      <h4><i class="medium material-icons left">edit</i>Edit Container</h4>
@@ -124,6 +97,13 @@ Transaction
 					          <input id="conName" type="text" class="validate">
 					        </div>
 					      </div>
+
+                <div class="row">
+                  <div class="input-field col s4">
+                    <input type="date" class="datepicker">
+                    <label class="active">Date:</label>
+                  </div>
+                </div>
 			    		</form>
 			  		</div>
 		    </div>
@@ -133,7 +113,7 @@ Transaction
 		      <a href="#!" class="modal-action modal-close waves-effect waves-green btn"><i class="medium material-icons left">done</i>Edit</a>
 		    </div>
 		  </div>
-    <!--*************************************************** END EDIT ************************************************-->  
+    <!-- END EDIT *-->  
     
   <script>
   	//MODAL
