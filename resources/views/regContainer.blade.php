@@ -96,7 +96,9 @@ Transaction
               </select>
               <label>Supplier</label>
           </div>
-          
+
+          <!--DATE HERE-->
+
           </div>
     </form>
   </div>
