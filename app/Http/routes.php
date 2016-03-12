@@ -55,7 +55,7 @@ Route::get('/item', 'ItemController@manageItem');
 
 Route::get('/shipment', 'ShipmentController@manageShipment');
 
-Route::get('/registerContainer', 'PageController@regContainer');
+Route::get('/registerContainer', 'RegisterContainerController@manageRegContainer');
 
 Route::get('/places', 'ProvinceController@manageProvince');
 

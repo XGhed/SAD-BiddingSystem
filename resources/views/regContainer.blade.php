@@ -71,6 +71,18 @@ Transaction
 
           <div class="row">
             <div class="input-field col s4">
+              <select>
+                <option value="" disabled selected>Supplier</option>
+                @foreach($suppliers as $key => $result)
+              <option id="{{$key}}" value="{{$result->SupplierID}}">{{$result->SupplierName}}</option>
+              @endforeach
+              </select>
+              <label>Supplier</label>
+          </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s4">
               <input type="date" class="datepicker">
               <label class="active">Date Arrived:</label>
             </div>
