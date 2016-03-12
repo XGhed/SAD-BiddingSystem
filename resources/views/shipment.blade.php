@@ -155,7 +155,7 @@ $(function(){
 
             <div class="modal-footer">
                   <button class="btn waves-effect waves-light green darken-2 white-text" type="submit" name="add">
-                  <i class="material-icons left">add</i>Add Supplier</button>
+                  <i class="material-icons left">add</i>Add Courier</button>
             </div>
         </form>  
             </div> <!--MODAL BODY-->

@@ -45,6 +45,7 @@ class AccountTypeController extends Controller
 		$accountType->Description = $request->input('add_desc');
 		$accountType->TaxRate = $request->input('add_tax');
 		$accountType->Discount = $request->input('add_disc');
+		$accountType->RequiredPoints = $request->input('add_points');
 
 		try {
 			$accountType->save();
@@ -63,6 +64,7 @@ class AccountTypeController extends Controller
 		$accountType->Description = $request->input('edit_desc');
 		$accountType->TaxRate = $request->input('edit_tax');
 		$accountType->Discount = $request->input('edit_disc');
+		$accountType->RequiredPoints = $request->input('edit_points');
 
 		try {
 			$accountType->save();

@@ -39,6 +39,7 @@ $(function(){
       var keyID = $("#tdID"+selected).val();
       var keyName = $("#tdname"+selected).text();
       var keyDesc = $("#tddesc"+selected).text();
+      var keyPoints = $("#tdpoints"+selected).text();
       var keyTax = $("#tdtax"+selected).val();
       var keyDisc = $("#tddisc"+selected).val();
       $("#edit_ID").val(keyID);
@@ -46,6 +47,7 @@ $(function(){
       $("#edit_desc").val(keyDesc);
       $("#edit_tax").val(keyTax);
       $("#edit_disc").val(keyDisc);
+      $("#edit_points").val(keyPoints);
     });
 });
 </script>
@@ -98,7 +100,7 @@ $(function(){
                       <td>{{$result->Discount}} %</td>
                       <input type="hidden" id="tdtax{{$key}}" value="{{$result->TaxRate}}" />
                       <input type="hidden" id="tddisc{{$key}}" value="{{$result->Discount}}" />
-                      <td>REQUIRED POINTS</td>
+                      <td id="tdpoints{{$key}}">{{$result->RequiredPoints}}</td>
                       <td>
                           <div class="switch">
                             <label>
@@ -154,7 +156,7 @@ $(function(){
 
                 <div class="input-field col s4">
                   <input id="add_points"  type="number" class="validate"  min="0" max="100" name="add_points" pattern ="[0-9]"  REQUIRED/>
-                  <label for="add_pints" data-error='Invalid'>Points</label>
+                  <label for="add_points" data-error='Invalid'>Points</label>
                 </div>
       </div>
 
@@ -204,8 +206,8 @@ $(function(){
                     </div>
 
                     <div class="input-field col s4">
-                  <input id="add_points"  type="number" class="validate"  min="0" max="100" name="add_points" pattern ="[0-9]"  REQUIRED/>
-                  <label for="add_pints" data-error='Invalid'>Points</label>
+                  <input id="edit_points"  type="number" class="validate"  min="0" max="100" name="edit_points" pattern ="[0-9]"  REQUIRED/>
+                  <label for="edit_points" data-error='Invalid'>Points</label>
                 </div>
                   
 		    </div>

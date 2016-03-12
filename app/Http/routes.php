@@ -58,6 +58,8 @@ Route::get('/shipment', 'ShipmentController@manageShipment');
 Route::get('/registerContainer', 'PageController@regContainer');
 
 Route::get('/places', 'ProvinceController@manageProvince');
+
+Route::get('/registerItem', 'RegisterItemController@manageRegItem');
 //Route::get('/shipment', 'PageController@shipment');
 
 //AJAX
@@ -95,8 +97,6 @@ Route::get('/deliveryCompany', 'PageController@deliveryCompany');
 
 
 
-
-Route::get('/registerItem', 'PageController@regItems');
 
 Route::get('/bidEvent', 'PageController@bidEvent');
 

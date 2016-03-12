@@ -79,7 +79,35 @@ Transaction
 </div>
 
 
+<div id="addBtn" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4><i class="medium material-icons left">add</i>Add Container</h4>
+            <div class="divider"></div>
+        <div class="row">
+        <form class="col s12">
 
+          <div class="row">
+            <div class="input-field col s4">
+              <select>
+                <option value="" disabled selected>Supplier</option>
+                @foreach($suppliers as $key => $result)
+              <option id="{{$key}}" value="{{$result->ItemID}}">{{$result->SupplierName}}</option>
+              @endforeach
+              </select>
+              <label>Supplier</label>
+          </div>
+          
+          </div>
+    </form>
+  </div>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn "><i class="material-icons left">done</i>Confirm</a>
+    </div>
+  </div>
+  </div>
+</div>
     
     <!-- EDIT *-->		  
 		  <div id="modal3" class="modal modal-fixed-footer">

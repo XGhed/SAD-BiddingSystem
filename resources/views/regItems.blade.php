@@ -17,8 +17,8 @@ Register Items
         <thead>
           <tr>
               <th>Manage</th>
-              <th data-field="id">ITEM ID</th>
-              <th data-field="id">CONTAINER ID</th>
+              <th data-field="id">ITEM</th>
+              <th data-field="id">CONTAINER</th>
               <th data-field="desc">Description</th>
               <th data-field="size">Size</th>
               <th data-field="color">Color</th>
@@ -76,17 +76,17 @@ Register Items
 		    	<div class="row">
 			   		<div class="input-field col s4">
 					    <select>
-					      <option value="" disabled selected>ID?</option>
-					      <option value="1">Option 1</option>
-					      <option value="2">Option 2</option>
-					      <option value="3">Option 3</option>
+					      <option value="" disabled selected>Item</option>
+					      @foreach($items as $key => $result)
+							<option id="{{$key}}" value="{{$result->ItemID}}">{{$result->ItemName}}</option>
+						  @endforeach
 					    </select>
 					    <label>ITEM</label>
 					</div>
 
 					<div class="input-field col s4">
 					    <select>
-					      <option value="" disabled selected>ID?</option>
+					      <option value="" disabled selected>Container</option>
 					      <option value="1">Option 1</option>
 					      <option value="2">Option 2</option>
 					      <option value="3">Option 3</option>
