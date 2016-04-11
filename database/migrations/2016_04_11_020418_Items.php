@@ -13,7 +13,10 @@ class Items extends Migration
         $table->increments('ItemID');
         $table->string('ItemName', 30);
         $table->boolean('Status')->default(1);
+        $table->integer('price');
+        $table->integer('WarehouseNo')->unsigned();
         $table->integer('SubCategoryID')->unsigned();
+        $table->foreign('WarehouseNo')->references('WarehouseNo')->on('Warehouse');
         $table->foreign('SubCategoryID')->references('SubCategoryID')->on('SubCategory');
         $table->softDeletes();
     });
