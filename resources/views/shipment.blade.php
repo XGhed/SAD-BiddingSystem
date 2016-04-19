@@ -145,21 +145,18 @@ $(function(){
                           </tr>
                         @endforeach-->
                         @for ($i = 0; $i < count($provinces); $i++)
-                            @if ($i==0 || $i%5==0){
+                            @if ($i==0 || $i%4==0) <!--$i%NumberOfColumns-->
                               <tr>
-                            }
-                            @else {
+                            @else
                               <td>
                                 <div class="left">
                                   <input type="checkbox" class="filled-in" id="add_prov{{$key}}" name="add_prov[]" value="{{$provinces[$i]->ProvinceID}}" />
                                   <label for="add_prov{{$key}}">{{$provinces[$i]->ProvinceName}}</label>
                                 </div>
                               </td>
-                            }
                             @endif
-                            @if ($i%4==0 || $i==count($provinces)-1){
+                            @if ($i!=0 && ($i%4==3 || $i==count($provinces)-1)) <!--$i%NumberOfColumns==NumberOfColumns-1-->
                               </tr>
-                            }
                             @endif
                         @endfor
                       </tbody>
