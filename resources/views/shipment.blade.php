@@ -70,14 +70,12 @@ $(function(){
               <td>
                 <div class="switch">
                   <label>
-                    Off
                     @if ($result->Status == 1)
                           <input class="cat" type="checkbox" id="tdstatus{{$key}}" value="{{$result->PartyID}}" checked>
                       @elseif ($result->Status == 0)
                           <input class="cat" type="checkbox" id="tdstatus{{$key}}" value="{{$result->PartyID}}" >
                       @endif
                     <span class="lever"></span>
-                    On
                   </label>
                 </div>
             </td>
@@ -128,7 +126,7 @@ $(function(){
                       </tbody>
                     </table>
                   </div>
-                  <div class="col s6 push-s2">
+                  <div class="col s9 green">
                     <table style="width: 150px; position:relative; top: -20px;" class="centered">
                       <thead>
                         <tr>
