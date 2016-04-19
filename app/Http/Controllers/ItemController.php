@@ -43,12 +43,12 @@ class ItemController extends Controller
 
     public function insertItem(Request $request){
 
+        try {
         $item = new App\Item;
 
-        $item->ItemName = $request->input('add_name');
-        $item->SubCategoryID = $request->input('add_sub');
+        $item->ItemName = trim($request->input('add_name'));
+        $item->SubCategoryID = trim($request->input('add_sub'));
 
-        try {
             $item->save();
         } catch (Exception $e) {
             Session::put('message', '-1');
@@ -58,13 +58,13 @@ class ItemController extends Controller
 
     public function updateItem(Request $request){
 
+        try {
         $item = new App\Item;
         $item = App\Item::find($request->input('edit_ID'));
 
-        $item->ItemName = $request->input('edit_name');
-        $item->SubCategoryID = $request->input('edit_sub');
+        $item->ItemName = trim($request->input('edit_name'));
+        $item->SubCategoryID = trim($request->input('edit_sub'));
 
-        try {
             $item->save();
         } catch (Exception $e) {
             Session::put('message', '-1');
@@ -73,10 +73,10 @@ class ItemController extends Controller
     }
 
     public function deleteItem(Request $request){
+        try {
         $item = new App\Item;
         $item = App\Item::find($request->input('del_ID'));
         
-        try {
             $item->delete();
         } catch (Exception $e) {
             Session::put('message', '-1');

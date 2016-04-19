@@ -40,12 +40,12 @@ class CategoryController extends Controller
 
     public function insertCategory(Request $request){
 
+		try {
 		$category = new App\Category;
 
-		$category->CategoryName = $request->input('add_name');
-		$category->Description = $request->input('add_desc');
+		$category->CategoryName = trim($request->input('add_name'));
+		$category->Description = trim($request->input('add_desc'));
 
-		try {
 			$category->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
@@ -55,13 +55,13 @@ class CategoryController extends Controller
 
 	public function updateCategory(Request $request){
 
+		try {
 		$category = new App\Category;
 		$category = App\Category::find($request->input('edit_ID'));
 
-		$category->CategoryName = $request->input('edit_name');
-		$category->Description = $request->input('edit_desc');
+		$category->CategoryName = trim($request->input('edit_name'));
+		$category->Description = trim($request->input('edit_desc'));
 
-		try {
 			$category->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
@@ -70,10 +70,10 @@ class CategoryController extends Controller
 	}
 
 	public function deleteCategory(Request $request){
+		try {
 		$category = new App\Category;
 		$category = App\Category::find($request->input('del_ID'));
 		
-		try {
 			$category->delete();
 		} catch (Exception $e) {
 			Session::put('message', '-1');

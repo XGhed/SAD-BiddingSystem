@@ -31,7 +31,7 @@ $(function(){
 @section('content')
 <div class="row"></div>
       <div class="right">
-        <a class="modal-trigger waves-effect waves-light green darken-3 btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Delivery Company</a>
+        <a class="modal-trigger waves-effect waves-light blue darken-3 btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Delivery Company</a>
       </div>
         <!-- DATA TABLE -->
       <table class="highlight responsive-table centered" id="tableOutput">
@@ -136,7 +136,7 @@ $(function(){
                         </tr>
                       </thead>
                       <tbody style="overflow: auto;">
-                        @foreach($provinces as $key => $province)
+                        <!--@foreach($provinces as $key => $province)
                           <tr>
                             <td>
                               <div class="left">
@@ -145,7 +145,25 @@ $(function(){
                               </div>
                             </td>
                           </tr>
-                        @endforeach
+                        @endforeach-->
+                        @for ($i = 0; $i < count($provinces); $i++)
+                            @if ($i==0 || $i%4==0){
+                              <tr>
+                            }
+                            @else {
+                              <td>
+                                <div class="left">
+                                  <input type="checkbox" class="filled-in" id="add_prov{{$key}}" name="add_prov[]" value="{{$provinces[$i]->ProvinceID}}" />
+                                  <label for="add_prov{{$key}}">{{$provinces[$i]->ProvinceName}}</label>
+                                </div>
+                              </td>
+                            }
+                            @endif
+                            @if ($i==0 || $i%4==0 || $i==count($provinces)-1){
+                              </tr>
+                            }
+                            @endif
+                        @endfor
                       </tbody>
                     </table>
                   </div>
@@ -154,7 +172,7 @@ $(function(){
             </div> <!--*************************** MODAL CONTENT ***************************-->
 
             <div class="modal-footer">
-                  <button class="btn waves-effect waves-light green darken-2 white-text" type="submit" name="add">
+                  <button class="btn waves-effect waves-light blue darken-2 white-text" type="submit" name="add">
                   <i class="material-icons left">add</i>Add Courier</button>
             </div>
         </form>  
@@ -225,7 +243,7 @@ $(function(){
           </div> <!--*************************** MODAL CONTENT ***************************-->
 
           <div class="modal-footer">
-                <button class="btn-flat green waves-effect waves-light white-text col s2" type="submit" name="edit">
+                <button class="btn-flat blue waves-effect waves-light white-text col s2" type="submit" name="edit">
                 <i class="material-icons left">edit</i>Change</button>
           </div>
       </form>

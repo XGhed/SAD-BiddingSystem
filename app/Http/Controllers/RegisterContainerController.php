@@ -17,4 +17,23 @@ class RegisterContainerController extends Controller
 
        return view('regContainer')->with ('suppliers', $suppliers);
     }
+
+    public function confirmCategory(Request $request){
+
+		if (isset($_POST['add'])) {
+			$this->insertCategory($request);
+			Session::put('message', '1');
+			return redirect('regContainer');
+		}
+		elseif (isset($_POST['edit'])) {
+	        $this->updateCategory($request);
+	        Session::put('message', '2');
+			return redirect('category');
+	    }
+	    elseif (isset($_POST['delete'])) {
+	        $this->deleteCategory($request);
+	        Session::put('message', '3');
+			return redirect('category');
+	    }
+    }
 }

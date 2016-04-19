@@ -114,7 +114,7 @@ $(function(){
 
 <div class="right">
               <div class="row"></div>
-          <a class="modal-trigger waves-effect waves-light green darken-2 btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Item</a>
+          <a class="modal-trigger waves-effect waves-light blue darken-2 btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Item</a>
         </div>
 
   
@@ -205,7 +205,7 @@ $(function(){
                 </div>
           </div>
           <div class="modal-footer">
-            <button class="modal-action modal-close white-text waves-effect waves-green btn-flat green" type="submit" name="add">
+            <button class="modal-action modal-close white-text waves-effect waves-blue btn-flat blue" type="submit" name="add">
                   <i class="material-icons left">done</i>Add Item</button></form>
           </div>
         </div>
@@ -248,7 +248,7 @@ $(function(){
 
 
         <div class="modal-footer">
-          <button class="btn-flat green waves-effect waves-light white-text col s2" type="submit" name="edit">
+          <button class="btn-flat blue waves-effect waves-light white-text col s2" type="submit" name="edit">
                 <i class="material-icons left">edit</i>Change</button>
             </form>
         </div>

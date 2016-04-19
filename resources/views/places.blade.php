@@ -82,7 +82,7 @@ $(function(){
 					<div class="col s12">
 						<div class="right">
 							<div class="row"></div>
-							<a class="modal-trigger green waves-effect waves-light btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Province</a>
+							<a class="modal-trigger blue waves-effect waves-light btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Province</a>
 						</div>
 
 						<table class="responsive-table highlight centered" id="tableOutput1">
@@ -133,7 +133,7 @@ $(function(){
 						</div>
 				    </div>
 				    <div class="modal-footer">
-				      <button class="modal-action waves-effect waves-green btn " type="submit" name="add">
+				      <button class="modal-action waves-effect waves-blue btn " type="submit" name="add">
 	                	<i class="material-icons left">done</i>Add</button></form>
 				    </div>
 				  </div>
@@ -160,7 +160,7 @@ $(function(){
 
 
 		    <div class="modal-footer">
-		    	<button class="btn-flat green waves-effect waves-light white-text col s2" type="submit" name="edit">
+		    	<button class="btn-flat blue waves-effect waves-light white-text col s2" type="submit" name="edit">
                 <i class="material-icons left">edit</i>Change</button> 
 		    </div>
 		    </form>
@@ -190,7 +190,7 @@ $(function(){
 			<div class="col s12">
 				<div class="right">
 							<div class="row"></div>
-					<a class="modal-trigger green waves-effect waves-light btn z-depth-5" href="#modal2"><i class="material-icons left">add</i>Add City</a>
+					<a class="modal-trigger blue waves-effect waves-light btn z-depth-5" href="#modal2"><i class="material-icons left">add</i>Add City</a>
 				</div>
 				<table class="responsive-table highlight centered" id="tableOutput2">
 			        <thead>
@@ -258,7 +258,7 @@ $(function(){
 								</div>
 							</div>
 								    <div class="modal-footer">
-								      <button class="modal-action waves-effect waves-green btn " type="submit" name="add">
+								      <button class="modal-action waves-effect waves-blue btn " type="submit" name="add">
 					                	<i class="material-icons left">done</i>Confirm</button></form>
 								    </div>
 					</div>
@@ -298,7 +298,7 @@ $(function(){
 
 
 			    <div class="modal-footer">
-			    	<button class="btn-flat green waves-effect waves-light white-text col s2" type="submit" name="edit">
+			    	<button class="btn-flat blue waves-effect waves-light white-text col s2" type="submit" name="edit">
 	                <i class="material-icons left">edit</i>Change</button>
 			    </div>
 		    </form>

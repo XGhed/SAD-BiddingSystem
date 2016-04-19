@@ -18,7 +18,7 @@
       @yield('jqueryscript')
     </head>
 
-<body style="background-image: url('icons/background10.jpg'); background-repeat: no-repeat;
+<body style="background-image: url('icons/background9.png'); background-repeat: no-repeat;
     background-attachment: fixed;">
 
 
@@ -30,7 +30,7 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="http://localhost:8000/" class="white-text">Hello Admin</a></li>
       </ul>
-       <ul id="slide-out" id="mobile-demo" class="side-nav fixed" style="background-image: url('icons/background10.jpg');" onmouseover="showScroll(this)" onmouseout="hideScroll(this)">
+       <ul id="slide-out" id="mobile-demo" class="side-nav fixed" style="background-image: url('icons/background9.png);" onmouseover="showScroll(this)" onmouseout="hideScroll(this)">
                 <!-- admin info -->
               <div class="row">
                 <div class="col s12 transparent">

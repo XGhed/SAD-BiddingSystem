@@ -32,13 +32,13 @@ class SubCategoryController extends Controller
 
     public function insertSubCategory(Request $request){
 
+		try {
 		$subCategory = new App\SubCategory;
 
-		$subCategory->CategoryID = $request->input('add_ID');
-		$subCategory->SubCategoryName = $request->input('add_name');
-		$subCategory->Description = $request->input('add_desc');
+		$subCategory->CategoryID = trim($request->input('add_ID'));
+		$subCategory->SubCategoryName = trim($request->input('add_name'));
+		$subCategory->Description = trim($request->input('add_desc'));
 
-		try {
 			$subCategory->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
@@ -48,14 +48,14 @@ class SubCategoryController extends Controller
 
 	public function updateSubCategory(Request $request){
 
+		try {
 		$subCategory = new App\SubCategory;
 		$subCategory = App\SubCategory::find($request->input('edit_ID'));
 
-		$subCategory->SubCategoryName = $request->input('edit_name');
-		$subCategory->CategoryID = $request->input('edit_CatID');
-		$subCategory->Description = $request->input('edit_desc');
+		$subCategory->SubCategoryName = trim($request->input('edit_name'));
+		$subCategory->CategoryID = trim($request->input('edit_CatID'));
+		$subCategory->Description = trim($request->input('edit_desc'));
 
-		try {
 			$subCategory->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
@@ -64,10 +64,10 @@ class SubCategoryController extends Controller
 	}
 
 	public function deleteSubCategory(Request $request){
+		try {
 		$subCategory = new App\SubCategory;
 		$subCategory = App\SubCategory::find($request->input('del_ID'));
 		
-		try {
 			$subCategory->delete();
 		} catch (Exception $e) {
 			Session::put('message', '-1');

@@ -62,7 +62,7 @@ $(function(){
 
   <div class="row"></div>
     <div class="right">
-      <a class="modal-trigger waves-effect waves-light btn green darken-2" href="#modal1"><i class="material-icons left">add</i>Add Account Type</a>
+      <a class="modal-trigger waves-effect waves-light btn blue darken-2" href="#modal1"><i class="material-icons left">add</i>Add Account Type</a>
     </div>
 <!--  DATA TABLE -->
   <table class="highlight responsive-table centered" id="tableOutput">
@@ -161,7 +161,7 @@ $(function(){
       </div>
 
       <div class="modal-footer">
-     		<button class="modal-action  waves-effect waves-green btn " type="submit" name="add">
+     		<button class="modal-action  waves-effect waves-blue btn " type="submit" name="add">
                     <i class="material-icons left">done</i>Add</button>
      		</form>
       </div>
@@ -214,7 +214,7 @@ $(function(){
 
 
 		    <div class="modal-footer">
-		      <button class="btn-flat green waves-effect waves-light white-text col s2" type="submit" name="edit">
+		      <button class="btn-flat blue waves-effect waves-light white-text col s2" type="submit" name="edit">
                 <i class="material-icons left">edit</i>Change</button>
         </form>	
 		    </div>

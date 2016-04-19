@@ -10,6 +10,25 @@ Register Items
 <h1 class="left col s6 push-s1 white-text" style="font-size: 45px">Register Items</h2>
 @endsection
 
+@section('jqueryscript')
+<script type="text/javascript">
+    $(function (){   
+
+        $("#tableOutput").DataTable({
+          "lengthChange": false,
+          "pageLength": 5,
+          "columns": [
+            { "searchable": false },
+            null,
+            null,
+            null,
+            null,
+            null
+          ] 
+        });
+</script>
+@endsection
+
 
 @section('content')
 <!-- *************************************** ITEM TABLE ***************************************-->

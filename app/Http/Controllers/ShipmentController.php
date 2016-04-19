@@ -66,11 +66,11 @@ class ShipmentController extends Controller
             $shipment = new App\Shipment;
             $shipment = App\Shipment::find($request->input('edit_ID'));
 
-            $shipment->ShipmentName = $request->input('edit_name');
-            $shipment->CityID = $request->input('edit_city');
-            $shipment->Barangay_Street_Address = $request->input('edit_barangaystreet');
-            $shipment->ShipmentContactNo = $request->input('edit_contactNo');
-            $shipment->ShipmentEmail = $request->input('edit_email');
+            $shipment->ShipmentName = trim($request->input('edit_name'));
+            $shipment->CityID = trim($request->input('edit_city'));
+            $shipment->Barangay_Street_Address = trim($request->input('edit_barangaystreet'));
+            $shipment->ShipmentContactNo = trim($request->input('edit_contactNo'));
+            $shipment->ShipmentEmail = trim($request->input('edit_email'));
 
             $shipment->save();
         } catch (Exception $e) {

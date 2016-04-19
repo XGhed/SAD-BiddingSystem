@@ -42,7 +42,7 @@ class ProvinceController extends Controller
 
         $province = new App\Province;
 
-        $province->ProvinceName = $request->input('add_name');
+        $province->ProvinceName = trim($request->input('add_name'));
 
         try {
             $province->save();
@@ -57,7 +57,7 @@ class ProvinceController extends Controller
         $province = new App\Province;
         $province = App\Province::find($request->input('edit_ID'));
 
-        $province->ProvinceName = $request->input('edit_name');
+        $province->ProvinceName = trim($request->input('edit_name'));
 
         try {
             $province->save();

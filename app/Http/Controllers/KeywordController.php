@@ -39,11 +39,11 @@ class KeywordController extends Controller
 
     public function insertKeyword(Request $request){
 
+		try {
 		$keyword = new App\Keyword;
 
-		$keyword->KeywordName = $request->input('add_name');
+		$keyword->KeywordName = trim($request->input('add_name'));
 
-		try {
 			$keyword->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
@@ -53,12 +53,12 @@ class KeywordController extends Controller
 
 	public function updateKeyword(Request $request){
 
+		try {
 		$keyword = new App\Keyword;
 		$keyword = App\Keyword::find($request->input('edit_ID'));
 
-		$keyword->KeywordName = $request->input('edit_name');
+		$keyword->KeywordName = trim($request->input('edit_name'));
 
-		try {
 			$keyword->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
@@ -67,10 +67,10 @@ class KeywordController extends Controller
 	}
 
 	public function deleteKeyword(Request $request){
+		try {
 		$keyword = new App\Keyword;
 		$keyword = App\Keyword::find($request->input('del_ID'));
 		
-		try {
 			$keyword->delete();
 		} catch (Exception $e) {
 			Session::put('message', '-1');

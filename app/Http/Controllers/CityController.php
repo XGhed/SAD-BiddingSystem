@@ -32,12 +32,12 @@ class CityController extends Controller
 
     public function insertCity(Request $request){
 
+        try {
         $city = new App\City;
 
         $city->ProvinceID = $request->input('add_ID');
-        $city->CityName = $request->input('add_name');
+        $city->CityName = trim($request->input('add_name'));
 
-        try {
             $city->save();
         } catch (Exception $e) {
             Session::put('message', '-1');
@@ -47,13 +47,13 @@ class CityController extends Controller
 
     public function updateCity(Request $request){
 
+        try {
         $city = new App\City;
         $city = App\City::find($request->input('edit_ID'));
 
-        $city->ProvinceID = $request->input('edit_ProvID');
-        $city->CityName = $request->input('edit_name');
+        $city->ProvinceID = trim($request->input('edit_ProvID'));
+        $city->CityName = trim($request->input('edit_name'));
 
-        try {
             $city->save();
         } catch (Exception $e) {
             Session::put('message', '-1');
@@ -62,10 +62,10 @@ class CityController extends Controller
     }
 
     public function deleteCity(Request $request){
+        try {
         $city = new App\City;
         $city = App\City::find($request->input('del_ID'));
         
-        try {
             $city->delete();
         } catch (Exception $e) {
             Session::put('message', '-1');

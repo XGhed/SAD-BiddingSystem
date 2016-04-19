@@ -58,11 +58,11 @@ class SupplierController extends Controller
 		try {
 			$supplier = new App\Supplier;
 
-			$supplier->SupplierName = $request->input('add_name');
-			$supplier->CityID = $request->input('add_city');
-			$supplier->Barangay_Street_Address = $request->input('add_barangay_street');
-			$supplier->SupplierContactNo = $request->input('add_contactNo');
-			$supplier->SupplierEmail = $request->input('add_email');
+			$supplier->SupplierName = trim($request->input('add_name'));
+			$supplier->CityID = trim($request->input('add_city'));
+			$supplier->Barangay_Street_Address = trim($request->input('add_barangay_street'));
+			$supplier->SupplierContactNo = trim($request->input('add_contactNo'));
+			$supplier->SupplierEmail = trim($request->input('add_email'));
 
 			$supplier->save();
 		} catch (Exception $e) {
@@ -77,11 +77,11 @@ class SupplierController extends Controller
 			$supplier = new App\Supplier;
 			$supplier = App\Supplier::find($request->input('edit_ID'));
 
-			$supplier->SupplierName = $request->input('edit_name');
-			$supplier->CityID = $request->input('edit_city');
-			$supplier->Barangay_Street_Address = $request->input('edit_barangaystreet');
-			$supplier->SupplierContactNo = $request->input('edit_contactNo');
-			$supplier->SupplierEmail = $request->input('edit_email');
+			$supplier->SupplierName = trim($request->input('edit_name'));
+			$supplier->CityID = trim($request->input('edit_city'));
+			$supplier->Barangay_Street_Address = trim($request->input('edit_barangaystreet'));
+			$supplier->SupplierContactNo = trim($request->input('edit_contactNo'));
+			$supplier->SupplierEmail = trim($request->input('edit_email'));
 
 			$supplier->save();
 		} catch (Exception $e) {

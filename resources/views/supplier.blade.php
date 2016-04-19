@@ -122,7 +122,7 @@ Maintenance
 @section('content')
 <div class="row"></div>
       <div class="right">
-        <a class="modal-trigger waves-effect waves-light green btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
+        <a class="modal-trigger waves-effect waves-light blue darken-2 btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Supplier</a>
       </div>
         <!-- DATA TABLE -->
       <table class="highlight responsive-table centered" id="tableOutput">
@@ -199,7 +199,7 @@ Maintenance
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="input-field col s8">
-                      <input id="supplier_name" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
+                      <input id="supplier_name" type="text" class="validate" name="add_name" length="30" maxlength="30" pattern="([A-z '.-]){2,}" REQUIRED>
                       <label for="supplier_name" data-error="Invalid">Supplier's Name</label>
                     </div>
                 </div>
@@ -224,14 +224,14 @@ Maintenance
                     </div>
 
                       <div class="input-field col s6">
-                        <input id="add_barangay" type="text" class="validate" name="add_barangay_street" length="50" maxlength="50" REQUIRED>
+                        <input id="add_barangay" type="text" class="validate" name="add_barangay_street" length="50" maxlength="50" pattern="([A-z ,-#.]){2,}" REQUIRED>
                         <label for="add_barangay" data-error="Invalid">Brgy and Street Address</label>
                       </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s4">
-                      <input id="contact_num" type="text" class="validate" name="add_contactNo" length="15" maxlength="15" REQUIRED>
+                      <input id="contact_num" type="text" class="validate" name="add_contactNo" length="15" maxlength="15" pattern="(^09)+(+[0-9]){11,15}" REQUIRED>
                       <label for="contact_num" data-error="Invalid">Contact Number</label>
                     </div>
 
@@ -244,7 +244,7 @@ Maintenance
             </div> <!--*************************** MODAL CONTENT ***************************-->
 
             <div class="modal-footer">
-                  <button class="btn waves-effect waves-light green darken-2 white-text" type="submit" name="add">
+                  <button class="btn waves-effect waves-light blue darken-2 darken-2 white-text" type="submit" name="add">
                   <i class="material-icons left">add</i>Add Supplier</button>
             </div>
         </form>  
@@ -265,7 +265,7 @@ Maintenance
               <input type="hidden" id="edit_ID" name="edit_ID">
               <div class="row">
                   <div class="input-field col s8">
-                    <input value=" " id="edit_name" type="text" class="validate" name="edit_name" length="30" maxlength="30" REQUIRED>
+                    <input value=" " id="edit_name" type="text" class="validate" name="edit_name" length="30" maxlength="30" pattern="([A-z '.-]){2,}" REQUIRED>
                     <label class="active" for="edit_name" >Supplier's Name</label>
                   </div>
               </div>
@@ -290,14 +290,14 @@ Maintenance
                     </div>
 
                   <div class="input-field col s6">
-                    <input  value=" " id="edit_barangaystreet" type="text" class="validate" name="edit_barangaystreet" length="50" maxlength="50" REQUIRED>
+                    <input  value=" " id="edit_barangaystreet" type="text" class="validate" name="edit_barangaystreet" length="50" maxlength="50" pattern="([A-z ,-#.]){2,}" REQUIRED>
                     <label class="active" for="edit_barangaystreet">Brgy and Street Address</label>
                   </div>
               </div>
 
               <div class="row">
                   <div class="input-field col s4">
-                    <input value =" " type="text" class="validate" id="edit_contactNo" name="edit_contactNo" length="15" maxlength="15" REQUIRED>
+                    <input value =" " type="text" class="validate" id="edit_contactNo" name="edit_contactNo" length="15" maxlength="15" pattern="(^09)+(+[0-9]){11,15}" REQUIRED>
                     <label class="active" for="edit_contactNo">Contact Number</label>
                   </div>
 
@@ -310,7 +310,7 @@ Maintenance
           </div> <!--*************************** MODAL CONTENT ***************************-->
 
           <div class="modal-footer">
-                <button class="btn-flat green waves-effect waves-light white-text col s2" type="submit" name="edit">
+                <button class="btn-flat blue darken-2 waves-effect waves-light white-text col s2" type="submit" name="edit">
                 <i class="material-icons left">edit</i>Change</button>
           </div>
       </form>

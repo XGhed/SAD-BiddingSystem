@@ -39,15 +39,15 @@ class AccountTypeController extends Controller
 
     public function insertAccountType(Request $request){
 
+		try {
 		$accountType = new App\AccountType;
 
-		$accountType->AccountTypeName = $request->input('add_name');
-		$accountType->Description = $request->input('add_desc');
-		$accountType->TaxRate = $request->input('add_tax');
-		$accountType->Discount = $request->input('add_disc');
-		$accountType->RequiredPoints = $request->input('add_points');
+		$accountType->AccountTypeName = trim($request->input('add_name'));
+		$accountType->Description = trim($request->input('add_desc'));
+		$accountType->TaxRate = trim($request->input('add_tax'));
+		$accountType->Discount = trim($request->input('add_disc'));
+		$accountType->RequiredPoints = trim($request->input('add_points'));
 
-		try {
 			$accountType->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
@@ -57,16 +57,16 @@ class AccountTypeController extends Controller
 
 	public function updateAccountType(Request $request){
 
+		try {
 		$accountType = new App\AccountType;
 		$accountType = App\AccountType::find($request->input('edit_ID'));
 
-		$accountType->AccountTypeName = $request->input('edit_name');
-		$accountType->Description = $request->input('edit_desc');
-		$accountType->TaxRate = $request->input('edit_tax');
-		$accountType->Discount = $request->input('edit_disc');
-		$accountType->RequiredPoints = $request->input('edit_points');
+		$accountType->AccountTypeName = trim($request->input('edit_name'));
+		$accountType->Description = trim($request->input('edit_desc'));
+		$accountType->TaxRate = trim($request->input('edit_tax'));
+		$accountType->Discount = trim($request->input('edit_disc'));
+		$accountType->RequiredPoints = trim($request->input('edit_points'));
 
-		try {
 			$accountType->save();
 		} catch (Exception $e) {
 			Session::put('message', '-1');
@@ -75,10 +75,10 @@ class AccountTypeController extends Controller
 	}
 
 	public function deleteAccountType(Request $request){
+		try {
 		$accountType = new App\AccountType;
 		$accountType = App\AccountType::find($request->input('del_ID'));
 		
-		try {
 			$accountType->delete();
 		} catch (Exception $e) {
 			Session::put('message', '-1');

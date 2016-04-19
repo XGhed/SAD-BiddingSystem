@@ -10,6 +10,23 @@ Transaction
 <h1 class="left col s6 push-s1 white-text" style="font-size: 28px">Register Container</h2>
 @endsection
 
+@section('jqueryscript')
+<script type="text/javascript">
+    $(function (){   
+
+        $("#tableOutput").DataTable({
+          "lengthChange": false,
+          "pageLength": 5,
+          "columns": [
+            { "searchable": false },
+            null,
+            null,
+            null
+          ] 
+        });
+</script>
+@endsection
+
 
 @section('content')
 <!--  Data TABLE-->
@@ -18,12 +35,13 @@ Transaction
         <a class="modal-trigger waves-effect waves-light green btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Record Container</a>
       </div>
 
-<table class="centered highlight responsive-table">
+<table class="centered highlight responsive-table" id="tableOutput">
         <thead>
           <tr>
               <th>Manage</th>
               <th data-field="id">ID</th>
               <th data-field="price">Container Name</th>
+              <th>Supplier</th>
           </tr>
         </thead>
 
@@ -46,11 +64,11 @@ Transaction
           	</td>
 
           	<td>
-          		Container Name
-          		(supposedly description lang walang name ung mga container ata eh)
-          		or barcode number lang something tas naisip ko na iindicate natin kung kaninong supplier
-          		galing si container
-          	</td>
+              Container Name
+            </td>
+            <td>
+              Supplier
+            </td>
 
           </tr>
         </tbody>
@@ -60,18 +78,18 @@ Transaction
     <div class="modal-content">
       <h4><i class="medium material-icons left">view_module</i>Add Container</h4>
       			<div class="divider"></div>
-      	<div class="row">
+      	<div class="row" action="/confirmContainer" method="POST">
 		    <form class="col s12">
 		      <div class="row">
 		        <div class="input-field col s6">
-		          <label for="conName">Container Name</label>
+		          <label for="conName" name="name">Container Name</label>
 		          <input id="conName" type="text" class="validate">
 		        </div>
           </div>
 
           <div class="row">
             <div class="input-field col s4">
-              <select>
+              <select name="add_supplier">
                 <option value="" disabled selected>Supplier</option>
                 @foreach($suppliers as $key => $result)
               <option id="{{$key}}" value="{{$result->SupplierID}}">{{$result->SupplierName}}</option>
@@ -83,7 +101,7 @@ Transaction
 
           <div class="row">
             <div class="input-field col s4">
-              <input type="date" class="datepicker">
+              <input type="date" class="datepicker" name="add_date">
               <label class="active">Date Arrived:</label>
             </div>
 		      </div>
