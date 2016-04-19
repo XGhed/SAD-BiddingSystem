@@ -70,14 +70,12 @@ $(function(){
               <td>
                 <div class="switch">
                   <label>
-                    Off
                     @if ($result->Status == 1)
                           <input class="cat" type="checkbox" id="tdstatus{{$key}}" value="{{$result->PartyID}}" checked>
                       @elseif ($result->Status == 0)
                           <input class="cat" type="checkbox" id="tdstatus{{$key}}" value="{{$result->PartyID}}" >
                       @endif
                     <span class="lever"></span>
-                    On
                   </label>
                 </div>
             </td>
@@ -128,24 +126,27 @@ $(function(){
                       </tbody>
                     </table>
                   </div>
-                  <div class="col s6 push-s2">
+                  <div class="col s9 green">
                     <table style="width: 150px; position:relative; top: -20px;" class="centered">
                       <thead>
                         <tr>
                             <th>Province</th>
                         </tr>
                       </thead>
-                      <tbody style="overflow: auto;">
-                        @foreach($provinces as $key => $province)
-                          <tr>
-                            <td>
-                              <div class="left">
-                                <input type="checkbox" class="filled-in" id="add_prov{{$key}}" name="add_prov[]" value="{{$province->ProvinceID}}" />
-                                <label for="add_prov{{$key}}">{{$province->ProvinceName}}</label>
-                              </div>
-                            </td>
-                          </tr>
+                      <tbody style="overflow: auto;" class="green">
+                      FOR(LIMANG FOREACH MAG LOOP TO)
+                      <tr>
+                      @foreach($provinces as $key => $province)
+                        <td>
+                          <div class="row">
+                            <div class="col s12 red">
+                              <input type="checkbox" class="filled-in" id="add_prov{{$key}}" name="add_prov[]" value="{{$province->ProvinceID}}" />
+                              <label for="add_prov{{$key}}">{{$province->ProvinceName}}</label>
+                            </div>
+                          </div>
+                        </td>
                         @endforeach
+                        </tr>
                       </tbody>
                     </table>
                   </div>

@@ -1,5 +1,0 @@
-@extends('adminParent')
-
-@section('')
-
-  @endsection
