@@ -145,7 +145,7 @@ $(function(){
                           </tr>
                         @endforeach-->
                         @for ($i = 0; $i < count($provinces); $i++)
-                            @if ($i==0 || $i%4==0){
+                            @if ($i==0 || $i%5==0){
                               <tr>
                             }
                             @else {
@@ -157,7 +157,7 @@ $(function(){
                               </td>
                             }
                             @endif
-                            @if ($i==0 || $i%4==0 || $i==count($provinces)-1){
+                            @if ($i%4==0 || $i==count($provinces)-1){
                               </tr>
                             }
                             @endif
