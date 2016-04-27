@@ -170,7 +170,7 @@ $(function(){
 </table>
 
 <div class="row">
-<!--*************************************************** ADD ITEM **************************************-->
+<!-- ADD ITEM -->
   <div class="col s3 right">
 
         <div id="modal1" class="modal modal-fixed-footer">
@@ -178,12 +178,6 @@ $(function(){
             <h4><i class="medium material-icons left">label</i>Add Item</h4>
                   <div class="divider"></div>
           <form class="col s12" action="/confirmItem" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <div class="row">
-                  <div class="input-field col s6">
-                    <input id="itemName" type="text" class="validate" name="add_name">
-                    <label for="itemName">Item Name</label>
-                  </div> 
-              </div>
 
                 <div class="row">
                   <div class="input-field col s6">
@@ -203,6 +197,13 @@ $(function(){
                       <label>Subcategory</label>
                     </div>
                 </div>
+                
+              <div class="row">
+                  <div class="input-field col s6">
+                    <input id="itemName" type="text" class="validate" name="add_name">
+                    <label for="itemName">Item Name</label>
+                  </div> 
+              </div>
           </div>
           <div class="modal-footer">
             <button class="modal-action modal-close white-text waves-effect waves-blue btn-flat blue" type="submit" name="add">
@@ -210,10 +211,10 @@ $(function(){
           </div>
         </div>
   </div>
-<!--*************************************************** END ADDCOMPANY **************************************-->
+<!-- END ADDCOMPANY -->
 </div>
 
-<!--*************************************************** EDIT ************************************************-->
+<!-- EDIT -->
       <div id="modal3" class="modal modal-fixed-footer">
         <div class="modal-content">
           <h4><i class="medium material-icons left">edit</i>Edit</h4>
@@ -253,7 +254,7 @@ $(function(){
             </form>
         </div>
       </div>
-    <!--*************************************************** END EDIT ************************************************-->
+    <!-- END EDIT -->
 
 
       <script>

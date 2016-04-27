@@ -119,14 +119,38 @@ $(function(){
                           <td>
                             <div class="center">
                               <input type="checkbox" class="filled-in" id="checkbox1" checked="checked"/>
-                              <label for="checkbox1">RegionName</label>
+                              <label for="checkbox1">region 1</label>
+                            </div>
+                            <div class="center">
+                              <input type="checkbox" class="filled-in" id="checkbox2"/>
+                              <label for="checkbox2">region 2</label>
+                            </div>
+                            <div class="center">
+                              <input type="checkbox" class="filled-in" id="checkbox3"/>
+                              <label for="checkbox3">region 3</label>
+                            </div>
+                            <div class="center">
+                              <input type="checkbox" class="filled-in" id="checkbox4"/>
+                              <label for="checkbox4">region 4</label>
+                            </div>
+                            <div class="center">
+                              <input type="checkbox" class="filled-in" id="checkbox5"/>
+                              <label for="checkbox5">region 5</label>
+                            </div>
+                            <div class="center">
+                              <input type="checkbox" class="filled-in" id="checkbox6"/>
+                              <label for="checkbox6">region 6</label>
+                            </div>
+                            <div class="center">
+                              <input type="checkbox" class="filled-in" id="checkbox7"/>
+                              <label for="checkbox7">region 7</label>
                             </div>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
-                  <div class="col s9 green">
+                  <div class="col s9">
                     <table style="width: 150px; position:relative; top: -20px;" class="centered">
                       <thead>
                         <tr>
@@ -145,7 +169,7 @@ $(function(){
                           </tr>
                         @endforeach-->
                         @for ($i = 0; $i < count($provinces); $i++)
-                            @if ($i==0 || $i%4==0) <!--$i%NumberOfColumns-->
+                            @if ($i==0 || $i%3==0) <!--$i%NumberOfColumns-->
                               <tr>
                             @endif
                             <td>
@@ -154,7 +178,7 @@ $(function(){
                                 <label for="add_prov{{$i}}">{{$provinces[$i]->ProvinceName}}</label>
                               </div>
                             </td>
-                            @if ($i!=0 && ($i%4==3 || $i==count($provinces)-1)) <!--$i%NumberOfColumns==NumberOfColumns-1-->
+                            @if ($i!=0 && ($i%3==2 || $i==count($provinces)-1)) <!--$i%NumberOfColumns==NumberOfColumns-1-->
                               </tr>
                             @endif
                         @endfor

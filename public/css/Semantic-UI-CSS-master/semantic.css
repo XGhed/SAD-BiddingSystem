@@ -32179,6 +32179,24 @@ body.pushable {
      Fixed
 ---------------*/
 
+.scrollToTop{ 
+  /*font-size: 0.85714286rem;*/
+  height: 250px;
+  width: 100px;
+  padding:10px;  
+  background: whiteSmoke;
+  color: #444;
+  position:fixed;
+  top:575px;
+  right:10px;
+  display:none;
+  
+   border-radius: 10em;
+}
+.scrollToTop:hover{
+  text-decoration:none;
+}
+
 .pushable > .fixed {
   position: fixed;
   -webkit-backface-visibility: hidden;

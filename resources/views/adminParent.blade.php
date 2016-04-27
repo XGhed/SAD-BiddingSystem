@@ -18,7 +18,7 @@
       @yield('jqueryscript')
     </head>
 
-<body style="background-image: url('icons/background9.png'); background-repeat: no-repeat;
+<body style="background-image: url('icons/background10.jpg'); background-repeat: no-repeat;
     background-attachment: fixed;">
 
 
@@ -52,6 +52,7 @@
                   <li><a class="white-text" href="/accountType">Account Type</a></li>
               <!--<li><a class="white-text" href="/paymentMethod">Payment Method</a></li>-->
                   <li><a class="white-text" href="/shipment">Shipment</a></li>
+                  <li><a class="white-text" href="/warehouse">Warehouse</a></li>
                   <li><a class="white-text" href="/places">Place</a></li>
                   <div class="divider"></div>
                 </ul>
@@ -67,14 +68,14 @@
                   <div class="divider"></div>
                 <ul>
                 <li><a class="white-text" href="/registerContainer" ><i class="material-icons left">view_module</i>Record Container</a></li>
-                 <li><a class="white-text" href="/registerItem" ><i class="material-icons left">input</i>Record Items</a></li>
+                 <li><a class="white-text" href="/registerItem" ><i class="material-icons left">input</i>Inventory</a></li>
                   <div class="divider"></div>
                 </ul>
               </div>
             </li>
           </ul>
         </li>
-        <li><a class="white-text" href="/bidEvent" ><i class="material-icons left">today</i>Bidding Event</a></li>
+        <!-- <li><a class="white-text" href="/bidEvent" ><i class="material-icons left">today</i>Bidding Event</a></li> -->
         <li><a class="white-text" href="#!" ><i class="material-icons left">receipt</i>Reports</a></li>
         <li><a class="right white-text" href="/home"><i class="material-icons left">exit_to_app</i>Log out</a></li>
       </ul>

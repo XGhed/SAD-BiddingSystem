@@ -45,8 +45,6 @@ Route::get('/category', 'CategoryController@manageCategory');
 
 Route::get('/subcategory', 'SubCategoryController@manageSubcategory');
 
-// Route::get('/deliveryParty', 'Delivery3rdPartyController@manageDelivery3rdParty');
-
 Route::get('/accountType', 'AccountTypeController@manageAccountType');
 
 Route::get('/keyword', 'KeywordController@ManageKeyword');
@@ -77,8 +75,6 @@ Route::get('/status_Category', 'StatusUpdate@Category');
 
 Route::get('/status_SubCategory', 'StatusUpdate@SubCategory');
 
-
-
 Route::get('/registration', 'PageController@registration');
 
 Route::get('/paymentMethod', 'PageController@paymentMethod');
@@ -95,12 +91,9 @@ Route::get('/home', 'PageController@homepage');
 
 Route::get('/deliveryCompany', 'PageController@deliveryCompany');
 
-
-
-
 Route::get('/bidEvent', 'PageController@bidEvent');
 
-
+Route::get('/warehouse', 'PageController@warehouse');
 
 
 Route::get('/accounts', 'PageController@manageAccounts');
