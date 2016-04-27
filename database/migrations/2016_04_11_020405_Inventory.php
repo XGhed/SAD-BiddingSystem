@@ -11,6 +11,7 @@ class Inventory extends Migration
             $table->increments('InventoryNo');
             $table->string('description', 50);
             $table->string('status', 30);
+            $table->integer('quantity');
             $table->datetime('InventoryDate');
         });
     }

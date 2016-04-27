@@ -13,7 +13,6 @@ class Items extends Migration
         $table->increments('ItemID');
         $table->string('ItemName', 30);
         $table->boolean('Status')->default(1);
-        $table->integer('quantity');
         $table->string('size');
         $table->string('color');
         $table->integer('price');
