@@ -10,9 +10,6 @@ class InventoryItem extends Migration
     {
         schema::create('InventoryItem', function(Blueprint $table){
             $table->primary(array('InventoryNo','ItemID'));
-            $table->integer('quantity');
-            $table->string('size');
-            $table->string('color');
             $table->integer('InventoryNo')->unsigned();
             $table->integer('ItemID')->unsigned();
             $table->foreign('InventoryNo')->references('InventoryNo')->on('Inventory');

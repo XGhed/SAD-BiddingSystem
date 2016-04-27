@@ -13,6 +13,8 @@ class Items extends Migration
         $table->increments('ItemID');
         $table->string('ItemName', 30);
         $table->boolean('Status')->default(1);
+        $table->string('size');
+        $table->string('color');
         $table->integer('price');
         $table->integer('WarehouseNo')->unsigned();
         $table->integer('SubCategoryID')->unsigned();
