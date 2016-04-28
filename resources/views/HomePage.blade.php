@@ -18,16 +18,11 @@
   <img src="icons/GhedPic.jpg">
     Bidding Management System
   </div>
-  <a class="item" href="/">
-    Home
-  </a>
-  <a class="item">
-    Lorem
-  </a>
-  <a class="item">
-    <i class="shop icon"></i>
-    Lorem
-  </a>
+  
+  <a class="item" href="/">Home</a>
+  <a class="item">Lorem</a>
+  <a class="item"><i class="shop icon"></i>Lorem</a>
+
   <div class="right menu">
     <div class="item">
       <div class="ui icon input">

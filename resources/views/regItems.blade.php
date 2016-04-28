@@ -181,13 +181,18 @@ Register Items
    			<form class="col s12">
    				<div class="row">
    					<div class="input-field col s5">
-	          			<input placeholder="Description" id="" type="text" class="validate">
-	          			<label for="">Description</label>
-	        		</div>
+					    <select>
+					      <option value="" disabled selected>Item Status</option>
+					      <option value="1">In shop</option>
+					      <option value="1">Sold</option>
+					      <option value="1">Warehouse</option>
+					    </select>
+					    <label>Item Status</label>
+					  </div>
 
 	        		<div class="input-field col s4">
 	          			<input placeholder="Status" id="" type="text" class="validate">
-	          			<label for="">Status</label>
+	          			<label for="">Detail/Description</label>
 	        		</div>
 
 	        		<button class="btn waves-effect waves-light" type="submit" name="action">Add
