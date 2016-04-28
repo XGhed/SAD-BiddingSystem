@@ -15,7 +15,6 @@ class ItemAuction extends Migration
         $table->integer('ItemID')->unsigned();
         $table->foreign('AuctionID')->references('AuctionID')->on('Auction');
         $table->foreign('ItemID')->references('ItemID')->on('Items');
-        $table->string('Item_Status', 30);
     });
 }
 

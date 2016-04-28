@@ -12,8 +12,8 @@ public function up()
     {
         $table->increments('WarehouseNo');
         $table->string('Barangay_Street_Address', 50);
-        $table->integer('CityID')->unsigned();
-        $table->foreign('CityID')->references('CityID')->on('City');
+        $table->integer('RegionID')->unsigned();
+        $table->foreign('RegionID')->references('RegionID')->on('Region');
     });
 }
 

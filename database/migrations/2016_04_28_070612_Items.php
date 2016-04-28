@@ -16,6 +16,7 @@ class Items extends Migration
         $table->string('size');
         $table->string('color');
         $table->integer('price');
+        $table->string('availability', 30);
         $table->integer('WarehouseNo')->unsigned();
         $table->integer('SubCategoryID')->unsigned();
         $table->foreign('WarehouseNo')->references('WarehouseNo')->on('Warehouse');

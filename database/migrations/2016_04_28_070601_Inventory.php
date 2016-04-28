@@ -7,7 +7,8 @@ class Inventory extends Migration
 {
     public function up()
     {
-        schema::create('Inventory', function(Blueprint $table){
+        schema::create('Inventory', function(Blueprint $table)
+        {
             $table->increments('InventoryNo');
             $table->string('description', 50);
             $table->string('status', 30);

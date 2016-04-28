@@ -13,8 +13,8 @@ Schema::create('Payment', function(Blueprint $table)
         $table->decimal('TotalPrice', 8, 2);
         $table->string('DeliveryAddress_Street_Brgy',50);
         $table->dateTime('PaymentDate');
-        $table->integer('CityID')->unsigned();
-        $table->foreign('CityID')->references('CityID')->on('City');
+        $table->integer('RegionID')->unsigned();
+        $table->foreign('RegionID')->references('RegionID')->on('Region');
         $table->integer('ModeOfPaymentTypeID')->unsigned();
         $table->integer('AccountID')->unsigned();
         $table->integer('ClaimTypeID')->unsigned();

@@ -11,9 +11,12 @@ class Province extends Migration
     {
             $table->increments('ProvinceID');
             $table->string('ProvinceName', 30);
-        });
-    }
-    public function down(){
+            $table->integer('RegionID')->unsigned();
+            $table->foreign('RegionID')->references('RegionID')->on('Region');
+    });
+}
+    public function down()
+    {
         Schema::drop('Province');
     }
 }
