@@ -11,7 +11,7 @@ Maintenance
 
 @section('jqueryscript')
 <script type="text/javascript">
-$(function(){   
+  $(function(){   
 
     $("#tableOutput").DataTable({
       "lengthChange": false,
@@ -23,6 +23,18 @@ $(function(){
         null
       ] 
     });
+
+  $('#addForm').on('click', '.selectAll', function(){
+    var selectedID = this.id;
+    var selected = $("#"+selectedID).attr('name');
+    $('#addForm .' + selected).prop('checked', true);
+  });
+
+  $('#addForm').on('click', '.deselectAll', function(){
+    var selectedID = this.id;
+    var selected = $("#"+selectedID).attr('name');
+    $('#addForm .' + selected).prop('checked', false);
+  });
 });
 </script>
 @endsection
@@ -98,7 +110,7 @@ $(function(){
 
         
             
-        <form class="col s12" action="/confirmShipment" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <form class="col s12" id="addForm" action="/confirmShipment" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="input-field col s8">
                       <input id="company_name" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
@@ -136,12 +148,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll" />
+                            <input name="1" class="selectAll" type="button" id="selectAll" />
                             <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll" />
+                            <input name="1" class="deselectAll" type="button" id="deselectAll" />
                             <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -150,8 +162,8 @@ $(function(){
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '1')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" class="1" id="{{$province->ProvinceID}}" name="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -162,12 +174,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -188,12 +200,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -214,12 +226,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -240,12 +252,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -266,12 +278,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -292,12 +304,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -318,12 +330,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -344,12 +356,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -370,12 +382,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -396,12 +408,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -422,12 +434,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -448,12 +460,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -474,12 +486,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -500,12 +512,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -526,12 +538,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -552,12 +564,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
@@ -578,12 +590,12 @@ $(function(){
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="group1" type="radio" id="selectAll1" />
+                            <input name="selectAll" type="radio" id="selectAll1" />
                             <label for="selectAll1" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="group1" type="radio" id="deselectAll1" />
+                            <input name="deselectAll" type="radio" id="deselectAll1" />
                             <label for="deselectAll1" class="black-text">Deselect All</label>
                           </div>
                         </div>
