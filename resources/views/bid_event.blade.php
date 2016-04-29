@@ -9,6 +9,7 @@ Bidding Event
 @endsection
 
 @section('content')
+<script src="fc/jquery-ui.min.js"></script>
 
 <style>
 	#calendar{
