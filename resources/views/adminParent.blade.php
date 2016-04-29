@@ -8,13 +8,17 @@
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/maintenance.css')!!}" media="screen,projection"/>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/datatable.css')!!}" media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="{!!URL::asset('fc/fullcalendar.css')!!}" media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="{!!URL::asset('fc/fullcalendar.print.css')!!}" media="print"/>
+      <link type="text/css" rel="stylesheet" href="{!!URL::asset('fc/css/jquery-ui.css')!!}" media="screen,projection"/>
       <!--JAVASCRIPT -->
       <script type="text/javascript" src="js/jquery.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript" src="js/datatable.js"></script>
-
       <meta name="csrf-token" content="{{ csrf_token() }}">
-
+      <script src='fc/lib/moment.min.js'></script>
+      <script src="fc/jquery-ui.min.js"></script>
+      <script src='fc/fullcalendar.js'></script>
       @yield('jqueryscript')
     </head>
 
@@ -75,7 +79,7 @@
             </li>
           </ul>
         </li>
-        <!-- <li><a class="white-text" href="/bidEvent" ><i class="material-icons left">today</i>Bidding Event</a></li> -->
+        <li><a class="white-text" href="/bidEvent" ><i class="material-icons left">today</i>Bidding Event</a></li>
         <li><a class="white-text" href="#!" ><i class="material-icons left">receipt</i>Reports</a></li>
         <li><a class="right white-text" href="/home"><i class="material-icons left">exit_to_app</i>Log out</a></li>
       </ul>

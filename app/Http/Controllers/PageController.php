@@ -23,6 +23,11 @@ class PageController extends Controller
        return view('registration');
     }
 
+    public function bidItems(Request $request){
+
+       return view('bidItems');
+    }
+
     public function places(Request $request){
 
        return view('places');

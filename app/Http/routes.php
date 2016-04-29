@@ -82,6 +82,9 @@ Route::get('/paymentMethod', 'PageController@paymentMethod');
 
 Route::get('/category', 'CategoryController@manageCategory');
 
+Route::get('/bidItems', 'PageController@bidItems');
+
+
 
 Route::post('/addMember', 'PageController@addMember');
 

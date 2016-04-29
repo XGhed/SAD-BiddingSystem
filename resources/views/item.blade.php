@@ -122,7 +122,7 @@ $(function(){
 <table class="highlight responsive-table centered" id="tableOutput">
         <thead>
           <tr>
-              <th data-field="Manage" style="cursor: default;">Manage</th>
+              <th style="cursor: default;">Manage</th>
               <th>Item Id</th>
               <th>Subcategory</th>
               <th>Item Name</th>
@@ -177,7 +177,7 @@ $(function(){
           <div class="modal-content">
             <h4><i class="medium material-icons left">label</i>Add Item</h4>
                   <div class="divider"></div>
-          <form class="col s12" action="/confirmItem" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <form class="col s12" action="/confirmItem" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="row">
                   <div class="input-field col s6">
@@ -197,13 +197,19 @@ $(function(){
                       <label>Subcategory</label>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                      <input id="itemName" type="text" class="validate" name="add_name">
+                      <label for="itemName">Item Name</label>
+                    </div> 
+                </div>
+
+                <div class="row col">
+                  <input type="checkbox" id="test5" />
+                  <label for="test5" class="black-text">Defect</label>
+                </div>
                 
-              <div class="row">
-                  <div class="input-field col s6">
-                    <input id="itemName" type="text" class="validate" name="add_name">
-                    <label for="itemName">Item Name</label>
-                  </div> 
-              </div>
           </div>
           <div class="modal-footer">
             <button class="modal-action modal-close white-text waves-effect waves-blue btn-flat blue" type="submit" name="add">
