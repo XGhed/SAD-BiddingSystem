@@ -14,4 +14,9 @@ class Province extends Model
 	{
 	    return $this->hasMany('App\City', 'ProvinceID');
 	}
+
+	public function region()
+	{
+	    return $this->hasOne('App\Region', 'RegionID', 'RegionID');
+	}
 }
