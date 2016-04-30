@@ -25,14 +25,12 @@ Maintenance
     });
 
   $('#addForm').on('click', '.selectAll', function(){
-    var selectedID = this.id;
-    var selected = $("#"+selectedID).attr('name');
+    var selected = this.name;
     $('#addForm .' + selected).prop('checked', true);
   });
 
   $('#addForm').on('click', '.deselectAll', function(){
-    var selectedID = this.id;
-    var selected = $("#"+selectedID).attr('name');
+    var selected = this.name;
     $('#addForm .' + selected).prop('checked', false);
   });
 });
@@ -162,7 +160,7 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '1')
                             <div class="col s3">
-                              <input type="checkbox" class="1" id="{{$province->ProvinceID}}" name="{{$province->ProvinceID}}" />
+                              <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
                               <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
@@ -174,13 +172,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="2" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="2" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -188,8 +186,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '2')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="2" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -200,13 +198,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="3" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="3" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -214,8 +212,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '3')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="3" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -226,13 +224,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="4A" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="4A" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -240,8 +238,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '4')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="4A" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -252,13 +250,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="4B" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="4B" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -266,8 +264,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '17')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="4B" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -278,13 +276,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="5" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="5" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -292,8 +290,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '5')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="5" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -304,13 +302,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="6" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="6" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -318,8 +316,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '6')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="6" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -330,13 +328,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="7" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="7" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -344,8 +342,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '7')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="7" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -356,13 +354,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="8" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="8" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -370,8 +368,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '8')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="8" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -382,13 +380,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="9" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="9" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -396,8 +394,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '9')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="9" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -408,13 +406,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="10" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="10" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -422,8 +420,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '10')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="10" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -434,13 +432,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="11" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="11" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -448,8 +446,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '11')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="11" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -460,13 +458,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="12" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="12" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -474,8 +472,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '12')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="12" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -486,13 +484,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="NCR" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="NCR" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -500,8 +498,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '13')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="NCR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -512,13 +510,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="CAR" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="CAR" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -526,8 +524,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '14')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="CAR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -538,13 +536,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="ARMM" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="ARMM" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -552,8 +550,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '15')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="ARMM" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -564,13 +562,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="13" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="13" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -578,8 +576,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '16')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="13" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
@@ -590,13 +588,13 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="selectAll" type="radio" id="selectAll1" />
-                            <label for="selectAll1" class="black-text">Select All</label>
+                            <input name="18" class="selectAll" type="button" id="selectAll" />
+                            <label for="selectAll" class="black-text">Select All</label>
                           </div>
 
                           <div class="col s6">
-                            <input name="deselectAll" type="radio" id="deselectAll1" />
-                            <label for="deselectAll1" class="black-text">Deselect All</label>
+                            <input name="18" class="deselectAll" type="button" id="deselectAll" />
+                            <label for="deselectAll" class="black-text">Deselect All</label>
                           </div>
                         </div>
 
@@ -604,8 +602,8 @@ Maintenance
                         @foreach($provinces as $key => $province)
                           @if($province->region->RegionID == '18')
                             <div class="col s3">
-                              <input type="checkbox" id="{{$province->ProvinceID}}" />
-                              <label for="test5" class="black-text">{{$province->ProvinceName}}</label>
+                              <input type="checkbox" name="add_prov[]" class="18" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                             </div>
                           @endif
                         @endforeach
