@@ -101,7 +101,7 @@ Maintenance
  
 <!--***************************ADD BUTTON***************************-->
       <div id="addBtn" class="modal modal-fixed-footer" style="width:800px; height:700px;">
-        <div class="modal-content" >
+        <div class="modal-content" style="overflow: hidden" >
           <h4><i class="medium material-icons left">business</i>Courier Company</h4>
 
        <!-- LINYA LANG--><div class="divider"></div><!-- LINYA LANG-->
@@ -146,13 +146,11 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="1" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="1" class="selectAll btn btn" type="button" id="selectAll" value="Select All" />
                           </div>
 
                           <div class="col s6">
-                            <input name="1" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="1" class="deselectAll btn btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -172,13 +170,11 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="2" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="2" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
                           </div>
 
                           <div class="col s6">
-                            <input name="2" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="2" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -198,13 +194,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="3" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="3" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="3" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="3" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -224,13 +219,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="4A" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="4A" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="4A" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="4A" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -250,13 +244,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="4B" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="4B" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="4B" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="4B" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -276,13 +269,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="5" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="5" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="5" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="5" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -302,13 +294,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="6" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="6" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="6" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="6" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -328,13 +319,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="7" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="7" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="7" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="7" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -354,13 +344,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="8" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="8" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="8" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="8" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -380,13 +369,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="9" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="9" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="9" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="9" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -406,13 +394,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="10" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="10" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="10" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="10" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -432,13 +419,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="11" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="11" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="11" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="11" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -458,13 +444,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="12" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="12" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="12" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="12" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -484,13 +469,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="NCR" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="NCR" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="NCR" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="NCR" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -510,13 +494,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="CAR" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="CAR" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="CAR" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="CAR" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -536,13 +519,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="ARMM" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="ARMM" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="ARMM" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="ARMM" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -562,13 +544,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="13" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="13" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="13" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="13" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -588,13 +569,12 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="18" class="selectAll" type="button" id="selectAll" />
-                            <label for="selectAll" class="black-text">Select All</label>
+                            <input name="18" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                            
                           </div>
 
                           <div class="col s6">
-                            <input name="18" class="deselectAll" type="button" id="deselectAll" />
-                            <label for="deselectAll" class="black-text">Deselect All</label>
+                            <input name="18" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 

@@ -12,7 +12,7 @@
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('fc/fullcalendar.print.css')!!}" media="print"/>
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('fc/css/jquery-ui.css')!!}" media="screen,projection"/>
       <!--JAVASCRIPT -->
-      <script type="text/javascript" src="js/jquery.js"></script> -->
+      <script type="text/javascript" src="js/jquery.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript" src="js/datatable.js"></script>
       <script src='fc/lib/moment.min.js'></script>
