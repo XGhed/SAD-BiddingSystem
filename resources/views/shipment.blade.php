@@ -60,15 +60,15 @@ Maintenance
               <td>
                     <div class="row col push-s2" >
                       <div class="col">
-                          <form action="confirmShipment" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         </div>
                       
                       <div class="col">
                         <input type="hidden" id="tdID{{$key}}" name="del_ID" value="{{$result->PartyID}}">
-                        <button id="{{$key}}" value="{{$key}}" name="edit" class="edit btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
+                        <button id="{{$key}}" value="{{$key}}" name="edit" class="edit btn-flat btn-large waves-effect waves-light transparent tooltipped modal-trigger" data-position="top" data-target="modal1" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
                         <button id="delete" name="delete" class="btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                       </div>
-                      </form>
                     </div>
               </td>
               <td id="tdname{{$key}}">{{$result->PartyName}}</td>
@@ -99,7 +99,7 @@ Maintenance
 
 
  
-<!--***************************ADD BUTTON***************************-->
+<!--ADD BUTTON-->
       <div id="addBtn" class="modal modal-fixed-footer" style="width:800px; height:700px;">
         <div class="modal-content" style="overflow: hidden" >
           <h4><i class="medium material-icons left">business</i>Courier Company</h4>
@@ -146,11 +146,11 @@ Maintenance
                       <div class="row"></div>
                         <div class="row">
                           <div class="col s3">
-                            <input name="1" class="selectAll btn btn" type="button" id="selectAll" value="Select All" />
+                            <input name="1" class="selectAll btn" type="button" id="selectAll" value="Select All" />
                           </div>
 
                           <div class="col s6">
-                            <input name="1" class="deselectAll btn btn" type="button" id="deselectAll" value="Deselect All"/>
+                            <input name="1" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                           </div>
                         </div>
 
@@ -603,7 +603,7 @@ Maintenance
       </div>
 
 
-<!-- ***************************************************EDIT**************************************-->
+<!-- EDIT-->
 
 
     <!-- Modal Structure -->
