@@ -33,6 +33,11 @@ class PageController extends Controller
        return view('shipmentAdd');
     }
 
+    public function shipmentEdit(Request $request){
+
+       return view('shipmentEdit');
+    }
+
     public function places(Request $request){
 
        return view('places');
