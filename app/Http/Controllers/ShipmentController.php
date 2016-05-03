@@ -20,6 +20,15 @@ class ShipmentController extends Controller
        //return view('shipment')->with ('provinces', $provinces);
     }
 
+    public function addShipment(){
+
+       $results = App\ThirdParty::all();
+       $provinces = App\Province::orderBy('ProvinceName')->get();
+
+       return view('shipmentAdd')->with ('results', $results)->with ('provinces', $provinces);
+       //return view('shipment')->with ('provinces', $provinces);
+    }
+
     public function confirmShipment(Request $request){
 
         if (isset($_POST['add'])) {

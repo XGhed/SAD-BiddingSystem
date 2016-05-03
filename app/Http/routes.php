@@ -99,7 +99,7 @@ Route::get('/bidEvent', 'PageController@bidEvent');
 Route::get('/warehouse', 'PageController@warehouse');
 
 
-Route::get('/shipmentAddEdit', 'PageController@shipmentAdd');
+Route::get('/shipmentAddEdit', 'ShipmentController@addShipment');
 
 
 Route::get('/accounts', 'PageController@manageAccounts');
