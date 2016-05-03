@@ -28,6 +28,11 @@ class PageController extends Controller
        return view('bidItems');
     }
 
+    public function shipmentAdd(Request $request){
+
+       return view('shipmentAdd');
+    }
+
     public function places(Request $request){
 
        return view('places');

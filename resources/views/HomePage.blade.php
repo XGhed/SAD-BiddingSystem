@@ -11,31 +11,29 @@
     </head>
 
     <body style="background-color: #21ba45" class="ui container"> 
+      <div class="ui fixed menu">
+        <div class="header item">
+        <img src="icons/GhedPic.jpg">
+          Bidding Management System
+        </div>
+        
+        <a class="item" href="/">Home</a>
+        <a class="item">Lorem</a>
+        <a class="item"><i class="shop icon"></i>Lorem</a>
 
-
-<div class="ui fixed menu">
-  <div class="header item">
-  <img src="icons/GhedPic.jpg">
-    Bidding Management System
-  </div>
-  
-  <a class="item" href="/">Home</a>
-  <a class="item">Lorem</a>
-  <a class="item"><i class="shop icon"></i>Lorem</a>
-
-  <div class="right menu">
-    <div class="item">
-      <div class="ui icon input">
-        <input type="text" placeholder="Search...">
-        <i class="search link icon"></i>
+        <div class="right menu">
+          <div class="item">
+            <div class="ui icon input">
+              <input type="text" placeholder="Search...">
+              <i class="search link icon"></i>
+            </div>
+          </div>
+          <a class="ui item" id="logIn">
+            <i class="sign in icon"></i>
+            Login
+          </a>
+        </div>
       </div>
-    </div>
-    <a class="ui item" id="logIn">
-      <i class="sign in icon"></i>
-      Login
-    </a>
-  </div>
-</div>
 
 
 

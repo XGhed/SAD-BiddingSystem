@@ -44,6 +44,7 @@ Maintenance
     $('#editForm .' + selected).prop('checked', false);
   });
 });
+
 </script>
 @endsection
 
@@ -51,7 +52,7 @@ Maintenance
 @section('content')
 <div class="row"></div>
       <div class="right">
-        <a class="modal-trigger waves-effect waves-light blue darken-3 btn z-depth-5" href="#addBtn"><i class="material-icons left">add</i>Add Delivery Company</a>
+        <a class="waves-effect waves-light blue darken-3 btn z-depth-5" href="/shipmentAddEdit"><i class="material-icons left">add</i>Add Delivery Company</a>
       </div>
         <!-- DATA TABLE -->
       <table class="highlight responsive-table centered" id="tableOutput">
