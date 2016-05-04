@@ -29,6 +29,18 @@ class ShipmentController extends Controller
        //return view('shipment')->with ('provinces', $provinces);
     }
 
+    public function editShipment(Request $request){
+
+       $result = App\ThirdParty::find($request->input('del_ID'));
+       $provinces = App\Province::orderBy('ProvinceName')->get();
+       $selectedProvinces = array();
+       foreach ($result->province_ThirdParty as $key => $pt) {
+           array_push($selectedProvinces, $pt->ProvinceID);
+       }
+       
+       return view('shipmentAdd')->with ('result', $result)->with ('provinces', $provinces)->with ('selectedProvinces', $selectedProvinces);
+    }
+
     public function confirmShipment(Request $request){
 
         if (isset($_POST['add'])) {
