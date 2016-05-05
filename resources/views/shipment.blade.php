@@ -32,7 +32,7 @@ Maintenance
 @section('content')
 <div class="row"></div>
       <div class="right">
-        <a class="waves-effect waves-light blue darken-3 btn z-depth-5" href="/shipmentAdd"><i class="material-icons left">add</i>Add Delivery Company</a>
+        <a class="waves-effect waves-light blue darken-3 btn z-depth-5" href="/add"><i class="material-icons left">add</i>Add Delivery Company</a>
       </div>
         <!-- DATA TABLE -->
       <table class="highlight responsive-table centered" id="tableOutput">
@@ -56,10 +56,10 @@ Maintenance
                         </div>
                       
                       <div class="col">
-                        <form id="addForm" action="/shipmentEdit" method="POST">
+                        <form id="addForm" action="/edit" method="POST">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           <input type="hidden" id="tdID{{$key}}" name="del_ID" value="{{$result->PartyID}}">
-                          <button id="{{$key}}" value="{{$key}}" name="edit" class="edit btn-flat btn-large transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" href='/shipmentEdit'><i class="material-icons" >edit</i></button>
+                          <button id="{{$key}}" value="{{$key}}" name="edit" class="edit btn-flat btn-large transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" href='/edit'><i class="material-icons" >edit</i></button>
                         </form>
                         <button id="delete" name="delete" class="btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                       </div>

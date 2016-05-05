@@ -38,7 +38,7 @@ class ShipmentController extends Controller
            array_push($selectedProvinces, $pt->ProvinceID);
        }
        
-       return view('shipmentAdd')->with ('result', $result)->with ('provinces', $provinces)->with ('selectedProvinces', $selectedProvinces);
+       return view('shipmentEdit')->with ('result', $result)->with ('provinces', $provinces)->with ('selectedProvinces', $selectedProvinces);
     }
 
     public function confirmShipment(Request $request){

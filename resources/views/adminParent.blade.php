@@ -16,7 +16,6 @@
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript" src="js/datatable.js"></script>
       <script src='fc/lib/moment.min.js'></script>
-      
       <script src='fc/fullcalendar.js'></script>
 
       <meta name="csrf-token" content="{{ csrf_token() }}">

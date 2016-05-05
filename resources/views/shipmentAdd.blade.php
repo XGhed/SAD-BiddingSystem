@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html>
     <head>
-    <title>Shipment Add</title>
+    <title>Shipment Edit</title>
       <!--CSS-->
       <link rel="icon" href="icons/icon.png">
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/materialize.css')!!}" media="screen,projection" />
