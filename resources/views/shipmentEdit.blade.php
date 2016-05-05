@@ -32,8 +32,6 @@
             var selected = this.name;
             $('#editForm .' + selected).prop('checked', false);
           });
-
-          $('#company_name').val('asdasd');
         });
         function hideScroll(x) {
              x.style.overflow = "hidden";
@@ -62,10 +60,11 @@
     <div class="divider"></div><!-- LINYA LANG-->     
     <form class="col s12" id="addForm" action="/confirmShipment" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="edit_ID" value="{{ $result->PartyID }}">
 
       <div class="row">
           <div class="input-field col s8">
-            <input id="company_name" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
+            <input id="company_name" type="text" class="validate" name="add_name" value="{{$result->PartyName}}" length="30" maxlength="30" REQUIRED>
             <label for="company_name">Company Name</label>
           </div>
       </div>
@@ -137,7 +136,11 @@
             @foreach($provinces as $key => $province)
             @if($province->region->RegionID == '2')
               <div class="col s3">
-                <input type="checkbox" checked="checked" name="add_prov[]" class="2" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @if(in_array($province->ProvinceID, $selectedProvinces))
+                  <input type="checkbox" checked="checked" name="add_prov[]" class="2" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @else
+                  <input type="checkbox" name="add_prov[]" class="2" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @endif
                 <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
               </div>
             @endif
@@ -160,7 +163,11 @@
             @foreach($provinces as $key => $province)
             @if($province->region->RegionID == '3')
               <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="3" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @if(in_array($province->ProvinceID, $selectedProvinces))
+                  <input type="checkbox" checked="checked" name="add_prov[]" class="3" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @else
+                  <input type="checkbox" name="add_prov[]" class="3" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @endif
                 <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
               </div>
             @endif
@@ -183,13 +190,17 @@
             @foreach($provinces as $key => $province)
             @if($province->region->RegionID == '4')
               <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="4A" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @if(in_array($province->ProvinceID, $selectedProvinces))
+                  <input type="checkbox" checked="checked" name="add_prov[]" class="4A" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @else
+                  <input type="checkbox" name="add_prov[]" class="4A" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @endif
                 <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
               </div>
             @endif
             @endforeach
           </div>
-        </div><!-- Region1 -->
+        </div><!-- Region4A -->
 
         <div id="region4B" class="col s12">
           <div class="row"></div>
@@ -206,7 +217,11 @@
             @foreach($provinces as $key => $province)
             @if($province->region->RegionID == '17')
               <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="4B" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @if(in_array($province->ProvinceID, $selectedProvinces))
+                  <input type="checkbox" checked="checked" name="add_prov[]" class="4B" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @else
+                  <input type="checkbox" name="add_prov[]" class="4B" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @endif
                 <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
               </div>
             @endif
@@ -229,7 +244,11 @@
             @foreach($provinces as $key => $province)
             @if($province->region->RegionID == '5')
               <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="5" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @if(in_array($province->ProvinceID, $selectedProvinces))
+                  <input type="checkbox" checked="checked" name="add_prov[]" class="5" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @else
+                  <input type="checkbox" name="add_prov[]" class="5" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @endif
                 <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
               </div>
             @endif
@@ -252,7 +271,11 @@
             @foreach($provinces as $key => $province)
             @if($province->region->RegionID == '6')
               <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="6" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @if(in_array($province->ProvinceID, $selectedProvinces))
+                  <input type="checkbox" checked="checked" name="add_prov[]" class="6" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @else
+                  <input type="checkbox" name="add_prov[]" class="6" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @endif
                 <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
               </div>
             @endif
@@ -275,7 +298,11 @@
             @foreach($provinces as $key => $province)
             @if($province->region->RegionID == '7')
               <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="7" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @if(in_array($province->ProvinceID, $selectedProvinces))
+                  <input type="checkbox" checked="checked" name="add_prov[]" class="7" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @else
+                  <input type="checkbox" name="add_prov[]" class="7" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @endif
                 <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
               </div>
             @endif
@@ -298,7 +325,11 @@
             @foreach($provinces as $key => $province)
             @if($province->region->RegionID == '8')
               <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="8" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @if(in_array($province->ProvinceID, $selectedProvinces))
+                  <input type="checkbox" checked="checked" name="add_prov[]" class="8" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @else
+                  <input type="checkbox" name="add_prov[]" class="8" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @endif
                 <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
               </div>
             @endif
@@ -321,7 +352,11 @@
             @foreach($provinces as $key => $province)
             @if($province->region->RegionID == '9')
               <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="9" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @if(in_array($province->ProvinceID, $selectedProvinces))
+                  <input type="checkbox" checked="checked" name="add_prov[]" class="9" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @else
+                  <input type="checkbox" name="add_prov[]" class="9" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                @endif
                 <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
               </div>
             @endif
@@ -346,7 +381,11 @@
             @foreach($provinces as $key => $province)
               @if($province->region->RegionID == '10')
                 <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="10" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @if(in_array($province->ProvinceID, $selectedProvinces))
+                    <input type="checkbox" checked="checked" name="add_prov[]" class="10" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @else
+                    <input type="checkbox" name="add_prov[]" class="10" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @endif
                   <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                 </div>
               @endif
@@ -369,7 +408,11 @@
             @foreach($provinces as $key => $province)
               @if($province->region->RegionID == '11')
                 <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="11" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @if(in_array($province->ProvinceID, $selectedProvinces))
+                    <input type="checkbox" checked="checked" name="add_prov[]" class="11" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @else
+                    <input type="checkbox" name="add_prov[]" class="11" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @endif
                   <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                 </div>
               @endif
@@ -394,7 +437,11 @@
             @foreach($provinces as $key => $province)
               @if($province->region->RegionID == '12')
                 <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="12" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @if(in_array($province->ProvinceID, $selectedProvinces))
+                    <input type="checkbox" checked="checked" name="add_prov[]" class="12" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @else
+                    <input type="checkbox" name="add_prov[]" class="12" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @endif
                   <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                 </div>
               @endif
@@ -419,7 +466,11 @@
             @foreach($provinces as $key => $province)
               @if($province->region->RegionID == '13')
                 <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="NCR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @if(in_array($province->ProvinceID, $selectedProvinces))
+                    <input type="checkbox" checked="checked" name="add_prov[]" class="NCR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @else
+                    <input type="checkbox" name="add_prov[]" class="NCR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @endif
                   <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                 </div>
               @endif
@@ -444,7 +495,11 @@
             @foreach($provinces as $key => $province)
               @if($province->region->RegionID == '14')
                 <div class="col s3">
+                  @if(in_array($province->ProvinceID, $selectedProvinces))
+                  <input type="checkbox" checked="checked" name="add_prov[]" class="CAR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @else
                   <input type="checkbox" name="add_prov[]" class="CAR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @endif
                   <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                 </div>
               @endif
@@ -469,7 +524,11 @@
             @foreach($provinces as $key => $province)
               @if($province->region->RegionID == '15')
                 <div class="col s3">
+                  @if(in_array($province->ProvinceID, $selectedProvinces))
+                  <input type="checkbox" checked="checked" name="add_prov[]" class="ARMM" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @else
                   <input type="checkbox" name="add_prov[]" class="ARMM" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @endif
                   <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                 </div>
               @endif
@@ -494,7 +553,11 @@
             @foreach($provinces as $key => $province)
               @if($province->region->RegionID == '16')
                 <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="13" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @if(in_array($province->ProvinceID, $selectedProvinces))
+                    <input type="checkbox" checked="checked" name="add_prov[]" class="13" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @else
+                    <input type="checkbox" name="add_prov[]" class="13" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @endif
                   <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                 </div>
               @endif
@@ -519,7 +582,11 @@
             @foreach($provinces as $key => $province)
               @if($province->region->RegionID == '18')
                 <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="18" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @if(in_array($province->ProvinceID, $selectedProvinces))
+                    <input type="checkbox" checked="checked" name="add_prov[]" class="18" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @else
+                    <input type="checkbox" name="add_prov[]" class="18" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                  @endif
                   <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                 </div>
               @endif
@@ -530,7 +597,7 @@
 
 
       <div class="center">
-        <button class="btn waves-effect waves-light blue darken-2 white-text" type="submit" name="add">
+        <button class="btn waves-effect waves-light blue darken-2 white-text" type="submit" name="edit">
         <i class="material-icons left">add</i>Add Courier</button>
         <div class="row"></div><div class="row"></div>
       </div>

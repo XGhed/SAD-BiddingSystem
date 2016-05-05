@@ -84,16 +84,26 @@ class ShipmentController extends Controller
     public function updateShipment(Request $request){
 
         try {
-            $shipment = new App\Shipment;
-            $shipment = App\Shipment::find($request->input('edit_ID'));
-
-            $shipment->ShipmentName = trim($request->input('edit_name'));
-            $shipment->CityID = trim($request->input('edit_city'));
-            $shipment->Barangay_Street_Address = trim($request->input('edit_barangaystreet'));
-            $shipment->ShipmentContactNo = trim($request->input('edit_contactNo'));
-            $shipment->ShipmentEmail = trim($request->input('edit_email'));
-
+            $shipment = new App\ThirdParty;
+            $shipment = App\ThirdParty::find($request->input('edit_ID'));
+            $shipment->PartyName = $request->input('add_name');
             $shipment->save();
+
+            $currentRecords = new App\ProvinceThirdParty;
+            $currentRecords = App\ProvinceThirdParty::where('PartyID', $request->input('edit_ID'))->get();
+
+            foreach ($currentRecords as $key => $currentRecord) {
+                $currentRecord->delete();
+            }
+
+            foreach ($request->input('add_prov') as $key => $add_prov) {
+                $provThird = new App\ProvinceThirdParty;
+                $provThird->PartyID = $shipment->PartyID;
+                $provThird->ProvinceID = $add_prov;
+
+                $provThird->save();
+            }
+
         } catch (Exception $e) {
             Session::put('message', '-1');
             return redirect('shipment');
