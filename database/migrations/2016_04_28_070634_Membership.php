@@ -22,8 +22,9 @@ class Membership extends Migration
             $table->String('Landline', 10)->nullable();
             $table->String('EmailAdd', 30);
             $table->date('DateOfRegistration');
-            $table->integer('RegionID')->unsigned();
-            $table->foreign('RegionID')->references('RegionID')->on('Region');
+            $table->string('valid_id');
+            $table->integer('CityID')->unsigned();
+            $table->foreign('CityID')->references('CityID')->on('City');
         
     });
 }
