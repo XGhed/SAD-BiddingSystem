@@ -56,12 +56,17 @@ Maintenance
                         </div>
                       
                       <div class="col">
-                        <form id="addForm" action="/edit" method="POST">
+                        <form action="/edit" method="POST">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           <input type="hidden" id="tdID{{$key}}" name="del_ID" value="{{$result->PartyID}}">
                           <button id="{{$key}}" value="{{$key}}" name="edit" class="edit btn-flat btn-large transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" href='/edit'><i class="material-icons" >edit</i></button>
                         </form>
-                        <button id="delete" name="delete" class="btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                        <form action="/confirmShipment" method="POST">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <input type="hidden" name="del_ID" value="{{$result->PartyID}}">
+                          <button id="delete" name="delete" class="btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                        </form>
+                        
                       </div>
                     </div>
               </td>
