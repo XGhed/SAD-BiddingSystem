@@ -15,6 +15,7 @@ class ProvinceThirdParty extends Migration
         $table->integer('ProvinceID')->unsigned();
         $table->foreign('PartyID')->references('PartyID')->on('Delivery_ThirdParty');
         $table->foreign('ProvinceID')->references('ProvinceID')->on('Province');
+        $table->softDeletes();
     });
 }
 

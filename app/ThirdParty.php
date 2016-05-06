@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ThirdParty extends Model
 {
+	use SoftDeletes;
+
     protected $table = 'delivery_thirdparty';
     protected $primaryKey = 'PartyID';
     protected $dates = ['deleted_at'];

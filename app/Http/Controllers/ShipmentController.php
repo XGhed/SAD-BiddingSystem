@@ -114,6 +114,13 @@ class ShipmentController extends Controller
         try {
             $shipment = new App\ThirdParty;
             $shipment = App\ThirdParty::find($request->input('del_ID'));
+
+            $currentRecords = new App\ProvinceThirdParty;
+            $currentRecords = App\ProvinceThirdParty::where('PartyID', $shipment->PartyID)->get();
+
+            foreach ($currentRecords as $key => $record) {
+                $record->delete();
+            }
         
             $shipment->delete();
         } catch (Exception $e) {
