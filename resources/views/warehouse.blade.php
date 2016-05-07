@@ -7,6 +7,104 @@ Maintenance
 
 @section('jqueryscript')
 <script type="text/javascript">
+    $(function (){   
+
+        $("#tableOutput").DataTable({
+          "lengthChange": false,
+          "pageLength": 5,
+          "columns": [
+            { "searchable": false },
+            null,
+            null,
+            null,
+            null,
+            null
+          ] 
+        });
+        //$('#tdstatus0').prop('checked', true);
+        //alert($('#tdstatus0').val());
+
+        $(":checkbox").click(function(){
+          $.get('/status_Supplier?supplierID=' + $(this).val(), function(data){
+              //NOTIFICATION HERE MUMING :*
+              var toastContent = $('<span>Status Changed!</span>');
+                  Materialize.toast(toastContent, 1500, 'edit');
+            });
+        });
+    });
+
+    $(function(){   
+        $('#tableOutput').on('click', '.edit', function(){
+           $('#modal1').openModal();
+            var selected = this.id;
+            var keyID = $("#tdID"+selected).val();
+            var keyProvince = $("#tdprovince"+selected).val();
+            var keyCity = $("#tdcity"+selected).val();
+            var keyBarangayStreet = $("#tdbarangaystreet"+selected).val();
+            $("#edit_ID").val(keyID);
+            $("#provE").val(keyProvince);
+            $("#provE").material_select();
+            $("#edit_barangaystreet").val(keyBarangayStreet);
+
+            $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
+            var $selectDropdown = 
+              $("#cityE")
+                .empty()
+                .html(' ');
+            $.each(data, function(index, subcatObj){
+                $selectDropdown.append(
+                  $("<option></option>")
+                    .attr("value",subcatObj.CityID)
+                    .text(subcatObj.CityName)
+                );
+            });
+            $("#cityE").val(keyCity);
+            $("#cityE").material_select();
+            });
+        });
+    });   
+
+    $(function(){   
+        $('#modal1').on('change', '#provE', function(){
+
+          $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
+            var $selectDropdown = 
+              $("#cityE")
+                .empty()
+                .html(' ');
+            $.each(data, function(index, subcatObj){
+                $selectDropdown.append(
+                  $("<option></option>")
+                    .attr("value",subcatObj.CityID)
+                    .text(subcatObj.CityName)
+                );
+            });
+            $("#cityE").material_select();
+          });
+        });
+    });    
+
+    $(function(){   
+        $('#addBtn').on('change', '#prov', function(){
+
+          $.get('/cityOptions?provID=' + $("#prov").val(), function(data){
+            var $selectDropdown = 
+              $("#city")
+                .empty()
+                .html(' ');
+            $.each(data, function(index, subcatObj){
+                $selectDropdown.append(
+                  $("<option></option>")
+                    .attr("value",subcatObj.CityID)
+                    .text(subcatObj.CityName)
+                );
+            });
+            $("#city").material_select();
+          });
+        });
+    });    
+
+    
 </script>
 @endsection
 
@@ -51,19 +149,21 @@ Maintenance
 
         
             
-        <form class="col s12" action="/confirm" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <form class="col s12" action="/confirmWarehouse" method="POST">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="input-field col s4">
-				    <select>
+				    <select name="add_province" id="prov">
 				      <option value="" disabled selected>Choose your Province</option>
-				      <option value="1">Option 1</option>
+              @foreach($provinces as $key => $province)
+                <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
+              @endforeach
 				    </select>
 				    <label>Choose Province</label>
 				</div>
 
 				<div class="input-field col s4">
-				    <select>
-				      <option value="" disabled selected>Choose your City</option>
-				      <option value="1">Option 1</option>
+				    <select name="add_city" id="city" REQUIRED>
+              <option value="" disabled selected>City</option>
 				    </select>
 				    <label>Choose City</label>
 				</div>
@@ -73,9 +173,7 @@ Maintenance
                       <input id="" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
                       <label for="">Warehouse Address</label>
                     </div>
-                </div>           
-             
-            </div> <!--MODAL CONTENT -->
+                </div>
 
             <div class="modal-footer">
                   <button class="btn waves-effect waves-light green darken-2 white-text" type="submit" name="add">
