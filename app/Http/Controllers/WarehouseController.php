@@ -32,7 +32,7 @@ class WarehouseController extends Controller
        	}
        }*/
 
-       return view('warehouse')->with ('results', $results)->with ('provinces', $provinces);
+       return view('warehouse')->with ('provinces', $provinces);
     }
 
     public function confirmWarehouse(Request $request){
