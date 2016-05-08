@@ -17,11 +17,11 @@ class WarehouseController extends Controller
 
 	public function manageWarehouse(){
 
-    //   $results = App\warehouse::all();
+       $results = App\warehouse::all();
        $provinces = App\Province::orderBy('ProvinceName')->get();
-    //   $cities = App\City::all();
+       $cities = App\City::all();
 
-       /*foreach ($results as $key => $result) {
+       foreach ($results as $key => $result) {
        	foreach ($cities as $key => $city) {
        		if($city->CityID == $result->CityID){
        			$result['ProvinceID'] = $city->province->ProvinceID;
@@ -30,9 +30,9 @@ class WarehouseController extends Controller
 		       	$result['CityName'] = $city->CityName;
        		}
        	}
-       }*/
+       }
 
-       return view('warehouse')->with ('provinces', $provinces);
+       return view('warehouse')->with ('results', $results)->with ('provinces', $provinces)->with ('cities', $cities);
     }
 
     public function confirmWarehouse(Request $request){

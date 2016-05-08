@@ -14,6 +14,8 @@ public function up()
         $table->string('Barangay_Street_Address', 50);
         $table->integer('CityID')->unsigned();
         $table->foreign('CityID')->references('CityID')->on('City');
+        $table->boolean('Status')->default(1);
+        $table->softDeletes();
     });
 }
 

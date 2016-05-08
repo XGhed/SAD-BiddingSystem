@@ -37,6 +37,8 @@ Route::post('/confirmCity', 'CityController@confirmCity');
 
 Route::post('/confirmShipment', 'ShipmentController@confirmShipment');
 
+Route::post('/confirmWarehouse', 'WarehouseController@confirmWarehouse');
+
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');

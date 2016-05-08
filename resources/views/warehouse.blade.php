@@ -16,8 +16,6 @@ Maintenance
             { "searchable": false },
             null,
             null,
-            null,
-            null,
             null
           ] 
         });
@@ -130,13 +128,51 @@ Maintenance
               <th>Manage</th>
               <th>Warehouse Number</th>
               <th>Address</th>
+              <th>Active</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td></td>
-          </tr>
+          @foreach($results as $key => $result)
+            <tr>
+              <td>
+                    <div class="row col s12" >
+                      <div class="col s4">
+                         <button id="{{$key}}" value="{{$key}}" name="edit" class="edit btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
+                          <form action="/confirmWarehouse" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+                         <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->WarehouseNo}}">
+                        </div>
+                      
+                      <div class="col s5">
+                        <input type="hidden" id="" name="del_ID" value="">
+                        <button id="delete" name="delete" class="btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete_forever</i></button>
+                      </div>
+                      </form>
+                    </div>
+              </td>
+              <td>
+                {{$result->WarehouseNo}}
+              </td>
+              <td style="font-size: 14px">{{$result->Barangay_Street_Address}},&nbsp; {{$result->city->CityName}},&nbsp; {{$result->city->province->ProvinceName}} </td>
+              <input type="hidden" id="tdprovince{{$key}}" value="{{$result->city->province->ProvinceID}}" >
+              <input type="hidden" id="tdcity{{$key}}" value="{{$result->city->CityID}}" >
+              <input type="hidden" id="tdbarangaystreet{{$key}}" value="{{$result->Barangay_Street_Address}}" >
+              <td>
+                  <div class="switch">
+                    <label>
+                      Active
+                        @if ($result->Status == 1)
+                            <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->SupplierID}}" checked>
+                        @elseif ($result->Status == 0)
+                            <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->SupplierID}}" >
+                        @endif
+                      <span class="lever"></span>
+                      Inactive
+                    </label>
+                  </div>
+              </td>
+            </tr>
+          @endforeach
         </tbody>
       </table>
 
@@ -170,7 +206,7 @@ Maintenance
 
 				<div class="row">
                     <div class="input-field col s8">
-                      <input id="" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
+                      <input id="" type="text" class="validate" name="add_barangay_street" length="30" maxlength="30" REQUIRED>
                       <label for="">Warehouse Address</label>
                     </div>
                 </div>
