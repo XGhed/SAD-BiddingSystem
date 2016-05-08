@@ -23,7 +23,7 @@ Maintenance
         //alert($('#tdstatus0').val());
 
         $(":checkbox").click(function(){
-          $.get('/status_Supplier?supplierID=' + $(this).val(), function(data){
+          $.get('/status_Warehouse?WarehouseNo=' + $(this).val(), function(data){
               //NOTIFICATION HERE MUMING :*
               var toastContent = $('<span>Status Changed!</span>');
                   Materialize.toast(toastContent, 1500, 'edit');
@@ -122,7 +122,7 @@ Maintenance
 <a class="modal-trigger waves-effect waves-light right green darken-3 btn z-depth-3" href="#addBtn"><i class="material-icons left">add</i>Add Warehouse</a>
 
 
-<table class="centered">
+<table id="tableBody" class="centered">
         <thead>
           <tr>
               <th>Manage</th>
@@ -162,9 +162,9 @@ Maintenance
                     <label>
                       Active
                         @if ($result->Status == 1)
-                            <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->SupplierID}}" checked>
+                            <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->WarehouseNo}}" checked>
                         @elseif ($result->Status == 0)
-                            <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->SupplierID}}" >
+                            <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->WarehouseNo}}" >
                         @endif
                       <span class="lever"></span>
                       Inactive

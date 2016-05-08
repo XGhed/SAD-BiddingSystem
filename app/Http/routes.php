@@ -77,6 +77,8 @@ Route::get('/status_Category', 'StatusUpdate@Category');
 
 Route::get('/status_SubCategory', 'StatusUpdate@SubCategory');
 
+Route::get('/status_Warehouse', 'StatusUpdate@Warehouse');
+
 Route::get('/registration', 'PageController@registration');
 
 Route::get('/paymentMethod', 'PageController@paymentMethod');

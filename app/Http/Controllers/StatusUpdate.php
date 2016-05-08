@@ -90,4 +90,17 @@ class StatusUpdate extends Controller
             return 0;
         }
     }
+
+    public function Warehouse(){
+        $warehouse = new App\Warehouse;
+        $warehouse = App\Warehouse::find(Input::get('WarehouseNo'));
+
+        if ($warehouse->Status == 1){
+            $warehouse->Status = 0;
+        }
+        elseif ($warehouse->Status == 0){
+            $warehouse->Status = 1;
+        }
+        $warehouse->save();
+    }
 }
