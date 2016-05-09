@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('customer.homepage');
+    return view('customer.homepageContent');
 });
 
 
@@ -49,8 +49,6 @@ Route::get('/subcategory', 'SubCategoryController@manageSubcategory');
 
 Route::get('/accountType', 'AccountTypeController@manageAccountType');
 
-Route::get('/keyword', 'KeywordController@ManageKeyword');
-
 Route::get('/item', 'ItemController@manageItem');
 
 Route::get('/shipment', 'ShipmentController@manageShipment');
@@ -59,7 +57,7 @@ Route::get('/registerContainer', 'RegisterContainerController@manageRegContainer
 
 Route::get('/places', 'ProvinceController@manageProvince');
 
-Route::get('/registerItem', 'RegisterItemController@manageRegItem');
+Route::get('/inventory', 'RegisterItemController@manageRegItem');
 //Route::get('/shipment', 'PageController@shipment');
 
 //AJAX
@@ -79,28 +77,16 @@ Route::get('/status_SubCategory', 'StatusUpdate@SubCategory');
 
 Route::get('/status_Warehouse', 'StatusUpdate@Warehouse');
 
-Route::get('/registration', 'PageController@registration');
-
-Route::get('/paymentMethod', 'PageController@paymentMethod');
-
+Route::get('/warehouse', 'WarehouseController@manageWarehouse');
 
 Route::get('/category', 'CategoryController@manageCategory');
 
 Route::get('/bidItems', 'PageController@bidItems');
 
-
-
-Route::post('/addMember', 'PageController@addMember');
-
-Route::get('/insertMember', 'PageController@insertMember');
-
-Route::get('/home', 'PageController@homepage');
-
-Route::get('/deliveryCompany', 'PageController@deliveryCompany');
-
 Route::get('/bidEvent', 'PageController@bidEvent');
 
-Route::get('/warehouse', 'WarehouseController@manageWarehouse');
+Route::get('/register', 'PageController@register');
+
 
 Route::post('/edit', 'ShipmentController@editShipment');
 

@@ -18,10 +18,9 @@ class PageController extends Controller
        return view('customer.homepage');
     }
 
-
     public function bidItems(Request $request){
 
-       return view('bidItems');
+       return view('admin.bidItems');
     }
 
     public function shipmentAdd(Request $request){
@@ -34,19 +33,9 @@ class PageController extends Controller
        return view('shipmentEdit');
     }
 
-    public function places(Request $request){
-
-       return view('places');
-    }
-
     public function warehouse(Request $request){
 
        return view('warehouse');
-    }
-
-    public function regContainer(Request $request){
-
-       return view('regContainer');
     }
 
     public function shipment(Request $request){
@@ -54,75 +43,20 @@ class PageController extends Controller
        return view('shipment');
     }
 
-    public function keyword(Request $request){
-
-       return view('keyword');
-    }
-
-    public function manageAccounts(Request $request){
-
-       return view('accounts');
-    }   
-
-    public function accType(Request $request){
-
-       return view('accountType');
-    }  
-
-    public function manageSupplier(Request $request){
-
-       return view('supplier');
-    } 
-
-    public function deliveryParty(Request $request){
-
-       return view('deliveryParty');
-    }
-
-    public function deliveryCompany(Request $request){
-
-       return view('deliveryCompany');
-    }
-
-    public function manageCategory(Request $request){
-
-       return view('category');
-    } 
-
-    public function manageSubcategory(Request $request){
-
-       return view('subcategory');
-    } 
-
     public function bidEvent(Request $request){
 
-       return view('bid_event');
+       return view('admin.bidEvent');
     } 
 
-    public function manageItem(Request $request){
+    public function inventory(Request $request){
 
-       return view('item');
+       return view('admin.inventory');
     }
 
-    public function regItems(Request $request){
+    //customer
 
-       return view('regItems');
+    public function register(Request $request){
+
+       return view('customer.register');
     } 
-
-    public function addMember(Request $request){
-
-    	$member = new Member();
-    	$memberBusiness = new MemberBusiness();
-
-    	$member->firstName = $request->input('firstName');
-    	$member->middleName = $request->input('middleName');
-    	$member->lastName = $request->input('lastName');
-    	$member->address = $request->input('address');
-
-    	$memberBusiness->saveMember($member);
-    }
-
-    public function insertMember(){
-    	return view('insertMember');
-    }
 }
