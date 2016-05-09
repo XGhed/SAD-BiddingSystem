@@ -15,7 +15,7 @@ class AccountTypeController extends Controller
 
        $results = App\AccountType::all();
 
-       return view('accountType')->with ('results', $results);
+       return view('admin.accountType')->with ('results', $results);
     }
 
     public function confirmAccountType(Request $request){

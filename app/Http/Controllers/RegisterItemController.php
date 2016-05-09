@@ -15,6 +15,6 @@ class RegisterItemController extends Controller
 
        $items = App\Item::all();
 
-       return view('regItems')->with ('items', $items);
+       return view('admin.inventory')->with ('items', $items);
     }
 }

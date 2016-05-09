@@ -15,7 +15,7 @@ class RegisterContainerController extends Controller
 
        $suppliers = App\Supplier::all();
 
-       return view('regContainer')->with ('suppliers', $suppliers);
+       return view('admin.regContainer')->with ('suppliers', $suppliers);
     }
 
     public function confirmCategory(Request $request){

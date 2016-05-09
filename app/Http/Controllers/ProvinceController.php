@@ -16,7 +16,7 @@ class ProvinceController extends Controller
        $results = App\Province::orderBy('ProvinceName')->get();
        $results2 = App\City::orderBy('CityName')->get();
 
-       return view('places')->with ('results', $results)->with ('results2', $results2);
+       return view('admin.places')->with ('results', $results)->with ('results2', $results2);
     }
 
     public function confirmProvince(Request $request){

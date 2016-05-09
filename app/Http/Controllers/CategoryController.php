@@ -16,7 +16,7 @@ class CategoryController extends Controller
        $results = App\Category::all();
        $results2 = App\SubCategory::all();
 
-       return view('category')->with ('results', $results)->with ('results2', $results2);
+       return view('admin.category')->with ('results', $results)->with ('results2', $results2);
     }
 
     public function confirmCategory(Request $request){

@@ -16,7 +16,7 @@ class ShipmentController extends Controller
        $results = App\ThirdParty::all();
        $provinces = App\Province::orderBy('ProvinceName')->get();
 
-       return view('shipment')->with ('results', $results)->with ('provinces', $provinces);
+       return view('admin.shipment')->with ('results', $results)->with ('provinces', $provinces);
        //return view('shipment')->with ('provinces', $provinces);
     }
 
@@ -25,7 +25,7 @@ class ShipmentController extends Controller
        $results = App\ThirdParty::all();
        $provinces = App\Province::orderBy('ProvinceName')->get();
 
-       return view('shipmentAdd')->with ('results', $results)->with ('provinces', $provinces);
+       return view('admin.shipmentAdd')->with ('results', $results)->with ('provinces', $provinces);
        //return view('shipment')->with ('provinces', $provinces);
     }
 
@@ -38,7 +38,7 @@ class ShipmentController extends Controller
            array_push($selectedProvinces, $pt->ProvinceID);
        }
        
-       return view('shipmentEdit')->with ('result', $result)->with ('provinces', $provinces)->with ('selectedProvinces', $selectedProvinces);
+       return view('admin.shipmentEdit')->with ('result', $result)->with ('provinces', $provinces)->with ('selectedProvinces', $selectedProvinces);
     }
 
     public function confirmShipment(Request $request){

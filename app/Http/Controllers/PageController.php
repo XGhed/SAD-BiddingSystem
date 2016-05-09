@@ -15,13 +15,9 @@ class PageController extends Controller
 
     public function homepage(Request $request){
 
-       return view('homepage');
+       return view('customer.homepage');
     }
 
-    public function registration(Request $request){
-
-       return view('registration');
-    }
 
     public function bidItems(Request $request){
 
