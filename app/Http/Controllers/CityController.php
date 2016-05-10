@@ -7,6 +7,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use App\Models\Admin;
 use Session;
 
 class CityController extends Controller
@@ -33,7 +34,7 @@ class CityController extends Controller
     public function insertCity(Request $request){
 
         try {
-        $city = new App\City;
+        $city = new App\Models\Admin\City;
 
         $city->ProvinceID = $request->input('add_ID');
         $city->CityName = trim($request->input('add_name'));
@@ -48,8 +49,8 @@ class CityController extends Controller
     public function updateCity(Request $request){
 
         try {
-        $city = new App\City;
-        $city = App\City::find($request->input('edit_ID'));
+        $city = new App\Models\Admin\City;
+        $city = App\Models\Admin\City::find($request->input('edit_ID'));
 
         $city->ProvinceID = trim($request->input('edit_ProvID'));
         $city->CityName = trim($request->input('edit_name'));
@@ -63,8 +64,8 @@ class CityController extends Controller
 
     public function deleteCity(Request $request){
         try {
-        $city = new App\City;
-        $city = App\City::find($request->input('del_ID'));
+        $city = new App\Models\Admin\City;
+        $city = App\Models\Admin\City::find($request->input('del_ID'));
         
             $city->delete();
         } catch (Exception $e) {

@@ -7,14 +7,15 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use App\Models\Admin;
 use Session;
 
 class ShipmentController extends Controller
 {
     public function manageShipment(){
 
-       $results = App\ThirdParty::all();
-       $provinces = App\Province::orderBy('ProvinceName')->get();
+       $results = App\Models\Admin\ThirdParty::all();
+       $provinces = App\Models\Admin\Province::orderBy('ProvinceName')->get();
 
        return view('admin.shipment')->with ('results', $results)->with ('provinces', $provinces);
        //return view('shipment')->with ('provinces', $provinces);
@@ -22,8 +23,8 @@ class ShipmentController extends Controller
 
     public function addShipment(){
 
-       $results = App\ThirdParty::all();
-       $provinces = App\Province::orderBy('ProvinceName')->get();
+       $results = App\Models\Admin\ThirdParty::all();
+       $provinces = App\Models\Admin\Province::orderBy('ProvinceName')->get();
 
        return view('admin.shipmentAdd')->with ('results', $results)->with ('provinces', $provinces);
        //return view('shipment')->with ('provinces', $provinces);
@@ -31,8 +32,8 @@ class ShipmentController extends Controller
 
     public function editShipment(Request $request){
 
-       $result = App\ThirdParty::find($request->input('del_ID'));
-       $provinces = App\Province::orderBy('ProvinceName')->get();
+       $result = App\Models\Admin\ThirdParty::find($request->input('del_ID'));
+       $provinces = App\Models\Admin\Province::orderBy('ProvinceName')->get();
        $selectedProvinces = array();
        foreach ($result->province_ThirdParty as $key => $pt) {
            array_push($selectedProvinces, $pt->ProvinceID);
@@ -63,12 +64,12 @@ class ShipmentController extends Controller
     public function insertShipment(Request $request){
 
         try {
-            $shipment = new App\ThirdParty;
+            $shipment = new App\Models\Admin\ThirdParty;
             $shipment->PartyName = $request->input('add_name');
             $shipment->save();
 
             foreach ($request->input('add_prov') as $key => $add_prov) {
-                $provThird = new App\ProvinceThirdParty;
+                $provThird = new App\Models\Admin\ProvinceThirdParty;
                 $provThird->PartyID = $shipment->PartyID;
                 $provThird->ProvinceID = $add_prov;
 
@@ -84,20 +85,20 @@ class ShipmentController extends Controller
     public function updateShipment(Request $request){
 
         try {
-            $shipment = new App\ThirdParty;
-            $shipment = App\ThirdParty::find($request->input('edit_ID'));
+            $shipment = new App\Models\Admin\ThirdParty;
+            $shipment = App\Models\Admin\ThirdParty::find($request->input('edit_ID'));
             $shipment->PartyName = $request->input('add_name');
             $shipment->save();
 
-            $currentRecords = new App\ProvinceThirdParty;
-            $currentRecords = App\ProvinceThirdParty::where('PartyID', $request->input('edit_ID'))->get();
+            $currentRecords = new App\Models\Admin\ProvinceThirdParty;
+            $currentRecords = App\Models\Admin\ProvinceThirdParty::where('PartyID', $request->input('edit_ID'))->get();
 
             foreach ($currentRecords as $key => $currentRecord) {
                 $currentRecord->delete();
             }
 
             foreach ($request->input('add_prov') as $key => $add_prov) {
-                $provThird = new App\ProvinceThirdParty;
+                $provThird = new App\Models\Admin\ProvinceThirdParty;
                 $provThird->PartyID = $shipment->PartyID;
                 $provThird->ProvinceID = $add_prov;
 
@@ -112,11 +113,11 @@ class ShipmentController extends Controller
 
     public function deleteShipment(Request $request){
         try {
-            $shipment = new App\ThirdParty;
-            $shipment = App\ThirdParty::find($request->input('del_ID'));
+            $shipment = new App\Models\Admin\ThirdParty;
+            $shipment = App\Models\Admin\ThirdParty::find($request->input('del_ID'));
 
-            $currentRecords = new App\ProvinceThirdParty;
-            $currentRecords = App\ProvinceThirdParty::where('PartyID', $shipment->PartyID)->get();
+            $currentRecords = new App\Models\Admin\ProvinceThirdParty;
+            $currentRecords = App\Models\Admin\ProvinceThirdParty::where('PartyID', $shipment->PartyID)->get();
 
             foreach ($currentRecords as $key => $record) {
                 $record->delete();

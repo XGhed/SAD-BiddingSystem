@@ -7,13 +7,14 @@ use App\AccountType;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use App\Models\Admin;
 use Session;
 
 class AccountTypeController extends Controller
 {
     public function manageAccountType(){
 
-       $results = App\AccountType::all();
+       $results = App\Models\Admin\AccountType::all();
 
        return view('admin.accountType')->with ('results', $results);
     }
@@ -40,7 +41,7 @@ class AccountTypeController extends Controller
     public function insertAccountType(Request $request){
 
 		try {
-		$accountType = new App\AccountType;
+		$accountType = new App\Models\Admin\AccountType;
 
 		$accountType->AccountTypeName = trim($request->input('add_name'));
 		$accountType->Description = trim($request->input('add_desc'));
@@ -58,8 +59,8 @@ class AccountTypeController extends Controller
 	public function updateAccountType(Request $request){
 
 		try {
-		$accountType = new App\AccountType;
-		$accountType = App\AccountType::find($request->input('edit_ID'));
+		$accountType = new App\Models\Admin\AccountType;
+		$accountType = App\Models\Admin\AccountType::find($request->input('edit_ID'));
 
 		$accountType->AccountTypeName = trim($request->input('edit_name'));
 		$accountType->Description = trim($request->input('edit_desc'));
@@ -76,8 +77,8 @@ class AccountTypeController extends Controller
 
 	public function deleteAccountType(Request $request){
 		try {
-		$accountType = new App\AccountType;
-		$accountType = App\AccountType::find($request->input('del_ID'));
+		$accountType = new App\Models\Admin\AccountType;
+		$accountType = App\Models\Admin\AccountType::find($request->input('del_ID'));
 		
 			$accountType->delete();
 		} catch (Exception $e) {

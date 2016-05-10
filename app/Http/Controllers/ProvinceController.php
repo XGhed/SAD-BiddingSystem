@@ -7,14 +7,15 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use App\Models\Admin;
 use Session;
 
 class ProvinceController extends Controller
 {
    public function manageProvince(){
 
-       $results = App\Province::orderBy('ProvinceName')->get();
-       $results2 = App\City::orderBy('CityName')->get();
+       $results = App\Models\Admin\Province::orderBy('ProvinceName')->get();
+       $results2 = App\Models\Admin\City::orderBy('CityName')->get();
 
        return view('admin.places')->with ('results', $results)->with ('results2', $results2);
     }
@@ -40,7 +41,7 @@ class ProvinceController extends Controller
 
     public function insertProvince(Request $request){
 
-        $province = new App\Province;
+        $province = new App\Models\Admin\Province;
 
         $province->ProvinceName = trim($request->input('add_name'));
 
@@ -54,8 +55,8 @@ class ProvinceController extends Controller
 
     public function updateProvince(Request $request){
 
-        $province = new App\Province;
-        $province = App\Province::find($request->input('edit_ID'));
+        $province = new App\Models\Admin\Province;
+        $province = App\Models\Admin\Province::find($request->input('edit_ID'));
 
         $province->ProvinceName = trim($request->input('edit_name'));
 
@@ -68,8 +69,8 @@ class ProvinceController extends Controller
     }
 
     public function deleteProvince(Request $request){
-        $province = new App\Province;
-        $province = App\Province::find($request->input('del_ID'));
+        $province = new App\Models\Admin\Province;
+        $province = App\Models\Admin\Province::find($request->input('del_ID'));
         
         try {
             $province->delete();

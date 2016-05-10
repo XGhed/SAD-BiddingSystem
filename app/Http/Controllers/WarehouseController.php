@@ -9,6 +9,7 @@ use App\Warehouse;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use App\Models\Admin;
 use Session;
 
 
@@ -17,9 +18,9 @@ class WarehouseController extends Controller
 
 	public function manageWarehouse(){
 
-       $results = App\warehouse::all();
-       $provinces = App\Province::orderBy('ProvinceName')->get();
-       $cities = App\City::all();
+       $results = App\Models\Admin\warehouse::all();
+       $provinces = App\Models\Admin\Province::orderBy('ProvinceName')->get();
+       $cities = App\Models\Admin\City::all();
 
        foreach ($results as $key => $result) {
        	foreach ($cities as $key => $city) {
@@ -57,7 +58,7 @@ class WarehouseController extends Controller
 	public function insertWarehouse(Request $request){
 
 		try {
-			$warehouse = new App\Warehouse;
+			$warehouse = new App\Models\Admin\Warehouse;
 
 			$warehouse->CityID = trim($request->input('add_city'));
 			$warehouse->Barangay_Street_Address = trim($request->input('add_barangay_street'));
@@ -72,8 +73,8 @@ class WarehouseController extends Controller
 	public function updateWarehouse(Request $request){
 
 		try {
-			$warehouse = new App\Warehouse;
-			$warehouse = App\Warehouse::find($request->input('edit_ID'));
+			$warehouse = new App\Models\Admin\Warehouse;
+			$warehouse = App\Models\Admin\Warehouse::find($request->input('edit_ID'));
 
 			$warehouse->CityID = trim($request->input('edit_city'));
 			$warehouse->Barangay_Street_Address = trim($request->input('edit_barangaystreet'));
@@ -87,8 +88,8 @@ class WarehouseController extends Controller
 
 	public function deleteWarehouse(Request $request){
 		try {
-			$warehouse = new App\Warehouse;
-			$warehouse = App\Warehouse::find($request->input('edit_ID'));
+			$warehouse = new App\Models\Admin\Warehouse;
+			$warehouse = App\Models\Admin\Warehouse::find($request->input('edit_ID'));
 		
 			$warehouse->delete();
 		} catch (Exception $e) {

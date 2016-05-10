@@ -9,6 +9,7 @@ use App\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use App\Models\Admin;
 use Session;
 use Input;
 use Response;
@@ -16,8 +17,8 @@ use Response;
 class StatusUpdate extends Controller
 {
     public function Supplier(){
-        $supplier = new App\Supplier;
-        $supplier = App\Supplier::find(Input::get('supplierID'));
+        $supplier = new App\Models\Admin\Supplier;
+        $supplier = App\Models\Admin\Supplier::find(Input::get('supplierID'));
 
         if ($supplier->Status == 1){
             $supplier->Status = 0;
@@ -29,8 +30,8 @@ class StatusUpdate extends Controller
     }
 
     public function Item(){
-        $item = new App\Item;
-        $item = App\Item::find(Input::get('itemID'));
+        $item = new App\Models\Admin\Item;
+        $item = App\Models\Admin\Item::find(Input::get('itemID'));
 
         if ($item->Status == 1){
             $item->Status = 0;
@@ -42,8 +43,8 @@ class StatusUpdate extends Controller
     }
 
     public function AccountType(){
-        $accountType = new App\AccountType;
-        $accountType = App\AccountType::find(Input::get('accounttypeID'));
+        $accountType = new App\Models\Admin\AccountType;
+        $accountType = App\Models\Admin\AccountType::find(Input::get('accounttypeID'));
 
         if ($accountType->Status == 1){
             $accountType->Status = 0;
@@ -55,8 +56,8 @@ class StatusUpdate extends Controller
     }
 
     public function Category(){
-        $category = new App\Category;
-        $category = App\Category::find(Input::get('categoryID'));
+        $category = new App\Models\Admin\Category;
+        $category = App\Models\Admin\Category::find(Input::get('categoryID'));
 
         if ($category->Status == 1){
             $category->Status = 0;
@@ -73,8 +74,8 @@ class StatusUpdate extends Controller
     }
 
     public function SubCategory(){
-        $subCategory = new App\SubCategory;
-        $subCategory = App\SubCategory::find(Input::get('subcategoryID'));
+        $subCategory = new App\Models\Admin\SubCategory;
+        $subCategory = App\Models\Admin\SubCategory::find(Input::get('subcategoryID'));
 
         if ($subCategory->Status == 1){
             $subCategory->Status = 0;
@@ -92,8 +93,8 @@ class StatusUpdate extends Controller
     }
 
     public function Warehouse(){
-        $warehouse = new App\Warehouse;
-        $warehouse = App\Warehouse::find(Input::get('WarehouseNo'));
+        $warehouse = new App\Models\Admin\Warehouse;
+        $warehouse = App\Models\Admin\Warehouse::find(Input::get('WarehouseNo'));
 
         if ($warehouse->Status == 1){
             $warehouse->Status = 0;

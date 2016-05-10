@@ -9,15 +9,16 @@ use App\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use App\Models\Admin;
 use Session;
 
 class ItemController extends Controller
 {
     public function manageItem(){
 
-       $results = App\Item::all();
-       $categories = App\Category::all();
-       $subCategories = App\SubCategory::all();
+       $results = App\Models\Admin\Item::all();
+       $categories = App\Models\Admin\Category::all();
+       $subCategories = App\Models\Admin\SubCategory::all();
 
        return view('admin.item')->with ('results', $results)->with ('subCategories', $subCategories)->with ('categories', $categories);
     }
@@ -44,7 +45,7 @@ class ItemController extends Controller
     public function insertItem(Request $request){
 
         try {
-        $item = new App\Item;
+        $item = new App\Models\Admin\Item;
 
         $item->ItemName = trim($request->input('add_name'));
         $item->SubCategoryID = trim($request->input('add_sub'));
@@ -59,8 +60,8 @@ class ItemController extends Controller
     public function updateItem(Request $request){
 
         try {
-        $item = new App\Item;
-        $item = App\Item::find($request->input('edit_ID'));
+        $item = new App\Models\Admin\Item;
+        $item = App\Models\Admin\Item::find($request->input('edit_ID'));
 
         $item->ItemName = trim($request->input('edit_name'));
         $item->SubCategoryID = trim($request->input('edit_sub'));
@@ -74,8 +75,8 @@ class ItemController extends Controller
 
     public function deleteItem(Request $request){
         try {
-        $item = new App\Item;
-        $item = App\Item::find($request->input('del_ID'));
+        $item = new App\Models\Admin\Item;
+        $item = App\Models\Admin\Item::find($request->input('del_ID'));
         
             $item->delete();
         } catch (Exception $e) {

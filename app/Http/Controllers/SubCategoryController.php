@@ -7,6 +7,7 @@ use App\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use App\Models\Admin;
 use Session;
 
 class SubCategoryController extends Controller
@@ -33,7 +34,7 @@ class SubCategoryController extends Controller
     public function insertSubCategory(Request $request){
 
 		try {
-		$subCategory = new App\SubCategory;
+		$subCategory = new App\Models\Admin\SubCategory;
 
 		$subCategory->CategoryID = trim($request->input('add_ID'));
 		$subCategory->SubCategoryName = trim($request->input('add_name'));
@@ -49,8 +50,8 @@ class SubCategoryController extends Controller
 	public function updateSubCategory(Request $request){
 
 		try {
-		$subCategory = new App\SubCategory;
-		$subCategory = App\SubCategory::find($request->input('edit_ID'));
+		$subCategory = new App\Models\Admin\SubCategory;
+		$subCategory = App\Models\Admin\SubCategory::find($request->input('edit_ID'));
 
 		$subCategory->SubCategoryName = trim($request->input('edit_name'));
 		$subCategory->CategoryID = trim($request->input('edit_CatID'));
@@ -65,8 +66,8 @@ class SubCategoryController extends Controller
 
 	public function deleteSubCategory(Request $request){
 		try {
-		$subCategory = new App\SubCategory;
-		$subCategory = App\SubCategory::find($request->input('del_ID'));
+		$subCategory = new App\Models\Admin\SubCategory;
+		$subCategory = App\Models\Admin\SubCategory::find($request->input('del_ID'));
 		
 			$subCategory->delete();
 		} catch (Exception $e) {

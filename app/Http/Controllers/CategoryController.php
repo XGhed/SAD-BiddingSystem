@@ -7,14 +7,15 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use App\Models\Admin;
 use Session;
 
 class CategoryController extends Controller
 {
     public function manageCategory(){
 
-       $results = App\Category::all();
-       $results2 = App\SubCategory::all();
+       $results = App\Models\Admin\Category::all();
+       $results2 = App\Models\Admin\SubCategory::all();
 
        return view('admin.category')->with ('results', $results)->with ('results2', $results2);
     }
@@ -41,7 +42,7 @@ class CategoryController extends Controller
     public function insertCategory(Request $request){
 
 		try {
-		$category = new App\Category;
+		$category = new App\Models\Admin\Category;
 
 		$category->CategoryName = trim($request->input('add_name'));
 		$category->Description = trim($request->input('add_desc'));
@@ -56,8 +57,8 @@ class CategoryController extends Controller
 	public function updateCategory(Request $request){
 
 		try {
-		$category = new App\Category;
-		$category = App\Category::find($request->input('edit_ID'));
+		$category = new App\Models\Admin\Category;
+		$category = App\Models\Admin\Category::find($request->input('edit_ID'));
 
 		$category->CategoryName = trim($request->input('edit_name'));
 		$category->Description = trim($request->input('edit_desc'));
@@ -71,8 +72,8 @@ class CategoryController extends Controller
 
 	public function deleteCategory(Request $request){
 		try {
-		$category = new App\Category;
-		$category = App\Category::find($request->input('del_ID'));
+		$category = new App\Models\Admin\Category;
+		$category = App\Models\Admin\Category::find($request->input('del_ID'));
 		
 			$category->delete();
 		} catch (Exception $e) {

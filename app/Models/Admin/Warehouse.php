@@ -1,17 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Supplier extends Model
+class Warehouse extends Model
 {
 	use SoftDeletes;
 
-    protected $table = 'supplier';
-    protected $primaryKey = 'SupplierID';
+    protected $table = 'warehouse';
+    protected $primaryKey = 'WarehouseNo';
     protected $dates = ['deleted_at'];
     public $timestamps = false;
 

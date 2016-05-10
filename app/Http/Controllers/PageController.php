@@ -8,6 +8,7 @@ use App\Dal\MemberDao;
 use App\Member;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Models\Admin;
 
 
 class PageController extends Controller

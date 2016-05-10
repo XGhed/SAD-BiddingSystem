@@ -9,6 +9,7 @@ use App\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use App\Models\Admin;
 use Session;
 
 
@@ -16,9 +17,9 @@ class SupplierController extends Controller
 {
     public function manageSupplier(){
 
-       $results = App\Supplier::all();
-       $provinces = App\Province::orderBy('ProvinceName')->get();
-       $cities = App\City::all();
+       $results = App\Models\Admin\Supplier::all();
+       $provinces = App\Models\Admin\Province::orderBy('ProvinceName')->get();
+       $cities = App\Models\Admin\City::all();
 
        /*foreach ($results as $key => $result) {
        	foreach ($cities as $key => $city) {
@@ -56,7 +57,7 @@ class SupplierController extends Controller
 	public function insertSupplier(Request $request){
 
 		try {
-			$supplier = new App\Supplier;
+			$supplier = new App\Models\Admin\Supplier;
 
 			$supplier->SupplierName = trim($request->input('add_name'));
 			$supplier->CityID = trim($request->input('add_city'));
@@ -74,8 +75,8 @@ class SupplierController extends Controller
 	public function updateSupplier(Request $request){
 
 		try {
-			$supplier = new App\Supplier;
-			$supplier = App\Supplier::find($request->input('edit_ID'));
+			$supplier = new App\Models\Admin\Supplier;
+			$supplier = App\Models\Admin\Supplier::find($request->input('edit_ID'));
 
 			$supplier->SupplierName = trim($request->input('edit_name'));
 			$supplier->CityID = trim($request->input('edit_city'));
@@ -92,8 +93,8 @@ class SupplierController extends Controller
 
 	public function deleteSupplier(Request $request){
 		try {
-			$supplier = new App\Supplier;
-			$supplier = App\Supplier::find($request->input('edit_ID'));
+			$supplier = new App\Models\Admin\Supplier;
+			$supplier = App\Models\Admin\Supplier::find($request->input('edit_ID'));
 		
 			$supplier->delete();
 		} catch (Exception $e) {

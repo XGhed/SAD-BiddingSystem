@@ -7,13 +7,14 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
+use App\Models\Admin;
 use Session;
 
 class RegisterContainerController extends Controller
 {
     public function manageRegContainer(){
 
-       $suppliers = App\Supplier::all();
+       $suppliers = App\Models\Admin\Supplier::all();
 
        return view('admin.regContainer')->with ('suppliers', $suppliers);
     }
