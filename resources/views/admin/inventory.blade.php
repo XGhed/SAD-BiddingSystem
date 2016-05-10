@@ -107,6 +107,16 @@ Inventory
 					    </select>
 					    <label>Item</label>
 					</div>
+
+					<div class="file-field input-field col s8">
+                      <div class="tiny btn">
+                        <span>Image</span>
+                        <input type="file">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                      </div>
+                    </div>
 			  	</div>
 
 		     	<div class="row">

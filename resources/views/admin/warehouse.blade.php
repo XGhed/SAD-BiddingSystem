@@ -165,14 +165,12 @@ Maintenance
               <td>
                   <div class="switch">
                     <label>
-                      Active
                         @if ($result->Status == 1)
                             <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->WarehouseNo}}" checked>
                         @elseif ($result->Status == 0)
                             <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->WarehouseNo}}" >
                         @endif
                       <span class="lever"></span>
-                      Inactive
                     </label>
                   </div>
               </td>
@@ -248,7 +246,7 @@ Maintenance
 
             <div class="row">
               <div class="input-field col s8">
-                <input id="edit_barangaystreet" type="text" class="validate" name="edit_barangaystreet" length="30" maxlength="30" REQUIRED>
+                <input id="edit_barangaystreet" type="text" class="validate active" value=" " name="edit_barangaystreet" length="30" maxlength="30" REQUIRED>
                 <label for="">Warehouse Address</label>
               </div>
             </div>  

@@ -9,22 +9,22 @@
 @endsection
 
 @section('content')
-	<div style="margin: 35px 0 0 0" class="ui container segment">
+	<div style="margin: 35px 0 0 0" class="ui inverted segment">
 		<form class="ui form">
-		  	<div class="ui one column center aligned">
+		  	<div class="ui one column center aligned page grid">
 				<div class="column">
-					<h3 class="header">Admin</h3>
-					<div class="fields">
+					<h3 class="header"><i class="huge spy icon"></i> ADMIN</h3>
+					<div class="inline equal width fields">
 				  		<div class="five wide field">
-				  			<label>Username:</label>
-				  			<input type="text" name="username">
+				  			<label style="color: white">Username:</label>
+				  			<input type="text" name="username" placeholder="admin">
 				  		</div>
-				  		<div class="field">
-				  			<label>password:</label>
-				  			<input type="password" name="password">
+				  		<div class="five wide field">
+				  			<label style="color: white">Password:</label>
+				  			<input type="password" name="password" placeholder="*****">
 				  		</div>
 				  	</div>
-		  			<a class="ui button" type="submit" href="/supplier">Submit</a>
+		  			<a href="/supplier" class="ui button" type="submit">Enter</a>
 		  		</div>
 		  	</div>
 		</form>
@@ -38,3 +38,5 @@
 
 @endsection
 
+
+					

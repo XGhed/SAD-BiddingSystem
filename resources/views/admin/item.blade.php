@@ -168,10 +168,10 @@ $(function(){
         </tbody>
 </table>
 
-<div class="row">
-<!-- ADD ITEM -->
-  <div class="col s3 right">
 
+<!-- ADD ITEM -->
+<div class="row">
+  <div class="col s3 right">
         <div id="modal1" class="modal modal-fixed-footer">
           <div class="modal-content">
             <h4><i class="medium material-icons left">label</i>Add Item</h4>
@@ -189,7 +189,7 @@ $(function(){
                       <label>Category</label>
                     </div>
 
-                  <div class="input-field col s5">
+                  <div class="input-field col s6">
                       <select name="add_sub" id="add_sub" >
                         <option value="" disabled selected>Subcategory</option>
                       </select>
@@ -201,8 +201,22 @@ $(function(){
                     <div class="input-field col s6">
                       <input id="itemName" type="text" class="validate" name="add_name">
                       <label for="itemName">Item Name</label>
-                    </div> 
-                </div>                
+                    </div>
+
+                    <div class="file-field input-field col s6">
+                      <div class="tiny btn">
+                        <span>Image</span>
+                        <input type="file">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                </div>             
           </div>
           <div class="modal-footer">
             <button class="modal-action modal-close white-text waves-effect waves-blue btn-flat blue" type="submit" name="add">

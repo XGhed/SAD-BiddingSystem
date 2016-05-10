@@ -19,7 +19,6 @@ Bidding Event
 <table class="centered">
         <thead>
         	<tr>
-        		<th></th>
 				<th>Category</th>
 				<th>Item Name</th>
 				<th>Item Quantity</th>
@@ -28,20 +27,10 @@ Bidding Event
 
         <tbody>
 			<tr>
-				<td>
-					<form action="#">
-					    <div>
-					      <input type="checkbox" id="test5" />
-					      <label for="test5"></label>
-					    </div>
-					</form>
-				</td>
             	<td>Kitchen Wares</td>
             	<td>Sandok Ultra 500</td>
             	<td>
-            		<form class="">
-					      <input id="quantity" type="number" min="0" class="">
-				    </form>
+					asdfas<input type="number" min="0">
             	</td>
 			</tr>
         </tbody>
