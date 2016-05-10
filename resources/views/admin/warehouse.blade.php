@@ -32,7 +32,6 @@ Maintenance
 
     $(function(){   
         $('#tableOutput').on('click', '.edit', function(){
-           $('#modal1').openModal();
             var selected = this.id;
             var keyID = $("#tdID"+selected).val();
             var keyProvince = $("#tdprovince"+selected).val();
@@ -62,7 +61,7 @@ Maintenance
     });   
 
     $(function(){   
-        $('#modal1').on('change', '#provE', function(){
+        $('#editMdl').on('change', '#provE', function(){
 
           $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
             var $selectDropdown = 
@@ -121,7 +120,7 @@ Maintenance
 <a class="modal-trigger waves-effect waves-light right green darken-3 btn z-depth-3" href="#addBtn"><i class="material-icons left">add</i>Add Warehouse</a>
 
 
-<table id="tableBody" class="centered">
+<table id="tableOutput" class="centered">
         <thead>
           <tr>
               <th>Manage</th>
@@ -137,7 +136,7 @@ Maintenance
               <td>
                     <div class="row col s12" >
                       <div class="col s4">
-                         <button id="{{$key}}" value="{{$key}}" name="edit" class="modal-trigger btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-target="editMdl" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
+                         <button id="{{$key}}" value="{{$key}}" name="edit" class="edit modal-trigger btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-target="editMdl" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
                           <form action="/confirmWarehouse" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->WarehouseNo}}">
@@ -228,9 +227,10 @@ Maintenance
           <div class="divider"></div><!-- LINYA LANG-->
           <form class="col s12" action="/confirmWarehouse" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" id="edit_ID" name="edit_ID">
 
             <div class="input-field col s6">
-              <select name="add_province" id="prov">
+              <select name="add_province" id="provE">
                 <option value="" disabled selected>Choose your Province</option>
                   @foreach($provinces as $key => $province)
                 <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
@@ -240,7 +240,7 @@ Maintenance
             </div>
 
             <div class="input-field col s6">
-                <select name="add_city" id="city" REQUIRED>
+                <select name="edit_city" id="cityE" REQUIRED>
                   <option value="" disabled selected>City</option>
                 </select>
                 <label>Choose City</label>
@@ -248,13 +248,13 @@ Maintenance
 
             <div class="row">
               <div class="input-field col s8">
-                <input id="" type="text" class="validate" name="add_barangay_street" length="30" maxlength="30" REQUIRED>
+                <input id="edit_barangaystreet" type="text" class="validate" name="edit_barangaystreet" length="30" maxlength="30" REQUIRED>
                 <label for="">Warehouse Address</label>
               </div>
             </div>  
         </div> <!--MODAL BODY-->
             <div class="modal-footer">
-                  <button class="btn waves-effect waves-light green darken-2 white-text" type="submit" name="add">
+                  <button class="btn waves-effect waves-light green darken-2 white-text" type="submit" name="edit">
                   <i class="material-icons left">done</i>Change</button>
             </div>
             </form>
