@@ -87,6 +87,8 @@ Route::get('/bidEvent', 'PageController@bidEvent');
 
 Route::get('/register', 'PageController@register');
 
+Route::get('/checkout', 'PageController@checkout');
+
 
 Route::post('/edit', 'ShipmentController@editShipment');
 

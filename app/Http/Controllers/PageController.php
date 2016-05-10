@@ -43,6 +43,11 @@ class PageController extends Controller
        return view('shipment');
     }
 
+    public function checkout(Request $request){
+
+       return view('customer.checkout');
+    }
+
     public function bidEvent(Request $request){
 
        return view('admin.bidEvent');
