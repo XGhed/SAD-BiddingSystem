@@ -58,6 +58,11 @@ class PageController extends Controller
        return view('admin.inventory');
     }
 
+    public function admin(Request $request){
+
+       return view('admin.admin');
+    }
+
     //customer
 
     public function register(Request $request){

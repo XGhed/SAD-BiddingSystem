@@ -89,6 +89,8 @@ Route::get('/register', 'PageController@register');
 
 Route::get('/checkout', 'PageController@checkout');
 
+Route::get('/admin', 'PageController@admin');
+
 
 Route::post('/edit', 'ShipmentController@editShipment');
 
