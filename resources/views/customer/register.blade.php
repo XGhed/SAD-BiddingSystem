@@ -35,19 +35,6 @@
 
 		  	<div class="equal width fields">
 				<div class="field">
-				 	<div class="ui sub header">Region</div>
-					<div class="ui fluid search normal selection dropdown">
-						<input type="hidden" name="region" required>
-							<i class="dropdown icon"></i>
-							<div class="default text">Select Region</div>
-							<div class="menu">
-								<div class="item">Miriam</div>
-								<div class="item">Mar</div>
-								<div class="item">Rody</div>
-							</div>
-					</div>
-				</div>
-				<div class="field">
 				 	<div class="ui sub header">Province</div>
 					<div class="ui fluid search normal selection dropdown">
 						<input type="hidden" name="province" required>
