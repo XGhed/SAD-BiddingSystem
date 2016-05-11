@@ -153,13 +153,13 @@ Inventory
 						</div>
 
 						<div class="input-field">
-							<input type="checkbox" id="test5" class="defectDescription" />
+							<input type="checkbox" id="test5" />
 							<label for="test5" class="black-text">Defect</label>
 						</div>
 					</div>
 
-	                <div class="row" style="position:relative; top:-10px;" class="description">
-	                  	<div class="input-field col s6">
+	                <div class="row" style="position:relative; top:-10px; display: none" id="defectDesc">
+	                  	<div class="input-field col s8">
 	                  		<input placeholder="Description..." id="" type="text" class="validate">
 	                  		<label for="">Description</label>
 	                  	</div>
@@ -327,12 +327,16 @@ Inventory
     $('select').material_select('update');
   });
     //defect description
-    jQuery(document).ready(function($) {
-	   $('input.defectDescription').change(function(){
-	        if ($(this).is(':checked')) $('div.description').show();
-	        else $('div.description').hide();
-	    }).change();
-	});
+    $(document).ready(function () {
+     $('#test5').click(function () {
+         var $this = $(this);
+         if ($this.is(':checked')) {
+             document.getElementById('defectDesc').style.display = 'block';
+         } else {
+             document.getElementById('defectDesc').style.display = 'none';
+         }
+     });
+ });
 
   </script>
 @endsection
