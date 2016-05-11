@@ -15,7 +15,6 @@ class Items extends Migration
         $table->boolean('Status')->default(1);
         $table->string('size');
         $table->string('color');
-        $table->integer('price');
         $table->string('image_path');
         $table->string('availability', 300);
         $table->integer('WarehouseNo')->unsigned();

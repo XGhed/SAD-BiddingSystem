@@ -15,10 +15,8 @@ Schema::create('Payment', function(Blueprint $table)
         $table->dateTime('PaymentDate');
         $table->integer('CityID')->unsigned();
         $table->foreign('CityID')->references('CityID')->on('City');
-        $table->integer('ModeOfPaymentTypeID')->unsigned();
         $table->integer('AccountID')->unsigned();
         $table->integer('ClaimTypeID')->unsigned();
-        $table->foreign('ModeOfPaymentTypeID')->references('PaymentTypeID')->on('ModeOfPaymentType');
         $table->foreign('AccountID')->references('AccountID')->on('Account');
         $table->foreign('ClaimTypeID')->references('ClaimTypeID')->on('ClaimType');
     });
