@@ -29,34 +29,21 @@
 	  	<div class="stretched row">
 		    <div class="three wide compact column">
 		        <div class="ui vertical menu">
-		        	<a class="item">Kitchen</a>
-			        <div class="ui fluid popup">
-			         	<div class="ui grid">
-			            	<div class="column">
-			                	<h4 class="ui header center aligned">Kitchen</h4>
-			                	<div class="ui link list">
-				                  <a class="item">Sinks and Faucets</a>
-				                  <a class="item">Tile</a>
-				                  <a class="item">Appliances</a>
-				                  <a class="item">Cookeware</a>
-				                </div>
-			              	</div>
-			            </div>
-			        </div>
-			        <a class="item">Bath</a>
-			        <div class="ui fluid popup">
-			            <div class="ui grid">
-			            	<div class="column">
-				                <h4 class="ui header center aligned">Bath</h4>
-				                <div class="ui link list">
-				                	<a class="item">Faucets</a>
-				                	<a class="item">Sinks</a>
-				                	<a class="item">Showers</a>
-				                	<a class="item">Toilets</a>
-				                </div>
-							</div>
-			            </div>
-			        </div>
+		        	@foreach($categories as $key => $category)
+		        		<a class="item">{{$category->CategoryName}}</a>
+				        <div class="ui fluid popup">
+				         	<div class="ui grid">
+				            	<div class="column">
+				                	<h4 class="ui header center aligned">Kitchen</h4>
+				                	<div class="ui link list">
+					                  @foreach($category->subCategory as $key2 => $subCategory)
+					                  	<a class="item">{{$subCategory->SubCategoryName}}</a>
+					                  @endforeach
+					                </div>
+				              	</div>
+				            </div>
+				        </div>
+		        	@endforeach
 			    </div>
 			</div>
 		    <div class="column">

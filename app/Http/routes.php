@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('customer.homepageContent');
-});
+Route::get('/', 'HomepageController@displayHomepage');
 
 
 //POST
