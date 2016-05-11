@@ -17,6 +17,6 @@ class Item extends Model
 
     public function subCategory()
 	{
-	    return $this->hasOne('App\SubCategory', 'SubCategoryID', 'SubCategoryID');
+	    return $this->hasOne('App\Models\Admin\SubCategory', 'SubCategoryID', 'SubCategoryID');
 	}
 }

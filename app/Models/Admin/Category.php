@@ -17,6 +17,6 @@ class Category extends Model
 
     public function subCategory()
 	{
-	    return $this->hasMany('App\SubCategory', 'CategoryID');
+	    return $this->hasMany('App\Models\Admin\SubCategory', 'CategoryID');
 	}
 }//ALTER TABLE `category` ADD `deleted_at` DATETIME NULL DEFAULT NULL

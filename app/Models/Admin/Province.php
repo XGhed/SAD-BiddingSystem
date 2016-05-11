@@ -12,11 +12,11 @@ class Province extends Model
 
     public function city()
 	{
-	    return $this->hasMany('App\City', 'ProvinceID');
+	    return $this->hasMany('App\Models\Admin\City', 'ProvinceID');
 	}
 
 	public function region()
 	{
-	    return $this->hasOne('App\Region', 'RegionID', 'RegionID');
+	    return $this->hasOne('App\Models\Admin\Region', 'RegionID', 'RegionID');
 	}
 }

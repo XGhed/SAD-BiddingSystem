@@ -17,6 +17,6 @@ class ThirdParty extends Model
 
     public function province_ThirdParty()
 	{
-	    return $this->hasMany('App\ProvinceThirdParty', 'PartyID');
+	    return $this->hasMany('App\Models\Admin\ProvinceThirdParty', 'PartyID');
 	}
 }

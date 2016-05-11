@@ -16,6 +16,6 @@ class ProvinceThirdParty extends Model
 
     public function province()
 	{
-	    return $this->hasOne('App\Province', 'ProvinceID', 'ProvinceID');
+	    return $this->hasOne('App\Models\Admin\Province', 'ProvinceID', 'ProvinceID');
 	}
 }

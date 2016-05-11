@@ -17,6 +17,6 @@ class Supplier extends Model
 
     public function city()
 	{
-	    return $this->hasOne('App\City', 'CityID', 'CityID');
+	    return $this->hasOne('App\Models\Admin\City', 'CityID', 'CityID');
 	}
 }
