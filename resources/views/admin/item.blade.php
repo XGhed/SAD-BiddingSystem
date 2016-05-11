@@ -214,9 +214,24 @@ $(function(){
                     </div>
                 </div>
 
-                <div class="row">
+               <div class="row">
+                  <div class="input-field col s4">
+                      <input placeholder="Dimensions" id="" type="text" class="validate">
+                      <label for="">Size</label>
+                  </div>
 
-                </div>             
+                <div class="input-field col s4">
+                  <select>
+                    <option value="" selected>Choose Color</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                  </select>
+                  <label>Color</label>
+              </div>
+
+              
+              </div>            
           </div>
           <div class="modal-footer">
             <button class="modal-action modal-close white-text waves-effect waves-blue btn-flat blue" type="submit" name="add">

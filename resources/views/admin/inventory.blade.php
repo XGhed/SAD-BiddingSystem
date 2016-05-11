@@ -119,27 +119,7 @@ Inventory
                     </div>
 			  	</div>
 
-		     	<div class="row">
-		       		<div class="input-field col s4">
-	          			<input placeholder="Dimensions" id="" type="text" class="validate">
-	          			<label for="">Size</label>
-	        		</div>
-
-			   		<div class="input-field col s4">
-					    <select>
-					      <option value="" selected>Choose Color</option>
-					      <option value="1">Option 1</option>
-					      <option value="2">Option 2</option>
-					      <option value="3">Option 3</option>
-					    </select>
-					    <label>Color</label>
-					</div>
-
-					<div class="input-field col s4">
-	          			<input placeholder="Price" id="" type="text" class="validate">
-	          			<label for="">Price</label>
-	        		</div>
-			  	</div>
+		     	
 
 			  	<div class="row">
 			  		<div class="input-field col s4">
@@ -166,12 +146,27 @@ Inventory
 					    <label>Item</label>
 					</div>
 
-	                <div class="row col">
-	                  <input type="checkbox" id="test5" />
-	                  <label for="test5" class="black-text">Defect</label>
+					<div class="row">
+						<div class="input-field col s4">
+							<input placeholder="Price" id="" type="text" class="validate">
+							<label for="">Price</label>
+						</div>
+
+						<div class="input-field">
+							<input type="checkbox" id="test5" class="defectDescription" />
+							<label for="test5" class="black-text">Defect</label>
+						</div>
+					</div>
+
+	                <div class="row" style="position:relative; top:-10px;" class="description">
+	                  	<div class="input-field col s6">
+	                  		<input placeholder="Description..." id="" type="text" class="validate">
+	                  		<label for="">Description</label>
+	                  	</div>
 	                </div>
+
 			  	</div>
-    </form>
+    		</form>
   </div>
 
     </div>
@@ -331,5 +326,13 @@ Inventory
     $(document).ready(function() {
     $('select').material_select('update');
   });
+    //defect description
+    jQuery(document).ready(function($) {
+	   $('input.defectDescription').change(function(){
+	        if ($(this).is(':checked')) $('div.description').show();
+	        else $('div.description').hide();
+	    }).change();
+	});
+
   </script>
 @endsection
