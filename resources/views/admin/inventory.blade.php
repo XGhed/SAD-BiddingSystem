@@ -119,31 +119,13 @@ Inventory
                     </div>
 			  	</div>
 
-		     	
-
 			  	<div class="row">
 			  		<div class="input-field col s4">
 					    <select>
 					      <option value="" selected>Warehouse</option>
 							<option id="" value=""></option>
 					    </select>
-					    <label>Item</label>
-					</div>
-
-					<div class="input-field col s4">
-					    <select>
-					      <option value="" selected>Category</option>
-							<option id="" value=""></option>
-					    </select>
-					    <label>Item</label>
-					</div>
-
-					<div class="input-field col s4">
-					    <select>
-					      <option value="" selected>Subcategory</option>
-							<option id="" value=""></option>
-					    </select>
-					    <label>Item</label>
+					    <label>Warehouse</label>
 					</div>
 
 					<div class="row">
@@ -158,7 +140,7 @@ Inventory
 						</div>
 					</div>
 
-	                <div class="row" style="position:relative; top:-10px; display: none" id="defectDesc">
+	                <div class="row" style="display: none" id="defectDesc">
 	                  	<div class="input-field col s8">
 	                  		<input placeholder="Description..." id="" type="text" class="validate">
 	                  		<label for="">Description</label>
