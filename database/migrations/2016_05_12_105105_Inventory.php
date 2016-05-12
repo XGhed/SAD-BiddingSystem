@@ -15,7 +15,7 @@ class Inventory extends Migration
             $table->integer('quantity');
             $table->datetime('InventoryDate');
             $table->integer('ItemTransacNo')->unsigned();
-            $table->foreign('ItemTransacNo')->references('ItemTransacNo')->on('Item_transac');
+            $table->foreign('ItemTransacNo')->references('ItemTransacNo')->on('ItemTransaction');
             $table->integer('ItemID')->unsigned();
             $table->foreign('ItemID')->references('ItemID')->on('Items');
         });

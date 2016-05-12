@@ -3,11 +3,11 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ItemTransac extends Migration
+class ItemTransaction extends Migration
 {
     public function up()
     {
-        schema::create('ItemTransac', function(Blueprint $table)
+        schema::create('ItemTransaction', function(Blueprint $table)
         {
             $table->increments('ItemTransacNo');
             $table->string('DefectDescription', 50);
@@ -22,6 +22,6 @@ class ItemTransac extends Migration
     }
     public function down()
     {
-
+        schema::drop('ItemTransaction');
     }
 }

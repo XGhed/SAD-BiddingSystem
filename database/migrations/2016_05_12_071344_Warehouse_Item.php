@@ -12,7 +12,7 @@ class WarehouseItem extends Migration
             $table->integer('WarehouseNo')->unsigned();
             $table->integer('ItemID')->unsigned();
             $table->foreign('WarehouseNo')->references('WarehouseNo')->on('Warehouse');
-            $table->foreign('ItemID')->references('ItemID')->on('Item');
+            $table->foreign('ItemID')->references('ItemID')->on('Items');
         });
     }
 
