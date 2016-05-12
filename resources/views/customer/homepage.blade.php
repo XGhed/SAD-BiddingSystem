@@ -10,7 +10,7 @@
       <script type="text/javascript" src="{!!URL::asset('js/semantic.min.js')!!}"></script>
     </head>
 
-    <body style="background-image: url('icons/bg3.png');  background-repeat: no-repeat;
+    <body style="background-image: url('/icons/bg3.png');  background-repeat: no-repeat;
     background-attachment: fixed;" class="ui container"> 
 
 
@@ -22,45 +22,45 @@
       </div>
       </div>
     @yield('content')
-<div class="ui small modal" id="login">
-  <i class="close icon"></i>
-  <div class="ui vertical divider"></div>
-  <div class="ui container two column middle aligned very relaxed stackable grid">
-    <div class="row"></div>
-    <div class="column">
-      <div class="ui form">
-        <div class="field">
-          <label>Username</label>
-          <div class="ui left icon input">
-            <input type="text" placeholder="Username" id="username">
-            <i class="user icon"></i>
+  <div class="ui small modal" id="login">
+    <i class="close icon"></i>
+    <div class="ui vertical divider"></div>
+    <div class="ui container two column middle aligned very relaxed stackable grid">
+      <div class="row"></div>
+      <div class="column">
+        <div class="ui form">
+          <div class="field">
+            <label>Username</label>
+            <div class="ui left icon input">
+              <input type="text" placeholder="Username" id="username">
+              <i class="user icon"></i>
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label>Password</label>
-          <div class="ui left icon input">
-            <input type="password" placeholder="Password" id="password">
-            <i class="lock icon"></i>
+          <div class="field">
+            <label>Password</label>
+            <div class="ui left icon input">
+              <input type="password" placeholder="Password" id="password">
+              <i class="lock icon"></i>
+            </div>
           </div>
-        </div>
-        <div class="ui grid">
-          <div class="row"></div>
-          <div class="five wide column"></div>
-          <a href="/checkout"><div class="ui blue submit button">Login</div></a>
+          <div class="ui grid">
+            <div class="row"></div>
+            <div class="five wide column"></div>
+            <a href="/checkout"><div class="ui blue submit button">Login</div></a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="ui vertical divider">
+      <div class="ui vertical divider">
           Or
+      </div>
+      <div class="center aligned column">
+        <a class="ui big green labeled icon button" href='/register'>
+          <i class="signup icon"></i>Sign Up
+        </a>
+      </div>
+      <div class="row"></div>
     </div>
-    <div class="center aligned column">
-      <a class="ui big green labeled icon button" href='/register'>
-        <i class="signup icon"></i>Sign Up
-      </a>
-    </div>
-    <div class="row"></div>
   </div>
-</div>
 
 
 <div class="ui horizontal divider">Contact Us</div>

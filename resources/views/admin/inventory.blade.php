@@ -310,15 +310,15 @@ Inventory
   });
     //defect description
     $(document).ready(function () {
-     $('#test5').click(function () {
-         var $this = $(this);
-         if ($this.is(':checked')) {
-             document.getElementById('defectDesc').style.display = 'block';
-         } else {
-             document.getElementById('defectDesc').style.display = 'none';
-         }
+      $('#test5').click(function () {
+          var $this = $(this);
+          if ($this.is(':checked')) {
+              document.getElementById('defectDesc').style.display = 'block';
+          } else {
+              document.getElementById('defectDesc').style.display = 'none';
+          }
      });
- });
+    });
 
   </script>
 @endsection

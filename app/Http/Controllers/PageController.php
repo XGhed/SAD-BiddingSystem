@@ -70,4 +70,19 @@ class PageController extends Controller
 
        return view('customer.register');
     } 
+
+    public function custItems(Request $request){
+
+       return view('customer.items');
+    }
+
+    public function auction(Request $request){
+
+       return view('customer.auction');
+    }
+
+    public function cart(Request $request){
+
+       return view('customer.cart');
+    }
 }

@@ -85,9 +85,16 @@ Route::get('/bidEvent', 'PageController@bidEvent');
 
 Route::get('/register', 'PageController@register');
 
-Route::get('/checkout', 'PageController@checkout');
+Route::get('/customer/checkout', 'PageController@checkout');
+
+Route::get('/customer/items', 'PageController@custItems');
+
+Route::get('/customer/cart', 'PageController@cart');
+
+Route::get('/customer/items/auction', 'PageController@auction');
 
 Route::get('/admin', 'PageController@admin');
+
 
 
 Route::post('/edit', 'ShipmentController@editShipment');

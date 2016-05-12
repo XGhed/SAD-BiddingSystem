@@ -54,7 +54,7 @@
 		              			<div class="ui dimmer">
 		                			<div class="content">
 		                  				<div class="center">
-		                    				<a class="ui inverted button" href="/">Bid Now</a>
+		                    				<a class="ui inverted button" href="/customer/items">Bid Now</a>
 		                  				</div>
 		                			</div>
 		              			</div>
