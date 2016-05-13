@@ -176,7 +176,7 @@ $(function(){
           <div class="modal-content">
             <h4><i class="medium material-icons left">label</i>Add Item</h4>
                   <div class="divider"></div>
-            <form class="col s12" action="/confirmItem" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <form class="col s12" action="/confirmItem" method="POST" enctype="multipart/form-data"><input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="row">
                   <div class="input-field col s6">
@@ -206,7 +206,7 @@ $(function(){
                     <div class="file-field input-field col s6">
                       <div class="tiny btn">
                         <span>Image</span>
-                        <input type="file">
+                        <input type="file" name="add_photo">
                       </div>
                       <div class="file-path-wrapper">
                         <input class="file-path validate" type="text">
@@ -216,16 +216,16 @@ $(function(){
 
                <div class="row">
                   <div class="input-field col s4">
-                      <input placeholder="Dimensions" id="" type="text" class="validate">
+                      <input placeholder="Dimensions" id="" name="add_size" type="text" class="validate">
                       <label for="">Size</label>
                   </div>
 
                 <div class="input-field col s4">
-                  <select>
+                  <select name="add_color">
                     <option value="" selected>Choose Color</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Red">Red</option>
+                    <option value="Green">Green</option>
                   </select>
                   <label>Color</label>
               </div>
