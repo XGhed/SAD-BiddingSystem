@@ -16,6 +16,7 @@ class ItemTransaction extends Migration
             $table->string('size');
             $table->string('color');
             $table->string('image_path');
+            $table->string('image_type');
             $table->integer('price');
             $table->datetime('TransacDate');
             $table->integer('ItemID')->unsigned();

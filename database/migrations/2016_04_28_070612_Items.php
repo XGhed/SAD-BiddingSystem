@@ -16,6 +16,7 @@ class Items extends Migration
         $table->string('size');
         $table->string('color');
         $table->string('image_path');
+        $table->string('image_type');
         $table->string('availability', 300);
         $table->integer('SubCategoryID')->unsigned();
         $table->foreign('SubCategoryID')->references('SubCategoryID')->on('SubCategory');
