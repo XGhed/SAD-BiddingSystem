@@ -18,6 +18,8 @@ class ItemTransaction extends Migration
             $table->string('image_path');
             $table->integer('price');
             $table->datetime('TransacDate');
+            $table->integer('ItemID')->unsigned();
+            $table->foreign('ItemID')->references('ItemID')->on('Items');
         });
     }
     public function down()
