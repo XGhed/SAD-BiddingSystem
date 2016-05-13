@@ -17,6 +17,8 @@ $(function(){
         null,
         null,
         null,
+        null,
+        null,
         null
       ] 
     });
@@ -123,8 +125,11 @@ $(function(){
           <tr>
               <th style="cursor: default;">Manage</th>
               <th>Item Id</th>
+              <th>Photo</th>
               <th>Subcategory</th>
               <th>Item Name</th>
+              <th>Dimensions</th>
+              <th>Color</th>
               <th>Active/Inactive</th>
           </tr>
         </thead>
@@ -144,8 +149,11 @@ $(function(){
                   </div>
                 </td>
                 <td id="tdID{{$key}}">{{$result->ItemID}}</td>
+                <td><img src="{{$result->image_path}}" style="width:60px;height:60px;" /></td>
                 <td id="tdsubcategoryname{{$key}}">{{$result->subCategory->SubCategoryName}}</td>
                 <td id="tdname{{$key}}">{{$result->ItemName}}</td>
+                <td id="tdsize{{$key}}">{{$result->size}}</td>
+                <td id="tdcolor{{$key}}">{{$result->color}}</td>
                 <input type="hidden" id="tdcatID{{$key}}" value="{{$result->subCategory->category->CategoryID}}" />
                 <input type="hidden" id="tdsubcatID{{$key}}" value="{{$result->subCategory->SubCategoryID}}" />
                 <td>
