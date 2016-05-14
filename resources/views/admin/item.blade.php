@@ -19,6 +19,7 @@ Manage Items
           null,
           null,
           null,
+          null,
           null
         ] 
       });
@@ -40,10 +41,16 @@ Manage Items
         var keyName = $("#tdname"+selected).text();
         var keyCat = $("#tdcatID"+selected).val();
         var keySubCat = $("#tdsubcatID"+selected).val();
+        var keySize = $("#tdsize"+selected).text();
+        var keyColor = $("#tdcolor"+selected).text();
         $("#edit_ID").val(keyID);
         $("#edit_name").val(keyName);
         $("#edit_cat").val(keyCat);
         $("#edit_cat").material_select();
+        $("#edit_size").val(keySize);
+        $("#edit_color").val(keyColor);
+        $("#edit_color").material_select();
+
 
         $.get('/subcatOptions?catID=' + $("#edit_cat").val(), function(data){
             var $selectDropdown = 
@@ -161,13 +168,13 @@ Manage Items
                       <form action="/confirmItem" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" id="" name="del_ID" value="{{$result->ItemID}}">
-                          <button type="button" id="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" onclick="asd()">edit</i></button>
+                          <button type="button" id="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
                           <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                       </form>
                   </div>
                 </td>
                 <td id="tdID{{$key}}">{{$result->ItemID}}</td>
-                <!-- <td><img src="{{$result->image_path}}" style="width:60px;height:60px;" /></td> -->
+                <td id="tdImg{{$key}}" ><img src="{{$result->image_path}}" style="width:60px;height:60px;" /></td>
                 <td id="tdsubcategoryname{{$key}}">{{$result->subCategory->SubCategoryName}}</td>
                 <td id="tdname{{$key}}">{{$result->ItemName}}</td>
                 <td id="tdsize{{$key}}">{{$result->size}}</td>
@@ -313,7 +320,7 @@ Manage Items
 
                       <div class="file-field input-field col s6" id="edit_uploadPhoto">
                         <div class="btn">
-                          <input type="file" name="photo" />
+                          <input type="file" name="edit_photo" />
                           <span>Upload new photo</span>
                         </div>
                       </div>
@@ -321,12 +328,12 @@ Manage Items
 
                     <div class="row">
                       <div class="input-field col s4">
-                          <input placeholder="Dimensions" id="" name="add_size" type="text" class="validate">
+                          <input placeholder="Dimensions" id="edit_size" name="edit_size" type="text" class="validate">
                           <label for="">Size</label>
                       </div>
 
                       <div class="input-field col s4">
-                        <select name="add_color">
+                        <select name="edit_color" id="edit_color" >
                           <option value="" selected>Choose Color</option>
                           <option value="Blue">Blue</option>
                           <option value="Red">Red</option>
