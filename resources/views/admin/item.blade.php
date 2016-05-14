@@ -261,7 +261,7 @@ Manage Items
                     <option value="Green">Green</option>
                   </select>
                   <label>Color</label>
-              </div>
+                </div>
 
               
               </div>            

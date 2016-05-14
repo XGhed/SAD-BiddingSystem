@@ -38,7 +38,6 @@ Inventory
               <th>Item Name</th>
               <th>Size</th>
               <th>Color</th>
-              <th>Price</th>
               <th>Warehouse</th>
               <th>Category</th>
           </tr>
@@ -71,10 +70,6 @@ Inventory
           	</td>
 
           	<td href="#history" class="modal-trigger" style="cursor:pointer">
-          		P7000.00
-          	</td>
-
-          	<td href="#history" class="modal-trigger" style="cursor:pointer">
           		Warehouse 001
           	</td>
 
@@ -91,65 +86,75 @@ Inventory
   <a class="modal-trigger waves-effect waves-light btn green darken-2" href="#addBtn"><i class="material-icons left">add</i>Add Items</a>
 
   <div id="addBtn" class="modal modal-fixed-footer">
-    <div class="modal-content" style="overflow: hidden;">
+    <div class="modal-content">
       <h4><i class="medium material-icons left">add</i>Add Item</h4>
       			<div class="divider"></div>
       	<div class="row">
-		    <form class="col s12">
+		      <form class="col s12">
+            <div class="row">
+			   		  <div class="input-field col s4">
+                <select>
+                  <option value="" selected>Item</option>
+                  @foreach($items as $key => $result)
+                  <option id="{{$key}}" value="{{$result->ItemID}}">{{$result->ItemName}}</option>
+						      @endforeach
+                </select>
+                <label>Item</label>
+              </div>
 
-		    	<div class="row">
-			   		<div class="input-field col s4">
-					    <select>
-					      <option value="" selected>Item</option>
-					      @foreach($items as $key => $result)
-							<option id="{{$key}}" value="{{$result->ItemID}}">{{$result->ItemName}}</option>
-						  @endforeach
-					    </select>
-					    <label>Item</label>
-					</div>
+					     <div class="file-field input-field col s8">
+                  <div class="tiny btn">
+                    <span>Image</span>
+                    <input type="file">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+                </div>
+			  	  </div>
 
-					<div class="file-field input-field col s8">
-                      <div class="tiny btn">
-                        <span>Image</span>
-                        <input type="file">
-                      </div>
-                      <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
-                      </div>
-                    </div>
-			  	</div>
+  			  	<div class="row">
+  			  		<div class="input-field col s4">
+  					    <select>
+  					      <option value="" selected>Warehouse</option>
+                  <option id="" value=""></option>
+  					    </select>
+  					    <label>Warehouse</label>
+              </div>
 
-			  	<div class="row">
-			  		<div class="input-field col s4">
-					    <select>
-					      <option value="" selected>Warehouse</option>
-							<option id="" value=""></option>
-					    </select>
-					    <label>Warehouse</label>
-					</div>
+               <div class="input-field col s4">
+                  <input placeholder="Dimensions" id="" name="add_size" type="text" class="validate">
+                  <label for="">Size</label>
+              </div>
 
-					<div class="row">
-						<div class="input-field col s4">
-							<input placeholder="Price" id="" type="text" class="validate">
-							<label for="">Price</label>
-						</div>
+              <div class="input-field col s4">
+                  <select name="add_color">
+                    <option value="" selected>Choose Color</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Red">Red</option>
+                    <option value="Green">Green</option>
+                  </select>
+                  <label>Color</label>
+                </div>    					
+  			  	</div>
 
-						<div class="input-field">
-							<input type="checkbox" id="test5" />
-							<label for="test5" class="black-text">Defect</label>
-						</div>
-					</div>
+            <div class="row">
+              <div class="row">
+                <div class="input-field">
+                  <input type="checkbox" id="test5" />
+                  <label for="test5" class="black-text">Defect</label>
+                </div>
+              </div>
 
-	                <div class="row" style="display: none" id="defectDesc">
-	                  	<div class="input-field col s8">
-	                  		<input placeholder="Description..." id="" type="text" class="validate">
-	                  		<label for="">Description</label>
-	                  	</div>
-	                </div>
-
-			  	</div>
-    		</form>
-  </div>
+              <div class="row" style="display: none" id="defectDesc">
+                <div class="input-field col s8">
+                  <input placeholder="Description..." id="" type="text" class="validate">
+                  <label for="">Description</label>
+                </div>
+              </div>
+            </div>
+    		  </form>
+        </div>
 
     </div>
     <div class="modal-footer">
@@ -198,7 +203,7 @@ Inventory
               <th>Item Number</th>
               <th>Description</th>
               <th>History/Status</th>
-              <th>Quantity</th>
+
               <th>Date and Time</th>
           </tr>
         </thead>
@@ -208,7 +213,6 @@ Inventory
             <td>001</td>
             <td>Galing kay supplier 001</td>
             <td>Sold</td>
-            <td>25 pcs</td>
             <td>4/26/2016 5:55pm</td>
           </tr>
         </tbody>
@@ -230,61 +234,67 @@ Inventory
 		<div class="divider"></div>
 			<div class="row">
 				<form class="col s12">
-					<div class="row">
-						<div class="input-field col s4">
-		          			<input id="" type="text" class="validate" disabled>
-		          			<label for="" class="black-text">Item Ganito</label>
-		        		</div>
-					</div>
+            <div class="row">
+              <div class="input-field col s4">
+                <select>
+                  <option value="" selected>Item</option>
+                  <option id="" value=""></option>
+                </select>
+                <label>Item</label>
+              </div>
 
-		     		<div class="row">
-			       		<div class="input-field col s4">
-		          			<input placeholder="Dimensions" id="" type="text" class="validate">
-		          			<label for="">Size</label>
-		        		</div>
+               <div class="file-field input-field col s8">
+                  <div class="tiny btn">
+                    <span>Image</span>
+                    <input type="file">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+                </div>
+            </div>
 
-				   		<div class="input-field col s4">
-						    <select>
-						      <option value="" selected>Choose Color</option>
-						      <option value="1">Option 1</option>
-						      <option value="2">Option 2</option>
-						      <option value="3">Option 3</option>
-						    </select>
-						    <label>Color</label>
-						</div>
+            <div class="row">
+              <div class="input-field col s4">
+                <select>
+                  <option value="" selected>Warehouse</option>
+                  <option id="" value=""></option>
+                </select>
+                <label>Warehouse</label>
+              </div>
 
-						<div class="input-field col s4">
-		          			<input placeholder="Price" id="" type="text" class="validate">
-		          			<label for="">Price</label>
-		        		</div>
-			  		</div>
+               <div class="input-field col s4">
+                  <input placeholder="Dimensions" id="" name="add_size" type="text" class="validate">
+                  <label for="">Size</label>
+              </div>
 
-			  		<div class="row">
-			  			<div class="input-field col s4">
-						    <select>
-						      <option value="" selected>Warehouse</option>
-								<option id="" value=""></option>
-						    </select>
-						    <label>Item</label>
-						</div>
+              <div class="input-field col s4">
+                  <select name="add_color">
+                    <option value="" selected>Choose Color</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Red">Red</option>
+                    <option value="Green">Green</option>
+                  </select>
+                  <label>Color</label>
+                </div>              
+            </div>
 
-						<div class="input-field col s4">
-						    <select>
-						      <option value="" selected>Category</option>
-								<option id="" value=""></option>
-						    </select>
-						    <label>Item</label>
-						</div>
+            <div class="row">
+              <div class="row">
+                <div class="input-field">
+                  <input type="checkbox" id="test6" />
+                  <label for="test6" class="black-text">Defect</label>
+                </div>
+              </div>
 
-						<div class="input-field col s4">
-						    <select>
-						      <option value="" selected>Subcategory</option>
-								<option id="" value=""></option>
-						    </select>
-						    <label>Item</label>
-						</div>
-			  		</div>
-				</form>
+              <div class="row" style="display: none" id="defectDesc1">
+                <div class="input-field col s8">
+                  <input placeholder="Description..." id="" type="text" class="validate">
+                  <label for="">Description</label>
+                </div>
+              </div>
+            </div>
+          </form>
 			</div>
 	</div>
 
@@ -316,6 +326,17 @@ Inventory
               document.getElementById('defectDesc').style.display = 'block';
           } else {
               document.getElementById('defectDesc').style.display = 'none';
+          }
+     });
+    });
+
+    $(document).ready(function () {
+      $('#test6').click(function () {
+          var $this = $(this);
+          if ($this.is(':checked')) {
+              document.getElementById('defectDesc1').style.display = 'block';
+          } else {
+              document.getElementById('defectDesc1').style.display = 'none';
           }
      });
     });
