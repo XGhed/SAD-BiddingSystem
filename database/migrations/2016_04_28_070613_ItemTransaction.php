@@ -7,9 +7,9 @@ class ItemTransaction extends Migration
 {
     public function up()
     {
-        schema::create('ItemTransaction', function(Blueprint $table)
+        schema::create('Items', function(Blueprint $table)
         {
-            $table->increments('ItemTransacNo');
+            $table->increments('ItemID');
             $table->string('DefectDescription', 50);
             $table->string('status', 30);
             $table->integer('quantity');
@@ -17,12 +17,12 @@ class ItemTransaction extends Migration
             $table->string('color');
             $table->string('image_path');
             $table->datetime('TransacDate');
-            $table->integer('ItemID')->unsigned();
-            $table->foreign('ItemID')->references('ItemID')->on('Items');
+            $table->integer('ItemModelID')->unsigned();
+            $table->foreign('ItemModelID')->references('ItemModelID')->on('ItemModels');
         });
     }
     public function down()
     {
-        schema::drop('ItemTransaction');
+        schema::drop('Items');
     }
 }

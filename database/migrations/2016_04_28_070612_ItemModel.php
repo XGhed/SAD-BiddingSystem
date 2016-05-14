@@ -3,14 +3,14 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Items extends Migration
+class ItemModel extends Migration
 {
     public function up()
 {
 
-    Schema::create('Items', function(Blueprint $table)
+    Schema::create('ItemModels', function(Blueprint $table)
     {
-        $table->increments('ItemID');
+        $table->increments('ItemModelID');
         $table->string('ItemName', 30);
         $table->boolean('Status')->default(1);
         $table->string('size');
@@ -26,7 +26,7 @@ class Items extends Migration
 public function down()
 {
 
-    Schema::drop('Items');
+    Schema::drop('ItemModels');
     
 }
 }

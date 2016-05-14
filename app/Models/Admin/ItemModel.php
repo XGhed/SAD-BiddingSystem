@@ -10,8 +10,8 @@ class ItemModel extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'items';
-    protected $primaryKey = 'ItemID';
+    protected $table = 'itemmodels';
+    protected $primaryKey = 'ItemModelID';
     protected $dates = ['deleted_at'];
     public $timestamps = false;
 

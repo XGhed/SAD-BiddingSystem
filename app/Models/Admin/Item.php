@@ -15,8 +15,8 @@ class Item extends Model
     protected $dates = ['deleted_at'];
     public $timestamps = false;
 
-    public function subCategory()
+    public function itemModel()
 	{
-	    return $this->hasOne('App\Models\Admin\SubCategory', 'SubCategoryID', 'SubCategoryID');
+	    return $this->hasOne('App\Models\Admin\itemModel', 'ItemModelID', 'ItemModelID');
 	}
 }
