@@ -17,9 +17,7 @@ class Items extends Migration
         $table->string('color');
         $table->string('image_path');
         $table->string('availability', 300);
-        $table->integer('WarehouseNo')->unsigned();
         $table->integer('SubCategoryID')->unsigned();
-        $table->foreign('WarehouseNo')->references('WarehouseNo')->on('Warehouse');
         $table->foreign('SubCategoryID')->references('SubCategoryID')->on('SubCategory');
         $table->softDeletes();
     });

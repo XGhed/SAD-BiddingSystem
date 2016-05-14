@@ -49,6 +49,19 @@ class ItemController extends Controller
 
         $item->ItemName = trim($request->input('add_name'));
         $item->SubCategoryID = trim($request->input('add_sub'));
+        $item->size = trim($request->input('add_size'));
+        $item->color = trim($request->input('add_color'));
+
+        if ($request->hasFile('add_photo')) {
+            $filename = rand(1000,100000)."-".$request->file('add_photo')->getClientOriginalName();
+            $filepath = "photos/";
+            $request->file('add_photo')->move($filepath, $filename);
+            $item->image_path = $filepath.$filename;
+        }
+        else {
+            throw new Exception("Error Processing Request", 1);
+            
+        }
 
             $item->save();
         } catch (Exception $e) {

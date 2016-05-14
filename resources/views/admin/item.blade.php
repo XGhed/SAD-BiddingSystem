@@ -7,86 +7,47 @@ Manage Items
 
 @section('jqueryscript')
 <script type="text/javascript">
-$(function(){   
+  $(function(){   
 
-    $("#tableOutput").DataTable({
-      "lengthChange": false,
-      "pageLength": 5,
-      "columns": [
-        { "searchable": false },
-        null,
-        null,
-        null,
-        null
-      ] 
-    });
-
-    $(":checkbox").click(function(){
-          $.get('/status_Item?itemID=' + $(this).val(), function(data){
-              //NOTIFICATION HERE MUMING :*
-              var toastContent = $('<span>Status Changed!</span>');
-                  Materialize.toast(toastContent, 1500, 'edit');
-            });
-        });
-});
-
-$(function(){   
-    $('#tableOutput').on('click', '.edit', function(){
-      $('#modal3').openModal();
-      var selected = this.id;
-      var keyID = $("#tdID"+selected).text();
-      var keyName = $("#tdname"+selected).text();
-      var keyCat = $("#tdcatID"+selected).val();
-      var keySubCat = $("#tdsubcatID"+selected).val();
-      $("#edit_ID").val(keyID);
-      $("#edit_name").val(keyName);
-      $("#edit_cat").val(keyCat);
-      $("#edit_cat").material_select();
-
-      $.get('/subcatOptions?catID=' + $("#edit_cat").val(), function(data){
-          var $selectDropdown = 
-            $("#edit_sub")
-              .empty()
-              .html(' ');
-          $.each(data, function(index, subcatObj){
-              $selectDropdown.append(
-                $("<option></option>")
-                  .attr("value",subcatObj.SubCategoryID)
-                  .text(subcatObj.SubCategoryName)
-              );
-              $("#edit_sub").val(keySubCat);
-              $("#edit_sub").material_select();
-              });
-        });
-
-    });
-});
-
-$(function(){   
-      $('#modal3').on('change', '#edit_cat', function(){
-          $.get('/subcatOptions?catID=' + $("#edit_cat").val(), function(data){
-          var $selectDropdown = 
-            $("#edit_sub")
-              .empty()
-              .html(' ');
-          $.each(data, function(index, subcatObj){
-              $selectDropdown.append(
-                $("<option></option>")
-                  .attr("value",subcatObj.SubCategoryID)
-                  .text(subcatObj.SubCategoryName)
-              );
-              $("#edit_sub").material_select();
-              });
-        });
+      $("#tableOutput").DataTable({
+        "lengthChange": false,
+        "pageLength": 5,
+        "columns": [
+          { "searchable": false },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ] 
       });
-    });
 
-$(function(){   
-        $("#cat").change(function(){
+      $(":checkbox").click(function(){
+            $.get('/status_Item?itemID=' + $(this).val(), function(data){
+                //NOTIFICATION HERE MUMING :*
+                var toastContent = $('<span>Status Changed!</span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+              });
+          });
+  });
 
-          $.get('/subcatOptions?catID=' + $("#cat").val(), function(data){
+  $(function(){   
+      $('#tableOutput').on('click', '.edit', function(){
+        $('#modal3').openModal();
+        var selected = this.id;
+        var keyID = $("#tdID"+selected).text();
+        var keyName = $("#tdname"+selected).text();
+        var keyCat = $("#tdcatID"+selected).val();
+        var keySubCat = $("#tdsubcatID"+selected).val();
+        $("#edit_ID").val(keyID);
+        $("#edit_name").val(keyName);
+        $("#edit_cat").val(keyCat);
+        $("#edit_cat").material_select();
+
+        $.get('/subcatOptions?catID=' + $("#edit_cat").val(), function(data){
             var $selectDropdown = 
-              $("#add_sub")
+              $("#edit_sub")
                 .empty()
                 .html(' ');
             $.each(data, function(index, subcatObj){
@@ -95,12 +56,52 @@ $(function(){
                     .attr("value",subcatObj.SubCategoryID)
                     .text(subcatObj.SubCategoryName)
                 );
-                $("#add_sub").material_select();
-            });
+                $("#edit_sub").val(keySubCat);
+                $("#edit_sub").material_select();
+                });
+          });
+
+      });
+  });
+
+  $(function(){   
+        $('#modal3').on('change', '#edit_cat', function(){
+            $.get('/subcatOptions?catID=' + $("#edit_cat").val(), function(data){
+            var $selectDropdown = 
+              $("#edit_sub")
+                .empty()
+                .html(' ');
+            $.each(data, function(index, subcatObj){
+                $selectDropdown.append(
+                  $("<option></option>")
+                    .attr("value",subcatObj.SubCategoryID)
+                    .text(subcatObj.SubCategoryName)
+                );
+                $("#edit_sub").material_select();
+                });
           });
         });
-    });
+      });
 
+  $(function(){   
+          $("#cat").change(function(){
+
+            $.get('/subcatOptions?catID=' + $("#cat").val(), function(data){
+              var $selectDropdown = 
+                $("#add_sub")
+                  .empty()
+                  .html(' ');
+              $.each(data, function(index, subcatObj){
+                  $selectDropdown.append(
+                    $("<option></option>")
+                      .attr("value",subcatObj.SubCategoryID)
+                      .text(subcatObj.SubCategoryName)
+                  );
+                  $("#add_sub").material_select();
+              });
+            });
+          });
+      });
 </script>
 @endsection
 
@@ -123,8 +124,11 @@ $(function(){
           <tr>
               <th style="cursor: default;">Manage</th>
               <th>Item Id</th>
+              <th>Photo</th>
               <th>Subcategory</th>
               <th>Item Name</th>
+              <th>Dimensions</th>
+              <th>Color</th>
               <th>Active/Inactive</th>
           </tr>
         </thead>
@@ -144,8 +148,11 @@ $(function(){
                   </div>
                 </td>
                 <td id="tdID{{$key}}">{{$result->ItemID}}</td>
+                <!-- <td><img src="{{$result->image_path}}" style="width:60px;height:60px;" /></td> -->
                 <td id="tdsubcategoryname{{$key}}">{{$result->subCategory->SubCategoryName}}</td>
                 <td id="tdname{{$key}}">{{$result->ItemName}}</td>
+                <td id="tdsize{{$key}}">{{$result->size}}</td>
+                <td id="tdcolor{{$key}}">{{$result->color}}</td>
                 <input type="hidden" id="tdcatID{{$key}}" value="{{$result->subCategory->category->CategoryID}}" />
                 <input type="hidden" id="tdsubcatID{{$key}}" value="{{$result->subCategory->SubCategoryID}}" />
                 <td>
@@ -176,7 +183,7 @@ $(function(){
           <div class="modal-content">
             <h4><i class="medium material-icons left">label</i>Add Item</h4>
                   <div class="divider"></div>
-            <form class="col s12" action="/confirmItem" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <form class="col s12" action="/confirmItem" method="POST" enctype="multipart/form-data"><input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="row">
                   <div class="input-field col s6">
@@ -206,7 +213,7 @@ $(function(){
                     <div class="file-field input-field col s6">
                       <div class="tiny btn">
                         <span>Image</span>
-                        <input type="file">
+                        <input type="file" name="add_photo">
                       </div>
                       <div class="file-path-wrapper">
                         <input class="file-path validate" type="text">
@@ -216,16 +223,16 @@ $(function(){
 
                <div class="row">
                   <div class="input-field col s4">
-                      <input placeholder="Dimensions" id="" type="text" class="validate">
+                      <input placeholder="Dimensions" id="" name="add_size" type="text" class="validate">
                       <label for="">Size</label>
                   </div>
 
                 <div class="input-field col s4">
-                  <select>
+                  <select name="add_color">
                     <option value="" selected>Choose Color</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Red">Red</option>
+                    <option value="Green">Green</option>
                   </select>
                   <label>Color</label>
               </div>
@@ -250,28 +257,47 @@ $(function(){
             <form action="/confirmItem" method="POST" class="row col s12"><input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="edit_ID" id="edit_ID">
                   <div class="row"></div>
-                    <div class="input-field col s6">
-                      <input value=" "id="edit_name" type="text" class="validate" name="edit_name" >
-                      <label for="edit_name">Edit Name</label>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input value=" "id="edit_name" type="text" class="validate" name="edit_name" >
+                        <label for="edit_name">Edit Name</label>
+                      </div>
+
+                      <div class="input-field col s3">
+                        <select name="edit_cat" id="edit_cat">
+                          <option value="" disabled selected>Category</option>
+                          @foreach($categories as $key => $category)
+                            <option value="{{$category->CategoryID}}">{{$category->CategoryName}}</option>
+                          @endforeach
+                        </select>
+                        <label>Category</label>
+                      </div>
+
+                      <div class="input-field col s3">
+                        <select name="edit_sub" id="edit_sub" >
+                          <option value="" disabled selected>Subcategory</option>
+
+                            <option value=""></option>
+                        </select>
+                        <label>SubCategory</label>
+                      </div>
                     </div>
 
-                    <div class="input-field col s3">
-                      <select name="edit_cat" id="edit_cat">
-                        <option value="" disabled selected>Category</option>
-                        @foreach($categories as $key => $category)
-                          <option value="{{$category->CategoryID}}">{{$category->CategoryName}}</option>
-                        @endforeach
-                      </select>
-                      <label>Category</label>
-                    </div>
+                    <div class="row">
+                      <div class="input-field col s4">
+                        <input name="group1" type="radio" id="test1" />
+                        <label for="test1" class="black-text">Use current photo</label>
 
-                    <div class="input-field col s3">
-                      <select name="edit_sub" id="edit_sub" >
-                        <option value="" disabled selected>Subcategory</option>
+                      </div>
 
-                          <option value=""></option>
-                      </select>
-                      <label>SubCategory</label>
+
+
+                      <div class="file-field input-field col s6">
+                        <div class="btn">
+                          <input type="file"/>
+                          <span>Upload new photo</span>
+                        </div>
+                      </div>
                     </div>
         </div>
 
