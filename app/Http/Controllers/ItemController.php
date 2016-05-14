@@ -45,23 +45,23 @@ class ItemController extends Controller
     public function insertItem(Request $request){
 
         try {
-        $item = new App\Models\Admin\Item;
+            $item = new App\Models\Admin\Item;
 
-        $item->ItemName = trim($request->input('add_name'));
-        $item->SubCategoryID = trim($request->input('add_sub'));
-        $item->size = trim($request->input('add_size'));
-        $item->color = trim($request->input('add_color'));
+            $item->ItemName = trim($request->input('add_name'));
+            $item->SubCategoryID = trim($request->input('add_sub'));
+            $item->size = trim($request->input('add_size'));
+            $item->color = trim($request->input('add_color'));
 
-        if ($request->hasFile('add_photo')) {
-            $filename = rand(1000,100000)."-".$request->file('add_photo')->getClientOriginalName();
-            $filepath = "photos/";
-            $request->file('add_photo')->move($filepath, $filename);
-            $item->image_path = $filepath.$filename;
-        }
-        else {
-            throw new Exception("Error Processing Request", 1);
-            
-        }
+            if ($request->hasFile('add_photo')) {
+                $filename = rand(1000,100000)."-".$request->file('add_photo')->getClientOriginalName();
+                $filepath = "photos/";
+                $request->file('add_photo')->move($filepath, $filename);
+                $item->image_path = $filepath.$filename;
+            }
+            else {
+                //error
+                
+            }
 
             $item->save();
         } catch (Exception $e) {
@@ -73,11 +73,26 @@ class ItemController extends Controller
     public function updateItem(Request $request){
 
         try {
-        $item = new App\Models\Admin\Item;
-        $item = App\Models\Admin\Item::find($request->input('edit_ID'));
+            $item = new App\Models\Admin\Item;
+            $item = App\Models\Admin\Item::find($request->input('edit_ID'));
 
-        $item->ItemName = trim($request->input('edit_name'));
-        $item->SubCategoryID = trim($request->input('edit_sub'));
+            $item->ItemName = trim($request->input('edit_name'));
+            $item->SubCategoryID = trim($request->input('edit_sub'));
+            $item->size = trim($request->input('edit_size'));
+            $item->color = trim($request->input('edit_color'));
+
+            if ($request->input('currentPhoto')){
+                
+            }
+            else {
+                if ($request->hasFile('edit_photo')) {
+                $filename = rand(1000,100000)."-".$request->file('edit_photo')->getClientOriginalName();
+                $filepath = "photos/";
+                $request->file('edit_photo')->move($filepath, $filename);
+                $item->image_path = $filepath.$filename;
+                    
+                }
+            }
 
             $item->save();
         } catch (Exception $e) {
@@ -88,9 +103,9 @@ class ItemController extends Controller
 
     public function deleteItem(Request $request){
         try {
-        $item = new App\Models\Admin\Item;
-        $item = App\Models\Admin\Item::find($request->input('del_ID'));
-        
+            $item = new App\Models\Admin\Item;
+            $item = App\Models\Admin\Item::find($request->input('del_ID'));
+            
             $item->delete();
         } catch (Exception $e) {
             Session::put('message', '-1');

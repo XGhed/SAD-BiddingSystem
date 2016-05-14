@@ -280,7 +280,7 @@ Manage Items
         <div class="modal-content">
           <h4><i class="medium material-icons left">edit</i>Edit</h4>
                         <div class="divider"></div>
-            <form action="/confirmItem" method="POST" class="row col s12"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <form action="/confirmItem" method="POST" class="row col s12" enctype="multipart/form-data"><input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="edit_ID" id="edit_ID">
                   <div class="row"></div>
                     <div class="row">
