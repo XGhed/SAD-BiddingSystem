@@ -102,6 +102,25 @@ Manage Items
             });
           });
       });
+
+  $(function(){
+    if($("#edit_currentPhoto").prop('checked')){
+        $("#edit_uploadPhoto").hide();
+      }
+      else{
+       $("#edit_uploadPhoto").show(); 
+      }
+
+    $('#modal3').on('change', '#edit_currentPhoto', function(){
+      if($("#edit_currentPhoto").prop('checked')){
+        $("#edit_uploadPhoto").hide();
+      }
+      else{
+       $("#edit_uploadPhoto").show(); 
+      }
+    });
+  });
+
 </script>
 @endsection
 
@@ -285,20 +304,37 @@ Manage Items
 
                     <div class="row">
                       <div class="input-field col s4">
-                        <input name="group1" type="radio" id="test1" />
-                        <label for="test1" class="black-text">Use current photo</label>
+                        <input name="currentPhoto" type="checkbox" checked="checked" id="edit_currentPhoto" />
+                        <label for="edit_currentPhoto" class="black-text">Use current photo</label>
 
                       </div>
 
 
 
-                      <div class="file-field input-field col s6">
+                      <div class="file-field input-field col s6" id="edit_uploadPhoto">
                         <div class="btn">
-                          <input type="file"/>
+                          <input type="file" name="photo" />
                           <span>Upload new photo</span>
                         </div>
                       </div>
                     </div>
+
+                    <div class="row">
+                      <div class="input-field col s4">
+                          <input placeholder="Dimensions" id="" name="add_size" type="text" class="validate">
+                          <label for="">Size</label>
+                      </div>
+
+                      <div class="input-field col s4">
+                        <select name="add_color">
+                          <option value="" selected>Choose Color</option>
+                          <option value="Blue">Blue</option>
+                          <option value="Red">Red</option>
+                          <option value="Green">Green</option>
+                        </select>
+                        <label>Color</label>
+                      </div>
+                    </div> 
         </div>
 
 
