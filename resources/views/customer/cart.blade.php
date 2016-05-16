@@ -7,7 +7,7 @@
         </a>
         
         <a class="item" href="/"><i class="home icon"></i>Home</a>
-        <a class="item" href="/cart"><i class="shop icon"></i>Cart</a>
+        <a class="item" href="/customer/cart"><i class="shop icon"></i>Cart</a>
 
        
       </div>

@@ -46,7 +46,7 @@
           <div class="ui grid">
             <div class="row"></div>
             <div class="five wide column"></div>
-            <a href="/checkout"><div class="ui blue submit button">Login</div></a>
+            <a href="/customer/checkout"><div class="ui blue submit button">Login</div></a>
           </div>
         </div>
       </div>

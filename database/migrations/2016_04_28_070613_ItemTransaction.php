@@ -19,6 +19,7 @@ class ItemTransaction extends Migration
             $table->datetime('TransacDate');
             $table->integer('ItemModelID')->unsigned();
             $table->foreign('ItemModelID')->references('ItemModelID')->on('ItemModels');
+            $table->softDeletes();
         });
     }
     public function down()
