@@ -15,7 +15,6 @@ class ItemModel extends Migration
         $table->boolean('Status')->default(1);
         $table->string('size');
         $table->string('color');
-        $table->string('image_path');
         $table->string('availability', 300);
         $table->integer('SubCategoryID')->unsigned();
         $table->foreign('SubCategoryID')->references('SubCategoryID')->on('SubCategory');

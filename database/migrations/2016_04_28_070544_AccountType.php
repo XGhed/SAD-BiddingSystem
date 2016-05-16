@@ -13,8 +13,7 @@ class AccountType extends Migration
         $table->increments('AccountTypeID');
         $table->string('AccountTypeName', 30);
         $table->string('Description', 30);
-        $table->integer('TaxRate')->unsigned();
-        $table->integer('Discount')->unsigned();
+        $table->integer('ServiceFee')->unsigned();
         $table->integer('RequiredPoints')->unsigned();
         $table->boolean('Status')->default(1);
         $table->softDeletes();
