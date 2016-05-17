@@ -138,13 +138,13 @@
 				<div class="field" id="documents">
 	                <label>2 Valid ID</label>
 	                <i class="file icon"></i>
-	                <input type="file" name="docu" multiple required>
+	                <input type="file" name="ids" multiple required>
 				</div>
 
-				<div class="field" id="dti" style="display: none">
+				<div class="field" id="dti">
 	                <label>DTI</label>
 	                <i class="file icon"></i>
-	                <input type="file" name="docu" multiple required>
+	                <input type="file" name="dti" multiple required>
 				</div>
 			</div>
 
