@@ -28,8 +28,9 @@ Manage Account Type
       	<thead>
         	<tr>
         		<th>Manage</th>
-				<th>Account Type</th>
-            	<th>Discount</th>
+				    <th>Account Type</th>
+            <th>Discount</th>
+            <th>Required Points</th>
         	</tr>
 		</thead>
 		<tbody>
@@ -44,6 +45,7 @@ Manage Account Type
 				</form></td>
 				<td>Retailer</td>
 				<td>20%</td>
+        <td>100</td>
         	</tr>
 		</tbody>
     </table>
@@ -62,18 +64,23 @@ Manage Account Type
 
                 <div class="row">
                 	<div class="input-field col s6">
-					    <select>
-					      <option value="" disabled selected>Choose Account Type</option>
-					      <option value="1">Option 1</option>
-					    </select>
-					    <label>Account Type</label>
-					</div>
+      					    <select>
+      					      <option value="" disabled selected>Choose Account Type</option>
+      					      <option value="1">Option 1</option>
+      					    </select>
+      					    <label>Account Type</label>
+                  </div>
 
-					 <div class="input-field col s6">
-				        <input id="" type="number" class="validate">
-				        <label for="">Discount</label>
-				     </div>
-    			</div>	
+                  <div class="input-field col s3">
+      				        <input id="" type="number" class="validate">
+      				        <label for="">Discount</label>
+      				     </div>
+
+                   <div class="input-field col s3">
+                      <input id="" type="number" class="validate">
+                      <label for="">Required Points</label>
+                   </div>
+    			       </div>	
       		</div>
         </div><!--modal content -->
         <div class="modal-footer">
@@ -95,19 +102,24 @@ Manage Account Type
     		    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="row">
-                	<div class="input-field col s6">
-					    <select>
-					      <option value="" disabled selected>Choose Account Type</option>
-					      <option value="1">Option 1</option>
-					    </select>
-					    <label>Account Type</label>
-					</div>
+                  <div class="input-field col s6">
+                    <select>
+                      <option value="" disabled selected>Choose Account Type</option>
+                      <option value="1">Option 1</option>
+                    </select>
+                    <label>Account Type</label>
+                  </div>
 
-					 <div class="input-field col s6">
-				        <input id="" type="number" class="validate">
-				        <label for="">Discount</label>
-				     </div>
-    			</div>	
+                  <div class="input-field col s3">
+                      <input id="" type="number" class="validate">
+                      <label for="">Discount</label>
+                   </div>
+
+                   <div class="input-field col s3">
+                      <input id="" type="number" class="validate">
+                      <label for="">Required Points</label>
+                   </div>
+                 </div> 
       		</div>
         </div><!--modal content -->
         <div class="modal-footer">
