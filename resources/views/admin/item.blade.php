@@ -232,16 +232,6 @@ Manage Items
                       <input id="itemName" type="text" class="validate" name="add_name">
                       <label for="itemName">Item Name</label>
                     </div>
-
-                    <div class="file-field input-field col s6">
-                      <div class="tiny btn">
-                        <span>Image</span>
-                        <input type="file" name="add_photo">
-                      </div>
-                      <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
-                      </div>
-                    </div>
                 </div>
 
                <div class="row">
@@ -303,23 +293,6 @@ Manage Items
                             <option value=""></option>
                         </select>
                         <label>SubCategory</label>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="input-field col s4">
-                        <input name="currentPhoto" type="checkbox" checked="checked" id="edit_currentPhoto" />
-                        <label for="edit_currentPhoto" class="black-text">Use current photo</label>
-
-                      </div>
-
-
-
-                      <div class="file-field input-field col s6" id="edit_uploadPhoto">
-                        <div class="btn">
-                          <input type="file" name="edit_photo" />
-                          <span>Upload new photo</span>
-                        </div>
                       </div>
                     </div>
 

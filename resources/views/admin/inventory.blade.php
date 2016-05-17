@@ -291,13 +291,18 @@ Inventory
                     <label>Item</label>
                   </div>
 
-                   <div class="file-field input-field col s8">
-                      <div class="tiny btn">
-                        <span>Image</span>
-                        <input type="file">
+                   <div class="row">
+                      <div class="input-field col s4">
+                        <input name="currentPhoto" type="checkbox" checked="checked" id="edit_currentPhoto" />
+                        <label for="edit_currentPhoto" class="black-text">Use current photo</label>
+
                       </div>
-                      <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
+
+                      <div class="file-field input-field col s6" id="edit_uploadPhoto">
+                        <div class="btn">
+                          <input type="file" name="edit_photo" />
+                          <span>Upload new photo</span>
+                        </div>
                       </div>
                     </div>
                 </div>
