@@ -9,8 +9,9 @@ class Reward extends Migration
     public function up()
     {
         Schema::create('Reward', function (Blueprint $table){
-            $table->integer('RewardID')->unsigned();
-            $table->integer('RewardPercent')->unsigned();
+            $table->increments('RewardID');
+            $table->integer('RewardPercentage')->unsigned();
+            $table->datetime('RewardDate');
         });
     }
 
