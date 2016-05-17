@@ -165,13 +165,13 @@ Manage Items
                   <div class="row">
                       <form action="/confirmItem" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" id="" name="del_ID" value="{{$result->ItemID}}">
+                        <input type="hidden" id="" name="del_ID" value="{{$result->ItemModelID}}">
                           <button type="button" id="{{$key}}" class="edit btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons" >edit</i></button>
                           <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
                       </form>
                   </div>
                 </td>
-                <td id="tdID{{$key}}">{{$result->ItemID}}</td>
+                <td id="tdID{{$key}}">{{$result->ItemModelID}}</td>
                 <td id="tdsubcategoryname{{$key}}">{{$result->subCategory->SubCategoryName}}</td>
                 <td id="tdname{{$key}}">{{$result->ItemName}}</td>
                 <td id="tdsize{{$key}}">{{$result->size}}</td>
@@ -183,9 +183,9 @@ Manage Items
                       <label>
                         Off
                         @if ($result->Status == 1)
-                            <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->ItemID}}" checked>
+                            <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->ItemModelID}}" checked>
                         @elseif ($result->Status == 0)
-                            <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->ItemID}}" >
+                            <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->ItemModelID}}" >
                         @endif
                         <span class="lever"></span>
                         On

@@ -19,4 +19,9 @@ class Item extends Model
 	{
 	    return $this->hasOne('App\Models\Admin\itemModel', 'ItemModelID', 'ItemModelID');
 	}
+
+	public function inventory()
+	{
+	    return $this->hasMany('App\Models\Admin\Inventory', 'ItemID', 'ItemID');
+	}
 }

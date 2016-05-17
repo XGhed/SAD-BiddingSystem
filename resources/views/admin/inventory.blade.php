@@ -22,6 +22,8 @@ Inventory
             null,
             null,
             null,
+            null,
+            null,
             null
           ] 
         });
@@ -84,6 +86,7 @@ Inventory
         </thead>
 
         <tbody>
+          @foreach($results as $key => $result)
           <tr>
          	<td>
 	         	<form action="/" method="POST"><input type="hidden" name="" value="{{ csrf_token() }}">
@@ -96,35 +99,38 @@ Inventory
 				</form>
 				
           	</td>
-
+          
           	<td href="#history" class="modal-trigger" style="cursor:pointer">
-          		Refridgerator 
+          		{{$result->itemModel->ItemName}} 
           	</td>
 
             <td id="" href="#history" class="modal-trigger" style="cursor:pointer">
-              <img src="" style="width:60px;height:60px;" />
+              <img src="{{$result->image_path}}" style="width:60px;height:60px;" />
             </td>
 
           	<td href="#history" class="modal-trigger" style="cursor:pointer">
-          		20x12x50
+          		{{$result->size}}
           	</td>
 
           	<td href="#history" class="modal-trigger" style="cursor:pointer">
-          		Silver
+          		{{$result->color}}
           	</td>
 
           	<td href="#history" class="modal-trigger" style="cursor:pointer">
-          		Warehouse 001
+          		@foreach($result->inventory as $key => $inv)
+                {{$inv->warehouse->Status}}
+              @endforeach
           	</td>
 
           	<td href="#history" class="modal-trigger" style="cursor:pointer">
-          		Kitchen Wares
+          		{{$result->itemModel->subCategory->category->CategoryName}}
           	</td>
 
             <td>
               1
             </td>
           </tr>
+          @endforeach  
         </tbody>
     </table>
 
@@ -138,12 +144,14 @@ Inventory
           <h4><i class="medium material-icons left">add</i>Add Item</h4>
           			<div class="divider"></div>
           	<div class="row">
-    		      <form class="col s12">
+    		      <form class="col s12" action="/confirmInventory" method="POST" enctype="multipart/form-data"><input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
     			   		  <div class="input-field col s4">
-                    <select>
-                      <option value="" selected>Item</option>
-                      <option id="" value=""></option>
+                    <select name="itemModel">
+                      @foreach($itemModels as $key => $itemModel)
+                        <option value="" selected>Item</option>
+                        <option value="{{$itemModel->ItemModelID}}">{{$itemModel->ItemName}}</option>
+                      @endforeach
                     </select>
                     <label>Item</label>
                   </div>
@@ -151,7 +159,7 @@ Inventory
     					     <div class="file-field input-field col s8">
                       <div class="tiny btn">
                         <span>Image</span>
-                        <input type="file">
+                        <input type="file" name="add_photo">
                       </div>
                       <div class="file-path-wrapper">
                         <input class="file-path validate" type="text">
@@ -161,9 +169,11 @@ Inventory
 
       			  	<div class="row">
       			  		<div class="input-field col s4">
-      					    <select>
-      					      <option value="" selected>Warehouse</option>
-                      <option id="" value=""></option>
+      					    <select name="warehouse">
+      					      @foreach($warehouses as $key => $warehouse)
+                        <option value="" selected>Warehouse</option>
+                        <option value="{{$warehouse->WarehouseNo}}">{{$warehouse->city->province->ProvinceName}},{{$warehouse->city->CityName}},{{$warehouse->Barangay_Street_Address}}</option>
+                      @endforeach
       					    </select>
       					    <label>Warehouse</label>
                   </div>
@@ -187,29 +197,29 @@ Inventory
                 <div class="row">
                   <div class="row">
                     <div class="input-field col s4">
-                      <input type="checkbox" id="test5" />
+                      <input type="checkbox" id="test5" name="defect" />
                       <label for="test5" class="black-text">Defect</label>
                     </div>
 
                     <div class="input-field col s4">
-                      <input id="" name="" type="text" class="validate">
-                      <label for="">Quantity</label>
+                      <input id="add_quantity" name="add_quantity" type="text" class="validate">
+                      <label for="add_quantity">Quantity</label>
                   </div>
                   </div>
 
                   <div class="row" style="display: none" id="defectDesc">
                     <div class="input-field col s8">
-                      <input placeholder="Description..." id="" type="text" class="validate">
-                      <label for="">Description</label>
+                      <input placeholder="Description..." id="def" type="text" name="defectDesc" class="validate">
+                      <label for="def">Description</label>
                     </div>
                   </div>
                 </div>
-        		  </form>
             </div>
 
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-action modal-close waves-effect waves-green btn "><i class="material-icons left">done</i>Confirm</a>
+          <button class="modal-action modal-close white-text waves-effect waves-blue btn-flat blue" type="submit" name="add">
+                  <i class="material-icons left">done</i>Confirm</button></form>
         </div>
       </div>
       </div>

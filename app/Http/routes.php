@@ -37,6 +37,8 @@ Route::post('/confirmShipment', 'ShipmentController@confirmShipment');
 
 Route::post('/confirmWarehouse', 'WarehouseController@confirmWarehouse');
 
+Route::post('/confirmInventory', 'InventoryController@confirmItem');
+
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');
@@ -55,7 +57,7 @@ Route::get('/registerContainer', 'RegisterContainerController@manageRegContainer
 
 Route::get('/places', 'ProvinceController@manageProvince');
 
-Route::get('/inventory', 'RegisterItemController@manageRegItem');
+Route::get('/inventory', 'InventoryController@manageItem');
 //Route::get('/shipment', 'PageController@shipment');
 
 //AJAX
