@@ -43,6 +43,8 @@ Route::post('/confirmDiscount', 'DiscountController@confirmDiscount');
 
 Route::post('/confirmRegister', 'RegisterController@confirmRegister');
 
+Route::post('/updateReward', 'DiscountController@updateReward');
+
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');

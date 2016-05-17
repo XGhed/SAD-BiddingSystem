@@ -15,9 +15,10 @@ class DiscountController extends Controller
     public function manageDiscount(){
 
        $results = App\Models\Admin\Discount::all();
+       $rewards = App\Models\Admin\Reward::all();
        $accountTypes = App\Models\Admin\AccountType::all();
 
-       return view('admin.discount')->with ('results', $results)->with ('accountTypes', $accountTypes);
+       return view('admin.discount')->with ('results', $results)->with ('accountTypes', $accountTypes)->with ('rewards', $rewards);
     }
 
     public function confirmDiscount(Request $request){
@@ -83,5 +84,31 @@ class DiscountController extends Controller
             Session::put('message', '-1');
             return redirect('discount');
         }
+    }
+
+    public function updateReward(Request $request){
+        try {
+        $reward = new App\Models\Admin\Reward;
+        $rewardLast = new App\Models\Admin\Reward;
+        $rewardLast = App\Models\Admin\Reward::orderBy('RewardDate', 'desc')->first();
+        
+        $reward->RewardPercentage = trim($request->input('add_reward'));
+        $reward->RewardDate = trim($request->input('add_date'));
+
+
+        if ($rewardLast == null || $reward->RewardDate > $rewardLast->RewardDate){
+            $reward->save();
+            Session::put('message', '2');
+        }
+        else {
+            Session::put('message', '-1');
+        }
+
+        } catch (Exception $e) {
+            Session::put('message', '-1');
+            return redirect('discount');
+        }
+
+        return redirect('discount');
     }
 }
