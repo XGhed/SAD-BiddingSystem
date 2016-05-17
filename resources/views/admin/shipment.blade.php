@@ -7,8 +7,8 @@ Maintenance
 
 @section('title1')
 <h2>
-<a class="left col s6 push-s1 white-text" style="font-size: 28px" href="/supplier">Maintenance /</a>
-<a class="col pull-s3 white-text" style="font-size: 28px" href="/shipment">Manage Shipment</a>
+  <a class="left col s6 push-s1 white-text" style="font-size: 28px" href="/supplier">Maintenance /</a>
+  <a class="col pull-s3 white-text" style="font-size: 28px" href="/shipment">Manage Shipment</a>
 </h2>
 @endsection
 
@@ -22,18 +22,25 @@ Maintenance
       "columns": [
         { "searchable": false },
         null,
-        null,
         null
       ] 
     });
-});
-
+  
 </script>
 @endsection
 
 
 @section('content')
 <div class="row"></div>
+
+ <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#companyCour" class="black-text">Company Courier</a></li>
+        <li class="tab col s3"><a href="#test2" class="black-text">Province</a></li>
+      </ul>
+    </div>
+    <div id="companyCour" class="col s12">
       <div class="right">
         <a class="waves-effect waves-light blue darken-3 btn z-depth-5" href="/add"><i class="material-icons left">add</i>Add Delivery Company</a>
       </div>
@@ -42,7 +49,6 @@ Maintenance
         <thead>
           <tr>
               <th style="cursor: default;">Manage</th>
-              <th>Name</th>
               <th>Place</th>
               <th>Status</th>
           </tr>
@@ -91,21 +97,15 @@ Maintenance
           @endforeach
         </tbody>
       </table>
-<!-- EDIT-->
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal modal-fixed-footer">
+      <!-- EDIT-->
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal modal-fixed-footer">
       <div class="modal-content">
         <h4><i class="medium material-icons left">edit</i>Edit</h4>
      <!-- LINYA LANG--><div class="divider"></div><!-- LINYA LANG-->
          
           <form class="col s12" id="editForm" action="" method="POST">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="row">
-                    <div class="input-field col s8">
-                      <input id="company_name" value=" " type="text" class="validate" name="add_name" length="30" maxlength="30">
-                      <label for="company_name" class="active">Company Name</label>
-                    </div>
-                </div>
                 
 
                  <div class="row">
@@ -575,6 +575,37 @@ Maintenance
           </div>
       </form>
     </div>
+    </div>
+    <div id="test2" class="col s12">
+      <table class="center">
+        <thead>
+          <tr>
+              <th>Province</th>
+              <th>Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>
+              <div class="row">
+                <div class="input-field col s4">
+                  <input id="" type="number" class="validate" name="" REQUIRED>
+                  <label for="">Price</label>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Set Price
+      </button>
+    </div>
+  </div>
+
+
+
             <script>
                 //MODAL
                 $(document).ready(function(){

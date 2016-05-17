@@ -63,12 +63,6 @@
     <form class="col s12" id="addForm" action="/confirmShipment" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-      <div class="row">
-          <div class="input-field col s8">
-            <input id="company_name" type="text" class="validate" name="add_name" length="30" maxlength="30" REQUIRED>
-            <label for="company_name">Company Name</label>
-          </div>
-      </div>
 
       <div style="margin: 0 50px 0 50px;">
       <div class="row">

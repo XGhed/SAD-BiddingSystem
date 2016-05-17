@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html>
     <head>
-    <title>Shipment Edit</title>
+    <title>Shipment Add</title>
       <!--CSS-->
       <link rel="icon" href="icons/icon.png">
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/materialize.css')!!}" media="screen,projection" />
@@ -61,6 +61,8 @@
     <form class="col s12" id="addForm" action="/confirmShipment" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+     
+
       <div style="margin: 0 50px 0 50px;">
       <div class="row">
         <div class="col s12">Regions:
@@ -90,10 +92,10 @@
           <div class="row"></div>
           <div class="row">
             <div class="col s3">
-              <input name="1" class="selectAll blue btn" type="button" id="selectAll" value="Select All" />
+              <input name="1" class="selectAll btn" type="button" id="selectAll" value="Select All" />
             </div>
             <div class="col s6">
-              <input name="1" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+              <input name="1" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
             </div>
           </div>
           
@@ -107,22 +109,16 @@
             @endif
             @endforeach
           </div>
-          <div class="row">
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
-      </div>
         </div><!-- Region1 -->
 
         <div id="region2" class="col s12">
           <div class="row"></div>
           <div class="row">
             <div class="col s3">
-              <input name="2" class="selectAll blue btn" type="button" id="selectAll" value="Select All" />
+              <input name="2" class="selectAll btn" type="button" id="selectAll" value="Select All" />
             </div>
             <div class="col s6">
-              <input name="2" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+              <input name="2" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
             </div>
           </div>
           
@@ -136,20 +132,16 @@
             @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div><!-- Region2 -->
 
         <div id="region3" class="col s12">
           <div class="row"></div>
           <div class="row">
             <div class="col s3">
-              <input name="3" class="selectAll blue btn" type="button" id="selectAll" value="Select All" />
+              <input name="3" class="selectAll btn" type="button" id="selectAll" value="Select All" />
             </div>
             <div class="col s6">
-              <input name="3" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+              <input name="3" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
             </div>
           </div>
           
@@ -163,20 +155,16 @@
             @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div><!-- Region3 -->
 
         <div id="region4A" class="col s12">
           <div class="row"></div>
           <div class="row">
             <div class="col s3">
-              <input name="4A" class="selectAll blue btn" type="button" id="selectAll" value="Select All" />
+              <input name="4A" class="selectAll btn" type="button" id="selectAll" value="Select All" />
             </div>
             <div class="col s6">
-              <input name="4A" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+              <input name="4A" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
             </div>
           </div>
           
@@ -190,20 +178,16 @@
             @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div><!-- Region1 -->
 
         <div id="region4B" class="col s12">
           <div class="row"></div>
           <div class="row">
             <div class="col s3">
-              <input name="4B" class="selectAll blue btn" type="button" id="selectAll" value="Select All" />
+              <input name="4B" class="selectAll btn" type="button" id="selectAll" value="Select All" />
             </div>
             <div class="col s6">
-              <input name="4B" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+              <input name="4B" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
             </div>
           </div>
           
@@ -217,20 +201,16 @@
             @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div><!-- Region4B -->
 
         <div id="region5" class="col s12">
           <div class="row"></div>
           <div class="row">
             <div class="col s3">
-              <input name="5" class="selectAll blue btn" type="button" id="selectAll" value="Select All" />
+              <input name="5" class="selectAll btn" type="button" id="selectAll" value="Select All" />
             </div>
             <div class="col s6">
-              <input name="5" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+              <input name="5" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
             </div>
           </div>
           
@@ -244,20 +224,16 @@
             @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div><!-- Region5 -->
 
         <div id="region6" class="col s12"> 
           <div class="row"></div>
           <div class="row">
             <div class="col s3">
-              <input name="6" class="selectAll blue btn" type="button" id="selectAll" value="Select All" />
+              <input name="6" class="selectAll btn" type="button" id="selectAll" value="Select All" />
             </div>
             <div class="col s6">
-              <input name="6" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+              <input name="6" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
             </div>
           </div>
           
@@ -271,20 +247,16 @@
             @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div><!-- Region6 -->
 
         <div id="region7" class="col s12"><!--this-->
           <div class="row"></div>
           <div class="row">
             <div class="col s3">
-              <input name="7" class="selectAll blue btn" type="button" id="selectAll" value="Select All" />
+              <input name="7" class="selectAll btn" type="button" id="selectAll" value="Select All" />
             </div>
             <div class="col s6">
-              <input name="7" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+              <input name="7" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
             </div>
           </div>
           
@@ -298,20 +270,16 @@
             @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div><!-- Region7 -->
 
         <div id="region8" class="col s12"><!--this-->
           <div class="row"></div>
           <div class="row">
             <div class="col s3">
-              <input name="8" class="selectAll blue btn" type="button" id="selectAll" value="Select All" />
+              <input name="8" class="selectAll btn" type="button" id="selectAll" value="Select All" />
             </div>
             <div class="col s6">
-              <input name="8" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+              <input name="8" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
             </div>
           </div>
           
@@ -325,20 +293,16 @@
             @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div><!-- Region8 -->
 
         <div id="region9" class="col s12"><!--this-->
           <div class="row"></div>
           <div class="row">
             <div class="col s3">
-              <input name="9" class="selectAll blue btn" type="button" id="selectAll" value="Select All" />
+              <input name="9" class="selectAll btn" type="button" id="selectAll" value="Select All" />
             </div>
             <div class="col s6">
-              <input name="9" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+              <input name="9" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
             </div>
           </div>
           
@@ -352,22 +316,18 @@
             @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div><!-- Region9 -->
 
         <div id="region10" class="col s12">
           <div class="row"></div>
             <div class="row">
               <div class="col s3">
-                <input name="10" class="selectAll blue btn" type="button" id="selectAll" value="Select All"/>
+                <input name="10" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
                             
               </div>
 
               <div class="col s6">
-                <input name="10" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+                <input name="10" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
               </div>
             </div>
 
@@ -381,20 +341,16 @@
               @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div> <!-- Region 10 -->
 
         <div id="region11" class="col s12">
           <div class="row"></div>
             <div class="row">
               <div class="col s3">
-                <input name="11" class="selectAll blue btn" type="button" id="selectAll" value="Select All"/>           
+                <input name="11" class="selectAll btn" type="button" id="selectAll" value="Select All"/>           
               </div>
               <div class="col s6">
-                <input name="11" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+                <input name="11" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
               </div>
             </div>
 
@@ -408,22 +364,18 @@
               @endif
             @endforeach
            </div>
-           <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div> <!-- Region 11 -->
 
         <div id="region12" class="col s12">
           <div class="row"></div>
             <div class="row">
               <div class="col s3">
-                <input name="12" class="selectAll blue btn" type="button" id="selectAll" value="Select All"/>
+                <input name="12" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
                             
               </div>
 
               <div class="col s6">
-                <input name="12" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+                <input name="12" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
               </div>
             </div>
 
@@ -437,22 +389,18 @@
               @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div> <!-- Region 12 -->
 
         <div id="regionNCR" class="col s12">
           <div class="row"></div>
             <div class="row">
               <div class="col s3">
-                <input name="NCR" class="selectAll blue btn" type="button" id="selectAll" value="Select All"/>
+                <input name="NCR" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
                             
               </div>
 
               <div class="col s6">
-                <input name="NCR" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+                <input name="NCR" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
               </div>
             </div>
 
@@ -466,22 +414,18 @@
               @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div> <!-- Region NCR -->
 
         <div id="regionCAR" class="col s12">
           <div class="row"></div>
             <div class="row">
               <div class="col s3">
-                <input name="CAR" class="selectAll blue btn" type="button" id="selectAll" value="Select All"/>
+                <input name="CAR" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
                             
               </div>
 
               <div class="col s6">
-                <input name="CAR" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+                <input name="CAR" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
               </div>
             </div>
 
@@ -495,22 +439,18 @@
               @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div> <!-- Region CAR -->
 
         <div id="regionARMM" class="col s12">
           <div class="row"></div>
             <div class="row">
               <div class="col s3">
-                <input name="ARMM" class="selectAll blue btn" type="button" id="selectAll" value="Select All"/>
+                <input name="ARMM" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
                             
               </div>
 
               <div class="col s6">
-                <input name="ARMM" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+                <input name="ARMM" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
               </div>
             </div>
 
@@ -524,22 +464,18 @@
               @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div> <!-- Region ARMM -->
 
         <div id="region13" class="col s12">
           <div class="row"></div>
             <div class="row">
               <div class="col s3">
-                <input name="13" class="selectAll blue btn" type="button" id="selectAll" value="Select All"/>
+                <input name="13" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
                             
               </div>
 
               <div class="col s6">
-                <input name="13" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+                <input name="13" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
               </div>
             </div>
 
@@ -553,22 +489,18 @@
               @endif
             @endforeach
           </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
-          </div>
         </div> <!-- Region 13 -->
 
         <div id="region18" class="col s12">
           <div class="row"></div>
             <div class="row">
               <div class="col s3">
-                <input name="18" class="selectAll blue btn" type="button" id="selectAll" value="Select All"/>
+                <input name="18" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
                             
               </div>
 
               <div class="col s6">
-                <input name="18" class="deselectAll blue btn" type="button" id="deselectAll" value="Deselect All"/>
+                <input name="18" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
               </div>
             </div>
 
@@ -581,10 +513,6 @@
                 </div>
               @endif
             @endforeach
-          </div>
-          <div class="input-field col s4">
-            <input id="" type="number" min="0" class="validate" name="" REQUIRED>
-            <label for="">Price</label>
           </div>
         </div> <!-- Region 18 -->
       </div><!--tabs-->
