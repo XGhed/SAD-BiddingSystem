@@ -88,19 +88,17 @@ $(function(){
                       <input type="hidden" id="tdID{{$key}}" name="del_ID" value="{{$result->AccountTypeID}}">
                       <td id="tdname{{$key}}">{{$result->AccountTypeName}}</td>
                       <td id="tddesc{{$key}}">{{$result->Description}}</td>
-                      <td>{{$result->ServiceFee}} %</td>
+                      <td>{{$result->ServiceFee}}</td>
                       <input type="hidden" id="tdtax{{$key}}" value="{{$result->ServiceFee}}" />
                       <td>
                           <div class="switch">
                             <label>
-                              Off
                               @if ($result->Status == 1)
                                   <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->AccountTypeID}}" checked>
                               @elseif ($result->Status == 0)
                                   <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->AccountTypeID}}" >
                               @endif
                               <span class="lever"></span>
-                              On
                             </label>
                           </div>
                       </td>
@@ -128,13 +126,13 @@ $(function(){
               </div>
               <div class="row">
                 <div class="input-field col s10">
-                  <input id="add_desc" type="text" class="validate" name="add_desc" length="30" maxlength="30" REQUIRED>
+                  <input id="add_desc" type="text" class="validate" name="add_desc" length="30" maxlength="30">
                   <label for="add_desc">Description</label>
                 </div>
               </div>
 
                 <div class="input-field col s4">
-                  <input id="add_tax"  type="number" class="validate"   min="0" max="100" name="add_tax" pattern ="[0-9]{3}"  REQUIRED/>
+                  <input id="add_tax"  type="number" class="validate"  min="0" name="add_tax" pattern ="[0-9]"  REQUIRED/>
                   <label for="add_tax" data-error='Invalid'>Service Fee</label>
                 </div>
       </div>
@@ -171,13 +169,13 @@ $(function(){
                   </div>
                   <div class="row">
                     <div class="input-field col s10">
-                      <input value=" " id="edit_desc" type="text" class="validate" name="edit_desc" length="30" maxlength="30" REQUIRED>
+                      <input value=" " id="edit_desc" type="text" class="validate" name="edit_desc" length="30" maxlength="30">
                       <label class="active" for="edit_desc">Account Description</label>
                     </div>
                   </div>
                     <div class="input-field col s4">
-                      <input id="edit_tax"  type="number" class="validate"   min="0" max="100" name="edit_tax" pattern ="[0-9]{3}" REQUIRED/>
-                  <label for="edit_tax" data-error='Invalid'>Service Fee %</label>
+                      <input id="edit_tax"  type="number" class="validate"  value=" " min="0" name="edit_tax" pattern ="[0-9]" REQUIRED/>
+                      <label for="edit_tax" data-error='Invalid' class="active">Service Fee</label>
                     </div>
 		    </div>
 
