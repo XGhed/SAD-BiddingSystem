@@ -107,6 +107,13 @@
 
 			<div class="equal width fields">
 				<div class="field">
+					<label>Account Type</label>
+					<select class="ui search dropdown" id="shit">
+					  <option value="1">End-User</option>
+					  <option value="2">Retailer</option>
+					</select>
+				</div>
+				<div class="field">
 					<label>Username</label>
 					<input type="text" name="phoneNumber">
 				</div>
@@ -114,16 +121,19 @@
 					<label>Password</label>
 					<input type="password" name="phoneNumber">
 				</div>
-				<div class="field">
-					<label>Account Type</label>
-					<select class="ui search dropdown" id="shit">
-					  <option value="1">End-User</option>
-					  <option value="2">Retailer</option>
-					</select>
-				</div>
 			</div>
 
 			<div class="equal width fields">
+				<div class="field" id="desc1">
+	                <label>Description</label>
+	                <p>description shits</p>
+				</div>
+
+				<div class="field" id="desc2" style="display: none">
+	                <label>Description</label>
+	                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+				</div>
+
 				<div class="field" id="documents">
 	                <label>2 Valid ID</label>
 	                <i class="file icon"></i>
@@ -173,11 +183,15 @@ $('.ui.search.dropdown')
       if ( this.value == '1')
       {
         $("#documents").show();
+        $("#desc1").show();
+        $("#desc2").hide();
         $("#dti").hide();
       }
       else
       {
         $("#documents").show();
+        $("#desc1").hide();
+        $("#desc2").show();
         $("#dti").show();
       }
     });
