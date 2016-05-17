@@ -19,7 +19,6 @@ Manage Items
           null,
           null,
           null,
-          null,
           null
         ] 
       });
@@ -150,7 +149,6 @@ Manage Items
           <tr>
               <th style="cursor: default;">Manage</th>
               <th>Item Id</th>
-              <th>Photo</th>
               <th>Subcategory</th>
               <th>Item Name</th>
               <th>Dimensions</th>
@@ -174,7 +172,6 @@ Manage Items
                   </div>
                 </td>
                 <td id="tdID{{$key}}">{{$result->ItemID}}</td>
-                <td id="tdImg{{$key}}" ><img src="{{$result->image_path}}" style="width:60px;height:60px;" /></td>
                 <td id="tdsubcategoryname{{$key}}">{{$result->subCategory->SubCategoryName}}</td>
                 <td id="tdname{{$key}}">{{$result->ItemName}}</td>
                 <td id="tdsize{{$key}}">{{$result->size}}</td>
@@ -212,7 +209,7 @@ Manage Items
             <form class="col s12" action="/confirmItem" method="POST" enctype="multipart/form-data"><input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="row">
-                  <div class="input-field col s6">
+                    <div class="input-field col s6">
                       <select name="add_cat" id="cat">
                         <option value="" disabled selected>Category</option>
                         @foreach($categories as $key => $category)
@@ -355,7 +352,6 @@ Manage Items
 
 
       <script>
-
       //MODAL
       $(document).ready(function(){
           // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

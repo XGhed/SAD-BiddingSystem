@@ -64,7 +64,7 @@
             </li>
           </ul>
         </li>
-        <li class="no-padding">
+        <!-- <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
             <li>
               <a class="white-text collapsible-header" ><i class="material-icons left">compare_arrows</i>Transactions<i class="material-icons right">arrow_drop_down</i></a>
@@ -78,7 +78,8 @@
               </div>
             </li>
           </ul>
-        </li>
+        </li> -->
+        <li><a class="white-text" href="/inventory" ><i class="material-icons left">input</i>Inventory</a></li>
         <li><a class="white-text" href="/bidEvent" ><i class="material-icons left">today</i>Bidding Event</a></li>
         <li><a class="white-text" href="#!" ><i class="material-icons left">receipt</i>Reports</a></li>
         <li><a class="right white-text" href="/home"><i class="material-icons left">exit_to_app</i>Log out</a></li>

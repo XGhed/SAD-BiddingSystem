@@ -23,6 +23,7 @@ class Membership extends Migration
             $table->String('EmailAdd', 30);
             $table->date('DateOfRegistration');
             $table->string('valid_id');
+            $table->string('File_DTI');
             $table->integer('CityID')->unsigned();
             $table->foreign('CityID')->references('CityID')->on('City');
         

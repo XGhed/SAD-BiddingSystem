@@ -30,16 +30,56 @@ Inventory
 
 
 @section('content')
-<!-- *************************************** ITEM TABLE ***************************************-->
-<table class="centered highlight responsive-table">
+  <div class="row"></div>
+    <div class="row">
+      <div class="col s3 right">
+        <a class="modal-trigger waves-effect waves-light btn green darken-2" href="#addBtn"><i class="material-icons left">add</i>Add Items</a>
+      </div>
+
+      <div class="input-field col s2">
+        <select name="add_cat" id="cat">
+          <option value="" disabled selected>Sort by</option>
+          <option value="">Color</option>
+          <option value="">Category</option>
+          <option value="">Size</option>
+        </select>
+        <label>Sort By:</label>
+      </div>
+      <div class="input-field col s2">
+        <select name="add_cat" id="cat">
+          <option value="" disabled selected>Sort By:</option>
+          <option value=""></option>
+        </select>
+        <label>Sort By:</label>
+      </div>
+      <div class="input-field col s2">
+        <select name="add_cat" id="cat">
+          <option value="" disabled selected>Category</option>
+          <option value=""></option>
+        </select>
+        <label>Category</label>
+      </div>
+    </div>
+
+    <div class="switch right">
+      <label>
+            <input type="checkbox" id="1" checked>
+            <input type="checkbox" id="0" >
+        <span class="lever"></span>
+      </label>
+    </div>
+
+    <table class="centered highlight responsive-table">
         <thead>
           <tr>
               <th>Manage</th>
               <th>Item Name</th>
+              <th>Photo</th>
               <th>Size</th>
               <th>Color</th>
               <th>Warehouse</th>
               <th>Category</th>
+              <th>Quantity</th>
           </tr>
         </thead>
 
@@ -61,6 +101,10 @@ Inventory
           		Refridgerator 
           	</td>
 
+            <td id="" href="#history" class="modal-trigger" style="cursor:pointer">
+              <img src="" style="width:60px;height:60px;" />
+            </td>
+
           	<td href="#history" class="modal-trigger" style="cursor:pointer">
           		20x12x50
           	</td>
@@ -76,235 +120,239 @@ Inventory
           	<td href="#history" class="modal-trigger" style="cursor:pointer">
           		Kitchen Wares
           	</td>
+
+            <td>
+              1
+            </td>
           </tr>
         </tbody>
-      </table>
-<!--  END ITEM TABLE -->
+    </table>
 
-<div class="row">
-<div class="col s3 right ">
-  <a class="modal-trigger waves-effect waves-light btn green darken-2" href="#addBtn"><i class="material-icons left">add</i>Add Items</a>
 
-  <div id="addBtn" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4><i class="medium material-icons left">add</i>Add Item</h4>
-      			<div class="divider"></div>
-      	<div class="row">
-		      <form class="col s12">
-            <div class="row">
-			   		  <div class="input-field col s4">
-                <select>
-                  <option value="" selected>Item</option>
-                  @foreach($items as $key => $result)
-                  <option id="{{$key}}" value="{{$result->ItemID}}">{{$result->ItemName}}</option>
-						      @endforeach
-                </select>
-                <label>Item</label>
-              </div>
 
-					     <div class="file-field input-field col s8">
-                  <div class="tiny btn">
-                    <span>Image</span>
-                    <input type="file">
+    <!-- add -->
+    <div class="row">
+      <div class="col s3 right ">
+      <div id="addBtn" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h4><i class="medium material-icons left">add</i>Add Item</h4>
+          			<div class="divider"></div>
+          	<div class="row">
+    		      <form class="col s12">
+                <div class="row">
+    			   		  <div class="input-field col s4">
+                    <select>
+                      <option value="" selected>Item</option>
+                      <option id="" value=""></option>
+                    </select>
+                    <label>Item</label>
                   </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
+
+    					     <div class="file-field input-field col s8">
+                      <div class="tiny btn">
+                        <span>Image</span>
+                        <input type="file">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                      </div>
+                    </div>
+    			  	  </div>
+
+      			  	<div class="row">
+      			  		<div class="input-field col s4">
+      					    <select>
+      					      <option value="" selected>Warehouse</option>
+                      <option id="" value=""></option>
+      					    </select>
+      					    <label>Warehouse</label>
+                  </div>
+
+                   <div class="input-field col s4">
+                      <input placeholder="Dimensions" id="" name="add_size" type="text" class="validate">
+                      <label for="">Size</label>
+                  </div>
+
+                  <div class="input-field col s4">
+                      <select name="add_color">
+                        <option value="" selected>Choose Color</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Red">Red</option>
+                        <option value="Green">Green</option>
+                      </select>
+                      <label>Color</label>
+                    </div>    					
+      			  	</div>
+
+                <div class="row">
+                  <div class="row">
+                    <div class="input-field col s4">
+                      <input type="checkbox" id="test5" />
+                      <label for="test5" class="black-text">Defect</label>
+                    </div>
+
+                    <div class="input-field col s4">
+                      <input id="" name="" type="text" class="validate">
+                      <label for="">Quantity</label>
+                  </div>
+                  </div>
+
+                  <div class="row" style="display: none" id="defectDesc">
+                    <div class="input-field col s8">
+                      <input placeholder="Description..." id="" type="text" class="validate">
+                      <label for="">Description</label>
+                    </div>
                   </div>
                 </div>
-			  	  </div>
-
-  			  	<div class="row">
-  			  		<div class="input-field col s4">
-  					    <select>
-  					      <option value="" selected>Warehouse</option>
-                  <option id="" value=""></option>
-  					    </select>
-  					    <label>Warehouse</label>
-              </div>
-
-               <div class="input-field col s4">
-                  <input placeholder="Dimensions" id="" name="add_size" type="text" class="validate">
-                  <label for="">Size</label>
-              </div>
-
-              <div class="input-field col s4">
-                  <select name="add_color">
-                    <option value="" selected>Choose Color</option>
-                    <option value="Blue">Blue</option>
-                    <option value="Red">Red</option>
-                    <option value="Green">Green</option>
-                  </select>
-                  <label>Color</label>
-                </div>    					
-  			  	</div>
-
-            <div class="row">
-              <div class="row">
-                <div class="input-field">
-                  <input type="checkbox" id="test5" />
-                  <label for="test5" class="black-text">Defect</label>
-                </div>
-              </div>
-
-              <div class="row" style="display: none" id="defectDesc">
-                <div class="input-field col s8">
-                  <input placeholder="Description..." id="" type="text" class="validate">
-                  <label for="">Description</label>
-                </div>
-              </div>
+        		  </form>
             </div>
-    		  </form>
+
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn "><i class="material-icons left">done</i>Confirm</a>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+    <!-- history -->
+    <div id="history" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h4><i class="medium material-icons left">clear_all</i>history log</h4>
+          			<div class="divider"></div>
+        <div class="row">
+
+
+    		<div class="row">
+       			<form class="col s12">
+       				<div class="row">
+       					<div class="input-field col s5">
+    					    <select>
+    					      <option value="" disabled selected>Item Status</option>
+    					      <option value="1">In shop</option>
+    					      <option value="1">Sold</option>
+    					      <option value="1">Warehouse</option>
+    					    </select>
+    					    <label>Item Status</label>
+    					  </div>
+
+    	        		<div class="input-field col s4">
+    	          			<input placeholder="Status" id="" type="text" class="validate">
+    	          			<label for="">Detail/Description</label>
+    	        		</div>
+
+    	        		<button class="btn waves-effect waves-light" type="submit" name="action">Add
+    					</button>
+    				</div>
+        		</form>
+     		</div>
+
+        <table class="centered">
+            <thead>
+              <tr>
+                  <th>Item Number</th>
+                  <th>Description</th>
+                  <th>History/Status</th>
+
+                  <th>Date and Time</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>001</td>
+                <td>Galing kay supplier 001</td>
+                <td>Sold</td>
+                <td>4/26/2016 5:55pm</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
+        </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn "><i class="material-icons left">done</i>Confirm</a>
-    </div>
-  </div>
-  </div>
-</div>
+    <!-- EndHistory -->
+  
 
-
-<!-- history -->
-<div id="history" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4><i class="medium material-icons left">clear_all</i>history log</h4>
-      			<div class="divider"></div>
-    <div class="row">
-
-
-		<div class="row">
-   			<form class="col s12">
-   				<div class="row">
-   					<div class="input-field col s5">
-					    <select>
-					      <option value="" disabled selected>Item Status</option>
-					      <option value="1">In shop</option>
-					      <option value="1">Sold</option>
-					      <option value="1">Warehouse</option>
-					    </select>
-					    <label>Item Status</label>
-					  </div>
-
-	        		<div class="input-field col s4">
-	          			<input placeholder="Status" id="" type="text" class="validate">
-	          			<label for="">Detail/Description</label>
-	        		</div>
-
-	        		<button class="btn waves-effect waves-light" type="submit" name="action">Add
-					</button>
-				</div>
-    		</form>
- 		</div>
-
-    <table class="centered">
-        <thead>
-          <tr>
-              <th>Item Number</th>
-              <th>Description</th>
-              <th>History/Status</th>
-
-              <th>Date and Time</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>001</td>
-            <td>Galing kay supplier 001</td>
-            <td>Sold</td>
-            <td>4/26/2016 5:55pm</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    </div>
-  </div>
-<!-- EndHistory -->
-    
-
-
-
-
-<!-- edit -->		  
-<div id="modal3" class="modal modal-fixed-footer">
-	<div class="modal-content">
-		<h4><i class="medium material-icons left">edit</i>Edit</h4>
-		<div class="divider"></div>
-			<div class="row">
-				<form class="col s12">
-            <div class="row">
-              <div class="input-field col s4">
-                <select>
-                  <option value="" selected>Item</option>
-                  <option id="" value=""></option>
-                </select>
-                <label>Item</label>
-              </div>
-
-               <div class="file-field input-field col s8">
-                  <div class="tiny btn">
-                    <span>Image</span>
-                    <input type="file">
+    <!-- edit -->		  
+    <div id="modal3" class="modal modal-fixed-footer">
+    	<div class="modal-content">
+    		<h4><i class="medium material-icons left">edit</i>Edit</h4>
+    		<div class="divider"></div>
+    			<div class="row">
+    				<form class="col s12">
+                <div class="row">
+                  <div class="input-field col s4">
+                    <select>
+                      <option value="" selected>Item</option>
+                      <option id="" value=""></option>
+                    </select>
+                    <label>Item</label>
                   </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
+
+                   <div class="file-field input-field col s8">
+                      <div class="tiny btn">
+                        <span>Image</span>
+                        <input type="file">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="input-field col s4">
+                    <select>
+                      <option value="" selected>Warehouse</option>
+                      <option id="" value=""></option>
+                    </select>
+                    <label>Warehouse</label>
+                  </div>
+
+                   <div class="input-field col s4">
+                      <input placeholder="Dimensions" id="" name="add_size" type="text" class="validate">
+                      <label for="">Size</label>
+                  </div>
+
+                  <div class="input-field col s4">
+                      <select name="add_color">
+                        <option value="" selected>Choose Color</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Red">Red</option>
+                        <option value="Green">Green</option>
+                      </select>
+                      <label>Color</label>
+                    </div>              
+                </div>
+
+                <div class="row">
+                  <div class="row">
+                    <div class="input-field">
+                      <input type="checkbox" id="test6" />
+                      <label for="test6" class="black-text">Defect</label>
+                    </div>
+                  </div>
+
+                  <div class="row" style="display: none" id="defectDesc1">
+                    <div class="input-field col s8">
+                      <input placeholder="Description..." id="" type="text" class="validate">
+                      <label for="">Description</label>
+                    </div>
                   </div>
                 </div>
-            </div>
-
-            <div class="row">
-              <div class="input-field col s4">
-                <select>
-                  <option value="" selected>Warehouse</option>
-                  <option id="" value=""></option>
-                </select>
-                <label>Warehouse</label>
-              </div>
-
-               <div class="input-field col s4">
-                  <input placeholder="Dimensions" id="" name="add_size" type="text" class="validate">
-                  <label for="">Size</label>
-              </div>
-
-              <div class="input-field col s4">
-                  <select name="add_color">
-                    <option value="" selected>Choose Color</option>
-                    <option value="Blue">Blue</option>
-                    <option value="Red">Red</option>
-                    <option value="Green">Green</option>
-                  </select>
-                  <label>Color</label>
-                </div>              
-            </div>
-
-            <div class="row">
-              <div class="row">
-                <div class="input-field">
-                  <input type="checkbox" id="test6" />
-                  <label for="test6" class="black-text">Defect</label>
-                </div>
-              </div>
-
-              <div class="row" style="display: none" id="defectDesc1">
-                <div class="input-field col s8">
-                  <input placeholder="Description..." id="" type="text" class="validate">
-                  <label for="">Description</label>
-                </div>
-              </div>
-            </div>
-          </form>
-			</div>
-	</div>
+              </form>
+    			</div>
+    	</div>
 
 
-	<div class="modal-footer">
-		<a href="#!" class="modal-action modal-close waves-effect waves-green btn"><i class="medium material-icons left">done</i>Edit</a>
-	</div>
-</div>
-<!-- endEdit -->  
-    
+    	<div class="modal-footer">
+    		<a href="#!" class="modal-action modal-close waves-effect waves-green btn"><i class="medium material-icons left">done</i>Edit</a>
+    	</div>
+    </div>
+    <!-- endEdit -->  
+        
   <script>
   	//MODAL
   	$('.modal-trigger').leanModal({
@@ -312,12 +360,12 @@ Inventory
       opacity: .5, // Opacity of modal background
       in_duration: 300, // Transition in duration
       out_duration: 200, // Transition out duration
-    }
-  );
+      }
+    );
     //
     $(document).ready(function() {
-    $('select').material_select('update');
-  });
+      $('select').material_select('update');
+    });
     //defect description
     $(document).ready(function () {
       $('#test5').click(function () {
@@ -330,16 +378,15 @@ Inventory
      });
     });
 
-    $(document).ready(function () {
-      $('#test6').click(function () {
-          var $this = $(this);
-          if ($this.is(':checked')) {
-              document.getElementById('defectDesc1').style.display = 'block';
-          } else {
-              document.getElementById('defectDesc1').style.display = 'none';
+      $(document).ready(function () {
+        $('#test6').click(function () {
+            var $this = $(this);
+            if ($this.is(':checked')) {
+                document.getElementById('defectDesc1').style.display = 'block';
+            } else {
+                document.getElementById('defectDesc1').style.display = 'none';
           }
-     });
-    });
-
+        });
+      });
   </script>
 @endsection

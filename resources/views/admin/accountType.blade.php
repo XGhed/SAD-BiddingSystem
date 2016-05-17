@@ -146,7 +146,7 @@ $(function(){
 
                 <div class="input-field col s4">
                   <input id="add_tax"  type="number" class="validate"   min="0" max="100" name="add_tax" pattern ="[0-9]{3}"  REQUIRED/>
-                  <label for="add_tax" data-error='Invalid'>Tax Rate %</label>
+                  <label for="add_tax" data-error='Invalid'>Service Fee</label>
                 </div>
 
                 <div class="input-field col s4">

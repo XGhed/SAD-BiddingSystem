@@ -60,12 +60,24 @@
 							</div>
 					</div>
 				</div>
+				<div class="field">
+					<label>Address</label>
+					<input type="text" name="address" placeholder="#4 Wednesday St. Pacita 1 Brgy. San Vicente" required>
+				</div>
 		  	</div>
 
 		  	<div class="equal width fields">
-		  		<div class="field">
-					<label>Address</label>
-					<input type="text" name="address" placeholder="#4 Wednesday St. Pacita 1 Brgy. San Vicente" required>
+		  		
+				<div class="field">
+		  			<label>Gender</label>
+					<div class="ui radio checkbox">
+						<input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
+						<label>Male</label>
+					</div>
+					<div class="ui radio checkbox">
+						<input type="radio" name="fruit" tabindex="0" class="hidden">
+						<label>Female</label>
+					</div>
 				</div>
 			  	<div class="field">
 			  		<label>Birthdate</label>
@@ -95,17 +107,13 @@
 
 			<div class="equal width fields">
 				<div class="field">
-		  			<label>Gender</label>
-					<div class="ui radio checkbox">
-						<input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
-						<label>Male</label>
-					</div>
-					<div class="ui radio checkbox">
-						<input type="radio" name="fruit" tabindex="0" class="hidden">
-						<label>Female</label>
-					</div>
+					<label>Username</label>
+					<input type="text" name="phoneNumber">
 				</div>
-
+				<div class="field">
+					<label>Password</label>
+					<input type="password" name="phoneNumber">
+				</div>
 				<div class="field">
 	                <label>Attach Documents</label>
 	                <i class="file icon"></i><input type="file" name="docu" multiple required>
