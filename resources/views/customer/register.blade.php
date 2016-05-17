@@ -199,26 +199,3 @@ $('.ui.search.dropdown')
 });
 </script>
 @endsection
-
-<?php
-	if(isset($_POST['btn_upload'])){
-		$filetmp = $_FILES["file_img"]["tmp_name"];
-		$filename = $_FILES["file_img"]["name"];
-		$filetype = $_FILES["file_img"]["type"];
-		$filepath = "images/".$filename;
-
-		$allowed = array('image/pjpeg', 'image/jpeg', 'image/jpg', 'image/JPEG', 'image/JPG',
-			'image/X-PNG', 'image/PNG', 'image/png', 'image/GIF', 'image/gif');
-		if(in_array($filetype, $allowed)){
-			if(file_exists($filetmp) && is_file($filepath)){
-				echo "File existed!";
-				unlink ($filetmp);
-			}
-			else{
-				move_uploaded_file($filetmp, $filepath);
-			}
-		} else{
-			echo "Invalid filetype!";
-		}
-	}
-?>
