@@ -115,8 +115,25 @@
 					<input type="password" name="phoneNumber">
 				</div>
 				<div class="field">
-	                <label>Attach Documents</label>
-	                <i class="file icon"></i><input type="file" name="docu" multiple required>
+					<label>Account Type</label>
+					<select class="ui search dropdown" id="shit">
+					  <option value="1">End-User</option>
+					  <option value="2">Retailer</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="equal width fields">
+				<div class="field" id="documents">
+	                <label>2 Valid ID</label>
+	                <i class="file icon"></i>
+	                <input type="file" name="docu" multiple required>
+				</div>
+
+				<div class="field" id="dti" style="display: none">
+	                <label>DTI</label>
+	                <i class="file icon"></i>
+	                <input type="file" name="docu" multiple required>
 				</div>
 			</div>
 
@@ -143,10 +160,28 @@ $('.ui.radio.checkbox')
 $('.ui.checkbox')
   .checkbox()
 ;
-
+//provinces
 $('.ui.normal.dropdown')
   .dropdown()
 ;
+//account type
+$('.ui.search.dropdown')
+  .dropdown();
+
+  $(document).ready(function(){
+    $('#shit').on('change', function() {
+      if ( this.value == '1')
+      {
+        $("#documents").show();
+        $("#dti").hide();
+      }
+      else
+      {
+        $("#documents").show();
+        $("#dti").show();
+      }
+    });
+});
 </script>
 @endsection
 
