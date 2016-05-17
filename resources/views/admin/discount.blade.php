@@ -170,34 +170,24 @@ Manage Account Type
       <div class="row"></div>
       <div class="col s4 right">
         <a class="modal-trigger waves-effect waves-light btn blue darken-2" href="#rwrdBtn">
-          <i class="material-icons left">add</i>Add Reward
+          <i class="material-icons left">add</i>Update Reward
         </a>
       </div>
 
       <table class="centered">
         <thead>
           <tr>
-            <th>Manage</th>
             <th>Reward Percentage</th>
-            <th>Date</th>
+            <th>Starting Date</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td> 
-              <form action="/" method="POST">
-                <input type="hidden" name="" value="{{ csrf_token() }}">
-                  <div class="center">
-                    <input type="hidden" class="items" id="" name="" value="">
-                    <button type="button" id="" value="" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped modal-trigger" data-target="modal1" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
-
-                    <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
-                  </div>
-              </form>
-            </td>
-            <td>Retailer</td>
-            <td>20%</td>
-          </tr>
+          @foreach($rewards as $key => $reward)
+            <tr>
+              <td>{{$reward->RewardPercentage}}</td>
+              <td>{{$reward->RewardDate}}</td>
+            </tr>
+          @endforeach
         </tbody>
       </table>
 
@@ -208,16 +198,16 @@ Manage Account Type
             <h4><i class="medium material-icons left">add</i>Add Rewards</h4>
             <div class="divider"></div>
             <div class="row">
-              <form class="col s12" action="/" method="POST">
+              <form class="col s12" action="/updateReward" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   <div class="row">
                     <div class="input-field col s4">
-                      <input id="" type="number" class="validate">
+                      <input id="" type="number" name="add_reward" class="validate">
                       <label for="">Reward Percentage %</label>
                     </div>
 
                     <div class="input-field col s4">
-                      <input id="" type="date" class="validate">
+                      <input id="" type="date" name="add_date" class="validate">
                       <label for="" class="active">Reward Date</label>
                     </div>
                   </div> 
@@ -230,37 +220,6 @@ Manage Account Type
           </div>
         </div>
       </div>
-      <!-- edit Reward -->
-      <div class="row">
-          <div id="modal1" class="modal modal-fixed-footer" style="width: 700px; height:300px;">
-            <div class="modal-content">
-              <h4><i class="medium material-icons left">add</i>Discount</h4>
-              <div class="divider"></div>
-              <div class="row">
-                <form class="col s12" action="/" method="POST">
-                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="row">
-                      <div class="input-field col s4">
-                          <input id="" type="number" class="validate">
-                          <label for="">Reward Percentage %</label>
-                      </div>
-                      <div class="input-field col s4">
-                          <input id="" type="date" class="validate">
-                          <label for="" class="active">Reward Date</label>
-                      </div>
-                    </div> 
-              </div>
-            </div><!--modal content -->
-            <div class="modal-footer">
-              <button class="modal-action modal-close white-text waves-effect waves-blue btn-flat blue" type="submit" name="add">
-                      <i class="material-icons left">done</i>Confirm</button>
-                </form>
-            </div>
-          </div>
-      </div>
-    </div><!-- reward -->
-  </div><!-- row -->
-
 <script>
 	//MODAL
   	$('.modal-trigger').leanModal({
