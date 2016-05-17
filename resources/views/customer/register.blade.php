@@ -17,7 +17,8 @@
 
 @section('content')
 	<div style="margin: 35px 0 0 0" class="ui container segment">
-		<form class="ui form">
+		<form class="ui form" action="/confirmRegister" method="POST" enctype="multipart/form-data">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		  	<div class="equal width fields">
 			  	<div class="field">
 				    <label>First Name</label>
@@ -108,18 +109,18 @@
 			<div class="equal width fields">
 				<div class="field">
 					<label>Account Type</label>
-					<select class="ui search dropdown" id="shit">
+					<select class="ui search dropdown" id="shit" name="acctype">
 					  <option value="1">End-User</option>
 					  <option value="2">Retailer</option>
 					</select>
 				</div>
 				<div class="field">
 					<label>Username</label>
-					<input type="text" name="phoneNumber">
+					<input type="text" name="username">
 				</div>
 				<div class="field">
 					<label>Password</label>
-					<input type="password" name="phoneNumber">
+					<input type="password" name="password">
 				</div>
 			</div>
 

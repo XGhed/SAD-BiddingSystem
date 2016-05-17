@@ -41,6 +41,8 @@ Route::post('/confirmInventory', 'InventoryController@confirmItem');
 
 Route::post('/confirmDiscount', 'DiscountController@confirmDiscount');
 
+Route::post('/confirmRegister', 'RegisterController@confirmRegister');
+
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');
