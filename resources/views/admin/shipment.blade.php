@@ -70,500 +70,516 @@ Maintenance
     </div>
     <div id="companyCour" class="col s12">
       <form class="col s12" id="addForm" action="/confirmShipment" method="POST">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div style="margin: 0 50px 0 50px;">
+          <div class="row">
+            <div class="col s12">Regions:
+              <ul class="tabs" onmouseover="showScroll(this)" onmouseout="hideScroll(this)" style="overflow-x:hidden">
+                <li class="tab "><a href="#region1" class="black-text"> 1</a></li>
+                <li class="tab "><a href="#region2" class="black-text"> 2</a></li>
+                <li class="tab "><a href="#region3" class="black-text"> 3</a></li>
+                <li class="tab "><a href="#region4A" class="black-text"> 4A</a></li>
+                <li class="tab "><a href="#region4B" class="black-text"> 4B</a></li>
+                <li class="tab "><a href="#region5" class="black-text"> 5</a></li>
+                <li class="tab "><a href="#region6" class="black-text"> 6</a></li>
+                <li class="tab "><a href="#region7" class="black-text"> 7</a></li>
+                <li class="tab "><a href="#region8" class="black-text"> 8</a></li>
+                <li class="tab "><a href="#region9" class="black-text"> 9</a></li>
+                <li class="tab "><a href="#region10" class="black-text"> 10</a></li>
+                <li class="tab "><a href="#region11" class="black-text"> 11</a></li>
+                <li class="tab "><a href="#region12" class="black-text"> 12</a></li>
+                <li class="tab "><a href="#regionNCR" class="black-text"> NCR</a></li>
+                <li class="tab "><a href="#regionCAR" class="black-text"> CAR</a></li>
+                <li class="tab "><a href="#regionARMM" class="black-text"> ARMM</a></li>
+                <li class="tab "><a href="#region13" class="black-text"> 13</a></li>
+                <li class="tab "><a href="#region18" class="black-text"> 18</a></li>
+              </ul>
+            </div>
 
-     
+            <div id="region1" class="col s12"><!--this-->
+              <div class="row"></div>
+              <div class="row">
+                <div class="col s3">
+                  <input name="1" class="selectAll btn" type="button" id="selectAll" value="Select All" />
+                </div>
+                <div class="col s6">
+                  <input name="1" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                </div>
+              </div>
+              
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                @if($province->region->RegionID == '1')
+                  <div class="col s3">
+                    <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                  </div>
+                @endif
+                @endforeach
+              </div>
+            </div><!-- Region1 -->
 
-      <div style="margin: 0 50px 0 50px;">
-      <div class="row">
-        <div class="col s12">Regions:
-          <ul class="tabs" onmouseover="showScroll(this)" onmouseout="hideScroll(this)" style="overflow-x:hidden">
-            <li class="tab "><a href="#region1" class="black-text"> 1</a></li>
-            <li class="tab "><a href="#region2" class="black-text"> 2</a></li>
-            <li class="tab "><a href="#region3" class="black-text"> 3</a></li>
-            <li class="tab "><a href="#region4A" class="black-text"> 4A</a></li>
-            <li class="tab "><a href="#region4B" class="black-text"> 4B</a></li>
-            <li class="tab "><a href="#region5" class="black-text"> 5</a></li>
-            <li class="tab "><a href="#region6" class="black-text"> 6</a></li>
-            <li class="tab "><a href="#region7" class="black-text"> 7</a></li>
-            <li class="tab "><a href="#region8" class="black-text"> 8</a></li>
-            <li class="tab "><a href="#region9" class="black-text"> 9</a></li>
-            <li class="tab "><a href="#region10" class="black-text"> 10</a></li>
-            <li class="tab "><a href="#region11" class="black-text"> 11</a></li>
-            <li class="tab "><a href="#region12" class="black-text"> 12</a></li>
-            <li class="tab "><a href="#regionNCR" class="black-text"> NCR</a></li>
-            <li class="tab "><a href="#regionCAR" class="black-text"> CAR</a></li>
-            <li class="tab "><a href="#regionARMM" class="black-text"> ARMM</a></li>
-            <li class="tab "><a href="#region13" class="black-text"> 13</a></li>
-            <li class="tab "><a href="#region18" class="black-text"> 18</a></li>
-          </ul>
+            <div id="region2" class="col s12">
+              <div class="row"></div>
+              <div class="row">
+                <div class="col s3">
+                  <input name="2" class="selectAll btn" type="button" id="selectAll" value="Select All" />
+                </div>
+                <div class="col s6">
+                  <input name="2" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                </div>
+              </div>
+              
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                @if($province->region->RegionID == '2')
+                  <div class="col s3">
+                    <input type="checkbox" name="add_prov[]" class="2" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                  </div>
+                @endif
+                @endforeach
+              </div>
+            </div><!-- Region2 -->
+
+            <div id="region3" class="col s12">
+              <div class="row"></div>
+              <div class="row">
+                <div class="col s3">
+                  <input name="3" class="selectAll btn" type="button" id="selectAll" value="Select All" />
+                </div>
+                <div class="col s6">
+                  <input name="3" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                </div>
+              </div>
+              
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                @if($province->region->RegionID == '3')
+                  <div class="col s3">
+                    <input type="checkbox" name="add_prov[]" class="3" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                  </div>
+                @endif
+                @endforeach
+              </div>
+            </div><!-- Region3 -->
+
+            <div id="region4A" class="col s12">
+              <div class="row"></div>
+              <div class="row">
+                <div class="col s3">
+                  <input name="4A" class="selectAll btn" type="button" id="selectAll" value="Select All" />
+                </div>
+                <div class="col s6">
+                  <input name="4A" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                </div>
+              </div>
+              
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                @if($province->region->RegionID == '4')
+                  <div class="col s3">
+                    <input type="checkbox" name="add_prov[]" class="4A" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                  </div>
+                @endif
+                @endforeach
+              </div>
+            </div><!-- Region1 -->
+
+            <div id="region4B" class="col s12">
+              <div class="row"></div>
+              <div class="row">
+                <div class="col s3">
+                  <input name="4B" class="selectAll btn" type="button" id="selectAll" value="Select All" />
+                </div>
+                <div class="col s6">
+                  <input name="4B" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                </div>
+              </div>
+              
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                @if($province->region->RegionID == '17')
+                  <div class="col s3">
+                    <input type="checkbox" name="add_prov[]" class="4B" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                  </div>
+                @endif
+                @endforeach
+              </div>
+            </div><!-- Region4B -->
+
+            <div id="region5" class="col s12">
+              <div class="row"></div>
+              <div class="row">
+                <div class="col s3">
+                  <input name="5" class="selectAll btn" type="button" id="selectAll" value="Select All" />
+                </div>
+                <div class="col s6">
+                  <input name="5" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                </div>
+              </div>
+              
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                @if($province->region->RegionID == '5')
+                  <div class="col s3">
+                    <input type="checkbox" name="add_prov[]" class="5" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                  </div>
+                @endif
+                @endforeach
+              </div>
+            </div><!-- Region5 -->
+
+            <div id="region6" class="col s12"> 
+              <div class="row"></div>
+              <div class="row">
+                <div class="col s3">
+                  <input name="6" class="selectAll btn" type="button" id="selectAll" value="Select All" />
+                </div>
+                <div class="col s6">
+                  <input name="6" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                </div>
+              </div>
+              
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                @if($province->region->RegionID == '6')
+                  <div class="col s3">
+                    <input type="checkbox" name="add_prov[]" class="6" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                  </div>
+                @endif
+                @endforeach
+              </div>
+            </div><!-- Region6 -->
+
+            <div id="region7" class="col s12"><!--this-->
+              <div class="row"></div>
+              <div class="row">
+                <div class="col s3">
+                  <input name="7" class="selectAll btn" type="button" id="selectAll" value="Select All" />
+                </div>
+                <div class="col s6">
+                  <input name="7" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                </div>
+              </div>
+              
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                @if($province->region->RegionID == '7')
+                  <div class="col s3">
+                    <input type="checkbox" name="add_prov[]" class="7" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                  </div>
+                @endif
+                @endforeach
+              </div>
+            </div><!-- Region7 -->
+
+            <div id="region8" class="col s12"><!--this-->
+              <div class="row"></div>
+              <div class="row">
+                <div class="col s3">
+                  <input name="8" class="selectAll btn" type="button" id="selectAll" value="Select All" />
+                </div>
+                <div class="col s6">
+                  <input name="8" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                </div>
+              </div>
+              
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                @if($province->region->RegionID == '8')
+                  <div class="col s3">
+                    <input type="checkbox" name="add_prov[]" class="8" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                  </div>
+                @endif
+                @endforeach
+              </div>
+            </div><!-- Region8 -->
+
+            <div id="region9" class="col s12"><!--this-->
+              <div class="row"></div>
+              <div class="row">
+                <div class="col s3">
+                  <input name="9" class="selectAll btn" type="button" id="selectAll" value="Select All" />
+                </div>
+                <div class="col s6">
+                  <input name="9" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                </div>
+              </div>
+              
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                @if($province->region->RegionID == '9')
+                  <div class="col s3">
+                    <input type="checkbox" name="add_prov[]" class="9" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                  </div>
+                @endif
+                @endforeach
+              </div>
+            </div><!-- Region9 -->
+
+            <div id="region10" class="col s12">
+              <div class="row"></div>
+                <div class="row">
+                  <div class="col s3">
+                    <input name="10" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                                
+                  </div>
+
+                  <div class="col s6">
+                    <input name="10" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                  </div>
+                </div>
+
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '10')
+                    <div class="col s3">
+                      <input type="checkbox" name="add_prov[]" class="10" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                    </div>
+                  @endif
+                @endforeach
+              </div>
+            </div> <!-- Region 10 -->
+
+            <div id="region11" class="col s12">
+              <div class="row"></div>
+                <div class="row">
+                  <div class="col s3">
+                    <input name="11" class="selectAll btn" type="button" id="selectAll" value="Select All"/>           
+                  </div>
+                  <div class="col s6">
+                    <input name="11" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                  </div>
+                </div>
+
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '11')
+                    <div class="col s3">
+                      <input type="checkbox" name="add_prov[]" class="11" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                    </div>
+                  @endif
+                @endforeach
+               </div>
+            </div> <!-- Region 11 -->
+
+            <div id="region12" class="col s12">
+              <div class="row"></div>
+                <div class="row">
+                  <div class="col s3">
+                    <input name="12" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                                
+                  </div>
+
+                  <div class="col s6">
+                    <input name="12" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                  </div>
+                </div>
+
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '12')
+                    <div class="col s3">
+                      <input type="checkbox" name="add_prov[]" class="12" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                    </div>
+                  @endif
+                @endforeach
+              </div>
+            </div> <!-- Region 12 -->
+
+            <div id="regionNCR" class="col s12">
+              <div class="row"></div>
+                <div class="row">
+                  <div class="col s3">
+                    <input name="NCR" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                                
+                  </div>
+
+                  <div class="col s6">
+                    <input name="NCR" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                  </div>
+                </div>
+
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '13')
+                    <div class="col s3">
+                      <input type="checkbox" name="add_prov[]" class="NCR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                    </div>
+                  @endif
+                @endforeach
+              </div>
+            </div> <!-- Region NCR -->
+
+            <div id="regionCAR" class="col s12">
+              <div class="row"></div>
+                <div class="row">
+                  <div class="col s3">
+                    <input name="CAR" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                                
+                  </div>
+
+                  <div class="col s6">
+                    <input name="CAR" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                  </div>
+                </div>
+
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '14')
+                    <div class="col s3">
+                      <input type="checkbox" name="add_prov[]" class="CAR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                    </div>
+                  @endif
+                @endforeach
+              </div>
+            </div> <!-- Region CAR -->
+
+            <div id="regionARMM" class="col s12">
+              <div class="row"></div>
+                <div class="row">
+                  <div class="col s3">
+                    <input name="ARMM" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                                
+                  </div>
+
+                  <div class="col s6">
+                    <input name="ARMM" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                  </div>
+                </div>
+
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '15')
+                    <div class="col s3">
+                      <input type="checkbox" name="add_prov[]" class="ARMM" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                    </div>
+                  @endif
+                @endforeach
+              </div>
+            </div> <!-- Region ARMM -->
+
+            <div id="region13" class="col s12">
+              <div class="row"></div>
+                <div class="row">
+                  <div class="col s3">
+                    <input name="13" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                                
+                  </div>
+
+                  <div class="col s6">
+                    <input name="13" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                  </div>
+                </div>
+
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '16')
+                    <div class="col s3">
+                      <input type="checkbox" name="add_prov[]" class="13" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                    </div>
+                  @endif
+                @endforeach
+              </div>
+            </div> <!-- Region 13 -->
+
+            <div id="region18" class="col s12">
+              <div class="row"></div>
+                <div class="row">
+                  <div class="col s3">
+                    <input name="18" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
+                                
+                  </div>
+
+                  <div class="col s6">
+                    <input name="18" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
+                  </div>
+                </div>
+
+              <div class="row">
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '18')
+                    <div class="col s3">
+                      <input type="checkbox" name="add_prov[]" class="18" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                    </div>
+                  @endif
+                @endforeach
+              </div>
+            </div> <!-- Region 18 -->
+          </div><!--row-->
         </div>
 
-        <div id="region1" class="col s12"><!--this-->
-          <div class="row"></div>
-          <div class="row">
-            <div class="col s3">
-              <input name="1" class="selectAll btn" type="button" id="selectAll" value="Select All" />
-            </div>
-            <div class="col s6">
-              <input name="1" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-            </div>
-          </div>
-          
-          <div class="row">
-            @foreach($provinces as $key => $province)
-            @if($province->region->RegionID == '1')
-              <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-              </div>
-            @endif
-            @endforeach
-          </div>
-        </div><!-- Region1 -->
 
-        <div id="region2" class="col s12">
-          <div class="row"></div>
-          <div class="row">
-            <div class="col s3">
-              <input name="2" class="selectAll btn" type="button" id="selectAll" value="Select All" />
-            </div>
-            <div class="col s6">
-              <input name="2" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-            </div>
-          </div>
-          
-          <div class="row">
-            @foreach($provinces as $key => $province)
-            @if($province->region->RegionID == '2')
-              <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="2" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-              </div>
-            @endif
-            @endforeach
-          </div>
-        </div><!-- Region2 -->
+        <div class="center">
+          <button class="btn waves-effect waves-light blue darken-2 white-text" type="submit" name="add">
+          <i class="material-icons left">done</i>Confirm</button>
+          <div class="row"></div><div class="row"></div>
+        </div>
 
-        <div id="region3" class="col s12">
-          <div class="row"></div>
-          <div class="row">
-            <div class="col s3">
-              <input name="3" class="selectAll btn" type="button" id="selectAll" value="Select All" />
-            </div>
-            <div class="col s6">
-              <input name="3" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-            </div>
-          </div>
-          
-          <div class="row">
-            @foreach($provinces as $key => $province)
-            @if($province->region->RegionID == '3')
-              <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="3" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-              </div>
-            @endif
-            @endforeach
-          </div>
-        </div><!-- Region3 -->
-
-        <div id="region4A" class="col s12">
-          <div class="row"></div>
-          <div class="row">
-            <div class="col s3">
-              <input name="4A" class="selectAll btn" type="button" id="selectAll" value="Select All" />
-            </div>
-            <div class="col s6">
-              <input name="4A" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-            </div>
-          </div>
-          
-          <div class="row">
-            @foreach($provinces as $key => $province)
-            @if($province->region->RegionID == '4')
-              <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="4A" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-              </div>
-            @endif
-            @endforeach
-          </div>
-        </div><!-- Region1 -->
-
-        <div id="region4B" class="col s12">
-          <div class="row"></div>
-          <div class="row">
-            <div class="col s3">
-              <input name="4B" class="selectAll btn" type="button" id="selectAll" value="Select All" />
-            </div>
-            <div class="col s6">
-              <input name="4B" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-            </div>
-          </div>
-          
-          <div class="row">
-            @foreach($provinces as $key => $province)
-            @if($province->region->RegionID == '17')
-              <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="4B" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-              </div>
-            @endif
-            @endforeach
-          </div>
-        </div><!-- Region4B -->
-
-        <div id="region5" class="col s12">
-          <div class="row"></div>
-          <div class="row">
-            <div class="col s3">
-              <input name="5" class="selectAll btn" type="button" id="selectAll" value="Select All" />
-            </div>
-            <div class="col s6">
-              <input name="5" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-            </div>
-          </div>
-          
-          <div class="row">
-            @foreach($provinces as $key => $province)
-            @if($province->region->RegionID == '5')
-              <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="5" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-              </div>
-            @endif
-            @endforeach
-          </div>
-        </div><!-- Region5 -->
-
-        <div id="region6" class="col s12"> 
-          <div class="row"></div>
-          <div class="row">
-            <div class="col s3">
-              <input name="6" class="selectAll btn" type="button" id="selectAll" value="Select All" />
-            </div>
-            <div class="col s6">
-              <input name="6" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-            </div>
-          </div>
-          
-          <div class="row">
-            @foreach($provinces as $key => $province)
-            @if($province->region->RegionID == '6')
-              <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="6" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-              </div>
-            @endif
-            @endforeach
-          </div>
-        </div><!-- Region6 -->
-
-        <div id="region7" class="col s12"><!--this-->
-          <div class="row"></div>
-          <div class="row">
-            <div class="col s3">
-              <input name="7" class="selectAll btn" type="button" id="selectAll" value="Select All" />
-            </div>
-            <div class="col s6">
-              <input name="7" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-            </div>
-          </div>
-          
-          <div class="row">
-            @foreach($provinces as $key => $province)
-            @if($province->region->RegionID == '7')
-              <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="7" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-              </div>
-            @endif
-            @endforeach
-          </div>
-        </div><!-- Region7 -->
-
-        <div id="region8" class="col s12"><!--this-->
-          <div class="row"></div>
-          <div class="row">
-            <div class="col s3">
-              <input name="8" class="selectAll btn" type="button" id="selectAll" value="Select All" />
-            </div>
-            <div class="col s6">
-              <input name="8" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-            </div>
-          </div>
-          
-          <div class="row">
-            @foreach($provinces as $key => $province)
-            @if($province->region->RegionID == '8')
-              <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="8" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-              </div>
-            @endif
-            @endforeach
-          </div>
-        </div><!-- Region8 -->
-
-        <div id="region9" class="col s12"><!--this-->
-          <div class="row"></div>
-          <div class="row">
-            <div class="col s3">
-              <input name="9" class="selectAll btn" type="button" id="selectAll" value="Select All" />
-            </div>
-            <div class="col s6">
-              <input name="9" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-            </div>
-          </div>
-          
-          <div class="row">
-            @foreach($provinces as $key => $province)
-            @if($province->region->RegionID == '9')
-              <div class="col s3">
-                <input type="checkbox" name="add_prov[]" class="9" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-              </div>
-            @endif
-            @endforeach
-          </div>
-        </div><!-- Region9 -->
-
-        <div id="region10" class="col s12">
-          <div class="row"></div>
-            <div class="row">
-              <div class="col s3">
-                <input name="10" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
-                            
-              </div>
-
-              <div class="col s6">
-                <input name="10" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-              </div>
-            </div>
-
-          <div class="row">
-            @foreach($provinces as $key => $province)
-              @if($province->region->RegionID == '10')
-                <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="10" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                  <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-                </div>
-              @endif
-            @endforeach
-          </div>
-        </div> <!-- Region 10 -->
-
-        <div id="region11" class="col s12">
-          <div class="row"></div>
-            <div class="row">
-              <div class="col s3">
-                <input name="11" class="selectAll btn" type="button" id="selectAll" value="Select All"/>           
-              </div>
-              <div class="col s6">
-                <input name="11" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-              </div>
-            </div>
-
-          <div class="row">
-            @foreach($provinces as $key => $province)
-              @if($province->region->RegionID == '11')
-                <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="11" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                  <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-                </div>
-              @endif
-            @endforeach
-           </div>
-        </div> <!-- Region 11 -->
-
-        <div id="region12" class="col s12">
-          <div class="row"></div>
-            <div class="row">
-              <div class="col s3">
-                <input name="12" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
-                            
-              </div>
-
-              <div class="col s6">
-                <input name="12" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-              </div>
-            </div>
-
-          <div class="row">
-            @foreach($provinces as $key => $province)
-              @if($province->region->RegionID == '12')
-                <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="12" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                  <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-                </div>
-              @endif
-            @endforeach
-          </div>
-        </div> <!-- Region 12 -->
-
-        <div id="regionNCR" class="col s12">
-          <div class="row"></div>
-            <div class="row">
-              <div class="col s3">
-                <input name="NCR" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
-                            
-              </div>
-
-              <div class="col s6">
-                <input name="NCR" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-              </div>
-            </div>
-
-          <div class="row">
-            @foreach($provinces as $key => $province)
-              @if($province->region->RegionID == '13')
-                <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="NCR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                  <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-                </div>
-              @endif
-            @endforeach
-          </div>
-        </div> <!-- Region NCR -->
-
-        <div id="regionCAR" class="col s12">
-          <div class="row"></div>
-            <div class="row">
-              <div class="col s3">
-                <input name="CAR" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
-                            
-              </div>
-
-              <div class="col s6">
-                <input name="CAR" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-              </div>
-            </div>
-
-          <div class="row">
-            @foreach($provinces as $key => $province)
-              @if($province->region->RegionID == '14')
-                <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="CAR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                  <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-                </div>
-              @endif
-            @endforeach
-          </div>
-        </div> <!-- Region CAR -->
-
-        <div id="regionARMM" class="col s12">
-          <div class="row"></div>
-            <div class="row">
-              <div class="col s3">
-                <input name="ARMM" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
-                            
-              </div>
-
-              <div class="col s6">
-                <input name="ARMM" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-              </div>
-            </div>
-
-          <div class="row">
-            @foreach($provinces as $key => $province)
-              @if($province->region->RegionID == '15')
-                <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="ARMM" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                  <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-                </div>
-              @endif
-            @endforeach
-          </div>
-        </div> <!-- Region ARMM -->
-
-        <div id="region13" class="col s12">
-          <div class="row"></div>
-            <div class="row">
-              <div class="col s3">
-                <input name="13" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
-                            
-              </div>
-
-              <div class="col s6">
-                <input name="13" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-              </div>
-            </div>
-
-          <div class="row">
-            @foreach($provinces as $key => $province)
-              @if($province->region->RegionID == '16')
-                <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="13" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                  <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-                </div>
-              @endif
-            @endforeach
-          </div>
-        </div> <!-- Region 13 -->
-
-        <div id="region18" class="col s12">
-          <div class="row"></div>
-            <div class="row">
-              <div class="col s3">
-                <input name="18" class="selectAll btn" type="button" id="selectAll" value="Select All"/>
-                            
-              </div>
-
-              <div class="col s6">
-                <input name="18" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
-              </div>
-            </div>
-
-          <div class="row">
-            @foreach($provinces as $key => $province)
-              @if($province->region->RegionID == '18')
-                <div class="col s3">
-                  <input type="checkbox" name="add_prov[]" class="18" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                  <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-                </div>
-              @endif
-            @endforeach
-          </div>
-        </div> <!-- Region 18 -->
-      </div><!--tabs-->
-
-
-      <div class="center">
-        <button class="btn waves-effect waves-light blue darken-2 white-text" type="submit" name="add">
-        <i class="material-icons left">done</i>Confirm</button>
-        <div class="row"></div><div class="row"></div>
-      </div>
-
-    </form>  
+      </form>  
     </div>
     <div id="test2" class="col s12">
-      <table class="center">
+
+      <table>
         <thead>
           <tr>
-              <th>Province</th>
+              <th>Provinces</th>
               <th>Price</th>
           </tr>
         </thead>
-
         <tbody>
           <tr>
-            <td>Alvin</td>
-            <td>
-              <div class="row">
-                <div class="input-field col s4">
-                  <input id="" type="number" class="validate" name="" REQUIRED>
-                  <label for="">Price</label>
-                </div>
-              </div>
-            </td>
+            <td>Tawi-tawi</td>
+            <td>700.00</td>
           </tr>
         </tbody>
       </table>
-      <button class="btn waves-effect waves-light" type="submit" name="action">Set Price
-      </button>
-    </div>
-  </div>
+
+      <a class="waves-effect waves-light btn modal-trigger right" href="#modal1">Set Price</a>
+
+ 
+      <div id="modal1" class="modal  modal-fixed-footer">
+        <div class="modal-content">
+          <h4>Set Price</h4>
+          <div class="input-field col s12">
+            <select multiple>
+              <option value="" disabled selected>Choose province</option>
+              <option value="1">Province 1</option>
+              <option value="2">Province 2</option>
+            </select>
+            <label>Select Province</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="price" type="number" value=" " min="0" class="validate">
+            <label for="price" class="actice">Price</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Set Price</a>
+        </div>
+      </div>
+    
+   
+
+    </div><!-- test 2 -->
+  </div><!-- tab-->
 
 
 
@@ -582,6 +598,4 @@ Maintenance
                   $('ul.tabs').tabs();
                 });
             </script>
-          </div> <!--MODAL BODY-->
-      </div>
 @endsection
