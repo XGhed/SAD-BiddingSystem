@@ -14,7 +14,6 @@ class AccountType extends Migration
         $table->string('AccountTypeName', 30);
         $table->string('Description', 30);
         $table->integer('ServiceFee')->unsigned();
-        $table->integer('RequiredPoints')->unsigned();
         $table->boolean('Status')->default(1);
         $table->softDeletes();
     });

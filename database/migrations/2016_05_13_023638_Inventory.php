@@ -10,12 +10,14 @@ class Inventory extends Migration
         schema::create('Inventory', function(Blueprint $table)
         {
             $table->increments('InventoryNo');
-            $table->string('description', 50);
-            $table->string('status', 30);
-            $table->integer('quantity');
-            $table->datetime('InventoryDate');
+            $table->string('defect', 30);
+            $table->timestamp('InventoryDate')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->integer('ItemID')->unsigned();
+            $table->integer('WarehouseNo')->unsigned()->nullable();
+            $table->integer('MembershipID')->unsigned()->nullable();
             $table->foreign('ItemID')->references('ItemID')->on('Items');
+            $table->foreign('WarehouseNo')->references('WarehouseNo')->on('Warehouse');
+            $table->foreign('MembershipID')->references('MembershipID')->on('Membership');
         });
     }
 

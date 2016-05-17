@@ -45,9 +45,7 @@ class AccountTypeController extends Controller
 
 		$accountType->AccountTypeName = trim($request->input('add_name'));
 		$accountType->Description = trim($request->input('add_desc'));
-		$accountType->TaxRate = trim($request->input('add_tax'));
-		$accountType->Discount = trim($request->input('add_disc'));
-		$accountType->RequiredPoints = trim($request->input('add_points'));
+		$accountType->ServiceFee = trim($request->input('add_tax'));
 
 			$accountType->save();
 		} catch (Exception $e) {
@@ -64,9 +62,7 @@ class AccountTypeController extends Controller
 
 		$accountType->AccountTypeName = trim($request->input('edit_name'));
 		$accountType->Description = trim($request->input('edit_desc'));
-		$accountType->TaxRate = trim($request->input('edit_tax'));
-		$accountType->Discount = trim($request->input('edit_disc'));
-		$accountType->RequiredPoints = trim($request->input('edit_points'));
+		$accountType->ServiceFee = trim($request->input('edit_tax'));
 
 			$accountType->save();
 		} catch (Exception $e) {
