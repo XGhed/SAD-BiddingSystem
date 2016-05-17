@@ -5,7 +5,10 @@ Bidding Event
 @endsection
 
 @section('title1')
-<h1 class="left col s6 push-s1 white-text" style="font-size: 40px">Bidding Event</h2>
+<h2>
+<a class="left col s6 push-s1 white-text" style="font-size: 28px" href="/supplier">Maintenance /</a>
+<a class="col pull-s3 white-text" style="font-size: 28px" href="/accountType">Account Type</a>
+</h2>
 @endsection
 
 @section('content')

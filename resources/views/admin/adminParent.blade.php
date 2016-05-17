@@ -54,6 +54,7 @@
               <!--<li><a class="white-text" href="/keyword">Keyword</a></li>-->
                   <li><a class="white-text" href="/item">Item</a></li>
                   <li><a class="white-text" href="/accountType">Account Type</a></li>
+                  <li><a class="white-text" href="/discount">Discount</a></li>
               <!--<li><a class="white-text" href="/paymentMethod">Payment Method</a></li>-->
                   <li><a class="white-text" href="/shipment">Shipment</a></li>
                   <li><a class="white-text" href="/warehouse">Warehouse</a></li>

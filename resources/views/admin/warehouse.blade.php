@@ -108,7 +108,10 @@ Maintenance
 
 
 @section('title1')
-<h2 class="left col s6 push-s1 white-text" style="font-size: 28px">Manage Warehouses</h2>
+<h2>
+<a class="left col s6 push-s1 white-text" style="font-size: 28px" href="/supplier">Maintenance /</a>
+<a class="col pull-s3 white-text" style="font-size: 28px" href="/warehouse">Warehouse</a>
+</h2>
 @endsection
 
 
@@ -117,7 +120,7 @@ Maintenance
 
 @section('content')
 <div class="row"></div>
-<a class="modal-trigger waves-effect waves-light right green darken-3 btn z-depth-3" href="#addBtn"><i class="material-icons left">add</i>Add Warehouse</a>
+<a class="modal-trigger waves-effect waves-light right blue darken-3 btn z-depth-3" href="#addBtn"><i class="material-icons left">add</i>Add Warehouse</a>
 
 
 <table id="tableOutput" class="centered">

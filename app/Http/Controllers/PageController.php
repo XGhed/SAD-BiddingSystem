@@ -64,6 +64,11 @@ class PageController extends Controller
        return view('admin.admin');
     }
 
+    public function discount(Request $request){
+
+       return view('admin.discount');
+    }
+
     //customer
 
     public function register(Request $request){

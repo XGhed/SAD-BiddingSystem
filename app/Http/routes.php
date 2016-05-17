@@ -97,6 +97,8 @@ Route::get('/customer/items/auction', 'PageController@auction');
 
 Route::get('/admin', 'PageController@admin');
 
+Route::get('/discount', 'PageController@discount');
+
 
 
 Route::post('/edit', 'ShipmentController@editShipment');

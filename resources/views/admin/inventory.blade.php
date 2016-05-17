@@ -6,7 +6,9 @@ Inventory
 
 
 @section('title1')
-<h1 class="left col s6 push-s1 white-text" style="font-size: 45px">Inventory</h2>
+<h2>
+<a class="col pull-s3 white-text" style="font-size: 28px" href="/inventory">Inventory</a>
+</h2>
 @endsection
 
 @section('jqueryscript')
