@@ -17,8 +17,6 @@ $(function(){
         null,
         null,
         null,
-        null,
-        null,
         null
       ] 
     });
@@ -39,15 +37,11 @@ $(function(){
       var keyID = $("#tdID"+selected).val();
       var keyName = $("#tdname"+selected).text();
       var keyDesc = $("#tddesc"+selected).text();
-      var keyPoints = $("#tdpoints"+selected).text();
       var keyTax = $("#tdtax"+selected).val();
-      var keyDisc = $("#tddisc"+selected).val();
       $("#edit_ID").val(keyID);
       $("#edit_name").val(keyName);
       $("#edit_desc").val(keyDesc);
       $("#edit_tax").val(keyTax);
-      $("#edit_disc").val(keyDisc);
-      $("#edit_points").val(keyPoints);
     });
 });
 </script>
@@ -71,9 +65,7 @@ $(function(){
           <th style="cursor: default;">Manage</th>
           <th>Account Type</th>
           <th>Description</th>
-          <th>Tax Rate</th>
-          <th>Discount</th>
-          <th>Required Points</th>
+          <th>Service Fee</th>
           <th>Status</th>
         </tr>
     </thead>
@@ -96,11 +88,8 @@ $(function(){
                       <input type="hidden" id="tdID{{$key}}" name="del_ID" value="{{$result->AccountTypeID}}">
                       <td id="tdname{{$key}}">{{$result->AccountTypeName}}</td>
                       <td id="tddesc{{$key}}">{{$result->Description}}</td>
-                      <td>{{$result->TaxRate}} %</td>
-                      <td>{{$result->Discount}} %</td>
-                      <input type="hidden" id="tdtax{{$key}}" value="{{$result->TaxRate}}" />
-                      <input type="hidden" id="tddisc{{$key}}" value="{{$result->Discount}}" />
-                      <td id="tdpoints{{$key}}">{{$result->RequiredPoints}}</td>
+                      <td>{{$result->ServiceFee}} %</td>
+                      <input type="hidden" id="tdtax{{$key}}" value="{{$result->ServiceFee}}" />
                       <td>
                           <div class="switch">
                             <label>
@@ -148,16 +137,6 @@ $(function(){
                   <input id="add_tax"  type="number" class="validate"   min="0" max="100" name="add_tax" pattern ="[0-9]{3}"  REQUIRED/>
                   <label for="add_tax" data-error='Invalid'>Service Fee</label>
                 </div>
-
-                <div class="input-field col s4">
-                  <input id="add_disc" type="number" class="validate" name="add_disc" pattern ="[0-9]{3}" min="0" max="100" REQUIRED>
-                  <label for="add_disc">Discount %</label>
-                </div>
-
-                <div class="input-field col s4">
-                  <input id="add_points"  type="number" class="validate"  min="0" max="100" name="add_points" pattern ="[0-9]"  REQUIRED/>
-                  <label for="add_points" data-error='Invalid'>Points</label>
-                </div>
       </div>
 
       <div class="modal-footer">
@@ -198,18 +177,8 @@ $(function(){
                   </div>
                     <div class="input-field col s4">
                       <input id="edit_tax"  type="number" class="validate"   min="0" max="100" name="edit_tax" pattern ="[0-9]{3}" REQUIRED/>
-                  <label for="edit_tax" data-error='Invalid'>Tax Rate %</label>
+                  <label for="edit_tax" data-error='Invalid'>Service Fee %</label>
                     </div>
-                    <div class="input-field col s4">
-                      <input id="edit_disc" type="number" class="validate" name="edit_disc" pattern ="[0-9]{3}" min="0" max="100"  REQUIRED>
-                  <label for="edit_disc">Discount %</label>
-                    </div>
-
-                    <div class="input-field col s4">
-                  <input id="edit_points"  type="number" class="validate"  min="0" max="100" name="edit_points" pattern ="[0-9]"  REQUIRED/>
-                  <label for="edit_points" data-error='Invalid'>Points</label>
-                </div>
-                  
 		    </div>
 
 
