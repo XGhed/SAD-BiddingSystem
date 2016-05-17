@@ -39,6 +39,8 @@ Route::post('/confirmWarehouse', 'WarehouseController@confirmWarehouse');
 
 Route::post('/confirmInventory', 'InventoryController@confirmItem');
 
+Route::post('/confirmDiscount', 'DiscountController@confirmDiscount');
+
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');
@@ -58,6 +60,8 @@ Route::get('/registerContainer', 'RegisterContainerController@manageRegContainer
 Route::get('/places', 'ProvinceController@manageProvince');
 
 Route::get('/inventory', 'InventoryController@manageItem');
+
+Route::get('/discount', 'DiscountController@manageDiscount');
 //Route::get('/shipment', 'PageController@shipment');
 
 //AJAX
@@ -96,8 +100,6 @@ Route::get('/customer/cart', 'PageController@cart');
 Route::get('/customer/items/auction', 'PageController@auction');
 
 Route::get('/admin', 'PageController@admin');
-
-Route::get('/discount', 'PageController@discount');
 
 
 

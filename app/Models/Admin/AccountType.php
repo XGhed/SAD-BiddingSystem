@@ -14,4 +14,9 @@ class AccountType extends Model
     protected $primaryKey = 'AccountTypeID';
     protected $dates = ['deleted_at'];
     public $timestamps = false;
+
+    public function discount()
+	{
+	    return $this->hasMany('App\Models\Admin\Discount', 'DiscountID');
+	}
 }

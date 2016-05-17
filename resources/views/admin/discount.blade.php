@@ -6,7 +6,23 @@ Manage Account Type
 @endsection
 
 @section('jqueryscript')
+<script>
+  $(function(){   
+        $('#tableOutput').on('click', '.edit', function(){
+            var selected = this.id;
+            var keyID = $("#tdID"+selected).val();
+            var keyType = $("#tdtype"+selected).val();
+            var keyPoints = $("#tdpoints"+selected).text();
+            var keyDiscount = $("#tddisc"+selected).val();
 
+            $("#editID").val(keyID);
+            $("#edit_discount").val(keyDiscount);
+            $("#edit_points").val(keyPoints);
+            $("#edit_name").val(keyType);
+            $("#edit_name").material_select();
+        });
+    });   
+</script>
 @endsection
 
 @section('title1')
@@ -24,7 +40,7 @@ Manage Account Type
         <a class="modal-trigger waves-effect waves-light btn blue darken-2" href="#addBtn"><i class="material-icons left">add</i>Add Discount</a>
     </div>
 
-    <table class="centered">
+    <table id="tableOutput" class="centered">
       	<thead>
         	<tr>
         		<th>Manage</th>
@@ -34,19 +50,24 @@ Manage Account Type
         	</tr>
 		</thead>
 		<tbody>
+      @foreach($results as $key => $result)
         	<tr>
-        		<td>	<form action="/" method="POST"><input type="hidden" name="" value="{{ csrf_token() }}">
+        		<td>	<form action="/confirmDiscount" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
 	         		<div class="center">
-						<input type="hidden" class="items" id="" name="" value="">
-							<button type="button" id="" value="" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped modal-trigger" data-target="modal3" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
+						<input type="hidden" class="items" id="" name="deleteID" value="{{$result->DiscountID}}">
+							<button type="button" id="{{$key}}" value="" class="edit btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped modal-trigger" data-target="modal3" data-position="top" data-delay="50" data-tooltip="Edit" ><i class="material-icons">edit</i></button>
 
 							<button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent z-depth-5 tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete</i></button>
 					</div>
 				</form></td>
-				<td>Retailer</td>
-				<td>20%</td>
-        <td>100</td>
+				<td>{{$result->accountType->AccountTypeName}}</td>
+				<td>{{$result->Discount}}%</td>
+        <td id="tdpoints{{$key}}">{{$result->RequiredPoints}}</td>
+        <input type="hidden" id="tddisc{{$key}}" value="{{$result->Discount}}">
+        <input type="hidden" id="tdID{{$key}}" value="{{$result->DiscountID}}">
+        <input type="hidden" id="tdtype{{$key}}" value="{{$result->AccountTypeID}}">
         	</tr>
+      @endforeach
 		</tbody>
     </table>
 
@@ -59,25 +80,27 @@ Manage Account Type
           <h4><i class="medium material-icons left">add</i>Discount</h4>
           			<div class="divider"></div>
           	<div class="row">
-    		    <form class="col s12" action="/" method="POST">
+    		    <form class="col s12" action="/confirmDiscount" method="POST">
     		    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="row">
                 	<div class="input-field col s6">
-      					    <select>
-      					      <option value="" disabled selected>Choose Account Type</option>
-      					      <option value="1">Option 1</option>
+      					    <select name="add_Type">
+      					      @foreach($accountTypes as $key => $accountType)
+                        <option value="" disabled selected>Choose Account Type</option>
+                        <option value="{{$accountType->AccountTypeID}}">{{$accountType->AccountTypeName}}</option>
+                      @endforeach
       					    </select>
       					    <label>Account Type</label>
                   </div>
 
                   <div class="input-field col s3">
-      				        <input id="" type="number" class="validate">
+      				        <input id="" type="number" name="add_discount" class="validate">
       				        <label for="">Discount</label>
       				     </div>
 
                    <div class="input-field col s3">
-                      <input id="" type="number" class="validate">
+                      <input id="" type="number" name="add_points" class="validate">
                       <label for="">Required Points</label>
                    </div>
     			       </div>	
@@ -98,32 +121,35 @@ Manage Account Type
           <h4><i class="medium material-icons left">add</i>Discount</h4>
           			<div class="divider"></div>
           	<div class="row">
-    		    <form class="col s12" action="/" method="POST">
+    		    <form class="col s12" action="/confirmDiscount" method="POST">
     		    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" id="editID" name="editID">
 
                 <div class="row">
                   <div class="input-field col s6">
-                    <select>
-                      <option value="" disabled selected>Choose Account Type</option>
-                      <option value="1">Option 1</option>
+                    <select id="edit_name" name="edit_Type">
+                      @foreach($accountTypes as $key => $accountType)
+                        <option value="" disabled selected>Choose Account Type</option>
+                        <option value="{{$accountType->AccountTypeID}}">{{$accountType->AccountTypeName}}</option>
+                      @endforeach
                     </select>
                     <label>Account Type</label>
                   </div>
 
                   <div class="input-field col s3">
-                      <input id="" type="number" class="validate">
-                      <label for="">Discount</label>
+                      <input type="number" id="edit_discount" name="edit_discount" class="validate">
+                      <label for="edit_discount">Discount</label>
                    </div>
 
                    <div class="input-field col s3">
-                      <input id="" type="number" class="validate">
-                      <label for="">Required Points</label>
+                      <input type="number" id="edit_points" name="edit_points" class="validate">
+                      <label for="edit_points">Required Points</label>
                    </div>
                  </div> 
       		</div>
         </div><!--modal content -->
         <div class="modal-footer">
-          <button class="modal-action modal-close white-text waves-effect waves-blue btn-flat blue" type="submit" name="add">
+          <button class="modal-action modal-close white-text waves-effect waves-blue btn-flat blue" type="submit" name="edit">
                   <i class="material-icons left">done</i>Confirm</button></form>
         </div>
       </div>
