@@ -564,11 +564,6 @@ Maintenance
                     <div class="col s6">
                       <input name="1" class="deselectAll btn" type="button" id="deselectAll" value="Deselect All"/>
                     </div>
-
-                    <div class="input-field col s3">
-                    <input id="price" type="number" min="0" class="validate">
-                    <label for="price">Price</label>
-                  </div>
                   </div>
                   <table>
                     <thead>
@@ -1008,13 +1003,22 @@ Maintenance
               </div><!--row-->
             </div>
 
+              <div class="row">
+                <div class="col s7 push-s4">
+                  <div class="input-field col s7">
+                    <input id="price" type="number" min="0" class="validate">
+                    <label for="price">Price</label>
+                  </div>
+                </div>
+              </div>
 
-            <div class="center">
-              <button class="btn waves-effect waves-light blue darken-2 white-text" type="submit" name="add">
-              <i class="material-icons left">done</i>Confirm</button>
-              <div class="row"></div><div class="row"></div>
+            <div class="row">
+              <div class="center">
+                  <button class="btn waves-effect waves-light blue darken-2 white-text" type="submit" name="add">
+                  <i class="material-icons left">done</i>Confirm</button>
+                <div class="row"></div><div class="row"></div>
+              </div>
             </div>
-
           </form>   
     </div>
   </div><!-- tab-->
