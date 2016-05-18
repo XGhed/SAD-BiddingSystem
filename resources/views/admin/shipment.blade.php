@@ -100,12 +100,16 @@ Maintenance
               
               <div class="row">
                 @foreach($provinces as $key => $province)
-                @if($province->region->RegionID == '1')
-                  <div class="col s3">
-                    <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                    <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-                  </div>
-                @endif
+                  @if($province->region->RegionID == '1')
+                    <div class="col s3">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" class="1" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @else
+                        <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @endif
+                        <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                    </div>
+                  @endif
                 @endforeach
               </div>
             </div><!-- Region1 -->
@@ -125,13 +129,17 @@ Maintenance
                 @foreach($provinces as $key => $province)
                 @if($province->region->RegionID == '2')
                   <div class="col s3">
-                    <input type="checkbox" name="add_prov[]" class="2" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" checked="checked" name="add_prov[]" class="2" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @else
+                      <input type="checkbox" name="add_prov[]" class="2" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @endif
                     <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                   </div>
                 @endif
                 @endforeach
               </div>
-            </div><!-- Region2 -->
+            </div><!-- Regio21 -->
 
             <div id="region3" class="col s12">
               <div class="row"></div>
@@ -148,7 +156,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                 @if($province->region->RegionID == '3')
                   <div class="col s3">
-                    <input type="checkbox" name="add_prov[]" class="3" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" checked="checked" name="add_prov[]" class="3" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @else
+                      <input type="checkbox" name="add_prov[]" class="3" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @endif
                     <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                   </div>
                 @endif
@@ -171,13 +183,17 @@ Maintenance
                 @foreach($provinces as $key => $province)
                 @if($province->region->RegionID == '4')
                   <div class="col s3">
-                    <input type="checkbox" name="add_prov[]" class="4A" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" checked="checked" name="add_prov[]" class="4A" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @else
+                      <input type="checkbox" name="add_prov[]" class="4A" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @endif
                     <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                   </div>
                 @endif
                 @endforeach
               </div>
-            </div><!-- Region1 -->
+            </div><!-- Region4A -->
 
             <div id="region4B" class="col s12">
               <div class="row"></div>
@@ -194,7 +210,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                 @if($province->region->RegionID == '17')
                   <div class="col s3">
-                    <input type="checkbox" name="add_prov[]" class="4B" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" checked="checked" name="add_prov[]" class="4B" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @else
+                      <input type="checkbox" name="add_prov[]" class="4B" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @endif
                     <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                   </div>
                 @endif
@@ -217,7 +237,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                 @if($province->region->RegionID == '5')
                   <div class="col s3">
-                    <input type="checkbox" name="add_prov[]" class="5" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" checked="checked" name="add_prov[]" class="5" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @else
+                      <input type="checkbox" name="add_prov[]" class="5" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @endif
                     <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                   </div>
                 @endif
@@ -240,7 +264,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                 @if($province->region->RegionID == '6')
                   <div class="col s3">
-                    <input type="checkbox" name="add_prov[]" class="6" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" checked="checked" name="add_prov[]" class="6" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @else
+                      <input type="checkbox" name="add_prov[]" class="6" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @endif
                     <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                   </div>
                 @endif
@@ -263,7 +291,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                 @if($province->region->RegionID == '7')
                   <div class="col s3">
-                    <input type="checkbox" name="add_prov[]" class="7" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" checked="checked" name="add_prov[]" class="7" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @else
+                      <input type="checkbox" name="add_prov[]" class="7" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @endif
                     <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                   </div>
                 @endif
@@ -286,7 +318,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                 @if($province->region->RegionID == '8')
                   <div class="col s3">
-                    <input type="checkbox" name="add_prov[]" class="8" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" checked="checked" name="add_prov[]" class="8" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @else
+                      <input type="checkbox" name="add_prov[]" class="8" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @endif
                     <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                   </div>
                 @endif
@@ -309,7 +345,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                 @if($province->region->RegionID == '9')
                   <div class="col s3">
-                    <input type="checkbox" name="add_prov[]" class="9" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" checked="checked" name="add_prov[]" class="9" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @else
+                      <input type="checkbox" name="add_prov[]" class="9" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                    @endif
                     <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                   </div>
                 @endif
@@ -334,7 +374,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                   @if($province->region->RegionID == '10')
                     <div class="col s3">
-                      <input type="checkbox" name="add_prov[]" class="10" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" class="10" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @else
+                        <input type="checkbox" name="add_prov[]" class="10" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @endif
                       <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                     </div>
                   @endif
@@ -357,7 +401,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                   @if($province->region->RegionID == '11')
                     <div class="col s3">
-                      <input type="checkbox" name="add_prov[]" class="11" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" class="11" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @else
+                        <input type="checkbox" name="add_prov[]" class="11" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @endif
                       <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                     </div>
                   @endif
@@ -382,7 +430,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                   @if($province->region->RegionID == '12')
                     <div class="col s3">
-                      <input type="checkbox" name="add_prov[]" class="12" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" class="12" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @else
+                        <input type="checkbox" name="add_prov[]" class="12" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @endif
                       <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                     </div>
                   @endif
@@ -407,7 +459,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                   @if($province->region->RegionID == '13')
                     <div class="col s3">
-                      <input type="checkbox" name="add_prov[]" class="NCR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" class="NCR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @else
+                        <input type="checkbox" name="add_prov[]" class="NCR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @endif
                       <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                     </div>
                   @endif
@@ -432,7 +488,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                   @if($province->region->RegionID == '14')
                     <div class="col s3">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" checked="checked" name="add_prov[]" class="CAR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @else
                       <input type="checkbox" name="add_prov[]" class="CAR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @endif
                       <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                     </div>
                   @endif
@@ -457,7 +517,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                   @if($province->region->RegionID == '15')
                     <div class="col s3">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" checked="checked" name="add_prov[]" class="ARMM" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @else
                       <input type="checkbox" name="add_prov[]" class="ARMM" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @endif
                       <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                     </div>
                   @endif
@@ -482,7 +546,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                   @if($province->region->RegionID == '16')
                     <div class="col s3">
-                      <input type="checkbox" name="add_prov[]" class="13" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" class="13" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @else
+                        <input type="checkbox" name="add_prov[]" class="13" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @endif
                       <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                     </div>
                   @endif
@@ -507,7 +575,11 @@ Maintenance
                 @foreach($provinces as $key => $province)
                   @if($province->region->RegionID == '18')
                     <div class="col s3">
-                      <input type="checkbox" name="add_prov[]" class="18" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" class="18" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @else
+                        <input type="checkbox" name="add_prov[]" class="18" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
+                      @endif
                       <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
                     </div>
                   @endif
@@ -528,7 +600,7 @@ Maintenance
     </div>
     <!--tab 2-->
     <div id="test2" class="col s12">
-          <form class="col s12" id="editForm" action="/confirmShipment" method="POST">
+          <form class="col s12" id="editForm" action="/updateShipmentFee" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div style="margin: 0 50px 0 50px;">
               <div class="row">
@@ -570,6 +642,7 @@ Maintenance
                       <tr>
                           <th>province</th>
                           <th>Price</th>
+                          <th>Company Deliver</th>
                       </tr>
                     </thead>
 
@@ -580,13 +653,25 @@ Maintenance
                         <td>
                           <div class="row">
                               <div class="col s3">
-                                <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                                @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                               </div>
                           </div>
                         </td>
                         <td>
-                          800.00
+                          {{$province->shipment->ShipmentFee}}
+                        </td>
+                        <td>
+                          @if(in_array($province->ProvinceID, $companyProvinces))
+                            Yes
+                          @else
+                            No
+                          @endif
                         </td>
                       </tr>
                       @endif
@@ -620,13 +705,25 @@ Maintenance
                         <td>
                           <div class="row">
                               <div class="col s3">
-                                <input type="checkbox" name="add_prov[]" class="2" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                                @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="2 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="2" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                             </div>
                           </div>
                         </td>
                         <td>
-                          800.00
+                          {{$province->shipment->ShipmentFee}}
+                        </td>
+                        <td>
+                          @if(in_array($province->ProvinceID, $companyProvinces))
+                            Yes
+                          @else
+                            No
+                          @endif
                         </td>
                       </tr>
                       @endif
@@ -659,14 +756,24 @@ Maintenance
                       <tr>
                         <td>
                           <div class="row">
-                              <div class="col s3">
-                                <input type="checkbox" name="add_prov[]" class="3" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
-                              </div>
+                              @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="3 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="3" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                           </div>
                         </td>
                         <td>
-                          800.00
+                          {{$province->shipment->ShipmentFee}}
+                        </td>
+                        <td>
+                          @if(in_array($province->ProvinceID, $companyProvinces))
+                            Yes
+                          @else
+                            No
+                          @endif
                         </td>
                       </tr>
                       @endif
@@ -700,13 +807,25 @@ Maintenance
                         <td>
                           <div class="row">
                               <div class="col s3">
-                                <input type="checkbox" name="add_prov[]" class="4A" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                                @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="4A companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="4A" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                               </div>
                           </div>
                         </td>
                         <td>
-                          800.00
+                          {{$province->shipment->ShipmentFee}}
+                        </td>
+                        <td>
+                          @if(in_array($province->ProvinceID, $companyProvinces))
+                            Yes
+                          @else
+                            No
+                          @endif
                         </td>
                       </tr>
                       @endif
@@ -740,13 +859,25 @@ Maintenance
                         <td>
                           <div class="row">
                               <div class="col s3">
-                                <input type="checkbox" name="add_prov[]" class="4B" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                                <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                                @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="4B companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="4B" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                               </div>
                           </div>
                         </td>
                         <td>
-                          800.00
+                          {{$province->shipment->ShipmentFee}}
+                        </td>
+                        <td>
+                          @if(in_array($province->ProvinceID, $companyProvinces))
+                            Yes
+                          @else
+                            No
+                          @endif
                         </td>
                       </tr>
                       @endif
@@ -780,13 +911,25 @@ Maintenance
                         <td>
                           <div class="row">
                       <div class="col s3">
-                        <input type="checkbox" name="add_prov[]" class="5" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                        <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="5 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="5" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                       </div>
                           </div>
                         </td>
                         <td>
-                          800.00
+                          {{$province->shipment->ShipmentFee}}
+                        </td>
+                        <td>
+                          @if(in_array($province->ProvinceID, $companyProvinces))
+                            Yes
+                          @else
+                            No
+                          @endif
                         </td>
                       </tr>
                       @endif
@@ -820,13 +963,25 @@ Maintenance
                         <td>
                           <div class="row">
                             <div class="col s3">
-                              <input type="checkbox" name="add_prov[]" class="6" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                              @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="6 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="6" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                             </div>
                           </div>
                         </td>
                         <td>
-                          800.00
+                          {{$province->shipment->ShipmentFee}}
+                        </td>
+                        <td>
+                          @if(in_array($province->ProvinceID, $companyProvinces))
+                            Yes
+                          @else
+                            No
+                          @endif
                         </td>
                       </tr>
                       @endif
@@ -860,13 +1015,25 @@ Maintenance
                         <td>
                           <div class="row">
                             <div class="col s3">
-                              <input type="checkbox" name="add_prov[]" class="7" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                              @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="7 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="7" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                             </div>
                           </div>
                         </td>
                         <td>
-                          800.00
+                          {{$province->shipment->ShipmentFee}}
+                        </td>
+                        <td>
+                          @if(in_array($province->ProvinceID, $companyProvinces))
+                            Yes
+                          @else
+                            No
+                          @endif
                         </td>
                       </tr>
                       @endif
@@ -900,13 +1067,25 @@ Maintenance
                         <td>
                           <div class="row">
                             <div class="col s3">
-                              <input type="checkbox" name="add_prov[]" class="8" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                              @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="8 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="8" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                             </div>
                           </div>
                         </td>
                         <td>
-                          800.00
+                          {{$province->shipment->ShipmentFee}}
+                        </td>
+                        <td>
+                          @if(in_array($province->ProvinceID, $companyProvinces))
+                            Yes
+                          @else
+                            No
+                          @endif
                         </td>
                       </tr>
                       @endif
@@ -940,13 +1119,25 @@ Maintenance
                         <td>
                           <div class="row">
                             <div class="col s3">
-                              <input type="checkbox" name="add_prov[]" class="9" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                              @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="9 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="9" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                             </div>
                           </div>
                         </td>
                         <td>
-                          800.00
+                          {{$province->shipment->ShipmentFee}}
+                        </td>
+                        <td>
+                          @if(in_array($province->ProvinceID, $companyProvinces))
+                            Yes
+                          @else
+                            No
+                          @endif
                         </td>
                       </tr>
                       @endif
@@ -981,13 +1172,25 @@ Maintenance
                       <tr>
                         <td>
                           <div class="row"><div class="col s3">
-                          <input type="checkbox" name="add_prov[]" class="10" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                          <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                            @if(in_array($province->ProvinceID, $companyProvinces))
+                            <input type="checkbox" name="add_prov[]" class="10 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                            <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                            @else
+                            <input type="checkbox" name="add_prov[]" class="10" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                            <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                            @endif
                         </div>
                           </div>
                         </td>
                         <td>
-                          800.00
+                          {{$province->shipment->ShipmentFee}}
+                        </td>
+                        <td>
+                          @if(in_array($province->ProvinceID, $companyProvinces))
+                            Yes
+                          @else
+                            No
+                          @endif
                         </td>
                       </tr>
                       @endif
@@ -1020,12 +1223,24 @@ Maintenance
                         <tr>
                           <td>
                             <div class="col s3">
-                              <input type="checkbox" name="add_prov[]" class="11" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                              @if(in_array($province->ProvinceID, $companyProvinces))
+                              <input type="checkbox" name="add_prov[]" class="11 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                              @else
+                              <input type="checkbox" name="add_prov[]" class="11" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                              @endif
                             </div>
                           </td>
                           <td>
-                            800.00
+                            {{$province->shipment->ShipmentFee}}
+                          </td>
+                          <td>
+                            @if(in_array($province->ProvinceID, $companyProvinces))
+                              Yes
+                            @else
+                              No
+                            @endif
                           </td>
                         </tr>
                         @endif
@@ -1058,12 +1273,24 @@ Maintenance
                         <tr>
                           <td>
                             <div class="col s3">
-                              <input type="checkbox" name="add_prov[]" class="12" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                              @if(in_array($province->ProvinceID, $companyProvinces))
+                              <input type="checkbox" name="add_prov[]" class="12 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                              @else
+                              <input type="checkbox" name="add_prov[]" class="12" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                              @endif
                             </div>
                           </td>
                           <td>
-                            800.00
+                            {{$province->shipment->ShipmentFee}}
+                          </td>
+                            <td>
+                            @if(in_array($province->ProvinceID, $companyProvinces))
+                              Yes
+                            @else
+                              No
+                            @endif
                           </td>
                         </tr>
                         @endif
@@ -1096,12 +1323,24 @@ Maintenance
                         <tr>
                           <td>
                             <div class="col s3">
-                              <input type="checkbox" name="add_prov[]" class="NCR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                              @if(in_array($province->ProvinceID, $companyProvinces))
+                              <input type="checkbox" name="add_prov[]" class="NCR companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                              @else
+                              <input type="checkbox" name="add_prov[]" class="NCR" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                              <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                              @endif
                             </div>
                           </td>
                           <td>
-                            800.00
+                            {{$province->shipment->ShipmentFee}}
+                          </td>
+                            <td>
+                            @if(in_array($province->ProvinceID, $companyProvinces))
+                              Yes
+                            @else
+                              No
+                            @endif
                           </td>
                         </tr>
                         @endif
@@ -1134,12 +1373,24 @@ Maintenance
                         <tr>
                           <td>
                             <div class="col s3">
-                              <input type="checkbox" name="add_prov[]" class="CAR" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                              @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="CAR companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="CAR" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                             </div>
                           </td>
                           <td>
-                            800.00
+                            {{$province->shipment->ShipmentFee}}
+                          </td>
+                          <td>
+                            @if(in_array($province->ProvinceID, $companyProvinces))
+                              Yes
+                            @else
+                              No
+                            @endif
                           </td>
                         </tr>
                         @endif
@@ -1172,12 +1423,24 @@ Maintenance
                         <tr>
                           <td>
                             <div class="col s3">
-                              <input type="checkbox" name="add_prov[]" class="ARMM" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                              @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="ARMM companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="ARMM" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                             </div>
                           </td>
                           <td>
-                            800.00
+                            {{$province->shipment->ShipmentFee}}
+                          </td>
+                          <td>
+                            @if(in_array($province->ProvinceID, $companyProvinces))
+                              Yes
+                            @else
+                              No
+                            @endif
                           </td>
                         </tr>
                         @endif
@@ -1210,12 +1473,24 @@ Maintenance
                         <tr>
                           <td>
                             <div class="col s3">
-                              <input type="checkbox" name="add_prov[]" class="13" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                              @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="13 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="13" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                             </div>
                           </td>
                           <td>
-                            800.00
+                            {{$province->shipment->ShipmentFee}}
+                          </td>
+                          <td>
+                            @if(in_array($province->ProvinceID, $companyProvinces))
+                              Yes
+                            @else
+                              No
+                            @endif
                           </td>
                         </tr>
                         @endif
@@ -1248,12 +1523,24 @@ Maintenance
                         <tr>
                           <td>
                             <div class="col s3">
-                              <input type="checkbox" name="add_prov[]" class="18" id="{{$province->ProvinceID}}" value="{{$province->ProvinceID}}" />
-                              <label for="{{$province->ProvinceID}}" class="black-text">{{$province->ProvinceName}}</label>
+                              @if(in_array($province->ProvinceID, $companyProvinces))
+                                <input type="checkbox" name="add_prov[]" class="18 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @else
+                                <input type="checkbox" name="add_prov[]" class="18" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                                <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                                @endif
                             </div>
                           </td>
                           <td>
-                            800.00
+                            {{$province->shipment->ShipmentFee}}
+                          </td>
+                          <td>
+                            @if(in_array($province->ProvinceID, $companyProvinces))
+                              Yes
+                            @else
+                              No
+                            @endif
                           </td>
                         </tr>
                         @endif
@@ -1267,7 +1554,7 @@ Maintenance
               <div class="row">
                 <div class="col s7 push-s4">
                   <div class="input-field col s7">
-                    <input id="price" type="number" min="0" class="validate">
+                    <input id="price" type="number" min="0" name="add_price" class="validate">
                     <label for="price">Price</label>
                   </div>
                 </div>

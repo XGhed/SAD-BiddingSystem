@@ -14,10 +14,17 @@ class ShipmentController extends Controller
 {
     public function manageShipment(){
 
-       $results = App\Models\Admin\ThirdParty::all();
+       $results = App\Models\Admin\Shipment::all();
        $provinces = App\Models\Admin\Province::orderBy('ProvinceName')->get();
+       $comp_Prov = App\Models\Admin\Shipment::where('CompanyCourier', true)->get();
 
-       return view('admin.shipment')->with ('results', $results)->with ('provinces', $provinces);
+       $companyProvinces = array();
+
+       foreach ($comp_Prov as $key => $c) {
+           array_push($companyProvinces, $c->ProvinceID);
+       }
+
+       return view('admin.shipment')->with ('results', $results)->with ('provinces', $provinces)->with ('companyProvinces', $companyProvinces);
        //return view('shipment')->with ('provinces', $provinces);
     }
 /*
@@ -136,7 +143,7 @@ class ShipmentController extends Controller
             $this->resetCompanyCourier();
 
             foreach ($request->input('add_prov') as $key => $add_prov) {
-                $shipment = new App\Models\Admin\Shipment;echo($add_prov);
+                $shipment = new App\Models\Admin\Shipment;
                 $shipment = App\Models\Admin\Shipment::where('ProvinceID', $add_prov)->first();
                 
                 $shipment->CompanyCourier = true;
@@ -146,6 +153,25 @@ class ShipmentController extends Controller
         } catch (Exception $e) {
             
         }
+
+        return redirect('shipment');
+    }
+
+    public function updateShipmentFee(Request $request){ 
+        try {
+            foreach ($request->input('add_prov') as $key => $add_prov) {
+                $shipment = new App\Models\Admin\Shipment;
+                $shipment = App\Models\Admin\Shipment::where('ProvinceID', $add_prov)->first();
+                
+                $shipment->ShipmentFee = trim($request->input('add_price'));
+                $shipment->save();
+            }
+            
+        } catch (Exception $e) {
+            
+        }
+
+        return redirect('shipment');
     }
 
     function fillTableFirstRun(){

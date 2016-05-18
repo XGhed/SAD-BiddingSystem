@@ -183,7 +183,7 @@
             @endif
             @endforeach
           </div>
-        </div><!-- Region1 -->
+        </div><!-- Region4 -->
 
         <div id="region4B" class="col s12">
           <div class="row"></div>

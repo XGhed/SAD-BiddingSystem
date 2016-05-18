@@ -19,4 +19,9 @@ class Province extends Model
 	{
 	    return $this->hasOne('App\Models\Admin\Region', 'RegionID', 'RegionID');
 	}
+
+	public function shipment()
+	{
+	    return $this->hasOne('App\Models\Admin\Shipment', 'ProvinceID', 'ProvinceID');
+	}
 }

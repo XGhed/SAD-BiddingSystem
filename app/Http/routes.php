@@ -47,6 +47,8 @@ Route::post('/updateReward', 'DiscountController@updateReward');
 
 Route::post('/updateShipment', 'ShipmentController@updateShipment');
 
+Route::post('/updateShipmentFee', 'ShipmentController@updateShipmentFee');
+
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');
