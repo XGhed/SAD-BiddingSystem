@@ -528,7 +528,7 @@ Maintenance
     </div>
     <!--tab 2-->
     <div id="test2" class="col s12">
-          <form class="col s12" id="addForm" action="/confirmShipment" method="POST">
+          <form class="col s12" id="editForm" action="/confirmShipment" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div style="margin: 0 50px 0 50px;">
               <div class="row">
