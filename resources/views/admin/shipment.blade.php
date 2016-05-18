@@ -14,17 +14,6 @@ Maintenance
 
 @section('jqueryscript')
 <script type="text/javascript">
-  $(function(){   
-
-    $("#tableOutput").DataTable({
-      "lengthChange": false,
-      "pageLength": 5,
-      "columns": [
-        { "searchable": false },
-        null,
-        null
-      ] 
-    });
 
      $(function(){   
           $('#addForm').on('click', '.selectAll', function(){
@@ -54,6 +43,7 @@ Maintenance
           function showScroll(x) {
               x.style.overflow = "auto";
           }
+
 </script>
 @endsection
 
@@ -69,7 +59,7 @@ Maintenance
       </ul>
     </div>
     <div id="companyCour" class="col s12">
-      <form class="col s12" id="addForm" action="/confirmShipment" method="POST">
+      <form class="col s12" id="addForm" action="/updateShipment" method="POST">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div style="margin: 0 50px 0 50px;">
           <div class="row">

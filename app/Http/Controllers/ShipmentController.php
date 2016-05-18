@@ -20,7 +20,7 @@ class ShipmentController extends Controller
        return view('admin.shipment')->with ('results', $results)->with ('provinces', $provinces);
        //return view('shipment')->with ('provinces', $provinces);
     }
-
+/*
     public function addShipment(){
 
        $results = App\Models\Admin\ThirdParty::all();
@@ -127,6 +127,50 @@ class ShipmentController extends Controller
         } catch (Exception $e) {
             Session::put('message', '-1');
             return redirect('shipment');
+        }
+    }
+*/
+    public function updateShipment(Request $request){ 
+        try {
+            $this->fillTableFirstRun();
+            $this->resetCompanyCourier();
+
+            foreach ($request->input('add_prov') as $key => $add_prov) {
+                $shipment = new App\Models\Admin\Shipment;echo($add_prov);
+                $shipment = App\Models\Admin\Shipment::where('ProvinceID', $add_prov)->first();
+                
+                $shipment->CompanyCourier = true;
+                $shipment->save();
+            }
+            
+        } catch (Exception $e) {
+            
+        }
+    }
+
+    function fillTableFirstRun(){
+        $provinces = new App\Models\Admin\Province;
+        $shipments = new App\Models\Admin\Shipment;
+
+        $shipments = App\Models\Admin\Shipment::all();
+        $provinces = App\Models\Admin\Province::all();
+
+        if (count($shipments) == 0){
+            foreach ($provinces as $key => $province) {
+                $shipment = new App\Models\Admin\Shipment;
+                $shipment->ProvinceID = $province->ProvinceID;
+                $shipment->save();
+            }
+        }
+    }
+
+    function resetCompanyCourier(){
+        $shipments = new App\Models\Admin\Shipment;
+        $shipments = App\Models\Admin\Shipment::all();
+
+        foreach ($shipments as $key => $shipment) {
+            $shipment->CompanyCourier = false;
+            $shipment->save();
         }
     }
 }

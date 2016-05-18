@@ -45,6 +45,8 @@ Route::post('/confirmRegister', 'RegisterController@confirmRegister');
 
 Route::post('/updateReward', 'DiscountController@updateReward');
 
+Route::post('/updateShipment', 'ShipmentController@updateShipment');
+
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');
