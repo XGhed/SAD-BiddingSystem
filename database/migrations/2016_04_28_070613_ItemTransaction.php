@@ -17,7 +17,9 @@ class ItemTransaction extends Migration
             $table->string('color');
             $table->string('image_path');
             $table->datetime('TransacDate');
+            $table->integer('SupplierID')->unsigned();
             $table->integer('ItemModelID')->unsigned();
+            $table->foreign('SupplierID')->references('SupplierID')->on('Supplier');
             $table->foreign('ItemModelID')->references('ItemModelID')->on('ItemModels');
             $table->softDeletes();
         });
