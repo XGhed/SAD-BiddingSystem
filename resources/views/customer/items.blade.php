@@ -26,8 +26,36 @@
 @section('content')
 	<div style="margin: 35px 0 0 0" class="ui container segment">
 		<h1 class="ui center aligned header">View Items</h1>
+		<div class="ui grid">
+				<div class="equal width fields">
+						<div class="field">
+						 	<div class="ui sub header">Sort By</div>
+							<div class="ui fluid search normal selection dropdown">
+								<input type="hidden" name="province" required>
+									<i class="dropdown icon"></i>
+								<div class="default text">Choose</div>
+									<div class="menu">
+										<div class="item" value="0">Category</div>
+										<div class="item" value="1">Subcategory</div>
+									</div>
+							</div>
+						</div>
+						<div class="field">
+						 	<div class="ui sub header">City</div>
+							<div class="ui fluid search normal selection dropdown">
+								<input type="hidden" name="city" required>
+									<i class="dropdown icon"></i>
+								<div class="default text">Select City</div>
+									<div class="menu">
+										<div class="item" value="0">Santiago</div>
+										<div class="item" value="1">Roxas</div>
+									</div>
+							</div>
+						</div>
+			</div>
+		</div>
 		<div class="ui divider"></div>
-		<div class="ui two column equal width relaxed grid">
+		<div class="ui three column equal width relaxed grid">
 		  	<div class="stretched row">
 			    <div class="three wide compact column">
 			        <div class="ui vertical menu">
@@ -79,6 +107,8 @@
 	</div>
 	
 <script>
-
+$('.ui.normal.dropdown')
+  .dropdown()
+;
 </script>
 @endsection

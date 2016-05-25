@@ -190,7 +190,7 @@ $(function(){
 							    </div>
 							    <div class="row">
 									<div class="input-field col s10">
-										<input id="add_desc" type="text" class="validate" name="add_desc" length="30" maxlength="30" REQUIRED>
+										<input id="add_desc" type="text" class="validate" name="add_desc" length="30" maxlength="30">
 										<label for="add_desc">Description</label>
 									</div>
 								</div>
@@ -221,7 +221,7 @@ $(function(){
 							    </div>
 							    <div class="row">
 									<div class="input-field col s10">
-										<input value=" " id="edit_desc1" type="text" class="validate" name="edit_desc" length="30" maxlength="30" REQUIRED>
+										<input value=" " id="edit_desc1" type="text" class="validate" name="edit_desc" length="30" maxlength="30">
 										<label class="active" for="add_desc">Description</label>
 									</div>
 								</div>
@@ -341,7 +341,7 @@ $(function(){
 
 												<div class="row">
 												    <div class="input-field col s10">
-												        <input id="add_desc" type="text" class="validate" name="add_desc" length="30" maxlength="30" REQUIRED>
+												        <input id="add_desc" type="text" class="validate" name="add_desc" length="30" maxlength="30">
 												        <label for="add_desc">Description</label>
 													</div>
 												</div>
@@ -385,7 +385,7 @@ $(function(){
 							    </div>
 							    <div class="row">
 							       	<div class="input-field col s10">
-							        	<input value=" " type="text" class="validate" name="edit_desc" id="edit_desc2" length="30" maxlength="30" REQUIRED>
+							        	<input value=" " type="text" class="validate" name="edit_desc" id="edit_desc2" length="30" maxlength="30">
 							         	<label class="active" for="edit_desc2">Description</label>
 							        </div>
 						    	</div>

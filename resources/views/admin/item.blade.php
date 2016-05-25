@@ -7,7 +7,7 @@ Manage Items
 
 @section('jqueryscript')
 <script type="text/javascript">
-  $(function(){   
+  $(function(){
 
       $("#tableOutput").DataTable({
         "lengthChange": false,
@@ -70,7 +70,7 @@ Manage Items
       });
   });
 
-  $(function(){   
+  $(function(){
         $('#modal3').on('change', '#edit_cat', function(){
             $.get('/subcatOptions?catID=' + $("#edit_cat").val(), function(data){
             var $selectDropdown = 
@@ -89,7 +89,7 @@ Manage Items
         });
       });
 
-  $(function(){   
+  $(function(){
           $("#cat").change(function(){
 
             $.get('/subcatOptions?catID=' + $("#cat").val(), function(data){
@@ -140,14 +140,14 @@ Manage Items
 
 @section('content')
 
-<div class="right">
+  <div class="row">
+        <div class="right">
               <div class="row"></div>
           <a class="modal-trigger waves-effect waves-light blue darken-2 btn z-depth-5" href="#modal1"><i class="material-icons left">add</i>Add Item</a>
         </div>
+  </div>
 
-  
-
-<table class="highlight responsive-table centered" id="tableOutput">
+  <table class="highlight responsive-table centered" id="tableOutput">
         <thead>
           <tr>
               <th style="cursor: default;">Manage</th>

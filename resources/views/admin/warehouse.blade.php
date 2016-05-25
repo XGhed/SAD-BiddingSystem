@@ -209,7 +209,7 @@ Maintenance
 
 				    <div class="row">
               <div class="input-field col s6">
-                <input id="" type="text" class="validate" name="add_barangay_street" length="30" maxlength="30" REQUIRED>
+                <input id="" type="text" class="validate" name="add_barangay_street" REQUIRED>
                 <label for="">Warehouse Address</label>
               </div>
             </div>  
@@ -249,7 +249,7 @@ Maintenance
 
             <div class="row">
               <div class="input-field col s8">
-                <input id="edit_barangaystreet" type="text" class="validate active" value=" " name="edit_barangaystreet" length="30" maxlength="30" REQUIRED>
+                <input id="edit_barangaystreet" type="text" class="validate active" value=" " name="edit_barangaystreet" REQUIRED>
                 <label for="">Warehouse Address</label>
               </div>
             </div>  

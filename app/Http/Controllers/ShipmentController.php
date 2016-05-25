@@ -14,6 +14,8 @@ class ShipmentController extends Controller
 {
     public function manageShipment(){
 
+       $this->fillTableFirstRun();
+
        $results = App\Models\Admin\Shipment::all();
        $provinces = App\Models\Admin\Province::orderBy('ProvinceName')->get();
        $comp_Prov = App\Models\Admin\Shipment::where('CompanyCourier', true)->get();
@@ -139,7 +141,6 @@ class ShipmentController extends Controller
 */
     public function updateShipment(Request $request){ 
         try {
-            $this->fillTableFirstRun();
             $this->resetCompanyCourier();
 
             foreach ($request->input('add_prov') as $key => $add_prov) {

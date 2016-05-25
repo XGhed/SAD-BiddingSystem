@@ -17,10 +17,11 @@ class InventoryController extends Controller
     public function manageItem(){
 
        $results = App\Models\Admin\Item::all();
+       $suppliers = App\Models\Admin\Supplier::all();
        $itemModels = App\Models\Admin\ItemModel::all();
        $warehouses = App\Models\Admin\Warehouse::all();
 
-       return view('admin.inventory')->with ('results', $results)->with ('itemModels', $itemModels)->with ('warehouses', $warehouses);
+       return view('admin.inventory')->with ('results', $results)->with ('itemModels', $itemModels)->with ('warehouses', $warehouses)->with ('suppliers', $suppliers);
     }
 
     public function confirmItem(Request $request){
@@ -63,6 +64,7 @@ class InventoryController extends Controller
                 $inventory = new App\Models\Admin\Inventory;
 
                 $item->ItemModelID = trim($request->input('itemModel'));
+                $item->SupplierID = trim($request->input('add_supplier'));
                 $item->size = trim($request->input('add_size'));
                 $item->color = trim($request->input('add_color'));
                 $item->image_path = $filepath.$filename;
@@ -95,6 +97,7 @@ class InventoryController extends Controller
             $item = new App\Models\Admin\ItemModel;
             $item = App\Models\Admin\ItemModel::find($request->input('edit_ID'));
 
+            $item->SupplierID = trim($request->input('edit_supplier'));
             $item->ItemName = trim($request->input('edit_name'));
             $item->SubCategoryID = trim($request->input('edit_sub'));
             $item->size = trim($request->input('edit_size'));

@@ -7,7 +7,8 @@ Inventory
 
 @section('title1')
 <h2>
-<a class="col pull-s3 white-text" style="font-size: 28px" href="/inventory">Inventory</a>
+  <a class="left col s6 push-s1 white-text" style="font-size: 28px" href="/inventory">Transaction /</a>
+  <a class="col pull-s3 white-text" style="font-size: 28px" href="/inventory">Inventory</a>
 </h2>
 @endsection
 
@@ -40,38 +41,13 @@ Inventory
         <a class="modal-trigger waves-effect waves-light btn green darken-2" href="#addBtn"><i class="material-icons left">add</i>Add Items</a>
       </div>
 
-      <div class="input-field col s2">
-        <select name="add_cat" id="cat">
-          <option value="" disabled selected>Sort by</option>
-          <option value="">Color</option>
-          <option value="">Category</option>
-          <option value="">Size</option>
-        </select>
-        <label>Sort By:</label>
-      </div>
-      <div class="input-field col s2">
-        <select name="add_cat" id="cat">
-          <option value="" disabled selected>Sort By:</option>
-          <option value=""></option>
-        </select>
-        <label>Sort By:</label>
-      </div>
-      <div class="input-field col s2">
-        <select name="add_cat" id="cat">
-          <option value="" disabled selected>Category</option>
-          <option value=""></option>
-        </select>
-        <label>Category</label>
-      </div>
-    </div>
-
-    <div class="switch right">
+    <!-- <div class="switch right">
       <label>
             <input type="checkbox" id="1" checked>
             <input type="checkbox" id="0" >
         <span class="lever"></span>
       </label>
-    </div>
+    </div> -->
 
     <table class="centered highlight responsive-table">
         <thead>
@@ -83,6 +59,7 @@ Inventory
               <th>Color</th>
               <th>Warehouse</th>
               <th>Category</th>
+              <th>Supplier</th>
               <th>Quantity</th>
           </tr>
         </thead>
@@ -124,6 +101,9 @@ Inventory
               @endforeach
           	</td>
 
+            <td>
+              {{$result->supplier->SupplierName}}
+            </td>
           	<td href="#history" class="modal-trigger" style="cursor:pointer">
           		{{$result->itemModel->subCategory->category->CategoryName}}
           	</td>
@@ -207,6 +187,15 @@ Inventory
                       <input id="add_quantity" name="add_quantity" type="text" class="validate">
                       <label for="add_quantity">Quantity</label>
                   </div>
+                  <div class="input-field col s4">
+                        <select name="add_supplier">
+                          @foreach($suppliers as $key => $supplier)
+                        <option value="" name="add_supplier" selected>Supplier</option>
+                        <option value="{{$supplier->SupplierID}}">{{$supplier->SupplierName}}</option>
+                      @endforeach
+                      </select>
+                      <label>Supplier</label>
+                    </div>
                   </div>
 
                   <div class="row" style="display: none" id="defectDesc">
@@ -344,6 +333,18 @@ Inventory
                     </div>              
                 </div>
 
+                <div class="row">
+
+                  <div class="input-field col s4">
+                        <select name="">
+                          @foreach($suppliers as $key => $upplier)
+                        <option value="" name="edit_supplier" selected>Item</option>
+                        <option value="{{$supplier->SupplierID}}">{{$supplier->SupplierName}}</option>
+                      @endforeach
+                      </select>
+                      <label>Supplier</label>
+                    </div> 
+                </div>
                 <div class="row">
                   <div class="row">
                     <div class="input-field">

@@ -24,4 +24,9 @@ class Item extends Model
 	{
 	    return $this->hasMany('App\Models\Admin\Inventory', 'ItemID', 'ItemID');
 	}
+
+	public function supplier()
+	{
+	    return $this->hasOne('App\Models\Admin\Supplier', 'SupplierID', 'SupplierID');
+	}
 }
