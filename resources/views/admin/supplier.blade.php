@@ -6,112 +6,112 @@ Maintenance
 @endsection
 
 @section('jqueryscript')
-<script type="text/javascript">
-    $(function (){   
+  <script type="text/javascript">
+      $(function (){   
 
-        $("#tableOutput").DataTable({
-          "lengthChange": false,
-          "pageLength": 5,
-          "columns": [
-            { "searchable": false },
-            null,
-            null,
-            null,
-            null,
-            null
-          ] 
-        });
-        //$('#tdstatus0').prop('checked', true);
-        //alert($('#tdstatus0').val());
+          $("#tableOutput").DataTable({
+            "lengthChange": false,
+            "pageLength": 5,
+            "columns": [
+              { "searchable": false },
+              null,
+              null,
+              null,
+              null,
+              null
+            ] 
+          });
+          //$('#tdstatus0').prop('checked', true);
+          //alert($('#tdstatus0').val());
 
-        $(":checkbox").click(function(){
-          $.get('/status_Supplier?supplierID=' + $(this).val(), function(data){
-              //NOTIFICATION HERE MUMING :*
-              var toastContent = $('<span>Status Changed!</span>');
-                  Materialize.toast(toastContent, 1500, 'edit');
-            });
-        });
-    });
+          $(":checkbox").click(function(){
+            $.get('/status_Supplier?supplierID=' + $(this).val(), function(data){
+                //NOTIFICATION HERE MUMING :*
+                var toastContent = $('<span>Status Changed!</span>');
+                    Materialize.toast(toastContent, 1500, 'edit');
+              });
+          });
+      });
 
-    $(function(){   
-        $('#tableOutput').on('click', '.edit', function(){
-           $('#modal1').openModal();
-            var selected = this.id;
-            var keyID = $("#tdID"+selected).val();
-            var keyName = $("#tdname"+selected).text();
-            var keyProvince = $("#tdprovince"+selected).val();
-            var keyCity = $("#tdcity"+selected).val();
-            var keyBarangayStreet = $("#tdbarangaystreet"+selected).val();
-            var keyContactNo = $("#tdcontactno"+selected).text();
-            var keyEmail = $("#tdemail"+selected).text();
-            $("#edit_ID").val(keyID);
-            $("#edit_name").val(keyName);
-            $("#provE").val(keyProvince);
-            $("#provE").material_select();
-            $("#edit_contactNo").val(keyContactNo);
-            $("#edit_barangaystreet").val(keyBarangayStreet);
-            $("#edit_email").val(keyEmail);
+      $(function(){   
+          $('#tableOutput').on('click', '.edit', function(){
+             $('#modal1').openModal();
+              var selected = this.id;
+              var keyID = $("#tdID"+selected).val();
+              var keyName = $("#tdname"+selected).text();
+              var keyProvince = $("#tdprovince"+selected).val();
+              var keyCity = $("#tdcity"+selected).val();
+              var keyBarangayStreet = $("#tdbarangaystreet"+selected).val();
+              var keyContactNo = $("#tdcontactno"+selected).text();
+              var keyEmail = $("#tdemail"+selected).text();
+              $("#edit_ID").val(keyID);
+              $("#edit_name").val(keyName);
+              $("#provE").val(keyProvince);
+              $("#provE").material_select();
+              $("#edit_contactNo").val(keyContactNo);
+              $("#edit_barangaystreet").val(keyBarangayStreet);
+              $("#edit_email").val(keyEmail);
+
+              $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
+              var $selectDropdown = 
+                $("#cityE")
+                  .empty()
+                  .html(' ');
+              $.each(data, function(index, subcatObj){
+                  $selectDropdown.append(
+                    $("<option></option>")
+                      .attr("value",subcatObj.CityID)
+                      .text(subcatObj.CityName)
+                  );
+              });
+              $("#cityE").val(keyCity);
+              $("#cityE").material_select();
+              });
+          });
+      });   
+
+      $(function(){   
+          $('#modal1').on('change', '#provE', function(){
 
             $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
-            var $selectDropdown = 
-              $("#cityE")
-                .empty()
-                .html(' ');
-            $.each(data, function(index, subcatObj){
-                $selectDropdown.append(
-                  $("<option></option>")
-                    .attr("value",subcatObj.CityID)
-                    .text(subcatObj.CityName)
-                );
+              var $selectDropdown = 
+                $("#cityE")
+                  .empty()
+                  .html(' ');
+              $.each(data, function(index, subcatObj){
+                  $selectDropdown.append(
+                    $("<option></option>")
+                      .attr("value",subcatObj.CityID)
+                      .text(subcatObj.CityName)
+                  );
+              });
+              $("#cityE").material_select();
             });
-            $("#cityE").val(keyCity);
-            $("#cityE").material_select();
-            });
-        });
-    });   
-
-    $(function(){   
-        $('#modal1').on('change', '#provE', function(){
-
-          $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
-            var $selectDropdown = 
-              $("#cityE")
-                .empty()
-                .html(' ');
-            $.each(data, function(index, subcatObj){
-                $selectDropdown.append(
-                  $("<option></option>")
-                    .attr("value",subcatObj.CityID)
-                    .text(subcatObj.CityName)
-                );
-            });
-            $("#cityE").material_select();
           });
-        });
-    });    
+      });    
 
-    $(function(){   
-        $('#addBtn').on('change', '#prov', function(){
+      $(function(){   
+          $('#addBtn').on('change', '#prov', function(){
 
-          $.get('/cityOptions?provID=' + $("#prov").val(), function(data){
-            var $selectDropdown = 
-              $("#city")
-                .empty()
-                .html(' ');
-            $.each(data, function(index, subcatObj){
-                $selectDropdown.append(
-                  $("<option></option>")
-                    .attr("value",subcatObj.CityID)
-                    .text(subcatObj.CityName)
-                );
+            $.get('/cityOptions?provID=' + $("#prov").val(), function(data){
+              var $selectDropdown = 
+                $("#city")
+                  .empty()
+                  .html(' ');
+              $.each(data, function(index, subcatObj){
+                  $selectDropdown.append(
+                    $("<option></option>")
+                      .attr("value",subcatObj.CityID)
+                      .text(subcatObj.CityName)
+                  );
+              });
+              $("#city").material_select();
             });
-            $("#city").material_select();
           });
-        });
-    });    
+      });    
 
-    
-</script>
+      
+  </script>
 @endsection
 
 @section('title1')

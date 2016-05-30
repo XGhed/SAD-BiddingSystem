@@ -129,6 +129,16 @@ Route::get('/tryLoad', 'SupplierController@tryLoad');
 |
 */
 
+
+//muming
+Route::get('/dashboard', 'PageController@dashboard');
+
+Route::get('/supplier1', 'PageController@supplier1');
+
+
+
+
+
 Route::group(['middleware' => ['web']], function () {
     //
 });

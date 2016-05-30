@@ -90,4 +90,14 @@ class PageController extends Controller
 
        return view('customer.cart');
     }
+
+    public function dashboard(Request $request){
+
+       return view('admin.dashboard');
+    } 
+
+    public function supplier1(Request $request){
+
+       return view('admin.supplier1');
+    } 
 }
