@@ -23,8 +23,8 @@
             <img class="ui mini image" src="icons/icon.png">
           </a>
           <a href="/dashboard" class="item"><i class="large home icon"></i>Home</a>
-          <a href="/new1" class="item"><i class="large settings icon"></i>Maintenance</a>
-          <a href="#" class="item"><i class="large exchange icon"></i>Transaction</a>
+          <a href="/supplier1" class="item"><i class="large settings icon"></i>Maintenance</a>
+          <a href="#" class="item"><i class="large exchange icon"></i>Inventory</a>
           <a href="#" class="item"><i class="large calendar icon"></i>Bidding Event</a>
         </div>
       </div>

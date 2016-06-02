@@ -91,13 +91,50 @@ class PageController extends Controller
        return view('customer.cart');
     }
 
+
+    //New Mainte
     public function dashboard(Request $request){
 
-       return view('admin.dashboard');
+       return view('admin1.dashboard');
     } 
 
     public function supplier1(Request $request){
 
-       return view('admin.supplier1');
+       return view('admin1.supplier');
     } 
+
+    public function category1(Request $request){
+
+       return view('admin1.category');
+    } 
+
+    public function item1(Request $request){
+
+       return view('admin1.item');
+    }
+
+    public function accountType1(Request $request){
+
+       return view('admin1.accountType');
+    } 
+
+    public function discount1(Request $request){
+
+       return view('admin1.discount');
+    }
+
+    public function shipment1(Request $request){
+
+       return view('admin1.shipment');
+    }
+
+    public function warehouse1(Request $request){
+
+       return view('admin1.warehouse');
+    }
+
+    public function inventory1(Request $request){
+
+       return view('admin1.inventory');
+    }
 }

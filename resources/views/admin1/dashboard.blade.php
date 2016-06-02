@@ -1,4 +1,4 @@
-@extends('admin.mainteParent')
+@extends('admin1.mainteParent')
 
 
 @section('content')

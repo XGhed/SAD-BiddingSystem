@@ -130,11 +130,24 @@ Route::get('/tryLoad', 'SupplierController@tryLoad');
 */
 
 
-//muming
+// new mainte
 Route::get('/dashboard', 'PageController@dashboard');
 
 Route::get('/supplier1', 'PageController@supplier1');
 
+Route::get('/category1', 'PageController@category1');
+
+Route::get('/item1', 'PageController@item1');
+
+Route::get('/accountType1', 'PageController@accountType1');
+
+Route::get('/discount1', 'PageController@discount1');
+
+Route::get('/shipment1', 'PageController@shipment1');
+
+Route::get('/warehouse1', 'PageController@warehouse1');
+
+Route::get('/inventory1', 'PageController@inventory1');
 
 
 
