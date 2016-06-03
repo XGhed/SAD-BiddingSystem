@@ -8,6 +8,8 @@
       <!--JAVASCRIPT -->
       <script type="text/javascript" src="{!!URL::asset('https://code.jquery.com/jquery-2.1.1.min.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/semantic.min.js')!!}"></script>
+      <script type="text/javascript" src="{!!URL::asset('js/protractor.js')!!}"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
 
       <meta name="csrf-token" content="{{ csrf_token() }}">
       @yield('jqueryscript')
@@ -22,10 +24,9 @@
           <a href="#" class="header item">
             <img class="ui mini image" src="icons/icon.png">
           </a>
-          <a href="/dashboard" class="item"><i class="large home icon"></i>Home</a>
+          <a href="/dashboard" class="item"><i class="large home icon"></i>Dashboard</a>
           <a href="/supplier1" class="item"><i class="large settings icon"></i>Maintenance</a>
-          <a href="#" class="item"><i class="large exchange icon"></i>Inventory</a>
-          <a href="#" class="item"><i class="large calendar icon"></i>Bidding Event</a>
+          <a href="/inventory1" class="item"><i class="large exchange icon"></i>Transaction</a>
         </div>
       </div>
 

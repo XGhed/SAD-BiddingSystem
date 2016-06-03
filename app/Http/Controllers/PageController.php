@@ -93,6 +93,7 @@ class PageController extends Controller
 
 
     //New Mainte
+
     public function dashboard(Request $request){
 
        return view('admin1.dashboard');
@@ -136,5 +137,10 @@ class PageController extends Controller
     public function inventory1(Request $request){
 
        return view('admin1.inventory');
+    }
+
+    public function bidEvent1(Request $request){
+
+       return view('admin1.bidEvent');
     }
 }

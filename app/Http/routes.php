@@ -149,6 +149,8 @@ Route::get('/warehouse1', 'PageController@warehouse1');
 
 Route::get('/inventory1', 'PageController@inventory1');
 
+Route::get('/biddingEvent1', 'PageController@bidEvent1');
+
 
 
 

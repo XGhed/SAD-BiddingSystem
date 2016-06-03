@@ -5,7 +5,7 @@
   <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
       <div class="ui centered header">Maintenance</div>
-        <a class=" active item" href="/supplier">
+        <a class=" active item" href="/supplier1">
           Supplier
         </a>
         <a class="item" href="/category1">
