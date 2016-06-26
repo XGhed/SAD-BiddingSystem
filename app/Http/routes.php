@@ -151,7 +151,22 @@ Route::get('/inventory1', 'PageController@inventory1');
 
 Route::get('/biddingEvent1', 'PageController@bidEvent1');
 
+/*Route::get('photos/{filename}', function ($filename)
+{
+    $path = public_path() . '/photos/' . $filename;
 
+    if(!File::exists($path)) abort(404);
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+
+*/
 
 
 Route::group(['middleware' => ['web']], function () {
