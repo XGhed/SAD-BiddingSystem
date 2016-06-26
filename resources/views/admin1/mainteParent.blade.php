@@ -8,8 +8,6 @@
       <!--JAVASCRIPT -->
       <script type="text/javascript" src="{!!URL::asset('https://code.jquery.com/jquery-2.1.1.min.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/semantic.min.js')!!}"></script>
-      <script type="text/javascript" src="{!!URL::asset('js/protractor.js')!!}"></script>
-      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
 
       <meta name="csrf-token" content="{{ csrf_token() }}">
       @yield('jqueryscript')

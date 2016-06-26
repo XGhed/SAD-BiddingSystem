@@ -236,13 +236,6 @@
        });
   });
 
-  //message
-  $('.cookie.nag')
-  .nag({
-    key      : 'accepts-cookies',
-    value    : true
-  })
-;
   //address
   $('.ui.normal.dropdown')
     .dropdown();
