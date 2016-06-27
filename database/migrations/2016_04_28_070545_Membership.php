@@ -24,6 +24,8 @@ class Membership extends Migration
             $table->date('DateOfRegistration');
             $table->string('valid_id');
             $table->string('File_DTI');
+            $table->integer('AccountTypeID')->unsigned();
+            $table->foreign('AccountTypeID')->references('AccountTypeID')->on('AccountType');
             $table->integer('CityID')->unsigned();
             $table->foreign('CityID')->references('CityID')->on('City');
         
