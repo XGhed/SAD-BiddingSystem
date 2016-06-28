@@ -30,8 +30,8 @@ class StatusUpdate extends Controller
     }
 
     public function Item(){
-        $item = new App\Models\Admin\Item;
-        $item = App\Models\Admin\Item::find(Input::get('itemID'));
+        $item = new App\Models\Admin\ItemModel;
+        $item = App\Models\Admin\ItemModel::find(Input::get('itemID'));
 
         if ($item->Status == 1){
             $item->Status = 0;

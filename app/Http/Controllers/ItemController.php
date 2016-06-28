@@ -20,7 +20,7 @@ class ItemController extends Controller
        $categories = App\Models\Admin\Category::all();
        $subCategories = App\Models\Admin\SubCategory::all();
 
-       return view('admin.item')->with ('results', $results)->with ('subCategories', $subCategories)->with ('categories', $categories);
+       return view('admin1.item')->with ('results', $results)->with ('subCategories', $subCategories)->with ('categories', $categories);
     }
 
     public function confirmItem(Request $request){
