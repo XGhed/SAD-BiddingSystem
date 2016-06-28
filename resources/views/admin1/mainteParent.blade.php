@@ -5,9 +5,16 @@
       <!--CSS-->
       <link rel="icon" href="icons/icon.png">
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/Semantic-UI-CSS-master/semantic.css')!!}"/>
+      <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.semanticui.min.css"/>
+
       <!--JAVASCRIPT -->
       <script type="text/javascript" src="{!!URL::asset('https://code.jquery.com/jquery-2.1.1.min.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/semantic.min.js')!!}"></script>
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.semanticui.min.js"></script>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
+
 
       <meta name="csrf-token" content="{{ csrf_token() }}">
       @yield('jqueryscript')

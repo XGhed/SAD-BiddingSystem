@@ -32,7 +32,7 @@ class SupplierController extends Controller
        	}
        }*/
 
-       return view('admin.supplier')->with ('results', $results)->with ('provinces', $provinces);
+       return view('admin1.supplier')->with ('results', $results)->with ('provinces', $provinces);
     }
 
     public function confirmSupplier(Request $request){
