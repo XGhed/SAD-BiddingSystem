@@ -12,8 +12,7 @@ class Account extends Migration
         $table->increments('AccountID');        
         $table->String('Username', 30);
         $table->String('Password', 15);
-        $table->integer('AccountTypeID')->unsigned();
-        $table->foreign('AccountTypeID')->references('AccountTypeID')->on('AccountType');
+        $table->foreign('AccountID')->references('MembershipID')->on('Membership');
     });
 }
 
