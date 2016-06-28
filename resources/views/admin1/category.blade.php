@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
+              <button class="ui button" type="submit" name="add">Confirm</button>
               </form>
             </div>
         </div>
@@ -88,7 +88,7 @@
               <input type="hidden" name="edit_ID" id="edit_ID1">
                 <div class="seven wide required field">
                   <label>Subcategory Name</label>
-                  <input type="text" name="edit_name" pattern ="[A-Za-z ]+" length="30" maxlength="30" REQUIRED>
+                  <input type="text" id="edit_name1" name="edit_name" pattern ="[A-Za-z ]+" length="30" maxlength="30" REQUIRED>
                 </div>
 
                 <div class="field">
@@ -97,14 +97,14 @@
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
+              <button class="ui button" type="submit" name="edit">Confirm</button>
               </form>
             </div>
         </div>
           <!-- END edit modal -->
 
           <!-- table -->
-        <table class="ui compact celled definition table" id="tableOutput">
+        <table class="ui compact celled definition table" id="tableOutput1">
           <thead>
             <tr>
               <th></th>
@@ -137,6 +137,34 @@
                 </div>
               </td>
             </tr>
+            @foreach($results as $key => $result)
+              <tr>
+                <td class="collapsing">
+                  <form class="row " action="/confirmCategory" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="edit1 ui vertical animated button" tabindex="1" id="{{$key}}" value="{{$key}}">
+                      <div class="hidden content">Edit</div>
+                      <div class="visible content">
+                        <i class="large edit icon"></i>
+                      </div>
+                    </div>
+                    <input type="hidden" class="items" id="tdID1{{$key}}" name="del_ID" value="{{$result->CategoryID}}">
+                    <button type="submit" name="delete">delete_forever</button>
+                  </form>
+                </td>
+                <td id="tdname1{{$key}}">{{$result->CategoryName}}</td>
+                <td id="tddesc1{{$key}}">{{$result->Description}}</td>
+                <td class="collapsing">
+                  <div class="ui fitted slider checkbox">
+                    @if ($result->Status == 1)
+                        <input class="cat" type="checkbox" id="tdstatus{{$key}}" value="{{$result->CategoryID}}" checked>
+                    @elseif ($result->Status == 0)
+                        <input class="cat" type="checkbox" id="tdstatus{{$key}}" value="{{$result->CategoryID}}" >
+                    @endif <label></label>
+                  </div>
+                </td>
+              </tr>
+            @endforeach
           </tbody>
         </table>
     </div><!-- tab1 -->
@@ -163,10 +191,19 @@
               Add Subcategory
             </div>
             <div class="content">
-              <form class="ui form" action="/confirmCategory" method="POST">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <form class="ui form" action="/confirmSubCategory" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="field">
+                  <div class="ui sub header">Province</div>
+                  <select name="add_ID" REQUIRED>
+                    <option value="" disabled selected>Choose your Category</option>
+                      @foreach($results as $key => $result)
+                        <option id="{{$key}}" value="{{$result->CategoryID}}">{{$result->CategoryName}}</option>
+                      @endforeach
+                  </select>
+                </div>
                 <div class="seven wide required field">
-                  <label>Category Name</label>
+                  <label>Subcategory Name</label>
                   <input type="text" name="add_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                 </div>
 
@@ -176,7 +213,7 @@
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
+              <button class="ui button" type="submit" name="add">Confirm</button>
               </form>
             </div>
         </div>
@@ -186,63 +223,80 @@
         <div class="ui small modal" id="editModal1">
           <i class="close icon"></i>
             <div class="header">
-              Edit Category
+              Edit Subcategory
             </div>
             <div class="content">
-              <form class="ui form" action="/confirmCategory" method="POST">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="hidden" name="edit_ID" id="edit_ID1">
+              <form class="ui form" action="/confirmSubCategory" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="edit_ID" id="edit_ID2">
+                <div class="field">
+                  <div class="ui sub header">Province</div>
+                  <select name="edit_CatID" id="edit_CatID" REQUIRED>
+                    <option value="" disabled selected>Choose your Category</option>
+                      @foreach($results as $key => $result)
+                        <option id="{{$key}}" value="{{$result->CategoryID}}">{{$result->CategoryName}}</option>
+                      @endforeach
+                  </select>
+                </div>
                 <div class="seven wide required field">
-                  <label>Category Name</label>
-                  <input type="text" name="edit_name" pattern ="[A-Za-z ]+" length="30" maxlength="30" REQUIRED>
+                  <label>Subcategory Name</label>
+                  <input type="text" name="edit_name" id="edit_name2" pattern ="[A-Za-z ]+" length="30" maxlength="30" REQUIRED>
                 </div>
 
                 <div class="field">
                   <label>Description</label>
-                  <input value=" " id="edit_desc1" type="text" class="validate" name="edit_desc" length="30" maxlength="30">
+                  <input value=" " id="edit_desc2" type="text" class="validate" name="edit_desc" length="30" maxlength="30">
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
+              <button class="ui button" type="submit" name="edit">Confirm</button>
               </form>
             </div>
         </div>
           <!-- END edit modal -->
 
           <!-- table -->
-        <table class="ui compact celled definition table" id="tableOutput">
+        <table class="ui compact celled definition table" id="tableOutput2">
           <thead>
             <tr>
               <th></th>
+              <th>Subcategory</th>
               <th>Category</th>
               <th>Description</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="collapsing">
-                <div class="ui vertical animated button" tabindex="1" id="editBtn1">
-                  <div class="hidden content">Edit</div>
-                  <div class="visible content">
-                    <i class="large edit icon"></i>
+            @foreach($results2 as $key => $result)
+              <tr>
+                <td class="collapsing">
+                  <form action="/confirmSubCategory" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" class="items" id="tdID2{{$key}}" name="del_ID" value="{{$result->SubCategoryID}}">
+                    <div class="edit2 ui vertical animated button" tabindex="1" id="{{$key}}" value="{{$key}}">
+                      <div class="hidden content">Edit</div>
+                      <div class="visible content">
+                        <i class="large edit icon"></i>
+                      </div>
+                    </div>
+                    <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete_forever</i></button>
+                  </form>
+                </td>
+
+               <input type="hidden" id="tdCatID{{$key}}" value="{{$result->category->CategoryID}}" />
+               <td id="tdname2{{$key}}">{{$result->SubCategoryName}}</td>
+               <td>{{$result->category->CategoryName}}</td>
+               <td id="tddesc2{{$key}}">{{$result->Description}}</td>
+                <td class="collapsing">
+                  <div class="ui fitted slider checkbox">
+                    @if ($result->Status == 1)
+                        <input class="subcat" type="checkbox" id="tdstatus2{{$key}}" value="{{$result->SubCategoryID}}" checked>
+                    @elseif ($result->Status == 0)
+                        <input class="subcat" type="checkbox" id="tdstatus2{{$key}}" value="{{$result->SubCategoryID}}" >
+                    @endif <label></label>
                   </div>
-                </div>
-                <div class="ui vertical animated button" tabindex="0">
-                  <div class="hidden content">Delete</div>
-                  <div class="visible content">
-                    <i class="large trash icon"></i>
-                  </div>
-                </div> 
-              </td>
-              <td>Kitchen Wares</td>
-              <td>kitchen items</td>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox"> <label></label>
-                </div>
-              </td>
-            </tr>
+                </td> 
+              </tr>
+              @endforeach
           </tbody>
         </table>
     </div><!-- tab2 -->
@@ -252,6 +306,44 @@
 
 <script>
   //cat
+
+  $(document).ready(function(){
+    $("#tableOutput1").DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null,
+        null,
+        null
+      ] 
+    });
+
+    $(".cat").click(function(){
+      alert('success');
+      $.get('/status_Category?categoryID=' + $(this).val(), function(data){
+          //NOTIFICATION HERE MUMING :*
+          
+              //setTimeout(location.reload(), 2000);
+              location.reload();
+        });
+    });
+  });
+
+  //edit modal
+  $(document).ready(function(){
+    $('#tableOutput1').on('click', '.edit1', function(){
+      $('#editModal').modal('show');
+      var selected = this.id;
+      var keyID = $("#tdID1"+selected).val();
+      var keyName = $("#tdname1"+selected).text();
+      var keyDesc = $("#tddesc1"+selected).text();
+      $("#edit_ID1").val(keyID);
+      $("#edit_name1").val(keyName);
+      $("#edit_desc1").val(keyDesc);
+    });       
+  });
+
     //add modal
     $(document).ready(function(){
          $('#addBtn').click(function(){
@@ -259,24 +351,55 @@
          });
     });
 
-    //edit modal
-    $(document).ready(function(){
-         $('#editBtn').click(function(){
-            $('#editModal').modal('show');    
-         });
-    });
   //subcat
+  $(document).ready(function(){
+    $("#tableOutput2").DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null,
+        null,
+        null,
+        null
+      ] 
+    });
+    //status
+    $(".subcat").click(function(){
+      var thisID = $(this).attr('id');
+      $.get('/status_SubCategory?subcategoryID=' + $(this).val(), function(data){
+        //NOTIFICATION HERE MUMING :*
+        if (data == 1){
+          alert('success');
+        }
+        else if (data == 0){
+          $("#" + thisID).prop('checked', false);
+          alert('error! Category is inactive!')
+        }
+      });
+    });
+  });
+
+  //edit modal
+  $(document).ready(function(){
+    $('#tableOutput2').on('click', '.edit2', function(){
+      $('#editModal1').modal('show');   
+      var selected = this.id;
+      var keyID = $("#tdID2"+selected).val();
+      var keyName = $("#tdname2"+selected).text();
+      var keyDesc = $("#tddesc2"+selected).text();
+      var catID = $("#tdCatID"+selected).val();
+      $("#edit_ID2").val(keyID);
+      $("#edit_name2").val(keyName);
+      $("#edit_desc2").val(keyDesc);
+      $("#edit_CatID").val(catID);
+    });
+  });
+
     //add modal
     $(document).ready(function(){
          $('#addBtn1').click(function(){
             $('#addModal1').modal('show');    
-         });
-    });
-
-    //edit modal
-    $(document).ready(function(){
-         $('#editBtn1').click(function(){
-            $('#editModal1').modal('show');    
          });
     });
 
