@@ -51,45 +51,34 @@
               Add warehouse
             </div>
             <div class="content">
-              <form class="ui form" action="/confirmSupplier" method="POST">
+              <form class="ui form" action="/confirmWarehouse" method="POST">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">Province</div>
-                    <div class="ui fluid search normal selection dropdown">
-                      <input type="hidden" name="province" REQUIRED>
-                        <i class="dropdown icon"></i>
-                      <div class="default text">Select Province</div>
-                        <div class="menu">
-                          <div class="item" value="0">Santiago</div>
-                          <div class="item" value="1">Roxas</div>
-                          <div class="item" value="2">Duterte</div>
-                        </div>
-                    </div>
+                    <select name="add_province" id="prov" class="ui search selection dropdown">
+                      <option value="" disabled selected>Choose your Province</option>
+                        @foreach($provinces as $key => $province)
+                          <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
+                        @endforeach
+                    </select>
                   </div>
                   <div class="field">
                     <div class="ui sub header">City</div>
-                    <div class="ui fluid search normal selection dropdown">
-                      <input type="hidden" name="city" REQUIRED>
-                        <i class="dropdown icon"></i>
-                      <div class="default text">Select City</div>
-                        <div class="menu">
-                          <div class="item" value="0">Santiago</div>
-                          <div class="item" value="1">Roxas</div>
-                          <div class="item" value="2">Duterte</div>
-                        </div>
-                    </div>
+                    <select name="add_city" id="city" class="ui search selection dropdown" REQUIRED>
+                      <option value="" disabled selected>City</option>
+                    </select>
                   </div>
                 </div>
                   
                 <div class="seven wide required field">
                   <label>Warehouse Address</label>
-                  <input type="text" name="add_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                  <input type="text" name="add_barangay_street" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit">Add</button>
+              <button class="ui button" type="submit" name="add">Add</button>
               </form>
             </div>
         </div>
@@ -102,45 +91,35 @@
               Edit Warehouse
             </div>
             <div class="content">
-              <form class="ui form" action="/confirmSupplier" method="POST">
+              <form class="ui form" action="/confirmWarehouse" method="POST">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <input type="hidden" id="edit_ID" name="edit_ID">
 
                 <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">Province</div>
-                    <div class="ui fluid search normal selection dropdown">
-                      <input type="hidden" name="province" REQUIRED>
-                        <i class="dropdown icon"></i>
-                      <div class="default text">Select Province</div>
-                        <div class="menu">
-                          <div class="item" value="0">Santiago</div>
-                          <div class="item" value="1">Roxas</div>
-                          <div class="item" value="2">Duterte</div>
-                        </div>
-                    </div>
+                    <select name="add_province" id="provE" class="ui search selection dropdown">
+                      <option value="" disabled selected>Choose your Province</option>
+                        @foreach($provinces as $key => $province)
+                          <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
+                        @endforeach
+                    </select>
                   </div>
                   <div class="field">
                     <div class="ui sub header">City</div>
-                    <div class="ui fluid search normal selection dropdown">
-                      <input type="hidden" name="city" REQUIRED>
-                        <i class="dropdown icon"></i>
-                      <div class="default text">Select City</div>
-                        <div class="menu">
-                          <div class="item" value="0">Santiago</div>
-                          <div class="item" value="1">Roxas</div>
-                          <div class="item" value="2">Duterte</div>
-                        </div>
-                    </div>
+                    <select name="edit_city" id="cityE" class="ui search selection dropdown" REQUIRED>
+                      <option value="" disabled selected>City</option>
+                    </select>
                   </div>
                 </div>
                   
                 <div class="seven wide required field">
                   <label>Warehouse Address</label>
-                  <input type="text" name="add_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                  <input type="text" id="edit_barangaystreet" name="edit_barangaystreet" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit">Add</button>
+              <button class="ui button" type="submit" name="edit">Add</button>
               </form>
             </div>
         </div>
@@ -157,29 +136,44 @@
             </tr>
           </thead>
           <tbody>
+            @foreach($results as $key => $result)
             <tr>
-              <td class="collapsing">
-                <div class="ui vertical animated button" tabindex="1" id="editBtn">
-                  <div class="hidden content">Edit</div>
-                  <div class="visible content">
-                    <i class="large edit icon"></i>
+              <td>
+                <div class="row col s12" >
+                  <div class="col s4">
+                      <form action="/confirmWarehouse" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->WarehouseNo}}">
+                        <div class="edit ui vertical animated button" tabindex="1" id="{{$key}}" value="{{$key}}">
+                          <div class="hidden content">Edit</div>
+                          <div class="visible content">
+                            <i class="large edit icon"></i>
+                          </div>
+                        </div>
                   </div>
+                  <div class="col s5">
+                    <input type="hidden" id="" name="del_ID" value="">
+                    <button id="delete" name="delete">delete_forever</i></button>
+                  </div>
+                      </form>
                 </div>
-                <div class="ui vertical animated button" tabindex="0">
-                  <div class="hidden content">Delete</div>
-                  <div class="visible content">
-                    <i class="large trash icon"></i>
-                  </div>
-                </div> 
               </td>
-              <td> 0123 </td>
-              <td>September 14, 2013</td>
+              <td>{{$result->WarehouseNo}}</td>
+              <td>{{$result->Barangay_Street_Address}},&nbsp; {{$result->city->CityName}},&nbsp; {{$result->city->province->ProvinceName}}</td>
+              <input type="hidden" id="tdprovince{{$key}}" value="{{$result->city->province->ProvinceID}}" />
+              <input type="hidden" id="tdcity{{$key}}" value="{{$result->city->CityID}}" />
+              <input type="hidden" id="tdbarangaystreet{{$key}}" value="{{$result->Barangay_Street_Address}}" />
               <td class="collapsing">
                 <div class="ui fitted slider checkbox">
-                  <input type="checkbox"> <label></label>
+                  @if ($result->Status == 1)
+                      <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->WarehouseNo}}" checked>
+                  @elseif ($result->Status == 0)
+                      <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->WarehouseNo}}" >
+                  @endif <label></label>
                 </div>
               </td>
             </tr>
+          @endforeach
           </tbody>
         </table>
     </div>
@@ -188,6 +182,60 @@
 
 
 <script>
+
+  $(function (){   
+    $("#tableOutput").DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null,
+        null,
+        null
+      ] 
+    });
+    //$('#tdstatus0').prop('checked', true);
+    //alert($('#tdstatus0').val());
+
+    $(":checkbox").click(function(){
+      $.get('/status_Warehouse?WarehouseNo=' + $(this).val(), function(data){
+          //NOTIFICATION HERE MUMING :*
+          alert('success');
+        });
+    });
+
+    $('#prov').change(function(){
+      $.get('/cityOptions?provID=' + $("#prov").val(), function(data){
+        var $selectDropdown = 
+          $("#city")
+            .empty()
+            .html(' ');
+        $.each(data, function(index, subcatObj){
+            $selectDropdown.append(
+              $("<option></option>")
+                .attr("value",subcatObj.CityID)
+                .text(subcatObj.CityName)
+            );
+        });
+      });
+    });
+
+    $('#provE').change(function(){
+      $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
+        var $selectDropdown = 
+          $("#cityE")
+            .empty()
+            .html(' ');
+        $.each(data, function(index, subcatObj){
+            $selectDropdown.append(
+              $("<option></option>")
+                .attr("value",subcatObj.CityID)
+                .text(subcatObj.CityName)
+            );
+        });
+      });
+    });
+  });
 
   //add modal
   $(document).ready(function(){
@@ -198,9 +246,32 @@
 
   //edit modal
   $(document).ready(function(){
-       $('#editBtn').click(function(){
-          $('#editModal').modal('show');    
-       });
+    $('#tableOutput').on('click', '.edit', function(){
+      $('#editModal').modal('show');    
+      var selected = this.id;
+      var keyID = $("#tdID"+selected).val();
+      var keyProvince = $("#tdprovince"+selected).val();
+      var keyCity = $("#tdcity"+selected).val();
+      var keyBarangayStreet = $("#tdbarangaystreet"+selected).val();
+      $("#edit_ID").val(keyID);
+      $("#provE").val(keyProvince);
+      $("#edit_barangaystreet").val(keyBarangayStreet);
+
+      $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
+      var $selectDropdown = 
+        $("#cityE")
+          .empty()
+          .html(' ');
+      $.each(data, function(index, subcatObj){
+          $selectDropdown.append(
+            $("<option></option>")
+              .attr("value",subcatObj.CityID)
+              .text(subcatObj.CityName)
+          );
+      });
+      $("#cityE").val(keyCity);
+      });
+    });
   });
 
   //message

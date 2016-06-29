@@ -33,7 +33,7 @@ class WarehouseController extends Controller
        	}
        }
 
-       return view('admin.warehouse')->with ('results', $results)->with ('provinces', $provinces)->with ('cities', $cities);
+       return view('admin1.warehouse')->with ('results', $results)->with ('provinces', $provinces)->with ('cities', $cities);
     }
 
     public function confirmWarehouse(Request $request){
