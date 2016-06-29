@@ -186,7 +186,7 @@
                       <div class="visible content">
                         <i class="trash icon"></i>
                       </div>
-                      </button>
+                    </button>
                   </form>
                 </td>
                 <td id="tdname{{$key}}" style="font-size: 14px">{{$result->SupplierName}}</td>
