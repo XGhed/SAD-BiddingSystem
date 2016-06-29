@@ -8,22 +8,22 @@
         <a class="item" href="/supplier">
           Supplier
         </a>
-        <a class="item" href="/category1">
+        <a class="item" href="/category">
           Category
         </a>
-        <a class="item" href="/item1">
+        <a class="item" href="/item">
           Item
         </a>
-        <a class="active item" href="/accountType1">
+        <a class="active item" href="/accountType">
           Account Type
         </a>
-        <a class="item" href="/discount1">
+        <a class="item" href="/discount">
           Discount
         </a>
-        <a class="item" href="/shipment1">
+        <a class="item" href="/shipment">
           Shipment
         </a>
-        <a class="item" href="/warehouse1">
+        <a class="item" href="/warehouse">
           Warehouse
         </a>
     </div>
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit">Add Account Type</button>
+              <button class="ui button" type="submit" name="add">Add Account Type</button>
               </form>
             </div>
         </div>
@@ -90,27 +90,28 @@
               <form class="ui form" action="/confirmAccountType" method="POST">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+              <input type="hidden" name="edit_ID" id="edit_ID">
                 <div class="ten wide required field">
                   <label>Account Type</label>
-                  <input type="text" name="add_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                  <input type="text" name="edit_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                 </div>
                 
                 <div class="ten wide required field">
                   <div class="field">
                     <label>Service Fee</label>
-                    <input type="number" name="add_tax" placeholder="percentage">
+                    <input type="number" name="edit_tax" placeholder="percentage">
                   </div>
                 </div>
 
                 <div class="required field">
                   <div class="field">
                     <labe>Description</labe>
-                    <input type="text" name="add_desc" placeholder="description">
+                    <input type="text" name="edit_desc" placeholder="description">
                   </div>
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
+              <button class="ui button" type="submit" name="edit">Confirm</button>
               </form>
             </div>
         </div>
@@ -128,30 +129,43 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="collapsing">
-                <div class="ui vertical animated button" tabindex="1" id="editBtn">
-                  <div class="hidden content">Edit</div>
-                  <div class="visible content">
-                    <i class="large edit icon"></i>
+           <div id="formOutput" value="asd">
+            @foreach($results as $key => $result)
+              <tr>
+                <td class="collapsing">
+                   <div class="edit ui vertical animated button" tabindex="" id="{{$key}}" value="{{$key}}" name="edit">
+                    <div class="hidden content">Edit</div>
+                    <div class="visible content">
+                      <i class="large edit icon"></i>
+                    </div>
                   </div>
-                </div>
-                <div class="ui vertical animated button" tabindex="0">
-                  <div class="hidden content">Delete</div>
-                  <div class="visible content">
-                    <i class="large trash icon"></i>
+                  <form action="/confirmAccountType" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->AccountTypeID}}">
+                    <button id="delete" name="delete" type="submit" class="ui large vertical animated button">
+                      <div class="hidden content">Delete</div>
+                      <div class="visible content">
+                        <i class="trash icon"></i>
+                      </div>
+                    </button>
+                  </form>
+                </td>
+                <td id="tdname{{$key}}">{{$result->AccountTypeName}}</td>
+                <td id="tddesc{{$key}}">{{$result->Description}}</td>
+                <td>{{$result->ServiceFee}}</td>
+                <input type="hidden" id="tdtax{{$key}}" value="{{$result->ServiceFee}}" />
+                <td class="collapsing">
+                  <div class="ui fitted slider checkbox">
+                    @if ($result->Status == 1)
+                        <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->AccountTypeID}}" checked>
+                    @elseif ($result->Status == 0)
+                        <input type="checkbox" id="tdstatus{{$key}}" value="{{$result->AccountTypeID}}" >
+                    @endif <label></label>
                   </div>
-                </div> 
-              </td>
-              <td> accounttype </td>
-              <td> description </td>
-              <td> 5 % </td>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox"> <label></label>
-                </div>
-              </td>
-            </tr>
+                </td>
+              </tr>
+            @endforeach
+            </div>
           </tbody>
         </table>
     </div>
@@ -167,14 +181,6 @@
           $('#addModal').modal('show');    
        });
   });
-
-  //edit modal
-  $(document).ready(function(){
-       $('#editBtn').click(function(){
-          $('#editModal').modal('show');    
-       });
-  });
-
   //address
   $('.ui.normal.dropdown')
     .dropdown();
@@ -188,5 +194,44 @@
     ;
   })
 ;
+
+$(function(){   
+
+    $("#tableOutput").DataTable({
+      "lengthChange": false,
+      "pageLength": 3,
+      "columns": [
+        { "searchable": false },
+        null,
+        null,
+        null,
+        null
+      ] 
+    });
+
+    $(":checkbox").click(function(){
+          $.get('/status_AccountType?accounttypeID=' + $(this).val(), function(data){
+              //NOTIFICATION HERE MUMING :*
+              var toastContent = $('<span>Status Changed!</span>');
+                  Materialize.toast(toastContent, 1500, 'edit');
+            });
+        });
+});
+
+//edit modal
+$(function(){   
+    $('#tableOutput').on('click', '.edit', function(){
+      $('#editModal').modal('show');
+      var selected = this.id;
+      var keyID = $("#tdID"+selected).val();
+      var keyName = $("#tdname"+selected).text();
+      var keyDesc = $("#tddesc"+selected).text();
+      var keyTax = $("#tdtax"+selected).val();
+      $("#edit_ID").val(keyID);
+      $("#edit_name").val(keyName);
+      $("#edit_desc").val(keyDesc);
+      $("#edit_tax").val(keyTax);
+    });
+});
 </script>
 @endsection

@@ -133,8 +133,6 @@ Route::get('/tryLoad', 'SupplierController@tryLoad');
 // new mainte
 Route::get('/dashboard', 'PageController@dashboard');
 
-Route::get('/accountType1', 'PageController@accountType1');
-
 Route::get('/discount1', 'PageController@discount1');
 
 Route::get('/shipment1', 'PageController@shipment1');
