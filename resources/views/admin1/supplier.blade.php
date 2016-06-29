@@ -1,116 +1,29 @@
 @extends('admin1.mainteParent')
 
-@section('jqueryscript')
-  <script type="text/javascript">/*
-      $(function (){
-
-          
-          $(":checkbox").click(function(){
-            $.get('/status_Supplier?supplierID=' + $(this).val(), function(data){
-                //NOTIFICATION HERE MUMING :*
-                var toastContent = $('<span>Status Changed!</span>');
-                    Materialize.toast(toastContent, 1500, 'edit');
-              });
-          });
-      });
-{
-            "lengthChange": false,
-            "pageLength": 5,
-            "columns": [
-              { "searchable": false },
-              null,
-              null,
-              null,
-              null,
-              null
-            ] 
-          }
-      $(function(){   
-          $('#tableOutput').on('click', '.edit', function(){
-             $('#modal1').openModal();
-              var selected = this.id;
-              var keyID = $("#tdID"+selected).val();
-              var keyName = $("#tdname"+selected).text();
-              var keyProvince = $("#tdprovince"+selected).val();
-              var keyCity = $("#tdcity"+selected).val();
-              var keyBarangayStreet = $("#tdbarangaystreet"+selected).val();
-              var keyContactNo = $("#tdcontactno"+selected).text();
-              var keyEmail = $("#tdemail"+selected).text();
-              $("#edit_ID").val(keyID);
-              $("#edit_name").val(keyName);
-              $("#provE").val(keyProvince);
-              $("#provE").material_select();
-              $("#edit_contactNo").val(keyContactNo);
-              $("#edit_barangaystreet").val(keyBarangayStreet);
-              $("#edit_email").val(keyEmail);
-
-              $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
-              var $selectDropdown = 
-                $("#cityE")
-                  .empty()
-                  .html(' ');
-              $.each(data, function(index, subcatObj){
-                  $selectDropdown.append(
-                    $("<option></option>")
-                      .attr("value",subcatObj.CityID)
-                      .text(subcatObj.CityName)
-                  );
-              });
-              $("#cityE").val(keyCity);
-              $("#cityE").material_select();
-              });
-          });
-      });   
-
-      $(function(){   
-          $('#modal1').on('change', '#provE', function(){
-
-            $.get('/cityOptions?provID=' + $("#provE").val(), function(data){
-              var $selectDropdown = 
-                $("#cityE")
-                  .empty()
-                  .html(' ');
-              $.each(data, function(index, subcatObj){
-                  $selectDropdown.append(
-                    $("<option></option>")
-                      .attr("value",subcatObj.CityID)
-                      .text(subcatObj.CityName)
-                  );
-              });
-              $("#cityE").material_select();
-            });
-          });
-      });    
-*/
-
-      /*
-  </script>
-@endsection
-
 @section('content')
 <div class="ui grid">
   <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
       <div class="ui centered header">Maintenance</div>
-        <a class=" active item" href="/supplier1">
+        <a class=" active item" href="/supplier">
           Supplier
         </a>
-        <a class="item" href="/category1">
+        <a class="item" href="/category">
           Category
         </a>
-        <a class="item" href="/item1">
+        <a class="item" href="/item">
           Item
         </a>
-        <a class="item" href="/accountType1">
+        <a class="item" href="/accountType">
           Account Type
         </a>
-        <a class="item" href="/discount1">
+        <a class="item" href="/discount">
           Discount
         </a>
-        <a class="item" href="/shipment1">
+        <a class="item" href="/shipment">
           Shipment
         </a>
-        <a class="item" href="/warehouse1">
+        <a class="item" href="/warehouse">
           Warehouse
         </a>
     </div>
@@ -259,15 +172,21 @@
             @foreach($results as $key => $result)
               <tr class="collapsing">
                 <td>
-                  <div class="edit ui vertical animated button" tabindex="1" id="{{$key}}" value="{{$key}}" name="edit">
+                  <div class="edit ui vertical animated button" tabindex="" id="{{$key}}" value="{{$key}}" name="edit">
                     <div class="hidden content">Edit</div>
                     <div class="visible content">
                       <i class="large edit icon"></i>
                     </div>
                   </div>
-                  <form action="confirmSupplier" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+                  <form action="confirmSupplier" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->SupplierID}}">
-                    <button id="delete" name="delete" type="submit" >Delete</button>
+                    <button id="delete" name="delete" type="submit" class="ui large vertical animated button">
+                      <div class="hidden content">Delete</div>
+                      <div class="visible content">
+                        <i class="trash icon"></i>
+                      </div>
+                      </button>
                   </form>
                 </td>
                 <td id="tdname{{$key}}" style="font-size: 14px">{{$result->SupplierName}}</td>

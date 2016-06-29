@@ -5,10 +5,10 @@
   <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
       <div class="ui centered header">Maintenance</div>
-        <a class="item" href="/supplier1">
+        <a class="item" href="/supplier">
           Supplier
         </a>
-        <a class="active item" href="/category1">
+        <a class="active item" href="/category">
           Category
         </a>
         <a class="item" href="/item1">
@@ -149,7 +149,12 @@
                       </div>
                     </div>
                     <input type="hidden" class="items" id="tdID1{{$key}}" name="del_ID" value="{{$result->CategoryID}}">
-                    <button type="submit" name="delete">delete_forever</button>
+                    <button name="delete" type="submit" class="ui large vertical animated button">
+                      <div class="hidden content">Delete</div>
+                      <div class="visible content">
+                        <i class="trash icon"></i>
+                      </div>
+                    </button>
                   </form>
                 </td>
                 <td id="tdname1{{$key}}">{{$result->CategoryName}}</td>
@@ -278,7 +283,12 @@
                         <i class="large edit icon"></i>
                       </div>
                     </div>
-                    <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons">delete_forever</i></button>
+                    <button name="delete" type="submit" class="ui large vertical animated button">
+                      <div class="hidden content">Delete</div>
+                      <div class="visible content">
+                        <i class="trash icon"></i>
+                      </div>
+                    </button>
                   </form>
                 </td>
 

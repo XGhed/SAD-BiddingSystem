@@ -5,25 +5,25 @@
   <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
       <div class="ui centered header">Maintenance</div>
-        <a class="item" href="/supplier1">
+        <a class="item" href="/supplier">
           Supplier
         </a>
-        <a class="item" href="/category1">
+        <a class="item" href="/category">
           Category
         </a>
-        <a class="item" href="/item1">
+        <a class="item" href="/item">
           Item
         </a>
-        <a class="item" href="/accountType1">
+        <a class="item" href="/accountType">
           Account Type
         </a>
-        <a class="active item" href="/discount1">
+        <a class="active item" href="/discount">
           Discount
         </a>
-        <a class="item" href="/shipment1">
+        <a class="item" href="/shipment">
           Shipment
         </a>
-        <a class="item" href="/warehouse1">
+        <a class="item" href="/warehouse">
           Warehouse
         </a>
     </div>
@@ -59,7 +59,7 @@
                       <div class="default text">Select account type</div>
                         <div class="menu">
                           <div class="item" value="0">Santiago</div>
-                          <div class="item" value="1">Roxas</div>
+                          <div class="item" value="">Roxas</div>
                           <div class="item" value="2">Duterte</div>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                       <div class="default text">Select account type</div>
                         <div class="menu">
                           <div class="item" value="0">Santiago</div>
-                          <div class="item" value="1">Roxas</div>
+                          <div class="item" value="">Roxas</div>
                           <div class="item" value="2">Duterte</div>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
           <tbody>
             <tr>
               <td class="collapsing">
-                <div class="ui vertical animated button" tabindex="1" id="editBtn">
+                <div class="ui vertical animated button" tabindex="" id="editBtn">
                   <div class="hidden content">Edit</div>
                   <div class="visible content">
                     <i class="large edit icon"></i>
@@ -160,13 +160,13 @@
 
     <!-- rewards -->
     <div class="ui bottom attached tab segment" data-tab="second">
-       <a class="ui basic blue button" id="addBtn1">
+       <a class="ui basic blue button" id="addBtn">
             <i class="add user icon"></i>
             Add Rewards
           </a>
 
           <!-- add modal -->
-        <div class="ui small modal" id="addModal1">
+        <div class="ui small modal" id="addModal">
           <i class="close icon"></i>
             <div class="header">
               Update Rewards

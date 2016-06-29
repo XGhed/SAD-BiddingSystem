@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Business\SupplierBusiness;
-use App\Dal\SupplierDao;
 use App\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Requests;
