@@ -265,7 +265,7 @@
 
   //edit modal
   $(document).ready(function(){
-       $('.edit').click(function(){
+       $('#tableOutput').on('click', '.edit', function(){
           $('#editModal').modal('show');
           var selected = this.id;
           var keyID = $("#tdID"+selected).val();
