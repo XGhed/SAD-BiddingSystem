@@ -93,20 +93,20 @@
               <input type="hidden" name="edit_ID" id="edit_ID">
                 <div class="ten wide required field">
                   <label>Account Type</label>
-                  <input type="text" name="edit_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                  <input type="text" id="edit_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                 </div>
                 
                 <div class="ten wide required field">
                   <div class="field">
                     <label>Service Fee</label>
-                    <input type="number" name="edit_tax" placeholder="percentage">
+                    <input type="number" id="edit_tax" placeholder="percentage">
                   </div>
                 </div>
 
                 <div class="required field">
                   <div class="field">
                     <labe>Description</labe>
-                    <input type="text" name="edit_desc" placeholder="description">
+                    <input type="text"id="edit_desc"  placeholder="description">
                   </div>
                 </div>
             </div>
@@ -141,6 +141,7 @@
                   </div>
                   <form action="/confirmAccountType" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    
                     <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->AccountTypeID}}">
                     <button id="delete" name="delete" type="submit" class="ui large vertical animated button">
                       <div class="hidden content">Delete</div>
