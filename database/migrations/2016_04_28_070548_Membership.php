@@ -10,7 +10,7 @@ class Membership extends Migration
 
     Schema::create('Membership', function(Blueprint $table)
     {
-            $table->increments('MembershipID');
+            $table->integer('MembershipID')->unsigned();
             $table->string('FirstName', 30);
             $table->string('MiddleName', 30)->nullable();
             $table->string('LastName', 30);
@@ -28,6 +28,7 @@ class Membership extends Migration
             $table->foreign('AccountTypeID')->references('AccountTypeID')->on('AccountType');
             $table->integer('CityID')->unsigned();
             $table->foreign('CityID')->references('CityID')->on('City');
+            $table->foreign('MembershipID')->references('AccountID')->on('Account');
         
     });
 }

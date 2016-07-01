@@ -12,7 +12,7 @@ class Account extends Migration
         $table->increments('AccountID');        
         $table->String('Username', 30);
         $table->String('Password', 15);
-        $table->foreign('AccountID')->references('MembershipID')->on('Membership');
+        $table->rememberToken();
     });
 }
 
