@@ -4,6 +4,10 @@ namespace Illuminate\Foundation\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App;
+use App\Models\Admin;
+use App\Models\Admin\User;
+use Carbon\Carbon;
 
 trait RegistersUsers
 {
@@ -36,6 +40,30 @@ trait RegistersUsers
         }
 
         Auth::login($this->create($request->all()));
+
+        //insert on membership table
+        $user = App\Models\Admin\User::orderBy('AccountID', 'desc')->take(1)->get();
+        $userID = 0;
+        foreach ($user as $key => $u) {
+            $userID = $u->AccountID;
+        }
+        $membership = new App\Models\Admin\Membership;
+        $membership->MembershipID = $userID;
+        $membership->FirstName = $request->input('firstName');
+        $membership->MiddleName = $request->input('middleName');
+        $membership->LastName = $request->input('lastName');
+        $membership->CityID = $request->input('city');
+        $membership->Barangay_Street_Address = $request->input('address');
+        $membership->Birthdate = $request->input('birthdate');
+        $membership->Gender = $request->input('gender');
+        $membership->Occupation = $request->input('occupation');
+        $membership->CellphoneNo = $request->input('phoneNumber');
+        $membership->Landline = $request->input('telNumber');
+        $membership->EmailAdd = $request->input('email');
+        $membership->DateOfRegistration = Carbon::now();
+        $membership->AccountTypeID = $request->input('accounttype');
+
+        $membership->save();
 
         return redirect($this->redirectPath());
     }

@@ -30,4 +30,14 @@ class DropDowns extends Controller
 
         return \Response::json($subCategories);
     }
+
+    public function provinces(){
+        $provinces = App\Models\Admin\Province::orderBy('ProvinceName')->get();
+        return $provinces;
+    }
+
+    public function accountTypes(){
+        $accountTypes = App\Models\Admin\AccountType::all();
+        return $accountTypes;
+    }
 }

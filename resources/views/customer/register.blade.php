@@ -17,7 +17,7 @@
 
 @section('content')
 	<div style="margin: 35px 0 0 0" class="ui container segment">
-		<form class="ui form" action="/confirmRegister" method="POST" enctype="multipart/form-data">
+		<form class="ui form" action="/auth/register" method="POST" enctype="multipart/form-data" ng-app="myApp" ng-controller="myController">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		  	<div class="equal width fields">
 			  	<div class="field">
@@ -36,31 +36,19 @@
 
 		  	<div class="equal width fields">
 				<div class="field">
-				 	<div class="ui sub header">Province</div>
-					<div class="ui fluid search normal selection dropdown">
-						<input type="hidden" name="province" required>
-							<i class="dropdown icon"></i>
-						<div class="default text">Select Province</div>
-							<div class="menu">
-								<div class="item" value="0">Defensor</div>
-								<div class="item" value="1">Bebe</div>
-								<div class="item" value="2">"Digong"</div>
-							</div>
-					</div>
-				</div>
+	                <div class="ui sub header">Province</div>
+	                	<select name="province" class="ui search selection dropdown" ng-model="inputProvince" ng-change="reloadCities();" REQUIRED>
+	                    	<option value="" disabled selected>Province</option>
+	            	    	<option ng-repeat="province in provinces" value="@{{province.ProvinceID}}">@{{province.ProvinceName}}</option>
+	                	</select>
+	            </div>
 				<div class="field">
-				 	<div class="ui sub header">City</div>
-					<div class="ui fluid search normal selection dropdown">
-						<input type="hidden" name="city" required>
-							<i class="dropdown icon"></i>
-						<div class="default text">Select City</div>
-							<div class="menu">
-								<div class="item" value="0">Santiago</div>
-								<div class="item" value="1">Roxas</div>
-								<div class="item" value="2">Duterte</div>
-							</div>
-					</div>
-				</div>
+	                <div class="ui sub header">City</div>
+	                	<select name="city" class="ui search selection dropdown" REQUIRED>
+	                    	<option value="" disabled selected>City</option>
+	            	    	<option ng-repeat="city in cities" value="@{{city.CityID}}">@{{city.CityName}}</option>
+	                	</select>
+	            </div>
 				<div class="field">
 					<label>Address</label>
 					<input type="text" name="address" placeholder="#4 Wednesday St. Pacita 1 Brgy. San Vicente" required>
@@ -72,11 +60,11 @@
 				<div class="field">
 		  			<label>Gender</label>
 					<div class="ui radio checkbox">
-						<input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
+						<input type="radio" name="gender" value="Male" checked="" tabindex="0" class="hidden">
 						<label>Male</label>
 					</div>
 					<div class="ui radio checkbox">
-						<input type="radio" name="fruit" tabindex="0" class="hidden">
+						<input type="radio" name="gender" value="Female" tabindex="0" class="hidden">
 						<label>Female</label>
 					</div>
 				</div>
@@ -108,12 +96,12 @@
 
 			<div class="equal width fields">
 				<div class="field">
-					<label>Account Type</label>
-					<select class="ui search dropdown" id="shit" name="acctype">
-					  <option value="1">End-User</option>
-					  <option value="2">Retailer</option>
-					</select>
-				</div>
+	                <div class="ui sub header">Account Type</div>
+                	<select name="accounttype" class="ui search selection dropdown" REQUIRED>
+                    	<option value="" disabled selected>Account Type</option>
+            	    	<option ng-repeat="accounttype in accounttypes" value="@{{accounttype.AccountTypeID}}">@{{accounttype.AccountTypeName}}</option>
+                	</select>
+	            </div>
 				<div class="field">
 					<label>Username</label>
 					<input type="text" name="username">
@@ -121,6 +109,10 @@
 				<div class="field">
 					<label>Password</label>
 					<input type="password" name="password">
+				</div>
+				<div class="field">
+					<label>Confirm Password</label>
+					<input type="password" name="password_confirmation">
 				</div>
 			</div>
 
@@ -162,6 +154,29 @@
 		</form>
 	</div>
 
+<!--angularjs-->
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myController', function($scope, $http) {
+	    $http.get('/provinces')
+	    .then(function(response){
+	    	$scope.provinces = response.data;
+	    });
+
+	    $scope.reloadCities = function(){
+	    	$http.get('/cityOptions?provID=' + $scope.inputProvince)
+	    	.then(function(response){
+	    		$scope.cities = response.data;
+	    	});
+	    }
+
+	    $http.get('/accounttypes')
+	    .then(function(response){
+	    	$scope.accounttypes = response.data;
+	    });
+	});
+</script>
+<!--angularjs end-->
 <script>
 //gender
 $('.ui.radio.checkbox')

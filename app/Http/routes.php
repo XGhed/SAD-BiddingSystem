@@ -110,6 +110,11 @@ Route::get('/customer/items/auction', 'PageController@auction');
 Route::get('/admin', 'PageController@admin');
 
 
+//Angular DropDowns
+Route::get('/provinces', 'DropDowns@provinces');
+
+Route::get('/accounttypes', 'DropDowns@accounttypes');
+
 
 Route::post('/edit', 'ShipmentController@editShipment');
 

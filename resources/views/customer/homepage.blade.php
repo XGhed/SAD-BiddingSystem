@@ -8,6 +8,7 @@
       <!--JAVASCRIPT -->
       <script type="text/javascript" src="{!!URL::asset('https://code.jquery.com/jquery-2.1.1.min.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/semantic.min.js')!!}"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     </head>
 
     <body style="background-image: url('/icons/bg3.png');  background-repeat: no-repeat;

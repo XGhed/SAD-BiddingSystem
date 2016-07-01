@@ -102,4 +102,10 @@ class SupplierController extends Controller
 			return redirect('supplier');
 		}
 	}
+
+	public function tryLoad(){
+		$user = App\Models\Admin\User::orderBy('AccountID', 'desc')->take(1)->get();
+
+		return $user;
+	}
 }

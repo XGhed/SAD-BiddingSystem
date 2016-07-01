@@ -73,7 +73,7 @@ class PageController extends Controller
 
     public function register(Request $request){
 
-       return view('auth.register');
+       return view('customer.register');
     } 
 
     public function custItems(Request $request){

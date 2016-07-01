@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App;
-use App\ModelAdmin;
+use App\Models\Admin;
 use App\Models\Admin\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -25,6 +25,9 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+    //Use username column instead of email.
+    protected $username = "username";
+
     /**
      * Create a new authentication controller instance.
      *
@@ -45,7 +48,6 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'username' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:account',
             'password' => 'required|confirmed|min:6',
         ]);
     }
@@ -60,8 +62,10 @@ class AuthController extends Controller
     {
         return User::create([
             'username' => $data['username'],
-            'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    //Override built-in posrRegister function of laravel.
+    
 }
