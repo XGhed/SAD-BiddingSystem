@@ -28,6 +28,9 @@ class AuthController extends Controller
     //Use username column instead of email.
     protected $username = "username";
 
+    //failed login path
+    protected $loginPath = '/';
+
     /**
      * Create a new authentication controller instance.
      *

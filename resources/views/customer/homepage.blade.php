@@ -29,27 +29,28 @@
     <div class="ui container two column middle aligned very relaxed stackable grid">
       <div class="row"></div>
       <div class="column">
-        <div class="ui form">
+        <form action="/auth/login" method="POST" class="ui form">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="field">
             <label>Username</label>
             <div class="ui left icon input">
-              <input type="text" placeholder="Username" id="username">
+              <input type="text" placeholder="Username" name="username" id="username">
               <i class="user icon"></i>
             </div>
           </div>
           <div class="field">
             <label>Password</label>
             <div class="ui left icon input">
-              <input type="password" placeholder="Password" id="password">
+              <input type="password" placeholder="Password" name="password" id="password">
               <i class="lock icon"></i>
             </div>
           </div>
           <div class="ui grid">
             <div class="row"></div>
             <div class="five wide column"></div>
-            <a href="/customer/checkout"><div class="ui blue submit button">Login</div></a>
+            <input type="submit" class="ui blue submit button" value="Login"></input>
           </div>
-        </div>
+        </form>
       </div>
       <div class="ui vertical divider">
           Or
