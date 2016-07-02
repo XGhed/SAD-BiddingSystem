@@ -164,4 +164,4 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 //just a sample
-Route::get('/customer/cart', ['middleware' => 'auth', 'PageController@cart']);
+Route::get('/customer/cart', ['middleware' => 'auth', 'uses' => 'PageController@cart']);
