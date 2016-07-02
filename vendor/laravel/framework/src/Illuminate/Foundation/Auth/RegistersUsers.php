@@ -63,6 +63,22 @@ trait RegistersUsers
         $membership->DateOfRegistration = Carbon::now();
         $membership->AccountTypeID = $request->input('accounttype');
 
+        //upload files
+        if (($request->hasFile('ids')) && ($request->hasFile('dti'))) {
+            $filenameids = rand(1000,100000)."-".$request->file('ids')->getClientOriginalName();
+            $filepathids = "photos/credentials/";
+            $request->file('ids')->move($filepathids, $filenameids);
+            $membership->valid_id = $filepathids.$filenameids;
+
+            $filenamedti = rand(1000,100000)."-".$request->file('dti')->getClientOriginalName();
+            $filepathdti = "photos/credentials/";
+            $request->file('dti')->move($filepathdti, $filenamedti);
+            $membership->File_DTI = $filepathdti.$filenamedti;
+        }
+        else {
+            //error here
+        }
+
         $membership->save();
 
         return redirect($this->redirectPath());
