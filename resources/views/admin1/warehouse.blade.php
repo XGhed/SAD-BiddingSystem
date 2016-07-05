@@ -8,22 +8,22 @@
         <a class="item" href="/supplier">
           Supplier
         </a>
-        <a class="item" href="/category1">
+        <a class="item" href="/category">
           Category
         </a>
-        <a class="item" href="/item1">
+        <a class="item" href="/item">
           Item
         </a>
-        <a class="item" href="/accountType1">
+        <a class="item" href="/accountType">
           Account Type
         </a>
-        <a class="item" href="/discount1">
+        <a class="item" href="/discount">
           Discount
         </a>
-        <a class="item" href="/shipment1">
+        <a class="item" href="/shipment">
           Shipment
         </a>
-        <a class="active item" href="/warehouse1">
+        <a class="active item" href="/warehouse">
           Warehouse
         </a>
     </div>
@@ -74,7 +74,7 @@
                   
                 <div class="seven wide required field">
                   <label>Warehouse Address</label>
-                  <input type="text" name="add_barangay_street" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                  <input type="text" name="add_barangay_street" REQUIRED>
                 </div>
             </div>
             <div class="actions">

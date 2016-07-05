@@ -29,7 +29,7 @@
     <div class="ui container two column middle aligned very relaxed stackable grid">
       <div class="row"></div>
       <div class="column">
-        <form action="/auth/login" method="POST" class="ui form">
+        <form action="/loginAccount" method="POST" class="ui form">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="field">
             <label>Username</label>

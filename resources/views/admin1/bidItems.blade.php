@@ -50,81 +50,9 @@
                   <div class="ui segment">
                     <div class="ten wide field">
 
-                      <table class="ui celled padded table">
-                        <thead>
-                          <tr>
-                            <th>Category</th>
-                            <th>Item</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <div class="ui checkbox">
-                                <input type="checkbox" text="Dharan" name="pp_checkall">
-                                <label>category name</label>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="ui checkbox">
-                                <input type="checkbox" name="pp_check" value="1">
-                                <label>nigguh</label>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="ui checkbox">
-                                <input type="checkbox" name="pp_check" value="2">
-                                <label>fuck</label>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="ui checkbox">
-                                <input type="checkbox" name="pp_check" value="3">
-                                <label>shit</label>
-                              </div>
-                            </td>
-
-                          </tr>
-                        </tbody>
-                      </table>
-
-                      <table border="1">
-                        <tr>
-                          <th><input type="checkbox" id="selectall"/></th>
-                          <th>Cell phone</th>
-                          <th>Rating</th>
-                        </tr>
-                        <tr>
-                          <td align="center"><input type="checkbox" class="case" name="case" value="1"/></td>
-                          <td>BlackBerry Bold 9650</td>
-                          <td>2/5</td>
-                        </tr>
-                        <tr>
-                          <td align="center"><input type="checkbox" class="case" name="case" value="2"/></td>
-                          <td>Samsung Galaxy</td>
-                          <td>3.5/5</td>
-                        </tr>
-                        <tr>
-                          <td align="center"><input type="checkbox" class="case" name="case" value="3"/></td>
-                          <td>Droid X</td>
-                          <td>4.5/5</td>
-                        </tr>
-                        <tr>
-                          <td align="center"><input type="checkbox" class="case" name="case" value="4"/></td>
-                          <td>HTC Desire</td>
-                          <td>3/5</td>
-                        </tr>
-                        <tr>
-                          <td align="center"><input type="checkbox" class="case" name="case" value="5"/></td>
-                          <td>Apple iPhone 4</td>
-                          <td>5/5</td>
-                        </tr>
-                        </table>
-
-
-                      
-
-
+                    <div>
+                      <input type="text" placeholder="Search here...">
+                    </div>
                       <div class="ui celled relaxed list">
                         <div class="item">
                           <div class="ui master checkbox">
@@ -208,12 +136,14 @@
             <th>Item Name</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>Manage</th>
           </tr></thead>
           <tbody>
             <tr>
               <td>Kangkong</td>
               <td>10 pcs</td>
               <td>5.00</td>
+              <td><div class="ui basic red button">Remove</div></td>
             </tr>
           </tbody>
         </table>

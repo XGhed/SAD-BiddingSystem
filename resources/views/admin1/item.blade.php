@@ -8,16 +8,16 @@
         <a class="item" href="/supplier">
           Supplier
         </a>
-        <a class="item" href="/category1">
+        <a class="item" href="/category">
           Category
         </a>
-        <a class="active item" href="/item1">
+        <a class="active item" href="/item">
           Item
         </a>
-        <a class="item" href="/accountType1">
+        <a class="item" href="/accountType">
           Account Type
         </a>
-        <a class="item" href="/discount1">
+        <a class="item" href="/discount">
           Discount
         </a>
         <a class="item" href="/shipment1">
@@ -183,7 +183,12 @@
                         <i class="large edit icon"></i>
                       </div>
                     </div>
-                    <button type="submit" name="delete" class="btn btn-flat btn-large waves-effect waves-light transparent tooltipped" data-position="top" data-delay="50" data-tooltip="Delete" ><i class="material-icons" onclick="">delete</i></button>
+                     <button name="delete" type="submit" class="ui large vertical animated button">
+                      <div class="hidden content">Delete</div>
+                      <div class="visible content">
+                        <i class="trash icon"></i>
+                      </div>
+                    </button>
                   </form>
                 </td>
                 <td id="tdID{{$key}}">{{$result->ItemModelID}}</td>

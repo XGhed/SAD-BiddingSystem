@@ -181,7 +181,7 @@
                 <div class="equal width required fields">
                   <div class="field">
                     <label>Rewards Percentage</label>
-                    <input type="text" name="add_reward" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                    <input type="number" name="add_reward" length="30" maxlength="30" REQUIRED>
                   </div>
 
                   <div class="field">

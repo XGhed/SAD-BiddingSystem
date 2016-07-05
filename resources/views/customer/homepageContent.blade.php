@@ -16,10 +16,16 @@
               <i class="search link icon"></i>
             </div>
           </div>
-          <a class="ui item" id="logIn">
-            <i class="sign in icon"></i>
-            Login
-          </a>
+          @if(session('accountID') != "")
+          	<a class="ui item">
+	            Hello {{session('accountID')}}
+	        </a>
+          @else
+          	<a class="ui item" id="logIn">
+	        	<i class="sign in icon"></i>
+	            Login
+	        </a>
+	      @endif
         </div>
       </div>
 @endsection

@@ -17,7 +17,7 @@
 
 @section('content')
 	<div style="margin: 35px 0 0 0" class="ui container segment">
-		<form class="ui form" action="/auth/register" method="POST" enctype="multipart/form-data" ng-app="myApp" ng-controller="myController">
+		<form class="ui form" action="/insertAccount" method="POST" enctype="multipart/form-data" ng-app="myApp" ng-controller="myController">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		  	<div class="equal width fields">
 			  	<div class="field">

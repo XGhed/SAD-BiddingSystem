@@ -9,7 +9,6 @@
         <a class="item" href="/"><i class="home icon"></i>Home</a>
         <a class="item" href="/customer/cart"><i class="shop icon"></i>Cart</a>
         <a class="item" href="/customer/bidList"><i class="shop icon"></i>Items</a>
-
        
       </div>
 @endsection
@@ -22,7 +21,7 @@
 					<h2 class="ui header">
 					  <i class="shop icon"></i>
 					  <div class="content">
-					    My items
+					    Items Bidded
 					  </div>
 					</h2>
 					<div class="ui divider"></div>
@@ -37,29 +36,44 @@
 								<div class="content">
 									Price: 500.00
 									<p></p>
-									Quantity: 5 pcs
+									Status: Currently on Bid
 								</div>
 							</div>
 						</div>
 						<div class="ui divider"></div>
 						<!-- end loop -->
+						<div class="ui grid">
+							<div class="five wide column">
+								<img class="ui small image" src="/icons/cabinet.jpg">
+							</div>
+							<div class="eight wide column">
+								<div class="header">Item Name</div>
+								<div class="ui divider"></div>
+								<div class="content">
+									Price: 500.00
+									<p></p>
+									Status: Item won
+								</div>
+							</div>
+						</div>
 				</div>	
 			</div>
 
 			<div class="six wide column">
 				<div class="ui segment">
 					<h2 class="ui header">
-				  <i class="payment icon"></i>
+				  <i class="shopping cart icon"></i>
 				  <div class="content">
-				    Order Summary
+				  	Items List
 				  </div>
 				</h2>
 				<div class="ui divider"></div>
-				Subtotal: 500.00
+				Number of Items: 2
 				<div class="ui divider"></div>
-				Total: 500.00
+				Items won: 2
+				<div class="ui divider"></div>
+				Currently on Auction: 5
 				</div>
-				<a class="ui button" href="/customer/checkout">Proceed to Checkout<i class="arrow right icon"></i></a>
 			</div>
 		</div>
 	</div>

@@ -11,13 +11,13 @@
         <a class="active item" href="/category">
           Category
         </a>
-        <a class="item" href="/item1">
+        <a class="item" href="/item">
           Item
         </a>
-        <a class="item" href="/accountType1">
+        <a class="item" href="/accountType">
           Account Type
         </a>
-        <a class="item" href="/discount1">
+        <a class="item" href="/discount">
           Discount
         </a>
         <a class="item" href="/shipment1">
@@ -114,29 +114,6 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="collapsing">
-                <div class="ui vertical animated button" tabindex="1" id="editBtn">
-                  <div class="hidden content">Edit</div>
-                  <div class="visible content">
-                    <i class="large edit icon"></i>
-                  </div>
-                </div>
-                <div class="ui vertical animated button" tabindex="0">
-                  <div class="hidden content">Delete</div>
-                  <div class="visible content">
-                    <i class="large trash icon"></i>
-                  </div>
-                </div> 
-              </td>
-              <td>Kitchen Wares</td>
-              <td>kitchen items</td>
-              <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                  <input type="checkbox"> <label></label>
-                </div>
-              </td>
-            </tr>
             @foreach($results as $key => $result)
               <tr>
                 <td class="collapsing">

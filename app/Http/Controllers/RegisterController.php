@@ -11,6 +11,7 @@ use App\Http\Requests;
 use App;
 use App\Models\Admin;
 use Session;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -21,48 +22,54 @@ class RegisterController extends Controller
         return redirect('register');
     }
 
-    public function insertAccount(Request $request){
-
-        try {
-            $mem = new App\Models\Admin\Membership;
+    public function insertRegister(Request $request){
+        try{
             $acc = new App\Models\Admin\Account;
-
-            $mem->FirstName = trim($request->input('firstName'));
-            $mem->MiddleName = trim($request->input('middleName'));
-            $mem->LastName = trim($request->input('lastName'));
-            $mem->CityID = trim($request->input('city'));
-            $mem->Barangay_Street_Address = trim($request->input('address'));
-            $mem->Birthdate = trim($request->input('birthdate'));
-            $mem->Occupation = trim($request->input('occupation'));
-            $mem->EmailAdd = trim($request->input('email'));
-            $mem->CellphoneNo = trim($request->input('phoneNumber'));
-            $mem->Landline = trim($request->input('telNumber'));
-            $mem->Gender = trim($request->input('fruit'));
-
             $acc->Username = trim($request->input('username'));
             $acc->Password = trim($request->input('password'));
-            $acc->AccountTypeID = trim($request->input('acctype'));
+            $acc->save();
 
+            //insert on membership table
+            $user = App\Models\Admin\User::orderBy('AccountID', 'desc')->take(1)->get();
+            $userID = 0;
+            foreach ($user as $key => $u) {
+                $userID = $u->AccountID;
+            }
+            $membership = new App\Models\Admin\Membership;
+            $membership->MembershipID = $userID;
+            $membership->FirstName = $request->input('firstName');
+            $membership->MiddleName = $request->input('middleName');
+            $membership->LastName = $request->input('lastName');
+            $membership->CityID = $request->input('city');
+            $membership->Barangay_Street_Address = $request->input('address');
+            $membership->Birthdate = $request->input('birthdate');
+            $membership->Gender = $request->input('gender');
+            $membership->Occupation = $request->input('occupation');
+            $membership->CellphoneNo = $request->input('phoneNumber');
+            $membership->Landline = $request->input('telNumber');
+            $membership->EmailAdd = $request->input('email');
+            $membership->DateOfRegistration = Carbon::now('Asia/Manila');
+            $membership->AccountTypeID = $request->input('accounttype');
+
+            //upload files
             if (($request->hasFile('ids')) && ($request->hasFile('dti'))) {
                 $filenameids = rand(1000,100000)."-".$request->file('ids')->getClientOriginalName();
                 $filepathids = "photos/credentials/";
                 $request->file('ids')->move($filepathids, $filenameids);
-                $mem->valid_id = $filepathids.$filenameids;
+                $membership->valid_id = $filepathids.$filenameids;
 
                 $filenamedti = rand(1000,100000)."-".$request->file('dti')->getClientOriginalName();
                 $filepathdti = "photos/credentials/";
                 $request->file('dti')->move($filepathdti, $filenamedti);
-                $mem->File_DTI = $filepathdti.$filenamedti;
+                $membership->File_DTI = $filepathdti.$filenamedti;
             }
             else {
                 throw new Exception("Error Processing Request", 1);
-                
             }
 
-            $mem->save();
-            $acc->save();
-        } catch (Exception $e) {
-            Session::put('message', '-1');
+            $membership->save();
+        }
+        catch(Exception $e){
             return redirect('register');
         }
     }

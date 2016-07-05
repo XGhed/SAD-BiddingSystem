@@ -49,6 +49,12 @@ Route::post('/updateShipment', 'ShipmentController@updateShipment');
 
 Route::post('/updateShipmentFee', 'ShipmentController@updateShipmentFee');
 
+Route::post('/insertAccount', 'RegisterController@insertRegister');
+
+Route::post('/loginAccount', 'LoginController@login');
+
+Route::get('/logout', 'LoginController@logout');
+
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');
@@ -154,14 +160,10 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-//just a sample
-Route::get('/customer/cart', ['middleware' => 'auth', 'uses' => 'PageController@cart']);
+Route::group(['middleware' => 'customer'], function () {
+    Route::get('/customer/cart', 'PageController@cart');
+});
+
+Route::get('/customer/bidList', 'PageController@bidList');

@@ -8,6 +8,7 @@
         
         <a class="item" href="/"><i class="home icon"></i>Home</a>
         <a class="item" href="/customer/cart/"><i class="shop icon"></i>Cart</a>
+        <a class="item" href="/customer/bidList"><i class="shop icon"></i>Items</a>
 
        
       </div>

@@ -148,4 +148,9 @@ class PageController extends Controller
 
        return view('admin1.bidItems');
     }
+
+    public function bidList(Request $request){
+
+       return view('customer.bidList');
+    }
 }

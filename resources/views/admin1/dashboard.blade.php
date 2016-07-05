@@ -3,5 +3,5 @@
 
 @section('content')
 
-shit
+Hello world
 @endsection

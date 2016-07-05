@@ -14,6 +14,7 @@
             <i class="cart icon"></i>Cart
         </a>
         
+        <a class="item" href="/customer/bidList"><i class="shop icon"></i>Items</a>
         <div class="right menu">
           <a class="ui item">
             help
