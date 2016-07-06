@@ -69,9 +69,6 @@
                   <div id="dynamicInput"></div>
                   <a value="Add" onclick="addInput('dynamicInput');">+ Add more item</a>
                 </div>
-              
-                  
-
 
             </div><!--content -->
             <div class="actions">
@@ -81,6 +78,24 @@
             </div>
         </div>
           <!-- END add modal -->
+
+          <table class="ui celled striped table">
+            <thead>
+              <tr>
+              <th>Item Name</th>
+              <th>Container</th>
+              <th>Date And Time</th>
+              <th>Supplier</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td>Item name</td>
+                <td>Container shit</td>
+                <td>10 hours ago</td>
+                <td>supplier</td>
+              </tr>
+            </tbody>
+          </table>
 
     </div><!-- segment -->
   </div><!-- twelve wide column -->
