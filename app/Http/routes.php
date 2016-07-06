@@ -156,6 +156,8 @@ Route::get('/biddingEvent1', 'PageController@bidEvent1');
 
 Route::get('/bidItems1', 'PageController@bidItems1');
 
+Route::get('/orderedItem', 'PageController@orderedItem');
+
 Route::group(['middleware' => ['web']], function () {
     //
 });

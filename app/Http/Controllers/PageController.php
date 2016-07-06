@@ -139,6 +139,11 @@ class PageController extends Controller
        return view('admin1.inventory');
     }
 
+    public function orderedItem(Request $request){
+
+       return view('admin1.orderedItem');
+    }
+
     public function bidEvent1(Request $request){
 
        return view('admin1.bidEvent');
