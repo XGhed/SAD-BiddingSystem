@@ -18,7 +18,7 @@
     <div class="ui segment">
        <a class="ui basic blue button" id="addBtn">
             <i class="add user icon"></i>
-            Add supplier
+            Add Item
           </a>
 
           <!-- add modal -->
@@ -137,38 +137,30 @@
             Edit Item
             </div>
             <div class="content">
-              <form class="ui form" action="/" method="POST">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="fields">
                   <div class="seven wide required field">
                       <div class="ui sub header">Item</div>
-                      <div class="ui fluid search normal selection dropdown">
-                        <input type="hidden" name="" REQUIRED>
-                          <i class="dropdown icon"></i>
-                        <div class="default text">Select item</div>
-                          <div class="menu">
-                            <div class="item" value="0">Santiago</div>
-                            <div class="item" value="1">Roxas</div>
-                            <div class="item" value="2">Duterte</div>
-                          </div>
-                      </div>
+                      <select>
+                        <option value="" selected>Item</option>
+                        <option id="" value=""></option>
+                      </select>
                   </div>
 
                   <div class="eight wide field">
                     <div class="inline fields">
                       <div class="field">
                         <div class="ui checkbox">
-                          <input type="checkbox" checked>
+                          <input name="currentPhoto" type="checkbox" checked="checked" id="edit_currentPhoto" checked/>
                           <label>Use current photo</label>
                         </div>
                       </div>
 
                       <div class="field">
                         <div class="ui sub header">Upload photo</div>
-                          <label for="file" class="ui icon button">
+                          <label for="file" class="ui icon button" id="edit_uploadPhoto">
                               <i class="file icon"></i>
                               Attach photo</label>
-                          <input type="file" id="file" style="display:none" multiple>
+                          <input type="file" name="edit_photo" style="display:none" multiple>
                         </div>
                       </div>
                   </div>
@@ -177,16 +169,10 @@
                 <div class="equal width required fields">
                   <div class="field">
                     <div class="ui sub header">Warehouse</div>
-                    <div class="ui fluid search normal selection dropdown">
-                      <input type="hidden" name="" REQUIRED>
-                        <i class="dropdown icon"></i>
-                      <div class="default text">Select Warehouse</div>
-                        <div class="menu">
-                          <div class="item" value="0">Santiago</div>
-                          <div class="item" value="1">Roxas</div>
-                          <div class="item" value="2">Duterte</div>
-                        </div>
-                    </div>
+                    <select>
+                      <option value="" selected>Warehouse</option>
+                      <option id="" value=""></option>
+                    </select>
                   </div>
 
                   <div class="field">
@@ -195,11 +181,11 @@
                       <input type="hidden" name="" REQUIRED>
                         <i class="dropdown icon"></i>
                       <div class="default text">Select Supplier</div>
+                      @foreach($suppliers as $key => $upplier)
                         <div class="menu">
-                          <div class="item" value="0">Santiago</div>
-                          <div class="item" value="1">Roxas</div>
-                          <div class="item" value="2">Duterte</div>
+                          <div class="item" value="{{$supplier->SupplierID}}">{{$supplier->SupplierName}}</div>
                         </div>
+                      @endforeach
                     </div>
                   </div>
                 </div>
@@ -207,7 +193,7 @@
                 <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">size</div>
-                    <input type="text" name="size" placeholder="dimensions" required>
+                    <input type="text" name="add_size" placeholder="dimensions" required>
                   </div>
 
                   <div class="field">
