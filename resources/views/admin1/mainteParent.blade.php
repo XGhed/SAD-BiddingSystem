@@ -11,6 +11,7 @@
       <script type="text/javascript" src="{!!URL::asset('https://code.jquery.com/jquery-2.1.1.min.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/semantic.min.js')!!}"></script>
       <script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.js"></script>
+      <script type="text/javascript" src="js/angular.min.js"></script>
       <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
       <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.semanticui.min.js"></script>
       <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
@@ -36,5 +37,28 @@
     <div class="ui segment container" style="top:70px;">
       @yield('content')
     </div>
+
+          <!-- message -->
+        <div class="ui hidden success message">
+          <i class="close icon"></i>
+          <div class="header">
+            Added
+          </div>
+        </div>
+
+        <div class="ui hidden success message">
+          <i class="close icon"></i>
+          <div class="header">
+            Updated
+          </div>
+        </div>
+
+        <div class="ui hidden success message">
+          <i class="close icon"></i>
+          <div class="header">
+            Deleted
+          </div>
+        </div>
+        
   </body>
 </html>

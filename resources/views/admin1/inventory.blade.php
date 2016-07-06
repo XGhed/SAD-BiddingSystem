@@ -5,7 +5,7 @@
   <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
       <div class="ui centered header">Transaction</div>
-        <a class=" active item" href="/inventory1">
+        <a class=" active item" href="/inventory">
           Inventory
         </a>
         <a class="item" href="/biddingEvent1">
@@ -18,7 +18,7 @@
     <div class="ui segment">
        <a class="ui basic blue button" id="addBtn">
             <i class="add user icon"></i>
-            Add item
+            Add supplier
           </a>
 
           <!-- add modal -->
@@ -28,7 +28,7 @@
               Add Item
             </div>
             <div class="content">
-              <form class="ui form" action="/" method="POST">
+              <form class="ui form" action="/confirmInventory" method="POST" enctype="multipart/form-data">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="fields">
                   <div class="ten wide required field">
@@ -36,11 +36,11 @@
                       <div class="ui fluid search normal selection dropdown">
                         <input type="hidden" name="" REQUIRED>
                           <i class="dropdown icon"></i>
-                        <div class="default text">Select item</div>
+                        <div class="default text" name="itemModel">Select item</div>
                           <div class="menu">
-                            <div class="item" value="0">Santiago</div>
-                            <div class="item" value="1">Roxas</div>
-                            <div class="item" value="2">Duterte</div>
+                          @foreach($itemModels as $key => $itemModel)
+                            <div class="item" value="{{$itemModel->ItemModelID}}">{{$itemModel->ItemName}}</div>
+                          @endforeach
                           </div>
                       </div>
                   </div>
@@ -50,7 +50,7 @@
                     <label for="file" class="ui icon button">
                         <i class="file icon"></i>
                         Attach photo</label>
-                    <input type="file" id="file" style="display:none" multiple>
+                    <input type="file" id="file" name="add_photo" style="display:none" multiple>
                   </div> 
                 </div>
 
@@ -60,12 +60,16 @@
                     <div class="ui fluid search normal selection dropdown">
                       <input type="hidden" name="" REQUIRED>
                         <i class="dropdown icon"></i>
-                      <div class="default text">Select Warehouse</div>
+                      <!-- <div class="default text">Select Warehouse</div>
                         <div class="menu">
                           <div class="item" value="0">Santiago</div>
-                          <div class="item" value="1">Roxas</div>
-                          <div class="item" value="2">Duterte</div>
-                        </div>
+                        </div> -->
+                        <select name="warehouse">
+                          @foreach($warehouses as $key => $warehouse)
+                            <option value="" selected>Warehouse</option>
+                            <option value="{{$warehouse->WarehouseNo}}">{{$warehouse->city->province->ProvinceName}},{{$warehouse->city->CityName}},{{$warehouse->Barangay_Street_Address}}</option>
+                          @endforeach
+                        </select>
                     </div>
                   </div>
 
@@ -74,11 +78,11 @@
                     <div class="ui fluid search normal selection dropdown">
                       <input type="hidden" name="" REQUIRED>
                         <i class="dropdown icon"></i>
-                      <div class="default text">Select Supplier</div>
+                      <div class="default text" name="add_supplier" >Select Supplier</div>
                         <div class="menu">
-                          <div class="item" value="0">Santiago</div>
-                          <div class="item" value="1">Roxas</div>
-                          <div class="item" value="2">Duterte</div>
+                        @foreach($suppliers as $key => $supplier)
+                          <div class="item" value="{{$supplier->SupplierID}}">{{$supplier->SupplierName}}</div>
+                           @endforeach
                         </div>
                     </div>
                   </div>
@@ -87,17 +91,22 @@
                 <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">size</div>
-                    <input type="text" name="size" placeholder="dimensions" required>
+                    <input type="text" name="add_size" placeholder="dimensions" required>
                   </div>
 
                   <div class="field">
                     <div class="ui sub header">Color</div>
-                    <input type="text" name="color" required>
+                    <select name="add_color">
+                        <option value="" selected>Choose Color</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Red">Red</option>
+                        <option value="Green">Green</option>
+                      </select>
                   </div>
 
                   <div class="field">
                     <div class="ui sub header">Quantity</div>
-                    <input type="number" name="quantity" min="1" required>
+                    <input type="number" id="add_quantity" name="add_quantity" min="1" placeholder="0" required>
                   </div>
                 </div>
 
@@ -242,7 +251,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+          @foreach($results as $key => $result)
+            <tr id="tableRow" >
               <td class="collapsing">
                 <div class="ui vertical animated button" tabindex="1" id="editBtn">
                   <div class="hidden content">Edit</div>
@@ -257,17 +267,39 @@
                   </div>
                 </div> 
               </td>
-              <td> knife </td>
-              <td> kitchen </td>
-              <td> /img </td>
-              <td> small </td>
-              <td> silver </td>
-              <td> warehouse 001 </td>
-              <td> supplier 001 </td>
+              <td>{{$result->itemModel->ItemName}}</td>
+              <td>
+                {{$result->itemModel->subCategory->category->CategoryName}}
+              </td>
+              <td><img src="{{$result->image_path}}" style="width:60px;height:60px;" /></td>
+              <td>{{$result->size}}</td>
+              <td>{{$result->color}}</td>
+              <td>
+                @foreach($result->inventory as $key => $inv)
+                  {{$inv->warehouse->Status}}
+                @endforeach
+              </td>
+              <td>{{$result->supplier->SupplierName}}</td>
             </tr>
+          @endforeach 
           </tbody>
         </table>
     </div>
+  </div>
+</div>
+
+
+<div class="ui modal" id="history">
+  <i class="close icon"></i>
+  <div class="header">
+    History Log
+  </div>
+  <div class="content">
+
+  </div>
+  <div class="actions">
+    <div class="ui button" onclick="modalClose()">Cancel</div>
+    <div class="ui button">OK</div>
   </div>
 </div>
 
@@ -279,7 +311,7 @@
        $('#addBtn').click(function(){
           $('#addModal').modal('show');    
        });
-  });
+  })
 
   //edit modal
   $(document).ready(function(){
@@ -314,5 +346,38 @@
           }
         });
       });
+
+  //history
+  $(document).ready(function(){
+       $('#tableRow').click(function(){
+          $('#history').modal('show');    
+       });
+  });
+
+  //exit
+  function modalClose() {
+    $('.ui.modal').modal('hide'); 
+    }
+
+
+//////////////////////////////////////////////////////////////////////////
+
+
+    $(function (){   
+
+        $("#tableOutput").DataTable({
+          "lengthChange": false,
+          "pageLength": 5,
+          "columns": [
+            { "searchable": false },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ] 
+        });
 </script>
 @endsection
