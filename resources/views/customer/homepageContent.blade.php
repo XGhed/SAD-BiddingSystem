@@ -17,7 +17,7 @@
             </div>
           </div>
           @if(session('accountID') != "")
-          	<a class="ui item">
+          	<a class="ui item" href="/logout">
 	            Hello {{session('accountID')}}
 	        </a>
           @else
