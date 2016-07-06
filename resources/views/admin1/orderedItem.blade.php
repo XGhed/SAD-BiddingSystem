@@ -97,6 +97,7 @@
             </tbody>
           </table>
 
+          <a href="/orderedItem/itemInbound">Next<i class="right arrow icon"></i></a>
     </div><!-- segment -->
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->
