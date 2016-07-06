@@ -243,7 +243,7 @@
           @foreach($results as $key => $result)
             <tr id="tableRow" >
               <td class="collapsing">
-                <div class="ui vertical animated button" tabindex="1" id="editBtn">
+                <div class="ui vertical animated button" tabindex="1" class="editBtn">
                   <div class="hidden content">Edit</div>
                   <div class="visible content">
                     <i class="large edit icon"></i>
@@ -300,11 +300,11 @@
        $('#addBtn').click(function(){
           $('#addModal').modal('show');    
        });
-  })
+  });
 
   //edit modal
   $(document).ready(function(){
-       $('#editBtn').click(function(){
+       $('.editBtn').click(function(){
           $('#editModal').modal('show');    
        });
   });
@@ -349,24 +349,10 @@
     }
 
 
-//////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////// 
 
-
-    $(function (){   
-
-        $("#tableOutput").DataTable({
-          "lengthChange": false,
-          "pageLength": 5,
-          "columns": [
-            { "searchable": false },
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
-          ] 
-        });
+  $(document).ready(function(){
+    $("#tableOutput").DataTable();
+  });
 </script>
 @endsection
