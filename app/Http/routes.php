@@ -162,6 +162,12 @@ Route::get('/itemInbound', 'PageController@itemInbound');
 
 Route::get('/itemContainer', 'PageController@itemContainer');
 
+Route::get('/accountApproval', 'PageController@accountApproval');
+
+Route::get('/itemPullouts', 'PageController@itemPullouts');
+
+
+
 Route::group(['middleware' => ['web']], function () {
     //
 });

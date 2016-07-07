@@ -149,10 +149,19 @@ class PageController extends Controller
        return view('admin1.itemInbound');
     }
 
-
     public function itemContainer(Request $request){
 
        return view('admin1.itemContainer');
+    }
+
+    public function accountApproval(Request $request){
+
+       return view('admin1.accountApproval');
+    }
+
+    public function itemPullouts(Request $request){
+
+       return view('admin1.itemPullouts');
     }
 
     public function bidEvent1(Request $request){
