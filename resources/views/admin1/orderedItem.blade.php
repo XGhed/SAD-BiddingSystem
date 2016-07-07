@@ -8,6 +8,9 @@
         <a class="active item" href="/orderedItem">
           Ordered Items
         </a>
+        <a class="item" href="/itemInbound">
+          Item Inbound
+        </a>
         <a class=" item" href="/inventory">
           Inventory
         </a>
@@ -73,7 +76,7 @@
             </div><!--content -->
             <div class="actions">
               <!-- <button class="ui button" onclick="modalClose()">Cancel</button>-->
-              <button class="ui button" type="submit"><a href="/itemContainer">Confirm</a></button>
+              <button class="ui button" type="submit">Confirm</button>
               </form>
             </div>
         </div>
@@ -82,14 +85,14 @@
           <table class="ui celled striped table">
             <thead>
               <tr>
-              <th>Item Name</th>
+              <th></th>
               <th>Container</th>
               <th>Date And Time</th>
               <th>Supplier</th>
             </tr></thead>
             <tbody>
               <tr>
-                <td>Item name</td>
+                <td><a href="/itemContainer" class="ui basic blue button"><i class="add square icon"></i> Add item</a></td>
                 <td>Container shit</td>
                 <td>10 hours ago</td>
                 <td>supplier</td>
@@ -97,7 +100,7 @@
             </tbody>
           </table>
 
-          <a href="/itemInbound">Next<i class="right arrow icon"></i></a>
+          
     </div><!-- segment -->
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->

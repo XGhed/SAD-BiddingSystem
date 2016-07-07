@@ -5,8 +5,11 @@
   <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
       <div class="ui centered header">Transaction</div>
-        <a class="active item" href="/orderedItem">
+        <a class="item" href="/orderedItem">
           Ordered Items
+        </a>
+        <a class="active item"href="/itemInbound">
+          Item Inbound
         </a>
         <a class=" item" href="/inventory">
           Inventory
@@ -19,7 +22,6 @@
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
-        <a href="/orderedItem"><i class="left arrow icon"></i>back to previous page</a>
        <div class="ui celled relaxed list">
        <div class="ui centered header">Ordered Items</div>
 

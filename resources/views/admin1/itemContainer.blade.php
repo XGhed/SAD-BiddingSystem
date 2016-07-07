@@ -8,6 +8,9 @@
         <a class="active item" href="/orderedItem">
           Ordered Items
         </a>
+        <a class="item" href="/itemInbound">
+          Item Inbound
+        </a>
         <a class=" item" href="/inventory">
           Inventory
         </a>
@@ -115,25 +118,46 @@
         </div>
           <!-- END add modal -->
 
-          <table class="ui celled striped table">
-            <thead>
-              <tr>
-              <th>Item Name</th>
-              <th>Container</th>
-              <th>Date And Time</th>
-              <th>Supplier</th>
-            </tr></thead>
-            <tbody>
-              <tr>
-                <td>Item name</td>
-                <td>Container shit</td>
-                <td>10 hours ago</td>
-                <td>supplier</td>
-              </tr>
-            </tbody>
-          </table>
+          <table class="ui compact celled definition table" id="tableOutput">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Photo</th>
+              <th>Size</th>
+              <th>Color</th>
+              <th>Warehouse</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="collapsing">
+                <div class="ui vertical animated button" tabindex="1" id="editBtn">
+                  <div class="hidden content">Edit</div>
+                  <div class="visible content">
+                    <i class="large edit icon"></i>
+                  </div>
+                </div>
+                <div class="ui vertical animated button" tabindex="0">
+                  <div class="hidden content">Delete</div>
+                  <div class="visible content">
+                    <i class="large trash icon"></i>
+                  </div>
+                </div> 
+              </td>
+              <td id="tableRow"></td>
+              <td></td>
+              <td><img src="" style="width:60px;height:60px;" /></td>
+              <td></td>
+              <td></td>
+              <td>
+                
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-          <a href="/itemInbound">Next<i class="right arrow icon"></i></a>
     </div><!-- segment -->
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->
