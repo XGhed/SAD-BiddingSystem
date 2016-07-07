@@ -241,9 +241,9 @@
           </thead>
           <tbody>
           @foreach($results as $key => $result)
-            <tr id="tableRow" >
+            <tr>
               <td class="collapsing">
-                <div class="ui vertical animated button" tabindex="1" class="editBtn">
+                <div class="ui vertical animated button" tabindex="1" id="editBtn">
                   <div class="hidden content">Edit</div>
                   <div class="visible content">
                     <i class="large edit icon"></i>
@@ -256,10 +256,8 @@
                   </div>
                 </div> 
               </td>
-              <td>{{$result->itemModel->ItemName}}</td>
-              <td>
-                {{$result->itemModel->subCategory->category->CategoryName}}
-              </td>
+              <td id="tableRow">{{$result->itemModel->ItemName}}</td>
+              <td>{{$result->itemModel->subCategory->category->CategoryName}}</td>
               <td><img src="{{$result->image_path}}" style="width:60px;height:60px;" /></td>
               <td>{{$result->size}}</td>
               <td>{{$result->color}}</td>
@@ -304,7 +302,7 @@
 
   //edit modal
   $(document).ready(function(){
-       $('.editBtn').click(function(){
+       $('#editBtn').click(function(){
           $('#editModal').modal('show');    
        });
   });

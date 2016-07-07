@@ -160,6 +160,8 @@ Route::get('/orderedItem', 'PageController@orderedItem');
 
 Route::get('/itemInbound', 'PageController@itemInbound');
 
+Route::get('/itemContainer', 'PageController@itemContainer');
+
 Route::group(['middleware' => ['web']], function () {
     //
 });

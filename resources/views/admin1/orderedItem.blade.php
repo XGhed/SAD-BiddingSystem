@@ -21,14 +21,14 @@
     <div class="ui segment">
        <a class="ui basic blue button" id="addBtn">
           <i class="add user icon"></i>
-          Add Item
+          Add Container
         </a>
 
         <!-- add modal -->
         <div class="ui small modal" id="addModal">
           <i class="close icon"></i>
             <div class="header">
-              Add Item
+              Add Container
             </div>
             <div class="content">
               <form class="ui form" action="/" method="POST" enctype="multipart/form-data">
@@ -37,7 +37,7 @@
                 <div class="field">
                   <div class="ui sub header">Supplier</div>
                   <div class="ui selection dropdown" id="supplierSelect">
-                      <input type="hidden" name="gender">
+                      <input type="hidden">
                       <i class="dropdown icon"></i>
                       <div class="default text">Supplier</div>
                       <div class="menu">
@@ -63,17 +63,17 @@
                 </div>
               </div>
 
-                <div class="field">
+                <!--<div class="field">
                   <div class="ui sub header">Item Name</div>
                   <input type="text" placeholder="Item name..." />
                   <div id="dynamicInput"></div>
                   <a value="Add" onclick="addInput('dynamicInput');">+ Add more item</a>
-                </div>
+                </div> -->
 
             </div><!--content -->
             <div class="actions">
-              <button class="ui button" onclick="modalClose()">Cancel</button>
-              <button class="ui button" type="submit">Confirm</button>
+              <!-- <button class="ui button" onclick="modalClose()">Cancel</button>-->
+              <button class="ui button" type="submit"><a href="/itemContainer">Confirm</a></button>
               </form>
             </div>
         </div>
@@ -97,7 +97,7 @@
             </tbody>
           </table>
 
-          <a href="/orderedItem/itemInbound">Next<i class="right arrow icon"></i></a>
+          <a href="/itemInbound">Next<i class="right arrow icon"></i></a>
     </div><!-- segment -->
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->
