@@ -146,7 +146,7 @@ Route::get('/dashboard', 'PageController@dashboard');
 
 Route::get('/discount1', 'PageController@discount1');
 
-Route::get('/shipment1', 'PageController@shipment1');
+//Route::get('/shipment1', 'PageController@shipment1');
 
 Route::get('/warehouse1', 'PageController@warehouse1');
 

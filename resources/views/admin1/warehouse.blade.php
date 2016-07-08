@@ -115,7 +115,7 @@
                   
                 <div class="seven wide required field">
                   <label>Warehouse Address</label>
-                  <input type="text" id="edit_barangaystreet" name="edit_barangaystreet" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                  <input type="text" id="edit_barangaystreet" name="edit_barangaystreet" length="30" maxlength="30" REQUIRED>
                 </div>
             </div>
             <div class="actions">
@@ -138,9 +138,7 @@
           <tbody>
             @foreach($results as $key => $result)
             <tr>
-              <td>
-                <div class="row col s12" >
-                  <div class="col s4">
+              <td class="collapsing">
                       <form action="/confirmWarehouse" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->WarehouseNo}}">
@@ -150,13 +148,14 @@
                             <i class="large edit icon"></i>
                           </div>
                         </div>
-                  </div>
-                  <div class="col s5">
                     <input type="hidden" id="" name="del_ID" value="">
-                    <button id="delete" name="delete">delete_forever</i></button>
-                  </div>
+                    <button id="delete" name="delete" class="ui large vertical animated button">
+                      <div class="hidden content">Delete</div>
+                      <div class="visible content">
+                        <i class="trash icon"></i>
+                      </div>
+                    </button>
                       </form>
-                </div>
               </td>
               <td>{{$result->WarehouseNo}}</td>
               <td>{{$result->Barangay_Street_Address}},&nbsp; {{$result->city->CityName}},&nbsp; {{$result->city->province->ProvinceName}}</td>

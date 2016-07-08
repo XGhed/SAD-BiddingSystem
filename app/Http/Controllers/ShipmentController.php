@@ -26,7 +26,7 @@ class ShipmentController extends Controller
            array_push($companyProvinces, $c->ProvinceID);
        }
 
-       return view('admin.shipment')->with ('results', $results)->with ('provinces', $provinces)->with ('companyProvinces', $companyProvinces);
+       return view('admin1.shipment')->with ('results', $results)->with ('provinces', $provinces)->with ('companyProvinces', $companyProvinces);
        //return view('shipment')->with ('provinces', $provinces);
     }
 /*
