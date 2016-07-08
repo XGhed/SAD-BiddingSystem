@@ -53,6 +53,8 @@ Route::post('/insertAccount', 'RegisterController@insertRegister');
 
 Route::post('/loginAccount', 'LoginController@login');
 
+Route::post('/addContainer', 'ContainerController@addContainer');
+
 Route::get('/logout', 'LoginController@logout');
 
 
@@ -76,6 +78,8 @@ Route::get('/places', 'ProvinceController@manageProvince');
 Route::get('/inventory', 'InventoryController@manageItem');
 
 Route::get('/discount', 'DiscountController@manageDiscount');
+
+Route::get('/getContainers', 'ContainerController@getContainers');
 //Route::get('/shipment', 'PageController@shipment');
 
 //AJAX
@@ -120,6 +124,8 @@ Route::get('/admin', 'PageController@admin');
 Route::get('/provinces', 'DropDowns@provinces');
 
 Route::get('/accounttypes', 'DropDowns@accounttypes');
+
+Route::get('/suppliers', 'DropDowns@suppliers');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');

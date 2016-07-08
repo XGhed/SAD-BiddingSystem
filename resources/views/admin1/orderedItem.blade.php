@@ -1,7 +1,7 @@
 @extends('admin1.mainteParent')
 
 @section('content')
-<div class="ui grid">
+<div class="ui grid" ng-app="myApp" ng-controller="myController">
   <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
       <div class="ui centered header">Transaction</div>
@@ -34,35 +34,31 @@
               Add Container
             </div>
             <div class="content">
-              <form class="ui form" action="/" method="POST" enctype="multipart/form-data">
+              <form class="ui form" action="/addContainer" method="POST" enctype="multipart/form-data">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="equal width fields">
                 <div class="field">
-                  <div class="ui sub header">Supplier</div>
-                  <div class="ui selection dropdown" id="supplierSelect">
-                      <input type="hidden">
-                      <i class="dropdown icon"></i>
-                      <div class="default text">Supplier</div>
-                      <div class="menu">
-                          <div class="item" data-value="1">nigguh</div>
-                      </div>
+                    <div class="ui sub header">Supplier</div>
+                    <select name="supplier" id="supplier" class="ui search selection dropdown" REQUIRED>
+                      <option disabled selected>Supplier</option>
+                      <option ng-repeat="supplier in suppliers" value="@{{supplier.SupplierID}}">@{{supplier.SupplierName}}</option>
+                    </select>
                   </div>
-                </div>
 
                 <div class="field">
                   <div class="ui sub header">Container</div>
-                  <input type="text" placeholder="Container..." />
+                  <input type="text" name="container" placeholder="Container..." />
                 </div>
               </div>
 
               <div class="equal width fields">
                 <div class="field">
                   <div class="ui sub header">Date</div>
-                  <input type="date" />
+                  <input type="date" name="date" />
                 </div>
                 <div class="field">
                   <div class="ui sub header">Time</div>
-                  <input type="time" />
+                  <input type="time" name="time" />
                 </div>
               </div>
 
@@ -91,11 +87,11 @@
               <th>Supplier</th>
             </tr></thead>
             <tbody>
-              <tr>
-                <td><a href="/itemContainer" class="ui basic blue button"><i class="add square icon"></i> Add item</a></td>
-                <td>Container shit</td>
-                <td>10 hours ago</td>
-                <td>supplier</td>
+              <tr ng-repeat="container in containers">
+                <td><a href="/itemContainer?containerID=@{{container.ContainerID}}" class="ui basic blue button"><i class="add square icon"></i> Add item</a></td>
+                <td>@{{container.ContainerName}}</td>
+                <td>@{{container.Arrival}}</td>
+                <td>@{{container.supplier.SupplierName}}</td>
               </tr>
             </tbody>
           </table>
@@ -131,5 +127,18 @@
       newDiv.innerHTML = inputHTML;
       document.getElementById(divName).appendChild(newDiv);
   }
+
+  var app = angular.module('myApp', []);
+  app.controller('myController', function($scope, $http){
+    $http.get('/suppliers')
+    .then(function(response){
+      $scope.suppliers = response.data;
+    });
+
+    $http.get('/getContainers')
+    .then(function(response){
+      $scope.containers = response.data;
+    });
+  })
 </script>
 @endsection

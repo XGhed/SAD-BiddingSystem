@@ -17,6 +17,8 @@ class Container extends Migration
             $table->increments('ContainerID');
             $table->string('ContainerName', 50);
             $table->datetime('Arrival');
+            $table->integer('SupplierID')->unsigned();
+            $table->foreign('SupplierID')->references('SupplierID')->on('Supplier');
             $table->softDeletes();
         });
     }

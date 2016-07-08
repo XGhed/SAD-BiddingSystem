@@ -17,6 +17,11 @@ use Response;
 
 class DropDowns extends Controller
 {
+    public function suppliers(){
+        $suppliers = App\Models\Admin\Supplier::all();
+        return $suppliers;
+    }
+
     public function cityOptions(){
         $provID = Input::get('provID');
         $cities = App\Models\Admin\City::where('ProvinceID', $provID)->get();
