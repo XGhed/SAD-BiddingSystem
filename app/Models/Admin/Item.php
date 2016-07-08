@@ -29,4 +29,9 @@ class Item extends Model
 	{
 	    return $this->hasOne('App\Models\Admin\Supplier', 'SupplierID', 'SupplierID');
 	}
+
+	public function container()
+	{
+	    return $this->hasOne('App\Models\Admin\Container', 'ContainerID', 'ContainerID');
+	}
 }

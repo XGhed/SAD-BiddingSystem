@@ -1,7 +1,7 @@
 @extends('admin1.mainteParent')
 
 @section('content')
-<div class="ui grid">
+<div class="ui grid" ng-app="myApp" ng-controller="myController" ng-init="containerID = {{$container->ContainerID}}">
   <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
       <div class="ui centered header">Transaction</div>
@@ -34,20 +34,16 @@
               Add Item
             </div>
             <div class="content">
-              <form class="ui form" action="/" method="POST" enctype="multipart/form-data">
+              <form class="ui form" action="/addItemToContainer" method="POST" enctype="multipart/form-data">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="fields">
-                  <div class="ten wide required field">
-                      <div class="ui sub header">Item</div>
-                      <div class="ui fluid search normal selection dropdown">
-                        <input type="hidden" name="" REQUIRED>
-                          <i class="dropdown icon"></i>
-                        <div class="default text">Select item</div>
-                          <div class="menu">
-                            <div class="item" value=""></div>
-                          </div>
-                      </div>
-                  </div>
+              <input type="hidden" name="containerID" value="{{$container->ContainerID}}">
+                <div class="ten wide required field">
+                  <div class="ui sub header">Item</div>
+                  <select name="item" id="item" class="ui search selection dropdown" REQUIRED>
+                    <option disabled selected>Item</option>
+                    <option ng-repeat="item in additems" value="@{{item.ItemModelID}}">@{{item.ItemName}}</option>
+                  </select>
+                </div>
 
                    <div class="five wide field">
                    <div class="ui sub header">Upload photo</div>
@@ -56,35 +52,16 @@
                         Attach photo</label>
                     <input type="file" id="file" name="add_photo" style="display:none" multiple>
                   </div> 
-                </div>
-
-                <div class="equal width required fields">
-                  <div class="field">
-                    <div class="ui sub header">Warehouse</div>
-                    <div class="ui fluid search normal selection dropdown">
-                      <input type="hidden" name="" REQUIRED>
-                        <i class="dropdown icon"></i>
-                      <!-- <div class="default text">Select Warehouse</div>
-                        <div class="menu">
-                          <div class="item" value="0">Santiago</div>
-                        </div> -->
-                        <select name="warehouse">
-                            <option value="" selected>Warehouse</option>
-                            <option value=""></option>
-                        </select>
-                    </div>
-                  </div>
-                </div>
 
                 <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">size</div>
-                    <input type="text" name="add_size" placeholder="dimensions" required>
+                    <input type="text" name="size" placeholder="dimensions" required>
                   </div>
 
                   <div class="field">
                     <div class="ui sub header">Color</div>
-                    <select name="add_color">
+                    <select name="color">
                         <option value="" selected>Choose Color</option>
                         <option value="Blue">Blue</option>
                         <option value="Red">Red</option>
@@ -131,9 +108,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr ng-repeat="item in viewitems">
               <td class="collapsing">
-                <div class="ui vertical animated button" tabindex="1" id="editBtn">
+                <div class="editBtn ui vertical animated button" tabindex="1">
                   <div class="hidden content">Edit</div>
                   <div class="visible content">
                     <i class="large edit icon"></i>
@@ -146,14 +123,12 @@
                   </div>
                 </div> 
               </td>
-              <td id="tableRow"></td>
-              <td></td>
-              <td><img src="" style="width:60px;height:60px;" /></td>
-              <td></td>
-              <td></td>
-              <td>
-                
-              </td>
+              <td>@{{item.item_model.ItemName}}</td>
+              <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+              <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
+              <td>@{{item.size}}</td>
+              <td>@{{item.color}}</td>
+              <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
             </tr>
           </tbody>
         </table>
@@ -223,6 +198,21 @@
 
   $(document).ready(function(){
     $("#tableOutput").DataTable();
+  });
+
+  var app = angular.module('myApp', []);
+  app.controller('myController', function($scope, $http, $timeout){
+    $http.get('/itemModels')
+    .then(function(response){
+      $scope.additems = response.data;
+    });
+
+    $timeout(function(){
+      $http.get('itemsInContainer?containerID=' + $scope.containerID)
+      .then(function(response){
+        $scope.viewitems = response.data;
+      });
+    } , 1000);
   });
 </script>
 @endsection

@@ -22,6 +22,31 @@ class DropDowns extends Controller
         return $suppliers;
     }
 
+    public function itemModels(){
+        $itemModels = App\Models\Admin\ItemModel::all();
+        return $itemModels;
+    }
+
+    public function itemsInContainer(Request $request){
+        $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
+            'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province')
+            ->where('ContainerID', $request->containerID)->get();
+
+        return $items;
+    }
+
+    public function containers(){
+
+        $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province')->get();
+
+        return $containers;
+    }
+
+    public function warehouses(){
+        $warehouses = App\Models\Admin\Warehouse::with('city', 'city.province')->get();
+        return $warehouses;
+    }
+
     public function cityOptions(){
         $provID = Input::get('provID');
         $cities = App\Models\Admin\City::where('ProvinceID', $provID)->get();

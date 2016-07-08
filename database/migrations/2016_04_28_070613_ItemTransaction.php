@@ -13,14 +13,11 @@ class ItemTransaction extends Migration
             $table->integer('ContainerID')->unsigned();
             $table->string('DefectDescription', 50);
             $table->string('status', 30);
-            $table->integer('quantity');
             $table->string('size');
             $table->string('color');
             $table->string('image_path');
             $table->datetime('TransacDate');
-            $table->integer('SupplierID')->unsigned();
             $table->integer('ItemModelID')->unsigned();
-            $table->foreign('SupplierID')->references('SupplierID')->on('Supplier');
             $table->foreign('ContainerID')->references('ContainerID')->on('Containers');
             $table->foreign('ItemModelID')->references('ItemModelID')->on('ItemModels');
             $table->softDeletes();

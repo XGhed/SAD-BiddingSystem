@@ -53,7 +53,9 @@ Route::post('/insertAccount', 'RegisterController@insertRegister');
 
 Route::post('/loginAccount', 'LoginController@login');
 
-Route::post('/addContainer', 'ContainerController@addContainer');
+Route::post('/addContainer', 'OrderedController@addContainer');
+
+Route::post('/addItemToContainer', 'ContainerController@addItemToContainer');
 
 Route::get('/logout', 'LoginController@logout');
 
@@ -79,7 +81,7 @@ Route::get('/inventory', 'InventoryController@manageItem');
 
 Route::get('/discount', 'DiscountController@manageDiscount');
 
-Route::get('/getContainers', 'ContainerController@getContainers');
+Route::get('/itemContainer', 'ContainerController@viewContainer');
 //Route::get('/shipment', 'PageController@shipment');
 
 //AJAX
@@ -127,6 +129,14 @@ Route::get('/accounttypes', 'DropDowns@accounttypes');
 
 Route::get('/suppliers', 'DropDowns@suppliers');
 
+Route::get('/itemModels', 'DropDowns@itemModels');
+
+Route::get('/warehouses', 'DropDowns@warehouses');
+
+Route::get('/itemsInContainer', 'DropDowns@itemsInContainer');
+
+Route::get('/containers', 'DropDowns@containers');
+
 
 Route::post('/edit', 'ShipmentController@editShipment');
 
@@ -165,8 +175,6 @@ Route::get('/bidItems1', 'PageController@bidItems1');
 Route::get('/orderedItem', 'PageController@orderedItem');
 
 Route::get('/itemInbound', 'PageController@itemInbound');
-
-Route::get('/itemContainer', 'PageController@itemContainer');
 
 Route::get('/accountApproval', 'PageController@accountApproval');
 

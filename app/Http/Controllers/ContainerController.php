@@ -8,25 +8,39 @@ use App\Http\Requests;
 use App;
 use App\Models\Admin;
 use Session;
+use Carbon\Carbon;
 
 class ContainerController extends Controller
 {
-    public function addContainer(Request $request){
-        $container = new App\Models\Admin\Container;
-        
-        $container->ContainerName = $request->container;
-        $container->Arrival = $request->date . ' ' . $request->time;
-        $container->SupplierID = $request->supplier;
+    public function viewContainer(Request $request){
+        $container = App\Models\Admin\Container::find($request->containerID);
 
-        $container->save();
-
-        return redirect('orderedItem');
+        return view('admin1.itemContainer')->with('container', $container);
     }
 
-    public function getContainers(){
+    public function addItemToContainer(Request $request){
+        $item = new App\Models\Admin\Item;
 
-        $containers = App\Models\Admin\Container::with('Supplier')->get();
+        $item->ContainerID = $request->containerID;
+        $item->DefectDescription = $request->defectDesc;
+        $item->status = 0;
+        $item->size = $request->size;
+        $item->color = $request->color;
+        $item->TransacDate = Carbon::now('Asia/Manila');
+        $item->ItemModelID = $request->item;
 
-        return $containers;
+        $filename = null;
+        $filepath = null;
+
+        if ($request->hasFile('add_photo')) {
+            $filename = rand(1000,100000)."-".$request->file('add_photo')->getClientOriginalName();
+            $filepath = "photos/";
+            $request->file('add_photo')->move($filepath, $filename);
+            $item->image_path = $filepath . $filename;
+        }
+
+        $item->save();
+
+        return redirect('/itemContainer?containerID=' . $request->containerID);
     }
 }

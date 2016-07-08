@@ -38,12 +38,22 @@
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="equal width fields">
                 <div class="field">
-                    <div class="ui sub header">Supplier</div>
-                    <select name="supplier" id="supplier" class="ui search selection dropdown" REQUIRED>
-                      <option disabled selected>Supplier</option>
-                      <option ng-repeat="supplier in suppliers" value="@{{supplier.SupplierID}}">@{{supplier.SupplierName}}</option>
+                  <div class="ui sub header">Supplier</div>
+                  <select name="supplier" id="supplier" class="ui search selection dropdown" REQUIRED>
+                    <option disabled selected>Supplier</option>
+                    <option ng-repeat="supplier in suppliers" value="@{{supplier.SupplierID}}">@{{supplier.SupplierName}}</option>
+                  </select>
+                </div>
+
+                <div class="equal width required fields">
+                  <div class="field">
+                    <div class="ui sub header">Warehouse</div>
+                    <select name="warehouse" id="warehouse" class="ui search selection dropdown" REQUIRED>
+                      <option disabled selected>Warehouse</option>
+                      <option ng-repeat="warehouse in addwarehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
                     </select>
                   </div>
+                </div>
 
                 <div class="field">
                   <div class="ui sub header">Container</div>
@@ -82,6 +92,7 @@
             <thead>
               <tr>
               <th></th>
+              <th>Warehouse</th>
               <th>Container</th>
               <th>Date And Time</th>
               <th>Supplier</th>
@@ -89,6 +100,7 @@
             <tbody>
               <tr ng-repeat="container in containers">
                 <td><a href="/itemContainer?containerID=@{{container.ContainerID}}" class="ui basic blue button"><i class="add square icon"></i> Add item</a></td>
+                <td>@{{container.warehouse.Barangay_Street_Address}}, @{{container.warehouse.city.CityName}}, @{{container.warehouse.city.province.ProvinceName}}</td>
                 <td>@{{container.ContainerName}}</td>
                 <td>@{{container.Arrival}}</td>
                 <td>@{{container.supplier.SupplierName}}</td>
@@ -135,9 +147,14 @@
       $scope.suppliers = response.data;
     });
 
-    $http.get('/getContainers')
+    $http.get('/containers')
     .then(function(response){
       $scope.containers = response.data;
+    });
+
+    $http.get('/warehouses')
+    .then(function(response){
+      $scope.addwarehouses = response.data;
     });
   })
 </script>

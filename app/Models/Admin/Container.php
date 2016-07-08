@@ -19,4 +19,9 @@ class Container extends Model
 	{
 	    return $this->hasOne('App\Models\Admin\Supplier', 'SupplierID', 'SupplierID');
 	}
+
+	public function warehouse()
+	{
+	    return $this->hasOne('App\Models\Admin\Warehouse', 'WarehouseNo', 'WarehouseNo');
+	}
 }
