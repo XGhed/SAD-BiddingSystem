@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Account' => $baseDir . '/database/migrations/2016_04_28_070548_Account.php',
+    'Account' => $baseDir . '/database/migrations/2016_04_28_070545_Account.php',
     'AccountType' => $baseDir . '/database/migrations/2016_04_28_070544_AccountType.php',
     'Auction' => $baseDir . '/database/migrations/2016_04_28_070508_Auction.php',
     'Bid' => $baseDir . '/database/migrations/2016_04_28_070655_Bid.php',
@@ -14,6 +14,7 @@ return array(
     'Category' => $baseDir . '/database/migrations/2016_04_28_070518_Category.php',
     'City' => $baseDir . '/database/migrations/2016_04_28_070438_City.php',
     'ClaimType' => $baseDir . '/database/migrations/2016_04_28_070913_ClaimType.php',
+    'Container' => $baseDir . '/database/migrations/2016_04_28_070612_Container.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'Deliver' => $baseDir . '/database/migrations/2016_04_28_070845_Deliver.php',
     'DeliveryCompany' => $baseDir . '/database/migrations/2016_04_28_070820_Delivery_Company.php',
@@ -101,7 +102,7 @@ return array(
     'Keyword' => $baseDir . '/database/migrations/2016_05_16_192340_Keyword.php',
     'KeywordItem' => $baseDir . '/database/migrations/2016_05_16_192542_KeywordItem.php',
     'LogTable' => $baseDir . '/database/migrations/2016_04_28_070905_LogTable.php',
-    'Membership' => $baseDir . '/database/migrations/2016_04_28_070634_Membership.php',
+    'Membership' => $baseDir . '/database/migrations/2016_04_28_070548_Membership.php',
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit_Extensions_GroupTestSuite' => $vendorDir . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
     'PHPUnit_Extensions_PhptTestCase' => $vendorDir . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -505,6 +506,7 @@ return array(
     'Province' => $baseDir . '/database/migrations/2016_04_28_070414_Province.php',
     'ProvinceCompany' => $baseDir . '/database/migrations/2016_04_28_070941_Province_Company.php',
     'ProvinceThirdParty' => $baseDir . '/database/migrations/2016_04_28_070954_Province_ThirdParty.php',
+    'PullRequest' => $baseDir . '/database/migrations/2016_07_08_130542_PullRequest.php',
     'Region' => $baseDir . '/database/migrations/2016_04_28_070355_Region.php',
     'Reward' => $baseDir . '/database/migrations/2016_05_17_120401_Reward.php',
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
