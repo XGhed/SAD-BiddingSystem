@@ -19,6 +19,23 @@ class ContainerController extends Controller
     }
 
     public function addItemToContainer(Request $request){
+        $filename = null;
+        $filepath = null;
+
+        if ($request->hasFile('add_photo')) {
+            $filename = rand(1000,100000)."-".$request->file('add_photo')->getClientOriginalName();
+            $filepath = "photos/";
+            $request->file('add_photo')->move($filepath, $filename);
+        }
+
+        for ($j=0; $j<$request->quantity; $j++){
+            $this->insert($request, $filepath, $filename);
+        }
+
+        return redirect('/itemContainer?containerID=' . $request->containerID);
+    }
+
+    public function insert(Request $request, $filepath, $filename){
         $item = new App\Models\Admin\Item;
 
         $item->ContainerID = $request->containerID;
@@ -28,19 +45,8 @@ class ContainerController extends Controller
         $item->color = $request->color;
         $item->TransacDate = Carbon::now('Asia/Manila');
         $item->ItemModelID = $request->item;
-
-        $filename = null;
-        $filepath = null;
-
-        if ($request->hasFile('add_photo')) {
-            $filename = rand(1000,100000)."-".$request->file('add_photo')->getClientOriginalName();
-            $filepath = "photos/";
-            $request->file('add_photo')->move($filepath, $filename);
-            $item->image_path = $filepath . $filename;
-        }
+        $item->image_path = $filepath . $filename;
 
         $item->save();
-
-        return redirect('/itemContainer?containerID=' . $request->containerID);
     }
 }

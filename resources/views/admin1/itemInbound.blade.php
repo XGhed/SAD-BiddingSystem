@@ -1,7 +1,7 @@
 @extends('admin1.mainteParent')
 
 @section('content')
-<div class="ui grid">
+<div class="ui grid" ng-app="myApp" ng-controller="myController">
   <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
       <div class="ui centered header">Transaction</div>
@@ -43,101 +43,34 @@
 
 
 
-        <table class="ui very basic collapsing celled table">
+        <table class="ui compact celled definition table" id="tableOutput">
           <thead>
             <tr>
-              <th>Container shit</th>
               <th></th>
+              <th>Container</th>
+              <th>Item</th>
+              <th>Defect</th>
+              <th>Color</th>
+              <th>Size</th>
+              <th>Image</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                CONTAINER SHIT
-              </td>
-              <td>
-                    <div class="ui master checkbox">
-                      <input type="checkbox" name="fruits">
-                      <label>All</label>
-                    </div>
-
-                  <div class="list">
-                    <div class="ui three column grid">
-                      <div class="row">
-                        <div class="column">
-                          <div class="ui sub header">ITEM</div>
-                        </div>
-                        <div class="column">
-                          <div class="ui sub header">QUANTITY</div>
-                        </div>
-                        <div class="column">
-                          <div class="ui sub header">DETAIL</div>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="item">
-                          <div class="ui child checkbox">
-                            <input type="checkbox" name="apple">
-                            <label>Apple</label>
-                          </div>
-                        </div>
-                        <div class="item">
-                          <div class="ui child checkbox">
-                            <input type="checkbox" name="orange">
-                            <label>Orange</label>
-                          </div>
-                        </div>
-                        <div class="item">
-                          <div class="ui child checkbox">
-                            <input type="checkbox" name="pear">
-                            <label>Pear</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="content">
-                          <label>detail</label>
-                        </div>
-                        <div class="content">
-                          <label>detail</label>
-                        </div>
-                        <div class="content">
-                          <label>detail</label>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="content">
-                          <label>detail</label>
-                        </div>
-                        <div class="content">
-                          <label>detail</label>
-                        </div>
-                        <div class="content">
-                          <label>detail</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-              </td>
-            </tr>
+            <form action="/itemDelivered" method="POST"><input type="hidden" name="samp" value="sa"><input type="checkbox" checked name="delivereditems[]" value="999"/>
+              <tr ng-repeat="item in itemsInbound">
+                <td> <input type="checkbox" name="delivereditems[]" value="@{{item.ItemID}}"/> </td>
+                <td>@{{item.container.ContainerName}}</td>
+                <td>@{{item.item_model.ItemName}}</td>
+                <td>@{{item.DefectDescription}}</td>
+                <td>@{{item.color}}</td>
+                <td>@{{item.size}}</td>
+                <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td>
+              </tr>
           </tbody>
         </table>
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        <div class="ui button">Confirm</div>
       </div>
+      <input type="submit" class="ui button" value="Confirm"></input>
+            </form>
 
     </div><!-- segment -->
   </div><!-- twelve wide column -->
@@ -198,5 +131,13 @@
       }
     })
   ;
+
+  var app = angular.module('myApp', []);
+  app.controller('myController', function($scope, $http){
+    $http.get('itemsInbound')
+    .then(function(response){
+      $scope.itemsInbound = response.data;
+    });
+  });
 </script>
 @endsection

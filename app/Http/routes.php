@@ -57,6 +57,8 @@ Route::post('/addContainer', 'OrderedController@addContainer');
 
 Route::post('/addItemToContainer', 'ContainerController@addItemToContainer');
 
+Route::post('/itemDelivered', 'ItemInboundController@itemDelivered');
+
 Route::get('/logout', 'LoginController@logout');
 
 
@@ -136,6 +138,8 @@ Route::get('/warehouses', 'DropDowns@warehouses');
 Route::get('/itemsInContainer', 'DropDowns@itemsInContainer');
 
 Route::get('/containers', 'DropDowns@containers');
+
+Route::get('/itemsInbound', 'DropDowns@itemsInbound');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');

@@ -71,7 +71,7 @@
 
                   <div class="field">
                     <div class="ui sub header">Quantity</div>
-                    <input type="number" id="add_quantity" name="add_quantity" min="1" placeholder="0" required>
+                    <input type="number" id="quantity" name="quantity" min="1" placeholder="0" value="1" required>
                   </div>
                 </div>
 
