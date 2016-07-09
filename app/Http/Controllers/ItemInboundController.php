@@ -12,6 +12,13 @@ use Session;
 class ItemInboundController extends Controller
 {
     public function itemDelivered(Request $request){
-        return $request;
+        foreach ($request->delivereditems as $key => $ItemID) {
+            $item = App\Models\Admin\Item::find($ItemID);
+            $item->status = 1;
+
+            $item->save();
+        }
+
+        return redirect('itemInbound');
     }
 }

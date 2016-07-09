@@ -42,7 +42,7 @@
 
 
 
-
+        <form action="/itemDelivered" method="POST"><input type="hidden" name="samp" value="sa">
         <table class="ui compact celled definition table" id="tableOutput">
           <thead>
             <tr>
@@ -56,7 +56,6 @@
             </tr>
           </thead>
           <tbody>
-            <form action="/itemDelivered" method="POST"><input type="hidden" name="samp" value="sa"><input type="checkbox" checked name="delivereditems[]" value="999"/>
               <tr ng-repeat="item in itemsInbound">
                 <td> <input type="checkbox" name="delivereditems[]" value="@{{item.ItemID}}"/> </td>
                 <td>@{{item.container.ContainerName}}</td>
@@ -68,9 +67,9 @@
               </tr>
           </tbody>
         </table>
+        <input type="submit" class="ui button" value="Confirm"></input>
+        </form>
       </div>
-      <input type="submit" class="ui button" value="Confirm"></input>
-            </form>
 
     </div><!-- segment -->
   </div><!-- twelve wide column -->
