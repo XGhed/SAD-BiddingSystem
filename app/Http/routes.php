@@ -141,6 +141,8 @@ Route::get('/containers', 'DropDowns@containers');
 
 Route::get('/itemsInbound', 'DropDowns@itemsInbound');
 
+Route::get('/itemsInventory', 'DropDowns@itemsInventory');
+
 
 Route::post('/edit', 'ShipmentController@editShipment');
 
@@ -149,6 +151,8 @@ Route::get('/add', 'ShipmentController@addShipment');
 Route::get('/accounts', 'PageController@manageAccounts');
 
 Route::get('/tryLoad', 'SupplierController@tryLoad');
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -197,3 +201,7 @@ Route::group(['middleware' => 'customer'], function () {
 });
 
 Route::get('/customer/bidList', 'PageController@bidList');
+
+Route::get('/angulardt', function(){
+	return view('admin1.angulardt');
+});

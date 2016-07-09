@@ -95,7 +95,7 @@
         </div>
           <!-- END add modal -->
 
-          <table class="ui compact celled definition table" id="tableOutput">
+          <table datatable="ng" class="ui compact celled definition table" id="tableOutput">
           <thead>
             <tr>
               <th></th>
@@ -196,11 +196,7 @@
 
 ////////////////////////////////////////////////////////////////////////// 
 
-  $(document).ready(function(){
-    $("#tableOutput").DataTable();
-  });
-
-  var app = angular.module('myApp', []);
+  var app = angular.module('myApp', ['datatables']);
   app.controller('myController', function($scope, $http, $timeout){
     $http.get('/itemModels')
     .then(function(response){

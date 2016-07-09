@@ -1,7 +1,7 @@
 @extends('admin1.mainteParent')
 
 @section('content')
-<div class="ui grid">
+<div class="ui grid" ng-app="myApp" ng-controller="myController">
   <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
       <div class="ui centered header">Transaction</div>
@@ -229,7 +229,7 @@
           <!-- END edit modal -->
 
           <!-- table -->
-        <table class="ui compact celled definition table" id="tableOutput">
+        <table datatable="ng" class="ui compact celled definition table" id="tableOutput">
           <thead>
             <tr>
               <th></th>
@@ -243,8 +243,7 @@
             </tr>
           </thead>
           <tbody>
-          @foreach($results as $key => $result)
-            <tr>
+            <tr ng-repeat="item in items">
               <td class="collapsing">
                 <div class="ui vertical animated button" tabindex="1" id="editBtn">
                   <div class="hidden content">Edit</div>
@@ -259,19 +258,14 @@
                   </div>
                 </div> 
               </td>
-              <td id="tableRow">{{$result->itemModel->ItemName}}</td>
-              <td>{{$result->itemModel->subCategory->category->CategoryName}}</td>
-              <td><img src="{{$result->image_path}}" style="width:60px;height:60px;" /></td>
-              <td>{{$result->size}}</td>
-              <td>{{$result->color}}</td>
-              <td>
-                @foreach($result->inventory as $key => $inv)
-                  {{$inv->warehouse->Status}}
-                @endforeach
-              </td>
-              <td>{{$result->supplier->SupplierName}}</td>
+              <td id="tableRow">@{{item.item_model.ItemName}}</td>
+              <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+              <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
+              <td>@{{item.size}}</td>
+              <td>@{{item.color}}</td>
+              <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
+              <td>@{{item.container.supplier.SupplierName}}</td>
             </tr>
-          @endforeach 
           </tbody>
         </table>
     </div>
@@ -351,9 +345,12 @@
 
 
 ////////////////////////////////////////////////////////////////////////// 
-
-  $(document).ready(function(){
-    $("#tableOutput").DataTable();
+  var app = angular.module('myApp', ['datatables']);
+  app.controller('myController', function($scope, $http){
+    $http.get('itemsInventory')
+    .then(function(response){
+      $scope.items = response.data;
+    });
   });
 </script>
 @endsection

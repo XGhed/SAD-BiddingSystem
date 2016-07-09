@@ -43,7 +43,7 @@
 
 
         <form action="/itemDelivered" method="POST"><input type="hidden" name="samp" value="sa">
-        <table class="ui compact celled definition table" id="tableOutput">
+        <table datatable="ng" class="ui compact celled definition table" id="tableOutput">
           <thead>
             <tr>
               <th></th>
@@ -131,7 +131,7 @@
     })
   ;
 
-  var app = angular.module('myApp', []);
+  var app = angular.module('myApp', ['datatables']);
   app.controller('myController', function($scope, $http){
     $http.get('itemsInbound')
     .then(function(response){
