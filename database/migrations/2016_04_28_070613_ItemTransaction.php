@@ -17,9 +17,13 @@ class ItemTransaction extends Migration
             $table->string('color');
             $table->string('image_path');
             $table->datetime('TransacDate');
+            $table->integer('CurrentWarehouse')->unsigned()->nullable();
+            $table->integer('RequestedWarehouse')->unsigned()->nullable();
             $table->integer('ItemModelID')->unsigned();
             $table->foreign('ContainerID')->references('ContainerID')->on('Containers');
             $table->foreign('ItemModelID')->references('ItemModelID')->on('ItemModels');
+            $table->foreign('CurrentWarehouse')->references('WarehouseNo')->on('Warehouse');
+            $table->foreign('RequestedWarehouse')->references('WarehouseNo')->on('Warehouse');
             $table->softDeletes();
         });
     }

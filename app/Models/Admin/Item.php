@@ -20,9 +20,9 @@ class Item extends Model
 	    return $this->hasOne('App\Models\Admin\itemModel', 'ItemModelID', 'ItemModelID');
 	}
 
-	public function inventory()
+	public function itemHistory()
 	{
-	    return $this->hasMany('App\Models\Admin\Inventory', 'ItemID', 'ItemID');
+	    return $this->hasMany('App\Models\Admin\ItemHistory', 'ItemID', 'ItemID');
 	}
 
 	public function supplier()
@@ -33,5 +33,15 @@ class Item extends Model
 	public function container()
 	{
 	    return $this->hasOne('App\Models\Admin\Container', 'ContainerID', 'ContainerID');
+	}
+
+	public function current_warehouse()
+	{
+	    return $this->hasOne('App\Models\Admin\Warehouse', 'WarehouseNo', 'CurrentWarehouse');
+	}
+
+	public function requested_warehouse()
+	{
+	    return $this->hasOne('App\Models\Admin\Warehouse', 'WarehouseNo', 'RequestedWarehouse');
 	}
 }
