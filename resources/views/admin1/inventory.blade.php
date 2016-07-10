@@ -22,213 +22,13 @@
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
-       <a class="ui basic blue button" id="addBtn">
-            <i class="add user icon"></i>
-            Add Item
-          </a>
 
-          <!-- add modal -->
-        <div class="ui small modal" id="addModal">
-          <i class="close icon"></i>
-            <div class="header">
-              Add Item
-            </div>
-            <div class="content">
-              <form class="ui form" action="/confirmInventory" method="POST" enctype="multipart/form-data">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="fields">
-                  <div class="ten wide required field">
-                      <div class="ui sub header">Item</div>
-                      <div class="ui fluid search normal selection dropdown">
-                        <input type="hidden" name="" REQUIRED>
-                          <i class="dropdown icon"></i>
-                        <div class="default text" name="itemModel">Select item</div>
-                          <div class="menu">
-                          @foreach($itemModels as $key => $itemModel)
-                            <div class="item" value="{{$itemModel->ItemModelID}}">{{$itemModel->ItemName}}</div>
-                          @endforeach
-                          </div>
-                      </div>
-                  </div>
-
-                   <div class="five wide field">
-                   <div class="ui sub header">Upload photo</div>
-                    <label for="file" class="ui icon button">
-                        <i class="file icon"></i>
-                        Attach photo</label>
-                    <input type="file" id="file" name="add_photo" style="display:none" multiple>
-                  </div> 
-                </div>
-
-                <div class="equal width required fields">
-                  <div class="field">
-                    <div class="ui sub header">Warehouse</div>
-                    <div class="ui fluid search normal selection dropdown">
-                      <input type="hidden" name="" REQUIRED>
-                        <i class="dropdown icon"></i>
-                      <!-- <div class="default text">Select Warehouse</div>
-                        <div class="menu">
-                          <div class="item" value="0">Santiago</div>
-                        </div> -->
-                        <select name="warehouse">
-                          @foreach($warehouses as $key => $warehouse)
-                            <option value="" selected>Warehouse</option>
-                            <option value="{{$warehouse->WarehouseNo}}">{{$warehouse->city->province->ProvinceName}},{{$warehouse->city->CityName}},{{$warehouse->Barangay_Street_Address}}</option>
-                          @endforeach
-                        </select>
-                    </div>
-                  </div>
-
-                  <div class="field">
-                    <div class="ui sub header">Supplier</div>
-                    <div class="ui fluid search normal selection dropdown">
-                      <input type="hidden" name="" REQUIRED>
-                        <i class="dropdown icon"></i>
-                      <div class="default text" name="add_supplier" >Select Supplier</div>
-                        <div class="menu">
-                        @foreach($suppliers as $key => $supplier)
-                          <div class="item" value="{{$supplier->SupplierID}}">{{$supplier->SupplierName}}</div>
-                           @endforeach
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="equal width fields">
-                  <div class="field">
-                    <div class="ui sub header">size</div>
-                    <input type="text" name="add_size" placeholder="dimensions" required>
-                  </div>
-
-                  <div class="field">
-                    <div class="ui sub header">Color</div>
-                    <select name="add_color">
-                        <option value="" selected>Choose Color</option>
-                        <option value="Blue">Blue</option>
-                        <option value="Red">Red</option>
-                        <option value="Green">Green</option>
-                      </select>
-                  </div>
-
-                  <div class="field">
-                    <div class="ui sub header">Quantity</div>
-                    <input type="number" id="add_quantity" name="add_quantity" min="1" placeholder="0" required>
-                  </div>
-                </div>
-
-                <div class="inline fields">
-                  <div class="three wide field">
-                    <div class="ui checkbox">
-                      <input type="checkbox" id="test5" name="defect" />
-                      <label>Defect</label>
-                    </div>
-                  </div>
-
-                  <div class="five wide field" style="display: none" id="defectDesc">
-                    <input id="def" type="text" name="defectDesc" placeholder="Description" />
-                  </div>
-                </div>
-            </div>
-            <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
-              </form>
-            </div>
-        </div>
-          <!-- END add modal -->
-
-          <!--edit modal -->
-        <div class="ui small modal" id="editModal">
-           <i class="close icon"></i>
-            <div class="header">
-            Edit Item
-            </div>
-            <div class="content">
-                <div class="fields">
-                  <div class="seven wide required field">
-                      <div class="ui sub header">Item</div>
-                      <select>
-                        <option value="" selected>Item</option>
-                        <option id="" value=""></option>
-                      </select>
-                  </div>
-
-                  <div class="eight wide field">
-                    <div class="inline fields">
-                      <div class="field">
-                        <div class="ui checkbox">
-                          <input name="currentPhoto" type="checkbox" checked="checked" id="edit_currentPhoto" checked/>
-                          <label>Use current photo</label>
-                        </div>
-                      </div>
-
-                      <div class="field">
-                        <div class="ui sub header">Upload photo</div>
-                          <label for="file" class="ui icon button" id="edit_uploadPhoto">
-                              <i class="file icon"></i>
-                              Attach photo</label>
-                          <input type="file" name="edit_photo" style="display:none" multiple>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-
-                <div class="equal width required fields">
-                  <div class="field">
-                    <div class="ui sub header">Warehouse</div>
-                    <select>
-                      <option value="" selected>Warehouse</option>
-                      <option id="" value=""></option>
-                    </select>
-                  </div>
-
-                  <div class="field">
-                    <div class="ui sub header">Supplier</div>
-                    <div class="ui fluid search normal selection dropdown">
-                      <input type="hidden" name="" REQUIRED>
-                        <i class="dropdown icon"></i>
-                      <div class="default text">Select Supplier</div>
-                      @foreach($suppliers as $key => $upplier)
-                        <div class="menu">
-                          <div class="item" value="{{$supplier->SupplierID}}">{{$supplier->SupplierName}}</div>
-                        </div>
-                      @endforeach
-                    </div>
-                  </div>
-                </div>
-
-                <div class="equal width fields">
-                  <div class="field">
-                    <div class="ui sub header">size</div>
-                    <input type="text" name="add_size" placeholder="dimensions" required>
-                  </div>
-
-                  <div class="field">
-                    <div class="ui sub header">Color</div>
-                    <input type="text" name="color" required>
-                  </div>
-                </div>
-
-                <div class="inline fields">
-                  <div class="three wide field">
-                    <div class="ui checkbox">
-                      <input type="checkbox" id="test6" name="defect1" />
-                      <label>Defect</label>
-                    </div>
-                  </div>
-
-                  <div class="five wide field" style="display: none" id="defectDesc1">
-                    <input id="def" type="text" name="defectDesc" placeholder="Description" />
-                  </div>
-                </div>
-            </div>
-            <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
-              </form>
-            </div>
-        </div>
-          <!-- END edit modal -->
-
-          <!-- table -->
+    <div class="ui top attached tabular menu">
+      <a class="active item" data-tab="first">First</a>
+      <a class="item" data-tab="second">Second</a>
+    </div>
+    <div class="ui bottom attached active tab segment" data-tab="first">
+      <!-- table -->
         <table datatable="ng" class="ui compact celled definition table" id="tableOutput">
           <thead>
             <tr>
@@ -246,13 +46,13 @@
             <tr ng-repeat="item in items">
               <td class="collapsing">
                 <div class="ui vertical animated button" tabindex="1" id="editBtn">
-                  <div class="hidden content">Edit</div>
+                  <div class="hidden content">Item Logs</div>
                   <div class="visible content">
-                    <i class="large edit icon"></i>
+                    <i class="large history icon"></i>
                   </div>
                 </div>
                 <div class="ui vertical animated button" tabindex="0">
-                  <div class="hidden content">Delete</div>
+                  <div class="hidden content">Dispose</div>
                   <div class="visible content">
                     <i class="large trash icon"></i>
                   </div>
@@ -268,6 +68,75 @@
             </tr>
           </tbody>
         </table>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="second">
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th>Header</th>
+            <th>Header</th>
+            <th>Header</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a class="ui basic blue button" id="addBtn">
+                <i class="add user icon"></i>
+                View Stocks
+              </a>              
+            </td>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+        </tbody>
+        <tfoot>
+      </table>
+    </div>
+
+          <!-- view stocks modal -->
+        <div class="ui small modal" id="addModal">
+          <i class="close icon"></i>
+            <div class="header">
+              Add Item
+            </div>
+            <div class="content">
+              
+            </div>
+            <div class="actions">
+              <button class="ui button" type="submit">Confirm</button>
+            </div>
+        </div>
+          <!-- END view stocks modal -->
+
+          <!--item logs modal -->
+        <div class="ui small modal" id="editModal">
+           <i class="close icon"></i>
+            <div class="header">
+            Edit Item
+            </div>
+            <div class="content">
+              <table class="ui celled table">
+                <thead>
+                  <tr><th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                </tr></thead>
+                <tbody>
+                  <tr>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                    <td>Cell</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="actions">
+              <button class="ui button" type="submit">Confirm</button>
+            </div>
+        </div>
+          <!-- END item logs modal -->
+         
     </div>
   </div>
 </div>
@@ -342,6 +211,11 @@
   function modalClose() {
     $('.ui.modal').modal('hide'); 
     }
+
+
+$('.menu .item').tab();
+
+
 
 
 ////////////////////////////////////////////////////////////////////////// 
