@@ -169,6 +169,11 @@ class PageController extends Controller
        return view('admin1.bidEvent');
     }
 
+    public function movingItems(Request $request){
+
+       return view('admin1.movingOfItems');
+    } 
+
     public function bidItems1(Request $request){
 
        return view('admin1.bidItems');

@@ -57,7 +57,9 @@
           </thead>
           <tbody>
               <tr ng-repeat="item in itemsInbound">
-                <td> <input type="checkbox" name="delivereditems[]" value="@{{item.ItemID}}"/> </td>
+                <td>
+                  <input type="checkbox" name="delivereditems[]" class="ui checkbox" value="@{{item.ItemID}}"/>
+                </td>
                 <td>@{{item.container.ContainerName}}</td>
                 <td>@{{item.item_model.ItemName}}</td>
                 <td>@{{item.DefectDescription}}</td>

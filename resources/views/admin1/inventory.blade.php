@@ -45,7 +45,7 @@
           <tbody>
             <tr ng-repeat="item in items">
               <td class="collapsing">
-                <div class="ui vertical animated button" tabindex="1" id="editBtn">
+                <div class="ui vertical animated button " tabindex="1" id="editBtn">
                   <div class="hidden content">Item Logs</div>
                   <div class="visible content">
                     <i class="large history icon"></i>
@@ -113,7 +113,7 @@
         <div class="ui small modal" id="editModal">
            <i class="close icon"></i>
             <div class="header">
-            Edit Item
+            Item Logs
             </div>
             <div class="content">
               <table class="ui celled table">
