@@ -174,6 +174,11 @@ class PageController extends Controller
        return view('admin1.movingOfItems');
     } 
 
+    public function approveItems(Request $request){
+
+       return view('admin1.approvalOfItems');
+    } 
+
     public function bidItems1(Request $request){
 
        return view('admin1.bidItems');
