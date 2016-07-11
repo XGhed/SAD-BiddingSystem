@@ -190,6 +190,8 @@ Route::get('/itemInbound', 'PageController@itemInbound');
 
 Route::get('/movingOfItems', 'PageController@movingItems');
 
+Route::get('/approvalOfItems', 'PageController@approveItems');
+
 Route::get('/accountApproval', 'PageController@accountApproval');
 
 Route::get('/itemPullouts', 'PageController@itemPullouts');
