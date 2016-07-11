@@ -45,7 +45,7 @@
           <tbody>
             <tr ng-repeat="item in items">
               <td class="collapsing">
-                <div class="ui vertical animated button " tabindex="1" id="editBtn">
+                <div class="ui vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
                   <div class="hidden content">Item Logs</div>
                   <div class="visible content">
                     <i class="large history icon"></i>
@@ -69,25 +69,32 @@
           </tbody>
         </table>
     </div>
+
+    <!--2nd tab-->
+
     <div class="ui bottom attached tab segment" data-tab="second">
       <table class="ui celled table">
         <thead>
           <tr>
-            <th>Header</th>
-            <th>Header</th>
-            <th>Header</th>
+            <th></th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>SubCategory</th>
+            <th>Stocks</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr ng-repeat="itemmodel in itemmodels">
             <td>
-              <a class="ui basic blue button" id="addBtn">
+              <a class="ui basic blue button" ng-click="viewStocks()">
                 <i class="add user icon"></i>
                 View Stocks
               </a>              
             </td>
-            <td>Cell</td>
-            <td>Cell</td>
+            <td>@{{itemmodel.ItemName}}</td>
+            <td>@{{itemmodel.sub_category.category.CategoryName}}</td>
+            <td>@{{itemmodel.sub_category.SubCategoryName}}</td>
+            <td>@{{itemmodel.items.length}}</td>
           </tr>
         </tbody>
         <tfoot>
@@ -109,8 +116,36 @@
         </div>
           <!-- END view stocks modal -->
 
-          <!--item logs modal -->
-        <div class="ui small modal" id="editModal">
+          <!--item History modal -->
+        <div class="ui small modal" id="itemHistory">
+           <i class="close icon"></i>
+            <div class="header">
+            Item Logs
+            </div>
+            <div class="content">
+              <table class="ui celled table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Log</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="history in histories">
+                    <td>@{{history.Date}}</td>
+                    <td>@{{history.Log}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="actions">
+              <button class="ui button" type="submit">Confirm</button>
+            </div>
+        </div>
+          <!-- END item history modal -->
+
+             <!--item list modal -->
+        <div class="ui small modal" id="itemLists">
            <i class="close icon"></i>
             <div class="header">
             Item Logs
@@ -135,7 +170,7 @@
               <button class="ui button" type="submit">Confirm</button>
             </div>
         </div>
-          <!-- END item logs modal -->
+          <!-- END itemLists modal -->
          
     </div>
   </div>
@@ -166,12 +201,6 @@
        });
   });
 
-  //edit modal
-  $(document).ready(function(){
-       $('#editBtn').click(function(){
-          $('#editModal').modal('show');    
-       });
-  });
 
   //dropdowns
   $('.ui.normal.dropdown')
@@ -225,6 +254,20 @@ $('.menu .item').tab();
     .then(function(response){
       $scope.items = response.data;
     });
+
+    $http.get('itemmodelsInventory')
+    .then(function(response){
+      $scope.itemmodels = response.data;
+    });
+
+    $scope.viewStocks = function(){
+      $('#itemLists').modal('show');    
+    }
+
+    $scope.viewItemHistory = function(index){
+      $('#itemHistory').modal('show');    
+      $scope.histories = $scope.items[index].item_history;
+    }
   });
 </script>
 @endsection

@@ -174,9 +174,9 @@ class PageController extends Controller
        return view('admin1.movingOfItems');
     } 
 
-    public function approveItems(Request $request){
+    public function approvalOfMovingItems(Request $request){
 
-       return view('admin1.approvalOfItems');
+       return view('admin1.approvalOfMovingItems');
     } 
 
     public function bidItems1(Request $request){

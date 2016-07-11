@@ -19,4 +19,9 @@ class ItemModel extends Model
 	{
 	    return $this->hasOne('App\Models\Admin\SubCategory', 'SubCategoryID', 'SubCategoryID');
 	}
+
+	public function items()
+	{
+	    return $this->hasMany('App\Models\Admin\Item', 'ItemModelID', 'ItemModelID');
+	}
 }

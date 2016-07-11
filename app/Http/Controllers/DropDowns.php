@@ -45,10 +45,16 @@ class DropDowns extends Controller
 
     public function itemsInventory(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
-            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province')
+            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory')
             ->where('status', 1)->get();
 
         return $items;
+    }
+
+    public function itemmodelsInventory(Request $request){
+        $itemmodels = App\Models\Admin\ItemModel::with('subCategory', 'subCategory.category', 'items')->get();
+
+        return $itemmodels;
     }
 
     public function itemsMoveSelect(Request $request){
@@ -57,6 +63,16 @@ class DropDowns extends Controller
             'current_warehouse.city', 'current_warehouse.city.province')
             ->where('status', 1)
             ->where('RequestedWarehouse', null)->get();
+
+        return $items;
+    }
+
+    public function itemsMoveApproval(Request $request){
+        $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
+            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'current_warehouse', 
+            'current_warehouse.city', 'current_warehouse.city.province', 'requested_warehouse', 'requested_warehouse.city', 'requested_warehouse.city.province')
+            ->where('status', 1)
+            ->whereNotNull('RequestedWarehouse')->get();
 
         return $items;
     }

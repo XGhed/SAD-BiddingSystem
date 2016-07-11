@@ -61,6 +61,8 @@ Route::post('/itemDelivered', 'ItemInboundController@itemDelivered');
 
 Route::post('/itemMoveRequest', 'MovingController@itemMoveRequest');
 
+Route::post('/approveMovingOfItems', 'MovingController@approveMovingOfItems');
+
 Route::get('/logout', 'LoginController@logout');
 
 
@@ -147,6 +149,10 @@ Route::get('/itemsInventory', 'DropDowns@itemsInventory');
 
 Route::get('/itemsMoveSelect', 'DropDowns@itemsMoveSelect');
 
+Route::get('/itemsMoveApproval', 'DropDowns@itemsMoveApproval');
+
+Route::get('/itemmodelsInventory', 'DropDowns@itemmodelsInventory');
+
 
 Route::post('/edit', 'ShipmentController@editShipment');
 
@@ -190,7 +196,7 @@ Route::get('/itemInbound', 'PageController@itemInbound');
 
 Route::get('/movingOfItems', 'PageController@movingItems');
 
-Route::get('/approvalOfItems', 'PageController@approveItems');
+Route::get('/approvalOfMovingItems', 'PageController@approvalOfMovingItems');
 
 Route::get('/accountApproval', 'PageController@accountApproval');
 
