@@ -91,9 +91,9 @@ Route::get('/itemContainer', 'ContainerController@viewContainer');
 //Route::get('/shipment', 'PageController@shipment');
 
 //AJAX
-Route::get('/cityOptions', 'DropDowns@cityOptions');
+Route::get('/cityOptions', 'AngularOutput@cityOptions');
 
-Route::get('/subcatOptions', 'DropDowns@subcatOptions');
+Route::get('/subcatOptions', 'AngularOutput@subcatOptions');
 
 Route::get('/status_Supplier', 'StatusUpdate@Supplier');
 
@@ -128,30 +128,41 @@ Route::get('/customer/items/auction', 'PageController@auction');
 Route::get('/admin', 'PageController@admin');
 
 
-//Angular DropDowns
-Route::get('/provinces', 'DropDowns@provinces');
+//Angular AngularOutput
+Route::get('/provinces', 'AngularOutput@provinces');
 
-Route::get('/accounttypes', 'DropDowns@accounttypes');
+Route::get('/accounttypes', 'AngularOutput@accounttypes');
 
-Route::get('/suppliers', 'DropDowns@suppliers');
+Route::get('/suppliers', 'AngularOutput@suppliers');
 
-Route::get('/itemModels', 'DropDowns@itemModels');
+Route::get('/itemModels', 'AngularOutput@itemModels');
 
-Route::get('/warehouses', 'DropDowns@warehouses');
+Route::get('/warehouses', 'AngularOutput@warehouses');
 
-Route::get('/itemsInContainer', 'DropDowns@itemsInContainer');
+Route::get('/itemsInContainer', 'AngularOutput@itemsInContainer');
 
-Route::get('/containers', 'DropDowns@containers');
+Route::get('/containers', 'AngularOutput@containers');
 
-Route::get('/itemsInbound', 'DropDowns@itemsInbound');
+Route::get('/singleItem', 'AngularOutput@singleItem');
 
-Route::get('/itemsInventory', 'DropDowns@itemsInventory');
+Route::get('/itemsInbound', 'AngularOutput@itemsInbound');
 
-Route::get('/itemsMoveSelect', 'DropDowns@itemsMoveSelect');
+Route::get('/itemsInventory', 'AngularOutput@itemsInventory');
 
-Route::get('/itemsMoveApproval', 'DropDowns@itemsMoveApproval');
+Route::get('/itemsMoveSelect', 'AngularOutput@itemsMoveSelect');
 
-Route::get('/itemmodelsInventory', 'DropDowns@itemmodelsInventory');
+Route::get('/itemsMoveApproval', 'AngularOutput@itemsMoveApproval');
+
+Route::get('/itemmodelsInventory', 'AngularOutput@itemmodelsInventory');
+
+Route::get('/itemsOfModelInventory', 'AngularOutput@itemsOfModelInventory');
+
+
+//Angular Input
+
+Route::get('/disposeItem', 'AngularInput@disposeItem');
+
+Route::get('/cancelDisposeItem', 'AngularInput@cancelDisposeItem');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');

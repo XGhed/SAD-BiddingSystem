@@ -24,8 +24,9 @@
     <div class="ui segment">
 
     <div class="ui top attached tabular menu">
-      <a class="active item" data-tab="first">First</a>
-      <a class="item" data-tab="second">Second</a>
+      <a class="active item" data-tab="first">Per Stock</a>
+      <a class="item" data-tab="second">Per Item</a>
+      <a class="item" data-tab="third">Requested for Dispose</a>
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
       <!-- table -->
@@ -43,7 +44,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="item in items">
+            <tr ng-repeat="item in items" ng-if="item.pull_request.length == 0">
               <td class="collapsing">
                 <div class="ui vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
                   <div class="hidden content">Item Logs</div>
@@ -51,7 +52,7 @@
                     <i class="large history icon"></i>
                   </div>
                 </div>
-                <div class="ui vertical animated button" tabindex="0">
+                <div class="ui vertical animated button" tabindex="0" ng-click="dispose($index)">
                   <div class="hidden content">Dispose</div>
                   <div class="visible content">
                     <i class="large trash icon"></i>
@@ -86,7 +87,7 @@
         <tbody>
           <tr ng-repeat="itemmodel in itemmodels">
             <td>
-              <a class="ui basic blue button" ng-click="viewStocks()">
+              <a class="ui basic blue button" ng-click="viewStocks($index)">
                 <i class="add user icon"></i>
                 View Stocks
               </a>              
@@ -99,6 +100,49 @@
         </tbody>
         <tfoot>
       </table>
+    </div>
+
+    <div class="ui bottom attached tab segment" data-tab="third">
+      <!-- table -->
+        <table datatable="ng" class="ui compact celled definition table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Photo</th>
+              <th>Size</th>
+              <th>Color</th>
+              <th>Warehouse</th>
+              <th>Supplier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in items" ng-if="item.pull_request.length > 0">
+              <td class="collapsing">
+                <div class="ui vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
+                  <div class="hidden content">Item Logs</div>
+                  <div class="visible content">
+                    <i class="large history icon"></i>
+                  </div>
+                </div>
+                <div class="ui vertical animated button" tabindex="0" ng-click="cancelDispose($index)">
+                  <div class="hidden content">Cancel</div>
+                  <div class="visible content">
+                    <i class="large ban icon"></i>
+                  </div>
+                </div> 
+              </td>
+              <td id="tableRow">@{{item.item_model.ItemName}}</td>
+              <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+              <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
+              <td>@{{item.size}}</td>
+              <td>@{{item.color}}</td>
+              <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
+              <td>@{{item.container.supplier.SupplierName}}</td>
+            </tr>
+          </tbody>
+        </table>
     </div>
 
           <!-- view stocks modal -->
@@ -153,15 +197,40 @@
             <div class="content">
               <table class="ui celled table">
                 <thead>
-                  <tr><th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr></thead>
-                <tbody>
                   <tr>
-                    <td>Cell</td>
-                    <td>Cell</td>
-                    <td>Cell</td>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Photo</th>
+                    <th>Size</th>
+                    <th>Color</th>
+                    <th>Warehouse</th>
+                    <th>Supplier</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="item in itemsOfModel">
+                    <td class="collapsing">
+                      <div class="ui vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
+                        <div class="hidden content">Item Logs</div>
+                        <div class="visible content">
+                          <i class="large history icon"></i>
+                        </div>
+                      </div>
+                      <div class="ui vertical animated button" tabindex="0">
+                        <div class="hidden content">Dispose</div>
+                        <div class="visible content">
+                          <i class="large trash icon"></i>
+                        </div>
+                      </div> 
+                    </td>
+                    <td id="tableRow">@{{item.item_model.ItemName}}</td>
+                    <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+                    <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
+                    <td>@{{item.size}}</td>
+                    <td>@{{item.color}}</td>
+                    <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
+                    <td>@{{item.container.supplier.SupplierName}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -260,13 +329,42 @@ $('.menu .item').tab();
       $scope.itemmodels = response.data;
     });
 
-    $scope.viewStocks = function(){
+    $scope.viewStocks = function(index){
+      var ItemModelID = $scope.itemmodels[index].ItemModelID;
       $('#itemLists').modal('show');    
+      $http.get('itemsOfModelInventory?itemID=' + ItemModelID)
+      .then(function(response){
+        $scope.itemsOfModel = response.data;
+      });
     }
 
     $scope.viewItemHistory = function(index){
-      $('#itemHistory').modal('show');    
       $scope.histories = $scope.items[index].item_history;
+      $('#itemHistory').modal('show');
+    }
+
+    $scope.dispose = function(index){
+      $http.get('disposeItem?itemID=' + $scope.items[index].ItemID)
+      .then(function(response){
+        if(response.data == "success"){
+          alert('Requested for dispose');
+          return $http.get('singleItem?itemID=' + $scope.items[index].ItemID);
+        }
+      })
+      .then(function(response){
+        $scope.items[index] = response.data;
+      });
+    }
+
+    $scope.cancelDispose = function(index){
+      $http.get('cancelDisposeItem?itemID=' + $scope.items[index].ItemID)
+      .then(function(response){
+        alert('Cancelled for disposal');
+        return $http.get('singleItem?itemID=' + $scope.items[index].ItemID);
+      })
+      .then(function(response){
+        $scope.items[index] = response.data;
+      });
     }
   });
 </script>

@@ -25,6 +25,11 @@ class Item extends Model
 	    return $this->hasMany('App\Models\Admin\ItemHistory', 'ItemID', 'ItemID');
 	}
 
+	public function pullRequest()
+	{
+	    return $this->hasMany('App\Models\Admin\PullRequest', 'ItemID', 'ItemID');
+	}
+
 	public function supplier()
 	{
 	    return $this->hasOne('App\Models\Admin\Supplier', 'SupplierID', 'SupplierID');

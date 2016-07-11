@@ -15,7 +15,7 @@ use Input;
 use Response;
 
 
-class DropDowns extends Controller
+class AngularOutput extends Controller
 {
     public function suppliers(){
         $suppliers = App\Models\Admin\Supplier::all();
@@ -25,6 +25,14 @@ class DropDowns extends Controller
     public function itemModels(){
         $itemModels = App\Models\Admin\ItemModel::all();
         return $itemModels;
+    }
+
+    public function singleItem(Request $request){
+        $item =  App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
+            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory', 'pullRequest')
+            ->where('ItemID', $request->itemID)->first();
+
+        return $item;
     }
 
     public function itemsInContainer(Request $request){
@@ -45,8 +53,18 @@ class DropDowns extends Controller
 
     public function itemsInventory(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
-            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory')
+            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory', 'pullRequest')
             ->where('status', 1)->get();
+
+        return $items;
+    }
+
+    public function itemsOfModelInventory(Request $request){
+        $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
+            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory')
+            ->where('status', 1)
+            ->where('ItemModelID', $request->itemID)
+            ->get();
 
         return $items;
     }
@@ -56,6 +74,8 @@ class DropDowns extends Controller
 
         return $itemmodels;
     }
+
+
 
     public function itemsMoveSelect(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
