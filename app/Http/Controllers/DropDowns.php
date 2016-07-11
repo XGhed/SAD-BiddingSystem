@@ -51,6 +51,16 @@ class DropDowns extends Controller
         return $items;
     }
 
+    public function itemsMoveSelect(Request $request){
+        $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
+            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'current_warehouse', 
+            'current_warehouse.city', 'current_warehouse.city.province')
+            ->where('status', 1)
+            ->where('RequestedWarehouse', null)->get();
+
+        return $items;
+    }
+
     public function containers(){
 
         $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province')->get();

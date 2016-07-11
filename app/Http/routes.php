@@ -59,6 +59,8 @@ Route::post('/addItemToContainer', 'ContainerController@addItemToContainer');
 
 Route::post('/itemDelivered', 'ItemInboundController@itemDelivered');
 
+Route::post('/itemMoveRequest', 'MovingController@itemMoveRequest');
+
 Route::get('/logout', 'LoginController@logout');
 
 
@@ -142,6 +144,8 @@ Route::get('/containers', 'DropDowns@containers');
 Route::get('/itemsInbound', 'DropDowns@itemsInbound');
 
 Route::get('/itemsInventory', 'DropDowns@itemsInventory');
+
+Route::get('/itemsMoveSelect', 'DropDowns@itemsMoveSelect');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');
