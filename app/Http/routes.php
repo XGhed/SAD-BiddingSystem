@@ -164,6 +164,8 @@ Route::get('/disposeItem', 'AngularInput@disposeItem');
 
 Route::get('/cancelDisposeItem', 'AngularInput@cancelDisposeItem');
 
+Route::get('/confirmDispose', 'AngularInput@confirmDispose');
+
 
 Route::post('/edit', 'ShipmentController@editShipment');
 

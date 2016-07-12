@@ -32,4 +32,24 @@ class AngularInput extends Controller
 
         return "success";
     }
+
+    public function confirmDispose(Request $request){
+        $item = App\Models\Admin\Item::find($request->itemID);
+
+        if(count($item->pullRequest) > 0){
+            $item->status = 2;
+            $item->save();
+
+            $pullRequest = App\Models\Admin\PullRequest::where('ItemID', $request->itemID)->first();
+            $pullRequest->delete();
+
+            $itemhistory = new App\Models\Admin\ItemHistory;
+            $itemhistory->ItemID = $request->itemID;
+            $itemhistory->Log = "Item successfully pulled out (disposed)";
+            $itemhistory->Date = Carbon::now('Asia/Manila');
+            $itemhistory->save();
+
+            return 'success';
+        }
+    }
 }
