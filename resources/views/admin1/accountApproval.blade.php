@@ -11,12 +11,6 @@
         <a class="item" href="/itemPullouts">
           Item Pullouts
         </a>
-        <a class=" item" href="/inventory">
-          Inventory
-        </a>
-        <a class="item" href="/biddingEvent1">
-          Bidding Event
-        </a>
     </div>
   </div>
 
