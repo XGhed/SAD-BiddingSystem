@@ -145,21 +145,6 @@
         </table>
     </div>
 
-          <!-- view stocks modal -->
-        <div class="ui small modal" id="addModal">
-          <i class="close icon"></i>
-            <div class="header">
-              Add Item
-            </div>
-            <div class="content">
-              
-            </div>
-            <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
-            </div>
-        </div>
-          <!-- END view stocks modal -->
-
           <!--item History modal -->
         <div class="ui small modal" id="itemHistory">
            <i class="close icon"></i>
@@ -182,14 +167,11 @@
                 </tbody>
               </table>
             </div>
-            <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
-            </div>
         </div>
           <!-- END item history modal -->
 
              <!--item list modal -->
-        <div class="ui small modal" id="itemLists">
+        <div class="ui modal" id="itemLists">
            <i class="close icon"></i>
             <div class="header">
             Item Logs
