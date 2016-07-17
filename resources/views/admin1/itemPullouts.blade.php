@@ -4,12 +4,21 @@
 <div class="ui grid" ng-app="myApp" ng-controller="myController">
   <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
-      <div class="ui centered header">Queries</div>
-        <a class="item" href="/accountApproval">
-          Account Approval
+      <div class="ui centered header">Transaction</div>
+        <a class="item" href="/orderedItem">
+          Ordered Items
+        </a>
+        <a class="item" href="/itemInbound">
+          Item Inbound
         </a>
         <a class="active item" href="/itemPullouts">
           Item Pullouts
+        </a>        
+        <a class=" item" href="/inventory">
+          Inventory
+        </a>
+        <a class="item" href="/biddingEvent1">
+          Bidding Event
         </a>
     </div>
   </div>

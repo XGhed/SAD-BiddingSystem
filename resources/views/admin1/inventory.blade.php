@@ -11,6 +11,9 @@
         <a class="item" href="/itemInbound">
           Item Inbound
         </a>
+        <a class="item" href="/itemPullouts">
+          Item Pullouts
+        </a>  
         <a class=" active item" href="/inventory">
           Inventory
         </a>

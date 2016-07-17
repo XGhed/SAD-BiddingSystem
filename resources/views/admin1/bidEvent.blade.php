@@ -11,12 +11,15 @@
         <a class="item" href="/itemInbound">
           Item Inbound
         </a>
-          <a class="item" href="/inventory">
-            Inventory
-          </a>
-          <a class="active item" href="/biddingEvent1">
-            Bidding Event
-          </a>
+        <a class="item" href="/itemPullouts">
+          Item Pullouts
+        </a>  
+        <a class="item" href="/inventory">
+          Inventory
+        </a>
+        <a class="active item" href="/biddingEvent1">
+          Bidding Event
+        </a>
       </div>
     </div>
 

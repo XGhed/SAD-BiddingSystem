@@ -8,9 +8,6 @@
         <a class="active item" href="/accountApproval">
           Account Approval
         </a>
-        <a class="item" href="/itemPullouts">
-          Item Pullouts
-        </a>
     </div>
   </div>
 
