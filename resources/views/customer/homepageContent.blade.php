@@ -18,12 +18,11 @@
           </div>
           @if(session('accountID') != "")
           	<a class="ui item" href="/logout">
-	            Hello {{session('accountID')}}
+	            Logout {{session('accountID')}}
 	        </a>
           @else
           	<a class="ui item" id="logIn">
-	        	<i class="sign in icon"></i>
-	            Login
+	            Register | Log in
 	        </a>
 	      @endif
         </div>
