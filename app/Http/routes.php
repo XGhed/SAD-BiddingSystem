@@ -163,6 +163,8 @@ Route::get('/itemsOfModelInventory', 'AngularOutput@itemsOfModelInventory');
 
 Route::get('/eventList', 'BiddingEventController@eventList');
 
+Route::get('/getEventItems', 'BiddingEventController@getEventItems');
+
 
 //Angular Input
 
@@ -175,6 +177,13 @@ Route::get('/confirmDispose', 'AngularInput@confirmDispose');
 //
 
 Route::get('/eventDetails', 'BiddingEventController@eventDetails');
+
+Route::get('/addItemToAuction', 'BiddingEventController@addItemToAuction');
+
+Route::get('/itemsToAddToEvent', 'BiddingEventController@itemsToAddToEvent');
+
+Route::get('/removeFromEvent', 'BiddingEventController@removeFromEvent');
+
 
 
 Route::post('/edit', 'ShipmentController@editShipment');

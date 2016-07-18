@@ -42,175 +42,81 @@
             <!-- add modal -->
           <div class="ui long modal" id="addModal">
             <i class="close icon"></i>
-              <div class="header">
-                Add Items
+            <div class="header">
+              Add Items
+            </div>
+            <div class="content">
+              <div class="field">
+                <div class="ui sub header">Item</div>
+                <select name="itemModels" class="ui search selection dropdown" ng-model="itemmodelSelected" ng-change="loadItems()">
+                  <option ng-repeat="itemmodel in itemmodels" value="@{{itemmodel.ItemModelID}}">@{{itemmodel.ItemName}}</option>
+                </select>
               </div>
-              <div class="content">
-                <form class="ui form" action="/" method="POST">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <h3 class="ui header centered">Items Available</h3>
-                  <div class="ui segment">
-                    <div class="ten wide field">
 
-                    <!-- <div>
-                      <input type="text" placeholder="Search here...">
-                    </div>
-                      <div class="ui celled relaxed list">
-                        <div class="item">
-                          <div class="ui master checkbox">
-                            <input type="checkbox" name="fruits">
-                            <label>Fruits</label>
-                          </div>
-                          <div class="list">
-                            <div class="item">
-                              <div class="ui child checkbox">
-                                <input type="checkbox" name="apple">
-                                <label>Apple</label>
-                              </div>
-                            </div>
-                            <div class="item">
-                              <div class="ui child checkbox">
-                                <input type="checkbox" name="orange">
-                                <label>Orange</label>
-                              </div>
-                            </div>
-                            <div class="item">
-                              <div class="ui child checkbox">
-                                <input type="checkbox" name="pear">
-                                <label>Pear</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="item">
-                          <div class="ui master checkbox">
-                            <input type="checkbox" name="vegetables">
-                            <label>Vegetables</label>
-                          </div>
-                          <div class="list">
-                            <div class="item">
-                              <div class="ui child checkbox">
-                                <input type="checkbox" name="lettuce">
-                                <label>Lettuce</label>
-                              </div>
-                            </div>
-                            <div class="item">
-                              <div class="ui child checkbox">
-                                <input type="checkbox" name="carrot">
-                                <label>Carrot</label>
-                              </div>
-                            </div>
-                            <div class="item">
-                              <div class="ui child checkbox">
-                                <input type="checkbox" name="spinach">
-                                <label>Spinach</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>-->
-
-                      <div class="ui accordion">
-                        <div class="title ui sub header">
-                          <i class="dropdown icon"></i>
-                          Category
-                        </div>
-                        <div class="active content">
-                          <p class="transition hidden">
-                          <div class="ui celled relaxed list">
-                            <div class="item">
-                              <div class="ui master checkbox">
-                                <input type="checkbox" name="fruits">
-                                <label>Fruits</label>
-                              </div>
-                              <div class="list">
-                                <div class="item">
-                                  <div class="ui child checkbox">
-                                    <input type="checkbox" name="apple">
-                                    <label>Apple</label>
-                                  </div>
-                                </div>
-                                <div class="item">
-                                  <div class="ui child checkbox">
-                                    <input type="checkbox" name="orange">
-                                    <label>Orange</label>
-                                  </div>
-                                </div>
-                                <div class="item">
-                                  <div class="ui child checkbox">
-                                    <input type="checkbox" name="pear">
-                                    <label>Pear</label>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="item">
-                              <div class="ui master checkbox">
-                                <input type="checkbox" name="vegetables">
-                                <label>Vegetables</label>
-                              </div>
-                              <div class="list">
-                                <div class="item">
-                                  <div class="ui child checkbox">
-                                    <input type="checkbox" name="lettuce">
-                                    <label>Lettuce</label>
-                                  </div>
-                                </div>
-                                <div class="item">
-                                  <div class="ui child checkbox">
-                                    <input type="checkbox" name="carrot">
-                                    <label>Carrot</label>
-                                  </div>
-                                </div>
-                                <div class="item">
-                                  <div class="ui child checkbox">
-                                    <input type="checkbox" name="spinach">
-                                    <label>Spinach</label>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          </p>
-                        </div>
-                      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    </div>
-                  </div>
+              <div class="field">
+                <div class="ui sub header">Stock ID</div>
+                <select name="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loadItemInfo()">
+                  <option ng-repeat="item in items" value="@{{item.ItemID}}">@{{item.ItemID}}</option>
+                </select>
               </div>
-              <div class="actions">
-                <button class="ui button" type="submit">Confirm</button>
-                </form>
+
+              <div class="field">
+                <div class="ui sub header">Price</div>
+                <div class="ui input">
+                  <input type="text" ng-model="price">
+                </div>
               </div>
+
+              <div class="field">
+                <div class="ui sub header">Points</div>
+                <div class="ui input">
+                  <input type="text" ng-model="points">
+                </div>
+              </div>
+
+              <table class="ui compact celled table">
+                <thead>
+                  <th>Defect</th>
+                  <th>Size</th>
+                  <th>Color</th>
+                  <th>Image</th>
+                  <th>Warehouse</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>@{{itemInfo.DefectDescription}}</td>
+                    <td>@{{itemInfo.size}}</td>
+                    <td>@{{itemInfo.color}}</td>
+                    <td><img src="@{{itemInfo.image_path}}" style="width:60px;height:60px;"/></td>
+                    <td>@{{itemInfo.container.warehouse.Barangay_Street_Address}}, @{{itemInfo.container.warehouse.city.CityName}}, @{{itemInfo.container.warehouse.city.province.ProvinceName}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </div>
+            <div class="actions">
+              <button class="ui button" ng-click="addItemToAuction()">Confirm</button>
+              
+            </div>
           </div>
             <!-- END add modal -->
         </div>
          <table class="ui celled table">
           <thead>
             <tr>
+            <th>ID</th>
             <th>Item Name</th>
-            <th>Quantity</th>
             <th>Price</th>
+            <th>Points</th>
             <th>Manage</th>
           </tr></thead>
           <tbody>
-            <tr>
-              <td>Kangkong</td>
-              <td>10 pcs</td>
-              <td>5.00</td>
-              <td><div class="ui basic red button">Remove</div></td>
+            <tr ng-repeat="auctionitem in auctionitems">
+              <td>@{{auctionitem.ItemID}}</td>
+              <td>@{{auctionitem.item.item_model.ItemName}}</td>
+              <td>@{{auctionitem.ItemPrice}}</td>
+              <td>@{{auctionitem.Points}}</td>
+              <td><div class="ui basic red button" ng-click="removeFromEvent($index)">Remove</div></td>
             </tr>
           </tbody>
         </table>
@@ -227,103 +133,6 @@
     });
 
 
-      $(function () {
-        $('input[name="pp_checkall"]').change(function () {
-            $('input[name=pp_check]').attr('checked', this.checked);
-        });
-        
-        $('input[name="pp_check"]').change(function () {
-            $('input[name="pp_checkall"]').prop('checked', $('input[name=pp_check]:not(:checked)').length === 0 ? true : false );
-        });
-      });
-
-
-$('.ui.accordion')
-  .accordion()
-;
-
-
-
-$('.list .master.checkbox')
-  .checkbox({
-    // check all children
-    onChecked: function() {
-      var
-        $childCheckbox  = $(this).closest('.checkbox').siblings('.list').find('.checkbox')
-      ;
-      $childCheckbox.checkbox('check');
-    },
-    // uncheck all children
-    onUnchecked: function() {
-      var
-        $childCheckbox  = $(this).closest('.checkbox').siblings('.list').find('.checkbox')
-      ;
-      $childCheckbox.checkbox('uncheck');
-    }
-  })
-;
-
-$('.list .child.checkbox')
-  .checkbox({
-    // Fire on load to set parent value
-    fireOnInit : true,
-    // Change parent state on each child checkbox change
-    onChange   : function() {
-      var
-        $listGroup      = $(this).closest('.list'),
-        $parentCheckbox = $listGroup.closest('.item').children('.checkbox'),
-        $checkbox       = $listGroup.find('.checkbox'),
-        allChecked      = true,
-        allUnchecked    = true
-      ;
-      // check to see if all other siblings are checked or unchecked
-      $checkbox.each(function() {
-        if( $(this).checkbox('is checked') ) {
-          allUnchecked = false;
-        }
-        else {
-          allChecked = false;
-        }
-      });
-      // set parent checkbox state, but dont trigger its onChange callback
-      if(allChecked) {
-        $parentCheckbox.checkbox('set checked');
-      }
-      else if(allUnchecked) {
-        $parentCheckbox.checkbox('set unchecked');
-      }
-      else {
-        $parentCheckbox.checkbox('set indeterminate');
-      }
-    }
-  })
-;
-
-
-
-
-
-$(function(){
-
-  // add multiple select / deselect functionality
-  $("#selectall").click(function () {
-      $('.case').attr('checked', this.checked);
-  });
-
-  // if all checkbox are selected, check the selectall checkbox
-  // and viceversa
-  $(".case").click(function(){
-
-    if($(".case").length == $(".case:checked").length) {
-      $("#selectall").attr("checked", "checked");
-    } else {
-      $("#selectall").removeAttr("checked");
-    }
-
-  });
-});
-
-
 var app = angular.module('myApp', ['datatables']);
 app.controller('myController', function($scope, $http, $timeout){
   //timeout for delay, waiting for eventID to initialize
@@ -332,10 +141,58 @@ app.controller('myController', function($scope, $http, $timeout){
     .then(function(response){
       $scope.eventDetails = response.data;
     });
+
+    $http.get('/getEventItems?eventID='+$scope.eventID)
+    .then(function(response){
+      $scope.auctionitems = response.data;
+    });
+
+    $http.get('/itemModels')
+    .then(function(response){
+      $scope.itemmodels = response.data;
+    });
+
+    
   }, 1000);
 
-  $scope.sad = function(){
-    alert($scope.eventDetails);
+  $scope.loadItems = function(){
+    $http.get('/itemsToAddToEvent?itemID=' + $scope.itemmodelSelected + '&eventID=' + $scope.eventID)
+    .then(function(response){
+      $scope.items = response.data;
+
+      //a loop workaround to remove items that are already in the said event
+      for(var key = 0; key < $scope.items.length; key++){
+        for(var key2 = 0; key2 < $scope.items[key].item_auction.length; key2++){
+          if($scope.items[key].item_auction[key2].AuctionID == $scope.eventID){
+            $scope.items.splice(key, 1);
+          }
+        }
+      }
+    });
+  }
+
+  $scope.loadItemInfo = function(){
+    $http.get('/singleItem?itemID=' + $scope.itemSelected)
+    .then(function(response){
+      $scope.itemInfo = response.data;
+    });
+  }
+
+  $scope.addItemToAuction = function(){
+    $http.get('/addItemToAuction?eventID='+$scope.eventID+'&itemID='+$scope.itemSelected+'&price='+$scope.price+'&points='+$scope.points)
+    .then(function(response){
+      //reload item view
+      $scope.auctionitems.push(response.data);
+    });
+  }
+
+  $scope.removeFromEvent = function(index){
+    $http.get('/removeFromEvent?itemID=' + $scope.auctionitems[index].ItemID)
+    .then(function(response){
+      if(response.data == 'success'){
+        $scope.auctionitems.splice(index, 1);
+      }
+    });
   }
 });
 

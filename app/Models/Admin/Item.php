@@ -49,4 +49,9 @@ class Item extends Model
 	{
 	    return $this->hasOne('App\Models\Admin\Warehouse', 'WarehouseNo', 'RequestedWarehouse');
 	}
+
+	public function item_auction()
+	{
+	    return $this->hasMany('App\Models\Admin\Item_Auction', 'ItemID', 'ItemID');
+	}
 }

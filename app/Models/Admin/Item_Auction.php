@@ -9,4 +9,9 @@ class Item_Auction extends Model
     protected $table = 'item_auction';
     protected $primaryKey = 'AuctionID';
     public $timestamps = false;
+
+    public function item()
+	{
+	    return $this->hasOne('App\Models\Admin\Item', 'ItemID', 'ItemID');
+	}
 }

@@ -47,8 +47,43 @@ class BiddingEventController extends Controller
     }
 
     public function getEventItems(Request $request){
-        $items = App\Models\Admin\Item_Auction::find($request->eventID);
+        $items_auction = App\Models\Admin\Item_Auction::with('item', 'item.itemModel')->where('AuctionID', $request->eventID)->get();
+
+        return $items_auction;
+    }
+
+    public function itemsToAddToEvent(Request $request){
+        $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
+            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory', 'item_auction')
+            ->where('status', 1)
+            ->where('ItemModelID', $request->itemID)
+            ->get();
 
         return $items;
+    }
+
+    public function addItemToAuction(Request $request){
+        $item_auction = new App\Models\Admin\Item_Auction;
+
+        $item_auction->AuctionID = $request->eventID;
+        $item_auction->ItemID = $request->itemID;
+        $item_auction->ItemPrice = $request->price;
+        $item_auction->Points = $request->points;
+
+        $item_auction->save();
+
+        $returndata = App\Models\Admin\Item_Auction::with('item', 'item.itemModel')->where('AuctionID', $request->eventID)
+        ->where('ItemID', $item_auction->ItemID)
+        ->first();
+
+        return $returndata;
+    }
+
+    public function removeFromEvent(Request $request){
+        $item_auction = App\Models\Admin\Item_Auction::where('ItemID', $request->itemID)->first();
+
+        $item_auction->delete();
+
+        return 'success';
     }
 }
