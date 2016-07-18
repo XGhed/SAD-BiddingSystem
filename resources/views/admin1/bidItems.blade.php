@@ -1,7 +1,7 @@
 @extends('admin1.mainteParent')
 
 @section('content')
-  <div class="ui grid">
+  <div class="ui grid" ng-app="myApp" ng-controller="myController" ng-init="eventID = {{$eventID}}">
     <div class="four wide column">
       <div class="ui vertical fluid tabular menu">
         <div class="ui centered header">Transaction</div>
@@ -11,7 +11,7 @@
           <a class="item" href="/inventory1">
             Inventory
           </a>
-          <a class="active item" href="/biddingEvent1">
+          <a class="active item" href="/biddingEvent">
             Bidding Event
           </a>
       </div>
@@ -19,18 +19,17 @@
 
     <div class="twelve wide stretched column">
       <div class="ui segment">
-        <a href="/biddingEvent1"><i class="left arrow icon"></i>back to previous page</a>
-         <h2 class="ui header centered">Event Name</h2>
+         <h2 class="ui header centered" ng-bind="eventDetails.EventName"></h2>
          <div class="event">
           <div class="content">
             <div class="summary">
-              <span>Start Time: </span>
+              <span>Start Time: <span ng-bind="eventDetails.StartDateTime"></span> </span>
             </div>
             <div class="summary">
-              <span>End Time:</span>
+              <span>End Time: <span ng-bind="eventDetails.EndDateTime"></span> </span>
             </div>
             <div class="summary">
-              <span>Description:</span>
+              <span>Description: <span ng-bind="eventDetails.Description"></span></span>
             </div>
           </div>
           <div class="ui divider"></div>
@@ -258,6 +257,20 @@ $(function(){
 });
 
 
+var app = angular.module('myApp', ['datatables']);
+app.controller('myController', function($scope, $http, $timeout){
+  //timeout for delay, waiting for eventID to initialize
+  $timeout(function(){
+    $http.get('/eventDetails?eventID=' + $scope.eventID)
+    .then(function(response){
+      $scope.eventDetails = response.data;
+    });
+  }, 1000);
+
+  $scope.sad = function(){
+    alert($scope.eventDetails);
+  }
+});
 
 
 </script>

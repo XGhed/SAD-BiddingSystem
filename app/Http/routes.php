@@ -63,6 +63,8 @@ Route::post('/itemMoveRequest', 'MovingController@itemMoveRequest');
 
 Route::post('/approveMovingOfItems', 'MovingController@approveMovingOfItems');
 
+Route::post('/addBiddingEvent', 'BiddingEventController@addBiddingEvent');
+
 Route::get('/logout', 'LoginController@logout');
 
 
@@ -111,8 +113,6 @@ Route::get('/warehouse', 'WarehouseController@manageWarehouse');
 
 Route::get('/category', 'CategoryController@manageCategory');
 
-Route::get('/bidItems', 'PageController@bidItems');
-
 Route::get('/bidEvent', 'PageController@bidEvent');
 
 Route::get('/register', 'PageController@register');
@@ -120,6 +120,8 @@ Route::get('/register', 'PageController@register');
 Route::get('/customer/checkout', 'PageController@checkout');
 
 Route::get('/customer/items', 'PageController@custItems');
+
+Route::get('/bidItems', 'BiddingEventController@viewEventItems');
 
 //Route::get('/customer/cart', 'PageController@cart');
 
@@ -157,6 +159,10 @@ Route::get('/itemmodelsInventory', 'AngularOutput@itemmodelsInventory');
 
 Route::get('/itemsOfModelInventory', 'AngularOutput@itemsOfModelInventory');
 
+//
+
+Route::get('/eventList', 'BiddingEventController@eventList');
+
 
 //Angular Input
 
@@ -165,6 +171,10 @@ Route::get('/disposeItem', 'AngularInput@disposeItem');
 Route::get('/cancelDisposeItem', 'AngularInput@cancelDisposeItem');
 
 Route::get('/confirmDispose', 'AngularInput@confirmDispose');
+
+//
+
+Route::get('/eventDetails', 'BiddingEventController@eventDetails');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');
@@ -199,9 +209,7 @@ Route::get('/warehouse1', 'PageController@warehouse1');
 
 //Route::get('/inventory1', 'PageController@inventory1');
 
-Route::get('/biddingEvent1', 'PageController@bidEvent1');
-
-Route::get('/bidItems1', 'PageController@bidItems1');
+Route::get('/biddingEvent', 'PageController@bidEvent1');
 
 Route::get('/orderedItem', 'PageController@orderedItem');
 
