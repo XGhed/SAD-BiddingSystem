@@ -11,10 +11,12 @@ class Auction extends Migration
     Schema::create('Auction', function(Blueprint $table)
     {
         $table->increments('AuctionID');
+        $table->string('EventName');
         $table->dateTime('StartDateTime');
         $table->dateTime('EndDateTime');
         $table->time('TimeExtension');
         $table->time('MaxTimeExtension');
+        $table->string('Description');
     });
 }
 

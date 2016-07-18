@@ -14,7 +14,7 @@
         <a class=" item" href="/inventory">
           Inventory
         </a>
-        <a class="item" href="/biddingEvent1">
+        <a class="item" href="/biddingEvent">
           Bidding Event
         </a>
     </div>
