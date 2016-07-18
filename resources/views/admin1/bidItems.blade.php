@@ -40,7 +40,7 @@
             </a>
 
             <!-- add modal -->
-          <div class="ui small modal" id="addModal">
+          <div class="ui long modal" id="addModal">
             <i class="close icon"></i>
               <div class="header">
                 Add Items
@@ -52,7 +52,7 @@
                   <div class="ui segment">
                     <div class="ten wide field">
 
-                    <div>
+                    <!-- <div>
                       <input type="text" placeholder="Search here...">
                     </div>
                       <div class="ui celled relaxed list">
@@ -107,6 +107,71 @@
                               </div>
                             </div>
                           </div>
+                        </div>
+                      </div>-->
+
+                      <div class="ui accordion">
+                        <div class="title ui sub header">
+                          <i class="dropdown icon"></i>
+                          Category
+                        </div>
+                        <div class="active content">
+                          <p class="transition hidden">
+                          <div class="ui celled relaxed list">
+                            <div class="item">
+                              <div class="ui master checkbox">
+                                <input type="checkbox" name="fruits">
+                                <label>Fruits</label>
+                              </div>
+                              <div class="list">
+                                <div class="item">
+                                  <div class="ui child checkbox">
+                                    <input type="checkbox" name="apple">
+                                    <label>Apple</label>
+                                  </div>
+                                </div>
+                                <div class="item">
+                                  <div class="ui child checkbox">
+                                    <input type="checkbox" name="orange">
+                                    <label>Orange</label>
+                                  </div>
+                                </div>
+                                <div class="item">
+                                  <div class="ui child checkbox">
+                                    <input type="checkbox" name="pear">
+                                    <label>Pear</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="item">
+                              <div class="ui master checkbox">
+                                <input type="checkbox" name="vegetables">
+                                <label>Vegetables</label>
+                              </div>
+                              <div class="list">
+                                <div class="item">
+                                  <div class="ui child checkbox">
+                                    <input type="checkbox" name="lettuce">
+                                    <label>Lettuce</label>
+                                  </div>
+                                </div>
+                                <div class="item">
+                                  <div class="ui child checkbox">
+                                    <input type="checkbox" name="carrot">
+                                    <label>Carrot</label>
+                                  </div>
+                                </div>
+                                <div class="item">
+                                  <div class="ui child checkbox">
+                                    <input type="checkbox" name="spinach">
+                                    <label>Spinach</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          </p>
                         </div>
                       </div>
 
@@ -173,7 +238,9 @@
       });
 
 
-
+$('.ui.accordion')
+  .accordion()
+;
 
 
 
