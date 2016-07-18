@@ -68,6 +68,12 @@ class RegisterController extends Controller
             }
 
             $membership->save();
+
+            //auto login
+            session(['accountID' => $acc->AccountID]);
+            session(['accountType' => 'customer']);
+
+            return redirect('/');
         }
         catch(Exception $e){
             return redirect('register');
