@@ -116,6 +116,12 @@ class AngularOutput extends Controller
         return \Response::json($cities);
     }
 
+    public function categories(){
+        $categories = App\Models\Admin\Category::with('subCategory')->get();
+
+        return $categories;
+    }
+
     public function subcatOptions(){
         $catID = Input::get('catID');
         $subCategories = App\Models\Admin\SubCategory::where('CategoryID', $catID)->get();

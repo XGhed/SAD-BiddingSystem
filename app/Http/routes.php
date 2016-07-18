@@ -159,6 +159,8 @@ Route::get('/itemmodelsInventory', 'AngularOutput@itemmodelsInventory');
 
 Route::get('/itemsOfModelInventory', 'AngularOutput@itemsOfModelInventory');
 
+Route::get('/categories', 'AngularOutput@categories');
+
 //
 
 Route::get('/eventList', 'BiddingEventController@eventList');
