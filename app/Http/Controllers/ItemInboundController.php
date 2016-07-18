@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App;
 use App\Models\Admin;
 use Session;
+use Carbon\Carbon;
 
 class ItemInboundController extends Controller
 {
@@ -29,7 +30,8 @@ class ItemInboundController extends Controller
         $history = new App\Models\Admin\ItemHistory;
 
         $history->ItemID = $item->ItemID;
-        $history->Log = "Item successfully delivered to warehouse " . $item->current_warehouse->Barangay_Street_Address;
+        $history->Date = Carbon::now('Asia/Manila');
+        $history->Log = "Item successfully delivered to warehouse " . $item->current_warehouse->Barangay_Street_Address . ", " . $item->current_warehouse->city->province->ProvinceName . ", " . $item->current_warehouse->city->CityName;
 
         $history->save();
     }
