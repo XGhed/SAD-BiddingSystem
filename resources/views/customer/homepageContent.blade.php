@@ -53,8 +53,8 @@
 			</div>
 		    <div class="column">
 				<div class="ui segment">
-		        	<div class="ui special cards">
-		          		<div class="green card" ng-repeat="itemview in itemsview">
+		        	<div class="ui raised link cards">
+		          		<div class="raised link green card" ng-repeat="itemview in itemsview">
 		            		<div class="blurring dimmable image">
 		              			<div class="ui dimmer">
 		                			<div class="content">
@@ -77,6 +77,9 @@
 				                Php @{{itemview.Price}} Bid starting price 
 				              </a>
 				            </div>
+						    <div class="ui bottom attached inverted green button">
+						      Bid Item
+						    </div>
 		         		</div>
 		        	</div>
 		      	</div>

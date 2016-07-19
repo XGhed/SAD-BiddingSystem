@@ -117,7 +117,7 @@
 			</div>
 
 			<div class="equal width fields">
-				<div class="field" id="desc1">
+				<!-- <div class="field" id="desc1">
 	                <label>Description</label>
 	                <p>description shits</p>
 				</div>
@@ -125,7 +125,7 @@
 				<div class="field" id="desc2" style="display: none">
 	                <label>Description</label>
 	                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-				</div>
+				</div> -->
 
 				<div class="field" id="documents">
 	                <label>2 Valid ID</label>

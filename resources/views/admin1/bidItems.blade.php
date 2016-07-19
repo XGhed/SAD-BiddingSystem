@@ -43,35 +43,43 @@
           <div class="ui long modal" id="addModal">
             <i class="close icon"></i>
             <div class="header">
-              Add Items
+              Add Item
             </div>
             <div class="content">
-              <div class="field">
-                <div class="ui sub header">Item</div>
-                <select name="itemModels" class="ui search selection dropdown" ng-model="itemmodelSelected" ng-change="loadItems()">
-                  <option ng-repeat="itemmodel in itemmodels" value="@{{itemmodel.ItemModelID}}">@{{itemmodel.ItemName}}</option>
-                </select>
-              </div>
 
-              <div class="field">
-                <div class="ui sub header">Stock ID</div>
-                <select name="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loadItemInfo()">
-                  <option ng-repeat="item in items" value="@{{item.ItemID}}">@{{item.ItemID}}</option>
-                </select>
-              </div>
+              <div class="ui form ">
 
-              <div class="field">
-                <div class="ui sub header">Price</div>
-                <div class="ui input">
-                  <input type="text" ng-model="price">
+                <div class="equal width fields">
+                  <div class="field">
+                    <div class="ui sub header">Item</div>
+                    <select name="itemModels" class="ui search selection dropdown" ng-model="itemmodelSelected" ng-change="loadItems()">
+                        <option value="" disabled selected style="">Item</option>
+                      <option ng-repeat="itemmodel in itemmodels" value="@{{itemmodel.ItemModelID}}">@{{itemmodel.ItemName}}</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <div class="ui sub header">Stock ID</div>
+                    <select name="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loadItemInfo()">
+                      <option ng-repeat="item in items" value="@{{item.ItemID}}">@{{item.ItemID}}</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <div class="ui sub header">Price</div>
+                    <div class="ui input">
+                      <input type="text" ng-model="price">
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="ui sub header">Points</div>
+                    <div class="ui input">
+                      <input type="text" ng-model="points">
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div class="field">
-                <div class="ui sub header">Points</div>
-                <div class="ui input">
-                  <input type="text" ng-model="points">
-                </div>
               </div>
 
               <table class="ui compact celled table">
