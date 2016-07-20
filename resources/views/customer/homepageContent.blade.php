@@ -30,71 +30,76 @@
 @endsection
 
 @section('content')
-	<div class="ui two column equal width relaxed grid" ng-app="myApp" ng-controller="myController">
-	  	<div class="stretched row">
-		    <div class="three wide compact column">
-		        <div class="ui vertical menu">
-		        	@foreach($categories as $key => $category)
-		        		<a class="item">{{$category->CategoryName}}</a>
-				        <div class="ui fluid popup">
-				         	<div class="ui grid">
-				            	<div class="column">
-				                	<h4 class="ui header center aligned">{{$category->CategoryName}}</h4>
-				                	<div class="ui link list">
-					                  @foreach($category->subCategory as $key2 => $subCategory)
-					                  	<a class="item">{{$subCategory->SubCategoryName}}</a>
-					                  @endforeach
-					                </div>
-				              	</div>
-				            </div>
-				        </div>
-		        	@endforeach
-			    </div>
+<div style="margin: 35px 0 0 0" class="ui container segment">
+	<div class="ui grid">
+		<div class="three wide column">
+			<div class="ui segment">
+				<div class="ui list">
+				  <div class="item">
+				    <div class="ui tiny image">
+				      <img src="/icons/avatar_2.jpg">
+				    </div>
+				    <div class="content">
+				      <div class="header">Username</div>
+				      <a href="#" style="font-size: 12px;">Edit Profile</a>
+				    </div>
+				  </div>
+				  </br></br>
+				  <div class="item">
+				    <i class="shop icon"></i>
+				    <div class="content">
+				      Current no of Items Bidded
+				    </div>
+				  </div>
+				  <div class="item">
+				    <i class="user icon"></i>
+				    <div class="content">
+				      account type
+				    </div>
+				  </div>
+				  <div class="item">
+				    <i class="mail icon"></i>
+				    <div class="content">
+				      <a href="mailto:jack@semantic-ui.com">jack@semantic-ui.com</a>
+				    </div>
+				  </div>
+				</div>
 			</div>
-		    <div class="column">
-				<div class="ui segment">
-		        	<div class="ui raised link cards">
-		          		<div class="raised link green card" ng-repeat="itemview in itemsview">
-		            		<div class="blurring dimmable image">
-		              			<div class="ui dimmer">
-		                			<div class="content">
-		                  				<div class="center">
-		                    				<a class="ui inverted button" href="/customer/items">Bid Now</a>
-		                  				</div>
-		                			</div>
-		              			</div>
-		              			<img src="@{{itemview.image_path}}">
-		            		</div>
-		            		<div class="content">
-		              			<a class="header">@{{itemview.item_model.ItemName}}</a>
-		              				<div class="meta">
-		                				<span>@{{itemview.DefectDescription}}</span>
-		              				</div>
-		            		</div>
-				            <div class="extra content">
-				              <a>
-				                <i class="payment icon"></i>
-				                Php @{{itemview.Price}} Bid starting price 
-				              </a>
-				            </div>
-						    <div class="ui bottom attached inverted green button">
-						      Bid Item
-						    </div>
-		         		</div>
-		        	</div>
-		      	</div>
+		</div>
+		<div class="ten wide column">
+			<div class="ui segment">
+				<h2>Today's Events</h2>
+				<div class="ui raised link cards">
+				  <a class="ui card" href="/customer/eventsList">
+					  <div class="content">
+					    <div class="header">Event Name</div>
+					    <div class="meta">
+					      <span class="category">Description</span>
+					    </div>
+					    <div class="description">
+					      <div class="ui tiny images">
+							  <img class="ui image" src="/icons/avatar_2.jpg">
+							  <img class="ui image" src="/icons/avatar_2.jpg">
+							  <img class="ui image" src="/icons/avatar_2.jpg">
+							</div>
+					    </div>
+					  </div>
+					  <div class="extra content">
+					  	<i class="info circle icon"></i>
+					  	Join this event to Bid.
+					  </div>
+					</a>
+				</div>
+			</div>
+		</div>	
+		<div class="three wide column">
+			<div class="ui segment">
+				<div class="ui sub header">
+				Recent Events
+				</div> 
+
 			</div>
 		</div>
 	</div>
-
-<script>
-	var app = angular.module('myApp', ['datatables']);
-	app.controller('myController', function($scope, $http){
-		$http.get('/itemsInventory')
-		.then(function(response){
-			$scope.itemsview = response.data;
-		})
-	});
-</script>
-
+</div>
 @endsection

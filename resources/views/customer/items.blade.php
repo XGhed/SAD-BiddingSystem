@@ -64,7 +64,10 @@
 					                	<span>description</span>
 					              	</div>
 					            </div>
-							    
+							    <div class="ui bottom attached button">
+							      <i class="add icon"></i>
+							      <a href="/customer/items/auction">Join Event</a>
+							    </div>
 							  </div>
 							  <div class="card">
 							    <div class="image">

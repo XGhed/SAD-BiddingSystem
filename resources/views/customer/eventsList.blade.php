@@ -66,7 +66,7 @@
 				    </div>
 				    <div class="ui bottom attached button">
 				      <i class="add icon"></i>
-				      Join Event
+				      <a href="/customer/items">Join Event</a>
 				    </div>
 				  </div>
 				</div>
