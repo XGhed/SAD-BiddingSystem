@@ -14,6 +14,7 @@ return array(
     'Category' => $baseDir . '/database/migrations/2016_04_28_070518_Category.php',
     'City' => $baseDir . '/database/migrations/2016_04_28_070438_City.php',
     'ClaimType' => $baseDir . '/database/migrations/2016_04_28_070913_ClaimType.php',
+    'Color' => $baseDir . '/database/migrations/2016_07_20_170007_Color.php',
     'Container' => $baseDir . '/database/migrations/2016_04_28_070612_Container.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'Deliver' => $baseDir . '/database/migrations/2016_04_28_070845_Deliver.php',

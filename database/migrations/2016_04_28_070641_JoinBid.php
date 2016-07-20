@@ -10,10 +10,12 @@ class JoinBid extends Migration
 
     Schema::create('JoinBid', function(Blueprint $table)
     {
-        $table->increments('BidderNo');
+        $table->increments('JoinbidID');
         $table->dateTime('DateJoined');
         $table->integer('AccountID')->unsigned();
+        $table->integer('AuctionID')->unsigned();
         $table->foreign('AccountID')->references('AccountID')->on('Account');
+        $table->foreign('AuctionID')->references('AuctionID')->on('Auction');
     });
 }
 
