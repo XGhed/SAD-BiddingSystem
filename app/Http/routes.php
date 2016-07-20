@@ -234,7 +234,7 @@ Route::get('/accountApproval', 'PageController@accountApproval');
 
 Route::get('/itemPullouts', 'PageController@itemPullouts');
 
-Route::get('/eventsList', 'PageController@eventsList');
+Route::get('/customer/eventsList', 'PageController@eventsList');
 
 
 
