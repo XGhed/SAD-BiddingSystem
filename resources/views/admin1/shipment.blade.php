@@ -834,7 +834,7 @@
       </form>
     </div><!-- tab1 -->
 
-    <!-- rewards -->
+    <!-- price -->
     <div class="ui bottom attached tab segment" data-tab="second">
        
        <!-- //////////////////////////////////// /////////////////////////////////////-->
@@ -1805,8 +1805,7 @@
                 <div class="row"></div><div class="row"></div>
               </div>
             </div>
-          </form> 
-
+       </form> 
        <!-- //////////////////////////////////// /////////////////////////////////////-->
     </div><!-- tab2 -->
   </div><!-- column -->

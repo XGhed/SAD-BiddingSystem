@@ -117,15 +117,15 @@ Route::get('/bidEvent', 'PageController@bidEvent');
 
 Route::get('/register', 'PageController@register');
 
-Route::get('/customer/checkout', 'PageController@checkout');
+Route::get('checkout', 'PageController@checkout');
 
-Route::get('/customer/items', 'PageController@custItems');
+Route::get('/items', 'PageController@custItems');
 
 Route::get('/bidItems', 'BiddingEventController@viewEventItems');
 
-//Route::get('/customer/cart', 'PageController@cart');
+//Route::get('/cart', 'PageController@cart');
 
-Route::get('/customer/items/auction', 'PageController@auction');
+Route::get('/auction', 'PageController@auction');
 
 Route::get('/admin', 'PageController@admin');
 
@@ -234,7 +234,7 @@ Route::get('/accountApproval', 'PageController@accountApproval');
 
 Route::get('/itemPullouts', 'PageController@itemPullouts');
 
-Route::get('/customer/eventsList', 'PageController@eventsList');
+Route::get('/eventsList', 'PageController@eventsList');
 
 
 
@@ -245,10 +245,10 @@ Route::group(['middleware' => ['web']], function () {
 
 
 Route::group(['middleware' => 'customer'], function () {
-    Route::get('/customer/cart', 'PageController@cart');
+    Route::get('/cart', 'PageController@cart');
 });
 
-Route::get('/customer/bidList', 'PageController@bidList');
+Route::get('/bidList', 'PageController@bidList');
 
 Route::get('/angulardt', function(){
 	return view('admin1.angulardt');

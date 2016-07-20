@@ -1,7 +1,7 @@
 @extends('customer.items')
 
 @section('nav')
-	<div class="ui fixed inverted menu">
+<div class="ui fixed inverted menu">
         <a class="item" href="/">
             <img src="/icons/icon.png">
         </a>
@@ -10,11 +10,14 @@
             <i class="home icon"></i>Home
         </a>
 
-        <a class="item" href="/customer/cart">
+        <a class="item" href="/cart">
             <i class="cart icon"></i>Cart
         </a>
+
+        <a class="item" href="/bidList">
+            <i class="list icon"></i>Items Bidded
+        </a>
         
-        <a class="item" href="/customer/bidList"><i class="shop icon"></i>Items</a>
         <div class="right menu">
           <a class="ui item">
             help
@@ -28,7 +31,7 @@
 	<div style="margin: 35px 0 0 0" class="ui container segment">
 
         <div class="ui grid"><div class="row"></div>
-        <a href="/customer/items"><i class="arrow left icon"></i> back to previous page</a></div>
+        <a href="/items"><i class="arrow left icon"></i> back to previous page</a></div>
 
         <div class="ui grid">
             <div class="six wide column">

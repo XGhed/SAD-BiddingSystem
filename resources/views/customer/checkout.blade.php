@@ -5,18 +5,31 @@
         <a class="item" href="/">
             <img src="/icons/icon.png">
         </a>
-        
-        <a class="item" href="/"><i class="home icon"></i>Home</a>
-        <a class="item" href="/customer/cart/"><i class="shop icon"></i>Cart</a>
-        <a class="item" href="/customer/bidList"><i class="shop icon"></i>Items</a>
 
-       
+        <a class="item" href="/">
+            <i class="home icon"></i>Home
+        </a>
+
+        <a class="item" href="/cart">
+            <i class="cart icon"></i>Cart
+        </a>
+
+        <a class="item" href="/bidList">
+            <i class="list icon"></i>Items Bidded
+        </a>
+        
+        <div class="right menu">
+          <a class="ui item">
+            help
+            <i class="help icon"></i>
+          </a>
+        </div>
       </div>
 @endsection
 
 @section('content')
 	<div style="margin: 35px 0 0 0" class="ui container segment">
-		<a href="/customer/cart/"><i class="arrow left icon"></i>back to cart</a>
+		<a href="/cart/"><i class="arrow left icon"></i>back to cart</a>
 		<div class="ui internally celled grid container">
 				<div class="ui column nine wide segment" style="margin: 5px 5px 5px 15px;">
 				<h2 class="ui header">

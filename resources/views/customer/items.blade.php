@@ -10,8 +10,12 @@
             <i class="home icon"></i>Home
         </a>
 
-        <a class="item" href="/customer/cart">
+        <a class="item" href="/cart">
             <i class="cart icon"></i>Cart
+        </a>
+
+        <a class="item" href="/bidList">
+            <i class="list icon"></i>Items Bidded
         </a>
         
         <div class="right menu">
@@ -52,21 +56,21 @@
 							    	<div class="ui dimmer">
 					                	<div class="content">
 					                  		<div class="center">
-					                    		<a class="ui inverted button" href="/customer/items/auction">Bid Now</a>
+					                    		<a class="ui inverted button" href="/items/auction">Bid Now</a>
 					                  		</div>
 					                	</div>
 					              	</div>
 							      <img src="/icons/cabinet.jpg">
 							    </div>
 							    <div class="content">
-					              	<a class="header" href="/customer/try">Item Name</a>
+					              	<a class="header" href="/try">Item Name</a>
 					              	<div class="meta">
 					                	<span>description</span>
 					              	</div>
 					            </div>
 							    <div class="ui bottom attached button">
 							      <i class="add icon"></i>
-							      <a href="/customer/items/auction">Join Event</a>
+							      <a href="/items/auction">Join Event</a>
 							    </div>
 							  </div>
 							  <div class="card">

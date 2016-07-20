@@ -7,7 +7,7 @@
         </a>
         
         <a class="item" href="/"><i class="home icon"></i>Home</a>
-        <a class="item" href="/customer/cart"><i class="shop icon"></i>Cart</a>
+        <a class="item" href="/cart"><i class="shop icon"></i>Cart</a>
 
         <div class="right menu">
           <div class="item">
@@ -34,43 +34,15 @@
 	<div class="ui grid">
 		<div class="three wide column">
 			<div class="ui segment">
-				<div class="ui list">
-				  <div class="item">
-				    <div class="ui tiny image">
-				      <img src="/icons/avatar_2.jpg">
-				    </div>
-				    <div class="content">
-				      <div class="header">Username</div>
-				      <a href="#" style="font-size: 12px;">Edit Profile</a>
-				    </div>
-				  </div>
-				  </br></br>
-				  <div class="item">
-				    <i class="shop icon"></i>
-				    <div class="content">
-				      Current no of Items Bidded
-				    </div>
-				  </div>
-				  <div class="item">
-				    <i class="user icon"></i>
-				    <div class="content">
-				      account type
-				    </div>
-				  </div>
-				  <div class="item">
-				    <i class="mail icon"></i>
-				    <div class="content">
-				      <a href="mailto:jack@semantic-ui.com">jack@semantic-ui.com</a>
-				    </div>
-				  </div>
-				</div>
+				<h2>Register now!</h2>
+				<p><a href="/register">Click here</a> to register</p>
 			</div>
 		</div>
 		<div class="ten wide column">
 			<div class="ui segment">
 				<h2>Today's Events</h2>
 				<div class="ui raised link cards">
-				  <a class="ui card" href="/customer/eventsList">
+				  <a class="ui card" href="/eventsList">
 					  <div class="content">
 					    <div class="header">Event Name</div>
 					    <div class="meta">

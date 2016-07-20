@@ -5,12 +5,25 @@
         <a class="item" href="/">
             <img src="/icons/icon.png">
         </a>
-        
-        <a class="item" href="/"><i class="home icon"></i>Home</a>
-        <a class="item" href="/customer/cart"><i class="shop icon"></i>Cart</a>
-        <a class="item" href="/customer/bidList"><i class="shop icon"></i>Items</a>
 
-       
+        <a class="item" href="/">
+            <i class="home icon"></i>Home
+        </a>
+
+        <a class="item" href="/cart">
+            <i class="cart icon"></i>Cart
+        </a>
+
+        <a class="item" href="/bidList">
+            <i class="list icon"></i>Items Bidded
+        </a>
+        
+        <div class="right menu">
+          <a class="ui item">
+            help
+            <i class="help icon"></i>
+          </a>
+        </div>
       </div>
 @endsection
 
@@ -59,7 +72,7 @@
 				<div class="ui divider"></div>
 				Total: 500.00
 				</div>
-				<a class="ui button" href="/customer/checkout">Proceed to Checkout<i class="arrow right icon"></i></a>
+				<a class="ui button" href="/checkout">Proceed to Checkout<i class="arrow right icon"></i></a>
 			</div>
 		</div>
 	</div>

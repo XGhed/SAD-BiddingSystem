@@ -5,12 +5,27 @@
         <a class="item" href="/">
             <img src="/icons/icon.png">
         </a>
-        
-        <a class="item" href="/"><i class="home icon"></i>Home</a>
-        <a class="item" href="/customer/cart/"><i class="shop icon"></i>Cart</a>
-        <a class="item" href="/customer/bidList"><i class="shop icon"></i>Items</a>
 
-       
+        <a class="item" href="/">
+            <i class="home icon"></i>Home
+        </a>
+
+        <a class="item" href="/cart">
+            <i class="cart icon"></i>Cart
+        </a>
+
+        <a class="item" href="/bidList">
+            <i class="list icon"></i>Items Bidded
+        </a>
+        
+        <a class="item" href="/bidList"><i class="shop icon"></i>Items</a>
+        
+        <div class="right menu">
+          <a class="ui item">
+            help
+            <i class="help icon"></i>
+          </a>
+        </div>
       </div>
 @endsection
 
@@ -69,7 +84,7 @@
 				    </div>
 				    <div class="ui bottom attached button">
 				      <i class="add icon"></i>
-				      <a href="/customer/items">Join Event</a>
+				      <a href="/items">Join Event</a>
 				    </div>
 				  </div>
 				</div>

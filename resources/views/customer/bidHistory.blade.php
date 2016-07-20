@@ -10,15 +10,13 @@
             <i class="home icon"></i>Home
         </a>
 
-        <a class="item" href="/customer/cart">
+        <a class="item" href="/cart">
             <i class="cart icon"></i>Cart
         </a>
 
-        <a class="item" href="/customer/cart">
-            <i class="cart icon"></i>Items Bidded
+        <a class="item" href="/bidList">
+            <i class="list icon"></i>Items Bidded
         </a>
-        
-        <a class="item" href="/customer/bidList"><i class="shop icon"></i>Items</a>
         
         <div class="right menu">
           <a class="ui item">
@@ -33,7 +31,7 @@
 	<div style="margin: 35px 0 0 0" class="ui container segment">
 
         <div class="ui grid"><div class="row"></div>
-        <a href="/customer/items"><i class="arrow left icon"></i> back to item description</a></div>
+        <a href="/items"><i class="arrow left icon"></i> back to item description</a></div>
 
         <div class="ui grid">
             <div class="column">
