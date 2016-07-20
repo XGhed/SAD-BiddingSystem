@@ -9,6 +9,7 @@ use App;
 use App\Models\Admin;
 use Session;
 use Carbon\Carbon;
+use DB;
 
 class BiddingEventController extends Controller
 {
@@ -80,7 +81,7 @@ class BiddingEventController extends Controller
     }
 
     public function removeFromEvent(Request $request){
-        $item_auction = App\Models\Admin\Item_Auction::where('ItemID', $request->itemID)->first();
+        $item_auction = App\Models\Admin\Item_Auction::find($request->itemID);
 
         $item_auction->delete();
 

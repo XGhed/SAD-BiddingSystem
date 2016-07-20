@@ -191,8 +191,17 @@ app.controller('myController', function($scope, $http, $timeout){
   $scope.addItemToAuction = function(){
     $http.get('/addItemToAuction?eventID='+$scope.eventID+'&itemID='+$scope.itemSelected+'&price='+$scope.price+'&points='+$scope.points)
     .then(function(response){
-      //reload item view
-      $scope.auctionitems.push(response.data);
+      $('#addModal').modal('hide');
+      //reset modal's data
+      $scope.itemmodelSelected = "";
+      $scope.itemSelected = "";
+      $scope.price = "";
+      $scope.points = "";
+
+      return $http.get('/getEventItems?eventID='+$scope.eventID);
+    })
+    .then(function(response){
+      $scope.auctionitems = response.data;
     });
   }
 
@@ -201,6 +210,11 @@ app.controller('myController', function($scope, $http, $timeout){
     .then(function(response){
       if(response.data == 'success'){
         $scope.auctionitems.splice(index, 1);
+        //reset modal's data
+        $scope.itemmodelSelected = "";
+        $scope.itemSelected = "";
+        $scope.price = "";
+        $scope.points = "";
       }
     });
   }
