@@ -78,7 +78,7 @@
 				              </a>
 				            </div>
 						    <div class="ui bottom attached inverted green button">
-						      Bid Item
+						      <a href="/customer/items">Bid Item</a>
 						    </div>
 		         		</div>
 		        	</div>

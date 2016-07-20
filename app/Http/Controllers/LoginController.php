@@ -24,7 +24,7 @@ class LoginController extends Controller
             return redirect('/');
         }
         else{
-            //throw error
+            return "Username or password must be wrong.";
         }
     }
 
