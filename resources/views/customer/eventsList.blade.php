@@ -70,6 +70,19 @@
 				    </div>
 				  </div>
 				</div>
+				<h2>Upcoming Events</h2>
+				<div class="ui cards">
+				  <div class="card">
+				    <div class="content">
+				      <div class="header">
+				      	event name
+				      </div>
+				      <div class="description">
+				        event desc
+				      </div>
+				    </div>
+				  </div>
+				</div>
 			</div>
 		</div>	
 		<div class="three wide column">
