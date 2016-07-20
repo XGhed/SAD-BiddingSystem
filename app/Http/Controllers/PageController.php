@@ -188,4 +188,9 @@ class PageController extends Controller
 
        return view('customer.bidList');
     }
+
+    public function eventsList(Request $request){
+
+       return view('customer.eventsList');
+    }
 }

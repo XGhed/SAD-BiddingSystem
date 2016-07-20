@@ -234,6 +234,8 @@ Route::get('/accountApproval', 'PageController@accountApproval');
 
 Route::get('/itemPullouts', 'PageController@itemPullouts');
 
+Route::get('/eventsList', 'PageController@eventsList');
+
 
 
 Route::group(['middleware' => ['web']], function () {
