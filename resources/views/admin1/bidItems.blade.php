@@ -34,10 +34,91 @@
           </div>
           <div class="ui divider"></div>
           <h4 class="ui header centered">List of Items</h4>
-          <a class="ui basic blue button" id="addBtn">
+          <!-- <a class="ui basic blue button" id="addBtn">
               <i class="Add to cart icon"></i>
               Add Items
-            </a>
+            </a> -->
+
+
+            <div class="inline fields">
+                  <div class="three wide field">
+                    <div class="ui checkbox">
+                      <input type="checkbox" id="test5" name="defect" />
+                      <label>Add Item</label>
+                    </div>
+                  </div>
+
+                  <div class="five wide field" style="display: none" id="defectDesc">
+                    <div class="content">
+                      <div class="ui form ">
+                        <div class="equal width fields">
+                          <div class="field">
+                            <div class="ui sub header">Item</div>
+                            <select name="itemModels" class="ui search selection dropdown" ng-model="itemmodelSelected" ng-change="loadItems()">
+                                <option value="" disabled selected style="">Item</option>
+                              <option ng-repeat="itemmodel in itemmodels" value="@{{itemmodel.ItemModelID}}">@{{itemmodel.ItemName}}</option>
+                            </select>
+                          </div>
+
+                          <div class="field">
+                            <div class="ui sub header">Stock ID</div>
+                            <select name="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loadItemInfo()">
+                              <option ng-repeat="item in items" value="@{{item.ItemID}}">@{{item.ItemID}}</option>
+                            </select>
+                          </div>
+
+                          <div class="field">
+                            <div class="ui sub header">Price</div>
+                            <div class="ui input">
+                              <input type="text" ng-model="price">
+                            </div>
+                          </div>
+
+                          <div class="field">
+                            <div class="ui sub header">Points</div>
+                            <div class="ui input">
+                              <input type="text" ng-model="points">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <table class="ui compact celled table">
+                        <thead>
+                          <th>Defect</th>
+                          <th>Size</th>
+                          <th>Color</th>
+                          <th>Image</th>
+                          <th>Warehouse</th>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>@{{itemInfo.DefectDescription}}</td>
+                            <td>@{{itemInfo.size}}</td>
+                            <td>@{{itemInfo.color}}</td>
+                            <td><img src="@{{itemInfo.image_path}}" style="width:60px;height:60px;"/></td>
+                            <td>@{{itemInfo.container.warehouse.Barangay_Street_Address}}, @{{itemInfo.container.warehouse.city.CityName}}, @{{itemInfo.container.warehouse.city.province.ProvinceName}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="actions">
+                      <button class="ui button" ng-click="addItemToAuction()">Confirm</button>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
             <!-- add modal -->
           <div class="ui long modal" id="addModal">
@@ -133,6 +214,26 @@
   </div><!-- ui grid -->
 
 <script>
+
+
+
+
+
+$(document).ready(function () {
+      $('#test5').click(function () {
+          var $this = $(this);
+          if ($this.is(':checked')) {
+              document.getElementById('defectDesc').style.display = 'block';
+          } else {
+              document.getElementById('defectDesc').style.display = 'none';
+          }
+     });
+    });
+
+
+
+
+
 //add modal
     $(document).ready(function(){
          $('#addBtn').click(function(){

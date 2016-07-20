@@ -63,6 +63,9 @@
 				      <div class="description">
 				        event desc
 				      </div>
+				      <div class="ui compact message">
+						<p>Joining this event will cost you P(price here)</p>
+					  </div>
 				    </div>
 				    <div class="ui bottom attached button">
 				      <i class="add icon"></i>
