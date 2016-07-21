@@ -33,7 +33,7 @@
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
       <!-- table -->
-        <table datatable="ng" class="ui compact celled definition table" id="tableOutput">
+        <table datatable="ng" class="ui celled definition table" id="tableOutput">
           <thead>
             <tr>
               <th></th>
@@ -55,7 +55,7 @@
                   <div class="visible content">
                     <i class="large history icon"></i>
                   </div>
-                </div>
+                </div><br>
                 <div class="ui vertical animated button" tabindex="0" ng-click="dispose($index)">
                   <div class="hidden content">Dispose</div>
                   <div class="visible content">

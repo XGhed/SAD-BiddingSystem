@@ -14,16 +14,16 @@
         <a class="active item" href="/item">
           Item
         </a>
-        <a class="item" href="/accountType">
+        <!-- <a class="item" href="/accountType">
           Account Type
-        </a>
+        </a> -->
         <a class="item" href="/discount">
           Discount
         </a>
-        <a class="item" href="/shipment1">
+        <a class="item" href="/shipment">
           Shipment
         </a>
-        <a class="item" href="/warehouse1">
+        <a class="item" href="/warehouse">
           Warehouse
         </a>
     </div>

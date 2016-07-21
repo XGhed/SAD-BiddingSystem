@@ -14,9 +14,9 @@
         <a class="item" href="/item">
           Item
         </a>
-        <a class="item" href="/accountType">
+        <!-- <a class="item" href="/accountType">
           Account Type
-        </a>
+        </a> -->
         <a class="active item" href="/discount">
           Discount
         </a>
@@ -32,7 +32,7 @@
   <div class="twelve wide column">
     <div class="ui top attached tabular menu">
       <a class="active item" data-tab="first">Discount</a>
-      <a class="item" data-tab="second">Rewards</a>
+      <!-- <a class="item" data-tab="second">Rewards</a> -->
     </div>
 
     <!-- category -->

@@ -14,9 +14,9 @@
         <a class="item" href="/item">
           Item
         </a>
-        <a class="item" href="/accountType">
+        <!-- <a class="item" href="/accountType">
           Account Type
-        </a>
+        </a> -->
         <a class="item" href="/discount">
           Discount
         </a>
