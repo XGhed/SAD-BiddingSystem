@@ -13,8 +13,8 @@
         </a>
         <a class="item" href="/itemPullouts">
           Item Pullouts
-        </a>  
-        <a class=" active item" href="/inventory">
+        </a>        
+        <a class="active item" href="/inventory">
           Inventory
         </a>
         <a class="item" href="/biddingEvent">

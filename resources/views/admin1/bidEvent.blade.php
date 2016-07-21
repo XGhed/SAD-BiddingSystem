@@ -3,8 +3,8 @@
 @section('content')
   <div class="ui grid" ng-App="myApp" ng-controller="myController">
     <div class="four wide column">
-      <div class="ui vertical fluid tabular menu">
-        <div class="ui centered header">Transaction</div>
+    <div class="ui vertical fluid tabular menu">
+      <div class="ui centered header">Transaction</div>
         <a class="item" href="/orderedItem">
           Ordered Items
         </a>
@@ -13,15 +13,15 @@
         </a>
         <a class="item" href="/itemPullouts">
           Item Pullouts
-        </a>  
+        </a>        
         <a class="item" href="/inventory">
           Inventory
         </a>
         <a class="active item" href="/biddingEvent">
           Bidding Event
         </a>
-      </div>
     </div>
+  </div>
 
     <div class="twelve wide stretched column">
       <div class="ui segment">
