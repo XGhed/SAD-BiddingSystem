@@ -173,17 +173,6 @@ app.controller('myController', function($scope, $http, $timeout){
     $http.get('/itemsToAddToEvent?itemID=' + $scope.itemmodelSelected + '&eventID=' + $scope.eventID)
     .then(function(response){
       $scope.items = response.data;
-
-      //a loop workaround to remove items that are already in the said event
-      for(var key = 0; key < $scope.items.length; key++){
-        for(var key2 = 0; key2 < $scope.items[key].item_auction.length; key2++){
-          if($scope.items[key].item_auction[key2].AuctionID == $scope.eventID){
-            $scope.items.splice(key, 1);
-            key--;
-            break;
-          } 
-        }
-      }
     });
   }
 

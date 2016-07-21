@@ -60,7 +60,15 @@ class BiddingEventController extends Controller
             ->where('ItemModelID', $request->itemID)
             ->get();
 
-        return $items;
+        $returndata = [];
+
+        foreach ($items as $key => $item) {
+            if(count($item->item_auction) == 0){
+                array_push($returndata, $item);
+            }
+        }
+
+        return $returndata;
     }
 
     public function addItemToAuction(Request $request){
