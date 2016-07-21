@@ -8,12 +8,12 @@
         <a class="item" href="/orderedItem">
           Ordered Items
         </a>
-        <a class="active item"href="/itemInbound">
+        <a class="active item" href="/itemInbound">
           Item Inbound
         </a>
         <a class="item" href="/itemPullouts">
           Item Pullouts
-        </a>   
+        </a>        
         <a class=" item" href="/inventory">
           Inventory
         </a>

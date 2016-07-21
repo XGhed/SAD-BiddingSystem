@@ -83,19 +83,17 @@
                     <input type="text" name="add_size" placeholder="dimensions">
                   </div>
                   <div class="field">
-
-                  <div class="ui sub header">Color</div>
-                  <div class="ui fluid search selection dropdown" id="color">
-                    <input name="add_color" type="hidden">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Color</div>
-                    <div class="menu" id="add_color">
-                      @foreach($colors as $key => $color)
-                        <div class="item" data-value="{{$color->ColorName}}">{{$color->ColorName}}</div>
-                      @endforeach
+                    <div class="ui sub header">Color</div>
+                    <div class="ui fluid search selection dropdown" id="color">
+                      <input name="add_color" type="hidden">
+                      <i class="dropdown icon"></i>
+                      <div class="default text">Color</div>
+                      <div class="menu" id="add_color">
+                        @foreach($colors as $key => $color)
+                          <div class="item" data-value="{{$color->ColorName}}">{{$color->ColorName}}</div>
+                        @endforeach
+                      </div>
                     </div>
-                  </div>
-
                   </div>
                 </div>
             </div>

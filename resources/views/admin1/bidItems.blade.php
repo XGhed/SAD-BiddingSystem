@@ -3,19 +3,25 @@
 @section('content')
   <div class="ui grid" ng-app="myApp" ng-controller="myController" ng-init="eventID = {{$eventID}}">
     <div class="four wide column">
-      <div class="ui vertical fluid tabular menu">
-        <div class="ui centered header">Transaction</div>
+    <div class="ui vertical fluid tabular menu">
+      <div class="ui centered header">Transaction</div>
         <a class="item" href="/orderedItem">
           Ordered Items
         </a>
-          <a class="item" href="/inventory1">
-            Inventory
-          </a>
-          <a class="active item" href="/biddingEvent">
-            Bidding Event
-          </a>
-      </div>
+        <a class="item" href="/itemInbound">
+          Item Inbound
+        </a>
+        <a class="item" href="/itemPullouts">
+          Item Pullouts
+        </a>        
+        <a class=" item" href="/inventory">
+          Inventory
+        </a>
+        <a class="active item" href="/biddingEvent">
+          Bidding Event
+        </a>
     </div>
+  </div>
 
     <div class="twelve wide stretched column">
       <div class="ui segment">
