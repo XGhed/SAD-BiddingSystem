@@ -63,6 +63,11 @@
                     <div class="item">
                       <div class="ui child checkbox">
                         <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -80,7 +85,11 @@
                     @if($province->region->RegionID == '2')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -102,7 +111,11 @@
                     @if($province->region->RegionID == '3')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -120,7 +133,11 @@
                     @if($province->region->RegionID == '4')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -142,7 +159,11 @@
                     @if($province->region->RegionID == '17')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -160,7 +181,11 @@
                     @if($province->region->RegionID == '5')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -189,7 +214,11 @@
                     @if($province->region->RegionID == '6')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -207,7 +236,11 @@
                     @if($province->region->RegionID == '7')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -229,7 +262,11 @@
                     @if($province->region->RegionID == '8')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -247,7 +284,11 @@
                     @if($province->region->RegionID == '9')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -269,7 +310,11 @@
                     @if($province->region->RegionID == '10')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -287,7 +332,11 @@
                     @if($province->region->RegionID == '11')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -316,7 +365,11 @@
                     @if($province->region->RegionID == '12')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -334,7 +387,11 @@
                     @if($province->region->RegionID == '16')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -356,7 +413,11 @@
                     @if($province->region->RegionID == '13')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -374,7 +435,11 @@
                     @if($province->region->RegionID == '14')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -396,7 +461,11 @@
                     @if($province->region->RegionID == '15')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -415,7 +484,11 @@
                     @if($province->region->RegionID == '18')
                     <div class="item">
                       <div class="ui child checkbox">
-                        <input type="checkbox" name="add_prov[]">
+                        @if(in_array($province->ProvinceID, $companyProvinces))
+                          <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @else
+                          <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                        @endif
                         <label>{{$province->ProvinceName}}</label>
                       </div>
                     </div>
@@ -443,7 +516,11 @@
                   @if($province->region->RegionID == '1')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -464,7 +541,11 @@
                   @if($province->region->RegionID == '5')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -485,7 +566,11 @@
                   @if($province->region->RegionID == '10')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -506,7 +591,11 @@
                   @if($province->region->RegionID == '14')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -530,7 +619,11 @@
                   @if($province->region->RegionID == '2')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -551,7 +644,11 @@
                   @if($province->region->RegionID == '6')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -572,7 +669,11 @@
                   @if($province->region->RegionID == '11')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -593,7 +694,11 @@
                   @if($province->region->RegionID == '15')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -617,7 +722,11 @@
                   @if($province->region->RegionID == '3')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -638,7 +747,11 @@
                   @if($province->region->RegionID == '7')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -659,7 +772,11 @@
                   @if($province->region->RegionID == '12')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -680,7 +797,11 @@
                   @if($province->region->RegionID == '18')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -704,7 +825,11 @@
                   @if($province->region->RegionID == '4')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -725,7 +850,11 @@
                   @if($province->region->RegionID == '8')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -746,7 +875,11 @@
                   @if($province->region->RegionID == '16')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -770,7 +903,11 @@
                   @if($province->region->RegionID == '17')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -791,7 +928,11 @@
                   @if($province->region->RegionID == '9')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
@@ -812,7 +953,11 @@
                   @if($province->region->RegionID == '13')
                   <div class="item">
                     <div class="ui child checkbox">
-                      <input type="checkbox" name="add_prov[]">
+                      @if(in_array($province->ProvinceID, $companyProvinces))
+                        <input type="checkbox" checked="checked" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @else
+                        <input type="checkbox" name="add_prov[]" value="{{$province->ProvinceID}}">
+                      @endif
                       <label>{{$province->ProvinceName}}</label>
                     </div>
                   </div>
