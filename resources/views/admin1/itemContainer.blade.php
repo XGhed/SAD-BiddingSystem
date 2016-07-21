@@ -39,7 +39,7 @@
               <input type="hidden" name="containerID" value="{{$container->ContainerID}}">
                 <div class="ten wide required field">
                   <div class="ui sub header">Item</div>
-                  <select name="item" id="item" class="ui search selection dropdown" REQUIRED>
+                  <select name="item" id="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loaditemDetails()" REQUIRED>
                     <option disabled selected>Item</option>
                     <option ng-repeat="item in additems" value="@{{item.ItemModelID}}">@{{item.ItemName}}</option>
                   </select>
@@ -56,22 +56,26 @@
                 <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">size</div>
-                    <input type="text" name="size" placeholder="dimensions" required>
+                    <input type="text" name="size" placeholder="dimensions" ng-model="size" required>
                   </div>
 
                   <div class="field">
                     <div class="ui sub header">Color</div>
-                    <select name="color">
-                        <option value="" selected>Choose Color</option>
-                        <option value="Blue">Blue</option>
-                        <option value="Red">Red</option>
-                        <option value="Green">Green</option>
-                      </select>
+                    <div class="ui fluid search selection dropdown" id="color">
+                      <input name="color" type="hidden" id="color">
+                      <i class="dropdown icon"></i>
+                      <div class="default text">Color</div>
+                      <div class="menu">
+                        @foreach($colors as $key => $color)
+                          <div class="item" data-value="{{$color->ColorName}}">{{$color->ColorName}}</div>
+                        @endforeach
+                      </div>
+                    </div>
                   </div>
 
                   <div class="field">
                     <div class="ui sub header">Quantity</div>
-                    <input type="number" id="quantity" name="quantity" min="1" placeholder="0" value="1" required>
+                    <input type="number" id="quantity" name="quantity" min="1" placeholder="1" value="1" required>
                   </div>
                 </div>
 
@@ -193,6 +197,11 @@
     $('.ui.modal').modal('hide'); 
     }
 
+  $('#color')
+  .dropdown({
+    allowAdditions: true
+  });
+
 
 ////////////////////////////////////////////////////////////////////////// 
 
@@ -209,6 +218,15 @@
         $scope.viewitems = response.data;
       });
     } , 1000);
+
+    $scope.loaditemDetails = function(){
+      for(var key=0; key<$scope.additems.length; key++){
+        if($scope.additems[key].ItemModelID == $scope.itemSelected){
+          $scope.size = $scope.additems[key].size;
+          $('#color').dropdown('set selected', $scope.additems[key].color);
+        }
+      }
+    }
   });
 </script>
 @endsection
