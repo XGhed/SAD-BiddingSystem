@@ -79,7 +79,7 @@
     <!--2nd tab-->
 
     <div class="ui bottom attached tab segment" data-tab="second">
-      <table class="ui celled table">
+      <table class="ui celled table" datatable="ng">
         <thead>
           <tr>
             <th></th>
@@ -120,6 +120,7 @@
               <th>Color</th>
               <th>Warehouse</th>
               <th>Supplier</th>
+              <th>Date Acquired</th>
             </tr>
           </thead>
           <tbody>
@@ -130,7 +131,7 @@
                   <div class="visible content">
                     <i class="large history icon"></i>
                   </div>
-                </div>
+                </div><br>
                 <div class="ui vertical animated button" tabindex="0" ng-click="cancelDispose($index)">
                   <div class="hidden content">Cancel</div>
                   <div class="visible content">
@@ -145,6 +146,7 @@
               <td>@{{item.color}}</td>
               <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
               <td>@{{item.container.supplier.SupplierName}}</td>
+              <td>@{{item.container.Arrival}}</td>
             </tr>
           </tbody>
         </table>
@@ -193,6 +195,7 @@
                     <th>Color</th>
                     <th>Warehouse</th>
                     <th>Supplier</th>
+                    <th>Date Acquired</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -218,6 +221,7 @@
                     <td>@{{item.color}}</td>
                     <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
                     <td>@{{item.container.supplier.SupplierName}}</td>
+                    <td>@{{item.container.Arrival}}</td>
                   </tr>
                 </tbody>
               </table>
