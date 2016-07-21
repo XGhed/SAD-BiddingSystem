@@ -18,8 +18,9 @@ class ItemController extends Controller
        $results = App\Models\Admin\ItemModel::all();
        $categories = App\Models\Admin\Category::all();
        $subCategories = App\Models\Admin\SubCategory::all();
+       $colors = App\Models\Admin\Color::all()->sortBy('ColorName');
 
-       return view('admin1.item')->with ('results', $results)->with ('subCategories', $subCategories)->with ('categories', $categories);
+       return view('admin1.item')->with ('results', $results)->with ('subCategories', $subCategories)->with ('categories', $categories)->with('colors', $colors);
     }
 
     public function confirmItem(Request $request){
@@ -52,6 +53,8 @@ class ItemController extends Controller
             $item->color = trim($request->input('add_color'));
 
             $item->save();
+
+            $this->colorDatabase($request->add_color);
         } catch (Exception $e) {
             Session::put('message', '-1');
             return redirect('item');
@@ -83,6 +86,8 @@ class ItemController extends Controller
             }
 
             $item->save();
+
+            $this->colorDatabase($request->edit_color);
         } catch (Exception $e) {
             Session::put('message', '-1');
             return redirect('item');
@@ -98,6 +103,20 @@ class ItemController extends Controller
         } catch (Exception $e) {
             Session::put('message', '-1');
             return redirect('item');
+        }
+    }
+
+    public function colorDatabase($color){
+        $findColor = App\Models\Admin\Color::where('ColorName', $color)->get();
+
+        if(count($findColor) > 0){
+            return;
+        }
+        else{
+            $insertColor = new App\Models\Admin\Color;
+            $insertColor->ColorName = $color;
+            $insertColor->save();
+            return;
         }
     }
 }

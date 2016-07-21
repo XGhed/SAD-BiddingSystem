@@ -85,13 +85,14 @@
                   <div class="field">
 
                   <div class="ui sub header">Color</div>
-                  <div class="ui fluid multiple search selection dropdown" id="color">
-                    <input name="tags" type="hidden">
+                  <div class="ui fluid search selection dropdown" id="color">
+                    <input name="add_color" type="hidden">
                     <i class="dropdown icon"></i>
                     <div class="default text">Color</div>
-                    <div class="menu" name="add_color" id="add_color">
-                      <div class="item" data-value="angular">Angular</div>
-                      <div class="item" data-value="css">CSS</div>
+                    <div class="menu" id="add_color">
+                      @foreach($colors as $key => $color)
+                        <div class="item" data-value="{{$color->ColorName}}">{{$color->ColorName}}</div>
+                      @endforeach
                     </div>
                   </div>
 
@@ -146,13 +147,14 @@
                   </div>
                   <div class="field">
                     <div class="ui sub header">Color</div>
-                    <div class="ui fluid multiple search selection dropdown" id="edit_color">
-                      <input name="tags" type="hidden">
+                    <div class="ui fluid search selection dropdown" id="edit_color">
+                      <input name="edit_color" type="hidden" id="edit_color">
                       <i class="dropdown icon"></i>
                       <div class="default text">Color</div>
-                      <div class="menu" name="edit_color" id="edit_color">
-                        <div class="item" data-value="angular">Angular</div>
-                        <div class="item" data-value="css">CSS</div>
+                      <div class="menu">
+                        @foreach($colors as $key => $color)
+                          <div class="item" data-value="{{$color->ColorName}}">{{$color->ColorName}}</div>
+                        @endforeach
                       </div>
                     </div>
                   </div>
@@ -303,7 +305,7 @@ $(document).ready(function(){
         $("#edit_name").val(keyName);
         $("#edit_cat").val(keyCat);
         $("#edit_size").val(keySize);
-        $("#edit_color").val(keyColor);
+        $('#edit_color').dropdown('set selected', keyColor);
 
         $.get('/subcatOptions?catID=' + $("#edit_cat").val(), function(data){
           var $selectDropdown = 
