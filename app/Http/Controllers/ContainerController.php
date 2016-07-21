@@ -14,8 +14,9 @@ class ContainerController extends Controller
 {
     public function viewContainer(Request $request){
         $container = App\Models\Admin\Container::find($request->containerID);
+        $colors = App\Models\Admin\Color::all()->sortBy('ColorName');
 
-        return view('admin1.itemContainer')->with('container', $container);
+        return view('admin1.itemContainer')->with('container', $container)->with('colors', $colors);
     }
 
     public function addItemToContainer(Request $request){
@@ -48,5 +49,21 @@ class ContainerController extends Controller
         $item->image_path = $filepath . $filename;
 
         $item->save();
+
+        $this->colorDatabase($request->color);
+    }
+
+    public function colorDatabase($color){
+        $findColor = App\Models\Admin\Color::where('ColorName', $color)->get();
+
+        if(count($findColor) > 0){
+            return;
+        }
+        else{
+            $insertColor = new App\Models\Admin\Color;
+            $insertColor->ColorName = $color;
+            $insertColor->save();
+            return;
+        }
     }
 }
