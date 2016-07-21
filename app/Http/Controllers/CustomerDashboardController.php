@@ -24,8 +24,10 @@ class CustomerDashboardController extends Controller
             $eventStartDatetime = explode(' ', $event->StartDateTime);
             $eventEndDateTime = explode(' ', $event->EndDateTime);
             
-            if($eventStartDatetime[0] == $currentDatetime[0] && $eventStartDatetime[1] >= $currentDatetime[1]){
-                array_push($returndata, $event);
+            if($eventStartDatetime[0] == $currentDatetime[0] && $eventStartDatetime[1] <= $currentDatetime[1]){//starttime
+                if(($eventEndDateTime[0] == $currentDatetime[0] && $eventEndDateTime[1] >= $currentDatetime[1]) || $eventEndDateTime[0] > $currentDatetime[0]){//endtime
+                    array_push($returndata, $event);
+                }
             }
         }
         return $returndata;
