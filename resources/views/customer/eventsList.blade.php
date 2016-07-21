@@ -99,6 +99,10 @@
 				        @{{event.Description}}
 				      </div>
 				    </div>
+				    <div class="ui bottom attached button">
+				      <i class=" icon"></i>
+				      <a href="/items">View Event</a>
+				    </div>				    
 				  </div>
 				</div>
 			</div>
