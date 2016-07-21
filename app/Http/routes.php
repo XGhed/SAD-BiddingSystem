@@ -161,11 +161,15 @@ Route::get('/itemsOfModelInventory', 'AngularOutput@itemsOfModelInventory');
 
 Route::get('/categories', 'AngularOutput@categories');
 
+Route::get('/currentTime', 'AngularOutput@currentTime');
+
 //
 
 Route::get('/eventList', 'BiddingEventController@eventList');
 
 Route::get('/getEventItems', 'BiddingEventController@getEventItems');
+
+Route::get('/getOngoingEvent', 'CustomerDashboardController@getOngoingEvent');
 
 
 //Angular Input

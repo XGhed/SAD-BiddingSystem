@@ -13,6 +13,7 @@ use App\Models\Admin;
 use Session;
 use Input;
 use Response;
+use Carbon\Carbon;
 
 
 class AngularOutput extends Controller
@@ -137,5 +138,9 @@ class AngularOutput extends Controller
     public function accountTypes(){
         $accountTypes = App\Models\Admin\AccountType::all();
         return $accountTypes;
+    }
+
+    public function currentTime(){
+        return Carbon::now('Asia/Manila');
     }
 }

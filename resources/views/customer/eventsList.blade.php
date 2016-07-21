@@ -30,7 +30,7 @@
 @endsection
 
 @section('content')
-<div style="margin: 35px 0 0 0" class="ui container segment">
+<div style="margin: 35px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController">
 	<div class="ui grid">
 		<div class="three wide column">
 			<div class="ui segment">
@@ -68,15 +68,15 @@
 		</div>
 		<div class="ten wide column">
 			<div class="ui segment">
-				<h2>Today's Events</h2>
-				<div class="ui cards">
+				<h2>Ongoing Events</h2>
+				<div class="ui cards" ng-repeat="ongoingEvent in ongoingEvents">
 				  <div class="card">
 				    <div class="content">
 				      <div class="header">
-				      	event name
+				      	@{{ongoingEvent.EventName}}
 				      </div>
 				      <div class="description">
-				        event desc
+				        @{{ongoingEvent.Description}}
 				      </div>
 				      <div class="ui compact message">
 						<p>Joining this event will cost you P(price here)</p>
@@ -89,14 +89,14 @@
 				  </div>
 				</div>
 				<h2>Upcoming Events</h2>
-				<div class="ui cards">
+				<div class="ui cards" ng-repeat="event in events" ng-if="event.StartDateTime > currentTime">
 				  <div class="card">
 				    <div class="content">
 				      <div class="header">
-				      	event name
+				      	@{{event.EventName}}
 				      </div>
 				      <div class="description">
-				        event desc
+				        @{{event.Description}}
 				      </div>
 				    </div>
 				  </div>
@@ -113,4 +113,25 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	var app = angular.module('myApp', ['datatables']);
+	app.controller('myController', function($scope, $http){
+		$http.get('/eventList')
+		.then(function(response){
+			$scope.events = response.data;
+		});
+
+		$http.get('/getOngoingEvent')
+		.then(function(response){
+			$scope.ongoingEvents = response.data;
+		});
+
+		$http.get('/currentTime')
+		.then(function(response){
+			$scope.currentTime = response.data;
+		});
+	});
+
+</script>
 @endsection
