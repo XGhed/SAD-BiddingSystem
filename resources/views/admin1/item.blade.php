@@ -83,13 +83,18 @@
                     <input type="text" name="add_size" placeholder="dimensions">
                   </div>
                   <div class="field">
-                    <div class="ui sub header">Color</div>
-                    <select name="add_color" id="add_color">
-                      <option value="" disabled selected>Color</option>
-                      <option value="Red">Red</option>
-                      <option value="Blue">Blue</option>
-                      <option value="Yellow">Yellow</option>
-                    </select>
+
+                  <div class="ui sub header">Color</div>
+                  <div class="ui fluid multiple search selection dropdown" id="color">
+                    <input name="tags" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Color</div>
+                    <div class="menu" name="add_color" id="add_color">
+                      <div class="item" data-value="angular">Angular</div>
+                      <div class="item" data-value="css">CSS</div>
+                    </div>
+                  </div>
+
                   </div>
                 </div>
             </div>
@@ -141,12 +146,15 @@
                   </div>
                   <div class="field">
                     <div class="ui sub header">Color</div>
-                    <select name="edit_color" id="edit_color">
-                      <option value="" disabled selected>Color</option>
-                      <option value="Red">Red</option>
-                      <option value="Blue">Blue</option>
-                      <option value="Yellow">Yellow</option>
-                    </select>
+                    <div class="ui fluid multiple search selection dropdown" id="edit_color">
+                      <input name="tags" type="hidden">
+                      <i class="dropdown icon"></i>
+                      <div class="default text">Color</div>
+                      <div class="menu" name="edit_color" id="edit_color">
+                        <div class="item" data-value="angular">Angular</div>
+                        <div class="item" data-value="css">CSS</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
             </div>
@@ -334,5 +342,15 @@ $(document).ready(function(){
     ;
   })
 ;
+
+$('#edit_color')
+  .dropdown({
+    allowAdditions: true
+  });
+
+$('#color')
+  .dropdown({
+    allowAdditions: true
+  });
 </script>
 @endsection
