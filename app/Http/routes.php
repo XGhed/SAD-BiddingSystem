@@ -119,8 +119,6 @@ Route::get('/register', 'PageController@register');
 
 Route::get('checkout', 'PageController@checkout');
 
-Route::get('/items', 'CustomerBiddingEventController@eventItems');
-
 Route::get('/bidItems', 'BiddingEventController@viewEventItems');
 
 //Route::get('/cart', 'PageController@cart');
@@ -196,6 +194,8 @@ Route::get('/removeFromEvent', 'BiddingEventController@removeFromEvent');
 
 Route::get('/itemsOfSubcategory', 'CustomerBiddingEventController@itemsOfSubcategory');
 
+Route::get('/hasJoinedThisEvent', 'CustomerBiddingEventController@hasJoinedThisEvent');
+
 
 
 Route::post('/edit', 'ShipmentController@editShipment');
@@ -205,6 +205,8 @@ Route::get('/add', 'ShipmentController@addShipment');
 Route::get('/accounts', 'PageController@manageAccounts');
 
 Route::get('/tryLoad', 'SupplierController@tryLoad');
+
+Route::get('/joinEvent', 'CustomerBiddingEventController@joinEvent');
 
 
 /*
@@ -244,8 +246,6 @@ Route::get('/accountApproval', 'PageController@accountApproval');
 
 Route::get('/itemPullouts', 'PageController@itemPullouts');
 
-Route::get('/eventsList', 'PageController@eventsList');
-
 
 
 Route::group(['middleware' => ['web']], function () {
@@ -256,9 +256,13 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => 'customer'], function () {
     Route::get('/cart', 'PageController@cart');
+
+    Route::get('/items', 'CustomerBiddingEventController@eventItems');
 });
 
 Route::get('/bidList', 'PageController@bidList');
+
+Route::get('/eventsList', 'PageController@eventsList');
 
 Route::get('/angulardt', function(){
 	return view('admin1.angulardt');

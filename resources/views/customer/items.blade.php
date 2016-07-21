@@ -30,10 +30,14 @@
 @section('content')
 	<div style="margin: 35px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="eventID = {{$eventID}}">
 		<h1 class="ui center aligned header">EVENT NAME</h1>
-		
-		<button class="ui basic green button" id="joinEvent">
+
+		<button class="ui basic green button" id="join0" ng-click="showJoinConfirmation()">
 			<i class="legal icon"></i>
 			Click here to join this event!
+		</button>
+		<button class="ui basic disabled button" id="join1">
+			<i class="legal icon"></i>
+			You have joined this event!
 		</button>
 		<div class="ui basic modal" id="eventModal">
 		  <i class="close icon"></i>
@@ -55,7 +59,7 @@
 		        <i class="remove icon"></i>
 		        No
 		      </div>
-		      <button class="ui ok green basic inverted button" type="submit">
+		      <button class="ui ok green basic inverted button" ng-click="joinEvent()">
 		        <i class="checkmark icon"></i>
 		        Yes
 		      </button>
@@ -119,6 +123,12 @@
 			</div>
 		</div>
 	</div>
+
+@if($joined == 'false')
+<script> $("#join1").hide(); </script>
+@else
+<script> $("#join0").hide(); </script>
+@endif
 	
 <script>
 	$('.ui.normal.dropdown')
@@ -126,20 +136,27 @@
 	;
 
 	var app = angular.module('myApp', ['datatables']);
-	app.controller('myController', function($scope, $http){
+	app.controller('myController', function($scope, $http, $timeout){
 		$scope.subcatViewItems = function(subcatID){
 			$http.get('/itemsOfSubcategory?subcatID=' + subcatID + '&eventID=' + $scope.eventID)
 			.then(function(response){
 				$scope.itemsView = response.data;
 			});
 		}
-	})
 
+		$scope.joinEvent = function(){
+			$http.get('/joinEvent?eventID=' + $scope.eventID)
+			.then(function(response){
+				if (response.data == 'success'){
+					$("#join0").hide();
+					$("#join1").show();
+				}
+			});
+		}
 
-$(document).ready(function(){
-     $('#joinEvent').click(function(){
-        $('#eventModal').modal('show');    
-     });
-});
+		$scope.showJoinConfirmation = function(){
+			$('#eventModal').modal('show');
+		}
+	});
 </script>
 @endsection

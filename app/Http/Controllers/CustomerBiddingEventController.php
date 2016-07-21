@@ -15,7 +15,16 @@ class CustomerBiddingEventController extends Controller
     public function eventItems(Request $request){
     	$categories = App\Models\Admin\Category::with('subCategory')->get();
 
-    	return view('customer.items')->with('categories', $categories)->with('eventID', $request->eventID);
+        $joinbid = App\Models\Admin\Joinbid::where('AuctionID', $request->eventID)->where('AccountID', session('accountID'))->get();
+
+        if (count($joinbid) > 0){
+            $joined = 'true';
+        }
+        else {
+            $joined = 'false';
+        }
+
+    	return view('customer.items')->with('categories', $categories)->with('eventID', $request->eventID)->with('joined', $joined);
     }
 
     public function itemsOfSubcategory(Request $request){
@@ -38,5 +47,28 @@ class CustomerBiddingEventController extends Controller
     	}
 
     	return $returndata;
+    }
+
+    public function joinEvent(Request $request){
+        $joinbid = new App\Models\Admin\Joinbid;
+
+        $joinbid->AccountID = session('accountID');
+        $joinbid->AuctionID = $request->eventID;
+        $joinbid->DateJoined = Carbon::now('Asia/Manila');
+
+        $joinbid->save();
+
+        return 'success';
+    }
+
+    public function hasJoinedThisEvent(Request $request){
+        $joinbid = App\Models\Admin\Joinbid::where('AuctionID', $request->eventID)->where('AccountID', session('accountID'))->get();
+
+        if (count($joinbid) > 0){
+            return 'true';
+        }
+        else {
+            return 'false';
+        }
     }
 }

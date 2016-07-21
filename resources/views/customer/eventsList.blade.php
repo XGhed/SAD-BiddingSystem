@@ -84,7 +84,7 @@
 				    </div>
 				    <div class="ui bottom attached button">
 				      <i class=" icon"></i>
-				      <a href="/items">View Event</a>
+				      <a href="/items?eventID=@{{ongoingEvent.AuctionID}}">View Event</a>
 				    </div>
 				  </div>
 				</div>
@@ -101,7 +101,7 @@
 				    </div>
 				    <div class="ui bottom attached button">
 				      <i class=" icon"></i>
-				      <a href="/items">View Event</a>
+				      <a href="/items?eventID=@{{event.AuctionID}}">View Event</a>
 				    </div>				    
 				  </div>
 				</div>
