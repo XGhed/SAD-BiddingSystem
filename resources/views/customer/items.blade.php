@@ -29,7 +29,39 @@
 
 @section('content')
 	<div style="margin: 35px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="eventID = {{$eventID}}">
-		<h1 class="ui center aligned header">View Items</h1>
+		<h1 class="ui center aligned header">EVENT NAME</h1>
+		
+		<button class="ui basic green button" id="joinEvent">
+			<i class="legal icon"></i>
+			Click here to join this event!
+		</button>
+		<div class="ui basic modal" id="eventModal">
+		  <i class="close icon"></i>
+		  <div class="ui centered header">
+		    Joining an event
+		  </div>
+		  <div class="image content">
+		    <div class="image">
+		      <i class="legal icon"></i>
+		    </div>
+		    <div class="description">
+		      <p>Joining this event will immediately add P500.00 to your account but will grant you the ability to bid in
+		     	 the items here in this event. Are you sure you want to Join?</p>
+		    </div>
+		  </div>
+		  <div class="actions">
+		    <div class="two fluid ui inverted buttons">
+		      <div class="ui cancel red basic inverted button">
+		        <i class="remove icon"></i>
+		        No
+		      </div>
+		      <button class="ui ok green basic inverted button" type="submit">
+		        <i class="checkmark icon"></i>
+		        Yes
+		      </button>
+		    </div>
+		  </div>
+		</div>	
 		<div class="ui divider"></div>
 		<div class="ui sub header">countdown: </div>
 		<br>
@@ -66,7 +98,9 @@
 					                  		</div>
 					                	</div>
 					              	</div>
-							      <img src="@{{item.image_path}}">
+					              	<div class="ui small image">
+							      		<img src="@{{item.image_path}}" class="ui tiny image">
+							      	</div>
 							    </div>
 							    <div class="content">
 					              	<a class="header" href="/try">@{{item.item_model.ItemName}}</a>
@@ -76,7 +110,7 @@
 					            </div>
 							    <div class="ui bottom attached button">
 							      <i class="add icon"></i>
-							      <a href="/items/auction">Join Event</a>
+							      <a href="/auction">Join Event</a>
 							    </div>
 							</div>
 						</div>   
@@ -101,5 +135,11 @@
 		}
 	})
 
+
+$(document).ready(function(){
+     $('#joinEvent').click(function(){
+        $('#eventModal').modal('show');    
+     });
+});
 </script>
 @endsection
