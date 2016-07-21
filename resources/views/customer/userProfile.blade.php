@@ -43,8 +43,8 @@
 	<div class="ui grid">
 		<div class="three wide column">
           @if(session('accountID') != "")
-				<div class="ui list">
-				  <div class="item">
+	          	<div class="ui vertical fluid tabular menu">
+	          	  <div class="item">
 				    <div class="ui tiny image">
 				      <img src="/icons/avatar_2.jpg">
 				    </div>
@@ -52,65 +52,78 @@
 				      <div class="header">Username</div>
 				    </div>
 				  </div>
-				  <br><br>
-				  <div class="item">
-				    <i class="shop icon"></i>
-				    <div class="content">
-				      Current no of Items Bidded
-				    </div>
-				  </div>
-				  <div class="item">
-				    <i class="user icon"></i>
-				    <div class="content">
-				      account type
-				    </div>
-				  </div>
-				  <div class="item">
-				    <i class="mail icon"></i>
-				    <div class="content">
-				      <a href="mailto:jack@semantic-ui.com">jack@semantic-ui.com</a>
-				    </div>
-				  </div>
-				</div>
+
+			      <a class="active item" href="/userProfile">
+			        Profile
+			      </a>
+			      <a class="item" href="/eventsList">
+			        Events
+			      </a>
+			      <a class="item" href="/cart">
+			        Cart
+			      </a>
+			      <a class="item">
+			        Links
+			      </a>
+			    </div>
           @else
           	<div class="ui segment">
 				<h2>Register now!</h2>
 				<p><a href="/register">Click here</a> to register</p>
 			</div>
 	      @endif
-			
 		</div>
+
 		<div class="ten wide column">
-			<div class="ui segment">
-				<h2>Today's Events</h2>
+			<div class="ui inverted segment">
+				<h2>Your Profile</h2>
 				<div class="ui raised link cards">
-				  <a class="ui card" href="/eventsList">
+				  <a class="ui card" href="/bidList">
 					  <div class="content">
-					    <div class="header">Event Name</div>
-					    <div class="meta">
-					      <span class="category">Description</span>
-					    </div>
+					    <div class="ui centered header">Current Items Bidded</div>
 					    <div class="description">
-					      <div class="ui tiny images">
-							  <img class="ui image" src="/icons/avatar_2.jpg">
-							  <img class="ui image" src="/icons/avatar_2.jpg">
-							  <img class="ui image" src="/icons/avatar_2.jpg">
+					      <div class="ui statistic">
+							  <div class="value">
+							    5,550
+							  </div>
+							  <div class="label">
+							    Items currently on bid
+							  </div>
 							</div>
 					    </div>
 					  </div>
-					  <div class="extra content">
-					  	<i class="info circle icon"></i>
-					  	Join this event to Bid.
+					</a>
+					<a class="ui card" href="#">
+					  <div class="content">
+					    <div class="ui centered header">Delivery Status</div>
+					    <div class="description">
+					      <div class="ui statistic">
+							  <div class="value">
+							    Pending
+							  </div>
+							  <div class="label">
+							    Delivery
+							  </div>
+							</div>
+					    </div>
+					  </div>
+					</a>
+					<a class="ui card" href="/cart">
+					  <div class="content">
+					    <div class="ui centered header">Items on Cart</div>
+					    <div class="description">
+					      <div class="ui statistic">
+							  <div class="value">
+							    5,550
+							  </div>
+							  <div class="label">
+							    items
+							  </div>
+							</div>
+					    </div>
 					  </div>
 					</a>
 				</div>
-			</div>
-		</div>	
-		<div class="three wide column">
-			<div class="ui segment">
-				<div class="ui sub header">
-				Recent Events
-				</div> 
 			</div>
 		</div>
 	</div>

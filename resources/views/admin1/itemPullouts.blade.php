@@ -20,6 +20,12 @@
         <a class="item" href="/biddingEvent">
           Bidding Event
         </a>
+        <a class="item" href="/accountApproval">
+          Account Approval
+        </a>
+        <a class="item" href="/deliveryApproval">
+          Delivery Approval
+        </a>
     </div>
   </div>
 

@@ -33,7 +33,6 @@
           <a href="/dashboard" class="item"><i class="large home icon"></i>Dashboard</a>
           <a href="/supplier" class="item"><i class="large settings icon"></i>Maintenance</a>
           <a href="/orderedItem" class="item"><i class="large exchange icon"></i>Transaction</a>
-          <a href="/accountApproval" class="item"><i class="large tasks icon"></i>Queries</a>
         </div>
       </div>
 

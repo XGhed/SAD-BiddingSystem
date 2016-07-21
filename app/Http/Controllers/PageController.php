@@ -193,4 +193,14 @@ class PageController extends Controller
 
        return view('customer.eventsList');
     }
+
+    public function userProfile(Request $request){
+
+       return view('customer.userProfile');
+    }
+
+    public function deliveryApproval(Request $request){
+
+       return view('admin1.deliveryApproval');
+    }
 }
