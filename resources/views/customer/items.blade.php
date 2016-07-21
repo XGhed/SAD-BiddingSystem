@@ -35,6 +35,25 @@
 		<br>
 		<div class="ui three column equal width relaxed grid">
 		  	<div class="stretched row">
+		  		<div class="three wide compact column">
+			        <div class="ui vertical menu">
+			        	@foreach($categories as $key => $category)
+			        		<a class="item">{{$category->CategoryName}}</a>
+					        <div class="ui fluid popup">
+					         	<div class="ui grid">
+					            	<div class="column">
+					                	<h4 class="ui header center aligned">{{$category->CategoryName}}</h4>
+					                	<div class="ui link list">
+						                  	@foreach($category->subCategory as $key2 => $subcat)
+						                  		<a class="item" ng-click="subcatViewItems({{$subcat->SubCategoryID}})">{{$subcat->SubCategoryName}}</a>
+						                  	@endforeach
+						                </div>
+					              	</div>
+					            </div>
+					        </div>
+			        	@endforeach
+				    </div>
+				</div>
 			    <div class="column">
 					<div class="ui segment">
 					    <div class="ui special cards">
