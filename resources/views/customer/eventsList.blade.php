@@ -18,8 +18,6 @@
             <i class="list icon"></i>Items Bidded
         </a>
         
-        <a class="item" href="/bidList"><i class="shop icon"></i>Items</a>
-        
         <div class="right menu">
           <a class="ui item">
             help
@@ -33,7 +31,7 @@
 <div style="margin: 35px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController">
 	<div class="ui grid">
 		<div class="three wide column">
-			<div class="ui segment">
+			 @if(session('accountID') != "")
 				<div class="ui list">
 				  <div class="item">
 				    <div class="ui tiny image">
@@ -44,7 +42,7 @@
 				      <a href="#" style="font-size: 12px;">Edit Profile</a>
 				    </div>
 				  </div>
-				  </br></br>
+				  <br><br>
 				  <div class="item">
 				    <i class="shop icon"></i>
 				    <div class="content">
@@ -64,7 +62,12 @@
 				    </div>
 				  </div>
 				</div>
+          @else
+          	<div class="ui segment">
+				<h2>Register now!</h2>
+				<p><a href="/register">Click here</a> to register</p>
 			</div>
+	      @endif
 		</div>
 		<div class="ten wide column">
 			<div class="ui segment">
