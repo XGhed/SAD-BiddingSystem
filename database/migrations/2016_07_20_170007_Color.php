@@ -16,7 +16,7 @@ class Color extends Migration
         Schema::create('Color', function(Blueprint $table)
         {
             $table->increments('ColorID');
-            $table->string('AuctionID');
+            $table->string('ColorName');
         });
     }
 

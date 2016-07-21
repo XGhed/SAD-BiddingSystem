@@ -18,6 +18,12 @@ use Carbon\Carbon;
 
 class AngularOutput extends Controller
 {
+    public function colors(){
+        $colors = App\Models\Admin\Color::all();
+
+        return $colors;
+    }
+
     public function suppliers(){
         $suppliers = App\Models\Admin\Supplier::all();
         return $suppliers;
@@ -25,6 +31,11 @@ class AngularOutput extends Controller
 
     public function itemModels(){
         $itemModels = App\Models\Admin\ItemModel::all();
+        return $itemModels;
+    }
+
+    public function itemModelsWithItems(){
+        $itemModels = App\Models\Admin\ItemModel::with('items')->get();
         return $itemModels;
     }
 

@@ -12,8 +12,8 @@ class Bid extends Migration
     {
         $table->increments('BidID');
         $table->Timestamp('DateTime');
-        $table->integer('BidderNo')->unsigned();
-        $table->foreign('BidderNo')->references('BidderNo')->on('JoinBid');
+        $table->integer('AccountID')->unsigned();
+        $table->foreign('AccountID')->references('AccountID')->on('JoinBid');
     });
 }
 

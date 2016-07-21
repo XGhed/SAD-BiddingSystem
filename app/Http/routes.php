@@ -163,6 +163,10 @@ Route::get('/categories', 'AngularOutput@categories');
 
 Route::get('/currentTime', 'AngularOutput@currentTime');
 
+Route::get('/itemModelsWithItems', 'AngularOutput@itemModelsWithItems');
+
+Route::get('/colors', 'AngularOutput@colors');
+
 //
 
 Route::get('/eventList', 'BiddingEventController@eventList');
