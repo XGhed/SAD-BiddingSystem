@@ -20,10 +20,10 @@
         <a class="item" href="/biddingEvent">
           Bidding Event
         </a>
-        <a class="active item" href="/accountApproval">
+        <a class="item" href="/accountApproval">
           Account Approval
         </a>
-        <a class="item" href="/deliveryApproval">
+        <a class="active item" href="/accountApproval">
           Delivery Approval
         </a>
     </div>
@@ -46,7 +46,7 @@
               <button class="ui basic green button"><i class="checkmark icon"></i>Approve</button>
             </td>
             <td class="tableRow" style="cursor: pointer;">Username here</td>
-            <td class="tableRow" style="cursor: pointer;">Account type here</td>
+            <td class="tableRow" style="cursor: pointer;"></td>
             <td class="tableRow" style="cursor: pointer;">Date here</td>
           </tr>
         </tbody>
@@ -56,18 +56,28 @@
       <div class="ui small modal" id="infoModal">
         <i class="close icon"></i>
         <div class="header">
-          Account Information
+          Delivery Information
         </div>
         <div class="content">
           <div class="description">
-            <p>Full Name:</p>
-            <p>Address:</p>
-            <p>Gender:</p>
-            <p>Birthdate:</p>
-            <p>Contact Number:</p>
-            <p>Email Address:</p>
-            <p>Username:</p>
-            <p>Documents: </p>
+            <table class="ui single line table">
+              <thead>
+                <tr>
+                  <th>Item Name</th>
+                  <th>Quantity</th>
+                  <th>Paid</th>
+                  <th>Delivery Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John Lilki</td>
+                  <td>September 14, 2013</td>
+                  <td>jhlilk22@yahoo.com</td>
+                  <td>No</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
