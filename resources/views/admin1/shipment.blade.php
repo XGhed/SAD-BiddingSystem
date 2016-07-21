@@ -517,15 +517,13 @@
 
       <div class="ui top attached tabular menu" id="setprice">
         <a class="active item" data-tab="nigguh1">Region 1-5</a>
-        <a class="item" data-tab="nigguh2">Second</a>
-        <a class="item" data-tab="nigguh3">Third</a>
+        <a class="item" data-tab="nigguh2">Region 6-11</a>
+        <a class="item" data-tab="nigguh3">Region 12-18</a>
       </div>
 
 
       <div class="ui bottom attached active tab segment" data-tab="nigguh1">
-
         <div class="ui equal width grid">
-
           <div class="column">
             <h3>REGION 1</h3>
             <table class="ui collapsing basic table">
@@ -768,26 +766,510 @@
               </tbody>
             </table>
           </div>
-
         </div><!-- two column grid -->
-
-
-        
-      </div>
+      </div><!-- tab 1 -->
 
 
       <div class="ui bottom attached tab segment" data-tab="nigguh2">
-        Second
-      </div>
+        <div class="ui equal width grid">
+          <div class="column">
+            <h3>REGION 6</h3>
+            <table class="ui collapsing basic table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Province</th>
+                  <th>Price</th>
+                  <th>Company Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '6')
+                <tr>
+                  <td>
+                     @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                      @else
+                      <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                    @endif
+                  </td>
+                  <td>
+                      <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                  </td>
+                  <td>
+                    {{$province->shipment->ShipmentFee}}
+                  </td>
+                  <td>
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <i class="large green checkmark icon"></i>
+                    @else
+                      <i class="large red remove icon"></i>
+                    @endif
+                  </td>
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+            </table>
+            <div class="ui divider"></div>
+            <h3>REGION 7</h3>
+            <table class="ui collapsing basic table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Province</th>
+                  <th>Price</th>
+                  <th>Company Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '7')
+                <tr>
+                  <td>
+                     @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                      @else
+                      <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                    @endif
+                  </td>
+                  <td>
+                      <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                  </td>
+                  <td>
+                    {{$province->shipment->ShipmentFee}}
+                  </td>
+                  <td>
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <i class="large green checkmark icon"></i>
+                    @else
+                      <i class="large red remove icon"></i>
+                    @endif
+                  </td>
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+            </table>
+            <h3>REGION 8</h3>
+            <table class="ui collapsing basic table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Province</th>
+                  <th>Price</th>
+                  <th>Company Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '8')
+                <tr>
+                  <td>
+                     @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                      @else
+                      <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                    @endif
+                  </td>
+                  <td>
+                      <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                  </td>
+                  <td>
+                    {{$province->shipment->ShipmentFee}}
+                  </td>
+                  <td>
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <i class="large green checkmark icon"></i>
+                    @else
+                      <i class="large red remove icon"></i>
+                    @endif
+                  </td>
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+
+          <div class="column">
+            <h3>REGION 9</h3>
+            <table class="ui collapsing basic table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Province</th>
+                  <th>Price</th>
+                  <th>Company Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '9')
+                <tr>
+                  <td>
+                     @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                      @else
+                      <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                    @endif
+                  </td>
+                  <td>
+                      <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                  </td>
+                  <td>
+                    {{$province->shipment->ShipmentFee}}
+                  </td>
+                  <td>
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <i class="large green checkmark icon"></i>
+                    @else
+                      <i class="large red remove icon"></i>
+                    @endif
+                  </td>
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+            </table>
+            <div class="ui divider"></div>
+            <h3>REGION 10</h3>
+            <table class="ui collapsing basic table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Province</th>
+                  <th>Price</th>
+                  <th>Company Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '10')
+                <tr>
+                  <td>
+                     @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                      @else
+                      <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                    @endif
+                  </td>
+                  <td>
+                      <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                  </td>
+                  <td>
+                    {{$province->shipment->ShipmentFee}}
+                  </td>
+                  <td>
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <i class="large green checkmark icon"></i>
+                    @else
+                      <i class="large red remove icon"></i>
+                    @endif
+                  </td>
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+            </table>
+            <div class="ui divider"></div>
+            <h3>REGION 11</h3>
+            <table class="ui collapsing basic table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Province</th>
+                  <th>Price</th>
+                  <th>Company Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '11')
+                <tr>
+                  <td>
+                     @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                      @else
+                      <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                    @endif
+                  </td>
+                  <td>
+                      <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                  </td>
+                  <td>
+                    {{$province->shipment->ShipmentFee}}
+                  </td>
+                  <td>
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <i class="large green checkmark icon"></i>
+                    @else
+                      <i class="large red remove icon"></i>
+                    @endif
+                  </td>
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div><!-- two column grid -->
+      </div><!-- tab2 -->
 
 
       <div class="ui bottom attached tab segment" data-tab="nigguh3">
-        Third
+        <div class="ui equal width grid">
+          <div class="column">
+            <h3>REGION 12</h3>
+            <table class="ui collapsing basic table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Province</th>
+                  <th>Price</th>
+                  <th>Company Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '12')
+                <tr>
+                  <td>
+                     @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                      @else
+                      <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                    @endif
+                  </td>
+                  <td>
+                      <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                  </td>
+                  <td>
+                    {{$province->shipment->ShipmentFee}}
+                  </td>
+                  <td>
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <i class="large green checkmark icon"></i>
+                    @else
+                      <i class="large red remove icon"></i>
+                    @endif
+                  </td>
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+            </table>
+            <div class="ui divider"></div>
+            <h3>REGION 13</h3>
+            <table class="ui collapsing basic table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Province</th>
+                  <th>Price</th>
+                  <th>Company Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '16')
+                <tr>
+                  <td>
+                     @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                      @else
+                      <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                    @endif
+                  </td>
+                  <td>
+                      <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                  </td>
+                  <td>
+                    {{$province->shipment->ShipmentFee}}
+                  </td>
+                  <td>
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <i class="large green checkmark icon"></i>
+                    @else
+                      <i class="large red remove icon"></i>
+                    @endif
+                  </td>
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+            </table>
+            <h3>REGION NCR</h3>
+            <table class="ui collapsing basic table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Province</th>
+                  <th>Price</th>
+                  <th>Company Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '13')
+                <tr>
+                  <td>
+                     @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                      @else
+                      <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                    @endif
+                  </td>
+                  <td>
+                      <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                  </td>
+                  <td>
+                    {{$province->shipment->ShipmentFee}}
+                  </td>
+                  <td>
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <i class="large green checkmark icon"></i>
+                    @else
+                      <i class="large red remove icon"></i>
+                    @endif
+                  </td>
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+
+          <div class="column">
+            <h3>REGION CAR</h3>
+            <table class="ui collapsing basic table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Province</th>
+                  <th>Price</th>
+                  <th>Company Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '14')
+                <tr>
+                  <td>
+                     @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                      @else
+                      <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                    @endif
+                  </td>
+                  <td>
+                      <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                  </td>
+                  <td>
+                    {{$province->shipment->ShipmentFee}}
+                  </td>
+                  <td>
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <i class="large green checkmark icon"></i>
+                    @else
+                      <i class="large red remove icon"></i>
+                    @endif
+                  </td>
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+            </table>
+            <div class="ui divider"></div>
+            <h3>REGION ARMM</h3>
+            <table class="ui collapsing basic table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Province</th>
+                  <th>Price</th>
+                  <th>Company Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '14')
+                <tr>
+                  <td>
+                     @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                      @else
+                      <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                    @endif
+                  </td>
+                  <td>
+                      <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                  </td>
+                  <td>
+                    {{$province->shipment->ShipmentFee}}
+                  </td>
+                  <td>
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <i class="large green checkmark icon"></i>
+                    @else
+                      <i class="large red remove icon"></i>
+                    @endif
+                  </td>
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+            </table>
+            <div class="ui divider"></div>
+            <h3>REGION 18</h3>
+            <table class="ui collapsing basic table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Province</th>
+                  <th>Price</th>
+                  <th>Company Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($provinces as $key => $province)
+                  @if($province->region->RegionID == '18')
+                <tr>
+                  <td>
+                     @if(in_array($province->ProvinceID, $companyProvinces))
+                      <input type="checkbox" name="add_prov[]" class="1 companyDeliver" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                      @else
+                      <input type="checkbox" name="add_prov[]" class="1" id="{{$province->ProvinceID}}a" value="{{$province->ProvinceID}}" />
+                    @endif
+                  </td>
+                  <td>
+                      <label for="{{$province->ProvinceID}}a" class="black-text">{{$province->ProvinceName}}</label>
+                  </td>
+                  <td>
+                    {{$province->shipment->ShipmentFee}}
+                  </td>
+                  <td>
+                    @if(in_array($province->ProvinceID, $companyProvinces))
+                      <i class="large green checkmark icon"></i>
+                    @else
+                      <i class="large red remove icon"></i>
+                    @endif
+                  </td>
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div><!-- two column grid -->
       </div>
             
       <div class="ui center aligned basic segment">
-        <input id="price" type="number" min="0" name="add_price" class="validate">
-        <label for="price">Price</label>
+        <div class="inline field">
+          <label>Price</label>
+          <input id="price" type="number" min="0" name="add_price" placeholder="Price">
+        </div>
 
         <button class="ui basic green button center" type="submit" name="add">
           <i class="checkmark icon"></i>

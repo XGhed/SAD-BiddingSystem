@@ -43,7 +43,6 @@
               <th>Size</th>
               <th>Color</th>
               <th>Warehouse</th>
-              <th>Supplier</th>
               <th>Date Acquired</th>
             </tr>
           </thead>
@@ -69,7 +68,6 @@
               <td>@{{item.size}}</td>
               <td>@{{item.color}}</td>
               <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
-              <td>@{{item.container.supplier.SupplierName}}</td>
               <td>@{{item.container.Arrival}}</td>
             </tr>
           </tbody>
@@ -119,7 +117,6 @@
               <th>Size</th>
               <th>Color</th>
               <th>Warehouse</th>
-              <th>Supplier</th>
               <th>Date Acquired</th>
             </tr>
           </thead>
@@ -145,7 +142,6 @@
               <td>@{{item.size}}</td>
               <td>@{{item.color}}</td>
               <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
-              <td>@{{item.container.supplier.SupplierName}}</td>
               <td>@{{item.container.Arrival}}</td>
             </tr>
           </tbody>

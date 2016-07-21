@@ -32,11 +32,9 @@
             <th></th>
             <th>Name</th>
             <th>Category</th>
-            <th>Photo</th>
             <th>Size</th>
             <th>Color</th>
             <th>Warehouse</th>
-            <th>Supplier</th>
           </tr>
         </thead>
         <tbody>
@@ -51,11 +49,9 @@
             </td>
             <td id="tableRow">@{{item.item_model.ItemName}}</td>
             <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
-            <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
             <td>@{{item.size}}</td>
             <td>@{{item.color}}</td>
             <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
-            <td>@{{item.container.supplier.SupplierName}}</td>
           </tr>
         </tbody>
       </table>

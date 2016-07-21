@@ -29,7 +29,8 @@
 
 @section('content')
 	<div style="margin: 35px 0 0 0" class="ui container segment">
-		<div class="ui grid">
+		 @if(session('accountID') != "")
+          	<div class="ui grid">
 			<div class="ten wide column">
 				<div class="ui segment">
 					<h2 class="ui header">
@@ -75,6 +76,53 @@
 				<a class="ui button" href="/checkout">Proceed to Checkout<i class="arrow right icon"></i></a>
 			</div>
 		</div>
+          @else
+          <div class="ui small modal" id="login">
+		    <i class="close icon"></i>
+		    <div class="ui vertical divider"></div>
+		    <div class="ui container two column middle aligned very relaxed stackable grid">
+		      <div class="row"></div>
+		      <div class="column">
+		        <form action="/loginAccount" method="POST" class="ui form">
+		          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+		          <div class="field">
+		            <label>Username</label>
+		            <div class="ui left icon input">
+		              <input type="text" placeholder="Username" name="username" id="username">
+		              <i class="user icon"></i>
+		            </div>
+		          </div>
+		          <div class="field">
+		            <label>Password</label>
+		            <div class="ui left icon input">
+		              <input type="password" placeholder="Password" name="password" id="password">
+		              <i class="lock icon"></i>
+		            </div>
+		          </div>
+		          <div class="ui grid">
+		            <div class="row"></div>
+		            <div class="five wide column"></div>
+		            <input type="submit" class="ui blue submit button" value="Login"></input>
+		          </div>
+		        </form>
+		      </div>
+		      <div class="ui vertical divider">
+		          Or
+		      </div>
+		      <div class="center aligned column">
+		        <a class="ui big green labeled icon button" href='/register'>
+		          <i class="signup icon"></i>Sign Up
+		        </a>
+		      </div>
+		      <div class="row"></div>
+		    </div>
+		  </div>
+          	<script>
+          		$('#login').modal('show');
+          	</script>
+	      @endif
+
+		
 	</div>
 
 <script>
