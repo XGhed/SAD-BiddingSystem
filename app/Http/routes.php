@@ -119,7 +119,7 @@ Route::get('/register', 'PageController@register');
 
 Route::get('checkout', 'PageController@checkout');
 
-Route::get('/items', 'PageController@custItems');
+Route::get('/items', 'CustomerBiddingEventController@eventItems');
 
 Route::get('/bidItems', 'BiddingEventController@viewEventItems');
 
@@ -189,6 +189,8 @@ Route::get('/addItemToAuction', 'BiddingEventController@addItemToAuction');
 Route::get('/itemsToAddToEvent', 'BiddingEventController@itemsToAddToEvent');
 
 Route::get('/removeFromEvent', 'BiddingEventController@removeFromEvent');
+
+Route::get('/itemsOfSubcategory', 'CustomerBiddingEventController@itemsOfSubcategory');
 
 
 

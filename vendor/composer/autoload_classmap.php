@@ -556,4 +556,5 @@ return array(
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'Warehouse' => $baseDir . '/database/migrations/2016_04_28_070555_Warehouse.php',
     'WarehouseItem' => $baseDir . '/database/migrations/2016_05_12_071344_Warehouse_Item.php',
+    'Winners' => $baseDir . '/database/migrations/2016_07_21_060659_Winners.php',
 );
