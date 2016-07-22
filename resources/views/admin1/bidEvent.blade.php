@@ -36,6 +36,38 @@
               Add Event
             </a>
 
+         <a class="ui basic blue button" id="oldEventBtn">
+              <i class="calendar icon"></i>
+              Old Event
+            </a>
+
+             <!-- old evenmt -->
+          <div class="ui small modal" id="oldEventModal">
+            <i class="close icon"></i>
+              <div class="header">
+                Previous events
+              </div>
+              <div class="content">
+                <table class="ui celled table">
+                  <thead>
+                    <tr>
+                      <th>Event Name</th>
+                      <th>Date</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Cell</td>
+                      <td>Cell</td>
+                      <td>Cell</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+
+
             <!-- add modal -->
           <div class="ui small modal" id="addModal">
             <i class="close icon"></i>
@@ -170,6 +202,13 @@
 
 
     //add modal
+    $(document).ready(function(){
+         $('#oldEventBtn').click(function(){
+            $('#oldEventModal').modal('show');    
+         });
+    });
+
+
     $(document).ready(function(){
          $('#addBtn').click(function(){
             $('#addModal').modal('show');    
