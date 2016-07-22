@@ -39,6 +39,19 @@
 					  </div>
 					</h2>
 					<div class="ui divider"></div>
+
+					<div class="ui top attached tabular menu">
+					  <a class="active item" data-tab="first">First</a>
+					  <a class="item" data-tab="second">Second</a>
+					</div>
+					<div class="ui bottom attached active tab segment" data-tab="first">
+					  First
+					</div>
+					<div class="ui bottom attached tab segment" data-tab="second">
+					  Second
+					</div>
+
+
 					<!-- start loop -->
 					@foreach($bids as $key => $bid)
 						<div class="ui grid">
@@ -81,6 +94,9 @@
 	</div>
 
 <script>
+$('.menu .item').tab();
+
+
 	var app = angular.module('myApp', ['datatables']);alert('sad');
 	app.controller('myController', function($scope, $http){
 		//$http.get('/auction?itemID=' + )
