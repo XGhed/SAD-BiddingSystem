@@ -24,7 +24,7 @@
           Account Approval
         </a>
         <a class="active item" href="/accountApproval">
-          Delivery Approval
+          Delivery/Pick-up Approval
         </a>
     </div>
   </div>
@@ -36,18 +36,18 @@
         <thead>
           <tr>
           <th></th>
-          <th>Account</th>
-          <th>Account Type</th>
-          <th>Date Registered</th>
+          <th>Customer Name</th>
+          <th>Date requested</th>
+          <th>Delivery/Pick-up place</th>
         </tr></thead>
         <tbody>
           <tr>
             <td class="collapsing">
               <button class="ui basic green button"><i class="checkmark icon"></i>Approve</button>
             </td>
-            <td class="tableRow" style="cursor: pointer;">Username here</td>
             <td class="tableRow" style="cursor: pointer;"></td>
-            <td class="tableRow" style="cursor: pointer;">Date here</td>
+            <td class="tableRow" style="cursor: pointer;"></td>
+            <td class="tableRow" style="cursor: pointer;"></td>
           </tr>
         </tbody>
       </table>
@@ -64,17 +64,12 @@
               <thead>
                 <tr>
                   <th>Item Name</th>
-                  <th>Quantity</th>
-                  <th>Paid</th>
-                  <th>Delivery Date</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>John Lilki</td>
-                  <td>September 14, 2013</td>
-                  <td>jhlilk22@yahoo.com</td>
-                  <td>No</td>
+                  
                 </tr>
               </tbody>
             </table>

@@ -24,7 +24,7 @@
           Account Approval
         </a>
         <a class="item" href="/deliveryApproval">
-          Delivery Approval
+          Delivery/Pick-up Approval
         </a>
     </div>
   </div>
