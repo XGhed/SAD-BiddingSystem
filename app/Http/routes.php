@@ -163,6 +163,8 @@ Route::get('/itemModelsWithItems', 'AngularOutput@itemModelsWithItems');
 
 Route::get('/colors', 'AngularOutput@colors');
 
+Route::get('/unactivatedAccounts', 'AngularOutput@unactivatedAccounts');
+
 //
 
 Route::get('/eventList', 'BiddingEventController@eventList');
@@ -179,6 +181,8 @@ Route::get('/disposeItem', 'AngularInput@disposeItem');
 Route::get('/cancelDisposeItem', 'AngularInput@cancelDisposeItem');
 
 Route::get('/confirmDispose', 'AngularInput@confirmDispose');
+
+Route::get('/approveAccount', 'AngularInput@approveAccount');
 
 //
 

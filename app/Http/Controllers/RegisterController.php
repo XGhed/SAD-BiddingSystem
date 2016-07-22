@@ -27,6 +27,7 @@ class RegisterController extends Controller
             $acc = new App\Models\Admin\Account;
             $acc->Username = trim($request->input('username'));
             $acc->Password = trim($request->input('password'));
+            $acc->status = 0;
             $acc->save();
 
             //insert on membership table
@@ -68,10 +69,6 @@ class RegisterController extends Controller
             }
 
             $membership->save();
-
-            //auto login
-            session(['accountID' => $acc->AccountID]);
-            session(['accountType' => 'customer']);
 
             return redirect('/');
         }

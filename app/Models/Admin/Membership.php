@@ -14,4 +14,14 @@ class Membership extends Model
 	{
 	    return $this->hasOne('App\Models\Admin\User', 'AccountID', 'AccountID');
 	}
+
+	public function accounttype()
+	{
+	    return $this->hasOne('App\Models\Admin\AccountType', 'AccountTypeID', 'AccountTypeID');
+	}
+
+	public function city()
+	{
+	    return $this->hasOne('App\Models\Admin\City', 'CityID', 'CityID');
+	}
 }

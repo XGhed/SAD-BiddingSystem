@@ -17,7 +17,7 @@ class LoginController extends Controller
             ->where('password', $request->password)
             ->first();
 
-        if(count($account) > 0){
+        if(count($account->status == 1)){
             $request->session()->put('accountID', $account->AccountID);
             $request->session()->put('accountType', 'customer');
 

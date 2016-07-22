@@ -154,4 +154,10 @@ class AngularOutput extends Controller
     public function currentTime(){
         return Carbon::now('Asia/Manila');
     }
+
+    public function unactivatedAccounts(){
+        $accounts = App\Models\Admin\Account::with('membership', 'membership.accounttype', 'membership.city', 'membership.city.province')->where('status', 0)->get();
+
+        return $accounts;
+    }
 }
