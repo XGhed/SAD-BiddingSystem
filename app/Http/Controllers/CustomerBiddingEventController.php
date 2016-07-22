@@ -15,7 +15,7 @@ class CustomerBiddingEventController extends Controller
     public function eventItems(Request $request){
     	$categories = App\Models\Admin\Category::with('subCategory')->get();
 
-        $joinbid = App\Models\Admin\Joinbid::where('AuctionID', $request->eventID)->where('AccountID', session('accountID'))->get();
+        $joinbid = App\Models\Admin\Joinbid::where('AuctionID', $request->eventID)->where('AccountID', $request->session()->get('accountID'))->get();
 
         if (count($joinbid) > 0){
             $joined = 'true';
@@ -52,7 +52,7 @@ class CustomerBiddingEventController extends Controller
     public function joinEvent(Request $request){
         $joinbid = new App\Models\Admin\Joinbid;
 
-        $joinbid->AccountID = session('accountID');
+        $joinbid->AccountID = $request->session()->get('accountID');
         $joinbid->AuctionID = $request->eventID;
         $joinbid->DateJoined = Carbon::now('Asia/Manila');
 
@@ -62,7 +62,7 @@ class CustomerBiddingEventController extends Controller
     }
 
     public function hasJoinedThisEvent(Request $request){
-        $joinbid = App\Models\Admin\Joinbid::where('AuctionID', $request->eventID)->where('AccountID', session('accountID'))->get();
+        $joinbid = App\Models\Admin\Joinbid::where('AuctionID', $request->eventID)->where('AccountID', $request->session()->get('accountID'))->get();
 
         if (count($joinbid) > 0){
             return 'true';
@@ -81,7 +81,7 @@ class CustomerBiddingEventController extends Controller
     public function bidItem(Request $request){
         $bid = new App\Models\Admin\Bid;
 
-        $bid->AccountID = session('accountID');
+        $bid->AccountID = $request->session()->get('accountID');
         $bid->ItemID = $request->itemID;
         $bid->Price = $request->price;
         $bid->DateTime = Carbon::now('Asia/Manila');
@@ -104,7 +104,7 @@ class CustomerBiddingEventController extends Controller
     }
 
     public function bidList(Request $request){
-        $bids = App\Models\Admin\Bid::where('AccountID', session('accountID'))->get();
+        $bids = App\Models\Admin\Bid::where('AccountID', $request->session()->get('accountID'))->get();
 
         return view('customer.bidList')->with('bids', $bids);
     }

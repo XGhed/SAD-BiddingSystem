@@ -18,8 +18,8 @@ class LoginController extends Controller
             ->first();
 
         if(count($account) > 0){
-            session(['accountID' => $account->AccountID]);
-            session(['accountType' => 'customer']);
+            $request->session()->put('accountID', $account->AccountID);
+            $request->session()->put('accountType', 'customer');
 
             return redirect('/');
         }
@@ -29,11 +29,20 @@ class LoginController extends Controller
     }
 
     public function logout(Request $request){
-        if (session('accountID') != ""){
-            session(['accountID' => ""]);
-            session(['accountType' => ""]);
+        if ($request->session()->has('accountID')){
+            $request->session()->forget('accountID');
+            $request->session()->forget('accountType');
 
             return redirect('/');
+        }
+    }
+
+    public function isLoggedIn(Request $request){
+        if ($request->session()->has('accountID')){
+            return 'true';
+        }
+        else {
+            return 'false';
         }
     }
 }

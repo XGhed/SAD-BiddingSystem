@@ -11,7 +11,7 @@ use Session;
 
 class HomepageController extends Controller
 {
-    public function displayHomepage(){
+    public function displayHomepage(Request $request){
 
        $categories = App\Models\Admin\Category::all();
 
@@ -26,6 +26,13 @@ class HomepageController extends Controller
         }
        }*/
 
-       return view('customer.homepageContent')->with ('categories', $categories);
+      if ($request->session()->has('accountID')){
+        $isLoggedIn = 'true';
+      }
+      else {
+        $isLoggedIn = 'false';
+      }
+
+       return view('customer.homepageContent')->with ('categories', $categories)->with('isLoggedIn', $isLoggedIn);
     }
 }

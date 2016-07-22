@@ -15,7 +15,7 @@ class Customer
      */
     public function handle($request, Closure $next)
     {
-        if (session('accountID') != ""){
+        if ($request->session()->has('accountID')){
             return $next($request);
         }
         else{
