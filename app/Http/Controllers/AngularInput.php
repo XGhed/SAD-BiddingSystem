@@ -61,4 +61,12 @@ class AngularInput extends Controller
 
         return 'success';
     }
+
+    public function deleteOrderedItem(Request $request){
+        $item = App\Models\Admin\Item::find($request->itemID);
+
+        $item->delete();
+
+        return 'success';
+    }
 }

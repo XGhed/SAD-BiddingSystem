@@ -142,8 +142,8 @@
 
                   <div class="field">
                     <div class="ui sub header">Color</div>
-                    <div class="ui fluid search selection dropdown" id="color">
-                      <input name="color" type="hidden" id="color">
+                    <div class="ui fluid search selection dropdown" id="color2">
+                      <input name="color" type="hidden" id="color" ng-model="color">
                       <i class="dropdown icon"></i>
                       <div class="default text">Color</div>
                       <div class="menu">
@@ -153,23 +153,18 @@
                       </div>
                     </div>
                   </div>
-
-                  <div class="field">
-                    <div class="ui sub header">Quantity</div>
-                    <input type="number" id="quantity" name="quantity" min="1" placeholder="1" value="1" required>
-                  </div>
                 </div>
 
                 <div class="inline fields">
                   <div class="three wide field">
                     <div class="ui checkbox">
-                      <input type="checkbox" id="test5" name="defect" />
+                      <input type="checkbox" id="test99" name="defect"/>
                       <label>Defect</label>
                     </div>
                   </div>
 
-                  <div class="five wide field" style="display: none" id="defectDesc">
-                    <input id="def" type="text" name="defectDesc" placeholder="Description" />
+                  <div class="five wide field" style="display: none" id="defectDesc99">
+                    <input id="def" type="text" name="defectDesc" ng-model="defect" placeholder="Description" />
                   </div>
                 </div>
             </div>
@@ -194,14 +189,14 @@
           </thead>
           <tbody>
             <tr ng-repeat="item in viewitems">
-              <td class="collapsing" ng-click="editModal()">
-                <div class="editBtn ui vertical animated button" tabindex="1">
+              <td class="collapsing">
+                <div class="editBtn ui vertical animated button" tabindex="1" ng-click="editModal($index)">
                   <div class="hidden content">Edit</div>
                   <div class="visible content">
                     <i class="large edit icon"></i>
                   </div>
                 </div>
-                <div class="ui vertical animated button" tabindex="0">
+                <div class="ui vertical animated button" tabindex="0" ng-click="deleteOrderedItem($index)">
                   <div class="hidden content">Delete</div>
                   <div class="visible content">
                     <i class="large trash icon"></i>
@@ -255,6 +250,17 @@
      });
     });
 
+    $(document).ready(function () {
+      $('#test99').click(function () {
+          var $this = $(this);
+          if ($this.is(':checked')) {
+              document.getElementById('defectDesc99').style.display = 'block';
+          } else {
+              document.getElementById('defectDesc99').style.display = 'none';
+          }
+     });
+    });
+
       $(document).ready(function () {
         $('#test6').click(function () {
             var $this = $(this);
@@ -283,6 +289,11 @@
     allowAdditions: true
   });
 
+   $('#color2')
+  .dropdown({
+    allowAdditions: true
+  });
+
 
 ////////////////////////////////////////////////////////////////////////// 
 
@@ -293,8 +304,12 @@
       $scope.additems = response.data;  
     });
 
-    $scope.editModal = function(){
-      $('#editModal').modal('setting', 'transition', 'vertical flip').modal('show');    
+    $scope.editModal = function(index){
+      $('#editModal').modal('setting', 'transition', 'vertical flip').modal('show');  
+      $scope.itemSelected = $scope.viewitems[index].item_model.ItemModelID;
+      $scope.size = $scope.viewitems[index].size;
+      $scope.color = $scope.viewitems[index].color;
+      $scope.defect = $scope.viewitems[index].DefectDescription;
     }
 
     $timeout(function(){
@@ -311,6 +326,19 @@
           $('#color').dropdown('set selected', $scope.additems[key].color);
         }
       }
+    }
+
+    $scope.deleteOrderedItem = function(index){
+      $http.get('/deleteOrderedItem?itemID=' + $scope.viewitems[index].ItemID)
+      .then(function(response){
+        if(response.data == 'success'){
+          $scope.viewitems.splice(index, 1);
+          alert('success');
+        }
+        else {
+          alert('error');
+        }
+      })
     }
   });
 </script>

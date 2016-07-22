@@ -184,6 +184,8 @@ Route::get('/confirmDispose', 'AngularInput@confirmDispose');
 
 Route::get('/approveAccount', 'AngularInput@approveAccount');
 
+Route::get('/deleteOrderedItem', 'AngularInput@deleteOrderedItem');
+
 //
 
 Route::get('/eventDetails', 'BiddingEventController@eventDetails');
