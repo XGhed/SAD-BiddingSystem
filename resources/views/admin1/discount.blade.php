@@ -54,8 +54,8 @@
                 <div class="field">
                   <div class="ui sub header">Account Type</div>
                     <select name="add_Type">
-                      @foreach($accountTypes as $key => $accountType)
                       <option value="" disabled selected>Choose Account Type</option>
+                      @foreach($accountTypes as $key => $accountType)
                       <option value="{{$accountType->AccountTypeID}}">{{$accountType->AccountTypeName}}</option>
                       @endforeach
                     </select>
@@ -64,7 +64,7 @@
                 <div class="equal width required fields">
                   <div class="field">
                     <label>Discount</label>
-                    <input type="number" name="add_discount">
+                    <input type="number" name="add_discount" step="0.01">
                   </div>
                   <div class="field">
                     <label>Required Points</label>
@@ -92,8 +92,8 @@
                 <div class="field">
                   <div class="ui sub header">Account Type</div>
                     <select id="edit_name" name="edit_Type">
-                      @foreach($accountTypes as $key => $accountType)
                       <option value="" disabled selected>Choose Account Type</option>
+                      @foreach($accountTypes as $key => $accountType)
                       <option value="{{$accountType->AccountTypeID}}">{{$accountType->AccountTypeName}}</option>
                       @endforeach
                     </select>
@@ -102,7 +102,7 @@
                 <div class="equal width required fields">
                   <div class="field">
                     <label>Discount</label>
-                    <input type="number" id="edit_discount" name="edit_discount">
+                    <input type="number" id="edit_discount" name="edit_discount" step="0.01">
                   </div>
                   <div class="field">
                     <label>Required Points</label>
