@@ -16,6 +16,7 @@
       <script type="text/javascript" src="js/angular.min.js"></script>
       <script type="text/javascript" src="{!!URL::asset('js/angular-datatables.min.js')!!}"></script>
       <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
+      <script type="text/javascript" src="{!!URL::asset('js/angular-timer.min.js')!!}"></script>
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/angular-datatables.css')!!}"/>
     </head>
 

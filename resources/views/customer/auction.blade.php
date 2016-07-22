@@ -1,4 +1,4 @@
-@extends('customer.homepageContent')
+@extends('customer.homepage')
 
 @section('nav')
 <div class="ui fixed inverted menu">
@@ -52,16 +52,16 @@
                      Time left: <p>6h 9m 52s(exact date and time here)</p>
 
                      <div class="ui inverted segment">
-                          <div class="ui header">Starting Bid: PHP @foreach($item->item_auction as $key => $ia) {{$ia->ItemPrice}} @endforeach</div>
+                          <div class="ui header">Starting Bid: Php @foreach($item->item_auction as $key => $ia) {{$ia->ItemPrice}} @endforeach</div>
                           <form class="ui form">
                               <div class="inline field">
                                   <input type="text" placeholder="Place bid here.." ng-model="price">
                                   <button class="ui button" ng-click="bidItem({{$item->ItemID}})">Place bid</button>
-                                  <a ng-click="showHistory()">[0 bids]</a>
+                                  <a ng-click="showHistory()">[<span ng-bind="bidlists.length"></span> bids]</a>
                               </div>
                           </form>
                           <div class="ui divider"></div>
-                          <div class="ui header">Current Price: Php <span ng-bind="highestBid"></span> </div>
+                          <div class="ui header">Highest Bid: Php <span ng-bind="highestBid"></span> </div>
                      </div>
                   </div>
               </div>
@@ -118,10 +118,6 @@
 
     $scope.showHistory = function(){
       $('#history').modal('setting', 'transition', 'vertical flip').modal('show');
-      $http.get('/getBidHistory?itemID=' + $scope.itemID)
-      .then(function(response){
-        $scope.bidlists = response.data;
-      });
     }
 
     $scope.bidItem = function(itemID){
@@ -133,6 +129,10 @@
         else {
           alert('somebody bid higher');
         }
+        $http.get('/getBidHistory?itemID=' + $scope.itemID)
+        .then(function(response){
+          $scope.bidlists = response.data;
+        });
         //refresh max bid
       });
     }
@@ -141,7 +141,12 @@
       $http.get('/getHighestBid?itemID=' + $scope.itemID)
       .then(function(response){
         $scope.highestBid = response.data;
-      })
+      });
+
+      $http.get('/getBidHistory?itemID=' + $scope.itemID)
+      .then(function(response){
+        $scope.bidlists = response.data;
+      });
     }, 1000);
   });
 </script>

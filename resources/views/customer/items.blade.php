@@ -67,7 +67,7 @@
 		  </div>
 		</div>	
 		<div class="ui divider"></div>
-		<div class="ui sub header">countdown: </div>
+		<div class="ui sub header">countdown: <timer countdown="10041" max-time-unit="'minute'" interval="1000">@{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</timer></div>
 		<br>
 		<div class="ui three column equal width relaxed grid">
 		  	<div class="stretched row">

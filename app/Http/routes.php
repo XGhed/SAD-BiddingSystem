@@ -250,8 +250,6 @@ Route::get('/accountApproval', 'PageController@accountApproval');
 
 Route::get('/itemPullouts', 'PageController@itemPullouts');
 
-Route::get('/eventsList', 'PageController@eventsList');
-
 Route::get('/deliveryApproval', 'PageController@deliveryApproval');
 
 Route::get('/userProfile', 'PageController@userProfile');
