@@ -196,6 +196,8 @@ Route::get('/hasJoinedThisEvent', 'CustomerBiddingEventController@hasJoinedThisE
 
 Route::get('/getHighestBid', 'CustomerBiddingEventController@getHighestBid');
 
+Route::get('/getBidHistory', 'CustomerBiddingEventController@getBidHistory');
+
 
 
 Route::post('/edit', 'ShipmentController@editShipment');
@@ -253,6 +255,8 @@ Route::get('/eventsList', 'PageController@eventsList');
 Route::get('/deliveryApproval', 'PageController@deliveryApproval');
 
 Route::get('/userProfile', 'PageController@userProfile');
+
+Route::get('/bidHistory', 'PageController@bidHistory');
 
 
 Route::group(['middleware' => ['web']], function () {

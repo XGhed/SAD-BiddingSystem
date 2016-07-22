@@ -203,4 +203,9 @@ class PageController extends Controller
 
        return view('admin1.deliveryApproval');
     }
+
+    public function bidHistory(Request $request){
+
+       return view('customer.bidHistory');
+    }
 }

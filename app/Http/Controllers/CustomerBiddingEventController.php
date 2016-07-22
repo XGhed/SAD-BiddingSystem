@@ -96,4 +96,10 @@ class CustomerBiddingEventController extends Controller
 
         return $bid->Price;
     }
+
+    public function getBidHistory(Request $request){
+        $bids = App\Models\Admin\Bid::with('account', 'item')->where('ItemID', $request->itemID)->get();
+
+        return $bids;
+    }
 }

@@ -1,4 +1,4 @@
-@extends('customer.items')
+@extends('customer.homepageContent')
 
 @section('nav')
 	<div class="ui fixed inverted menu">

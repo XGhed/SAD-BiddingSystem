@@ -57,7 +57,7 @@
                               <div class="inline field">
                                   <input type="text" placeholder="Place bid here.." ng-model="price">
                                   <button class="ui button" ng-click="bidItem({{$item->ItemID}})">Place bid</button>
-                                  <a href="#">[0 bids]</a>
+                                  <a ng-click="showHistory()">[0 bids]</a>
                               </div>
                           </form>
                           <div class="ui divider"></div>
@@ -68,6 +68,34 @@
           </div>
     </div>
 
+
+    <!-- history modal -->
+      <div class="ui small modal" id="history">
+          <i class="close icon"></i>
+          <div class="ui segment center aligned" style="margin: 10px 10px 10px 10px;">
+                                     <table class="ui celled table">
+                          <thead>
+                            <tr>
+                            <th>Bidder</th>
+                            <th>Bid Amount</th>
+                            <th>Bid Time</th>
+                          </tr></thead>
+                          <tbody>
+                            <tr ng-repeat="bidlist in bidlists">
+                              <td>@{{bidlist.account.AccountID}}</td>
+                              <td>@{{bidlist.Price}}</td>
+                              <td>@{{bidlist.DateTime}}</td>
+                            </tr>
+                          </tbody>
+                           <tfoot>
+                            <tr>
+                            <th colspan="3">
+                            <i class="attention icon"></i>
+                              Note: If two people bid the same amount, the first bid has priority. 
+                            </th>
+                          </tr></tfoot>
+                        </table>          </div>
+      </div>
 
 
 
@@ -88,6 +116,14 @@
       $('#imge').modal('setting', 'transition', 'vertical flip').modal('show');    
     }
 
+    $scope.showHistory = function(){
+      $('#history').modal('setting', 'transition', 'vertical flip').modal('show');
+      $http.get('/getBidHistory?itemID=' + $scope.itemID)
+      .then(function(response){
+        $scope.bidlists = response.data;
+      });
+    }
+
     $scope.bidItem = function(itemID){
       $http.get('/bidItem?itemID=' + itemID + '&price=' + $scope.price)
       .then(function(response){
@@ -105,7 +141,6 @@
       $http.get('/getHighestBid?itemID=' + $scope.itemID)
       .then(function(response){
         $scope.highestBid = response.data;
-        alert(response.data);
       })
     }, 1000);
   });
