@@ -22,7 +22,7 @@
 		  	<div class="equal width fields">
 			  	<div class="field">
 				    <label>First Name</label>
-				    <input type="text" name="firstName" placeholder="First Name" pattern="([A-z '.-]){2,}" required>
+				    <input type="text" name="firstName" placeholder="First Name" pattern="([A-z '.-]){2,}" >
 				</div>
 				<div class="field">
 				    <label>Middle Name(optional)</label>
@@ -30,28 +30,28 @@
 			  	</div>
 			  	<div class="field">
 				    <label>Last Name</label>
-				    <input type="text" name="lastName" placeholder="Last Name" pattern="([A-z '.-]){2,}" required>
+				    <input type="text" name="lastName" placeholder="Last Name" pattern="([A-z '.-]){2,}" >
 			  	</div>
 		  	</div>
 
 		  	<div class="equal width fields">
 				<div class="field">
 	                <div class="ui sub header">Province</div>
-	                	<select name="province" class="ui search selection dropdown" ng-model="inputProvince" ng-change="reloadCities();" REQUIRED>
+	                	<select name="province" class="ui search selection dropdown" ng-model="inputProvince" ng-change="reloadCities();" >
 	                    	<option value="" disabled selected>Province</option>
 	            	    	<option ng-repeat="province in provinces" value="@{{province.ProvinceID}}">@{{province.ProvinceName}}</option>
 	                	</select>
 	            </div>
 				<div class="field">
 	                <div class="ui sub header">City</div>
-	                	<select name="city" class="ui search selection dropdown" REQUIRED>
+	                	<select name="city" class="ui search selection dropdown" >
 	                    	<option value="" disabled selected>City</option>
 	            	    	<option ng-repeat="city in cities" value="@{{city.CityID}}">@{{city.CityName}}</option>
 	                	</select>
 	            </div>
 				<div class="field">
 					<label>Address</label>
-					<input type="text" name="address" placeholder="#4 Wednesday St. Pacita 1 Brgy. San Vicente" required>
+					<input type="text" name="address" >
 				</div>
 		  	</div>
 
@@ -70,19 +70,19 @@
 				</div>
 			  	<div class="field">
 			  		<label>Birthdate</label>
-			  		<input type="date" name="birthdate" max="1998-12-31" required>
+			  		<input type="date" name="birthdate" max="1998-12-31" >
 			  	</div>
 
 			  	<div class="field">
 			  		<label>Occupation</label>
-			  		<input type="text" name="occupation" required>
+			  		<input type="text" name="occupation" >
 			  	</div>
 		  	</div>
 
 		  	<div class="equal width fields">
 		  		<div class="field">
 					<label>Email Address</label>
-					<input type="email" name="email" placeholder="XXXXXX@yahoo.com" required>
+					<input type="email" name="email" placeholder="XXXXXX@yahoo.com" >
 				</div>
 				<div class="field">
 					<label>Cellphone Number</label>
@@ -97,7 +97,7 @@
 			<div class="equal width fields">
 				<div class="field">
 	                <div class="ui sub header">Account Type</div>
-                	<select name="accounttype" class="ui search selection dropdown" REQUIRED>
+                	<select name="accounttype" class="ui search selection dropdown">
                     	<option value="" disabled selected>Account Type</option>
             	    	<option ng-repeat="accounttype in accounttypes" value="@{{accounttype.AccountTypeID}}">@{{accounttype.AccountTypeName}}</option>
                 	</select>
@@ -128,15 +128,15 @@
 				</div> -->
 
 				<div class="field" id="documents">
-	                <label>2 Valid ID</label>
+	                <label>Valid ID</label>
 	                <i class="file icon"></i>
-	                <input type="file" name="ids" multiple required>
+	                <input type="file" name="ids" multiple >
 				</div>
 
 				<div class="field" id="dti">
 	                <label>DTI</label>
 	                <i class="file icon"></i>
-	                <input type="file" name="dti" multiple required>
+	                <input type="file" name="dti" multiple >
 				</div>
 			</div>
 
