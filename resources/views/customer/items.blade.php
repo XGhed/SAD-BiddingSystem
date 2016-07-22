@@ -114,7 +114,7 @@
 					            </div>
 							    <div class="ui bottom attached button" ng-click="bidItem($index)">
 							      <i class="add icon"></i>
-							      Join Event
+							      Bid Item
 							    </div>
 							</div>
 						</div>   

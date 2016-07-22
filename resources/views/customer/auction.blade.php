@@ -28,7 +28,7 @@
 @endsection
 
 @section('content')
-	<div ng-app="myApp" ng-controller="myController">
+	<div ng-app="myApp" ng-controller="myController" ng-init="itemID = {{$item->ItemID}}">
     <div style="margin: 35px 0 0 0" class="ui container segment">
 
           <div class="ui grid"><div class="row"></div>
@@ -55,13 +55,13 @@
                           <div class="ui header">Starting Bid: PHP @foreach($item->item_auction as $key => $ia) {{$ia->ItemPrice}} @endforeach</div>
                           <form class="ui form">
                               <div class="inline field">
-                                  <input type="text" placeholder="Place bid here..">
-                                  <button class="ui button" type="submit">Place bid</button>
+                                  <input type="text" placeholder="Place bid here.." ng-model="price">
+                                  <button class="ui button" ng-click="bidItem({{$item->ItemID}})">Place bid</button>
                                   <a href="#">[0 bids]</a>
                               </div>
                           </form>
                           <div class="ui divider"></div>
-                          <div class="ui header">Current Price: Php 500.00</div>
+                          <div class="ui header">Current Price: Php <span ng-bind="highestBid"></span> </div>
                      </div>
                   </div>
               </div>
@@ -83,10 +83,31 @@
 
 <script>
   var app = angular.module('myApp', ['datatables']);
-  app.controller('myController', function($scope, $http){
+  app.controller('myController', function($scope, $http, $timeout){
     $scope.showImage = function(){
       $('#imge').modal('setting', 'transition', 'vertical flip').modal('show');    
     }
+
+    $scope.bidItem = function(itemID){
+      $http.get('/bidItem?itemID=' + itemID + '&price=' + $scope.price)
+      .then(function(response){
+        if (response.data == 'success'){
+          alert('success');
+        }
+        else {
+          alert('somebody bid higher');
+        }
+        //refresh max bid
+      });
+    }
+
+    $timeout(function(){
+      $http.get('/getHighestBid?itemID=' + $scope.itemID)
+      .then(function(response){
+        $scope.highestBid = response.data;
+        alert(response.data);
+      })
+    }, 1000);
   });
 </script>
 @endsection

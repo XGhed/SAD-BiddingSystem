@@ -194,6 +194,8 @@ Route::get('/itemsOfSubcategory', 'CustomerBiddingEventController@itemsOfSubcate
 
 Route::get('/hasJoinedThisEvent', 'CustomerBiddingEventController@hasJoinedThisEvent');
 
+Route::get('/getHighestBid', 'CustomerBiddingEventController@getHighestBid');
+
 
 
 Route::post('/edit', 'ShipmentController@editShipment');
@@ -205,6 +207,8 @@ Route::get('/accounts', 'PageController@manageAccounts');
 Route::get('/tryLoad', 'SupplierController@tryLoad');
 
 Route::get('/joinEvent', 'CustomerBiddingEventController@joinEvent');
+
+Route::get('/bidItem', 'CustomerBiddingEventController@bidItem');
 
 
 /*

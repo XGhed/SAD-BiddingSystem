@@ -79,6 +79,21 @@ class CustomerBiddingEventController extends Controller
     }
 
     public function bidItem(Request $request){
-        
+        $bid = new App\Models\Admin\Bid;
+
+        $bid->AccountID = session('accountID');
+        $bid->ItemID = $request->itemID;
+        $bid->Price = $request->price;
+        $bid->DateTime = Carbon::now('Asia/Manila');
+
+        $bid->save();
+
+        return 'success';
+    }
+
+    public function getHighestBid(Request $request){
+        $bid = App\Models\Admin\Bid::with('item')->where('ItemID', $request->itemID)->get()->sortByDesc('Price')->first();
+
+        return $bid->Price;
     }
 }
