@@ -71,4 +71,14 @@ class CustomerBiddingEventController extends Controller
             return 'false';
         }
     }
+
+    public function auction(Request $request){
+        $item = App\Models\Admin\Item::with('itemModel', 'item_auction')->where('ItemID', $request->itemID)->first();
+
+        return view('customer.auction')->with('item', $item);
+    }
+
+    public function bidItem(Request $request){
+        $
+    }
 }

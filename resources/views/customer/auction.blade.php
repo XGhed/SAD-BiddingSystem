@@ -1,4 +1,4 @@
-@extends('customer.items')
+@extends('customer.homepageContent')
 
 @section('nav')
 <div class="ui fixed inverted menu">
@@ -28,62 +28,65 @@
 @endsection
 
 @section('content')
-	<div style="margin: 35px 0 0 0" class="ui container segment">
+	<div ng-app="myApp" ng-controller="myController">
+    <div style="margin: 35px 0 0 0" class="ui container segment">
 
-        <div class="ui grid"><div class="row"></div>
-        <a href="/items"><i class="arrow left icon"></i> back to previous page</a></div>
+          <div class="ui grid"><div class="row"></div>
+          <a href="/items"><i class="arrow left icon"></i> back to previous page</a></div>
 
-        <div class="ui grid">
-            <div class="six wide column">
-                <div class="ui card" style="height: 350px; width: 350px;">
-                  <a class="image" id="imgModal">
-                    <img src="/icons/cabinet.jpg">
-                  </a>
-                </div>
-            </div>
+          <div class="ui grid">
+              <div class="six wide column" ng-click="showImage()">
+                  <div class="ui card" style="height: 350px; width: 350px;">
+                    <a class="image" id="imgModal">
+                      <img src="{{$item->image_path}}">
+                    </a>
+                  </div>
+              </div>
 
-            <div class="ten wide column">
-               <div class="ui header">Item name</div>
-               <div class="ui divider"></div>
+              <div class="ten wide column">
+                 <div class="ui header">{{$item->itemModel->ItemName}}</div>
+                 <div class="ui divider"></div>
 
-               <div class="content">
-                   Desription:<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                   Time left: <p>6h 9m 52s(exact date and time here)</p>
+                 <div class="content">
+                     Desription:<p>{{$item->DefectDescription}}.</p>
+                     Time left: <p>6h 9m 52s(exact date and time here)</p>
 
-                   <div class="ui inverted segment">
-                        <div class="ui header">Starting Bid: PHP 500.00</div>
-                        <form class="ui form">
-                            <div class="inline field">
-                                <input type="text" placeholder="Place bid here..">
-                                <button class="ui button" type="submit">Place bid</button>
-                                <a href="#">[0 bids]</a>
-                            </div>
-                        </form>
-                        <div class="ui divider"></div>
-                        <div class="ui header">Current Price: Php 500.00</div>
-                   </div>
-                </div>
-            </div>
-        </div>
-	</div>
-
-
-
-
-    <!-- image modal -->
-    <div class="ui small modal" id="imge">
-        <i class="close icon"></i>
-        <div class="ui segment center aligned" style="margin: 10px 10px 10px 10px;">
-            <img src="/icons/cabinet.jpg" style="height: 350px; width: 350px;">
-        </div>
+                     <div class="ui inverted segment">
+                          <div class="ui header">Starting Bid: PHP @foreach($item->item_auction as $key => $ia) {{$ia->ItemPrice}} @endforeach</div>
+                          <form class="ui form">
+                              <div class="inline field">
+                                  <input type="text" placeholder="Place bid here..">
+                                  <button class="ui button" type="submit">Place bid</button>
+                                  <a href="#">[0 bids]</a>
+                              </div>
+                          </form>
+                          <div class="ui divider"></div>
+                          <div class="ui header">Current Price: Php 500.00</div>
+                     </div>
+                  </div>
+              </div>
+          </div>
     </div>
 
 
+
+
+      <!-- image modal -->
+      <div class="ui small modal" id="imge">
+          <i class="close icon"></i>
+          <div class="ui segment center aligned" style="margin: 10px 10px 10px 10px;">
+              <img src="{{$item->image_path}}" style="height: 350px; width: 350px;">
+          </div>
+      </div>
+  </div>
+
+
 <script>
-$(document).ready(function(){
-     $('#imgModal').click(function(){
-        $('#imge').modal('setting', 'transition', 'vertical flip').modal('show');    
-     });
-});
+  var app = angular.module('myApp', ['datatables']);
+  app.controller('myController', function($scope, $http){
+    $scope.showImage = function(){
+      $('#imge').modal('setting', 'transition', 'vertical flip').modal('show');    
+    }
+  });
 </script>
 @endsection

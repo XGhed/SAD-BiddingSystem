@@ -11,9 +11,12 @@ class Bid extends Migration
     Schema::create('Bid', function(Blueprint $table)
     {
         $table->increments('BidID');
-        $table->Timestamp('DateTime');
         $table->integer('AccountID')->unsigned();
-        $table->foreign('AccountID')->references('AccountID')->on('JoinBid');
+        $table->integer('ItemID')->unsigned();
+        $table->foreign('AccountID')->references('AccountID')->on('Account');
+        $table->foreign('ItemID')->references('ItemID')->on('Items');
+        $table->integer('Price');
+        $table->Timestamp('DateTime');
     });
 }
 

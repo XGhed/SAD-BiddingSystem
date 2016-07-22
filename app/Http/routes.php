@@ -123,8 +123,6 @@ Route::get('/bidItems', 'BiddingEventController@viewEventItems');
 
 //Route::get('/cart', 'PageController@cart');
 
-Route::get('/auction', 'PageController@auction');
-
 Route::get('/admin', 'PageController@admin');
 
 
@@ -263,11 +261,13 @@ Route::group(['middleware' => 'customer'], function () {
     Route::get('/cart', 'PageController@cart');
 
     Route::get('/items', 'CustomerBiddingEventController@eventItems');
+
+    Route::get('/eventsList', 'PageController@eventsList');
+
+    Route::get('/auction', 'CustomerBiddingEventController@auction');
 });
 
 Route::get('/bidList', 'PageController@bidList');
-
-Route::get('/eventsList', 'PageController@eventsList');
 
 Route::get('/angulardt', function(){
 	return view('admin1.angulardt');

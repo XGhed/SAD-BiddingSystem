@@ -112,9 +112,9 @@
 					                	<span>@{{item.DefectDescription}}</span>
 					              	</div>
 					            </div>
-							    <div class="ui bottom attached button">
+							    <div class="ui bottom attached button" ng-click="bidItem($index)">
 							      <i class="add icon"></i>
-							      <a href="/auction">Join Event</a>
+							      Join Event
 							    </div>
 							</div>
 						</div>   
@@ -136,7 +136,7 @@
 	;
 
 	var app = angular.module('myApp', ['datatables']);
-	app.controller('myController', function($scope, $http, $timeout){
+	app.controller('myController', function($scope, $http, $timeout, $window){
 		$scope.subcatViewItems = function(subcatID){
 			$http.get('/itemsOfSubcategory?subcatID=' + subcatID + '&eventID=' + $scope.eventID)
 			.then(function(response){
@@ -156,6 +156,10 @@
 
 		$scope.showJoinConfirmation = function(){
 			$('#eventModal').modal('show');
+		}
+
+		$scope.bidItem = function(index){
+			$window.open('/auction?itemID='+$scope.itemsView[index].ItemID);
 		}
 	});
 </script>
