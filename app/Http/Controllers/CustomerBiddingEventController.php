@@ -102,4 +102,10 @@ class CustomerBiddingEventController extends Controller
 
         return $bids;
     }
+
+    public function bidList(Request $request){
+        $bids = App\Models\Admin\Bid::where('AccountID', session('accountID'))->get();
+
+        return view('customer.bidList')->with('bids', $bids);
+    }
 }

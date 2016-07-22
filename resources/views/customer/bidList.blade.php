@@ -28,7 +28,7 @@
 @endsection
 
 @section('content')
-	<div style="margin: 35px 0 0 0" class="ui container segment">
+	<div style="margin: 35px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController">
 		<div class="ui grid">
 			<div class="ten wide column">
 				<div class="ui segment">
@@ -39,37 +39,25 @@
 					  </div>
 					</h2>
 					<div class="ui divider"></div>
-						<!-- start loop -->
+					<!-- start loop -->
+					@foreach($bids as $key => $bid)
 						<div class="ui grid">
 							<div class="five wide column">
-								<img class="ui small image" src="/icons/cabinet.jpg">
+								<img class="ui small image" src="{{$bid->item->image_path}}">
 							</div>
-							<div class="eight wide column">
-								<div class="header">Item Name</div>
+							<div class="eight wide column" ng-click="bidItem({{$bid->itemID}})">
+								<div class="header">{{$bid->item->itemModel->ItemName}}</div>
 								<div class="ui divider"></div>
 								<div class="content">
-									Price: 500.00
+									Bid: {{$bid->Price}}
 									<p></p>
-									Status: Currently on Bid
+									Status: Currently Highest Bid
 								</div>
 							</div>
 						</div>
 						<div class="ui divider"></div>
-						<!-- end loop -->
-						<div class="ui grid">
-							<div class="five wide column">
-								<img class="ui small image" src="/icons/cabinet.jpg">
-							</div>
-							<div class="eight wide column">
-								<div class="header">Item Name</div>
-								<div class="ui divider"></div>
-								<div class="content">
-									Price: 500.00
-									<p></p>
-									Status: Item won
-								</div>
-							</div>
-						</div>
+					@endforeach
+					<!-- end loop -->
 				</div>	
 			</div>
 
@@ -93,5 +81,12 @@
 	</div>
 
 <script>
+	var app = angular.module('myApp', ['datatables']);alert('sad');
+	app.controller('myController', function($scope, $http){
+		//$http.get('/auction?itemID=' + )
+		$scope.bidItem = function(itemID){
+			alert(itemID);//redirect to /auction for bidding of item
+		}
+	});
 </script>
 @endsection

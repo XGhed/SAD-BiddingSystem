@@ -275,7 +275,11 @@ Route::group(['middleware' => 'customer'], function () {
     Route::get('/auction', 'CustomerBiddingEventController@auction');
 });
 
-Route::get('/bidList', 'PageController@bidList');
+Route::get('/bidList', 'CustomerBiddingEventController@bidList');
+
+Route::get('/sad', function(){
+	return view('customer.bidList');
+});
 
 Route::get('/angulardt', function(){
 	return view('admin1.angulardt');
