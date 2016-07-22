@@ -19,10 +19,21 @@
         </a>
         
         <div class="right menu">
-          <a class="ui item">
-            help
-            <i class="help icon"></i>
+          <div class="item">
+            <div class="ui icon input">
+              <input type="text" placeholder="Search...">
+              <i class="search link icon"></i>
+            </div>
+          </div>
+          @if(session('accountID') != "")
+            <a class="ui item" href="/logout">
+              Logout {{session('accountID')}}
           </a>
+          @else
+            <a class="ui item" id="logIn">
+              Register | Log in
+          </a>
+        @endif
         </div>
       </div>
 @endsection

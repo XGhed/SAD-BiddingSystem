@@ -19,10 +19,21 @@
         </a>
         
         <div class="right menu">
-          <a class="ui item">
-            help
-            <i class="help icon"></i>
+          <div class="item">
+            <div class="ui icon input">
+              <input type="text" placeholder="Search...">
+              <i class="search link icon"></i>
+            </div>
+          </div>
+          @if(session('accountID') != "")
+            <a class="ui item" href="/logout">
+              Logout {{session('accountID')}}
           </a>
+          @else
+            <a class="ui item" id="logIn">
+              Register | Log in
+          </a>
+        @endif
         </div>
       </div>
 @endsection
@@ -73,28 +84,31 @@
       <div class="ui small modal" id="history">
           <i class="close icon"></i>
           <div class="ui segment center aligned" style="margin: 10px 10px 10px 10px;">
-                                     <table class="ui celled table">
-                          <thead>
-                            <tr>
-                            <th>Bidder</th>
-                            <th>Bid Amount</th>
-                            <th>Bid Time</th>
-                          </tr></thead>
-                          <tbody>
-                            <tr ng-repeat="bidlist in bidlists">
-                              <td>@{{bidlist.account.AccountID}}</td>
-                              <td>@{{bidlist.Price}}</td>
-                              <td>@{{bidlist.DateTime}}</td>
-                            </tr>
-                          </tbody>
-                           <tfoot>
-                            <tr>
-                            <th colspan="3">
-                            <i class="attention icon"></i>
-                              Note: If two people bid the same amount, the first bid has priority. 
-                            </th>
-                          </tr></tfoot>
-                        </table>          </div>
+              <table class="ui celled table">
+                <thead>
+                  <tr>
+                    <th>Bidder</th>
+                    <th>Bid Amount</th>
+                    <th>Bid Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="bidlist in bidlists">
+                    <td>@{{bidlist.account.AccountID}}</td>
+                    <td>@{{bidlist.Price}}</td>
+                    <td>@{{bidlist.DateTime}}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th colspan="3">
+                      <i class="attention icon"></i>
+                      Note: If two people bid the same amount, the first bid has priority. 
+                    </th>
+                  </tr>
+                </tfoot>
+              </table> 
+          </div>
       </div>
 
 
