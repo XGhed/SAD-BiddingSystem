@@ -79,6 +79,6 @@ class CustomerBiddingEventController extends Controller
     }
 
     public function bidItem(Request $request){
-        $
+        
     }
 }
