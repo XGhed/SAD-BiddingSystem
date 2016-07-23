@@ -52,36 +52,49 @@
 					<div class="ui divider"></div>
 
 					<div class="ui top attached tabular menu">
-					  <a class="active item" data-tab="first">First</a>
-					  <a class="item" data-tab="second">Second</a>
+					  <a class="active item" data-tab="first">Bid List</a>
+					  <a class="item" data-tab="second">Leading Bid</a>
 					</div>
 					<div class="ui bottom attached active tab segment" data-tab="first">
-					  First
-					</div>
-					<div class="ui bottom attached tab segment" data-tab="second">
-					  Second
-					</div>
-
-
-					<!-- start loop -->
-					@foreach($bids as $key => $bid)
-						<div class="ui grid">
-							<div class="five wide column">
-								<img class="ui small image" src="{{$bid->item->image_path}}">
-							</div>
-							<div class="eight wide column" ng-click="bidItem({{$bid->itemID}})">
-								<div class="header">{{$bid->item->itemModel->ItemName}}</div>
-								<div class="ui divider"></div>
-								<div class="content">
-									Bid: {{$bid->Price}}
-									<p></p>
-									Status: Currently Highest Bid
+					  	<!-- start loop -->
+						@foreach($bids as $key => $bid)
+							<div class="ui grid">
+								<div class="five wide column">
+									<img class="ui small image" src="{{$bid->item->image_path}}">
+								</div>
+								<div class="eight wide column" ng-click="bidItem({{$bid->ItemID}})">
+									<div class="header">{{$bid->item->itemModel->ItemName}}</div>
+									<div class="ui divider"></div>
+									<div class="content">
+										Bid: {{$bid->Price}}
+										<p></p>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="ui divider"></div>
-					@endforeach
-					<!-- end loop -->
+							<div class="ui divider"></div>
+						@endforeach
+						<!-- end loop -->
+					</div>
+					<div class="ui bottom attached tab segment" data-tab="second">
+					  <!-- start loop -->
+						@foreach($bids as $key => $bid)
+							<div class="ui grid">
+								<div class="five wide column">
+									<img class="ui small image" src="{{$bid->item->image_path}}">
+								</div>
+								<div class="eight wide column" ng-click="bidItem({{$bid->ItemID}})">
+									<div class="header">{{$bid->item->itemModel->ItemName}}</div>
+									<div class="ui divider"></div>
+									<div class="content">
+										Bid: {{$bid->Price}}
+										<p></p>
+									</div>
+								</div>
+							</div>
+							<div class="ui divider"></div>
+						@endforeach
+						<!-- end loop -->
+					</div>
 				</div>	
 			</div>
 
@@ -108,11 +121,13 @@
 $('.menu .item').tab();
 
 
-	var app = angular.module('myApp', ['datatables']);alert('sad');
-	app.controller('myController', function($scope, $http){
+	var app = angular.module('myApp', ['datatables']);
+	app.controller('myController', function($scope, $http, $window){
 		//$http.get('/auction?itemID=' + )
 		$scope.bidItem = function(itemID){
-			alert(itemID);//redirect to /auction for bidding of item
+			//redirect to /auction for bidding of item
+			$window.open('/auction?itemID='+itemID);
+
 		}
 	});
 </script>
