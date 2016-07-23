@@ -55,11 +55,11 @@
                 </div>
 
                    <div class="five wide field">
-                   <div class="ui sub header">Upload photo</div>
-                    <label for="file" class="ui icon button">
-                        <i class="file icon"></i>
-                        Attach photo</label>
-                    <input type="file" id="file" name="add_photo" style="display:none" multiple>
+                   <div class="field" id="dti">
+                      <label>Photo</label>
+                      <i class="file icon"></i>
+                      <input type="file" name="add_photo">
+                    </div>
                   </div> 
 
                 <div class="equal width fields">

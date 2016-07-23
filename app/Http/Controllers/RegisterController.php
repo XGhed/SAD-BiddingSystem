@@ -53,16 +53,21 @@ class RegisterController extends Controller
             $membership->AccountTypeID = $request->input('accounttype');
 
             //upload files
-            if (($request->hasFile('ids')) && ($request->hasFile('dti'))) {
-                $filenameids = rand(1000,100000)."-".$request->file('ids')->getClientOriginalName();
-                $filepathids = "photos/credentials/";
-                $request->file('ids')->move($filepathids, $filenameids);
-                $membership->valid_id = $filepathids.$filenameids;
+            if (($request->hasFile('ids')) || ($request->hasFile('dti'))) {
+                if($request->hasFile('ids')){
+                    $filenameids = rand(1000,100000)."-".$request->file('ids')->getClientOriginalName();
+                    $filepathids = "photos/credentials/";
+                    $request->file('ids')->move($filepathids, $filenameids);
+                    $membership->valid_id = $filepathids.$filenameids;
+                }
 
-                $filenamedti = rand(1000,100000)."-".$request->file('dti')->getClientOriginalName();
-                $filepathdti = "photos/credentials/";
-                $request->file('dti')->move($filepathdti, $filenamedti);
-                $membership->File_DTI = $filepathdti.$filenamedti;
+                if($request->hasFile('dti')){
+                    $filenamedti = rand(1000,100000)."-".$request->file('dti')->getClientOriginalName();
+                    $filepathdti = "photos/credentials/";
+                    $request->file('dti')->move($filepathdti, $filenamedti);
+                    $membership->File_DTI = $filepathdti.$filenamedti;
+                }
+                
             }
             else {
                 throw new Exception("Error Processing Request", 1);

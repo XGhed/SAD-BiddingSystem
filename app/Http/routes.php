@@ -262,6 +262,8 @@ Route::get('/userProfile', 'PageController@userProfile');
 
 Route::get('/bidHistory', 'PageController@bidHistory');
 
+Route::get('/deliveryStatus', 'PageController@deliveryStatus');
+
 
 Route::group(['middleware' => ['web']], function () {
     //

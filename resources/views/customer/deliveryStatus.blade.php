@@ -75,57 +75,65 @@
 		</div>
 
 		<div class="ten wide column">
-			<div class="ui inverted segment">
-				<h2>Your Profile</h2>
-				<div class="ui raised link cards">
-				  <a class="ui card" href="/bidList">
-					  <div class="content">
-					    <div class="ui centered header">Current Items Bidded</div>
-					    <div class="description">
-					      <div class="ui statistic">
-							  <div class="value">
-							    5,550
-							  </div>
-							  <div class="label">
-							    Items currently on bid
-							  </div>
-							</div>
-					    </div>
-					  </div>
-					</a>
-					<a class="ui card" href="/deliveryStatus">
-					  <div class="content">
-					    <div class="ui centered header">Delivery Status</div>
-					    <div class="description">
-					      <div class="ui statistic">
-							  <div class="value">
-							    Pending
-							  </div>
-							  <div class="label">
-							    Delivery
-							  </div>
-							</div>
-					    </div>
-					  </div>
-					</a>
-					<a class="ui card" href="/cart">
-					  <div class="content">
-					    <div class="ui centered header">Items on Cart</div>
-					    <div class="description">
-					      <div class="ui statistic">
-							  <div class="value">
-							    5,550
-							  </div>
-							  <div class="label">
-							    items
-							  </div>
-							</div>
-					    </div>
-					  </div>
-					</a>
-				</div>
+			<div class="ui segment">
+				<h2>Delivery</h2>
+			       <div class="ui top attached tabular menu">
+				      <a class="active item" data-tab="first">tab 1</a>
+				      <a class="item" data-tab="second">tab 2</a>
+				    </div>
+				    <div class="ui bottom attached active tab segment" data-tab="first">
+				     	<table class="ui celled selectable table">
+					        <thead>
+					          <tr>
+					          <th>Item Name</th>
+					          <th>Description</th>
+					          <th>Status</th>
+					        </tr></thead>
+					        <tbody>
+					          <tr>
+					            <td class="tableRow">kutsilyo</td>
+					            <td class="tableRow" >matalas</td>
+					            <td class="tableRow" >pending</td>
+					          </tr>
+					        </tbody>
+					      </table>
+				    </div>
+
+				    <!--2nd tab-->
+
+				    <div class="ui bottom attached tab segment" data-tab="second">
+				      <table class="ui definition celled selectable table">
+					        <thead>
+					          <tr>
+					          <th></th>
+					          <th>Item Name</th>
+					          <th>Description</th>
+					          <th>Date Checkout</th>
+					        </tr></thead>
+					        <tbody>
+					          <tr>
+					          	<td>
+				                  <input type="checkbox" class="ui checkbox" />
+				                </td>
+					            <td class="tableRow" >kutsilyo</td>
+					            <td class="tableRow" >matalas</td>
+					            <td class="tableRow" >July 21 ,2015</td>
+					          </tr>
+					        </tbody>
+					      </table>
+				    </div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+$('.menu .item').tab();
+</script>
 @endsection
+
+
+item
+desc
+date checkout
+
