@@ -64,10 +64,12 @@
 								</div>
 								<div class="eight wide column" ng-click="bidItem({{$bid->ItemID}})">
 									<div class="header">{{$bid->item->itemModel->ItemName}}</div>
+									<div class="header">Description: {{$bid->item->DefectDescription}}</div>
 									<div class="ui divider"></div>
 									<div class="content">
 										Bid: {{$bid->Price}}
 										<p></p>
+										Bid time: {{$bid->DateTime}}
 									</div>
 								</div>
 							</div>
@@ -84,10 +86,12 @@
 								</div>
 								<div class="eight wide column" ng-click="bidItem({{$bid->ItemID}})">
 									<div class="header">{{$bid->item->itemModel->ItemName}}</div>
+									<div class="header">Description: {{$bid->item->DefectDescription}}</div>
 									<div class="ui divider"></div>
 									<div class="content">
 										Bid: {{$bid->Price}}
 										<p></p>
+										Bid time: {{$bid->DateTime}}
 									</div>
 								</div>
 							</div>
