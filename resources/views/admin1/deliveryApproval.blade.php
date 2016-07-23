@@ -39,6 +39,7 @@
           <th>Customer Name</th>
           <th>Date requested</th>
           <th>Delivery/Pick-up place</th>
+          <th>Status</th>
         </tr></thead>
         <tbody>
           <tr>
@@ -64,12 +65,13 @@
               <thead>
                 <tr>
                   <th>Item Name</th>
+                  <th>Item Details</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>John Lilki</td>
-                  
+                  <td>John Lilki</td>
                 </tr>
               </tbody>
             </table>
