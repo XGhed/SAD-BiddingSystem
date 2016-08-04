@@ -50,6 +50,7 @@
 			<i class="legal icon"></i>
 			You have joined this event!
 		</button>
+		<span ng-bind="subcatName" style="text-align:center;"></span>
 		<div class="ui basic modal" id="eventModal">
 		  <i class="close icon"></i>
 		  <div class="ui centered header">
@@ -92,7 +93,7 @@
 					                	<h4 class="ui header center aligned">{{$category->CategoryName}}</h4>
 					                	<div class="ui link list">
 						                  	@foreach($category->subCategory as $key2 => $subcat)
-						                  		<a class="item" ng-click="subcatViewItems({{$subcat->SubCategoryID}})">{{$subcat->SubCategoryName}}</a>
+						                  		<a class="item" ng-click="subcatViewItems({{$subcat->SubCategoryID}}, {{$subcat->SubCategoryName}})">{{$subcat->SubCategoryName}}</a>
 						                  	@endforeach
 						                </div>
 					              	</div>
@@ -119,8 +120,11 @@
 							    </div>
 							    <div class="content">
 					              	<a class="header" href="/try">@{{item.item_model.ItemName}}</a>
-					              	<div class="meta">
-					                	<span>@{{item.DefectDescription}}</span>
+					              	<div>
+					                	Defect: @{{item.DefectDescription}}
+					              	</div>
+					              	<div>
+					              		Price: @{{item.item_auction[0].ItemPrice}}
 					              	</div>
 					            </div>
 							    <div class="ui bottom attached button" ng-click="bidItem($index)">
@@ -148,11 +152,13 @@
 
 	var app = angular.module('myApp', ['datatables']);
 	app.controller('myController', function($scope, $http, $timeout, $window){
-		$scope.subcatViewItems = function(subcatID){
+		$scope.subcatViewItems = function(subcatID, subcatname){
 			$http.get('/itemsOfSubcategory?subcatID=' + subcatID + '&eventID=' + $scope.eventID)
 			.then(function(response){
 				$scope.itemsView = response.data;
 			});
+
+			$scope.subcatName = subcatname;
 		}
 
 		$scope.joinEvent = function(){

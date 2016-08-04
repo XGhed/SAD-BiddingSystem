@@ -11,7 +11,7 @@ class Discount extends Migration
         Schema::create('Discount', function (Blueprint $table){
             $table->increments('DiscountID');
             $table->integer('RequiredPoints')->unsigned();
-            $table->integer('Discount')->unsigned();
+            $table->decimal('Discount', 5, 2)->unsigned();
             $table->integer('AccountTypeID')->unsigned();
             $table->foreign('AccountTypeID')->references('AccountTypeID')->on('AccountType');
         });

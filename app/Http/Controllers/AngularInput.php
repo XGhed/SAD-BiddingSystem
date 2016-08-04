@@ -52,4 +52,21 @@ class AngularInput extends Controller
             return 'success';
         }
     }
+
+    public function approveAccount(Request $request){
+        $account = App\Models\Admin\Account::where('accountID', $request->accountID)->first();
+
+        $account->status = 1;
+        $account->save();
+
+        return 'success';
+    }
+
+    public function deleteOrderedItem(Request $request){
+        $item = App\Models\Admin\Item::find($request->itemID);
+
+        $item->delete();
+
+        return 'success';
+    }
 }

@@ -139,6 +139,10 @@
       .then(function(response){
         if (response.data == 'success'){
           alert('success');
+          $http.get('/getHighestBid?itemID=' + $scope.itemID)
+          .then(function(response){
+            $scope.highestBid = response.data;
+          });
         }
         else {
           alert('somebody bid higher');

@@ -1,7 +1,7 @@
 @extends('admin1.mainteParent')
 
 @section('content')
-<div class="ui grid">
+<div class="ui grid" ng-app="myApp" ng-controller="myController">
   <div class="four wide column">
       <div class="ui vertical fluid tabular menu">
         <div class="ui centered header">Transaction</div>
@@ -41,13 +41,13 @@
           <th>Date Registered</th>
         </tr></thead>
         <tbody>
-          <tr>
+          <tr ng-repeat="account in accounts">
             <td class="collapsing">
-              <button class="ui basic green button"><i class="checkmark icon"></i>Approve</button>
+              <button class="ui basic green button" ng-click="approveAccount($index)"><i class="checkmark icon"></i>Approve</button>
             </td>
-            <td class="tableRow" style="cursor: pointer;">Username here</td>
-            <td class="tableRow" style="cursor: pointer;">Account type here</td>
-            <td class="tableRow" style="cursor: pointer;">Date here</td>
+            <td class="tableRow" style="cursor: pointer;" ng-click="showInfo($index)">@{{account.Username}}</td>
+            <td class="tableRow" style="cursor: pointer;" ng-click="showInfo($index)">@{{account.membership[0].accounttype.AccountTypeName}}</td>
+            <td class="tableRow" style="cursor: pointer;" ng-click="showInfo($index)">@{{account.membership[0].DateOfRegistration}}</td>
           </tr>
         </tbody>
       </table>
@@ -60,14 +60,16 @@
         </div>
         <div class="content">
           <div class="description">
-            <p>Full Name:</p>
-            <p>Address:</p>
-            <p>Gender:</p>
-            <p>Birthdate:</p>
-            <p>Contact Number:</p>
-            <p>Email Address:</p>
-            <p>Username:</p>
-            <p>Documents: </p>
+            <p>Full Name: <span ng-bind="info_name"></span> </p>
+            <p>Address: <span ng-bind="info_address"></span> </p>
+            <p>Gender: <span ng-bind="info_gender"></span> </p>
+            <p>Birthdate: <span ng-bind="info_birthday"></span> </p>
+            <p>Contact Number: <span ng-bind="info_contact"></span> </p>
+            <p>Email Address: <span ng-bind="info_email"></span> </p>
+            <p>Documents: 
+              <p ng-if="info_id != ''">Valid ID: <a ng-bind="info_id" ng-click="gotoUrl(info_id)"></a> </p>
+              <p ng-if="info_dti != ''">Valid ID: <a ng-bind="info_dti"></a> </p>
+            </p>
           </div>
         </div>
       </div>
@@ -77,14 +79,42 @@
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->
 
-
 <script>
-  //add modal
- $(document).ready(function(){
-       $('.tableRow').click(function(){
-          $('#infoModal').modal('show');    
-       });
-  }); 
+  var app = angular.module('myApp', ['datatables']);
+  app.controller('myController', function($scope, $http, $window){
+    $http.get('/unactivatedAccounts')
+    .then(function(response){
+      $scope.accounts = response.data;
+    });
 
+    $scope.showInfo = function(index){
+      $scope.info_name = $scope.accounts[index].membership[0].FirstName + ' ' + $scope.accounts[index].membership[0].MiddleName + ' ' + $scope.accounts[index].membership[0].LastName;
+      $scope.info_address = $scope.accounts[index].membership[0].Barangay_Street_Address + ', ' + $scope.accounts[index].membership[0].city.CityName + ', ' + $scope.accounts[index].membership[0].city.province.ProvinceName;
+      $scope.info_gender = $scope.accounts[index].membership[0].Gender;
+      $scope.info_birthday = $scope.accounts[index].membership[0].Birthdate;
+      $scope.info_contact = 'Cell: ' + $scope.accounts[index].membership[0].CellphoneNo + ' | Landline: ' + $scope.accounts[index].membership[0].Landline;
+      $scope.info_email = $scope.accounts[index].membership[0].EmailAdd;
+      $scope.info_id = $scope.accounts[index].membership[0].valid_id;
+      $scope.info_dti = $scope.accounts[index].membership[0].File_DTI;
+      $('#infoModal').modal('show');
+    }
+
+    $scope.gotoUrl = function(url){
+      $window.open(url);
+    }
+
+    $scope.approveAccount = function(index){
+      $http.get('/approveAccount?accountID=' + $scope.accounts[index].AccountID)
+      .then(function(response){
+        if(response.data == 'success'){
+          alert('success');
+          $scope.accounts.splice(index, 1);
+        }
+        else {
+          alert('error');
+        }
+      });
+    }
+  });
 </script>
 @endsection

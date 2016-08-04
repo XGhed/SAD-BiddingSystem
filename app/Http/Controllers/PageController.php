@@ -208,4 +208,9 @@ class PageController extends Controller
 
        return view('customer.bidHistory');
     }
+
+    public function deliveryStatus(Request $request){
+
+       return view('customer.deliveryStatus');
+    }
 }

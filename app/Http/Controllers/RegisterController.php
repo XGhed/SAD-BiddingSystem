@@ -27,6 +27,7 @@ class RegisterController extends Controller
             $acc = new App\Models\Admin\Account;
             $acc->Username = trim($request->input('username'));
             $acc->Password = trim($request->input('password'));
+            $acc->status = 0;
             $acc->save();
 
             //insert on membership table
@@ -52,26 +53,27 @@ class RegisterController extends Controller
             $membership->AccountTypeID = $request->input('accounttype');
 
             //upload files
-            if (($request->hasFile('ids')) && ($request->hasFile('dti'))) {
-                $filenameids = rand(1000,100000)."-".$request->file('ids')->getClientOriginalName();
-                $filepathids = "photos/credentials/";
-                $request->file('ids')->move($filepathids, $filenameids);
-                $membership->valid_id = $filepathids.$filenameids;
+            if (($request->hasFile('ids')) || ($request->hasFile('dti'))) {
+                if($request->hasFile('ids')){
+                    $filenameids = rand(1000,100000)."-".$request->file('ids')->getClientOriginalName();
+                    $filepathids = "photos/credentials/";
+                    $request->file('ids')->move($filepathids, $filenameids);
+                    $membership->valid_id = $filepathids.$filenameids;
+                }
 
-                $filenamedti = rand(1000,100000)."-".$request->file('dti')->getClientOriginalName();
-                $filepathdti = "photos/credentials/";
-                $request->file('dti')->move($filepathdti, $filenamedti);
-                $membership->File_DTI = $filepathdti.$filenamedti;
+                if($request->hasFile('dti')){
+                    $filenamedti = rand(1000,100000)."-".$request->file('dti')->getClientOriginalName();
+                    $filepathdti = "photos/credentials/";
+                    $request->file('dti')->move($filepathdti, $filenamedti);
+                    $membership->File_DTI = $filepathdti.$filenamedti;
+                }
+                
             }
             else {
                 throw new Exception("Error Processing Request", 1);
             }
 
             $membership->save();
-
-            //auto login
-            session(['accountID' => $acc->AccountID]);
-            session(['accountType' => 'customer']);
 
             return redirect('/');
         }
