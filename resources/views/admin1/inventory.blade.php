@@ -228,9 +228,6 @@
                 </tbody>
               </table>
             </div>
-            <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
-            </div>
         </div>
           <!-- END itemLists modal -->
          

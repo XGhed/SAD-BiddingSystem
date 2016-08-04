@@ -55,7 +55,7 @@
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="seven wide required field">
                   <label>Supplier Name</label>
-                  <input type="text" name="add_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                  <input type="text" name="add_name" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                 </div>
 
                 <div class="equal width fields">
@@ -111,7 +111,7 @@
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="seven wide required field">
                 <label>Supplier Name</label>
-                <input type="text" name="edit_name" id="edit_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                <input type="text" name="edit_name" id="edit_name" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
               </div>
 
               <div class="equal width fields">

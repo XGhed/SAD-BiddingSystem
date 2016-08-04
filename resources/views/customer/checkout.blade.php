@@ -65,6 +65,34 @@
 				        <label>Pick-up</label>
 				      </div>
 				    </div>
+				    <div class="row"></div>
+				    <div class="field">
+				    	<p>Click <a id="hehe">here </a>to see the complete list of item.</p>
+				    </div>
+
+				    <div class="ui small modal" id="haha">
+					    <i class="close icon"></i>
+					    <div class="ui segment">
+					    <table class="ui definition celled table">
+						  <thead>
+						    <tr>
+							    <th></th>
+							    <th>Header</th>
+							</tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td>
+						      	<input type="checkbox" class="ui checkbox" />
+						      </td>
+						      <td>Cell</td>
+						    </tr>
+						  </tbody>
+						</table>
+						</div>
+					</div>
+
+
 				</div>
 				<div class="ui grid"><div class="row"></div></div>
 				<form class="ui form" id="delivery"><!-- delivery -->
@@ -299,6 +327,13 @@ $('.ui.normal.dropdown')
 	    	document.getElementById('delivery').style.display = 'none';
 	        document.getElementById('pickup').style.display = 'block';
 	    });
+	});
+
+
+	$(document).ready(function(){
+	     $('#hehe').click(function(){
+	        $('#haha').modal('show');    
+	     });
 	});
 </script>
 @endsection

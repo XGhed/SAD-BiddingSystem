@@ -213,4 +213,12 @@ class PageController extends Controller
 
        return view('customer.deliveryStatus');
     }
+
+    public function listOfBidders(Request $request){
+
+       return view('admin1.listOfBidders');
+    }
 }
+
+
+
