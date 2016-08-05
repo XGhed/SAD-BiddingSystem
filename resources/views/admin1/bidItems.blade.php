@@ -11,6 +11,9 @@
         <a class="item" href="/itemInbound">
           Item Inbound
         </a>
+        <a class="item" href="/itemChecking">
+          Item Checking
+        </a> 
         <a class="item" href="/itemPullouts">
           Item Pullouts
         </a>        
@@ -80,7 +83,7 @@
                   <div class="field">
                     <div class="ui sub header">Price</div>
                     <div class="ui input">
-                      <input type="text" ng-model="price">
+                      <input type="text" ng-model="price" step="0.01">
                     </div>
                   </div>
 

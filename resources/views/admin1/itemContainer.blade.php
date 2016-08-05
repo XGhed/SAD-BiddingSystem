@@ -11,6 +11,9 @@
         <a class="item" href="/itemInbound">
           Item Inbound
         </a>
+        <a class="item" href="/itemChecking">
+          Item Checking
+        </a> 
         <a class="item" href="/itemPullouts">
           Item Pullouts
         </a>        
@@ -47,21 +50,40 @@
               <form class="ui form" action="/addItemToContainer" method="POST" enctype="multipart/form-data">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" name="containerID" value="{{$container->ContainerID}}">
-                <div class="ten wide required field">
+              
+              <div class="required fields">
+                <div class="five wide field">
+                  <div class="ui sub header">Category</div>
+                  <select name="item" id="item" class="ui search selection dropdown" ng-model="" ng-change="" REQUIRED>
+                    <option disabled selected>Category</option>
+                    <option ng-repeat="" value=""><option>
+                  </select>
+                </div>
+                  <div class="five wide field">
+                  <div class="ui sub header">Subcategory</div>
+                  <select name="item" id="item" class="ui search selection dropdown" ng-model="" ng-change="" REQUIRED>
+                    <option disabled selected>Subcategory</option>
+                    <option ng-repeat="" value=""><option>
+                  </select>
+                </div>
+                <div class="five wide required field">
                   <div class="ui sub header">Item</div>
                   <select name="item" id="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loaditemDetails()" REQUIRED>
                     <option disabled selected>Item</option>
                     <option ng-repeat="item in additems" value="@{{item.ItemModelID}}">@{{item.ItemName}}</option>
                   </select>
                 </div>
+              </div>                
 
-                   <div class="five wide field">
+                
+
+               <!--    <div class="five wide field">
                    <div class="field" id="dti">
                       <label>Photo</label>
                       <i class="file icon"></i>
                       <input type="file" name="add_photo">
                     </div>
-                  </div> 
+                  </div> -->
 
                 <div class="equal width fields">
                   <div class="field">
@@ -90,12 +112,12 @@
                 </div>
 
                 <div class="inline fields">
-                  <div class="three wide field">
+              <!--    <div class="three wide field">
                     <div class="ui checkbox">
                       <input type="checkbox" id="test5" name="defect" />
                       <label>Defect</label>
                     </div>
-                  </div>
+                  </div>-->
 
                   <div class="five wide field" style="display: none" id="defectDesc">
                     <input id="def" type="text" name="defectDesc" placeholder="Description" />
@@ -127,13 +149,13 @@
                   </select>
                 </div>
 
-                   <div class="five wide field">
+                   <!--<div class="five wide field">
                    <div class="ui sub header">Upload photo</div>
                     <label for="file" class="ui icon button">
                         <i class="file icon"></i>
                         Attach photo</label>
                     <input type="file" id="file" name="add_photo" style="display:none" multiple>
-                  </div> 
+                  </div> -->
 
                 <div class="equal width fields">
                   <div class="field">
@@ -157,12 +179,12 @@
                 </div>
 
                 <div class="inline fields">
-                  <div class="three wide field">
+                  <!--<div class="three wide field">
                     <div class="ui checkbox">
                       <input type="checkbox" id="test99" name="defect"/>
                       <label>Defect</label>
                     </div>
-                  </div>
+                  </div> -->
 
                   <div class="five wide field" style="display: none" id="defectDesc99">
                     <input id="def" type="text" name="defectDesc" ng-model="defect" placeholder="Description" />
@@ -182,7 +204,7 @@
               <th></th>
               <th>Name</th>
               <th>Category</th>
-              <th>Photo</th>
+             <!-- <th>Photo</th> -->
               <th>Size</th>
               <th>Color</th>
               <th>Warehouse</th>
@@ -206,7 +228,7 @@
               </td>
               <td>@{{item.item_model.ItemName}}</td>
               <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
-              <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
+              <!--<td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td> -->
               <td>@{{item.size}}</td>
               <td>@{{item.color}}</td>
               <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>

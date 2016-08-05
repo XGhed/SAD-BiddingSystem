@@ -1268,7 +1268,7 @@
       <div class="ui center aligned basic segment">
         <div class="inline field">
           <label>Price</label>
-          <input id="price" type="number" min="0" name="add_price" placeholder="Price">
+          <input id="price" type="number" min="0" name="add_price" step="0.01" placeholder="Price">
         </div>
 
         <button class="ui basic green button center" type="submit" name="add">

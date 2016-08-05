@@ -17,6 +17,11 @@
 
 @section('content')
 	<div style="margin: 35px 0 0 0" class="ui container segment">
+		<h1 class="ui centered header">Registration</h1>
+		<div class="ui info message">
+			<i class="info icon"></i>
+			Register here to bid on items.
+		</div>
 		<form class="ui form" action="/insertAccount" method="POST" enctype="multipart/form-data" ng-app="myApp" ng-controller="myController">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		  	<div class="equal width fields">

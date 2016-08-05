@@ -72,7 +72,7 @@
                   </div>
                 </div>
 
-                <div class="ten wide required field">
+                <div class="six wide required field">
                   <label>Item Name</label>
                   <input type="text" name="add_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                 </div>
@@ -133,7 +133,7 @@
                   </div>
                 </div>
 
-                <div class="ten wide required field">
+                <div class="six wide required field">
                   <label>Item Name</label>
                   <input type="text" name="edit_name" id="edit_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                 </div>

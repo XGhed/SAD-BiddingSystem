@@ -77,52 +77,21 @@
 		<div class="ten wide column">
 			<div class="ui segment">
 				<h2>Delivery</h2>
-			       <div class="ui top attached tabular menu">
-				      <a class="active item" data-tab="first">tab 1</a>
-				      <a class="item" data-tab="second">tab 2</a>
-				    </div>
-				    <div class="ui bottom attached active tab segment" data-tab="first">
-				     	<table class="ui celled selectable table">
+			       <table class="ui celled selectable table">
 					        <thead>
 					          <tr>
-					          <th>Item Name</th>
-					          <th>Description</th>
-					          <th>Status</th>
-					        </tr></thead>
-					        <tbody>
-					          <tr>
-					            <td class="tableRow">kutsilyo</td>
-					            <td class="tableRow" >matalas</td>
-					            <td class="tableRow" >pending</td>
-					          </tr>
-					        </tbody>
-					      </table>
-				    </div>
-
-				    <!--2nd tab-->
-
-				    <div class="ui bottom attached tab segment" data-tab="second">
-				      <table class="ui definition celled selectable table">
-					        <thead>
-					          <tr>
-					          <th></th>
 					          <th>Item Name</th>
 					          <th>Description</th>
 					          <th>Date Checkout</th>
 					        </tr></thead>
 					        <tbody>
-					          <tr>
-					          	<td>
-				                  <input type="checkbox" class="ui checkbox" />
-				                </td>
+					          <tr> 		
 					            <td class="tableRow" >kutsilyo</td>
 					            <td class="tableRow" >matalas</td>
 					            <td class="tableRow" >July 21 ,2015</td>
 					          </tr>
 					        </tbody>
-					      </table>
-				    </div>
-			</div>
+					      </table>			</div>
 		</div>
 	</div>
 </div>

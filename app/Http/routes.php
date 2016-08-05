@@ -90,6 +90,8 @@ Route::get('/inventory', 'InventoryController@manageItem');
 Route::get('/discount', 'DiscountController@manageDiscount');
 
 Route::get('/itemContainer', 'ContainerController@viewContainer');
+
+//Route::get('/itemChecking', 'ItemCheckingController@viewItems');
 //Route::get('/shipment', 'PageController@shipment');
 
 //AJAX
@@ -144,6 +146,8 @@ Route::get('/containers', 'AngularOutput@containers');
 Route::get('/singleItem', 'AngularOutput@singleItem');
 
 Route::get('/itemsInbound', 'AngularOutput@itemsInbound');
+
+Route::get('/itemsChecking', 'AngularOutput@itemsChecking');
 
 Route::get('/itemsInventory', 'AngularOutput@itemsInventory');
 
@@ -265,6 +269,8 @@ Route::get('/bidHistory', 'PageController@bidHistory');
 Route::get('/deliveryStatus', 'PageController@deliveryStatus');
 
 Route::get('/listOfBidders', 'PageController@listOfBidders');
+
+Route::get('/itemChecking', 'PageController@itemChecking');
 
 
 Route::group(['middleware' => ['web']], function () {

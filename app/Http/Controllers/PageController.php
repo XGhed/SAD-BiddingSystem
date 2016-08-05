@@ -99,10 +99,10 @@ class PageController extends Controller
        return view('admin1.dashboard');
     } 
 
-    public function supplier1(Request $request){
+ /*   public function supplier1(Request $request){
 
        return view('admin1.supplier');
-    } 
+    } */
 
     public function category1(Request $request){
 
@@ -217,6 +217,11 @@ class PageController extends Controller
     public function listOfBidders(Request $request){
 
        return view('admin1.listOfBidders');
+    }
+
+    public function itemChecking(Request $request){
+
+       return view('admin1.itemChecking');
     }
 }
 
