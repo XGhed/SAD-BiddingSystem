@@ -110,16 +110,18 @@
             <tr>
               <th></th>
               <th>Item Name</th>
-              <th>Container</th>
+              <th>Defect</th>
+              <th>Warehouse</th>
             </tr>
           </thead>
           <tbody>
-             <tr ng-repeat="item in itemsChecking" >
+             <tr ng-repeat="item in itemsChecked" >
                     <td>
                       <button ng-click="showModal()" class="ui basic green button">View Item</button>
                     </td>
                     <td style="cursor: pointer;" ng-click="showModal()">@{{item.item_model.ItemName}}</td>
-                    <td style="cursor: pointer;" ng-click="showModal()">@{{item.container.ContainerName}}</td>
+                    <td style="cursor: pointer;" ng-click="showModal()">@{{item.defect}}</td>
+                    <td style="cursor: pointer;" ng-click="showModal()">@{{item.container.warehouse.city}}</td>
                   </tr>
           </tbody>
         </table>
@@ -138,11 +140,18 @@ var app = angular.module('myApp', ['datatables']);
       $scope.itemsChecking = response.data;
     });
 
+    $http.get('itemsChecked')
+    .then(function(response){
+      $scope.itemsChecked = response.data;
+    });
+
 
     $scope.showModal = function(index){
       $('#mdl').modal('show');
     }
   });
+
+
 
 $('.menu .item').tab();
 

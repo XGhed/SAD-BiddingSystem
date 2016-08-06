@@ -69,4 +69,15 @@ class AngularInput extends Controller
 
         return 'success';
     }
+
+    public function moveCheckItem(Request $request){
+        $item = App\Models\Admin\Item::find($request->itemID);
+        $inventory = new App\Models\Admin\Inventory;
+
+        $inventory->ItemID = $item->ItemID;
+        $inventory->WarehouseNo = $item->CurrentWarehouse;
+        $inventory->save();
+
+        return 'success';
+    }
 }
