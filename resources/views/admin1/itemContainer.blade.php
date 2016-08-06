@@ -77,13 +77,7 @@
 
                 
 
-               <!--    <div class="five wide field">
-                   <div class="field" id="dti">
-                      <label>Photo</label>
-                      <i class="file icon"></i>
-                      <input type="file" name="add_photo">
-                    </div>
-                  </div> -->
+                  
 
                 <div class="equal width fields">
                   <div class="field">
@@ -111,18 +105,7 @@
                   </div>
                 </div>
 
-                <div class="inline fields">
-              <!--    <div class="three wide field">
-                    <div class="ui checkbox">
-                      <input type="checkbox" id="test5" name="defect" />
-                      <label>Defect</label>
-                    </div>
-                  </div>-->
-
-                  <div class="five wide field" style="display: none" id="defectDesc">
-                    <input id="def" type="text" name="defectDesc" placeholder="Description" />
-                  </div>
-                </div>
+                
             </div>
             <div class="actions">
               <button class="ui button" type="submit">Confirm</button>
