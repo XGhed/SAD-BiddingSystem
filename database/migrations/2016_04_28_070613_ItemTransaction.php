@@ -24,6 +24,7 @@ class ItemTransaction extends Migration
             $table->foreign('ItemModelID')->references('ItemModelID')->on('ItemModels');
             $table->foreign('CurrentWarehouse')->references('WarehouseNo')->on('Warehouse');
             $table->foreign('RequestedWarehouse')->references('WarehouseNo')->on('Warehouse');
+            $table->boolean('Unexpected');
             $table->softDeletes();
         });
     }

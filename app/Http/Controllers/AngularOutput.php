@@ -68,6 +68,14 @@ class AngularOutput extends Controller
         return $items;
     }
 
+    public function unexpectedItems(Request $request){
+        $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
+            'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province')
+            ->where('Unexpected', 1)->get();
+
+        return $items;
+    }
+
     public function itemsChecking(Request $request){
          $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory',

@@ -57,6 +57,8 @@ Route::post('/addContainer', 'OrderedController@addContainer');
 
 Route::post('/addItemToContainer', 'ContainerController@addItemToContainer');
 
+Route::post('/addUnexpectedItem', 'ContainerController@addUnexpectedItem');
+
 Route::post('/itemDelivered', 'ItemInboundController@itemDelivered');
 
 Route::post('/itemMoveRequest', 'MovingController@itemMoveRequest');
@@ -146,6 +148,8 @@ Route::get('/containers', 'AngularOutput@containers');
 Route::get('/singleItem', 'AngularOutput@singleItem');
 
 Route::get('/itemsInbound', 'AngularOutput@itemsInbound');
+
+Route::get('/unexpectedItems', 'AngularOutput@unexpectedItems');
 
 Route::get('/itemsChecking', 'AngularOutput@itemsChecking');
 
@@ -252,7 +256,7 @@ Route::get('/biddingEvent', 'PageController@bidEvent1');
 
 Route::get('/orderedItem', 'PageController@orderedItem');
 
-Route::get('/itemInbound', 'PageController@itemInbound');
+Route::get('/itemInbound', 'ItemInboundController@view');
 
 Route::get('/movingOfItems', 'PageController@movingItems');
 

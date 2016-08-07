@@ -19,7 +19,7 @@ class ContainerController extends Controller
         return view('admin1.itemContainer')->with('container', $container)->with('colors', $colors);
     }
 
-    public function addItemToContainer(Request $request){
+    /*public function addItemToContainer(Request $request){
         $filename = null;
         $filepath = null;
 
@@ -34,23 +34,46 @@ class ContainerController extends Controller
         }
 
         return redirect('/itemContainer?containerID=' . $request->containerID);
-    }
+    }*/
 
-    public function insert(Request $request, $filepath, $filename){
+    public function addItemToContainer(Request $request){
         $item = new App\Models\Admin\Item;
 
         $item->ContainerID = $request->containerID;
-        $item->DefectDescription = $request->defectDesc;
         $item->status = 0;
         $item->size = $request->size;
         $item->color = $request->color;
         $item->TransacDate = Carbon::now('Asia/Manila');
         $item->ItemModelID = $request->item;
-        $item->image_path = $filepath . $filename;
 
         $item->save();
 
         $this->colorDatabase($request->color);
+    }
+
+    public function addUnexpectedItem(Request $request){
+        for ($i=0; $i < $request->quantity; $i++) { 
+            $container = App\Models\Admin\Container::find($request->containerID);
+
+            $item = new App\Models\Admin\Item;
+
+            $item->ContainerID = $request->containerID;
+            $item->status = 1;
+            $item->size = $request->size;
+            $item->color = $request->color;
+            $item->TransacDate = Carbon::now('Asia/Manila');
+            $item->ItemModelID = $request->item;
+            $item->CurrentWarehouse = $container->warehouse->WarehouseNo;
+            $item->Unexpected = 1;
+
+            $item->save();
+
+            $this->ItemDeliveredLog($item);
+
+            $this->colorDatabase($request->color);
+        }
+
+        return redirect('itemInbound');
     }
 
     public function colorDatabase($color){
@@ -65,5 +88,15 @@ class ContainerController extends Controller
             $insertColor->save();
             return;
         }
+    }
+
+    public function ItemDeliveredLog($item){
+        $history = new App\Models\Admin\ItemHistory;
+
+        $history->ItemID = $item->ItemID;
+        $history->Date = Carbon::now('Asia/Manila');
+        $history->Log = "Item successfully delivered to warehouse " . $item->current_warehouse->Barangay_Street_Address . ", " . $item->current_warehouse->city->province->ProvinceName . ", " . $item->current_warehouse->city->CityName;
+
+        $history->save();
     }
 }

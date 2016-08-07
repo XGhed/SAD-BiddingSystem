@@ -99,32 +99,38 @@
                 Add Item
               </div>
               <div class="content">
-                <form class="ui form" action="/" method="POST" enctype="multipart/form-data">
+                <form class="ui form" action="/addUnexpectedItem" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="containerID" value="">
                 
                 <div class="required fields">
                   <div class="five wide field">
+                    <div class="ui sub header">Container</div>
+                    <select name="containerID" id="item" class="ui search selection dropdown" ng-model="container" REQUIRED>
+                      <option ng-repeat="container in containers" value="@{{container.ContainerID}}">@{{container.ContainerName}}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="required fields">
+                  <div class="five wide field">
                     <div class="ui sub header">Category</div>
-                    <select name="item" id="item" class="ui search selection dropdown" ng-model="" ng-change="" REQUIRED>
-                      <option disabled selected>Category</option>
-                      <option ng-repeat="" value=""><option>
+                    <select name="category" id="item" class="ui search selection dropdown" ng-model="category" ng-change="loadSubcat()" REQUIRED>
+                      <option ng-repeat="category in categories" value="@{{category.CategoryID}}">@{{category.CategoryName}}</option>
                     </select>
                   </div>
 
                   <div class="five wide field">
                     <div class="ui sub header">Subcategory</div>
-                    <select name="item" id="item" class="ui search selection dropdown" ng-model="" ng-change="" REQUIRED>
-                      <option disabled selected>Subcategory</option>
-                      <option ng-repeat="" value=""><option>
+                    <select name="subcategory" id="item" class="ui search selection dropdown" ng-model="subCategory" ng-change="loadItems()" REQUIRED>
+                      <option ng-repeat="subCategory in subCategories" value="@{{subCategory.SubCategoryID}}">@{{subCategory.SubCategoryName}}</option>
                     </select>
                   </div>
 
                   <div class="five wide required field">
                     <div class="ui sub header">Item</div>
-                    <select name="item" id="item" class="ui search selection dropdown" ng-model="" ng-change="" REQUIRED>
-                      <option disabled selected>Item</option>
-                      <option ng-repeat="" value=""></option>
+                    <select name="item" id="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loaditemDetails()" REQUIRED>
+                      <option ng-repeat="item in additems" value="@{{item.ItemModelID}}">@{{item.ItemName}}</option>
                     </select>
                   </div>
                 </div>                
@@ -142,7 +148,9 @@
                         <i class="dropdown icon"></i>
                         <div class="default text">Color</div>
                         <div class="menu">
-                          <div class="item" data-value=""></div>
+                          @foreach($colors as $key => $color)
+                            <div class="item" data-value="{{$color->ColorName}}">{{$color->ColorName}}</div>
+                          @endforeach
                         </div>
                       </div>
                     </div>
@@ -159,7 +167,6 @@
               </div>
           </div>
             <!-- END add modal -->
-            <form action="/" method="POST">
             <input type="hidden" name="samp" value="sa">
             <table datatable="ng" class="ui compact celled definition table" id="tableOutput">
               <thead>
@@ -174,7 +181,7 @@
                 </tr>
               </thead>
               <tbody>
-                  <tr ng-repeat="item in itemsInbound">
+                  <tr ng-repeat="item in unexpectedItems">
                     <td>
                       <input type="checkbox" name="delivereditems[]" class="ui checkbox" value="@{{item.ItemID}}"/>
                     </td>
@@ -187,8 +194,6 @@
                   </tr>
               </tbody>
             </table>
-              <input type="submit" class="ui button" value="Confirm"></input>
-          </form>
         </div>  
 
     </div><!-- segment -->
@@ -221,6 +226,11 @@
       }
     })
   ;
+
+  $('#color')
+  .dropdown({
+    allowAdditions: true
+  });
 
   $('.list .child.checkbox')
     .checkbox({
@@ -264,6 +274,35 @@
     .then(function(response){
       $scope.itemsInbound = response.data;
     });
+
+    $http.get('unexpectedItems')
+    .then(function(response){
+      $scope.unexpectedItems = response.data;
+    });
+
+    $http.get('/categories')
+    .then(function(response){
+      $scope.categories = response.data;  
+    });
+
+    $http.get('/containers')
+    .then(function(response){
+      $scope.containers = response.data;  
+    });
+
+    $scope.loadSubcat = function(){
+      $http.get('/subcatOptions?catID=' + $scope.category)
+      .then(function(response){
+        $scope.subCategories = response.data;  
+      });
+    }
+
+    $scope.loadItems = function(){
+      $http.get('/itemModelsOfSubcat?subcatID=' + $scope.subCategory)
+      .then(function(response){
+        $scope.additems = response.data;  
+      });
+    }
   });
 
 
