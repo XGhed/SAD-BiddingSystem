@@ -52,21 +52,22 @@
 					</h2>
 					<div class="ui divider"></div>
 						<!-- start loop -->
-						<div class="ui grid">
-							<div class="five wide column">
-								<img class="ui small image" src="/icons/cabinet.jpg">
-							</div>
-							<div class="eight wide column">
-								<div class="header">Item Name</div>
-								<div class="ui divider"></div>
-								<div class="content">
-									Price: 500.00
-									<p></p>
-									Quantity: 5 pcs
+						@foreach($itemsWon as $key => $itemWon)
+							<div class="ui grid">
+								<div class="five wide column">
+									<img class="ui small image" src="{{$itemWon->image_path}}">
+								</div>
+								<div class="eight wide column">
+									<div class="header">{{$itemWon->itemModel->ItemName}}</div>
+									<div class="ui divider"></div>
+									<div class="content">
+										Price: {{$itemWon->bids->last()->Price}}
+										<p></p>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="ui divider"></div>
+							<div class="ui divider"></div>
+						@endforeach
 						<!-- end loop -->
 				</div>	
 			</div>

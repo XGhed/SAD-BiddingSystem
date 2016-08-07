@@ -54,4 +54,14 @@ class Item extends Model
 	{
 	    return $this->hasMany('App\Models\Admin\Item_Auction', 'ItemID', 'ItemID');
 	}
+
+	public function bids()
+	{
+	    return $this->hasMany('App\Models\Admin\Bid', 'ItemID', 'ItemID');
+	}
+
+	public function winners()
+	{
+	    return $this->hasMany('App\Models\Admin\Winner', 'ItemID', 'ItemID');
+	}
 }

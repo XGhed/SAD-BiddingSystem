@@ -286,7 +286,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
 Route::group(['middleware' => 'customer'], function () {
-    Route::get('/cart', 'PageController@cart');
+    Route::get('/cart', 'CustomerCartController@view');
 
     Route::get('/items', 'CustomerBiddingEventController@eventItems');
 
