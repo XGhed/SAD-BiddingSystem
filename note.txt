@@ -1,4 +1,5 @@
 item status:
 0 - not yet delivered
 1 - delivered (available on  inventory)
-2 - pulled out
+2 - checked
+3 - pulled out

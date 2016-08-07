@@ -92,9 +92,9 @@ class AngularOutput extends Controller
     }
 
     public function itemsInventory(Request $request){
-        $items = App\Models\Admin\Inventory::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
+        $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory',
-            'pullRequest')->where('status', 1)->get();
+            'pullRequest')->where('status', 1)->orWhere('status', 2)->get();
 
         return $items;
     }
@@ -102,7 +102,7 @@ class AngularOutput extends Controller
     public function itemsOfModelInventory(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory')
-            ->where('status', 1)
+            ->where('status', 2)
             ->where('ItemModelID', $request->itemID)
             ->get();
 
@@ -121,7 +121,7 @@ class AngularOutput extends Controller
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'current_warehouse', 
             'current_warehouse.city', 'current_warehouse.city.province')
-            ->where('status', 1)
+            ->where('status', 2)
             ->where('RequestedWarehouse', null)->get();
 
         return $items;
@@ -131,7 +131,7 @@ class AngularOutput extends Controller
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'current_warehouse', 
             'current_warehouse.city', 'current_warehouse.city.province', 'requested_warehouse', 'requested_warehouse.city', 'requested_warehouse.city.province')
-            ->where('status', 1)
+            ->where('status', 2)
             ->whereNotNull('RequestedWarehouse')->get();
 
         return $items;

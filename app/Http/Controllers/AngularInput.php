@@ -37,7 +37,7 @@ class AngularInput extends Controller
         $item = App\Models\Admin\Item::find($request->itemID);
 
         if(count($item->pullRequest) > 0){
-            $item->status = 2;
+            $item->status = 3;
             $item->save();
 
             $pullRequest = App\Models\Admin\PullRequest::where('ItemID', $request->itemID)->first();

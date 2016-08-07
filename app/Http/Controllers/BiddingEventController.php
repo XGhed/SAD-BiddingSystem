@@ -56,7 +56,7 @@ class BiddingEventController extends Controller
     public function itemsToAddToEvent(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory', 'item_auction')
-            ->where('status', 1)
+            ->where('status', 2)
             ->where('ItemModelID', $request->itemID)
             ->get();
 
