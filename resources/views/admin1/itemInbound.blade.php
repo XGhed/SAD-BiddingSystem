@@ -168,10 +168,10 @@
           </div>
             <!-- END add modal -->
             <input type="hidden" name="samp" value="sa">
-            <table datatable="ng" class="ui compact celled definition table" id="tableOutput">
+            <table datatable="ng" class="ui compact celled table" id="tableOutput">
               <thead>
                 <tr>
-                  <th></th>
+                  <th>ID</th>
                   <th>Container</th>
                   <th>Item</th>
                   <!--<th>Defect</th> -->
@@ -182,9 +182,7 @@
               </thead>
               <tbody>
                   <tr ng-repeat="item in unexpectedItems">
-                    <td>
-                      <input type="checkbox" name="delivereditems[]" class="ui checkbox" value="@{{item.ItemID}}"/>
-                    </td>
+                    <td>@{{item.ItemID}}</td>
                     <td>@{{item.container.ContainerName}}</td>
                     <td>@{{item.item_model.ItemName}}</td>
                     <!--<td>@{{item.DefectDescription}}</td> -->
