@@ -57,6 +57,8 @@ Route::post('/addContainer', 'OrderedController@addContainer');
 
 Route::post('/addItemToContainer', 'ContainerController@addItemToContainer');
 
+Route::post('/addUnexpectedItem', 'ContainerController@addUnexpectedItem');
+
 Route::post('/itemDelivered', 'ItemInboundController@itemDelivered');
 
 Route::post('/itemMoveRequest', 'MovingController@itemMoveRequest');
@@ -151,6 +153,8 @@ Route::get('/singleItem', 'AngularOutput@singleItem');
 
 Route::get('/itemsInbound', 'AngularOutput@itemsInbound');
 
+Route::get('/unexpectedItems', 'AngularOutput@unexpectedItems');
+
 Route::get('/itemsChecking', 'AngularOutput@itemsChecking');
 
 Route::get('/itemsChecked', 'AngularOutput@itemsChecked');
@@ -174,6 +178,8 @@ Route::get('/itemModelsWithItems', 'AngularOutput@itemModelsWithItems');
 Route::get('/colors', 'AngularOutput@colors');
 
 Route::get('/unactivatedAccounts', 'AngularOutput@unactivatedAccounts');
+
+Route::get('/itemModelsOfSubcat', 'AngularOutput@itemModelsOfSubcat');
 
 //
 
@@ -256,7 +262,7 @@ Route::get('/biddingEvent', 'PageController@bidEvent1');
 
 Route::get('/orderedItem', 'PageController@orderedItem');
 
-Route::get('/itemInbound', 'PageController@itemInbound');
+Route::get('/itemInbound', 'ItemInboundController@view');
 
 Route::get('/movingOfItems', 'PageController@movingItems');
 
@@ -286,7 +292,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
 Route::group(['middleware' => 'customer'], function () {
-    Route::get('/cart', 'PageController@cart');
+    Route::get('/cart', 'CustomerCartController@view');
 
     Route::get('/items', 'CustomerBiddingEventController@eventItems');
 
