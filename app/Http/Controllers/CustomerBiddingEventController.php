@@ -15,6 +15,16 @@ class CustomerBiddingEventController extends Controller
     public function eventItems(Request $request){
     	$categories = App\Models\Admin\Category::with('subCategory')->get();
 
+        $auction = App\Models\Admin\Auction::find($request->eventID);
+
+        $currentDatetime = Carbon::now('Asia/Manila');
+        $auctionEndTime = explode(' ', $auction->EndDateTime);
+        $currentDatetime = explode(' ', $currentDatetime);
+
+        if ($currentDatetime[0] > $auctionEndTime[0] || ($currentDatetime[0] == $auctionEndTime[0] && $currentDatetime[1] > $auctionEndTime[1])){
+            return "Event has ended";
+        }
+
         $joinbid = App\Models\Admin\Joinbid::where('AuctionID', $request->eventID)->where('AccountID', $request->session()->get('accountID'))->get();
 
         if (count($joinbid) > 0){
