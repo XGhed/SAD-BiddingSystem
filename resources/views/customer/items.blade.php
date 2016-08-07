@@ -39,7 +39,7 @@
 @endsection
 
 @section('content')
-	<div style="margin: 35px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="eventID = {{$eventID}}">
+	<div style="margin: 35px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="eventID = {{$eventID}}; joined = {{$joined}}">
 		<h1 class="ui center aligned header">EVENT NAME</h1>
 
 		<button class="ui basic green button" id="join0" ng-click="showJoinConfirmation()">
@@ -176,7 +176,12 @@
 		}
 
 		$scope.bidItem = function(index){
-			$window.open('/auction?itemID='+$scope.itemsView[index].ItemID);
+			if($scope.joined == true){
+				$window.open('/auction?itemID='+$scope.itemsView[index].ItemID);
+			}
+			else {
+				alert('Please join this event first!');
+			}
 		}
 	});
 </script>
