@@ -98,6 +98,7 @@ class CustomerBiddingEventController extends Controller
             return 'error';
         }
 
+        //add bid
         $bid = new App\Models\Admin\Bid;
 
         $bid->AccountID = $request->session()->get('accountID');
@@ -106,6 +107,13 @@ class CustomerBiddingEventController extends Controller
         $bid->DateTime = Carbon::now('Asia/Manila');
 
         $bid->save();
+
+        //make a winner
+        $winner = new App\Models\Admin\Winner;
+        $winner->ItemID = $request->itemID;
+        $winner->AccountID = $request->session()->get('accountID');
+
+        $winner->save();
 
         return 'success';
     }
