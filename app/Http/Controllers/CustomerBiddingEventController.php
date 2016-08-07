@@ -89,6 +89,15 @@ class CustomerBiddingEventController extends Controller
     }
 
     public function bidItem(Request $request){
+        //if bid is lower than highest bid
+        $currentBids = App\Models\Admin\Bid::where('ItemID', $request->itemID)->get()->sortByDesc('price');
+        $highestBid = $currentBids->first();
+        $highestBid = $highestBid->price;
+
+        if($highestBid >= $bid){
+            return 'error';
+        }
+
         $bid = new App\Models\Admin\Bid;
 
         $bid->AccountID = $request->session()->get('accountID');
