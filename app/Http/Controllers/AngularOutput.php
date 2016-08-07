@@ -68,25 +68,16 @@ class AngularOutput extends Controller
         return $items;
     }
 
-    public function unexpectedItems(Request $request){
-        $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
-            'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province')
-            ->where('Unexpected', 1)->get();
-
-        return $items;
-    }
-
     public function itemsChecking(Request $request){
-         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
-            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory',
-            'pullRequest')->where('status', 1)->get();
+         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category',
+            'container')->where('status', 1)->get();
 
         return $items;
     }
 
     public function itemsChecked(Request $request){
-         $items = App\Models\Admin\Inventory::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container',
-            'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province')->get();
+         $items = App\Models\Admin\Item::with('itemModel', 'container', 'container.warehouse.city',
+            'container.warehouse.city.province')->where('status', 2)->get();
 
         return $items;
     }
@@ -94,7 +85,7 @@ class AngularOutput extends Controller
     public function itemsInventory(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory',
-            'pullRequest')->where('status', 1)->orWhere('status', 2)->get();
+            'pullRequest')->where('status', 1)->get();
 
         return $items;
     }
@@ -102,7 +93,7 @@ class AngularOutput extends Controller
     public function itemsOfModelInventory(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory')
-            ->where('status', 2)
+            ->where('status', 1)
             ->where('ItemModelID', $request->itemID)
             ->get();
 
@@ -121,7 +112,7 @@ class AngularOutput extends Controller
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'current_warehouse', 
             'current_warehouse.city', 'current_warehouse.city.province')
-            ->where('status', 2)
+            ->where('status', 1)
             ->where('RequestedWarehouse', null)->get();
 
         return $items;
@@ -131,7 +122,7 @@ class AngularOutput extends Controller
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'current_warehouse', 
             'current_warehouse.city', 'current_warehouse.city.province', 'requested_warehouse', 'requested_warehouse.city', 'requested_warehouse.city.province')
-            ->where('status', 2)
+            ->where('status', 1)
             ->whereNotNull('RequestedWarehouse')->get();
 
         return $items;

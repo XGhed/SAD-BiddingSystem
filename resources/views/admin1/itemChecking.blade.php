@@ -61,25 +61,26 @@
             </tr>
           </thead>
           <tbody>
-             <tr ng-repeat="item in itemsChecking" >
+             <tr ng-repeat="uncheck in itemsChecking">
                     <td>
-                      <button ng-click="showModal()" class="ui basic green button">View Item</button>
+                      <button ng-click="uncheckModal($index+1)" class="ui basic green button" name="tdID" value="@{{uncheck.ItemID}}">View Item</button>
                     </td>
-                    <td style="cursor: pointer;" ng-click="showModal()">@{{item.item_model.ItemName}}</td>
-                    <td style="cursor: pointer;" ng-click="showModal()">@{{item.container.ContainerName}}</td>
+                    <td style="cursor: pointer;" ng-click="uncheckModal($index+1)">@{{uncheck.item_model.ItemName}}</td>
+                    <td style="cursor: pointer;" ng-click="uncheckModal($index+1)">@{{uncheck.container.ContainerName}}</td>
                   </tr>
           </tbody>
         </table>
-        <div class="ui small modal" id="mdl">
+        <div class="ui small modal" id="uncheck">
           <i class="close icon"></i>
           <h1 class="ui centered header">Add Image and Defect to the item</h1>
           <div class="content">
-            <form class="ui form">
+            <form class="ui form" action="/itemCheck" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="itemID" id="itemID">
               <div class="field">
                 <div class="four wide field">
                   <div class="field">
                     <div class="ui sub header">Image</div>
-                    <input type="file" name="add_photo" REQUIRED>
+                    <input type="file" id="add_photo" name="add_photo" REQUIRED>
                   </div>
                 </div>
 
@@ -92,7 +93,7 @@
                   </div>
 
                   <div class="five wide field" style="display: none" id="defectDesc">
-                    <input id="def" type="text" name="defectDesc" placeholder="Description" />
+                    <input id="defectDesc" type="text" name="defectDesc" placeholder="Description" />
                   </div>
                 </div>
               </div>
@@ -115,17 +116,55 @@
             </tr>
           </thead>
           <tbody>
-             <tr ng-repeat="item in itemsChecked" >
+             <tr ng-repeat="check in itemsChecked">
                     <td>
-                      <button ng-click="showModal()" class="ui basic green button">View Item</button>
+                      <button ng-click="checkModal()" class="ui basic green button">View Item</button>
                     </td>
-                    <td style="cursor: pointer;" ng-click="showModal()">@{{item.item_model.ItemName}}</td>
-                    <td style="cursor: pointer;" ng-click="showModal()">@{{item.defect}}</td>
-                    <td style="cursor: pointer;" ng-click="showModal()">@{{item.container.warehouse.city}}</td>
-                  </tr>
+                    <td style="cursor: pointer;" ng-click="checkModal()">@{{check.item_model.ItemName}}</td>
+                    <td style="cursor: pointer;" ng-click="checkModal()">@{{check.DefectDescription}}</td>
+                    <td style="cursor: pointer;" ng-click="checkModal()">@{{check.container.warehouse.Barangay_Street_Address}},
+                      @{{check.container.warehouse.city.CityName}}, @{{
+                      check.container.warehouse.city.province.ProvinceName
+                    }}</td>
+              </tr>
           </tbody>
         </table>
       </div>
+
+      <div class="ui small modal" id="check">
+          <i class="close icon"></i>
+          <h1 class="ui centered header">Add Image and Defect to the item</h1>
+          <div class="content">
+            <form class="ui form" action="/itemCheck" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="itemID" id="itemID">
+              <div class="field">
+                <div class="four wide field">
+                  <div class="field">
+                    <div class="ui sub header">Image</div>
+                    <input type="file" id="add_photo" name="add_photo" REQUIRED>
+                  </div>
+                </div>
+
+                <div class="fields">
+                  <div class="three wide field">
+                    <div class="ui checkbox">
+                      <input type="checkbox" id="test5" name="defect" />
+                      <label>Defect</label>
+                    </div>
+                  </div>
+
+                  <div class="five wide field" style="display: none" id="defectDesc">
+                    <input id="defectDesc" type="text" name="defectDesc" placeholder="Description" />
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="actions">
+            <button class="ui basic blue button" type="submit">Confirm</button>
+          </div>
+            </form>
+        </div>
+      </div><!-- tab 2-->
 
     </div><!-- segment -->
   </div><!-- twelve wide column -->
@@ -146,12 +185,16 @@ var app = angular.module('myApp', ['datatables']);
     });
 
 
-    $scope.showModal = function(index){
-      $('#mdl').modal('show');
+    $scope.uncheckModal = function(keyID){
+      $("#itemID").val(keyID);
+      $('#uncheck').modal('show');
+    }
+
+    $scope.checkModal = function(keyID){
+      $("#itemID").val(keyID);
+      $('#check').modal('show');
     }
   });
-
-
 
 $('.menu .item').tab();
 
