@@ -54,22 +54,19 @@
               <div class="required fields">
                 <div class="five wide field">
                   <div class="ui sub header">Category</div>
-                  <select name="item" id="item" class="ui search selection dropdown" ng-model="" ng-change="" REQUIRED>
-                    <option disabled selected>Category</option>
-                    <option ng-repeat="" value=""><option>
+                  <select name="item" id="item" class="ui search selection dropdown" ng-model="category" ng-change="loadSubcat()" REQUIRED>
+                    <option ng-repeat="category in categories" value="@{{category.CategoryID}}">@{{category.CategoryName}}</option>
                   </select>
                 </div>
-                  <div class="five wide field">
+                <div class="five wide field">
                   <div class="ui sub header">Subcategory</div>
-                  <select name="item" id="item" class="ui search selection dropdown" ng-model="" ng-change="" REQUIRED>
-                    <option disabled selected>Subcategory</option>
-                    <option ng-repeat="" value=""><option>
+                  <select name="item" id="item" class="ui search selection dropdown" ng-model="subCategory" ng-change="loadItems()" REQUIRED>
+                    <option ng-repeat="subCategory in subCategories" value="@{{subCategory.SubCategoryID}}">@{{subCategory.SubCategoryName}}</option>
                   </select>
                 </div>
                 <div class="five wide required field">
                   <div class="ui sub header">Item</div>
                   <select name="item" id="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loaditemDetails()" REQUIRED>
-                    <option disabled selected>Item</option>
                     <option ng-repeat="item in additems" value="@{{item.ItemModelID}}">@{{item.ItemName}}</option>
                   </select>
                 </div>
@@ -305,9 +302,9 @@
 
   var app = angular.module('myApp', ['datatables']);
   app.controller('myController', function($scope, $http, $timeout){
-    $http.get('/itemModels')
+    $http.get('/categories')
     .then(function(response){
-      $scope.additems = response.data;  
+      $scope.categories = response.data;  
     });
 
     $scope.editModal = function(index){
@@ -324,6 +321,20 @@
         $scope.viewitems = response.data;
       });
     } , 1000);
+
+    $scope.loadSubcat = function(){
+      $http.get('/subcatOptions?catID=' + $scope.category)
+      .then(function(response){
+        $scope.subCategories = response.data;  
+      });
+    }
+
+    $scope.loadItems = function(){
+      $http.get('/itemModelsOfSubcat?subcatID=' + $scope.subCategory)
+      .then(function(response){
+        $scope.additems = response.data;  
+      });
+    }
 
     $scope.loaditemDetails = function(){
       for(var key=0; key<$scope.additems.length; key++){

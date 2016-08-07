@@ -34,6 +34,11 @@ class AngularOutput extends Controller
         return $itemModels;
     }
 
+    public function itemModelsOfSubcat(Request $request){
+        $itemModels = App\Models\Admin\ItemModel::where('SubCategoryID', $request->subcatID)->get();
+        return $itemModels;
+    }
+
     public function itemModelsWithItems(){
         $itemModels = App\Models\Admin\ItemModel::with('items')->get();
         return $itemModels;

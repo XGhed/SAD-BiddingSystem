@@ -169,6 +169,8 @@ Route::get('/colors', 'AngularOutput@colors');
 
 Route::get('/unactivatedAccounts', 'AngularOutput@unactivatedAccounts');
 
+Route::get('/itemModelsOfSubcat', 'AngularOutput@itemModelsOfSubcat');
+
 //
 
 Route::get('/eventList', 'BiddingEventController@eventList');
