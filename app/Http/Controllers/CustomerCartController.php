@@ -19,7 +19,7 @@ class CustomerCartController extends Controller
 
         foreach ($items as $key => $item) {
             if (count($item->winners) > 0){
-                if ($item->winners->first()->AccountID == "2"){
+                if ($item->winners->first()->AccountID == $request->session()->get('accountID')){
                     //check if event has ended
                     $currentDatetime = Carbon::now('Asia/Manila');
                     $currentDatetime = explode(' ', $currentDatetime);
