@@ -91,11 +91,12 @@ class CustomerBiddingEventController extends Controller
     public function bidItem(Request $request){
         //if bid is lower than highest bid
         $currentBids = App\Models\Admin\Bid::where('ItemID', $request->itemID)->get()->sortByDesc('price');
-        $highestBid = $currentBids->first();
-        $highestBid = $highestBid->price;
+        if (count($currentBids) > 0){
+            $highestBid = $currentBids->first()->Price;
 
-        if($highestBid >= $bid){
-            return 'error';
+            if($highestBid >= $request->price){
+                return 'error';
+            }
         }
 
         //add bid

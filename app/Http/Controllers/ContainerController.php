@@ -49,6 +49,8 @@ class ContainerController extends Controller
         $item->save();
 
         $this->colorDatabase($request->color);
+
+        return redirect('/itemContainer?containerID=' . $request->containerID);
     }
 
     public function addUnexpectedItem(Request $request){
