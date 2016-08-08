@@ -102,7 +102,7 @@
 			<div class="equal width fields">
 				<div class="field">
 	                <div class="ui sub header">Account Type</div>
-                	<select name="accounttype" class="ui search selection dropdown">
+                	<select name="accounttype" class="ui search selection dropdown" ng-model="accountType" ng-change="accountTypeRequiredDocu()">
                     	<option value="" disabled selected>Account Type</option>
             	    	<option ng-repeat="accounttype in accounttypes" value="@{{accounttype.AccountTypeID}}">@{{accounttype.AccountTypeName}}</option>
                 	</select>
@@ -113,11 +113,11 @@
 				</div>
 				<div class="field">
 					<label>Password</label>
-					<input type="password" name="password">
+					<input type="password" name="password" ng-model="password" ng-change="comparePasswords()">
 				</div>
 				<div class="field">
 					<label>Confirm Password</label>
-					<input type="password" name="password_confirmation">
+					<input type="password" name="password_confirmation" ng-model="password_confirmation" ng-change="comparePasswords()">
 				</div>
 			</div>
 
@@ -132,16 +132,16 @@
 	                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
 				</div> -->
 
-				<div class="field" id="documents">
+				<div class="field" id="idField">
 	                <label>Valid ID</label>
 	                <i class="file icon"></i>
-	                <input type="file" name="ids" multiple >
+	                <input type="file" name="ids" multiple REQUIRED>
 				</div>
 
-				<div class="field" id="dti">
+				<div class="field" id="dtiField">
 	                <label>DTI</label>
 	                <i class="file icon"></i>
-	                <input type="file" name="dti" multiple >
+	                <input type="file" name="dti" id="dti" multiple>
 				</div>
 			</div>
 
@@ -153,7 +153,7 @@
 				      		<label>I agree to the Terms and Conditions</label>
 				    	</div>
 			  		</div>-->
-		  			<button class="ui basic blue button" name="btn_upload" type="submit">Submit</button>
+		  			<button class="ui basic blue button" id="submit" name="btn_upload" type="submit">Submit</button>
 		  		</div>
 		  	</div> 
 		</form>
@@ -179,6 +179,28 @@
 	    .then(function(response){
 	    	$scope.accounttypes = response.data;
 	    });
+
+	    $scope.comparePasswords = function(){
+	    	if ($scope.password == $scope.password_confirmation && $scope.password != ""){
+	    		$('#submit').prop('disabled', false);
+	    	}
+	    	else {
+	    		$('#submit').prop('disabled', true);
+	    	}
+	    }
+
+	    $scope.accountTypeRequiredDocu = function(){
+	    	if ( $scope.accountType == '1') {
+				$("#idField").show();
+				$("#dtiField").hide();
+				$("#dti").prop('required', false);
+			}
+			else {
+				$("#idField").show();
+				$("#dtiField").show();
+				$("#dti").prop('required', true);
+			}
+	    }
 	});
 </script>
 <!--angularjs end-->
@@ -199,23 +221,11 @@ $('.ui.normal.dropdown')
 $('.ui.search.dropdown')
   .dropdown();
 
-  $(document).ready(function(){
-    $('#shit').on('change', function() {
-      if ( this.value == '1')
-      {
-        $("#documents").show();
-        $("#desc1").show();
-        $("#desc2").hide();
-        $("#dti").hide();
-      }
-      else
-      {
-        $("#documents").show();
-        $("#desc1").hide();
-        $("#desc2").show();
-        $("#dti").show();
-      }
-    });
+$(document).ready(function(){
+	$("#idField").hide();
+	$("#dtiField").hide();
+
+	$('#submit').prop('disabled', true);
 });
 </script>
 @endsection
