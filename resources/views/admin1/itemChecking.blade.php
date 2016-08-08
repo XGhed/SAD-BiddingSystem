@@ -63,7 +63,7 @@
           <tbody>
              <tr ng-repeat="uncheck in itemsChecking">
                     <td>
-                      <button ng-click="uncheckModal($index+1)" class="ui basic green button" name="tdID" value="@{{uncheck.ItemID}}">View Item</button>
+                      <button ng-click="uncheckModal(uncheck.ItemID)" class="ui basic green button" name="tdID" value="@{{uncheck.ItemID}}">View Item</button>
                     </td>
                     <td style="cursor: pointer;" ng-click="uncheckModal($index+1)">@{{uncheck.item_model.ItemName}}</td>
                     <td style="cursor: pointer;" ng-click="uncheckModal($index+1)">@{{uncheck.container.ContainerName}}</td>
@@ -85,14 +85,8 @@
                 </div>
 
                 <div class="fields">
-                  <div class="three wide field">
-                    <div class="ui checkbox">
-                      <input type="checkbox" id="test5" name="defect" />
-                      <label>Defect</label>
-                    </div>
-                  </div>
-
-                  <div class="five wide field" style="display: none" id="defectDesc">
+                  <div class="five wide field" id="defectDesc">
+                    <div class="ui sub header">Defect</div>
                     <input id="defectDesc" type="text" name="defectDesc" placeholder="Description" />
                   </div>
                 </div>
@@ -136,7 +130,7 @@
           <h1 class="ui centered header">Add Image and Defect to the item</h1>
           <div class="content">
             <form class="ui form" action="/itemCheck" method="POST" enctype="multipart/form-data">
-              <input type="hidden" name="itemID" id="itemID">
+              <input type="hidden" name="itemID" id="itemID2">
               <div class="field">
                 <div class="four wide field">
                   <div class="field">
@@ -185,7 +179,7 @@ var app = angular.module('myApp', ['datatables']);
     });
 
 
-    $scope.uncheckModal = function(keyID){
+    $scope.uncheckModal = function(keyID){alert(keyID);
       $("#itemID").val(keyID);
       $('#uncheck').modal('show');
     }
@@ -201,7 +195,7 @@ $('.menu .item').tab();
 
  //defect description
     $(document).ready(function () {
-      $('#test5').click(function () {
+      $('#test5').click(function () {alert('sad');
           var $this = $(this);
           if ($this.is(':checked')) {
               document.getElementById('defectDesc').style.display = 'block';
