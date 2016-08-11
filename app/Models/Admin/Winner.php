@@ -10,9 +10,9 @@ class Winner extends Model
     protected $primaryKey = 'WinnerID';
     public $timestamps = false;
 
-    public function account()
+    public function bid()
 	{
-	    return $this->hasOne('App\Models\Admin\Account', 'AccountID', 'AccountID');
+	    return $this->hasOne('App\Models\Admin\Bid', 'BidID', 'BidID');
 	}
 
 	public function item()

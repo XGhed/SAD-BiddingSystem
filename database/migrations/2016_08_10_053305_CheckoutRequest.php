@@ -15,9 +15,20 @@ class CheckoutRequest extends Migration
         Schema::create('CheckoutRequests', function(Blueprint $table)
         {
             $table->increments('CheckoutRequestID');
+            $table->string('CheckoutType');
             $table->integer('AccountID')->unsigned();
             $table->date('RequestDate');
+            $table->string('FirstName');
+            $table->string('MiddleName');
+            $table->string('LastName');
+            $table->string('Barangay_Street_Address')->nullable();
+            $table->integer('CityID')->unsigned()->nullable();
+            $table->integer('WarehouseNo')->unsigned()->nullable();
+            $table->String('CellphoneNo', 15);
+            $table->String('Landline', 10)->nullable();
             $table->foreign('AccountID')->references('AccountID')->on('Account');
+            $table->foreign('WarehouseNo')->references('WarehouseNo')->on('Warehouse');
+            $table->foreign('CityID')->references('CityID')->on('City');
 
         });
     }

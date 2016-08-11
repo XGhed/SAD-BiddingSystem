@@ -16,10 +16,10 @@ class Winners extends Migration
         {
             $table->increments('WinnerID');
             $table->integer('ItemID')->unsigned();
-            $table->integer('AccountID')->unsigned();
+            $table->integer('BidID')->unsigned();
             $table->integer('AuctionID')->unsigned();
             $table->foreign('ItemID')->references('ItemID')->on('Items');
-            $table->foreign('AccountID')->references('AccountID')->on('Account');
+            $table->foreign('BidID')->references('BidID')->on('Bid');
             $table->foreign('AuctionID')->references('AuctionID')->on('Auction');
         });
     }

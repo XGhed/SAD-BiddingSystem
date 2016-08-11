@@ -18,7 +18,7 @@ class CheckoutRequestItem extends Migration
             $table->integer('CheckoutRequestID')->unsigned();
             $table->integer('ItemID')->unsigned();
             $table->date('RequestDate');
-            $table->foreign('AccountID')->references('AccountID')->on('Account');
+            $table->foreign('CheckoutRequestID')->references('CheckoutRequestID')->on('CheckoutRequests');
             $table->foreign('ItemID')->references('ItemID')->on('Items');
 
         });

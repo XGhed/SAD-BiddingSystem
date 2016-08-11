@@ -39,10 +39,11 @@
 @endsection
 
 @section('content')
-	<div style="margin: 35px 0 0 0" class="ui container segment">
+	<div style="margin: 35px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController">
 		<a href="/cart/"><i class="arrow left icon"></i>back to cart</a>
 		<div class="ui internally celled grid container">
 				<div class="ui column nine wide segment" style="margin: 5px 5px 5px 15px;">
+				<form class="ui form" action="/submitCheckout" method="POST">
 				<h2 class="ui header">
 				  <i class="shop icon"></i>
 				  <div class="content">
@@ -55,197 +56,119 @@
 					<div class="row"></div>
 					<div class="field">
 				      <div class="ui radio checkbox">
-				        <input type="radio" name="group1" id="radioDelivery" checked="checked">
+				        <input type="radio" name="checkoutType" id="radioDelivery" checked="checked" value="Deliver">
 				        <label>Delivery</label>
 				      </div>
 				    </div>
 				    <div class="field">
 				      <div class="ui radio checkbox">
-				        <input type="radio" name="group1" id="radioPickup">
-				        <label>Pick-up</label>
+				        <input type="radio" name="checkoutType" id="radioPickup" value="Pick up">
+				        <label>Pick up</label>
 				      </div>
 				    </div>
 				    <div class="row"></div>
 				    <div class="field">
-				    	<p>Click <a id="hehe">here </a>to see the complete list of item.</p>
+				    	<p>Click <a id="itemList">here </a>to see the complete list of item.</p>
 				    </div>
 
-				    <div class="ui small modal" id="haha">
+				</div>
+				<div class="ui grid"><div class="row"></div></div>
+				  	<h4 class="ui dividing header">Delivery Information</h4>
+				  	<div class="field">
+					    <label>Name</label>
+					    <div class="three fields">
+					      <div class="field">
+					        <input type="text" name="firstName" pattern="([A-z '.-]){2,}" placeholder="First Name">
+					      </div>
+					      <div class="field">
+					        <input type="text" name="middleName" pattern="([A-z '.-]){2,}" placeholder="Middle Name">
+					      </div>
+					      <div class="field">
+					        <input type="text" name="lastName" pattern="([A-z '.-]){2,}" placeholder="Last Name">
+					      	</div>
+					    </div>
+					</div>
+
+					<div class="equal width fields" id="pickupLocation">
+						<div class="field">
+						 	<div class="ui sub header">Pickup Location</div>
+							<select class="ui fluid search normal selection dropdown" name="warehouse" id="warehouseLocation">
+								<option value="" disabled selected>Select Warehouse</option>
+								<option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
+							</select>
+						</div>
+					</div>
+
+					<div id="deliveryAddress" class="field">
+						<div class="field">
+						    <label>Complete Address</label>
+							<input type="text" name="address" id="address" placeholder="Complete Address...">
+						</div>
+
+						<div class="equal width fields">
+							<div class="field">
+							 	<div class="ui sub header">Province</div>
+								<select class="ui fluid search normal selection dropdown" ng-model="inputProvince" ng-change="reloadCities()">
+									<option value="" disabled selected>Select Province</option>
+									<option ng-repeat="province in provinces" value="@{{province.ProvinceID}}">@{{province.ProvinceName}}</option>
+								</select>
+							</div>
+							<div class="field">
+							 	<div class="ui sub header">City</div>
+								<select class="ui fluid search normal selection dropdown" name="city" id="city">
+									<option value="" disabled selected>Select City</option>
+									<option ng-repeat="city in cities" value="@{{city.CityID}}">@{{city.CityName}}</option>
+								</select>
+							</div>
+					  	</div>
+					</div>
+					  
+					<div class="equal width fields"> 
+					  	<div class="field">
+							<label>Cellphone Number</label>
+							<input type="text" name="phoneNumber" pattern="([0-9 '.]){2,}" placeholder="+639 XX XXX XXXX">
+						</div>
+						<div class="field">
+							<label>Telephone Number</label>
+							<input type="text" name="telNumber" pattern="([0-9 '.]){2,}" placeholder="XXX XXXX XXX">
+						</div>
+					</div>
+					<div class="ui one column center aligned page grid">
+						<div class="column">
+				  			<button class="ui button" type="submit">Submit</button>
+				  		</div>
+				  	</div>
+
+				  	<!--items modal-->
+				  	<div class="ui small modal" id="itemModal">
 					    <i class="close icon"></i>
 					    <div class="ui segment">
 					    <table class="ui definition celled table">
 						  <thead>
 						    <tr>
-							    <th></th>
-							    <th>Header</th>
+						    	<th></th>
+							    <th>Item ID</th>
+							    <th>Item Name</th>
+							    <th>Date Bidded</th>
+							    <th>Price</th>
 							</tr>
 						  </thead>
 						  <tbody>
-						    <tr>
-						      <td>
-						      	<input type="checkbox" class="ui checkbox" />
-						      </td>
-						      <td>Cell</td>
-						    </tr>
+						    @foreach($itemsWon as $key => $itemWon)
+						    	<tr>
+							      <td>
+							      	<input type="checkbox" class="ui checkbox" name="items[]"/>
+							      </td>
+							      <td>{{$itemWon->ItemID}}</td>
+							      <td>{{$itemWon->itemModel->ItemName}}</td>
+							      <td>{{$itemWon->winners->last()->bid->DateTime}}</td>
+							      <td>{{$itemWon->winners->last()->bid->Price}}</td>
+							    </tr>
+						    @endforeach
 						  </tbody>
 						</table>
 						</div>
 					</div>
-
-
-				</div>
-				<div class="ui grid"><div class="row"></div></div>
-				<form class="ui form" id="delivery"><!-- delivery -->
-				  	<h4 class="ui dividing header">Delivery Information</h4>
-				  	<div class="field">
-					    <label>Name</label>
-					    <div class="two fields">
-					      <div class="field">
-					        <input type="text" name="firstName" pattern="([A-z '.-]){2,}" placeholder="First Name">
-					      </div>
-					      <div class="field">
-					        <input type="text" name="lastName" pattern="([A-z '.-]){2,}" placeholder="Last Name">
-					      	</div>
-					    </div>
-					</div>
-					<div class="field">
-					    <label>Complete Address</label>
-						<input type="text" name="address" placeholder="Complete Address...">
-					</div>
-
-					<div class="equal width fields">
-						<div class="field">
-						 	<div class="ui sub header">Region</div>
-							<div class="ui fluid search normal selection dropdown">
-								<input type="hidden" name="region" required>
-									<i class="dropdown icon"></i>
-									<div class="default text">Select Region</div>
-									<div class="menu">
-										<div class="item">Miriam</div>
-										<div class="item">Mar</div>
-										<div class="item">Rody</div>
-									</div>
-							</div>
-						</div>
-						<div class="field">
-						 	<div class="ui sub header">Province</div>
-							<div class="ui fluid search normal selection dropdown">
-								<input type="hidden" name="province" required>
-									<i class="dropdown icon"></i>
-								<div class="default text">Select Province</div>
-									<div class="menu">
-										<div class="item" value="0">Defensor</div>
-										<div class="item" value="1">Bebe</div>
-										<div class="item" value="2">"Digong"</div>
-									</div>
-							</div>
-						</div>
-						<div class="field">
-						 	<div class="ui sub header">City</div>
-							<div class="ui fluid search normal selection dropdown">
-								<input type="hidden" name="city" required>
-									<i class="dropdown icon"></i>
-								<div class="default text">Select City</div>
-									<div class="menu">
-										<div class="item" value="0">Santiago</div>
-										<div class="item" value="1">Roxas</div>
-										<div class="item" value="2">Duterte</div>
-									</div>
-							</div>
-						</div>
-				  	</div>
-					  
-					<div class="equal width fields"> 
-					  	<div class="field">
-							<label>Cellphone Number</label>
-							<input type="text" name="phoneNumber" pattern="([0-9 '.]){2,}" placeholder="+639 XX XXX XXXX">
-						</div>
-						<div class="field">
-							<label>Telephone Number</label>
-							<input type="text" name="telNumber" pattern="([0-9 '.]){2,}" placeholder="XXX XXXX XXX">
-						</div>
-					</div>
-					<div class="ui one column center aligned page grid">
-						<div class="column">
-				  			<button class="ui button" type="submit">Submit</button>
-				  		</div>
-				  	</div>
-				</form>
-				<form class="ui form" style="display: none" id="pickup"><!-- pickup -->
-				  	<h4 class="ui dividing header">Pick-Up Information</h4>
-				  	<div class="field">
-					    <label>Name</label>
-					    <div class="two fields">
-					      <div class="field">
-					        <input type="text" name="firstName" pattern="([A-z '.-]){2,}" placeholder="First Name">
-					      </div>
-					      <div class="field">
-					        <input type="text" name="lastName" pattern="([A-z '.-]){2,}" placeholder="Last Name">
-					      	</div>
-					    </div>
-					</div>
-					<div class="field">
-					    <label>Complete Address</label>
-						<input type="text" name="address" placeholder="Complete Address...">
-					</div>
-
-					<div class="equal width fields">
-						<div class="field">
-						 	<div class="ui sub header">Region</div>
-							<div class="ui fluid search normal selection dropdown">
-								<input type="hidden" name="region" required>
-									<i class="dropdown icon"></i>
-									<div class="default text">Select Region</div>
-									<div class="menu">
-										<div class="item">Miriam</div>
-										<div class="item">Mar</div>
-										<div class="item">Rody</div>
-									</div>
-							</div>
-						</div>
-						<div class="field">
-						 	<div class="ui sub header">Province</div>
-							<div class="ui fluid search normal selection dropdown">
-								<input type="hidden" name="province" required>
-									<i class="dropdown icon"></i>
-								<div class="default text">Select Province</div>
-									<div class="menu">
-										<div class="item" value="0">Defensor</div>
-										<div class="item" value="1">Bebe</div>
-										<div class="item" value="2">"Digong"</div>
-									</div>
-							</div>
-						</div>
-						<div class="field">
-						 	<div class="ui sub header">City</div>
-							<div class="ui fluid search normal selection dropdown">
-								<input type="hidden" name="city" required>
-									<i class="dropdown icon"></i>
-								<div class="default text">Select City</div>
-									<div class="menu">
-										<div class="item" value="0">Santiago</div>
-										<div class="item" value="1">Roxas</div>
-										<div class="item" value="2">Duterte</div>
-									</div>
-							</div>
-						</div>
-				  	</div>
-					  
-					<div class="equal width fields"> 
-					  	<div class="field">
-							<label>Cellphone Number</label>
-							<input type="text" name="phoneNumber" pattern="([0-9 '.]){2,}" placeholder="+639 XX XXX XXXX">
-						</div>
-						<div class="field">
-							<label>Telephone Number</label>
-							<input type="text" name="telNumber" pattern="([0-9 '.]){2,}" placeholder="XXX XXXX XXX">
-						</div>
-					</div>
-					<div class="ui one column center aligned page grid">
-						<div class="column">
-				  			<button class="ui button" type="submit">Submit</button>
-				  		</div>
-				  	</div>
 				</form>
 			</div>
 
@@ -319,21 +242,54 @@ $('.ui.normal.dropdown')
     });*/
 
 	$(document).ready(function () {
+		$('#pickupLocation').hide();
+		$('#warehouseLocation').prop('required', false);
+    	$('#address').prop('required', true);
+    	$('#city').prop('required', true);
+
 	    $("#radioDelivery").click(function () {
-	        document.getElementById('delivery').style.display = 'block';
-	        document.getElementById('pickup').style.display = 'none';
+	       $('#deliveryAddress').show();
+	       $('#pickupLocation').hide();
+
+	       $('#warehouseLocation').prop('required', false);
+	       $('#address').prop('required', true);
+	       $('#city').prop('required', true);
 	    });
 	    $("#radioPickup").click(function () {
-	    	document.getElementById('delivery').style.display = 'none';
-	        document.getElementById('pickup').style.display = 'block';
+	    	$('#deliveryAddress').hide();
+	    	$('#pickupLocation').show();
+
+	    	$('#warehouseLocation').prop('required', true);
+	       $('#address').prop('required', false);
+	       $('#city').prop('required', false);
 	    });
 	});
 
 
 	$(document).ready(function(){
-	     $('#hehe').click(function(){
-	        $('#haha').modal('show');    
+	     $('#itemList').click(function(){
+	        $('#itemModal').modal('show');    
 	     });
 	});
+
+	var app = angular.module('myApp', []);
+	app.controller('myController', function($scope, $http){
+		$http.get('/provinces')
+	    .then(function(response){
+	    	$scope.provinces = response.data;
+	    });
+
+	    $scope.reloadCities = function(){
+	    	$http.get('/cityOptions?provID=' + $scope.inputProvince)
+	    	.then(function(response){
+	    		$scope.cities = response.data;
+	    	});
+	    }
+
+	    $http.get('/warehouses')
+	    .then(function(response){
+	      $scope.warehouses = response.data;
+	    });
+	})
 </script>
 @endsection

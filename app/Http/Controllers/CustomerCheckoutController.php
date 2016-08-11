@@ -11,7 +11,7 @@ use Session;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
-class CustomerCartController extends Controller
+class CustomerCheckoutController extends Controller
 {
     public function view(Request $request){
         $items = App\Models\Admin\Item::all();
@@ -36,6 +36,31 @@ class CustomerCartController extends Controller
         
         $itemsWon = collect($itemsWon);
         
-        return view('customer.cart')->with('itemsWon', $itemsWon);
+        return view('customer.checkout')->with('itemsWon', $itemsWon);
+    }
+
+    public function insert(Request $request){
+        $checkoutRequest = new App\Models\Admin\CheckoutRequest;
+
+        $checkoutRequest->CheckoutType = $request->checkoutType;
+        $checkoutRequest->AccountID = $request->session()->get('accountID');
+        $checkoutRequest->RequestDate = Carbon::now('Asia/Manila');
+        $checkoutRequest->FirstName = $request->firstName;
+        $checkoutRequest->MiddleName = $request->middleName;
+        $checkoutRequest->LastName = $request->lastName;
+        $checkoutRequest->CellphoneNo = $request->phoneNumber;
+        $checkoutRequest->Landline = $request->telNumber;
+
+        if($request->checkoutType == "Pick up"){
+            $checkoutRequest->WarehouseNo = $request->warehouse;
+        }
+        else if($request->checkoutType == "Deliver"){
+            $checkoutRequest->CityID = $request->city;
+            $checkoutRequest->Barangay_Street_Address = $request->address;
+        }
+
+        $checkoutRequest->save();
+
+        return redirect('/checkout');
     }
 }
