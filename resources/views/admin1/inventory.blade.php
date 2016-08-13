@@ -19,6 +19,9 @@
         </a>        
         <a class="active item" href="/inventory">
           Inventory
+        </a>        
+        <a class="item" href="/movingOfItems">
+          Moving of Items
         </a>
         <a class="item" href="/biddingEvent">
           Bidding Event
