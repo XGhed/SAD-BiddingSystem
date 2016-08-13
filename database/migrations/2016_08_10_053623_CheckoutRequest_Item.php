@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Winners extends Migration
+class CheckoutRequestItem extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,15 @@ class Winners extends Migration
      */
     public function up()
     {
-        Schema::create('Winners', function(Blueprint $table)
+        Schema::create('CheckoutRequest_Item', function(Blueprint $table)
         {
-            $table->increments('WinnerID');
+            $table->increments('CheckoutRequest_ItemID');
+            $table->integer('CheckoutRequestID')->unsigned();
             $table->integer('ItemID')->unsigned();
-            $table->integer('BidID')->unsigned();
-            $table->integer('AuctionID')->unsigned();
+            $table->date('RequestDate');
+            $table->foreign('CheckoutRequestID')->references('CheckoutRequestID')->on('CheckoutRequests');
             $table->foreign('ItemID')->references('ItemID')->on('Items');
-            $table->foreign('BidID')->references('BidID')->on('Bid');
-            $table->foreign('AuctionID')->references('AuctionID')->on('Auction');
+
         });
     }
 

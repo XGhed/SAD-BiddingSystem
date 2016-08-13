@@ -69,6 +69,8 @@ Route::post('/addBiddingEvent', 'BiddingEventController@addBiddingEvent');
 
 Route::post('/itemCheck', 'itemCheckingController@itemCheck');
 
+Route::post('/submitCheckout', 'CustomerCheckoutController@insert');
+
 Route::get('/logout', 'LoginController@logout');
 
 
@@ -123,7 +125,7 @@ Route::get('/bidEvent', 'PageController@bidEvent');
 
 Route::get('/register', 'PageController@register');
 
-Route::get('checkout', 'PageController@checkout');
+Route::get('checkout', 'CustomerCheckoutController@view');
 
 Route::get('/bidItems', 'BiddingEventController@viewEventItems');
 
