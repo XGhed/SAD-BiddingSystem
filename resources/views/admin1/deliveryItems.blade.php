@@ -99,7 +99,7 @@
                     </div>
                   </div>
 
-                  <button type="submit" class="ui basic green button"><i class="green checkmark icon"></i>Confirm</button>
+                  <button type="submit" class="ui right floated basic green button"><i class="green checkmark icon"></i>Confirm</button>
                 </div>
             </div>
 
@@ -116,8 +116,7 @@
        });
   })
 
-  $('.ui.modal').modal('show');
-
+ // $('.ui.modal').modal('show');
   $('.ui.dropdown')
   .dropdown()
 ;
