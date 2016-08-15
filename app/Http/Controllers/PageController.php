@@ -218,6 +218,16 @@ class PageController extends Controller
 
        return view('admin1.itemChecking');
     }
+
+    public function itemOutbound(Request $request){
+
+       return view('admin1.itemOutbound');
+    }
+
+    public function deliveryItems(Request $request){
+
+       return view('admin1.deliveryItems');
+    }
 }
 
 

@@ -286,6 +286,10 @@ Route::get('/listOfBidders', 'PageController@listOfBidders');
 
 Route::get('/itemChecking', 'PageController@itemChecking');
 
+Route::get('/itemOutbound', 'PageController@itemOutbound');
+
+Route::get('/deliveryItems', 'PageController@deliveryItems');
+
 
 Route::group(['middleware' => ['web']], function () {
     //

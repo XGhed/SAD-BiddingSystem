@@ -32,11 +32,15 @@
         <a class="item" href="/deliveryApproval">
           Delivery/Pick-up Approval
         </a>
+        <a class="item" href="/itemOutbound">
+          Item Outbound
+        </a>
     </div>
   </div>
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
+        <h2 class="ui centered header">Account Approval</h2>
 
       <table class="ui definition celled selectable table">
         <thead>
@@ -48,12 +52,13 @@
         </tr></thead>
         <tbody>
           <tr ng-repeat="account in accounts">
-            <td class="collapsing">
-              <button class="ui basic green button" ng-click="approveAccount($index)"><i class="checkmark icon"></i>Approve</button>
+            <td class="collapsing">           
+              <button class="ui basic green button" ng-click="showInfo($index)"><i class="unhide icon"></i>View Info</button>
+              <button class="ui basic green button" ng-click="approveAccount($index)"><i class="checkmark icon"></i>Approve</button> 
             </td>
-            <td class="tableRow" style="cursor: pointer;" ng-click="showInfo($index)">@{{account.Username}}</td>
-            <td class="tableRow" style="cursor: pointer;" ng-click="showInfo($index)">@{{account.membership[0].accounttype.AccountTypeName}}</td>
-            <td class="tableRow" style="cursor: pointer;" ng-click="showInfo($index)">@{{account.membership[0].DateOfRegistration}}</td>
+            <td class="tableRow" >@{{account.Username}}</td>
+            <td class="tableRow" >@{{account.membership[0].accounttype.AccountTypeName}}</td>
+            <td class="tableRow" >@{{account.membership[0].DateOfRegistration}}</td>
           </tr>
         </tbody>
       </table>

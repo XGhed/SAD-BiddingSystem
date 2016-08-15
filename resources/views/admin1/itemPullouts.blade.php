@@ -32,6 +32,9 @@
         <a class="item" href="/deliveryApproval">
           Delivery Approval
         </a>
+        <a class="item" href="/itemOutbound">
+          Item Outbound
+        </a>
     </div>
   </div>
 
