@@ -116,6 +116,7 @@ class CustomerBiddingEventController extends Controller
 
         $item = App\Models\Admin\Item::find($request->itemID);
         $winner->AuctionID = $item->item_auction->last()->AuctionID;
+        $winner->BidID = $bid->BidID;
 
         $winner->save();
 

@@ -26,6 +26,7 @@ class CheckoutRequest extends Migration
             $table->integer('WarehouseNo')->unsigned()->nullable();
             $table->String('CellphoneNo', 15);
             $table->String('Landline', 10)->nullable();
+            $table->boolean('Status')->default(0);
             $table->foreign('AccountID')->references('AccountID')->on('Account');
             $table->foreign('WarehouseNo')->references('WarehouseNo')->on('Warehouse');
             $table->foreign('CityID')->references('CityID')->on('City');

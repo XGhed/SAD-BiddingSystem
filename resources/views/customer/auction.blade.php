@@ -145,7 +145,7 @@
           });
         }
         else {
-          alert('somebody bid higher');
+          alert(JSON.stringify(response.data));
         }
         $http.get('/getBidHistory?itemID=' + $scope.itemID)
         .then(function(response){

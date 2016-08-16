@@ -191,6 +191,8 @@ Route::get('/getEventItems', 'BiddingEventController@getEventItems');
 
 Route::get('/getOngoingEvent', 'CustomerDashboardController@getOngoingEvent');
 
+Route::get('/deliveryRequests', 'PrepareDeliveryController@deliveryRequests');
+
 
 //Angular Input
 
@@ -222,6 +224,7 @@ Route::get('/getHighestBid', 'CustomerBiddingEventController@getHighestBid');
 
 Route::get('/getBidHistory', 'CustomerBiddingEventController@getBidHistory');
 
+Route::get('/approveDeliveryRequest', 'PrepareDeliveryController@approveDeliveryRequest');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');

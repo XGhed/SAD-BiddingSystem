@@ -66,10 +66,33 @@
 				        <label>Pick up</label>
 				      </div>
 				    </div>
-				    <div class="row"></div>
-				    <div class="field">
-				    	<p>Click <a id="itemList">here </a>to see the complete list of item.</p>
-				    </div>
+				    <!--items modal-->
+				    <div class="ui segment">
+				    <table class="ui definition celled table">
+					  <thead>
+					    <tr>
+					    	<th></th>
+						    <th>Item ID</th>
+						    <th>Item Name</th>
+						    <th>Date Bidded</th>
+						    <th>Price</th>
+						</tr>
+					  </thead>
+					  <tbody>
+					    @foreach($itemsWon as $key => $itemWon)
+					    	<tr>
+						      <td>
+						      	<input type="checkbox" class="ui checkbox" name="items[]" value="{{$itemWon->ItemID}}"/>
+						      </td>
+						      <td>{{$itemWon->ItemID}}</td>
+						      <td>{{$itemWon->itemModel->ItemName}}</td>
+						      <td>{{$itemWon->winners->last()->bid->DateTime}}</td>
+						      <td>{{$itemWon->winners->last()->bid->Price}}</td>
+						    </tr>
+					    @endforeach
+					  </tbody>
+					</table>
+					</div>
 
 				</div>
 				<div class="ui grid"><div class="row"></div></div>
@@ -138,37 +161,6 @@
 				  			<button class="ui button" type="submit">Submit</button>
 				  		</div>
 				  	</div>
-
-				  	<!--items modal-->
-				  	<div class="ui small modal" id="itemModal">
-					    <i class="close icon"></i>
-					    <div class="ui segment">
-					    <table class="ui definition celled table">
-						  <thead>
-						    <tr>
-						    	<th></th>
-							    <th>Item ID</th>
-							    <th>Item Name</th>
-							    <th>Date Bidded</th>
-							    <th>Price</th>
-							</tr>
-						  </thead>
-						  <tbody>
-						    @foreach($itemsWon as $key => $itemWon)
-						    	<tr>
-							      <td>
-							      	<input type="checkbox" class="ui checkbox" name="items[]"/>
-							      </td>
-							      <td>{{$itemWon->ItemID}}</td>
-							      <td>{{$itemWon->itemModel->ItemName}}</td>
-							      <td>{{$itemWon->winners->last()->bid->DateTime}}</td>
-							      <td>{{$itemWon->winners->last()->bid->Price}}</td>
-							    </tr>
-						    @endforeach
-						  </tbody>
-						</table>
-						</div>
-					</div>
 				</form>
 			</div>
 

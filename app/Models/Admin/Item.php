@@ -64,4 +64,9 @@ class Item extends Model
 	{
 	    return $this->hasMany('App\Models\Admin\Winner', 'ItemID', 'ItemID');
 	}
+
+	public function checkoutRequest_item()
+	{
+	    return $this->hasMany('App\Models\Admin\CheckoutRequest_Item', 'ItemID', 'ItemID');
+	}
 }

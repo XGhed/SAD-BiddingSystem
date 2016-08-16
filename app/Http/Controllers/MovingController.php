@@ -53,6 +53,6 @@ class MovingController extends Controller
             $history->save();
         }
 
-        return redirect('approveMovingOfItems');
+        return redirect('approvalOfMovingItems');
     }
 }

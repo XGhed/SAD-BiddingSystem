@@ -22,6 +22,6 @@ class CheckoutRequest extends Model
 
 	public function checkoutRequest_Item()
 	{
-	    return $this->hasOne('App\Models\Admin\CheckoutRequestID', 'CheckoutRequestID');
+	    return $this->hasMany('App\Models\Admin\CheckoutRequest_Item', 'CheckoutRequestID');
 	}
 }

@@ -43,25 +43,27 @@
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
-       <div class="ui centered header">Delivery</div>
+       <div class="ui centered header">Prepare Delivery</div>
        
-        <table class="ui celled definition table">
+        <table class="ui celled definition table" datatable="ng">
           <thead>
             <tr>
               <th></th>
-              <th>Header</th>
-              <th>Header</th>
+              <th>Date Requested</th>
+              <th>Receiver</th>
+              <th>Delivery Address</th>
             </tr></thead>
           <tbody>
-            <tr>
+            <tr ng-repeat="request in requests">
               <td class="collapsing">
-               <a class="ui basic blue button" id="addBtn">
+               <a class="ui basic blue button" ng-click="viewRequest($index)">
                 <i class="unhide icon"></i>
                 View
               </a>
               </td>
-              <td>Cell</td>
-              <td>Cell</td>
+              <td>@{{request.RequestDate}}</td>
+              <td>@{{request.FirstName}} @{{request.MiddleName}} @{{request.LastName}}</td>
+              <td>@{{request.Barangay_Street_Address}}, @{{request.city.CityName}}, @{{request.city.province.ProvinceName}}</td>
             </tr>
           </tbody>
         </table>
@@ -72,34 +74,36 @@
                   Modal 1
                 </div>
                 <div class="content">
-                  <table class="ui celled table">
-                    <thead>
-                      <tr>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <form>
+                    <input type="hidden" ng-model="selectedRequest">
+                    <table class="ui celled table" datatable="ng">
+                      <thead>
+                        <tr>
+                          <th>Item ID</th>
+                          <th>Item Name</th>
+                          <th>Current Warehouse</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="requestItem in requestItems">
+                          <td>@{{requestItem.ItemID}}</td>
+                          <td>@{{requestItem.item.item_model.ItemName}}</td>
+                          <td>@{{requestItem.item.CurrentWarehouse}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
 
-                  <div class="ui selection dropdown">
-                    <input type="hidden" name="gender">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Gender</div>
-                    <div class="menu">
-                      <div class="item" data-value="1">Male</div>
-                      <div class="item" data-value="0">Female</div>
+                    <div class="field">
+                      <div class="ui grid"><div class="row"></div></div>
+                      <div class="ui header">Move the following items to a common Warehouse:</div>
+                      <select class="ui selection dropdown" ng-model="selectedWarehouse">
+                        <option value="" disabled selected>Select Warehouse</option>
+                        <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
+                      </select>
                     </div>
-                  </div>
 
-                  <button type="submit" class="ui right floated basic green button"><i class="green checkmark icon"></i>Confirm</button>
+                    <button class="ui right floated basic green button" ng-click="approve()"><i class="green checkmark icon"></i>Confirm</button>
+                  </form>
                 </div>
             </div>
 
@@ -109,12 +113,38 @@
 
 
 <script>
-  //add modal
-  $(document).ready(function(){
-       $('#addBtn').click(function(){
-          $('.ui.modal').modal('show');    
-       });
-  })
+  var app = angular.module('myApp', ['datatables']);
+
+  app.controller('myController', function($scope, $http){
+    $http.get('deliveryRequests')
+    .then(function(response){
+      $scope.requests = response.data;
+    });
+
+    $http.get('/warehouses')
+    .then(function(response){
+      $scope.warehouses = response.data;
+    });
+
+    $scope.viewRequest = function(index){
+      $('.ui.modal').modal('show');
+      $scope.requestItems = $scope.requests[index].checkout_request__item;
+      $scope.selectedRequest = $scope.requests[index].CheckoutRequestID;
+    }
+
+    $scope.approve = function(){
+      $http.get('/approveDeliveryRequest?warehouse=' + $scope.selectedRequest + '&checkoutRequestID=' + $scope.selectedRequest)
+      .then(function(response){
+        if(response.data == "success"){
+          alert('success');
+          return $http.get('deliveryRequests');
+        }
+      })
+      .then(function(response){
+        $scope.requests = response.data;
+      });
+    }
+  });
 
  // $('.ui.modal').modal('show');
   $('.ui.dropdown')
