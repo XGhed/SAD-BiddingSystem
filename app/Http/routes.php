@@ -193,6 +193,10 @@ Route::get('/getOngoingEvent', 'CustomerDashboardController@getOngoingEvent');
 
 Route::get('/deliveryRequests', 'PrepareDeliveryController@deliveryRequests');
 
+Route::get('/readyForDeliveryRequests', 'DeliveryItemsController@readyForDeliveryRequests');
+
+Route::get('/unpaidRequests', 'PaymentCheckoutController@unpaidRequests');
+
 
 //Angular Input
 
@@ -225,6 +229,10 @@ Route::get('/getHighestBid', 'CustomerBiddingEventController@getHighestBid');
 Route::get('/getBidHistory', 'CustomerBiddingEventController@getBidHistory');
 
 Route::get('/approveDeliveryRequest', 'PrepareDeliveryController@approveDeliveryRequest');
+
+Route::get('/approvePayment', 'PaymentCheckoutController@approvePayment');
+
+Route::get('/approveDeliveryItems', 'DeliveryItemsController@approveDeliveryItems');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');
@@ -277,7 +285,7 @@ Route::get('/accountApproval', 'PageController@accountApproval');
 
 Route::get('/itemPullouts', 'PageController@itemPullouts');
 
-Route::get('/deliveryApproval', 'PageController@deliveryApproval');
+Route::get('/deliveryItems', 'PageController@deliveryItems');
 
 Route::get('/userProfile', 'PageController@userProfile');
 
@@ -291,7 +299,9 @@ Route::get('/itemChecking', 'PageController@itemChecking');
 
 Route::get('/itemOutbound', 'PageController@itemOutbound');
 
-Route::get('/deliveryItems', 'PageController@deliveryItems');
+Route::get('/prepareDelivery', 'PageController@prepareDelivery');
+
+Route::get('/paymentCheckout', 'PageController@paymentCheckout');
 
 
 Route::group(['middleware' => ['web']], function () {

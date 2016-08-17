@@ -18,6 +18,8 @@ class CheckoutRequest extends Migration
             $table->string('CheckoutType');
             $table->integer('AccountID')->unsigned();
             $table->date('RequestDate');
+            $table->decimal('ItemPrice', 10, 2);
+            $table->decimal('ShippingFee', 10, 2);
             $table->string('FirstName');
             $table->string('MiddleName');
             $table->string('LastName');

@@ -194,9 +194,9 @@ class PageController extends Controller
        return view('customer.userProfile');
     }
 
-    public function deliveryApproval(Request $request){
+    public function deliveryItems(Request $request){
 
-       return view('admin1.deliveryApproval');
+       return view('admin1.deliveryItems');
     }
 
     public function bidHistory(Request $request){
@@ -224,9 +224,14 @@ class PageController extends Controller
        return view('admin1.itemOutbound');
     }
 
-    public function deliveryItems(Request $request){
+    public function prepareDelivery(Request $request){
 
-       return view('admin1.deliveryItems');
+       return view('admin1.prepareDelivery');
+    }
+
+    public function paymentCheckout(Request $request){
+
+       return view('admin1.paymentCheckout');
     }
 }
 

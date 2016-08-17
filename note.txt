@@ -3,3 +3,9 @@ item status:
 1 - delivered (available on  inventory)
 2 - checked
 3 - pulled out
+
+checkoutreq status
+0 - requested
+1 - approved preparation (moving wh)
+2 - paid
+3 - outbound

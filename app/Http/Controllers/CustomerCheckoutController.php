@@ -54,8 +54,17 @@ class CustomerCheckoutController extends Controller
         $checkoutRequest->CellphoneNo = $request->phoneNumber;
         $checkoutRequest->Landline = $request->telNumber;
 
+        $ItemPrice = 0;
+        foreach ($request->items as $key  => $itemRequestedID) {
+            $lastBid = App\Models\Admin\Bid::where('ItemID', $itemRequestedID)->get()->last();
+
+            $ItemPrice = $ItemPrice + $lastBid->Price;
+        }
+        $checkoutRequest->ItemPrice = $ItemPrice;
+
         if($request->checkoutType == "Pick up"){
             $checkoutRequest->WarehouseNo = $request->warehouse;
+            $checkoutRequest->ShippingFee = 0;
 
             foreach ($request->items as $key  => $itemRequestedID) {
                 $item = App\Models\Admin\Item::find($itemRequestedID);
@@ -68,10 +77,16 @@ class CustomerCheckoutController extends Controller
         else if($request->checkoutType == "Deliver"){
             $checkoutRequest->CityID = $request->city;
             $checkoutRequest->Barangay_Street_Address = $request->address;
+
+            $city = App\Models\Admin\City::find($request->city);
+            $shipment = App\Models\Admin\Shipment::where('ProvinceID', $city->province->ProvinceID)->first();
+
+            $checkoutRequest->ShippingFee = $shipment->ShipmentFee;
         }
 
         $checkoutRequest->save();
 
+        //checkoutrequest_item
         foreach ($request->items as $key  => $itemRequestedID) {
             $request_item = new App\Models\Admin\CheckoutRequest_Item;
 
@@ -83,15 +98,5 @@ class CustomerCheckoutController extends Controller
         }
 
         return redirect('/checkout');
-    }
-
-    public function insertCheckoutItems(Request $request){
-        foreach ($request->items as $key  => $itemRequestedID) {
-            $item = App\Models\Admin\Item::find($itemRequestedID);
-
-            $item->RequestedWarehouse = $request->warehouse;
-            
-            $item->save();
-        }
     }
 }

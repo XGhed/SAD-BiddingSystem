@@ -48,45 +48,19 @@
           <th></th>
           <th>Account ID</th>
           <th>Request Date</th>
+          <th>Price</th>
         </tr></thead>
         <tbody>
           <tr ng-repeat="request in requests">
             <td class="collapsing">           
-              <button class="ui basic green button" ng-click="approveDeliver(request.CheckoutRequestID)"><i class="checkmark icon"></i>Deliver</button> 
-              <button class="ui basic green button" ng-click="viewItems($index)"><i class="unhide icon"></i>View Items</button>
+              <button class="ui basic green button" ng-click="approvePayment(request.CheckoutRequestID)"><i class="checkmark icon"></i>Approve</button> 
             </td>
             <td class="tableRow" >@{{request.AccountID}}</td>
             <td class="tableRow" >@{{request.RequestDate}}</td>
+            <td class="tableRow" >P@{{parseFloat(request.ItemPrice) + parseFloat(request.ShippingFee)}}</td>
           </tr>
         </tbody>
       </table>
-
-      <!-- account info modal -->
-      <div class="ui small modal" id="infoModal">
-        <i class="close icon"></i>
-        <div class="header">
-          Items Location
-        </div>
-        <div class="content">
-          <table class="ui definition celled selectable table">
-            <thead>
-              <th>Item ID</th>
-              <th>Item Name</th>
-              <th>Current Warehouse</th>
-              <th>Requested Warehouse</th>
-            </thead>
-            <tbody>
-              <tr ng-repeat="requestItem in requestItems">
-                <td>@{{requestItem.ItemID}}</td>
-                <td>@{{requestItem.item.item_model.ItemName}}</td>
-                <td>@{{requestItem.item.current_warehouse.Barangay_Street_Address}}, @{{requestItem.item.current_warehouse.city.province.ProvinceName}}, @{{requestItem.item.current_warehouse.city.CityName}}</td>
-                <td>@{{requestItem.item.requested_warehouse.Barangay_Street_Address}}, @{{requestItem.item.requested_warehouse.city.province.ProvinceName}}, @{{requestItem.item.requested_warehouse.city.CityName}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <!-- END account info modal -->
 
     </div><!-- segment -->
   </div><!-- twelve wide column -->
@@ -94,31 +68,24 @@
 
 <script>
   var app = angular.module('myApp', ['datatables']);
-  app.controller('myController', function($scope, $http, $timeout){
-    $http.get('/readyForDeliveryRequests')
+  app.controller('myController', function($scope, $http){
+    $http.get('/unpaidRequests')
     .then(function(response){
       $scope.requests = response.data;
     });
 
-    $scope.viewItems = function(index){
-      $scope.requestItems = $scope.requests[index].checkout_request__item;
-      $('#infoModal').modal('show');
-      $timeout(function(){
-        $('#infoModal').modal('refresh');
-        $('#infoModal').modal('show');
-      }, 1000);
-    }
+    $scope.parseFloat = parseFloat;
 
-    $scope.approveDeliver = function(checkoutRequestID){
-      $http.get('/approveDeliveryItems?checkoutRequestID=' + checkoutRequestID)
+    $scope.approvePayment = function(checkoutRequestID){
+      $http.get('/approvePayment?checkoutRequestID=' + checkoutRequestID)
       .then(function(response){
         if (response.data == "success"){
           alert('success');
         }
         else {
-          alert('something went wrong');
+          alert('something happened');
         }
-        return $http.get('/readyForDeliveryRequests');
+        return $http.get('/unpaidRequests');
       })
       .then(function(response){
         $scope.requests = response.data;
