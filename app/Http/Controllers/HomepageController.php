@@ -13,26 +13,8 @@ class HomepageController extends Controller
 {
     public function displayHomepage(Request $request){
 
-       $categories = App\Models\Admin\Category::all();
+      $isLoggedIn = $this->verifyCustomer($request);
 
-       /*foreach ($results as $key => $result) {
-        foreach ($cities as $key => $city) {
-            if($city->CityID == $result->CityID){
-                $result['ProvinceID'] = $city->province->ProvinceID;
-                $result['ProvinceName'] = $city->province->ProvinceName;
-                $result['CityID'] = $city->CityID;
-                $result['CityName'] = $city->CityName;
-            }
-        }
-       }*/
-
-      if ($request->session()->has('accountID')){
-        $isLoggedIn = 'true';
-      }
-      else {
-        $isLoggedIn = 'false';
-      }
-
-       return view('customer.homepageContent')->with ('categories', $categories)->with('isLoggedIn', $isLoggedIn);
+       return view('customer.homepageContent')->with('isLoggedIn', $isLoggedIn);
     }
 }

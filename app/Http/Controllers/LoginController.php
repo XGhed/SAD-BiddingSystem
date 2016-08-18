@@ -36,13 +36,4 @@ class LoginController extends Controller
             return redirect('/');
         }
     }
-
-    public function isLoggedIn(Request $request){
-        if ($request->session()->has('accountID')){
-            return 'true';
-        }
-        else {
-            return 'false';
-        }
-    }
 }

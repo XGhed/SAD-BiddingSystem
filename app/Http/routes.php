@@ -306,23 +306,22 @@ Route::get('/prepareCheckout', 'PageController@prepareCheckout');
 Route::get('/paymentCheckout', 'PageController@paymentCheckout');
 
 
+//login restriction
+Route::get('/eventsList', 'PageController@eventsList');
+
+Route::get('/items', 'CustomerBiddingEventController@eventItems');
+
+Route::get('/auction', 'CustomerBiddingEventController@auction');
+
+Route::get('/cart', 'CustomerCartController@view');
+
+Route::get('/bidList', 'CustomerBiddingEventController@bidList');
+
+
 Route::group(['middleware' => ['web']], function () {
     //
 });
 
-
-
-Route::group(['middleware' => 'customer'], function () {
-    Route::get('/cart', 'CustomerCartController@view');
-
-    Route::get('/items', 'CustomerBiddingEventController@eventItems');
-
-    Route::get('/eventsList', 'PageController@eventsList');
-
-    Route::get('/auction', 'CustomerBiddingEventController@auction');
-});
-
-Route::get('/bidList', 'CustomerBiddingEventController@bidList');
 
 Route::get('/sad', function(){
 	return view('customer.bidList');

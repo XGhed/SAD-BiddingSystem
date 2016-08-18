@@ -25,9 +25,9 @@
               <i class="search link icon"></i>
             </div>
           </div>
-          @if(session('accountID') != "")
+          @if($isLoggedIn == 'true')
             <a class="ui item" href="/logout">
-              Logout {{session('accountID')}}
+              Logout
           </a>
           @else
             <a class="ui item" id="logIn">
