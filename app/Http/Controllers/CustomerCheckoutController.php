@@ -14,6 +14,8 @@ use Illuminate\Support\Collection;
 class CustomerCheckoutController extends Controller
 {
     public function view(Request $request){
+        $isLoggedIn = $this->verifyCustomer($request);
+        
         $items = App\Models\Admin\Item::all();
         $itemsWon = [];
 
@@ -39,7 +41,7 @@ class CustomerCheckoutController extends Controller
         
         $itemsWon = collect($itemsWon);
         
-        return view('customer.checkout')->with('itemsWon', $itemsWon);
+        return view('customer.checkout')->with('itemsWon', $itemsWon)->with('isLoggedIn', $isLoggedIn);
     }
 
     public function insert(Request $request){

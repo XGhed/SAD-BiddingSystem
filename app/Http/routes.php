@@ -125,8 +125,6 @@ Route::get('/bidEvent', 'PageController@bidEvent');
 
 Route::get('/register', 'PageController@register');
 
-Route::get('checkout', 'CustomerCheckoutController@view');
-
 Route::get('/bidItems', 'BiddingEventController@viewEventItems');
 
 //Route::get('/cart', 'PageController@cart');
@@ -316,6 +314,8 @@ Route::get('/auction', 'CustomerBiddingEventController@auction');
 Route::get('/cart', 'CustomerCartController@view');
 
 Route::get('/bidList', 'CustomerBiddingEventController@bidList');
+
+Route::get('checkout', 'CustomerCheckoutController@view');
 
 
 Route::group(['middleware' => ['web']], function () {

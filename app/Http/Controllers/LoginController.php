@@ -17,9 +17,8 @@ class LoginController extends Controller
             ->where('password', $request->password)
             ->first();
 
-        if(count($account->status == 1)){
+        if($account->status == 1){
             $request->session()->put('accountID', $account->AccountID);
-            $request->session()->put('accountType', 'customer');
 
             return redirect('/');
         }
@@ -31,7 +30,6 @@ class LoginController extends Controller
     public function logout(Request $request){
         if ($request->session()->has('accountID')){
             $request->session()->forget('accountID');
-            $request->session()->forget('accountType');
 
             return redirect('/');
         }
