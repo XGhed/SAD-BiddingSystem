@@ -11,7 +11,7 @@ use Session;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
-class PrepareDeliveryController extends Controller
+class PrepareCheckoutController extends Controller
 {
     public function deliveryRequests(Request $request){
         $checkoutRequest = App\Models\Admin\CheckoutRequest::with('account', 'checkoutRequest_Item', 'checkoutRequest_Item.item', 'checkoutRequest_Item.item.itemModel', 'city', 'city.province')->where('CheckoutType', 'Deliver')->where('Status', 0)->get();
@@ -19,7 +19,7 @@ class PrepareDeliveryController extends Controller
         return $checkoutRequest;
     }
 
-    public function approveDeliveryRequest(Request $request){
+    public function approveCheckoutRequest(Request $request){
         $checkoutRequest = App\Models\Admin\CheckoutRequest::find($request->checkoutRequestID);
 
         foreach ($checkoutRequest->checkoutRequest_Item as $key => $requestedItem) {
@@ -37,5 +37,13 @@ class PrepareDeliveryController extends Controller
         $checkoutRequest->save();
 
         return 'success';
+    }
+
+    public function pickupRequests(Request $request){
+        $checkoutRequest = App\Models\Admin\CheckoutRequest::with('account', 'pickupLocation', 'pickupLocation.city', 'pickupLocation.city.province', 
+            'checkoutRequest_Item', 'checkoutRequest_Item.item', 'checkoutRequest_Item.item.itemModel')
+            ->where('CheckoutType', 'Pick up')->where('Status', 0)->get();
+
+        return $checkoutRequest;
     }
 }

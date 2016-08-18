@@ -25,6 +25,7 @@ class DeliveryItemsController extends Controller
     public function approveDeliveryItems(Request $request){
         $checkoutRequest = App\Models\Admin\CheckoutRequest::find($request->checkoutRequestID);
 
+        //MAKE SURE THAT ALL ITEMS ARE IN THE SAME WH!! 
         $checkoutRequest->Status = 3;
 
         $checkoutRequest->save();

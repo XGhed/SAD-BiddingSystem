@@ -24,4 +24,9 @@ class CheckoutRequest extends Model
 	{
 	    return $this->hasMany('App\Models\Admin\CheckoutRequest_Item', 'CheckoutRequestID');
 	}
+
+	public function pickupLocation()
+	{
+	    return $this->hasOne('App\Models\Admin\Warehouse', 'WarehouseNo', 'WarehouseNo');
+	}
 }

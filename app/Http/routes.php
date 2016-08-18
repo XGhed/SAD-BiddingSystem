@@ -191,7 +191,9 @@ Route::get('/getEventItems', 'BiddingEventController@getEventItems');
 
 Route::get('/getOngoingEvent', 'CustomerDashboardController@getOngoingEvent');
 
-Route::get('/deliveryRequests', 'PrepareDeliveryController@deliveryRequests');
+Route::get('/deliveryRequests', 'PrepareCheckoutController@deliveryRequests');
+
+Route::get('/pickupRequests', 'PrepareCheckoutController@pickupRequests');
 
 Route::get('/readyForDeliveryRequests', 'DeliveryItemsController@readyForDeliveryRequests');
 
@@ -228,7 +230,7 @@ Route::get('/getHighestBid', 'CustomerBiddingEventController@getHighestBid');
 
 Route::get('/getBidHistory', 'CustomerBiddingEventController@getBidHistory');
 
-Route::get('/approveDeliveryRequest', 'PrepareDeliveryController@approveDeliveryRequest');
+Route::get('/approveCheckoutRequest', 'PrepareCheckoutController@approveCheckoutRequest');
 
 Route::get('/approvePayment', 'PaymentCheckoutController@approvePayment');
 
@@ -299,7 +301,7 @@ Route::get('/itemChecking', 'PageController@itemChecking');
 
 Route::get('/itemOutbound', 'PageController@itemOutbound');
 
-Route::get('/prepareDelivery', 'PageController@prepareDelivery');
+Route::get('/prepareCheckout', 'PageController@prepareCheckout');
 
 Route::get('/paymentCheckout', 'PageController@paymentCheckout');
 

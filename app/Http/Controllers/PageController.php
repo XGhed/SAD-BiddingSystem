@@ -224,9 +224,9 @@ class PageController extends Controller
        return view('admin1.itemOutbound');
     }
 
-    public function prepareDelivery(Request $request){
+    public function prepareCheckout(Request $request){
 
-       return view('admin1.prepareDelivery');
+       return view('admin1.prepareCheckout');
     }
 
     public function paymentCheckout(Request $request){
