@@ -33,24 +33,6 @@ class ItemOutboundController extends Controller
         return $checkoutRequests;
     }
 
-    public function approveDeliveryItems(Request $request){
-        $checkoutRequest = App\Models\Admin\CheckoutRequest::find($request->checkoutRequestID);
-
-        //MAKE SURE THAT ALL ITEMS ARE IN THE SAME WH!! 
-        $checkoutRequest->Status = 3;
-        //items
-        foreach ($checkoutRequest->checkoutRequest_Item as $key => $request_Item) {
-            $item = App\Models\Admin\Item::find($request_Item->item->ItemID);
-            $item->status = 3;
-            $item->save();
-        }
-
-        $checkoutRequest->save();
-
-        return 'success';
-
-    }
-
     public function readyForCheckoutPickup(Request $request){
         $checkoutRequests = App\Models\Admin\CheckoutRequest::with('account', 'account.membership', 'checkoutRequest_Item', 'checkoutRequest_Item.item', 'checkoutRequest_Item.item.itemModel', 
         'checkoutRequest_Item.item.itemModel.subCategory',
@@ -70,5 +52,24 @@ class ItemOutboundController extends Controller
         }
 
         return $checkoutRequests;
+    }
+
+    public function approveOutbound(Request $request){
+        $checkoutRequest = App\Models\Admin\CheckoutRequest::find($request->checkoutRequestID);
+
+        //MAKE SURE THAT ALL ITEMS ARE IN THE SAME WH!! 
+        $checkoutRequest->Status = 3;
+        //items
+        foreach ($checkoutRequest->checkoutRequest_Item as $key => $request_Item) {
+            $item = App\Models\Admin\Item::find($request_Item->item->ItemID);
+            $item->status = 3;
+            $item->CurrentWarehouse = NULL;
+            $item->save();
+        }
+
+        $checkoutRequest->save();
+
+        return 'success';
+
     }
 }

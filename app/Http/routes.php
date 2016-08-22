@@ -234,7 +234,7 @@ Route::get('/approveCheckoutRequest', 'PrepareCheckoutController@approveCheckout
 
 Route::get('/approvePayment', 'PaymentCheckoutController@approvePayment');
 
-Route::get('/approveDeliveryItems', 'ItemOutboundController@approveDeliveryItems');
+Route::get('/approveOutbound', 'ItemOutboundController@approveOutbound');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');

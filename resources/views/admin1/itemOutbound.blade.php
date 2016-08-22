@@ -134,7 +134,7 @@
               </table>
               <hr>
               <div class="ui actions">
-                <button class="ui right floated basic green button large" ng-click="approveDeliver(requestSelected.CheckoutRequestID)">Deliver!</button>
+                <button class="ui right floated basic green button large" ng-click="approveOutbound(requestSelected.CheckoutRequestID)">Deliver!</button>
               </div>
             </div>
         </div>
@@ -171,9 +171,9 @@
       }, 1000);
     }
 
-    $scope.approveDeliver = function(checkoutRequestID){
+    $scope.approveOutbound = function(checkoutRequestID){
       $('#modalShow').modal('hide');
-      $http.get('/approveDeliveryItems?checkoutRequestID=' + checkoutRequestID)
+      $http.get('/approveOutbound?checkoutRequestID=' + checkoutRequestID)
       .then(function(response){
         if (response.data == "success"){
           alert('success');
