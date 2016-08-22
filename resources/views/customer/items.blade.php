@@ -25,7 +25,7 @@
               <i class="search link icon"></i>
             </div>
           </div>
-          @if($isLoggedIn == 'true')
+          @if(session('accountID') != "")
             <a class="ui item" href="/logout">
               Logout
           </a>
@@ -167,6 +167,7 @@
 				if (response.data == 'success'){
 					$("#join0").hide();
 					$("#join1").show();
+					$scope.joined = true;
 				}
 			});
 		}

@@ -13,8 +13,6 @@ use Carbon\Carbon;
 class CustomerBiddingEventController extends Controller
 {
     public function eventItems(Request $request){
-        $isLoggedIn = $this->verifyCustomer($request);
-
     	$categories = App\Models\Admin\Category::with('subCategory')->get();
 
         $auction = App\Models\Admin\Auction::find($request->eventID);
@@ -36,7 +34,7 @@ class CustomerBiddingEventController extends Controller
             $joined = 'false';
         }
 
-    	return view('customer.items')->with('categories', $categories)->with('eventID', $request->eventID)->with('joined', $joined)->with('isLoggedIn', $isLoggedIn);
+    	return view('customer.items')->with('categories', $categories)->with('eventID', $request->eventID)->with('joined', $joined);
     }
 
     public function itemsOfSubcategory(Request $request){
@@ -85,11 +83,9 @@ class CustomerBiddingEventController extends Controller
     }
 
     public function auction(Request $request){
-        $isLoggedIn = $this->verifyCustomer($request);
-
         $item = App\Models\Admin\Item::with('itemModel', 'item_auction')->where('ItemID', $request->itemID)->first();
 
-        return view('customer.auction')->with('item', $item)->with('isLoggedIn', $isLoggedIn);
+        return view('customer.auction')->with('item', $item);
     }
 
     public function bidItem(Request $request){
@@ -139,11 +135,9 @@ class CustomerBiddingEventController extends Controller
         return $bids;
     }
 
-    public function bidList(Request $request){
-        $isLoggedIn = $this->verifyCustomer($request);
-        
+    public function bidList(Request $request){        
         $bids = App\Models\Admin\Bid::where('AccountID', $request->session()->get('accountID'))->get();
 
-        return view('customer.bidList')->with('bids', $bids)->with('isLoggedIn', $isLoggedIn);
+        return view('customer.bidList')->with('bids', $bids);
     }
 }

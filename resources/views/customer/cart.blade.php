@@ -25,7 +25,7 @@
               <i class="search link icon"></i>
             </div>
           </div>
-          @if($isLoggedIn == 'true')
+          @if(session('accountID') != "")
             <a class="ui item" href="/logout">
               Logout
           </a>
@@ -40,7 +40,7 @@
 
 @section('content')
 	<div style="margin: 35px 0 0 0" class="ui container segment">
-		 @if($isLoggedIn == 'true')
+		 @if(session('accountID') != "")
           	<div class="ui grid">
 			<div class="ten wide column">
 				<div class="ui segment">

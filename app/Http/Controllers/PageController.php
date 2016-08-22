@@ -185,8 +185,7 @@ class PageController extends Controller
     }
 
     public function eventsList(Request $request){
-      $isLoggedIn = $this->verifyCustomer($request);
-      return view('customer.eventsList')->with('isLoggedIn', $isLoggedIn);
+      return view('customer.eventsList');
     }
 
     public function userProfile(Request $request){

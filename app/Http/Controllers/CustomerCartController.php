@@ -13,9 +13,7 @@ use Illuminate\Support\Collection;
 
 class CustomerCartController extends Controller
 {
-    public function view(Request $request){
-        $isLoggedIn = $this->verifyCustomer($request);
-        
+    public function view(Request $request){        
         $items = App\Models\Admin\Item::all();
         $itemsWon = [];
 
@@ -38,6 +36,6 @@ class CustomerCartController extends Controller
         
         $itemsWon = collect($itemsWon);
         
-        return view('customer.cart')->with('itemsWon', $itemsWon)->with('isLoggedIn', $isLoggedIn);
+        return view('customer.cart')->with('itemsWon', $itemsWon);
     }
 }
