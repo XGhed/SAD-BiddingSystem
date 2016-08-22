@@ -193,9 +193,9 @@ Route::get('/deliveryRequests', 'PrepareCheckoutController@deliveryRequests');
 
 Route::get('/pickupRequests', 'PrepareCheckoutController@pickupRequests');
 
-Route::get('/readyForDeliveryRequests', 'DeliveryItemsController@readyForDeliveryRequests');
-
 Route::get('/unpaidRequests', 'PaymentCheckoutController@unpaidRequests');
+
+Route::get('/readyForCheckoutDelivery', 'ItemOutboundController@readyForCheckoutDelivery');
 
 
 //Angular Input
@@ -232,7 +232,7 @@ Route::get('/approveCheckoutRequest', 'PrepareCheckoutController@approveCheckout
 
 Route::get('/approvePayment', 'PaymentCheckoutController@approvePayment');
 
-Route::get('/approveDeliveryItems', 'DeliveryItemsController@approveDeliveryItems');
+Route::get('/approveDeliveryItems', 'ItemOutboundController@approveDeliveryItems');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');
@@ -284,8 +284,6 @@ Route::get('/approvalOfMovingItems', 'PageController@approvalOfMovingItems');
 Route::get('/accountApproval', 'PageController@accountApproval');
 
 Route::get('/itemPullouts', 'PageController@itemPullouts');
-
-Route::get('/deliveryItems', 'PageController@deliveryItems');
 
 Route::get('/userProfile', 'PageController@userProfile');
 

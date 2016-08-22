@@ -194,11 +194,6 @@ class PageController extends Controller
        return view('customer.userProfile');
     }
 
-    public function deliveryItems(Request $request){
-
-       return view('admin1.deliveryItems');
-    }
-
     public function bidHistory(Request $request){
 
        return view('customer.bidHistory');

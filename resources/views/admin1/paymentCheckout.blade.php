@@ -40,7 +40,7 @@
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
-        <h2 class="ui centered header">Delivery/Pickup Approval</h2>
+        <h2 class="ui centered header">Checkout Payment (Delivery)</h2>
 
       <table class="ui definition celled selectable table">
         <thead>
