@@ -75,22 +75,26 @@
         </div>
 
         <div class="ui bottom attached tab segment" data-tab="second">
-          <a class="ui basic blue button" id="addBtn">
-            <i class="add user icon"></i>
-            Add Item
-          </a>
-
-            <table class="ui celled table">
+          <table class="ui celled table">
               <thead>
-                <tr><th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-              </tr></thead>
+                <tr>
+                  <th>View Info</th>
+                  <th>Checkout ID</th>
+                  <th>Date Requested</th>
+                  <th>Pick up Person</th>
+                </tr>
+              </thead>
               <tbody>
-               <tr>
-                  <td>Cell</td>
-                  <td>Cell</td>
-                  <td>Cell</td>
+               <tr ng-repeat="pickupRequest in pickupRequests">
+                  <td>
+                    <a class="ui basic blue button" ng-click="viewRequest(pickupRequest)">
+                      <i class="add user icon"></i>
+                      View
+                    </a>
+                  </td>
+                  <td>@{{pickupRequest.CheckoutRequestID}}</td>
+                  <td>@{{pickupRequest.RequestDate}}</td>
+                  <td>@{{pickupRequest.FirstName + ' ' + pickupRequest.MiddleName + ' ' + pickupRequest.LastName}}</td>
                 </tr>
               </tbody>
             </table>
@@ -154,6 +158,11 @@
       $scope.deliveryRequests = response.data;
     });
 
+    $http.get('/readyForCheckoutPickup')
+    .then(function(response){
+      $scope.pickupRequests = response.data;
+    });
+
     $scope.viewRequest = function(request){
       $('#modalShow').modal('show');
       $scope.requestSelected = request;
@@ -172,10 +181,16 @@
         else {
           alert('something went wrong');
         }
-        return $http.get('/readyForCheckoutDelivery');
-      })
-      .then(function(response){
-        $scope.deliveryRequests = response.data;
+        //refresh
+        $http.get('/readyForCheckoutDelivery')
+        .then(function(response){
+          $scope.deliveryRequests = response.data;
+        });
+
+        $http.get('/readyForCheckoutPickup')
+        .then(function(response){
+          $scope.pickupRequests = response.data;
+        });
       });
     }
   });

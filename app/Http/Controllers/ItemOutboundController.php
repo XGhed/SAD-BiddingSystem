@@ -50,4 +50,25 @@ class ItemOutboundController extends Controller
         return 'success';
 
     }
+
+    public function readyForCheckoutPickup(Request $request){
+        $checkoutRequests = App\Models\Admin\CheckoutRequest::with('account', 'account.membership', 'checkoutRequest_Item', 'checkoutRequest_Item.item', 'checkoutRequest_Item.item.itemModel', 
+        'checkoutRequest_Item.item.itemModel.subCategory',
+        'checkoutRequest_Item.item.current_warehouse', 'checkoutRequest_Item.item.current_warehouse.city', 'checkoutRequest_Item.item.current_warehouse.city.province', 
+        'checkoutRequest_Item.item.requested_warehouse', 'checkoutRequest_Item.item.requested_warehouse.city', 'checkoutRequest_Item.item.requested_warehouse.city.province')
+        ->where('Status', 2)
+        ->where('CheckoutType', 'Pick up')->get();
+
+        //checking each items in each requests are in same wh
+        foreach ($checkoutRequests as $key => $request) {
+            foreach ($request->checkoutRequest_Item as $key2 => $request_Item) {
+                if($request->checkoutRequest_Item->first()->item->CurrentWarehouse != $request_Item->item->CurrentWarehouse){
+                    $checkoutRequests->splice($key, 1);
+                    break;
+                }
+            }
+        }
+
+        return $checkoutRequests;
+    }
 }

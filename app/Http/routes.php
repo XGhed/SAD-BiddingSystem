@@ -197,6 +197,8 @@ Route::get('/unpaidRequests', 'PaymentCheckoutController@unpaidRequests');
 
 Route::get('/readyForCheckoutDelivery', 'ItemOutboundController@readyForCheckoutDelivery');
 
+Route::get('/readyForCheckoutPickup', 'ItemOutboundController@readyForCheckoutPickup');
+
 
 //Angular Input
 
