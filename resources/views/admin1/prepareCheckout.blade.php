@@ -32,11 +32,14 @@
         <a class="item" href="/deliveryApproval">
           Delivery/Pick-up Approval
         </a>
+        <a class="active item" href="/prepareCheckout">
+          Prepare Checkout Items
+        </a>
+        <a class=" item" href="/paymentCheckout">
+          Payment Checkout Items
+        </a>
         <a class="item" href="/itemOutbound">
           Item Outbound
-        </a>
-        <a class="active item" href="/deliveryItems">
-          Delivery
         </a>
     </div>
   </div>
