@@ -101,9 +101,18 @@ class AngularOutput extends Controller
     }
 
     public function itemmodelsInventory(Request $request){
-        $itemmodels = App\Models\Admin\ItemModel::with('subCategory', 'subCategory.category', 'items')->get();
+        $itemModels = App\Models\Admin\ItemModel::with('subCategory', 'subCategory.category', 'items')->get();
+        $returnData = [];
 
-        return $itemmodels;
+        foreach ($itemModels as $key => $itemModel) {
+            $items = App\Models\Admin\Item::where('ItemModelID', $itemModel->ItemModelID)->where('status', '>', 0)
+            ->where('status', '<', 3)->get();
+            $itemModel->stocksCount = $items->count();
+            array_push($returnData, $itemModel);
+        }
+
+        return $returnData;
+
     }
 
 

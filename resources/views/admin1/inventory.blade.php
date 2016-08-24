@@ -119,7 +119,7 @@
             <td>@{{itemmodel.ItemName}}</td>
             <td>@{{itemmodel.sub_category.category.CategoryName}}</td>
             <td>@{{itemmodel.sub_category.SubCategoryName}}</td>
-            <td>@{{itemmodel.items.length}}</td>
+            <td>@{{itemmodel.stocksCount}}</td>
           </tr>
         </tbody>
         <tfoot>
@@ -280,29 +280,6 @@
   $('.ui.normal.dropdown')
     .dropdown();
 
-    //defect description
-    $(document).ready(function () {
-      $('#test5').click(function () {
-          var $this = $(this);
-          if ($this.is(':checked')) {
-              document.getElementById('defectDesc').style.display = 'block';
-          } else {
-              document.getElementById('defectDesc').style.display = 'none';
-          }
-     });
-    });
-
-      $(document).ready(function () {
-        $('#test6').click(function () {
-            var $this = $(this);
-            if ($this.is(':checked')) {
-                document.getElementById('defectDesc1').style.display = 'block';
-            } else {
-                document.getElementById('defectDesc1').style.display = 'none';
-          }
-        });
-      });
-
   //history
   $(document).ready(function(){
        $('#tableRow').click(function(){
@@ -317,8 +294,6 @@
 
 
 $('.menu .item').tab();
-
-
 
 
 ////////////////////////////////////////////////////////////////////////// 
