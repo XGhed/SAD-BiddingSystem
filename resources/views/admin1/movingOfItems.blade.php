@@ -72,6 +72,7 @@
           </tbody>
         </table>
         <select class="ui dropdown" name="warehouse">
+          <option disabled selected value="">Destination Warehouse</option>
           <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
         </select>
         <button class="ui button" type="submit">Confirm</button>
