@@ -67,18 +67,21 @@
                 <div class="five wide field">
                   <div class="ui sub header">Category</div>
                   <select name="item" id="item" class="ui search selection dropdown" ng-model="category" ng-change="loadSubcat()" REQUIRED>
+                    <option value="" disabled selected>Category</option>
                     <option ng-repeat="category in categories" value="@{{category.CategoryID}}">@{{category.CategoryName}}</option>
                   </select>
                 </div>
                 <div class="five wide field">
                   <div class="ui sub header">Subcategory</div>
                   <select name="item" id="item" class="ui search selection dropdown" ng-model="subCategory" ng-change="loadItems()" REQUIRED>
+                    <option value="" disabled selected>Subcategory</option>
                     <option ng-repeat="subCategory in subCategories" value="@{{subCategory.SubCategoryID}}">@{{subCategory.SubCategoryName}}</option>
                   </select>
                 </div>
                 <div class="five wide required field">
                   <div class="ui sub header">Item</div>
                   <select name="item" id="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loaditemDetails()" REQUIRED>
+                    <option value="" disabled selected>Item</option>
                     <option ng-repeat="item in additems" value="@{{item.ItemModelID}}">@{{item.ItemName}}</option>
                   </select>
                 </div>
@@ -96,16 +99,10 @@
 
                   <div class="field">
                     <div class="ui sub header">Color</div>
-                    <div class="ui fluid search selection dropdown" id="color">
-                      <input name="color" type="hidden" id="color">
-                      <i class="dropdown icon"></i>
-                      <div class="default text">Color</div>
-                      <div class="menu">
-                        @foreach($colors as $key => $color)
-                          <div class="item" data-value="{{$color->ColorName}}">{{$color->ColorName}}</div>
-                        @endforeach
-                      </div>
-                    </div>
+                    <select class="ui fluid search selection dropdown" id="color" name="color" ng-model="color">
+                      <option value="" disabled selected>Color</option>
+                      <option ng-repeat="color in colors" value="@{{color.ColorName}}">@{{color.ColorName}}</option>
+                    </select>
                   </div>
 
                   <div class="field">
@@ -130,62 +127,10 @@
               Edit Item
             </div>
             <div class="content">
-              <form class="ui form" action="/addItemToContainer" method="POST" enctype="multipart/form-data">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="hidden" name="containerID" value="{{$container->ContainerID}}">
-                <div class="ten wide required field">
-                  <div class="ui sub header">Item</div>
-                  <select name="item" id="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loaditemDetails()" REQUIRED>
-                    <option disabled selected>Item</option>
-                    <option ng-repeat="item in additems" value="@{{item.ItemModelID}}">@{{item.ItemName}}</option>
-                  </select>
-                </div>
-
-                   <!--<div class="five wide field">
-                   <div class="ui sub header">Upload photo</div>
-                    <label for="file" class="ui icon button">
-                        <i class="file icon"></i>
-                        Attach photo</label>
-                    <input type="file" id="file" name="add_photo" style="display:none" multiple>
-                  </div> -->
-
-                <div class="equal width fields">
-                  <div class="field">
-                    <div class="ui sub header">size</div>
-                    <input type="text" name="size" placeholder="dimensions" ng-model="size" required>
-                  </div>
-
-                  <div class="field">
-                    <div class="ui sub header">Color</div>
-                    <div class="ui fluid search selection dropdown" id="color2">
-                      <input name="color" type="hidden" id="color" ng-model="color">
-                      <i class="dropdown icon"></i>
-                      <div class="default text">Color</div>
-                      <div class="menu">
-                        @foreach($colors as $key => $color)
-                          <div class="item" data-value="{{$color->ColorName}}">{{$color->ColorName}}</div>
-                        @endforeach
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="inline fields">
-                  <!--<div class="three wide field">
-                    <div class="ui checkbox">
-                      <input type="checkbox" id="test99" name="defect"/>
-                      <label>Defect</label>
-                    </div>
-                  </div> -->
-
-                  <div class="five wide field" style="display: none" id="defectDesc99">
-                    <input id="def" type="text" name="defectDesc" ng-model="defect" placeholder="Description" />
-                  </div>
-                </div>
+              
             </div>
             <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
-              </form>
+              
             </div>
         </div>
           <!-- END edit modal -->
@@ -319,6 +264,14 @@
       $scope.categories = response.data;  
     });
 
+    $http.get('/colors')
+    .then(function(response){
+      $scope.colors = response.data;
+      $timeout(function(){
+        $('.dropdown').dropdown('refresh');alert('sad');
+      }, 1000);
+    });
+
     $scope.editModal = function(index){
       $('#editModal').modal('setting', 'transition', 'vertical flip').modal('show');  
       $scope.itemSelected = $scope.viewitems[index].item_model.ItemModelID;
@@ -352,7 +305,7 @@
       for(var key=0; key<$scope.additems.length; key++){
         if($scope.additems[key].ItemModelID == $scope.itemSelected){
           $scope.size = $scope.additems[key].size;
-          $('#color').dropdown('set selected', $scope.additems[key].color);
+          $('#color').dropdown('set selected', 'Black');
         }
       }
     }
@@ -362,10 +315,10 @@
       .then(function(response){
         if(response.data == 'success'){
           $scope.viewitems.splice(index, 1);
-          alert('success');
+          alert(response.data);
         }
         else {
-          alert('error');
+          alert(response.data);
         }
       })
     }

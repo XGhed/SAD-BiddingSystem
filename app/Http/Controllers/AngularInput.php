@@ -65,9 +65,13 @@ class AngularInput extends Controller
     public function deleteOrderedItem(Request $request){
         $item = App\Models\Admin\Item::find($request->itemID);
 
-        $item->delete();
-
-        return 'success';
+        if($item->image_path == "" && $item->DefectDescription == ""){
+            $item->delete();
+            return 'success';
+        }
+        else {
+            return 'Item already checked!';
+        }
     }
 
     public function moveCheckItem(Request $request){
