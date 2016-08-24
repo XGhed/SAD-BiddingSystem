@@ -57,6 +57,8 @@ Route::post('/addContainer', 'OrderedController@addContainer');
 
 Route::post('/addItemToContainer', 'ContainerController@addItemToContainer');
 
+Route::post('/editItemToContainer', 'ContainerController@editItemToContainer');
+
 Route::post('/addUnexpectedItem', 'ContainerController@addUnexpectedItem');
 
 Route::post('/itemDelivered', 'ItemInboundController@itemDelivered');

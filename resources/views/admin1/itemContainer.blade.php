@@ -93,12 +93,12 @@
 
                 <div class="equal width fields">
                   <div class="field">
-                    <div class="ui sub header">size</div>
+                    <div class="ui sub header">Default Size</div>
                     <input type="text" name="size" placeholder="dimensions" ng-model="size" required>
                   </div>
 
                   <div class="field">
-                    <div class="ui sub header">Color</div>
+                    <div class="ui sub header">Default Color</div>
                     <select class="ui fluid search selection dropdown" id="color" name="color" ng-model="color">
                       <option value="" disabled selected>Color</option>
                       <option ng-repeat="color in colors" value="@{{color.ColorName}}">@{{color.ColorName}}</option>
@@ -127,11 +127,44 @@
               Edit Item
             </div>
             <div class="content">
-              
+              <form class="ui form" action="/editItemToContainer" method="POST">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <input type="hidden" name="containerID" value="{{$container->ContainerID}}">
+              <input type="hidden" name="itemID" value="@{{edit_itemID}}">
+              <div class="required fields">
+                <div class="five wide field">
+                  <div class="ui sub header">Category</div>
+                  @{{edit_category}}
+                </div>
+                <div class="five wide field">
+                  <div class="ui sub header">Subcategory</div>
+                  @{{edit_subcategory}}
+                </div>
+                <div class="five wide required field">
+                  <div class="ui sub header">Item</div>
+                  @{{edit_item}}
+                </div>
+              </div>
+              <div class="ui header">Defaul Values</div>
+              <div class="equal width fields">
+                <div class="field">
+                  <div class="ui sub header">size</div>
+                  <input type="text" name="size" placeholder="dimensions" ng-model="edit_size" id="edit_size" required>
+                </div>
+
+                <div class="field">
+                  <div class="ui sub header">Color</div>
+                  <select class="ui fluid search selection dropdown" id="edit_color" name="color" ng-model="edit_color">
+                    <option value="" disabled selected>Color</option>
+                    <option ng-repeat="color in colors" value="@{{color.ColorName}}">@{{color.ColorName}}</option>
+                  </select>
+                </div>
+              </div>
             </div>
             <div class="actions">
-              
+              <button class="ui button" type="submit">Confirm</button>
             </div>
+            </form>
         </div>
           <!-- END edit modal -->
 
@@ -150,7 +183,7 @@
           <tbody>
             <tr ng-repeat="item in viewitems">
               <td class="collapsing">
-                <div class="editBtn ui vertical animated button" tabindex="1" ng-click="editModal($index)">
+                <div class="editBtn ui vertical animated button" tabindex="1" ng-click="editModal(item)">
                   <div class="hidden content">Edit</div>
                   <div class="visible content">
                     <i class="large edit icon"></i>
@@ -187,57 +220,9 @@
        });
   });
 
-  //edit modal
-  $(document).ready(function(){
-       $('#editBtn').click(function(){
-          $('#editModal').modal('show');    
-       });
-  });
-
   //dropdowns
   $('.ui.normal.dropdown')
     .dropdown();
-
-    //defect description
-    $(document).ready(function () {
-      $('#test5').click(function () {
-          var $this = $(this);
-          if ($this.is(':checked')) {
-              document.getElementById('defectDesc').style.display = 'block';
-          } else {
-              document.getElementById('defectDesc').style.display = 'none';
-          }
-     });
-    });
-
-    $(document).ready(function () {
-      $('#test99').click(function () {
-          var $this = $(this);
-          if ($this.is(':checked')) {
-              document.getElementById('defectDesc99').style.display = 'block';
-          } else {
-              document.getElementById('defectDesc99').style.display = 'none';
-          }
-     });
-    });
-
-      $(document).ready(function () {
-        $('#test6').click(function () {
-            var $this = $(this);
-            if ($this.is(':checked')) {
-                document.getElementById('defectDesc1').style.display = 'block';
-            } else {
-                document.getElementById('defectDesc1').style.display = 'none';
-          }
-        });
-      });
-
-  //history
-  $(document).ready(function(){
-       $('#tableRow').click(function(){
-          $('#history').modal('show');    
-       });
-  });
 
   //exit
   function modalClose() {
@@ -249,7 +234,7 @@
     allowAdditions: true
   });
 
-   $('#color2')
+   $('#edit_color')
   .dropdown({
     allowAdditions: true
   });
@@ -261,23 +246,28 @@
   app.controller('myController', function($scope, $http, $timeout){
     $http.get('/categories')
     .then(function(response){
-      $scope.categories = response.data;  
+      $scope.categories = response.data;
+      $timeout(function(){
+        $('.dropdown').dropdown('refresh');
+      }, 1000);  
     });
 
     $http.get('/colors')
     .then(function(response){
       $scope.colors = response.data;
       $timeout(function(){
-        $('.dropdown').dropdown('refresh');alert('sad');
+        $('.dropdown').dropdown('refresh');
       }, 1000);
     });
 
-    $scope.editModal = function(index){
-      $('#editModal').modal('setting', 'transition', 'vertical flip').modal('show');  
-      $scope.itemSelected = $scope.viewitems[index].item_model.ItemModelID;
-      $scope.size = $scope.viewitems[index].size;
-      $scope.color = $scope.viewitems[index].color;
-      $scope.defect = $scope.viewitems[index].DefectDescription;
+    $scope.editModal = function(item){
+      $('#editModal').modal('setting', 'transition', 'vertical flip').modal('show'); 
+      $scope.edit_itemID = item.ItemID; 
+      $scope.edit_category = item.item_model.sub_category.category.CategoryName;
+      $scope.edit_subcategory = item.item_model.sub_category.SubCategoryName;
+      $scope.edit_item = item.item_model.ItemName;
+      $scope.edit_size = item.size;
+      $('#edit_color').dropdown('set selected', item.color);
     }
 
     $timeout(function(){
@@ -305,7 +295,7 @@
       for(var key=0; key<$scope.additems.length; key++){
         if($scope.additems[key].ItemModelID == $scope.itemSelected){
           $scope.size = $scope.additems[key].size;
-          $('#color').dropdown('set selected', 'Black');
+          $('#color').dropdown('set selected', $scope.additems[key].color);
         }
       }
     }

@@ -53,6 +53,22 @@ class ContainerController extends Controller
         return redirect('/itemContainer?containerID=' . $request->containerID);
     }
 
+    public function editItemToContainer(Request $request){
+        $item = App\Models\Admin\Item::find($request->itemID);
+
+        if($item->image_path == "" && $item->DefectDescription == ""){
+            $item->size = $request->size;
+            $item->color = $request->color;
+            $item->TransacDate = Carbon::now('Asia/Manila');
+
+            $item->save();
+
+            $this->colorDatabase($request->color);
+        }
+
+        return redirect('/itemContainer?containerID=' . $request->containerID);
+    }
+
     public function addUnexpectedItem(Request $request){
         for ($i=0; $i < $request->quantity; $i++) { 
             $container = App\Models\Admin\Container::find($request->containerID);
