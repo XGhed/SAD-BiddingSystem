@@ -55,6 +55,8 @@ Route::post('/loginAccount', 'LoginController@login');
 
 Route::post('/addContainer', 'OrderedController@addContainer');
 
+Route::post('/editContainer', 'OrderedController@editContainer');
+
 Route::post('/addItemToContainer', 'ContainerController@addItemToContainer');
 
 Route::post('/editItemToContainer', 'ContainerController@editItemToContainer');

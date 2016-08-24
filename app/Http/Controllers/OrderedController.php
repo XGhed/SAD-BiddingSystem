@@ -23,4 +23,17 @@ class OrderedController extends Controller
 
         return redirect('orderedItem');
     }
+
+    public function editContainer(Request $request){
+        $container = App\Models\Admin\Container::find($request->containerID);
+        
+        $container->ContainerName = $request->container;
+        $container->Arrival = $request->date . ' ' . $request->time;
+        $container->SupplierID = $request->supplier;
+        $container->WarehouseNo = $request->warehouse;
+
+        $container->save();
+
+        return redirect('orderedItem');
+    }
 }

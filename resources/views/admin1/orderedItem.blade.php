@@ -96,13 +96,6 @@
                 </div>
               </div>
 
-                <!--<div class="field">
-                  <div class="ui sub header">Item Name</div>
-                  <input type="text" placeholder="Item name..." />
-                  <div id="dynamicInput"></div>
-                  <a value="Add" onclick="addInput('dynamicInput');">+ Add more item</a>
-                </div> -->
-
             </div><!--content -->
             <div class="actions">
               <!-- <button class="ui button" onclick="modalClose()">Cancel</button>-->
@@ -112,7 +105,62 @@
         </div>
           <!-- END add modal -->
 
-          <table class="ui celled striped table">
+          <!-- edit modal -->
+        <div class="ui small modal" id="editModal">
+          <i class="close icon"></i>
+            <div class="header">
+              Edit Item
+            </div>
+            <div class="content">
+              <form class="ui form" action="/editContainer" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="containerID" value="@{{edit_containerID}}">
+
+                <div class="equal width fields">
+                  <div class="field">
+                    <div class="ui sub header">Supplier</div>
+                    <select name="supplier" id="edit_supplier" ng-model="edit_supplier" class="ui search selection dropdown" REQUIRED>
+                      <option disabled selected>Supplier</option>
+                      <option ng-repeat="supplier in suppliers" value="@{{supplier.SupplierID}}">@{{supplier.SupplierName}}</option>
+                    </select>
+                  </div>
+
+                  <div class="equal width required fields">
+                    <div class="field">
+                      <div class="ui sub header">Warehouse</div>
+                      <select name="warehouse" id="edit_warehouse" ng-model="edit_warehouse" class="ui search selection dropdown" REQUIRED>
+                        <option disabled selected>Warehouse</option>
+                        <option ng-repeat="warehouse in addwarehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="ui sub header">Container</div>
+                    <input type="text" name="container" id="edit_container" ng-model="edit_container" placeholder="Container..." />
+                  </div>
+                </div>
+
+                <div class="equal width fields">
+                  <div class="field">
+                    <div class="ui sub header">Date</div>
+                    <input type="date" name="date" id="edit_date" ng-model="edit_date" />
+                  </div>
+                  <div class="field">
+                    <div class="ui sub header">Time</div>
+                    <input type="time" name="time" id="edit_time" ng-model="edit_time" />
+                  </div>
+                </div>
+                
+              </div>
+              <div class="actions">
+                <button class="ui button" type="submit">Confirm</button>
+              </div>
+            </form>
+        </div>
+          <!-- END edit modal -->
+
+          <table class="ui celled striped table" datatable="ng">
             <thead>
               <tr>
               <th></th>
@@ -123,7 +171,20 @@
             </tr></thead>
             <tbody>
               <tr ng-repeat="container in containers">
-                <td><a href="/itemContainer?containerID=@{{container.ContainerID}}" class="ui basic blue button"><i class="add square icon"></i> Add item</a></td>
+                <td class="collapsing">
+                  <div class="ui vertical animated button" tabindex="1" ng-click="addItems(container.ContainerID)">
+                    <div class="hidden content">Items</div>
+                    <div class="visible content">
+                      <i class="add square icon"></i>
+                    </div>
+                  </div>
+                  <div class="ui vertical animated button" tabindex="0" ng-click="editModal(container)" style="width:50px">
+                    <div class="hidden content">Edit</div>
+                    <div class="visible content">
+                      <i class="large edit icon"></i>
+                    </div>
+                  </div>
+                </td>
                 <td>@{{container.warehouse.Barangay_Street_Address}}, @{{container.warehouse.city.CityName}}, @{{container.warehouse.city.province.ProvinceName}}</td>
                 <td>@{{container.ContainerName}}</td>
                 <td>@{{container.Arrival}}</td>
@@ -152,20 +213,11 @@
   }
 
   //supplier dropdown
-  $('#supplierSelect')
+  $('ui.dropdown')
   .dropdown();
 
-  //textbox
-  function addInput(divName) {
-      var newDiv = document.createElement('div');
-      var inputHTML = "";
-      inputHTML="<p></p><input type='text' placeholder='Item name...' />";
-      newDiv.innerHTML = inputHTML;
-      document.getElementById(divName).appendChild(newDiv);
-  }
-
-  var app = angular.module('myApp', []);
-  app.controller('myController', function($scope, $http){
+  var app = angular.module('myApp', ['datatables']);
+  app.controller('myController', function($scope, $http, $window){
     $http.get('/suppliers')
     .then(function(response){
       $scope.suppliers = response.data;
@@ -180,6 +232,22 @@
     .then(function(response){
       $scope.addwarehouses = response.data;
     });
+
+    $scope.addItems = function(containerID){
+      $window.open("/itemContainer?containerID=" + containerID);
+    }
+
+    $scope.editModal = function(container){
+      $('#editModal').modal('show');
+      $scope.edit_containerID = container.ContainerID;
+      $('#edit_supplier').val(container.SupplierID);
+      $('#edit_warehouse').val(container.WarehouseNo);
+      $scope.edit_container = container.ContainerName;
+
+      var dateAndTime = container.Arrival.split(" ");
+      $('#edit_date').val(dateAndTime[0]);
+      $('#edit_time').val(dateAndTime[1]);
+    }
   })
 </script>
 @endsection
