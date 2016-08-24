@@ -307,6 +307,8 @@ Route::get('/prepareCheckout', 'PageController@prepareCheckout');
 
 Route::get('/paymentCheckout', 'PageController@paymentCheckout');
 
+Route::get('/expectedItemPercent', 'PageController@expectedItemPercent');
+
 
 //login restriction
 Route::group(['middleware' => 'customer'], function () {

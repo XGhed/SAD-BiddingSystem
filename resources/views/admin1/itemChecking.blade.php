@@ -77,14 +77,14 @@
                     <td>
                       <button ng-click="uncheckModal(uncheck.ItemID)" class="ui basic green button" name="tdID" value="@{{uncheck.ItemID}}">View Item</button>
                     </td>
-                    <td style="cursor: pointer;" ng-click="uncheckModal($index+1)">@{{uncheck.item_model.ItemName}}</td>
-                    <td style="cursor: pointer;" ng-click="uncheckModal($index+1)">@{{uncheck.container.ContainerName}}</td>
+                    <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.item_model.ItemName}}</td>
+                    <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.container.ContainerName}}</td>
                   </tr>
           </tbody>
         </table>
         <div class="ui small modal" id="uncheck">
           <i class="close icon"></i>
-          <h1 class="ui centered header">Add Image and Defect to the item</h1>
+          <h1 class="ui centered header">Add Image and/or Defect to the item</h1>
           <div class="content">
             <form class="ui form" action="/itemCheck" method="POST" enctype="multipart/form-data">
               <input type="hidden" name="itemID" id="itemID">
@@ -105,7 +105,7 @@
               </div>
           </div>
           <div class="actions">
-            <button class="ui basic blue button" type="submit">Confirm</button>
+            <button class="ui basic blue button" name="Uncheck" type="submit">Confirm</button>
           </div>
             </form>
         </div>
@@ -124,11 +124,11 @@
           <tbody>
              <tr ng-repeat="check in itemsChecked">
                     <td>
-                      <button ng-click="checkModal()" class="ui basic green button">View Item</button>
+                      <button ng-click="checkModal(check.ItemID, check.image_path)" class="ui basic green button">View Item</button>
                     </td>
-                    <td style="cursor: pointer;" ng-click="checkModal()">@{{check.item_model.ItemName}}</td>
-                    <td style="cursor: pointer;" ng-click="checkModal()">@{{check.DefectDescription}}</td>
-                    <td style="cursor: pointer;" ng-click="checkModal()">@{{check.container.warehouse.Barangay_Street_Address}},
+                    <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.item_model.ItemName}}</td>
+                    <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.DefectDescription}}</td>
+                    <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.container.warehouse.Barangay_Street_Address}},
                       @{{check.container.warehouse.city.CityName}}, @{{
                       check.container.warehouse.city.province.ProvinceName
                     }}</td>
@@ -139,34 +139,41 @@
 
       <div class="ui small modal" id="check">
           <i class="close icon"></i>
-          <h1 class="ui centered header">Add Image and Defect to the item</h1>
+          <h1 class="ui centered header">Change Image and/or Defect to the item</h1>
           <div class="content">
             <form class="ui form" action="/itemCheck" method="POST" enctype="multipart/form-data">
-              <input type="hidden" name="itemID" id="itemID2">
+              <input type="hidden" name="itemID2" id="itemID2">
               <div class="field">
-                <div class="four wide field">
-                  <div class="field">
-                    <div class="ui sub header">Image</div>
-                    <input type="file" id="add_photo" name="add_photo" REQUIRED>
+              <img id="checkimage" style="width:10cm; height:10cm">
+                <div class="fields">
+                  <div class="three wide field">
+                    <div class="ui checkbox">
+                      <input type="checkbox" id="checkImg" name="img" />
+                      <label>Image</label>
+                    </div>
+                  </div>
+
+                  <div class="five wide field" style="display: none" id="imgcheck">
+                    <input type="file" id="add_photo" name="add_photo">
                   </div>
                 </div>
 
                 <div class="fields">
                   <div class="three wide field">
                     <div class="ui checkbox">
-                      <input type="checkbox" id="test5" name="defect" />
+                      <input type="checkbox" id="checkDef" name="defect" />
                       <label>Defect</label>
                     </div>
                   </div>
 
-                  <div class="five wide field" style="display: none" id="defectDesc">
+                  <div class="five wide field" style="display: none" id="checkdefectDesc">
                     <input id="defectDesc" type="text" name="defectDesc" placeholder="Description" />
                   </div>
                 </div>
               </div>
           </div>
           <div class="actions">
-            <button class="ui basic blue button" type="submit">Confirm</button>
+            <button class="ui basic blue button" name="Check" type="submit">Confirm</button>
           </div>
             </form>
         </div>
@@ -191,13 +198,14 @@ var app = angular.module('myApp', ['datatables']);
     });
 
 
-    $scope.uncheckModal = function(keyID){alert(keyID);
+    $scope.uncheckModal = function(keyID){
       $("#itemID").val(keyID);
       $('#uncheck').modal('show');
     }
 
-    $scope.checkModal = function(keyID){
-      $("#itemID").val(keyID);
+    $scope.checkModal = function(keyID, imgPath){
+      $("#itemID2").val(keyID);
+      document.getElementById('checkimage').src = imgPath;
       $('#check').modal('show');
     }
   });
@@ -205,14 +213,38 @@ var app = angular.module('myApp', ['datatables']);
 $('.menu .item').tab();
 
 
- //defect description
+ //uncheck defect description
     $(document).ready(function () {
-      $('#test5').click(function () {alert('sad');
+      $('#uncheckDef').click(function () {
           var $this = $(this);
           if ($this.is(':checked')) {
-              document.getElementById('defectDesc').style.display = 'block';
+              document.getElementById('uncheckdefectDesc').style.display = 'block';
           } else {
-              document.getElementById('defectDesc').style.display = 'none';
+              document.getElementById('uncheckdefectDesc').style.display = 'none';
+          }
+     });
+    });
+
+  //check defect description
+    $(document).ready(function () {
+      $('#checkDef').click(function () {
+          var $this = $(this);
+          if ($this.is(':checked')) {
+              document.getElementById('checkdefectDesc').style.display = 'block';
+          } else {
+              document.getElementById('checkdefectDesc').style.display = 'none';
+          }
+     });
+    });
+
+  //check img
+    $(document).ready(function () {
+      $('#checkImg').click(function () {
+          var $this = $(this);
+          if ($this.is(':checked')) {
+              document.getElementById('imgcheck').style.display = 'block';
+          } else {
+              document.getElementById('imgcheck').style.display = 'none';
           }
      });
     });

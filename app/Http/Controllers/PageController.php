@@ -227,6 +227,11 @@ class PageController extends Controller
 
        return view('admin1.paymentCheckout');
     }
+
+    public function expectedItemPercent(Request $request){
+
+      return view('admin1.expectedItemPercent');
+    }
 }
 
 

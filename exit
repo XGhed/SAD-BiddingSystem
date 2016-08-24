@@ -1,0 +1,2515 @@
+[33mcommit 0fdc603a212846ee5e811099243e37a113ba860d[m
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Thu Aug 25 05:07:46 2016 +0800
+
+    Revert "fixed ordered items"
+    
+    This reverts commit e358df23998604cdee11d1b734d5aaa4d8ebd9f9.
+
+[33mcommit e23f6c07abcc29a5790cccaf0ed1976769806d6a[m
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Thu Aug 25 05:05:46 2016 +0800
+
+    Revert "fixed itemsChecking at di pa sure yung expectedItemPercent"
+    
+    This reverts commit 6e49934fed68e83864c793003c79b91702b30b1b.
+
+[33mcommit 3a019dbfe32f1532e99c492ab7443c8faf2b26d8[m
+Merge: 6e49934 3227986
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Thu Aug 25 05:02:34 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 6e49934fed68e83864c793003c79b91702b30b1b[m
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Thu Aug 25 05:01:51 2016 +0800
+
+    fixed itemsChecking at di pa sure yung expectedItemPercent
+
+[33mcommit 3227986200d1977b8b75ac75840e1ce81eff0127[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Aug 25 03:13:26 2016 +0800
+
+    text change
+
+[33mcommit fa88a1daec3e1bb9304f50f5f849b9ffc032b0ba[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Aug 25 02:50:47 2016 +0800
+
+    fixed stock count per item in inventory
+
+[33mcommit 52b79f40d2fdc22d404039f9e2fc33f56d46ab60[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Aug 25 02:08:28 2016 +0800
+
+    ordered item fixes, added edit
+
+[33mcommit e358df23998604cdee11d1b734d5aaa4d8ebd9f9[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Aug 24 17:05:30 2016 +0800
+
+    fixed ordered items
+
+[33mcommit 9fc2b3c138ab05c107b26c61d0812ae8cdc999e2[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Aug 24 16:11:24 2016 +0800
+
+    debug...
+
+[33mcommit 09ea1569531344731a66ea4bbcc90cbbac26d3eb[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue Aug 23 23:29:52 2016 +0800
+
+    Prepare/Payment Checkout
+
+[33mcommit 39601b5c73ac79da28d90f721ca1acf8dee6e8c1[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Aug 23 03:15:10 2016 +0800
+
+    reverted to account login middleware
+
+[33mcommit 2b3cb51e1636aefb466680d455b6f098b64f201c[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Aug 23 03:01:33 2016 +0800
+
+    changes to item outbound
+
+[33mcommit 094c602ba9fcf32fb2ef6737d33c255696388ebc[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Aug 23 02:53:35 2016 +0800
+
+    item outbound (pickup)
+
+[33mcommit 74a36f0b9aa1251692dc22b629b8bbcc8bb90c2b[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Aug 23 02:47:59 2016 +0800
+
+    item outbound (delivery)
+
+[33mcommit e563c9d57e44c2993e83158bbf4888ca6fcffb67[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Aug 18 21:13:00 2016 +0800
+
+    auto logout TRYING to fixed
+
+[33mcommit d7931ab0d55c20fb2fc8d1c979ca916f323281f9[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Aug 18 20:26:56 2016 +0800
+
+    auto logout fixed
+
+[33mcommit c2f37acbf92c16f8ab09299a2a064506c0b8d37e[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Aug 18 15:29:42 2016 +0800
+
+    prepare checkout
+
+[33mcommit a1abb0a188b21d487c673e45be5bc25e48e74f22[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Aug 17 18:37:06 2016 +0800
+
+    checkout & payment & deliver
+
+[33mcommit 5f7b773897372fa6c60670addd5c4abbff91c55e[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Aug 16 11:00:52 2016 +0800
+
+    checkout req+approval (delivery) / moving items
+
+[33mcommit 13f100a9f5c2227c25adfa2c31477b34d9997a59[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Aug 15 15:31:33 2016 +0800
+
+    confirm button moved to right
+
+[33mcommit 1845a2681472bbd6afe4f7b65034770fd7d451c8[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Aug 15 15:16:54 2016 +0800
+
+    views/DeliveryItems/ItemOUTbound/DeliveryApproval
+
+[33mcommit 861f53a954c56e6f3b03e21ade78d923436e9207[m
+Merge: d32361f 46da317
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Aug 13 11:21:19 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit d32361fd4e4246724b327e3522b3b00524b5999e[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Aug 13 11:19:24 2016 +0800
+
+    Moving of Items UI added in navigation
+
+[33mcommit 46da317c2f09cb34ef2f1a7f8b06ce6c633db4e5[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Aug 12 00:39:53 2016 +0800
+
+    checkout request (w/o items yet)
+
+[33mcommit 80e8429e42f46737db11cdf372affea99006e9b4[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Aug 10 17:01:25 2016 +0800
+
+    checkout migrations
+
+[33mcommit 3d126149469f45d388ea769c0d55980b78074dfe[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Aug 8 22:20:48 2016 +0800
+
+    required docu in account registration
+
+[33mcommit 9360dc195268806e7d8246861b07e306c71d1a9d[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Aug 8 10:36:59 2016 +0800
+
+    fixed /itemchecking
+
+[33mcommit 609575d5e5982f9c11b94c3cecf2ce040588e9b5[m
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Mon Aug 8 04:35:09 2016 +0800
+
+    revert changes kasi kinopya ko lang yung una
+
+[33mcommit 4c24e9cf83362fd571d16ef903bc1f9b88cd85ae[m
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Mon Aug 8 04:25:37 2016 +0800
+
+    itemChecking
+
+[33mcommit c64d115c4ae88ecfaef19883964181ffe353ae13[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Aug 8 03:45:51 2016 +0800
+
+    bidding restriction (not joined)
+
+[33mcommit 54c748499f4158ded9387aebadf59e966048a47b[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Aug 8 02:44:27 2016 +0800
+
+    fixed event and bidding restrictions
+
+[33mcommit dc38413baa581f63931439aae75794cd0b3091ec[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Aug 8 01:54:11 2016 +0800
+
+    changed status 1 to inbound and 2 to checked
+
+[33mcommit 9f8ff313db13cc4c8ebf0000c0657f8579137c63[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Aug 8 01:22:40 2016 +0800
+
+    edit table contents
+
+[33mcommit 4e73de70fbeb6539ad7673c6f114f3f81601ddb4[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Aug 8 01:14:18 2016 +0800
+
+    C:/Users/Ghed/AppData/Local/GitHub/PortableGit_c7e0cbde92ba565cb218a521411d0e854079a28c/cart now contains your won items
+
+[33mcommit f4742b1209d23c3f91da8d19f19ec1be6edb614d[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Aug 8 01:13:35 2016 +0800
+
+    C:/Users/Ghed/AppData/Local/GitHub/PortableGit_c7e0cbde92ba565cb218a521411d0e854079a28c/cart now contains your won items
+
+[33mcommit fd5476485b3f6aab870729cb5fb7b4eb2983e1a2[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Aug 8 00:25:01 2016 +0800
+
+    added auctionID to winner
+
+[33mcommit 43de7878d80ce7188e80aedd68780a0c826353e8[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Aug 7 23:56:46 2016 +0800
+
+    make a winner
+
+[33mcommit 0304777ac7c2f114145718e2425fd04e56604b2a[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Aug 7 23:52:54 2016 +0800
+
+    restrict bid (if there's a higher bid)
+
+[33mcommit 8a1f333b4110112e770ba07e9c4b70f90bea8312[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Aug 7 23:41:45 2016 +0800
+
+    restrict event (if event has ended)
+
+[33mcommit d2e721a6b588c62a095bb1428457bfc8fbbe603e[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Aug 7 23:28:33 2016 +0800
+
+    unexpected items
+
+[33mcommit 326a90c83e8b89b7b9846ce869d4905c77a9ed73[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Aug 7 21:02:05 2016 +0800
+
+    added category and sub category in /itemContainer
+
+[33mcommit dc1305dcb1b4530e19d84b06505135bf989d259f[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Sat Aug 6 20:33:39 2016 +0800
+
+    comments
+
+[33mcommit 7cda87ef17a0920a5e8ec15607f2f4c036d18655[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Aug 6 11:54:57 2016 +0800
+
+    UI CHANGES
+
+[33mcommit ebac468ef8d5cda623752df34c4b8f953c3d63f8[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Sat Aug 6 00:55:00 2016 +0800
+
+    comment
+
+[33mcommit 0f899bae933723d14dcf40365468260d8f5151b2[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Aug 4 11:43:41 2016 +0800
+
+    ui changes
+
+[33mcommit e81544033c9d394096b3bd2e4ae7a378f132ec51[m
+Merge: 43cc439 74e9396
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Aug 4 10:27:04 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 74e93969cb88cbb329e49ae7e8a727f6a0a2f80b[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Jul 23 13:40:02 2016 +0800
+
+    delivery Status
+
+[33mcommit 43cc43990cae76afe938066319cbbbdee5c45df4[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Jul 23 09:08:53 2016 +0800
+
+    status and table columns in delivery approval
+
+[33mcommit 130e99fa0e8656d7532c4b5873d2a354e14d6acf[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Jul 23 08:50:05 2016 +0800
+
+    bidlist
+
+[33mcommit d7177f0d5a0db5d30f9d1b3727b80af7028ac3f4[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Jul 23 08:15:47 2016 +0800
+
+    bidlist redirect
+
+[33mcommit 826e440c53efed78e3b99b54b55c4ffd380f79b0[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Jul 23 07:59:34 2016 +0800
+
+    itemcontainer edit bug, okay delete
+
+[33mcommit a13734edc24cb3f4226390d7157dc5ab5cae2279[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Jul 23 07:39:17 2016 +0800
+
+    delivery approval. added table column
+
+[33mcommit f2847eb536f5a460ab0fe88807726ba7f5bbeace[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Jul 23 07:33:01 2016 +0800
+
+    account approval
+
+[33mcommit 0da6a1d14b87e80ea4b0be53e89630ec9170d71b[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Jul 23 06:58:09 2016 +0800
+
+    register, removed required
+
+[33mcommit a6868a8bded1274804f365b896872327331d56a6[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Jul 23 06:42:54 2016 +0800
+
+    ung nav ng customer at saka ung edit modal ng add item sa container
+
+[33mcommit 8b4d5292714c79e33c1ce474227d650d1da3158e[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Jul 23 00:01:50 2016 +0800
+
+    C:/Users/Ghed/AppData/Local/GitHub/PortableGit_c7e0cbde92ba565cb218a521411d0e854079a28c/auction highest bid and bid count
+
+[33mcommit d8a090f880d988b73ed187a23b87556fcde84f93[m
+Merge: a080815 de8ac9a
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 22 23:14:12 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit a080815672dd7eb5b9aa8964b7a528ea6702a220[m
+Merge: 14dde54 7504e73
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 22 23:10:13 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit de8ac9abfc1db9cea52784bc2b3dcecdb668f5e5[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Jul 22 23:09:51 2016 +0800
+
+    tab sa bidList
+
+[33mcommit 14dde54999745707ffea217edc1a6559c5deeb57[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 22 23:08:51 2016 +0800
+
+    fixed session missing value causing to auto logout
+
+[33mcommit 7504e73621d45eb759bca006e6ccac2909fa51b4[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Jul 22 23:05:49 2016 +0800
+
+    previous events
+
+[33mcommit 4aa4f07964226cc1d809f17402aec42f9eb9f756[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 22 21:33:29 2016 +0800
+
+    bidlist unfinished
+
+[33mcommit cb0f7e66494271f170ebbe08835c96104bedfefd[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 22 13:48:11 2016 +0800
+
+    C:/Users/Ghed/AppData/Local/GitHub/PortableGit_c7e0cbde92ba565cb218a521411d0e854079a28c/auction bidhistory
+
+[33mcommit 495c9010861ec43a6a59196ed95bf5eb1dc08b9d[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 22 13:02:04 2016 +0800
+
+    C:/Users/Ghed/AppData/Local/GitHub/PortableGit_c7e0cbde92ba565cb218a521411d0e854079a28c/auction output highest bid and input bid
+
+[33mcommit b1e30c4c5b7bc5f7e34879ef1832e22a25559594[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 22 11:56:45 2016 +0800
+
+    bug {
+
+[33mcommit 451612a8aff2f26d01466971e184da3192551fa3[m
+Merge: bf0f690 2f680ae
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 22 11:55:25 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit bf0f690643dcb887640daddeae58ab09cdb719c7[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 22 11:54:32 2016 +0800
+
+    migration
+
+[33mcommit 2f680ae1462f813711541fb9a3a44e0897c76c2d[m
+Author: clarise <rclarise26@yahoo.com>
+Date:   Fri Jul 22 11:45:09 2016 +0800
+
+    Sa discount design
+
+[33mcommit 4843e9d7cffcf571aa107d26949327071313cba9[m
+Merge: 55a157c 086e696
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 22 02:17:54 2016 +0800
+
+    conflict
+
+[33mcommit 55a157c3fb10773ed864775cb871f00ca4879a16[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 22 02:14:40 2016 +0800
+
+    C:/Users/Ghed/AppData/Local/GitHub/PortableGit_c7e0cbde92ba565cb218a521411d0e854079a28c/items fixed weird missing session
+
+[33mcommit 086e6962c57aacd03d4576aac0a030b8ce15208b[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Jul 22 01:22:00 2016 +0800
+
+    views
+
+[33mcommit 14210895c1ef064ae481d146a61e52b9db0e634e[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Jul 22 00:03:19 2016 +0800
+
+    button
+
+[33mcommit 226e6a53a714356fee36e1dc8b66114e258e4435[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 23:55:14 2016 +0800
+
+    items
+
+[33mcommit 6a42d6bf62bfb7c081c870d51971a52f0e8a5b46[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 22:13:27 2016 +0800
+
+    bug fix (items dropdown in add items to events)
+
+[33mcommit fb2f6e9f488f5d22cac2e592775889201b30c559[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 21:26:27 2016 +0800
+
+    lupet
+
+[33mcommit 11e850ad6bc01be0342b6ca2096847e063975e4e[m
+Merge: 7e9070c 9ab4743
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 21:14:03 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 7e9070cf3939c804c01aa937d663bcc93dc00af2[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 21:11:50 2016 +0800
+
+    eventslist fixed
+
+[33mcommit 9ab4743408fb166ab2a4b4bbfcb6720dbec6d256[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 21:08:31 2016 +0800
+
+    mga pinabago ni sir
+
+[33mcommit 18d6358a74b942734f09e262a145c43ba562be56[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 20:09:52 2016 +0800
+
+    shitment
+
+[33mcommit ada595fa18a6d310d8083d9e807f75e7a5d249e1[m
+Merge: 9478555 ac5353f
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 19:48:19 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 94785553325dba7a6d0bec5c849a2a66d4570551[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 19:47:33 2016 +0800
+
+    shitment removed complete list
+
+[33mcommit ac5353f7a56e1ee456871f9b24037d1de4bb7e0a[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 19:36:28 2016 +0800
+
+    shitment
+
+[33mcommit 6a05e86cd8dce2f5c02f05c29458e09172d7d14a[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 19:13:29 2016 +0800
+
+    shitment
+
+[33mcommit ec420547acad6b4f1f15779eb5645074c077ad98[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 18:37:30 2016 +0800
+
+    shitment tab 1 done
+
+[33mcommit e72982cb353884cb299408233818c9e7f8980238[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 18:26:02 2016 +0800
+
+    inventory, added date acquired
+
+[33mcommit 9cbfb0ae9c740d4a58a0fe576cd660586c1d122d[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 18:08:14 2016 +0800
+
+    table
+
+[33mcommit 549ee02339f26d926ce6f25689b3a776846acee5[m
+Merge: a15e657 705ce70
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 18:03:24 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit a15e6575211d404579537ef140a0c13937b47ad4[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 17:58:12 2016 +0800
+
+    inventory table bug
+
+[33mcommit 705ce70b8dcb0709447d8800bef0242717b4ae14[m
+Merge: ae7e5ae 914f10c
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 17:32:33 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit ae7e5ae4066b729e55e6538dcb8ab0a097b83836[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 17:32:05 2016 +0800
+
+    asdf
+
+[33mcommit 914f10c1c5da124208818054a5b40245da7dac61[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 17:30:21 2016 +0800
+
+    item transac reworked (defaults and color)
+
+[33mcommit efa803937a7e511a2b587660011a9833eba7a8a5[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 17:05:23 2016 +0800
+
+    item mainte color dropdown
+
+[33mcommit 125bae6a9f7a3489a1c32396b63c0e80a44ad736[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 16:12:08 2016 +0800
+
+    dropdown select
+
+[33mcommit e1c9a4048fb052545077f31d365e3140a9933d31[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 14:36:27 2016 +0800
+
+    migrations fixed
+
+[33mcommit d82f77dc97f40f06a7a72944a091614834f976cc[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 14:10:13 2016 +0800
+
+    event item views + migrations(color and winners)
+
+[33mcommit 3b01616d173daac17b56da173dc75e57fff57b30[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 11:06:31 2016 +0800
+
+    upcomming and ongoing events
+
+[33mcommit d8308cf4f6693c9ca026e30a62353df2c2718892[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 01:53:20 2016 +0800
+
+    routes
+
+[33mcommit 782ffb221fa68630b373a5bef2eaa6fa8dd01c7e[m
+Merge: 94abe93 bd1df12
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 01:41:06 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 94abe934246e6762433d7eed830dd7971dc613ee[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 21 01:37:41 2016 +0800
+
+    routes
+
+[33mcommit bd1df12da36a4417e12267127078bd03f8cbf317[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 21 01:01:46 2016 +0800
+
+    migrations
+
+[33mcommit 3cd59e1fe26870d062e69c26f42cf05c6207e796[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Jul 20 21:14:53 2016 +0800
+
+    shipment
+
+[33mcommit fa94576d576c4960c7ad296a83fc7cf70c3cd723[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Jul 20 19:14:22 2016 +0800
+
+    add items to event done
+
+[33mcommit 5d1c22c50ac24423bdb8e022bd43bace7b181c70[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Jul 20 18:35:52 2016 +0800
+
+    add item to events really fucking fixed
+
+[33mcommit 10272e7c3c3d320d4aa98ae5bd08b7dbe6b1539c[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Jul 20 18:16:33 2016 +0800
+
+    modal na lang ulit. huhu
+
+[33mcommit 83d0ba5794953e96b7d4c4772382b23e641929ad[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Jul 20 17:59:05 2016 +0800
+
+    asdf
+
+[33mcommit ccbf3ff9f5ece7570d36dcca03899bb8786934bd[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Jul 20 17:46:29 2016 +0800
+
+    add item to event bug fucking fixed
+
+[33mcommit 848275b6798867791b45673ac0dc7b9f8f25004c[m
+Merge: fe0ced6 8ac56e7
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Jul 20 17:26:23 2016 +0800
+
+    merge
+
+[33mcommit fe0ced670c0ef64279ecf82854b26fc34574ce1b[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Jul 20 17:24:51 2016 +0800
+
+    debug additemto event
+
+[33mcommit 8ac56e74b73499307670b5f868392080444811c4[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Jul 20 17:11:27 2016 +0800
+
+    asd
+
+[33mcommit d9245692823c22438de6a60897df4d213f21fa8a[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Jul 20 16:21:05 2016 +0800
+
+    asdf
+
+[33mcommit 17c6e256272545028307877468d09771d66c0ae5[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Jul 20 16:11:54 2016 +0800
+
+    events
+
+[33mcommit ce05e88fcdb57b31b9abe6f3f66570fe536f031e[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Jul 20 06:37:00 2016 +0800
+
+    asdf
+
+[33mcommit 4803c78a2785e810901c84d5efbe9a4978227092[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Jul 19 02:06:14 2016 +0800
+
+    conflict angular and semantic
+
+[33mcommit 22431ded56f773970315f9152cbc8402a0ab7dd8[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Jul 19 01:17:33 2016 +0800
+
+    item log for inbound item fixed time
+
+[33mcommit 47dfdb4d9c7fe83c3f5b5f568d32ee8b90c34c9b[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Jul 18 23:30:36 2016 +0800
+
+    auto login + redirect
+
+[33mcommit 4dc360c5b041ec7bb0e98fb1f922407ce6676412[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Jul 18 23:19:42 2016 +0800
+
+    add items to event fucking done
+
+[33mcommit c3c91f61b20c70718a3729c5757a295248ca0bd7[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Jul 18 18:03:02 2016 +0800
+
+    asdf
+
+[33mcommit b40406c7ea1f8be8daa310caf3bfe01d27845871[m
+Merge: fd78d25 f635f36
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Jul 18 17:29:35 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit f635f360fad89bbe2111693ceaa3f523d38461fc[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Jul 18 17:24:16 2016 +0800
+
+    bid event
+
+[33mcommit fd78d25f06f6e785f8f21732cd5725c203bfca59[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Jul 17 14:49:31 2016 +0800
+
+    asd
+
+[33mcommit c01342f9feda1522147300e2aba08f5d28bcb384[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Jul 17 13:31:19 2016 +0800
+
+    sad
+
+[33mcommit a91923c251ecda0f63c89c418c57417c6c9eeeee[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Jul 17 05:53:38 2016 +0800
+
+    asdfasdf
+
+[33mcommit 3809871d399212f7333a9c1d67c386c0bca6293d[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Jul 17 05:28:58 2016 +0800
+
+    asdf
+
+[33mcommit ab33a702b38e92501e3259252463c9e91d87e018[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Jul 12 23:03:43 2016 +0800
+
+    dispose approval
+
+[33mcommit d7baa46de41bcc8dcac060900cfcf85d32a44e8f[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Jul 12 04:19:39 2016 +0800
+
+    added dispose request and cancellation of dispose request to inventory
+
+[33mcommit 0ea33b1127baefa67a660c92b3d298e1dceac091[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Jul 11 15:28:06 2016 +0800
+
+    inventory
+
+[33mcommit 92e3c0078cb9c04d51b487f04a2cf6d88441a42b[m
+Merge: dbc1b6b 7a7f7ed
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Jul 11 13:35:04 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit dbc1b6b7db52109bacd5fc9fd2bd072419835ce5[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Jul 11 13:34:52 2016 +0800
+
+    moving request
+
+[33mcommit 7a7f7edf732f1bc4ad80d69e83f33252329edf8e[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Jul 11 13:19:08 2016 +0800
+
+    approval
+
+[33mcommit 3df60263432aea995c648ecd5d2fcf744e910062[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Jul 11 12:55:03 2016 +0800
+
+    movingitems
+
+[33mcommit 014a5f4b323b8c9abd531da7a14a790907db1797[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Jul 10 19:24:11 2016 +0800
+
+    added item history
+
+[33mcommit 49d81644e803f94a07deda883f4804291675997d[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Jul 10 13:58:07 2016 +0800
+
+    inventory
+
+[33mcommit 83836c2ac2d934de3f99d3be9577f7c479910144[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Jul 10 02:07:58 2016 +0800
+
+    added datatables, inventory view (tentative)
+
+[33mcommit 80063f32842eea5951300371d3f9ffeb373fc210[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Jul 9 19:57:28 2016 +0800
+
+    itemDelivered done
+
+[33mcommit 3aec8596f646f95170b51769ae6b63433bdec591[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Jul 9 18:33:04 2016 +0800
+
+    checkbox bugged
+
+[33mcommit 737b5fc0d80591a1537726f1852551b32697f20d[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Jul 9 10:59:29 2016 +0800
+
+    iteminbound
+
+[33mcommit 02e99a2ff7d2e978a456942f29ec340399e0da54[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Jul 9 03:38:37 2016 +0800
+
+    container and container items (itemOrdered)
+
+[33mcommit 842cca779047b67b0aaf40ee06dddf865bdc5f82[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 8 23:30:25 2016 +0800
+
+    container
+
+[33mcommit e2de454b6b97348a5ecc1c454b69eedd3c4e664e[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 8 21:20:54 2016 +0800
+
+    added migrations for new tables (consultation)
+
+[33mcommit 54570f7a9947b4135f44817d7cd8da5f587e2eba[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Jul 8 21:12:42 2016 +0800
+
+    shipment
+
+[33mcommit f0652aca64e0372c3b362a9077d31b0481066caa[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 7 11:33:51 2016 +0800
+
+    account approval
+
+[33mcommit 9756ecf3d23298bcbf81b6cd7c66a5ff56211468[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 7 10:38:32 2016 +0800
+
+    ordereditem v5
+
+[33mcommit 91dd2b1ff612293a8d5e5223f359b690cf086772[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 7 10:22:24 2016 +0800
+
+    ordereditem v4
+
+[33mcommit 80ff93bb693e9684453b8a86f61c48ed0f546265[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 7 02:04:11 2016 +0800
+
+    inv debug
+
+[33mcommit 0207945f4bc3cb8fe4259e7e320a3e1002e50b1d[m
+Merge: 284105a f5be575
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 7 01:42:12 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 284105a4ba110e955acaa409ee4f3ce9d139b1fb[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 7 01:39:33 2016 +0800
+
+    ordered item. v3
+
+[33mcommit f5be5756326e1736c5110a683c7a6ff481f90c63[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jul 7 00:58:45 2016 +0800
+
+    logout
+
+[33mcommit c46e50ea27bf66201fc11a679c044d95a687e046[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jul 7 00:34:31 2016 +0800
+
+    ordered item. v2
+
+[33mcommit 378ccf629939db77b19385e979d728f7ba42ffa5[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Jul 6 23:59:05 2016 +0800
+
+    ordered item. v1
+
+[33mcommit 59c0dc4ff8b9e93d2efed8d4e91bf955a2d6253b[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Jul 6 19:39:57 2016 +0800
+
+    inventory.v1
+
+[33mcommit d88abe62155e9b4798fc0579f2b8700d6c5f214c[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Jul 6 19:17:45 2016 +0800
+
+    inventory
+
+[33mcommit 2a00e4665c9bb70c12079bbc08bb896d6b1b425f[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Jul 6 00:11:20 2016 +0800
+
+    reworked fucking register and login fucking auth
+
+[33mcommit df3b9b2c2d35fa7e7c0e4c3b4385c6b208504880[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Jul 3 03:02:06 2016 +0800
+
+    sample restriction on /customer/cart (must be logged in)
+
+[33mcommit 053b01398569b1417e2e7d2738875d52a28a052e[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Jul 3 02:22:59 2016 +0800
+
+    login working
+
+[33mcommit 65aa58e3aaf90a0b3d0a3ba72e2b985ebf1d333b[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Jul 2 23:00:46 2016 +0800
+
+    registration with upload files
+
+[33mcommit 0906d34924a366d412a5d9fd08ae41bda8dee545[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Jul 2 02:15:54 2016 +0800
+
+    registration okay, i'll add upload files tom
+
+[33mcommit 17917ac95e4d3df739aa2b946708a263557ca4ad[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Jul 1 23:16:48 2016 +0800
+
+    account migration
+
+[33mcommit 6a0b57f53392f9a934e3f7a223e4b51572097a9a[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jun 30 05:26:16 2016 +0800
+
+    delete na lang
+
+[33mcommit 12dca1ae2bf07c0d1eea22b7da1f6a111f37ef61[m
+Merge: 24bd709 ced5311
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jun 30 05:19:46 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 24bd709425153721939cefab001e65cf69a8254f[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jun 30 05:19:20 2016 +0800
+
+    accounttype new view, ung sa pagkuha na lang ng value sa edit at delete
+
+[33mcommit ced531190ddd4137b0a1385553fb806313798c5c[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jun 30 03:23:23 2016 +0800
+
+    warehpuse new view
+
+[33mcommit 86cd65a5c2e0b8ecc4df484f076bea2f51d41d00[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jun 30 02:49:07 2016 +0800
+
+    discount new view
+
+[33mcommit 29abe573f3f0baeae99469d33589ef5068b4c21f[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Jun 30 02:12:49 2016 +0800
+
+    supplier edit bug fix
+
+[33mcommit 856500c4644e8817a786c218dee40c19d149475f[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Jun 29 17:33:32 2016 +0800
+
+    item view
+
+[33mcommit 901d14e708d75317814a2d339a24590ad7d59091[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Jun 29 05:31:51 2016 +0800
+
+    item mainte new view
+
+[33mcommit 1291956cff0b915a3c4eef5181598b4d813d5ea8[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Jun 29 04:22:51 2016 +0800
+
+    category new mainte
+
+[33mcommit 84e45002bb1bd848e223886033a95dc2e8fe25c3[m
+Merge: b2c4d9d 37fc782
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Jun 29 02:51:51 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit b2c4d9d4269c6daaee4646d8dba77146799c46c9[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Jun 29 00:17:09 2016 +0800
+
+    new supplier mainte try
+
+[33mcommit 37fc7820a67e551e8030f1112caac312877d2779[m
+Merge: 226b24e 31b6f90
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Mon Jun 27 22:28:59 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 226b24e139115be1387008fe363bb900d51a9235[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Mon Jun 27 22:09:59 2016 +0800
+
+    migration
+
+[33mcommit 31b6f90548dd02c1d93c9d69cd393512a10750aa[m
+Merge: dedbc0f b5b77e7
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Jun 27 01:08:17 2016 +0800
+
+    conflict
+
+[33mcommit dedbc0f8554735c7eaddbd7f1593608184efcf51[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Jun 27 01:05:36 2016 +0800
+
+    conflict
+
+[33mcommit b5b77e7fc9ddc20f402aed0cbd321d55ec08d439[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Jun 20 13:57:55 2016 +0800
+
+    new views
+
+[33mcommit fb19845f554619dc1b90a5554062b4665043de8e[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Jun 3 20:21:51 2016 +0800
+
+    transac
+
+[33mcommit 4d2871ca9b0ea2bd3ce09b0604f10732df4bb826[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Jun 2 19:53:51 2016 +0800
+
+    latest views
+
+[33mcommit f86c915a5413f10b0036b11c8acb514a39b53695[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon May 30 13:26:45 2016 +0800
+
+    bago. teka
+
+[33mcommit 1c854e69d2ee65375ab50038a88324b2e5dcc0ee[m
+Author: clarise <rclarise26@yahoo.com>
+Date:   Wed May 25 21:14:50 2016 +0800
+
+    defense day
+
+[33mcommit 949e1ebf947eb4962905ae8442527db1b1b82993[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed May 18 15:28:01 2016 +0800
+
+    items migrate
+
+[33mcommit 90f3edcd9a0ce72aedeadb6c860872f4f0e751a5[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed May 18 12:36:15 2016 +0800
+
+    shitment done
+
+[33mcommit edc0fe0b5ae4f8d680a0ce4b56658b5d4c11d032[m
+Merge: 717decc 6739158
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed May 18 11:18:53 2016 +0800
+
+    conflict
+
+[33mcommit 6739158ce1da4859df852ee95007d0b4485d8fbb[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed May 18 11:14:41 2016 +0800
+
+    tables
+
+[33mcommit 717deccefa3e299737f57f5410992bcc7ff09040[m
+Merge: 2d381d9 3e3c7f9
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed May 18 11:02:39 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 2d381d94a9d213dad1e44be9175013ac350fd002[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed May 18 11:00:38 2016 +0800
+
+    a
+
+[33mcommit 3e3c7f941ba4387c6cbb0f1150491f56e9c798e3[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed May 18 10:53:48 2016 +0800
+
+    asdf
+
+[33mcommit 7f5ae09ae3f5e3ed8a3a3ecb466aae7ebbbffa07[m
+Merge: f935497 025b4c7
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed May 18 10:38:35 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit f93549775018a197e758b7a8e5b42871f3dfa437[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed May 18 10:38:27 2016 +0800
+
+    courier company
+
+[33mcommit 025b4c773b0013dbf0f80bf6aeafa8ea5889c689[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed May 18 10:22:41 2016 +0800
+
+    asdf
+
+[33mcommit 9688cf79994e93d55369776ca6e0e340bcd4851c[m
+Merge: 9dd96bd c5ef94b
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Wed May 18 02:54:41 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 9dd96bd661f79ec41de7df3c20660ad140e5d56c[m
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Wed May 18 02:51:43 2016 +0800
+
+    Di pa tapos
+
+[33mcommit c5ef94ba3da6b7d0bc8691774c953da694e16cf8[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed May 18 01:21:42 2016 +0800
+
+    ewan
+
+[33mcommit a670a1d794280fd7088589c6f392204abc96b5df[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed May 18 00:31:32 2016 +0800
+
+     nigguh
+
+[33mcommit d9a3175dad77e3c19d28b915eb68ebc899afe162[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed May 18 00:17:27 2016 +0800
+
+    hala
+
+[33mcommit a21165b17593765bd6e666c1a082c29a3d1f949a[m
+Merge: f1f2ffa 91c75c4
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 17 23:41:42 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit f1f2ffa89f4df0ff150c5c05323e70bfc47988d7[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 17 23:41:04 2016 +0800
+
+    sa ano. kwan
+
+[33mcommit 91c75c443f98acc633f5959776eb1b48027ff8c1[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue May 17 23:38:12 2016 +0800
+
+    rewards
+
+[33mcommit c65894bf172d217b3df585abc2736b5ee8e2bfb6[m
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Tue May 17 23:07:51 2016 +0800
+
+    SQL error
+    
+    Yung City ID na lang
+
+[33mcommit 389a403257593df8eef8c4265738e1f5acf4498f[m
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Tue May 17 22:38:20 2016 +0800
+
+    Register
+    
+    Yung DTI hindi makita
+
+[33mcommit eb2876fb472d2f8e5406762a648ea52b5c17d3ef[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 17 22:13:20 2016 +0800
+
+    tanginamo <div> hahaha.
+
+[33mcommit aacbf280daf2f9cef82ce659a49cb20c4a48d29e[m
+Merge: 9052055 a829a80
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue May 17 21:45:54 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 9052055d6ac4941e75d766a438efebcd04d34cae[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue May 17 21:44:27 2016 +0800
+
+    disc mainte
+
+[33mcommit a829a8014827bef9ffb2c17a5a24b8658e81a0c7[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Tue May 17 21:02:03 2016 +0800
+
+    migration
+
+[33mcommit 8f4976a92fa2b8261cbc72b8d0a1d9005d1b7158[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Tue May 17 20:56:19 2016 +0800
+
+    migration
+
+[33mcommit cc24efc06a740388c4c06da3a4ece0539e8ee67f[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 17 20:30:12 2016 +0800
+
+    req points
+
+[33mcommit ec077126c5833c054b8bbe1af9331aad95d5d93c[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 17 20:22:45 2016 +0800
+
+    discounts
+
+[33mcommit 08d03d718e1c4f570a077df8457e5fc00811ffe7[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 17 19:41:57 2016 +0800
+
+    account type may inayos lang
+
+[33mcommit 8e5e84803eb316e49cc3b78b0ae0b4e306739666[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 17 19:32:48 2016 +0800
+
+    C:/Users/Lowlight/AppData/Local/GitHub/PortableGit_25d850739bc178b2eb13c3e2a9faafea2f9143c0/register v2
+
+[33mcommit 97ba96d78594c454d9eba5e81adb88eb78644ce0[m
+Merge: 7bdb82a 557c4f3
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 17 19:22:17 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 7bdb82acbe7509b294f70b2ff553fd98d17eed2a[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 17 19:21:38 2016 +0800
+
+    C:/Users/Lowlight/AppData/Local/GitHub/PortableGit_25d850739bc178b2eb13c3e2a9faafea2f9143c0/register
+
+[33mcommit 557c4f39409ec0f6e9f7d279a1ae2c4f16d11065[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue May 17 19:10:34 2016 +0800
+
+    account type mainte okay, removed points on migrate
+
+[33mcommit ec86396cb6d16a9cabfb81bc2c22c5e20de686f8[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue May 17 18:49:17 2016 +0800
+
+    inventory, modified inventory migrate
+
+[33mcommit 24a8c1f7d5d57404ff014cab8e8177298a66034b[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue May 17 14:56:26 2016 +0800
+
+    removed image from item mainte and moved to inventory
+
+[33mcommit b13759f766beb3525617ce3ffc36008e32e016b2[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Tue May 17 10:23:03 2016 +0800
+
+    migration
+
+[33mcommit 871eca9ce1b3079dad583268dbe7ddc58543a235[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Tue May 17 06:13:00 2016 +0800
+
+    migration
+
+[33mcommit 5e1bb12aefca7c47b161c8db2b3b53f60377ded0[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Tue May 17 01:14:31 2016 +0800
+
+    migration
+
+[33mcommit b7e9c5486fb4c3219a7a20baa30b2d5c470587b8[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun May 15 00:59:25 2016 +0800
+
+    renamed item and itemmodel tables
+
+[33mcommit 20769601c12a14b9c390dade5079e43d6c8682d1[m
+Merge: 92cb982 027f88c
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat May 14 23:37:43 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 92cb9825c58ef5e27e6fcf7f5c58d001c4162e2b[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat May 14 23:37:13 2016 +0800
+
+    sana okay na.
+
+[33mcommit 027f88c164f34f2b532403499191071a038d4f0a[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat May 14 23:25:57 2016 +0800
+
+    removed price in itemTransac
+
+[33mcommit 383e1e5011f5806a193761105cee1b764bb6d833[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat May 14 18:41:49 2016 +0800
+
+    item mainte fixes done/fully working
+
+[33mcommit 4d234d93fe0555092b2bdb6dc10a8414962d29bb[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat May 14 18:14:02 2016 +0800
+
+    okay front end of items/img bug fixed
+
+[33mcommit 960392d3bdb919f4e09948acede8c668ab2f8feb[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat May 14 17:30:06 2016 +0800
+
+    fixed edit modal of items
+
+[33mcommit a6c640c8789b74c80d9aa471003418c3f5ad2097[m
+Merge: 0a7e36b 5758222
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Sat May 14 13:18:30 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem into XGhed/master
+
+[33mcommit 5758222a3001ce2dcb76076ffa0198592c12f826[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat May 14 07:39:34 2016 +0800
+
+    bug not fixed/okay na ung edit kaso hindi radio
+
+[33mcommit 10ef94a307f11c6f9f3a2c4ee806d8170af95d85[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat May 14 02:57:58 2016 +0800
+
+    itemMainte img show bugs add modal
+
+[33mcommit 1d96beb307293e811261ec3b20ae430891f69f0a[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat May 14 02:42:54 2016 +0800
+
+    removed img type / added itemMainte fields backend
+
+[33mcommit 06939658621c3ce91a0e71de59a629fad4d6d457[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat May 14 01:53:12 2016 +0800
+
+    img type
+
+[33mcommit 0a7e36b9b692829cd234d0af2cf286803798428b[m
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Fri May 13 15:50:54 2016 +0800
+
+    Codes
+    
+    Hindi ko alam kung saan ilalagay yung php codes pero nasa views siya.
+
+[33mcommit 95cef23bb030ec9af8865a84ce046b40af9d6f46[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Fri May 13 13:22:49 2016 +0800
+
+    migration
+
+[33mcommit 3714c1305f3a81bed03710bb7b8e49f1c0a85e6e[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Thu May 12 18:55:08 2016 +0800
+
+    migration
+
+[33mcommit e6e53d1f87e1eaf0641a529d8167426c4786ca31[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Thu May 12 17:57:13 2016 +0800
+
+    migration
+
+[33mcommit aa6a15d30042f5cb18825e008a3910ac450ece9f[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu May 12 08:18:27 2016 +0800
+
+    tapos na(y)
+
+[33mcommit f337f32947b6a0cba06d4ef3a0e475b784e70be9[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu May 12 05:43:05 2016 +0800
+
+    last na to. haha.
+
+[33mcommit baf96aed54a739359fb52da5a145f40ffd5145d4[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu May 12 05:23:49 2016 +0800
+
+    color/size/defectDesc
+
+[33mcommit 9e8ab2c8cf5a23793b1bf9a7a0b538f553239aaa[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu May 12 05:08:49 2016 +0800
+
+    color/size
+
+[33mcommit 4aa953fb119dc54320445d7da7e0b2ed86031f29[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Thu May 12 03:26:33 2016 +0800
+
+    migration
+
+[33mcommit afcb0ebc18b74f422538440fe2a37e133a8207f1[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Thu May 12 00:45:39 2016 +0800
+
+    migration
+
+[33mcommit 617a59311f575df39cc3d30d9e297d8b12a7af2a[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed May 11 20:31:54 2016 +0800
+
+    categories and subcats on homepage
+
+[33mcommit f0673b84fc94aee62cbe2ed3708cda0a0315b643[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed May 11 14:05:04 2016 +0800
+
+    models
+
+[33mcommit de81a1e40899ae0f18458ee1356bfc3d2ea83e44[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue May 10 23:42:30 2016 +0800
+
+    inayos yung model folder
+
+[33mcommit 96dfa25d1a8fb80c884ac4b6fcc43c8e8dc75660[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 10 22:16:50 2016 +0800
+
+    image
+
+[33mcommit 3492d3267f28277d8a3f3bccbd9af5d07890ad12[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 10 21:37:13 2016 +0800
+
+    C:/Users/Lowlight/AppData/Local/GitHub/PortableGit_25d850739bc178b2eb13c3e2a9faafea2f9143c0/admin
+
+[33mcommit 6a038f9936cab0846f522c29f96787d28f2c0182[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue May 10 19:35:04 2016 +0800
+
+    warehouse done
+
+[33mcommit 911f6b52cea6da6a30a1356d3a25576cb4d17146[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 10 12:17:11 2016 +0800
+
+    wala ng regions
+
+[33mcommit 6b10f6f0d6747263bb1deb3cda9598936a6cd647[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 10 11:42:38 2016 +0800
+
+    checkout
+
+[33mcommit 0a9701e7ad960bc6a55a428f800bbc1b2aa92070[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon May 9 17:24:05 2016 +0800
+
+    register
+
+[33mcommit 247feca6677f7251ef994a4674e1b90a400dfba2[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon May 9 11:28:11 2016 +0800
+
+    warehouse
+
+[33mcommit fe03a0877a65e7b3b5e7367c438f9ad4241226c0[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun May 8 23:29:51 2016 +0800
+
+    wala pang edit yung warehouse
+
+[33mcommit 4553899b687e737282b9444a44ce26ed65cbaa44[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun May 8 20:17:13 2016 +0800
+
+    status nalang kulang (warehouse)
+
+[33mcommit e73c24d9b146a1031d8a8d3b17520dd7711f704a[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun May 8 15:29:45 2016 +0800
+
+    route warehouse
+
+[33mcommit a443c81ead2273e0b2c1d1bdae8a327c88167e4e[m
+Author: ewankobkt <angelo.alimboyao@gmail.com>
+Date:   Sat May 7 22:31:47 2016 +0800
+
+    Warehouse
+    
+    May bug pa to
+
+[33mcommit 770e5fbe18460a74a6f7e06c4f747ee21f4ac7d5[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri May 6 21:07:08 2016 +0800
+
+    shipment delete
+
+[33mcommit 23c0e4742949f8d74b0befe5e068421e33460521[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Thu May 5 23:03:14 2016 +0800
+
+    migration
+
+[33mcommit b746081b8cbdb3c706c4d76f22cdaf0592850dd6[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Thu May 5 19:51:16 2016 +0800
+
+    migration
+
+[33mcommit 9c4b5116be2933520fe74c6cd34e565f96ecc242[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu May 5 18:19:43 2016 +0800
+
+    shitment delete sql error
+
+[33mcommit 1f88b40e530cacfb69e1bcf8a9f3f5b74e6a30cc[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu May 5 17:54:32 2016 +0800
+
+    shitment edit done
+
+[33mcommit 640a709f246c9111f6aac86c3adc89dd0630042c[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu May 5 10:13:08 2016 +0800
+
+    okay na
+
+[33mcommit 3fbf51f72d3bd3a252b9ab8cac52709dc804bf47[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu May 5 01:14:16 2016 +0800
+
+    shitment edit checked bugged
+
+[33mcommit c5c82db21a61cf93eaa0484c8a9d3258fb929db9[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 3 23:02:19 2016 +0800
+
+    edit
+
+[33mcommit c9b9b325fe126c0cfcbfc7b1202ad0e931208c85[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 3 22:51:52 2016 +0800
+
+    shipmentAdd
+
+[33mcommit 9615e594c04577cceadaba39e9074368c72b1c15[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue May 3 22:30:05 2016 +0800
+
+    inayos controller
+
+[33mcommit 876561bc936f539f7f5b8a56f4919d201a7cf940[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue May 3 22:10:37 2016 +0800
+
+    shipmentAdd
+
+[33mcommit bd404038e76dfd1bd49173fd17a3a89ba6bb8fb8[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun May 1 17:26:55 2016 +0800
+
+    edit modal1
+
+[33mcommit dae1343e74c47f0ac42e45b55c9e88f113b07b7e[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun May 1 16:37:40 2016 +0800
+
+    edit modal
+
+[33mcommit b1af84f6509b450dfb0dbc9bf453d5836f11a35a[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun May 1 14:56:32 2016 +0800
+
+    select/deselect
+
+[33mcommit a063350afa12a5bd9069f670894b800a97f7f6b2[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Apr 30 13:47:59 2016 +0800
+
+    shitment add
+
+[33mcommit 1928f744d6a1e009a43ff7830b41b63d561ccb78[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Apr 30 01:37:35 2016 +0800
+
+    pa ayos ng design ng button de/select
+
+[33mcommit 0781acfac031ccbca9e2f07ee16d4bacdb30092a[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Apr 29 22:29:34 2016 +0800
+
+    shitment front
+
+[33mcommit f0b222f82ba0a61b527d81193365dca0ff4260ea[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Apr 29 20:02:39 2016 +0800
+
+    shitment
+
+[33mcommit 400ba12f0b4b0608d20f9d796ba47e438b12110a[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Apr 29 15:47:50 2016 +0800
+
+    BIDDING EVENT
+
+[33mcommit 2c689bbadd3be6a4b70413fae60ace59a7c72881[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Fri Apr 29 00:13:10 2016 +0800
+
+    migration
+
+[33mcommit d9375877569b1053287ba8715ea70100e96c62fc[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Apr 28 20:15:52 2016 +0800
+
+    status/detail
+
+[33mcommit 272b19e010a340ae914f97f6804d1fd1676c2175[m
+Merge: 7a1eac8 2bf6d44
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Apr 27 13:49:36 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 7a1eac8df1fc0ab809183d777de3714999b1a4bb[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Apr 27 13:49:11 2016 +0800
+
+    ung pinapagawa mo
+
+[33mcommit 2bf6d4479a34dec37708233b345e5d5ee12d9b27[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Wed Apr 27 10:46:09 2016 +0800
+
+    migration
+
+[33mcommit 0102aeae75625a4d5328eae1bbc828d1dc56bd39[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Mon Apr 25 00:13:57 2016 +0800
+
+    migration
+
+[33mcommit 045860b6391289da3fb8420ed7059f63d5ab1f11[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Apr 19 20:44:33 2016 +0800
+
+    okay na to
+
+[33mcommit 74f94c589c70b6439e1aa6f2aaf8052578dcf46a[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Apr 19 20:12:52 2016 +0800
+
+    okay na
+
+[33mcommit 6c074f2c1229eeeb11b3add528852d6f459cafad[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Apr 19 19:49:36 2016 +0800
+
+    try ulit
+
+[33mcommit eb180edac1a64e9c0e6474b4a8d6ab70c7bdf2c4[m
+Merge: fe4c1ae d151d94
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Apr 19 19:45:34 2016 +0800
+
+    try nalang
+
+[33mcommit fe4c1ae865d40459cbf14f92f3df89204e4dc30a[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Apr 19 19:43:03 2016 +0800
+
+    try mo nga
+
+[33mcommit d151d94be75a1fea3f4e7080b8599d1a54caeb91[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue Apr 19 19:31:16 2016 +0800
+
+    asdf
+
+[33mcommit f0bc9cd60efc3e5c113968fc2a1501ceb05e88c9[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Mon Apr 11 21:43:07 2016 +0800
+
+    migration
+
+[33mcommit 57c220d8b9a410bba9d4f7399467257f6a209730[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Mar 12 08:47:00 2016 +0800
+
+    push this shit
+
+[33mcommit d11bab4e147686eac45db8af55fcb1953e9e8078[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Mar 12 08:26:17 2016 +0800
+
+    views
+
+[33mcommit a5ac898b45c7919401b9e74ff28b2282622740cb[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Mar 12 08:08:15 2016 +0800
+
+    pakyu
+
+[33mcommit 98d0459f89756de3571692bf5d90cc1396d26904[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Mar 12 08:06:46 2016 +0800
+
+    pakyu
+
+[33mcommit 14afc42266cd3b276fccc2d52a44aa1a3b47f17e[m
+Merge: 2a0ce93 94dac0a
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Mar 12 07:34:06 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 2a0ce9312a705b53829d9a83d1f5a6124e9c7246[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Mar 12 07:33:59 2016 +0800
+
+    views
+
+[33mcommit 4bf634ea583f87a85b67359c3ba33ee943e419ee[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Mar 12 07:31:30 2016 +0800
+
+    views
+
+[33mcommit bc40abb298f4eb57a1498af12f000c1a09d35cc7[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Mar 12 06:53:07 2016 +0800
+
+    views
+
+[33mcommit 94dac0aad44959b9ba9a7994905dbf566d062bca[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Mar 12 03:51:59 2016 +0800
+
+    magulo
+
+[33mcommit 806fede56653700b444cc922c48b47eea67bea9c[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Sat Mar 12 02:33:53 2016 +0800
+
+    migration
+
+[33mcommit f0256a1f8a41f7a4a31578f8930841c1bb4bbe2b[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Sat Mar 12 02:08:23 2016 +0800
+
+    migration
+
+[33mcommit 2f151470cd803be73bc5adad11d8534fec2cec7f[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Sat Mar 12 02:07:15 2016 +0800
+
+    migration
+
+[33mcommit b79f8ae6ab912b9b1a94b876524275cc61e28cd4[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Sat Mar 12 01:23:21 2016 +0800
+
+    migration
+
+[33mcommit 7cf0ad9b3709aa726072258c3cffe7da92bb3f1e[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Mar 12 00:36:50 2016 +0800
+
+    db
+
+[33mcommit fe7d37a2e457729fdbb7ca55e2c9f5aa07074120[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Mar 11 22:26:29 2016 +0800
+
+    views
+
+[33mcommit 2a88c8b57d63e1563e8cff827ee2a605225c7018[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Mar 11 21:09:46 2016 +0800
+
+    cats
+
+[33mcommit ef20b215aa16d2c66958bb7c36beac849c96b660[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Mar 11 20:56:53 2016 +0800
+
+    cats and plays
+
+[33mcommit 1be9db22fac18f889aa1c5e2acd7001dfe2e26ed[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Mar 11 20:38:31 2016 +0800
+
+    places
+
+[33mcommit c156a96ae26c4a25c514ba3abe440f5e15f0e47e[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Mar 11 19:02:28 2016 +0800
+
+    views
+
+[33mcommit 1b7119420ff6f40c0c4a61271e7d1ae5cb85fbcc[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Mar 11 18:38:56 2016 +0800
+
+    YUNG ADD OYY
+
+[33mcommit cc12e7920162e98c3a1b5de237243e2bc2e60abc[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Mar 11 16:18:11 2016 +0800
+
+    views
+
+[33mcommit 81251c0ccd9343b98cb641398aa9d0d7e7c1f9e3[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Mar 11 06:29:18 2016 +0800
+
+    views
+
+[33mcommit 9b17b82d2c56eb80ddc99a299f7041c62c00327c[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Fri Mar 11 06:27:08 2016 +0800
+
+    views
+
+[33mcommit 7b7632360b8cfc069fb988038d30f88bea1687a7[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Mar 11 01:55:58 2016 +0800
+
+    cat/subcat status
+
+[33mcommit 0385864c227e3c151c509dd52a751780a15bb49a[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Mar 11 00:52:12 2016 +0800
+
+    accounttype status
+
+[33mcommit bb4a51cbe0e28c888f8238d445b72a31ff12fa53[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Mar 11 00:31:25 2016 +0800
+
+    item status
+
+[33mcommit 30e1a3fc1b46ed6d117779dd82f19e41e9ff7b5a[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Mar 10 23:43:03 2016 +0800
+
+    views
+
+[33mcommit e63edb96980ae1e155732167fd24cd5754a393b0[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Mar 10 22:16:15 2016 +0800
+
+    SWITCH BABY
+
+[33mcommit 3f433d7e636398b212e5df0b9e6afd41d6d79a98[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Mar 10 21:29:17 2016 +0800
+
+    acctType
+
+[33mcommit 65f1249363a47f0083f37be113909ebdc05a17a1[m
+Merge: 4df87cc d8faf57
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Mar 10 16:29:28 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 4df87cc6b32fe14ef56cfa1f20fdbd1ba4ef243a[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Mar 10 16:29:11 2016 +0800
+
+    conf
+
+[33mcommit d8faf5741a9c3ea9ed6c93ff3b3d2694020f2ee1[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Mar 10 16:02:10 2016 +0800
+
+    views
+
+[33mcommit c1f15672b8e35966f5caa4122fa80484d0cb5122[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Mar 10 11:58:34 2016 +0800
+
+    views
+
+[33mcommit 793e36692726ddf33a096fcff007e630687ae223[m
+Merge: c22493f aa4b9e5
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Mar 10 11:41:09 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit aa4b9e57a0c23a9af0a47aa6bbd5a24cdb33b6b6[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Mar 10 11:40:08 2016 +0800
+
+    supp ok
+
+[33mcommit c22493f11edf5ac1358a6de045024660bb2a8056[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Thu Mar 10 11:34:35 2016 +0800
+
+    views
+
+[33mcommit b816bf5270d59e1e25fe9c64e1bfea6e720ce168[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Thu Mar 10 10:07:45 2016 +0800
+
+    migration
+
+[33mcommit a2877764dbfd69d46d03983fc582b66e0c3d4461[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Mar 10 02:02:05 2016 +0800
+
+    item
+
+[33mcommit 74a781b9f3e51ec4dce39519d0daaa6d425e2193[m
+Merge: 1f50d25 b351094
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Mar 10 01:28:36 2016 +0800
+
+    conf
+
+[33mcommit 1f50d25849fcbc10dbd7824766d042624664c824[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Mar 10 01:26:41 2016 +0800
+
+    conf
+
+[33mcommit f65fe1f34c22d40ce0e911f63bbaef316fc47c23[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Mar 10 01:21:51 2016 +0800
+
+    conf
+
+[33mcommit 2aa648049599e839e8fd62fb580878e7502b1e4c[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Mar 10 01:17:15 2016 +0800
+
+    conf
+
+[33mcommit b3510941c8b3b7dc9ff1276ae2de7f9b19483300[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Mar 9 23:01:49 2016 +0800
+
+    asd
+
+[33mcommit e90d2f648065d0e3cd05d17496779138874b8be2[m
+Merge: f4d6f9f 0219b47
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Mar 9 15:11:14 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit f4d6f9f80a81a89947da5f74e7ec915a1db056b5[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Mar 9 15:11:07 2016 +0800
+
+    as
+
+[33mcommit 0219b47a31506d0bf3ea651601a3617c2a959d6d[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Mar 7 23:34:27 2016 +0800
+
+    model updated
+
+[33mcommit 4cde48acc4ab6e8c8fb98a691073f8e60d56dac2[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Mar 7 22:55:21 2016 +0800
+
+    cat/subcat
+
+[33mcommit a90ab5cd94d1a2a1bc51ad4e4b45124193f965a3[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Mar 7 22:13:30 2016 +0800
+
+    supplier edit editted
+
+[33mcommit b44bfbac5c0a0b444972175ca252789c6b6e2505[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Mar 7 21:24:47 2016 +0800
+
+    supplier OWKAY
+
+[33mcommit c3b373be9b4ab0bd1784268715049f9d861bb837[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Mar 7 19:52:20 2016 +0800
+
+    cat
+
+[33mcommit 5aee4488b93d306eb433a3ba387f3600f60f036d[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Mar 7 19:33:29 2016 +0800
+
+    tanginang bug
+
+[33mcommit da548dbcac00296e90c6028321ef769deb4a0cbd[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Mar 7 19:21:26 2016 +0800
+
+    supplier wlang edit fck shit
+
+[33mcommit bab6a2bf3b3c3facfe3155e7422158e261edaf42[m
+Merge: bfb0d85 f2d780e
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Mar 7 18:17:57 2016 +0800
+
+    conf
+
+[33mcommit bfb0d8578eb14985b83b337e869c073a0d7d4ea9[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Mar 7 18:15:58 2016 +0800
+
+    conf
+
+[33mcommit f2d780ea6373b08eeb7ac65c44c5c3928fa37e83[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Mon Mar 7 02:01:12 2016 +0800
+
+    migration
+
+[33mcommit efaf165b9678fe796c3f4bbfc139b4f19cf1ae7e[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Mar 7 01:12:44 2016 +0800
+
+    switch
+
+[33mcommit 1d261b435dc40ff5ba0b82b280077b9b11bc88d5[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Mar 6 23:47:01 2016 +0800
+
+    switch
+
+[33mcommit 69213bff09e73ac7976957a3e8d4564072d6a7fd[m
+Merge: 20b6c0a f96ae1f
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Sun Mar 6 17:58:42 2016 +0800
+
+    migration
+
+[33mcommit 20b6c0a6383dabbd7b2287eb5f11bab521a2ba30[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Sun Mar 6 14:46:47 2016 +0800
+
+    migration
+
+[33mcommit f96ae1f6526f0b72c7a4fbe0ed06242cb8d8af61[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Mar 4 00:45:28 2016 +0800
+
+    asd
+
+[33mcommit 899e8f7cd52c79f5ffcdadd3e6850a8ff149b975[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Thu Mar 3 21:54:28 2016 +0800
+
+    TANGINA GUMANA RIN AJAX
+
+[33mcommit dfe8a4010c2ecf835d83512271831cc612bc2f6f[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Mar 2 10:00:04 2016 +0800
+
+    tanginamoajax
+
+[33mcommit b87b720b6ce46e94893b03e27f7a2eb28fa428b2[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Wed Mar 2 09:49:05 2016 +0800
+
+    newBackground
+
+[33mcommit f9eee94c67571e6d46927bf937a8b32d5acac687[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Wed Mar 2 09:14:04 2016 +0800
+
+    pakyu ajax
+
+[33mcommit 15468bc598bc75c5477017d7c41cf28b57c54279[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Mar 1 10:43:45 2016 +0800
+
+    accounttype
+
+[33mcommit a7a16f4759aecb911a2ca7ac2710def12e9bb9f7[m
+Merge: e97d472 0053b9d
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Mar 1 10:08:06 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 0053b9d55b81d1e74a50e8decf9692bf307269bf[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue Mar 1 07:50:52 2016 +0800
+
+    bago
+
+[33mcommit e97d472eb74892881228142a9b748f294fa2f483[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Mar 1 03:25:28 2016 +0800
+
+    ewfuvagwueysdinjomfhyudjn666
+
+[33mcommit 8f572a6863d4b8c1d0dad5d0d8df93b2904a128e[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Mar 1 02:04:03 2016 +0800
+
+    asdagergusenfid
+
+[33mcommit 6861af77e8f1152763e588f065de9e8b9c30b04e[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue Mar 1 01:04:19 2016 +0800
+
+    item
+
+[33mcommit df2a2578e9752ce06a6f27027f52a5abee2528ae[m
+Merge: e38e6fa 73b48c1
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue Mar 1 00:45:15 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit e38e6faecdeb2c74e27346ee8aca1c4c3a778ec0[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue Mar 1 00:44:45 2016 +0800
+
+    keyword
+
+[33mcommit 73b48c13746ece44c8643fd0a1ad46a3cf713bb8[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Tue Mar 1 00:38:36 2016 +0800
+
+    cat
+
+[33mcommit f23f68663f7ad52ef602b8964372a7add09a0e0d[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Tue Mar 1 00:15:08 2016 +0800
+
+    buttons
+
+[33mcommit 961989d7d2b163dcac142e0e846693e2605fb79c[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Feb 29 23:34:16 2016 +0800
+
+    KASALANAN NANAMAN NI BESSIE
+
+[33mcommit 5c8b7a90b6e55ca29affca80d57ea28523a440b4[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Mon Feb 29 23:13:22 2016 +0800
+
+    migration
+
+[33mcommit 1d372b3322bf469996aa8831519358f83e8ce5e4[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Feb 29 22:53:37 2016 +0800
+
+    kasalanan mo to bessie
+
+[33mcommit bfc7159634cea9445a43b9068aa1d165824672dd[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Feb 29 22:36:41 2016 +0800
+
+    buttons
+
+[33mcommit b69eaee8e3fd0cfb0a809a50e3cd52f727347816[m
+Merge: 57fd0bd 8e02d37
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Feb 29 22:15:21 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 8e02d37cf0be869a0f7436cf8a1201c362d0f942[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Feb 29 22:12:49 2016 +0800
+
+    added desc to ca
+
+[33mcommit 57fd0bda608980502c2dbe819a346e2975570453[m
+Merge: e545cd6 45976e3
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Feb 29 21:49:17 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 45976e39e896d1add95ed91ee941dfac0f3854ae[m
+Author: JoanneJoyce <dasigjoanne@yahoo.com>
+Date:   Mon Feb 29 18:37:13 2016 +0800
+
+    migration
+
+[33mcommit e545cd6a1bd912c046603f322c5487d6793099bd[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Feb 29 15:27:23 2016 +0800
+
+    regItems
+
+[33mcommit a1c784434b55c0d9a258abcaf77ac2bc9d0cd2ec[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Feb 29 15:04:44 2016 +0800
+
+    desc
+
+[33mcommit eac6efb38ff42c21cd8fdf68abb077a4e7e5b5f3[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Feb 29 14:50:59 2016 +0800
+
+    123
+
+[33mcommit fa11fa1e5f063a61f93eb85dff68bd1db2bedb74[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Feb 29 13:41:15 2016 +0800
+
+    kulang kulang sfnsasdjinfmafs
+
+[33mcommit 7afe7f501adfbbb1aa3a401f2864302716b67708[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Mon Feb 29 13:14:42 2016 +0800
+
+    keyword
+
+[33mcommit aa946701382e59ca0c8d694ce7a70737d1f94cd6[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Mon Feb 29 09:40:20 2016 +0800
+
+    NewUI
+
+[33mcommit d881b4f3c8c57b3d4196c7d4b9c348bd9ed12b08[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 23:39:48 2016 +0800
+
+    editted supplier
+
+[33mcommit ccaeaf11a10e0209dc4aaf44f406cb204003e336[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 22:52:41 2016 +0800
+
+    corrected
+
+[33mcommit e18ac66dbced7eed86419d34dd49d511a8acc7e4[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 22:42:03 2016 +0800
+
+    cat/subcat
+
+[33mcommit 1ffb593937fa982e1e287a3a925417103b3b0329[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 19:41:35 2016 +0800
+
+    Latest
+
+[33mcommit eec399f6fbf3eaf6467ea5a678d671cf0eb2cf2c[m
+Merge: 665e04c 7a820d2
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 19:08:19 2016 +0800
+
+    button
+
+[33mcommit 665e04c18495334515013c870656cd83503fe6fc[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 19:07:43 2016 +0800
+
+    button
+
+[33mcommit 6de8e39746333ce1364c527cffb89823eb9c1ea0[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 19:03:20 2016 +0800
+
+    button
+
+[33mcommit 7a820d2f3875c8e4f68877403e8ffcf60d8d14f6[m
+Merge: 3154ac3 c030a0d
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 17:51:57 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 3154ac315d7fce4fefce3883b15e7da2dfb3b673[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 17:49:49 2016 +0800
+
+    cat subcat
+
+[33mcommit c030a0dbbf816b15edb52a92d06ef017491b284b[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 17:08:42 2016 +0800
+
+    subcat
+
+[33mcommit f317c6b335cb2567ec0385c2b78bea9af3f5184f[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 16:38:16 2016 +0800
+
+    cat/subcat
+
+[33mcommit 9d191a3f0a599044e1a6ec5cf4745e2b7f2f4419[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 16:24:07 2016 +0800
+
+    subcat
+
+[33mcommit 5e111098f8886abb925085e123c5c012a9e5f870[m
+Merge: 58ceba7 be17e06
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 14:44:47 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 58ceba7226dbfb1bb1ab998098dc1788495b9b13[m
+Merge: 3700d5f 88c2794
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 14:44:21 2016 +0800
+
+    asdf
+
+[33mcommit 3700d5f1e044dbd759a444d0781599d51ec13b2d[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 14:40:31 2016 +0800
+
+    splr
+
+[33mcommit be17e0683e58acf541d92b294c9e2ced4ec37f3b[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 14:39:41 2016 +0800
+
+    category ok
+
+[33mcommit 88c279438b68b1364deb5eebacedc242aafc9e62[m
+Merge: af3971c bf8e795
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 14:05:44 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit af3971cd1e9c78385b6e6aa25ae0622ef39d530d[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 14:02:10 2016 +0800
+
+    con
+
+[33mcommit bf8e795fb217efc8c56479ca0441bad78f79f35d[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 13:49:42 2016 +0800
+
+    cat
+
+[33mcommit ba783523138d9b93c4a6736d9f25ae4513904f0c[m
+Merge: 3ab30ce 96ebc21
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 12:28:52 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 3ab30ce9e9e26b0423a94c22f294eb211783cd6f[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 12:28:44 2016 +0800
+
+    asdf
+
+[33mcommit 96ebc21e69a2f489d9fc0bf8315c4106e89a13f6[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 12:26:51 2016 +0800
+
+    conflict okay na
+
+[33mcommit 0eb6e32ddfd1a5dbdde4f38df513b46800d325a9[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 11:19:47 2016 +0800
+
+    conflict
+
+[33mcommit 7efc4329fd2b23fe959e90aff724154f135581b7[m
+Merge: 80c7bd6 af7fa35
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 11:10:17 2016 +0800
+
+    New
+
+[33mcommit 80c7bd65f3863cf19165f52aaec769370772d993[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sun Feb 28 11:05:32 2016 +0800
+
+    newUI
+
+[33mcommit af7fa35677d76af48b5aec7d5a4ca5c7033921e9[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 01:42:13 2016 +0800
+
+    cat ok
+
+[33mcommit 6fdcba99fc11f9f371775441bdd9b830012073e9[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sun Feb 28 01:14:44 2016 +0800
+
+    debugged datatable
+
+[33mcommit 38d6977090fa5dc18a3728c409d6191dfd37a687[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Feb 27 11:23:01 2016 +0800
+
+    new
+
+[33mcommit a0d6d30fa0af22a4ef29542d526d6dc2381e9dcd[m
+Merge: 8b52aca f1d6236
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Feb 27 11:00:52 2016 +0800
+
+    Merge branch 'master' of https://github.com/XGhed/SAD-BiddingSystem
+
+[33mcommit 8b52aca355ba694fd1773a154e23485e725c93c6[m
+Author: R-ome <muming_jerome@yahoo.com>
+Date:   Sat Feb 27 11:00:31 2016 +0800
+
+    walato
+
+[33mcommit f1d6236a679f808e5bac54dd2bf7597140886b2f[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Feb 27 10:58:26 2016 +0800
+
+    config datatable
+
+[33mcommit 7d606bc8fc58d3f14380fc9167697c57fb8265b0[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Feb 27 10:58:14 2016 +0800
+
+    config datatable
+
+[33mcommit 55297d8af76d216f7f0a389423371e8a12ad1a4e[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Feb 27 10:50:01 2016 +0800
+
+    vendor
+
+[33mcommit 6d2060478a2583396e59f17dac59123c36b4e2f4[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Feb 27 10:39:41 2016 +0800
+
+    downloaded js and css
+
+[33mcommit 9101636b1419fd3eb8f3ac4cddb1f32a99c6835e[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Feb 27 10:28:21 2016 +0800
+
+    env
+
+[33mcommit 52ce170fe9a00ce655656bdd229333500330d09d[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Feb 27 03:39:40 2016 +0800
+
+    supplier and cat done with datatable
+
+[33mcommit b6c8b44e2b2f2c824f92887d0ed6141af76dc258[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Sat Feb 27 01:12:19 2016 +0800
+
+    db config
+
+[33mcommit 1f1e2aba52cf10f5f99e57830e52b67b6935f94e[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Feb 26 22:58:56 2016 +0800
+
+    copied files from other repo
+
+[33mcommit 74047b748af2d792056019febf1f16a4a006647b[m
+Author: XGhed <ghed_garp@yahoo.com>
+Date:   Fri Feb 26 22:54:54 2016 +0800
+
+    first commit
