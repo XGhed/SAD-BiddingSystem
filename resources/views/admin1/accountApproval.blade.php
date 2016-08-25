@@ -48,7 +48,7 @@
     <div class="ui segment">
         <h2 class="ui centered header">Account Approval</h2>
 
-      <table class="ui definition celled selectable table">
+      <table class="ui definition celled selectable table" datatable="ng">
         <thead>
           <tr>
           <th></th>
@@ -59,8 +59,7 @@
         <tbody>
           <tr ng-repeat="account in accounts">
             <td class="collapsing">           
-              <button class="ui basic green button" ng-click="showInfo($index)"><i class="unhide icon"></i>View Info</button>
-              <button class="ui basic green button" ng-click="approveAccount($index)"><i class="checkmark icon"></i>Approve</button> 
+              <button class="ui basic green button" ng-click="showInfo(account)"><i class="unhide icon"></i>View Info</button> 
             </td>
             <td class="tableRow" >@{{account.Username}}</td>
             <td class="tableRow" >@{{account.membership[0].accounttype.AccountTypeName}}</td>
@@ -89,6 +88,9 @@
             </p>
           </div>
         </div>
+        <div class="actions">
+          <button class="ui basic green button" ng-click="approveAccount(selectedAccountID, $index)"><i class="checkmark icon"></i>Approve</button>
+        </div>
       </div>
       <!-- END account info modal -->
 
@@ -104,15 +106,17 @@
       $scope.accounts = response.data;
     });
 
-    $scope.showInfo = function(index){
-      $scope.info_name = $scope.accounts[index].membership[0].FirstName + ' ' + $scope.accounts[index].membership[0].MiddleName + ' ' + $scope.accounts[index].membership[0].LastName;
-      $scope.info_address = $scope.accounts[index].membership[0].Barangay_Street_Address + ', ' + $scope.accounts[index].membership[0].city.CityName + ', ' + $scope.accounts[index].membership[0].city.province.ProvinceName;
-      $scope.info_gender = $scope.accounts[index].membership[0].Gender;
-      $scope.info_birthday = $scope.accounts[index].membership[0].Birthdate;
-      $scope.info_contact = 'Cell: ' + $scope.accounts[index].membership[0].CellphoneNo + ' | Landline: ' + $scope.accounts[index].membership[0].Landline;
-      $scope.info_email = $scope.accounts[index].membership[0].EmailAdd;
-      $scope.info_id = $scope.accounts[index].membership[0].valid_id;
-      $scope.info_dti = $scope.accounts[index].membership[0].File_DTI;
+    $scope.showInfo = function(account){
+      $scope.info_name = account.membership[0].FirstName + ' ' + account.membership[0].MiddleName + ' ' + account.membership[0].LastName;
+      $scope.info_address = account.membership[0].Barangay_Street_Address + ', ' + account.membership[0].city.CityName + ', ' + account.membership[0].city.province.ProvinceName;
+      $scope.info_gender = account.membership[0].Gender;
+      $scope.info_birthday = account.membership[0].Birthdate;
+      $scope.info_contact = 'Cell: ' + account.membership[0].CellphoneNo + ' | Landline: ' + account.membership[0].Landline;
+      $scope.info_email = account.membership[0].EmailAdd;
+      $scope.info_id = account.membership[0].valid_id;
+      $scope.info_dti = account.membership[0].File_DTI;
+
+      $scope.selectedAccountID = account.AccountID;
       $('#infoModal').modal('show');
     }
 
@@ -120,8 +124,8 @@
       $window.open(url);
     }
 
-    $scope.approveAccount = function(index){
-      $http.get('/approveAccount?accountID=' + $scope.accounts[index].AccountID)
+    $scope.approveAccount = function(selectedAccountID, index){
+      $http.get('/approveAccount?accountID=' + selectedAccountID)
       .then(function(response){
         if(response.data == 'success'){
           alert('success');
@@ -130,6 +134,7 @@
         else {
           alert('error');
         }
+        $('#infoModal').modal('hide');
       });
     }
   });
