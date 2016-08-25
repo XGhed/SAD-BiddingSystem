@@ -166,7 +166,7 @@
               <th></th>
               <th>Warehouse</th>
               <th>Container</th>
-              <th>Date And Time</th>
+              <th>Expected Arrival</th>
               <th>Supplier</th>
             </tr></thead>
             <tbody>
@@ -184,6 +184,14 @@
                       <i class="large edit icon"></i>
                     </div>
                   </div>
+                  <form action="/containerArrived" method="POST">
+                  <input type="hidden" name="containerID" value="@{{container.ContainerID}}">
+                  <button class="ui vertical animated button" tabindex="0" style="width:50px">
+                    <div class="hidden content">Arrived</div>
+                    <div class="visible content">
+                      <i class="large edit icon"></i>
+                    </div>
+                  </form>
                 </td>
                 <td>@{{container.warehouse.Barangay_Street_Address}}, @{{container.warehouse.city.CityName}}, @{{container.warehouse.city.province.ProvinceName}}</td>
                 <td>@{{container.ContainerName}}</td>

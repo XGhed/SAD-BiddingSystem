@@ -139,7 +139,9 @@ class AngularOutput extends Controller
 
     public function containers(){
 
-        $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province')->get();
+        $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province')
+        ->where('ActualArrival', null)
+        ->get();
 
         return $containers;
     }

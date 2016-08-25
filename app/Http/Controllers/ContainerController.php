@@ -117,4 +117,11 @@ class ContainerController extends Controller
 
         $history->save();
     }
+
+    public function containerArrived(Request $request){
+        $container = App\Models\Admin\Container::find($request->containerID);
+        $container->ActualArrival = Carbon::now('Asia/Manila');
+        $container->save();
+        return redirect('orderedItem');
+    }
 }

@@ -17,6 +17,7 @@ class Container extends Migration
             $table->increments('ContainerID');
             $table->string('ContainerName', 50);
             $table->datetime('Arrival');
+            $table->datetime('ActualArrival')->nullable();
             $table->integer('SupplierID')->unsigned();
             $table->integer('WarehouseNo')->unsigned();
             $table->foreign('SupplierID')->references('SupplierID')->on('Supplier');

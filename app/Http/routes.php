@@ -75,6 +75,8 @@ Route::post('/itemCheck', 'itemCheckingController@itemCheck');
 
 Route::post('/submitCheckout', 'CustomerCheckoutController@insert');
 
+Route::post('/containerArrived', 'ContainerController@containerArrived');
+
 Route::get('/logout', 'LoginController@logout');
 
 
