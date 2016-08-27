@@ -63,7 +63,9 @@ class AngularOutput extends Controller
     public function itemsInbound(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province')
-            ->where('status', 0)->get();
+            ->where('status', 0)->whereHas('container', function($query){
+                $query->whereNotNull('ActualArrival');
+            })->get();
 
         return $items;
     }
