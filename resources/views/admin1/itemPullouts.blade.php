@@ -13,12 +13,12 @@
         </a>
         <a class="item" href="/itemChecking">
           Item Checking
-        </a> 
-        <a class="active item" href="/itemPullouts">
-          Item Pullouts
-        </a>        
+        </a>       
         <a class=" item" href="/inventory">
           Inventory
+        </a>  
+        <a class="active item" href="/itemPullouts">
+          Item Pullouts
         </a>       
         <a class="item" href="/movingOfItems">
           Moving of Items
@@ -28,9 +28,6 @@
         </a>
         <a class="item" href="/accountApproval">
           Account Approval
-        </a>
-        <a class="item" href="/deliveryApproval">
-          Delivery Approval
         </a>
         <a class="item" href="/prepareCheckout">
           Prepare Checkout Items

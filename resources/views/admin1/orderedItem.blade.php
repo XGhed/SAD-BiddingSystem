@@ -13,13 +13,13 @@
         </a>
         <a class="item" href="/itemChecking">
           Item Checking
-        </a> 
-        <a class="item" href="/itemPullouts">
-          Item Pullouts
         </a>        
         <a class=" item" href="/inventory">
           Inventory
-        </a>       
+        </a>  
+        <a class="item" href="/itemPullouts">
+          Item Pullouts
+        </a>      
         <a class="item" href="/movingOfItems">
           Moving of Items
         </a>
@@ -28,9 +28,6 @@
         </a>
         <a class="item" href="/accountApproval">
           Account Approval
-        </a>
-        <a class="item" href="/deliveryApproval">
-          Delivery/Pick-up Approval
         </a>
         <a class="item" href="/prepareCheckout">
           Prepare Checkout Items
@@ -171,27 +168,30 @@
             </tr></thead>
             <tbody>
               <tr ng-repeat="container in containers">
-                <td class="collapsing">
-                  <div class="ui vertical animated button" tabindex="1" ng-click="addItems(container.ContainerID)">
-                    <div class="hidden content">Items</div>
-                    <div class="visible content">
-                      <i class="add square icon"></i>
+                <td class="collapsing inline field">
+                  <div class="inline field">
+                    <div class="ui vertical animated button"  ng-click="addItems(container.ContainerID)" style="width:50px">
+                      <div class="hidden content">View Items</div>
+                      <div class="visible content">
+                        <i class="ordered list icon"></i>
+                      </div>
                     </div>
+                    <div class="ui vertical animated button"  ng-click="editModal(container)" style="width:50px">
+                      <div class="hidden content">Edit</div>
+                      <div class="visible content">
+                        <i class=" edit icon"></i>
+                      </div>
+                    </div>
+                    <p></p>
+                    <form action="/containerArrived" method="POST">
+                      <input type="hidden" name="containerID" value="@{{container.ContainerID}}">
+                      <button class="ui green vertical animated button"  style="width:125px">
+                        <div class="hidden content"><i class="checkmark icon"></i></div>
+                        <div class="visible content">
+                          Arrived
+                        </div>
+                    </form>
                   </div>
-                  <div class="ui vertical animated button" tabindex="0" ng-click="editModal(container)" style="width:50px">
-                    <div class="hidden content">Edit</div>
-                    <div class="visible content">
-                      <i class="large edit icon"></i>
-                    </div>
-                  </div>
-                  <form action="/containerArrived" method="POST">
-                  <input type="hidden" name="containerID" value="@{{container.ContainerID}}">
-                  <button class="ui vertical animated button" tabindex="0" style="width:50px">
-                    <div class="hidden content">Arrived</div>
-                    <div class="visible content">
-                      <i class="large edit icon"></i>
-                    </div>
-                  </form>
                 </td>
                 <td>@{{container.warehouse.Barangay_Street_Address}}, @{{container.warehouse.city.CityName}}, @{{container.warehouse.city.province.ProvinceName}}</td>
                 <td>@{{container.ContainerName}}</td>

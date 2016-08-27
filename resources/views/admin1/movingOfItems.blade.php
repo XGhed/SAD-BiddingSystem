@@ -13,13 +13,13 @@
         </a>
         <a class="item" href="/itemChecking">
           Item Checking
-        </a> 
-        <a class="item" href="/itemPullouts">
-          Item Pullouts
         </a>        
         <a class="item" href="/inventory">
           Inventory
-        </a>        
+        </a>  
+        <a class="item" href="/itemPullouts">
+          Item Pullouts
+        </a>       
         <a class="active item" href="/movingOfItems">
           Moving of Items
         </a>
@@ -28,9 +28,6 @@
         </a>
         <a class="item" href="/accountApproval">
           Account Approval
-        </a>
-        <a class="item" href="/deliveryApproval">
-          Delivery/Pick-up Approval
         </a>
         <a class="item" href="/prepareCheckout">
           Prepare Checkout Items
@@ -46,7 +43,15 @@
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
+      <h2 class="ui centered header">Request to move items</h2>
       <form action="itemMoveRequest" method="POST">
+
+          <select class="ui dropdown" name="warehouse">
+            <option disabled selected value="">Destination Warehouse</option>
+            <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
+          </select>
+          <button class="ui green button" type="submit">Confirm</button>
+
         <table class="ui celled table" datatable="ng">
           <thead>
             <tr>
@@ -71,11 +76,8 @@
             </tr>
           </tbody>
         </table>
-        <select class="ui dropdown" name="warehouse">
-          <option disabled selected value="">Destination Warehouse</option>
-          <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
-        </select>
-        <button class="ui button" type="submit">Confirm</button>
+
+        
       </form>
     </div><!-- segment -->
   </div><!-- twelve wide column -->
