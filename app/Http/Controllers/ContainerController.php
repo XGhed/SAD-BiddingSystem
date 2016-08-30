@@ -124,6 +124,6 @@ class ContainerController extends Controller
         $container = App\Models\Admin\Container::find($request->containerID);
         $container->ActualArrival = Carbon::now('Asia/Manila');
         $container->save();
-        return redirect('orderedItem');
+        return 'success';
     }
 }

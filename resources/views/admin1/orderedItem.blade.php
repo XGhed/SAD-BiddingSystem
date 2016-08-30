@@ -183,14 +183,18 @@
                       </div>
                     </div>
                     <p></p>
-                    <form action="/containerArrived" method="POST">
-                      <input type="hidden" name="containerID" value="@{{container.ContainerID}}">
-                      <button class="ui green vertical animated button"  style="width:125px">
-                        <div class="hidden content"><i class="checkmark icon"></i></div>
-                        <div class="visible content">
-                          Arrived
-                        </div>
-                    </form>
+                    <div class="ui red vertical animated button" style="width:125px" ng-if="container.ActualArrival == null" ng-click="containerArrived(container.ContainerID)">
+                      <div class="hidden content">Arrived</div>
+                      <div class="visible content">
+                        Not Yet
+                      </div>
+                    </div>
+                    <div class="ui green vertical animated button" style="width:125px" ng-if="container.ActualArrival != null">
+                      <div class="hidden content"><i class="checkmark icon"></i></div>
+                      <div class="visible content">
+                        Arrived
+                      </div>
+                    </div>
                   </div>
                 </td>
                 <td>@{{container.warehouse.Barangay_Street_Address}}, @{{container.warehouse.city.CityName}}, @{{container.warehouse.city.province.ProvinceName}}</td>
@@ -231,7 +235,7 @@
       $scope.suppliers = response.data;
     });
 
-    $http.get('/containers')
+    $http.get('/allContainers')
     .then(function(response){
       $scope.containers = response.data;
     });
@@ -255,6 +259,19 @@
       var dateAndTime = container.Arrival.split(" ");
       $('#edit_date').val(dateAndTime[0]);
       $('#edit_time').val(dateAndTime[1]);
+    }
+
+    $scope.containerArrived = function(containerID){
+      $http.get('/containerArrived?containerID=' + containerID)
+      .then(function(response){
+        if(response.data == 'success'){
+          alert('success');
+          $http.get('/allContainers')
+          .then(function(response){
+            $scope.containers = response.data;
+          });
+        }
+      });
     }
   })
 </script>

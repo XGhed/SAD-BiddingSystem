@@ -75,8 +75,6 @@ Route::post('/itemCheck', 'itemCheckingController@itemCheck');
 
 Route::post('/submitCheckout', 'CustomerCheckoutController@insert');
 
-Route::post('/containerArrived', 'ContainerController@containerArrived');
-
 Route::get('/logout', 'LoginController@logout');
 
 
@@ -154,6 +152,8 @@ Route::get('/warehouses', 'AngularOutput@warehouses');
 Route::get('/itemsInContainer', 'AngularOutput@itemsInContainer');
 
 Route::get('/containers', 'AngularOutput@containers');
+
+Route::get('/allContainers', 'AngularOutput@allContainers');
 
 Route::get('/singleItem', 'AngularOutput@singleItem');
 
@@ -241,6 +241,8 @@ Route::get('/approveCheckoutRequest', 'PrepareCheckoutController@approveCheckout
 Route::get('/approvePayment', 'PaymentCheckoutController@approvePayment');
 
 Route::get('/approveOutbound', 'ItemOutboundController@approveOutbound');
+
+Route::get('/containerArrived', 'ContainerController@containerArrived');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');
