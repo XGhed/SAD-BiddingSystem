@@ -10,7 +10,7 @@ class Supplier extends Model
 {
 	use SoftDeletes;
 
-    protected $table = 'supplier';
+    protected $table = 'Supplier';
     protected $primaryKey = 'SupplierID';
     protected $dates = ['deleted_at'];
     public $timestamps = false;

@@ -37,16 +37,18 @@ class ContainerController extends Controller
     }*/
 
     public function addItemToContainer(Request $request){
-        $item = new App\Models\Admin\Item;
+        for ($i=0; $i < $request->quantity ; $i++) { 
+            $item = new App\Models\Admin\Item;
 
-        $item->ContainerID = $request->containerID;
-        $item->status = 0;
-        $item->size = $request->size;
-        $item->color = $request->color;
-        $item->TransacDate = Carbon::now('Asia/Manila');
-        $item->ItemModelID = $request->item;
+            $item->ContainerID = $request->containerID;
+            $item->status = 0;
+            $item->size = $request->size;
+            $item->color = $request->color;
+            $item->TransacDate = Carbon::now('Asia/Manila');
+            $item->ItemModelID = $request->item;
 
-        $item->save();
+            $item->save();
+        }
 
         $this->colorDatabase($request->color);
 

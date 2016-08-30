@@ -10,14 +10,14 @@ class Item extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'items';
+    protected $table = 'Items';
     protected $primaryKey = 'ItemID';
     protected $dates = ['deleted_at'];
     public $timestamps = false;
 
     public function itemModel()
 	{
-	    return $this->hasOne('App\Models\Admin\itemModel', 'ItemModelID', 'ItemModelID');
+	    return $this->hasOne('App\Models\Admin\ItemModel', 'ItemModelID', 'ItemModelID');
 	}
 
 	public function itemHistory()

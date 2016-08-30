@@ -17,7 +17,7 @@ class ItemHistory extends Migration
             $table->integer('ItemID')->unsigned();
             $table->string('Log', 150);
             $table->datetime('Date');
-            $table->foreign('ItemID')->references('ItemID')->on('items');
+            $table->foreign('ItemID')->references('ItemID')->on('Items');
         });
     }
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item_Auction extends Model
 {
-    protected $table = 'item_auction';
+    protected $table = 'Item_Auction';
     protected $primaryKey = 'ItemID';
     public $timestamps = false;
 

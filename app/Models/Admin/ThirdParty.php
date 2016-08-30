@@ -10,7 +10,7 @@ class ThirdParty extends Model
 {
 	use SoftDeletes;
 
-    protected $table = 'delivery_thirdparty';
+    protected $table = 'Delivery_Thirdparty';
     protected $primaryKey = 'PartyID';
     protected $dates = ['deleted_at'];
     public $timestamps = false;

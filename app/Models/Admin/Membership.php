@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Membership extends Model
 {
-    protected $table = 'membership';
+    protected $table = 'Membership';
     protected $primaryKey = 'MembershipID';
     public $timestamps = false;
 

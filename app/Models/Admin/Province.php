@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Province extends Model
 {
-    protected $table = 'province';
+    protected $table = 'Province';
     protected $primaryKey = 'ProvinceID';    
     public $timestamps = false;
 

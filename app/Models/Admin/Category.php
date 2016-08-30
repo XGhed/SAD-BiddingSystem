@@ -10,7 +10,7 @@ class Category extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'category';
+    protected $table = 'Category';
     protected $primaryKey = 'CategoryID';
     protected $dates = ['deleted_at'];
     public $timestamps = false;

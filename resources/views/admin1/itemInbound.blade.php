@@ -65,7 +65,7 @@
 
           <form action="/itemDelivered" method="POST">
             <input type="hidden" name="samp" value="sa">
-            <table datatable="ng" class="ui compact celled definition table" id="tableOutput">
+            <table datatable="ng" class="ui compact celled definition table">
               <thead>
                 <tr>
                   <th></th>
@@ -91,7 +91,7 @@
                   </tr>
               </tbody>
             </table>
-              <input type="submit" class="ui button" value="Confirm"></input>
+              <input type="submit" class="ui button" value="Confirm"/>
           </form>
         </div>
 
@@ -116,6 +116,7 @@
                   <div class="five wide field">
                     <div class="ui sub header">Container</div>
                     <select name="containerID" id="item" class="ui search selection dropdown" ng-model="container" REQUIRED>
+                      <option selected disabled value="">Containers</option>
                       <option ng-repeat="container in containers" value="@{{container.ContainerID}}">@{{container.ContainerName}}</option>
                     </select>
                   </div>
@@ -125,6 +126,7 @@
                   <div class="five wide field">
                     <div class="ui sub header">Category</div>
                     <select name="category" id="item" class="ui search selection dropdown" ng-model="category" ng-change="loadSubcat()" REQUIRED>
+                      <option selected disabled value="">Category</option>
                       <option ng-repeat="category in categories" value="@{{category.CategoryID}}">@{{category.CategoryName}}</option>
                     </select>
                   </div>
@@ -132,13 +134,15 @@
                   <div class="five wide field">
                     <div class="ui sub header">Subcategory</div>
                     <select name="subcategory" id="item" class="ui search selection dropdown" ng-model="subCategory" ng-change="loadItems()" REQUIRED>
+                      <option selected disabled value="">Sub Category</option>
                       <option ng-repeat="subCategory in subCategories" value="@{{subCategory.SubCategoryID}}">@{{subCategory.SubCategoryName}}</option>
                     </select>
                   </div>
 
                   <div class="five wide required field">
                     <div class="ui sub header">Item</div>
-                    <select name="item" id="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loaditemDetails()" REQUIRED>
+                    <select name="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loadItemDetails()" REQUIRED>
+                      <option selected disabled value="">Items</option>
                       <option ng-repeat="item in additems" value="@{{item.ItemModelID}}">@{{item.ItemName}}</option>
                     </select>
                   </div>
@@ -147,21 +151,17 @@
                   <div class="equal width fields">
                     <div class="field">
                       <div class="ui sub header">size</div>
-                      <input type="text" name="size" placeholder="dimensions" ng-model="size" required>
+                      <input type="text" name="size" placeholder="dimensions" ng-model="unexpected_size" required>
                     </div>
 
                     <div class="field">
                       <div class="ui sub header">Color</div>
-                      <div class="ui fluid search selection dropdown" id="color">
-                        <input name="color" type="hidden" id="color">
-                        <i class="dropdown icon"></i>
-                        <div class="default text">Color</div>
-                        <div class="menu">
+                      <select name="color" id="unexpected_color" class="ui fluid search selection dropdown">
+                        <option value="" selected disabled>Color</option>
                           @foreach($colors as $key => $color)
-                            <div class="item" data-value="{{$color->ColorName}}">{{$color->ColorName}}</div>
+                            <option value="{{$color->ColorName}}">{{$color->ColorName}}</option>
                           @endforeach
-                        </div>
-                      </div>
+                      </select>
                     </div>
 
                     <div class="field">
@@ -177,7 +177,7 @@
           </div>
             <!-- END add modal -->
             <input type="hidden" name="samp" value="sa">
-            <table datatable="ng" class="ui compact celled table" id="tableOutput">
+            <table datatable="ng" class="ui compact celled table">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -216,64 +216,10 @@
        });
   });
 
-  $('.list .master.checkbox')
-    .checkbox({
-      // check all children
-      onChecked: function() {
-        var
-          $childCheckbox  = $(this).closest('.checkbox').siblings('.list').find('.checkbox');
-          $childCheckbox.checkbox('check');
-      },
-      // uncheck all children
-      onUnchecked: function() {
-        var
-          $childCheckbox  = $(this).closest('.checkbox').siblings('.list').find('.checkbox')
-        ;
-        $childCheckbox.checkbox('uncheck');
-      }
-    })
-  ;
-
-  $('#color')
+  $('#unexpected_color')
   .dropdown({
     allowAdditions: true
   });
-
-  $('.list .child.checkbox')
-    .checkbox({
-      // Fire on load to set parent value
-      fireOnInit : true,
-      // Change parent state on each child checkbox change
-      onChange   : function() {
-        var
-          $listGroup      = $(this).closest('.list'),
-          $parentCheckbox = $listGroup.closest('.item').children('.checkbox'),
-          $checkbox       = $listGroup.find('.checkbox'),
-          allChecked      = true,
-          allUnchecked    = true
-        ;
-        // check to see if all other siblings are checked or unchecked
-        $checkbox.each(function() {
-          if( $(this).checkbox('is checked') ) {
-            allUnchecked = false;
-          }
-          else {
-            allChecked = false;
-          }
-        });
-        // set parent checkbox state, but dont trigger its onChange callback
-        if(allChecked) {
-          $parentCheckbox.checkbox('set checked');
-        }
-        else if(allUnchecked) {
-          $parentCheckbox.checkbox('set unchecked');
-        }
-        else {
-          $parentCheckbox.checkbox('set indeterminate');
-        }
-      }
-    })
-  ;
 
   var app = angular.module('myApp', ['datatables']);
   app.controller('myController', function($scope, $http){
@@ -309,6 +255,19 @@
       .then(function(response){
         $scope.additems = response.data;  
       });
+    }
+
+    $scope.loadItemDetails = function(){
+      var item;
+      for (var i = 0; i < $scope.additems.length; i++) {
+        if($scope.additems[i].ItemModelID == $scope.itemSelected){
+          item = $scope.additems[i];
+          break;
+        }
+      }
+
+      $scope.unexpected_size = item.size;
+      $('#unexpected_color').dropdown('set selected', item.color);
     }
   });
 

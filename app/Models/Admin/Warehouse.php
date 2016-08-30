@@ -10,7 +10,7 @@ class Warehouse extends Model
 {
 	use SoftDeletes;
 
-    protected $table = 'warehouse';
+    protected $table = 'Warehouse';
     protected $primaryKey = 'WarehouseNo';
     protected $dates = ['deleted_at'];
     public $timestamps = false;

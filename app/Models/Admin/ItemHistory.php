@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ItemHistory extends Model
 {
-    protected $table = 'itemhistory';
+    protected $table = 'ItemHistory';
     protected $primaryKey = 'ItemID';
     public $timestamps = false;
 

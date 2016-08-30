@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Winner extends Model
 {
-    protected $table = 'winners';
+    protected $table = 'Winners';
     protected $primaryKey = 'WinnerID';
     public $timestamps = false;
 

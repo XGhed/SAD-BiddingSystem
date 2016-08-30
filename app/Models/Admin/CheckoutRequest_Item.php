@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CheckoutRequest_Item extends Model
 {
-    protected $table = 'checkoutrequest_item';
+    protected $table = 'CheckoutRequest_Item';
     protected $primaryKey = 'CheckoutRequest_ItemID';
     public $timestamps = false;
 

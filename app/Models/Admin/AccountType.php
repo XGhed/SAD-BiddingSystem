@@ -10,7 +10,7 @@ class AccountType extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'accounttype';
+    protected $table = 'AccountType';
     protected $primaryKey = 'AccountTypeID';
     protected $dates = ['deleted_at'];
     public $timestamps = false;

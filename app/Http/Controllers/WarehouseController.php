@@ -18,7 +18,7 @@ class WarehouseController extends Controller
 
 	public function manageWarehouse(){
 
-       $results = App\Models\Admin\warehouse::all();
+       $results = App\Models\Admin\Warehouse::all();
        $provinces = App\Models\Admin\Province::orderBy('ProvinceName')->get();
        $cities = App\Models\Admin\City::all();
 

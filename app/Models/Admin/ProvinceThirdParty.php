@@ -10,7 +10,7 @@ class ProvinceThirdParty extends Model
 {
 	use SoftDeletes;
 
-    protected $table = 'provincethirdparty';
+    protected $table = 'ProvinceThirdParty';
     protected $primaryKey = 'PartyID';
     public $timestamps = false;
 

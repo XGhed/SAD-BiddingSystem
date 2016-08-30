@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Discount extends Model
 {
-    protected $table = 'discount';
+    protected $table = 'Discount';
     protected $primaryKey = 'DiscountID';
     public $timestamps = false;
 

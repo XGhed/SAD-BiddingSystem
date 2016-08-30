@@ -10,7 +10,7 @@ class SubCategory extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'subcategory';
+    protected $table = 'SubCategory';
     protected $primaryKey = 'SubCategoryID';
     protected $dates = ['deleted_at'];
     public $timestamps = false;

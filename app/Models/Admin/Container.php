@@ -12,7 +12,7 @@ class Container extends Model
 
     public function Item()
 	{
-	    return $this->hasMany('App\Models\Admin\Items', 'ContainerID');
+	    return $this->hasMany('App\Models\Admin\Item', 'ContainerID');
 	}
 
 	public function Supplier()

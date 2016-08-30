@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Shipment extends Model
 {
-    protected $table = 'shipment';
+    protected $table = 'Shipment';
     protected $primaryKey = 'ShipmentID';
     public $timestamps = false;
 
