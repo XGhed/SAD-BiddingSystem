@@ -13,8 +13,14 @@ class HomepageController extends Controller
 {
     public function displayHomepage(Request $request){
 
-      $isLoggedIn = $this->verifyCustomer($request);
+    	$isLoggedIn = $this->verifyCustomer($request);
 
-       return view('customer.homepageContent')->with('isLoggedIn', $isLoggedIn);
+
+    	if($isLoggedIn == 'true'){
+    		return redirect('/eventsList');
+    	}
+    	else {
+    		return view('customer.homepageContent');
+    	}
     }
 }

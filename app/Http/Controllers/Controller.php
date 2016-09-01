@@ -26,7 +26,7 @@ abstract class Controller extends BaseController
             return 'true';
         }
         else{
-            return redirect('/');
+            return 'false';
         }
     }
 }
