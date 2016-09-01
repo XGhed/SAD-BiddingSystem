@@ -16,6 +16,13 @@
       <script type="text/javascript" src="js/angular.min.js"></script>
       <script type="text/javascript" src="{!!URL::asset('js/angular-datatables.min.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/semantic.min.js')!!}"></script>
+
+      <!--calendar -->
+      <link href="{!!URL::asset('css/fullcalendar.css')!!}" rel='stylesheet' />
+      <script src="{!!URL::asset('js/moment.min.js')!!}"></script>
+
+      <script src="{!!URL::asset('js/fullcalendar.min.js')!!}"></script>
+
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/angular-datatables.css')!!}"/>
 
       <meta name="csrf-token" content="{{ csrf_token() }}">
