@@ -232,6 +232,11 @@ class PageController extends Controller
 
       return view('admin1.expectedItemPercent');
     }
+
+    public function reportPage(Request $request){
+
+      return view('customer.reportPage');
+    }
 }
 
 
