@@ -16,6 +16,7 @@
 
 	    	<form class="ui form">
 	    		<div class="ui inverted segment">
+	    		<h2 class="ui centered header" >Personal Information</h2>
 		    		<div class="ten wide field">
 	                    <div class="ui sub header inverted">What is your problem?</div>
 	                    <div class="ui fluid search selection dropdown" id="problem">
@@ -27,18 +28,15 @@
 	                      </div>
 	                    </div>
 	                </div>
-	                <div class="twelve wide field">
-	                	<div class="ui sub header">Explain here</div>
-	                	<textarea rows="3" placeholder="explain here..."></textarea>
-	                </div>
                 </div>
             <div class="ui divider"></div>
                 <div class="ui inverted segment">
-                	ghed1
-                </div>
-            <div class="ui divider"></div>
-            	<div class="ui inverted segment">
-            		ghed2
+	    			<h2 class="ui centered header">Educational Information</h2>
+                	
+	                <div class="twelve wide field">
+	                	<div class="ui sub header inverted">Explain here</div>
+	                	<textarea rows="3" placeholder="explain here..."></textarea>
+	                </div>
                 </div>
                 <button type="submit" class="ui green button"><i class="checkmark icon"></i>Submit</button>
             </form>
