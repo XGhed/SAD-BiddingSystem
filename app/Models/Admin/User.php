@@ -21,7 +21,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var string
      */
-    protected $table = 'account';
+    protected $table = 'Account';
     protected $primaryKey = 'AccountID';
     public $timestamps = false;
 
