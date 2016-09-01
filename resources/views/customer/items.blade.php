@@ -40,7 +40,7 @@
 
 @section('content')
 	<div style="margin: 35px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="eventID = {{$eventID}}; joined = {{$joined}}">
-		<h1 class="ui center aligned header">EVENT NAME</h1>
+		<h1 class="ui center aligned header">@{{event.EventName}}</h1>
 
 		<button class="ui basic green button" id="join0" ng-click="showJoinConfirmation()">
 			<i class="legal icon"></i>
@@ -79,7 +79,7 @@
 		  </div>
 		</div>	
 		<div class="ui divider"></div>
-		<div class="ui sub header">countdown: <timer countdown="10041" max-time-unit="'minute'" interval="1000">@{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</timer></div>
+		<div class="ui sub header">countdown: <timer countdown="event.remainingTime" max-time-unit="'hour'" interval="1000" ng-if="event.remainingTime > 0">@{{hhours}} hour@{{hourS}}, @{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</timer></div>
 		<br>
 		<div class="ui three column equal width relaxed grid">
 		  	<div class="stretched row">
@@ -150,8 +150,15 @@
 	  .dropdown()
 	;
 
-	var app = angular.module('myApp', ['datatables']);
+	var app = angular.module('myApp', ['datatables', 'timer']);
 	app.controller('myController', function($scope, $http, $timeout, $window){
+		$timeout(function(){
+			$http.get('/eventDetails?eventID=' + $scope.eventID)
+			.then(function(response){
+				$scope.event = response.data;
+			});
+		}, 1000);
+
 		$scope.subcatViewItems = function(subcatID, subcatname){
 			$http.get('/itemsOfSubcategory?subcatID=' + subcatID + '&eventID=' + $scope.eventID)
 			.then(function(response){

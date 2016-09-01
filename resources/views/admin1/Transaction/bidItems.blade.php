@@ -96,7 +96,7 @@
           </div>
             <!-- END add modal -->
         </div>
-         <table class="ui celled table">
+         <table class="ui celled table" datatable="ng">
           <thead>
             <tr>
             <th>ID</th>

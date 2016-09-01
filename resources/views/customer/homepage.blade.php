@@ -16,6 +16,10 @@
       <script type="text/javascript" src="js/angular.min.js"></script>
       <script type="text/javascript" src="{!!URL::asset('js/angular-datatables.min.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/semantic.min.js')!!}"></script>
+      <script type="text/javascript" src="{!!URL::asset('js/moment.min.js')!!}"></script>
+      <script type="text/javascript" src="{!!URL::asset('js/locales.min.js')!!}"></script>
+      <script type="text/javascript" src="{!!URL::asset('js/humanize-duration.js')!!}"></script>
+      <script type="text/javascript" src="{!!URL::asset('js/angular-timer.min.js')!!}"></script>
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/angular-datatables.css')!!}"/>
     </head>
 

@@ -203,8 +203,8 @@ class AngularOutput extends Controller
         return Carbon::now('Asia/Manila');
     }
 
-    public function unactivatedAccounts(){
-        $accounts = App\Models\Admin\Account::with('membership', 'membership.accounttype', 'membership.city', 'membership.city.province')->where('status', 0)->get();
+    public function accountsList(){
+        $accounts = App\Models\Admin\Account::with('membership', 'membership.accounttype', 'membership.city', 'membership.city.province')->get();
 
         return $accounts;
     }

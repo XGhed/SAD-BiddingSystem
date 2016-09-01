@@ -17,6 +17,7 @@ class ItemAuction extends Migration
         $table->foreign('ItemID')->references('ItemID')->on('Items');
         $table->integer('ItemPrice')->unsigned();
         $table->integer('Points')->unsigned();
+        $table->integer('status')->default(1);
     });
 }
 

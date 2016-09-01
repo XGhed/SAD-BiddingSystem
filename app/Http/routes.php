@@ -183,13 +183,15 @@ Route::get('/itemModelsWithItems', 'AngularOutput@itemModelsWithItems');
 
 Route::get('/colors', 'AngularOutput@colors');
 
-Route::get('/unactivatedAccounts', 'AngularOutput@unactivatedAccounts');
+Route::get('/accountsList', 'AngularOutput@accountsList');
 
 Route::get('/itemModelsOfSubcat', 'AngularOutput@itemModelsOfSubcat');
 
 //
 
 Route::get('/eventList', 'BiddingEventController@eventList');
+
+Route::get('/eventDetails', 'BiddingEventController@eventDetails');
 
 Route::get('/getEventItems', 'BiddingEventController@getEventItems');
 
@@ -219,8 +221,6 @@ Route::get('/approveAccount', 'AngularInput@approveAccount');
 Route::get('/deleteOrderedItem', 'AngularInput@deleteOrderedItem');
 
 //
-
-Route::get('/eventDetails', 'BiddingEventController@eventDetails');
 
 Route::get('/addItemToAuction', 'BiddingEventController@addItemToAuction');
 

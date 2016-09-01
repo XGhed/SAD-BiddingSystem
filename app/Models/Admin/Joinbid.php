@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Joinbid extends Model
 {
-    protected $table = 'Joinbid';
+    protected $table = 'JoinBid';
     protected $primaryKey = 'JoinbidID';
     public $timestamps = false;
 

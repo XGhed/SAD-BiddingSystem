@@ -10,6 +10,7 @@ use App\Models\Admin;
 use Session;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Support\Collection;
 
 class BiddingEventController extends Controller
 {
@@ -19,10 +20,47 @@ class BiddingEventController extends Controller
         return $events;
     }
 
-    public function eventDetails(Request $request){
+    public function eventDetails(Request $request){        
         $event = App\Models\Admin\Auction::find($request->eventID);
-        
+
+        //return $event;
+
+        $start = collect(explode(' ', $event->StartDateTime));
+        $end = collect(explode(' ', $event->EndDateTime));
+
+        $start->date = explode('-', $start[0]);
+        $start->time = explode(':', $start[1]);
+
+        $end->date = explode('-', $end[0]);
+        $end->time = explode(':', $end[1]);
+
+        $start = collect([
+            'date' => $start->date,
+            'time' => $start->time
+            ]);
+
+        $end = collect([
+            'date' => $end->date,
+            'time' => $end->time
+            ]);
+
+        $startDateTime = Carbon::now();
+        $endDateTime = Carbon::now();
+        $startDateTime->timezone = 'Asia/Manila';
+        $endDateTime->timezone = 'Asia/Manila';
+
+        $startDateTime->year($start['date'][0])->month($start['date'][1])->day($start['date'][2])
+        ->hour($start['time'][0])->minute($start['time'][1])->second($start['time'][2])
+        ->toDateTimeString();
+
+        $endDateTime->year($end['date'][0])->month($end['date'][1])->day($end['date'][2])
+        ->hour($end['time'][0])->minute($end['time'][1])->second($end['time'][2])
+        ->toDateTimeString();
+
+        $event->remainingTime = Carbon::now('Asia/Manila')->diffInSeconds($endDateTime);
+
         return $event;
+        
     }
 
     public function addBiddingEvent(Request $request){

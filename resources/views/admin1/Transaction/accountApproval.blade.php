@@ -15,39 +15,42 @@
       </div>
       <div class="ui bottom attached active tab segment" data-tab="first">
        <table class="ui definition celled selectable table" datatable="ng">
-              <thead>
-                <tr>
-                <th></th>
-                <th>Account</th>
-                <th>Account Type</th>
-                <th>Date Registered</th>
-              </tr></thead>
-              <tbody>
-                <tr ng-repeat="account in accounts">
-                  <td class="collapsing">           
-                    <button class="ui basic green button" ng-click="showInfo(account)"><i class="unhide icon"></i>View Info</button> 
-                  </td>
-                  <td class="tableRow" >@{{account.Username}}</td>
-                  <td class="tableRow" >@{{account.membership[0].accounttype.AccountTypeName}}</td>
-                  <td class="tableRow" >@{{account.membership[0].DateOfRegistration}}</td>
-                </tr>
-              </tbody>
-            </table>
-      </div>
-      <div class="ui bottom attached tab segment" data-tab="second">
-        <table class="ui celled table">
           <thead>
             <tr>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-            </tr>
-          </thead>
+            <th></th>
+            <th>Account</th>
+            <th>Account Type</th>
+            <th>Date Registered</th>
+          </tr></thead>
           <tbody>
+            <tr ng-repeat="account in accounts" ng-if="account.status == '0'">
+              <td class="collapsing">           
+                <button class="ui basic green button" ng-click="showInfo(account)"><i class="unhide icon"></i>View Info</button> 
+              </td>
+              <td class="tableRow" >@{{account.Username}}</td>
+              <td class="tableRow" >@{{account.membership[0].accounttype.AccountTypeName}}</td>
+              <td class="tableRow" >@{{account.membership[0].DateOfRegistration}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="second">
+        <table class="ui definition celled selectable table" datatable="ng">
+          <thead>
             <tr>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td>Cell</td>
+            <th></th>
+            <th>Account</th>
+            <th>Account Type</th>
+            <th>Date Registered</th>
+          </tr></thead>
+          <tbody>
+            <tr ng-repeat="account in accounts" ng-if="account.status == '1'">
+              <td class="collapsing">           
+                <button class="ui basic green button" ng-click="showInfo(account)"><i class="unhide icon"></i>View Info</button> 
+              </td>
+              <td class="tableRow" >@{{account.Username}}</td>
+              <td class="tableRow" >@{{account.membership[0].accounttype.AccountTypeName}}</td>
+              <td class="tableRow" >@{{account.membership[0].DateOfRegistration}}</td>
             </tr>
           </tbody>
         </table>
@@ -73,7 +76,7 @@
             </p>
           </div>
         </div>
-        <div class="actions">
+        <div class="actions" ng-if="info_status == '0'">
           <button class="ui basic green button" ng-click="approveAccount(selectedAccountID, $index)"><i class="checkmark icon"></i>Approve</button>
         </div>
       </div>
@@ -86,7 +89,7 @@
 <script>
   var app = angular.module('myApp', ['datatables']);
   app.controller('myController', function($scope, $http, $window){
-    $http.get('/unactivatedAccounts')
+    $http.get('/accountsList')
     .then(function(response){
       $scope.accounts = response.data;
     });
@@ -101,6 +104,8 @@
       $scope.info_id = account.membership[0].valid_id;
       $scope.info_dti = account.membership[0].File_DTI;
 
+      $scope.info_status = account.status;
+
       $scope.selectedAccountID = account.AccountID;
       $('#infoModal').modal('show');
     }
@@ -114,7 +119,10 @@
       .then(function(response){
         if(response.data == 'success'){
           alert('success');
-          $scope.accounts.splice(index, 1);
+          $http.get('/accountsList')
+          .then(function(response){
+            $scope.accounts = response.data;
+          });
         }
         else {
           alert('error');
