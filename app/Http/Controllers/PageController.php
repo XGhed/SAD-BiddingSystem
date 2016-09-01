@@ -151,7 +151,7 @@ class PageController extends Controller
 
     public function accountApproval(Request $request){
 
-       return view('admin1.Queries.accountApproval');
+       return view('admin1.Transaction.accountApproval');
     }
 
     public function itemPullouts(Request $request){
