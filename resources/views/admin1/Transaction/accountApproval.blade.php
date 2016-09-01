@@ -4,29 +4,54 @@
 <div class="ui grid" ng-app="myApp" ng-controller="myController">
 @include('admin1.Transaction.sideNav')
 
+
   <div class="twelve wide stretched column">
     <div class="ui segment">
         <h2 class="ui centered header">Account Approval</h2>
 
-      <table class="ui definition celled selectable table" datatable="ng">
-        <thead>
-          <tr>
-          <th></th>
-          <th>Account</th>
-          <th>Account Type</th>
-          <th>Date Registered</th>
-        </tr></thead>
-        <tbody>
-          <tr ng-repeat="account in accounts">
-            <td class="collapsing">           
-              <button class="ui basic green button" ng-click="showInfo(account)"><i class="unhide icon"></i>View Info</button> 
-            </td>
-            <td class="tableRow" >@{{account.Username}}</td>
-            <td class="tableRow" >@{{account.membership[0].accounttype.AccountTypeName}}</td>
-            <td class="tableRow" >@{{account.membership[0].DateOfRegistration}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="ui top attached tabular menu">
+        <a class="active item" data-tab="first">Account Approval</a>
+        <a class="item" data-tab="second">Account list</a>
+      </div>
+      <div class="ui bottom attached active tab segment" data-tab="first">
+       <table class="ui definition celled selectable table" datatable="ng">
+              <thead>
+                <tr>
+                <th></th>
+                <th>Account</th>
+                <th>Account Type</th>
+                <th>Date Registered</th>
+              </tr></thead>
+              <tbody>
+                <tr ng-repeat="account in accounts">
+                  <td class="collapsing">           
+                    <button class="ui basic green button" ng-click="showInfo(account)"><i class="unhide icon"></i>View Info</button> 
+                  </td>
+                  <td class="tableRow" >@{{account.Username}}</td>
+                  <td class="tableRow" >@{{account.membership[0].accounttype.AccountTypeName}}</td>
+                  <td class="tableRow" >@{{account.membership[0].DateOfRegistration}}</td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="second">
+        <table class="ui celled table">
+          <thead>
+            <tr>
+              <th>Header</th>
+              <th>Header</th>
+              <th>Header</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cell</td>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <!-- account info modal -->
       <div class="ui small modal" id="infoModal">
@@ -99,6 +124,8 @@
     }
   });
 
+$('.menu .item').tab();
   
+
 </script>
 @endsection
