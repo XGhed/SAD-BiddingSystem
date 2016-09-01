@@ -10,32 +10,6 @@
               Add Event
             </a>
 
-             <!-- old evenmt -->
-          <div class="ui small modal" id="oldEventModal">
-            <i class="close icon"></i>
-              <div class="header">
-                Previous events
-              </div>
-              <div class="content">
-                <table class="ui celled table">
-                  <thead>
-                    <tr>
-                      <th>Event Name</th>
-                      <th>Date</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                      <td>Cell</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-          </div>
-
 
             <!-- add modal -->
           <div class="ui small modal" id="addModal">
@@ -164,6 +138,12 @@
             </div>
           </div>
         </div>
+
+        <div class="ui green compact message">
+          <div class="header">Click today to open Calendar</div>
+        </div>
+         <div id='calendar' ></div>
+
       </div><!-- segment -->
     </div><!-- column -->
   </div><!-- ui grid -->
@@ -262,5 +242,25 @@
       }
     });
 
+
+    // calendar
+     $(document).ready(function() {
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: ''
+      },
+      defaultDate: '',
+      editable: false,
+      eventLimit: true, // allow "more" link when too many events
+      events: [
+        {
+          title: 'Birthday ni sonia',
+          start: '2016-09-22'
+        }
+      ]
+    });
+  });
   </script>
 @endsection
