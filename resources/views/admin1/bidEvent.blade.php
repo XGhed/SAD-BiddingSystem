@@ -170,7 +170,9 @@
             <!-- END edit modal -->
 
           <!-- details -->
-            <div class="ui card" ng-repeat="event in events">
+          <div class="ui segment">
+          <div class="ui three cards">
+            <div class="card" ng-repeat="event in events">
               <div class="content">
                 <div class="header">@{{event.EventName}}
                   <div class="ui top right attached label"><a id="editBtn" data-content="Edit event"><i class="edit icon"></i></a></div>
@@ -198,6 +200,8 @@
                 <button class="ui button" ng-click="viewItems(event.AuctionID)">View Event</button>
               </div>
             </div>
+          </div>
+        </div>
       </div><!-- segment -->
     </div><!-- column -->
   </div><!-- ui grid -->
