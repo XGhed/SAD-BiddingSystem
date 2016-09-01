@@ -66,15 +66,13 @@
                   </select>
                 </div>
 
-                <div class="equal width required fields">
-                  <div class="field">
-                    <div class="ui sub header">Warehouse</div>
-                    <select name="warehouse" id="warehouse" class="ui search selection dropdown" REQUIRED>
-                      <option disabled selected>Warehouse</option>
-                      <option ng-repeat="warehouse in addwarehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
-                    </select>
-                  </div>
-                </div>
+                <div class="field">
+                  <div class="ui sub header">Warehouse</div>
+                  <select name="warehouse" id="warehouse" class="ui search selection dropdown" REQUIRED>
+                    <option disabled selected>Warehouse</option>
+                    <option ng-repeat="warehouse in addwarehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
+                  </select>
+                </div>                
 
                 <div class="field">
                   <div class="ui sub header">Container</div>

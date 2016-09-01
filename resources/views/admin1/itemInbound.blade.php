@@ -43,8 +43,6 @@
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
-       <div class="ui centered header">Ordered Items</div>
-
         <div class="ui top attached tabular menu">
           <a class="active item" data-tab="first">Expected Item</a>
           <a class="item" data-tab="second">Unexpected Item</a>

@@ -20,7 +20,7 @@ class BiddingEventController extends Controller
     }
 
     public function eventDetails(Request $request){
-        $event = App\Models\Admin\Auction::find($request->eventID)->first();
+        $event = App\Models\Admin\Auction::find($request->eventID);
         
         return $event;
     }
