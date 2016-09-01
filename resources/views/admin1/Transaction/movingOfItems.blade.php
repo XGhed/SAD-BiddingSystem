@@ -2,44 +2,7 @@
 
 @section('content')
 <div class="ui grid" ng-app="myApp" ng-controller="myController">
-  <div class="four wide column">
-    <div class="ui vertical fluid tabular menu">
-      <div class="ui centered header">Transaction</div>
-         <a class="item" href="/orderedItem">
-          Ordered Items
-        </a>
-        <a class="item" href="/itemInbound">
-          Item Inbound
-        </a>
-        <a class="item" href="/itemChecking">
-          Item Checking
-        </a>        
-        <a class="item" href="/inventory">
-          Inventory
-        </a>  
-        <a class="item" href="/itemPullouts">
-          Item Pullouts
-        </a>       
-        <a class="active item" href="/movingOfItems">
-          Moving of Items
-        </a>
-        <a class="item" href="/biddingEvent">
-          Bidding Event
-        </a>
-        <a class="item" href="/accountApproval">
-          Account Approval
-        </a>
-        <a class="item" href="/prepareCheckout">
-          Prepare Checkout Items
-        </a>
-        <a class=" item" href="/paymentCheckout">
-          Payment Checkout Items
-        </a>
-        <a class="item" href="/itemOutbound">
-          Item Outbound
-        </a>
-    </div>
-  </div>
+ @include('admin1.Transaction.sideNav')
 
   <div class="twelve wide stretched column">
     <div class="ui segment">

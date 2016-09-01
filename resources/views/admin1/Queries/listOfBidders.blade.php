@@ -2,13 +2,7 @@
 
 @section('content')
 <div class="ui grid">
-  <div class="four wide column">
-    <div class="ui vertical fluid tabular menu">
-      <div class="ui centered header">Queries</div>
-        <a class=" active item" href="/listOfBidders">Customer Accounts</a>
-        <a class=" item" href="/expectItemPercent">Expected Item Percentage</a>
-    </div>
-  </div>
+  @include('admin1.Queries.sideNav')
 
   <div class="twelve wide stretched column">
     <div class="ui segment">

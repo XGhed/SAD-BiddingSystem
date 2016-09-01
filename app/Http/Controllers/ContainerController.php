@@ -16,7 +16,7 @@ class ContainerController extends Controller
         $container = App\Models\Admin\Container::find($request->containerID);
         $colors = App\Models\Admin\Color::all()->sortBy('ColorName');
 
-        return view('admin1.itemContainer')->with('container', $container)->with('colors', $colors);
+        return view('admin1.Transaction.itemContainer')->with('container', $container)->with('colors', $colors);
     }
 
     /*public function addItemToContainer(Request $request){

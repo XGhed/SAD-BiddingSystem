@@ -44,7 +44,7 @@ class BiddingEventController extends Controller
     public function viewEventItems(Request $request){
         $eventID = $request->eventID;
 
-        return view('admin1.bidItems')->with('eventID', $eventID);
+        return view('admin1.Transaction.bidItems')->with('eventID', $eventID);
     }
 
     public function getEventItems(Request $request){

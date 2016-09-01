@@ -20,7 +20,7 @@ class ItemController extends Controller
        $subCategories = App\Models\Admin\SubCategory::all();
        $colors = App\Models\Admin\Color::all()->sortBy('ColorName');
 
-       return view('admin1.item')->with ('results', $results)->with ('subCategories', $subCategories)->with ('categories', $categories)->with('colors', $colors);
+       return view('admin1.Maintenance.item')->with ('results', $results)->with ('subCategories', $subCategories)->with ('categories', $categories)->with('colors', $colors);
     }
 
     public function confirmItem(Request $request){

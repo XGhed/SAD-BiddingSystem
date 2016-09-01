@@ -21,7 +21,7 @@ class InventoryController extends Controller
        $itemModels = App\Models\Admin\ItemModel::all();
        $warehouses = App\Models\Admin\Warehouse::all();
 
-       return view('admin1.inventory')->with ('results', $results)->with ('itemModels', $itemModels)->with ('warehouses', $warehouses)->with ('suppliers', $suppliers);
+       return view('admin1.Transaction.inventory')->with ('results', $results)->with ('itemModels', $itemModels)->with ('warehouses', $warehouses)->with ('suppliers', $suppliers);
     }
 
     public function confirmItem(Request $request){

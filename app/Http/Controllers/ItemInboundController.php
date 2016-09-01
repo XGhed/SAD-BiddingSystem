@@ -15,7 +15,7 @@ class ItemInboundController extends Controller
     public function view(){
         $colors = App\Models\Admin\Color::all();
 
-        return view('admin1.itemInbound')->with('colors', $colors);
+        return view('admin1.Transaction.itemInbound')->with('colors', $colors);
     }
 
     public function itemDelivered(Request $request){

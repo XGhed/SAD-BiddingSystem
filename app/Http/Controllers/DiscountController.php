@@ -18,7 +18,7 @@ class DiscountController extends Controller
        $rewards = App\Models\Admin\Reward::all();
        $accountTypes = App\Models\Admin\AccountType::all();
 
-       return view('admin1.discount')->with ('results', $results)->with ('accountTypes', $accountTypes)->with ('rewards', $rewards);
+       return view('admin1.Maintenance.discount')->with ('results', $results)->with ('accountTypes', $accountTypes)->with ('rewards', $rewards);
     }
 
     public function confirmDiscount(Request $request){

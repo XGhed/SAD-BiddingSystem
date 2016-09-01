@@ -141,37 +141,37 @@ class PageController extends Controller
 
     public function orderedItem(Request $request){
 
-       return view('admin1.orderedItem');
+       return view('admin1.Transaction.orderedItem');
     }
 
     public function itemContainer(Request $request){
 
-       return view('admin1.itemContainer');
+       return view('admin1.Transaction.itemContainer');
     }
 
     public function accountApproval(Request $request){
 
-       return view('admin1.accountApproval');
+       return view('admin1.Queries.accountApproval');
     }
 
     public function itemPullouts(Request $request){
 
-       return view('admin1.itemPullouts');
+       return view('admin1.Transaction.itemPullouts');
     }
 
     public function bidEvent1(Request $request){
 
-       return view('admin1.bidEvent');
+       return view('admin1.Transaction.bidEvent');
     }
 
     public function movingItems(Request $request){
 
-       return view('admin1.movingOfItems');
+       return view('admin1.Transaction.movingOfItems');
     } 
 
     public function approvalOfMovingItems(Request $request){
 
-       return view('admin1.approvalOfMovingItems');
+       return view('admin1.Transaction.approvalOfMovingItems');
     } 
 
     public function bidItems1(Request $request){
@@ -205,27 +205,27 @@ class PageController extends Controller
 
     public function listOfBidders(Request $request){
 
-       return view('admin1.listOfBidders');
+       return view('admin1.Queries.listOfBidders');
     }
 
     public function itemChecking(Request $request){
 
-       return view('admin1.itemChecking');
+       return view('admin1.Transaction.itemChecking');
     }
 
     public function itemOutbound(Request $request){
 
-       return view('admin1.itemOutbound');
+       return view('admin1.Transaction.itemOutbound');
     }
 
     public function prepareCheckout(Request $request){
 
-       return view('admin1.prepareCheckout');
+       return view('admin1.Transaction.prepareCheckout');
     }
 
     public function paymentCheckout(Request $request){
 
-       return view('admin1.paymentCheckout');
+       return view('admin1.Transaction.paymentCheckout');
     }
 
     public function expectedItemPercent(Request $request){
