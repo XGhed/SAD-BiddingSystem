@@ -95,7 +95,7 @@ Route::get('/registerContainer', 'RegisterContainerController@manageRegContainer
 
 Route::get('/places', 'ProvinceController@manageProvince');
 
-Route::get('/inventory', 'InventoryController@manageItem');
+Route::get('/inventory', 'PageController@inventory');
 
 Route::get('/discount', 'DiscountController@manageDiscount');
 

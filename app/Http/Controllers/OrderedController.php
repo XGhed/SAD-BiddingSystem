@@ -21,7 +21,7 @@ class OrderedController extends Controller
 
         $container->save();
 
-        return redirect('admin1.Transaction.orderedItem');
+        return redirect('orderedItem');
     }
 
     public function editContainer(Request $request){

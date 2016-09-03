@@ -19,15 +19,10 @@ class MovingController extends Controller
             $item->RequestedWarehouse = $request->warehouse;
             $item->save();
 
-            //history
-            $history = new App\Models\Admin\ItemHistory;
-            $warehouse = App\Models\Admin\Warehouse::find($request->warehouse);
-
-            $history->ItemID = $item->ItemID;
-            $history->Log = "Requested to move to warehouse " . $warehouse->Barangay_Street_Address . ', ' . $warehouse->city->CityName . ', ' . $warehouse->city->province->ProvinceName;
-            $history->Date = Carbon::now('Asia/Manila');
-
-            $history->save();
+            $this->ItemLog(
+                $item, 
+                "Item requested to move to warehouse " . $item->requested_warehouse->Barangay_Street_Address . ", " . $item->requested_warehouse->city->province->ProvinceName . ", " . $item->requested_warehouse->city->CityName
+                );
         }
 
         return redirect('movingOfItems');
@@ -42,15 +37,10 @@ class MovingController extends Controller
 
             $item->save();
 
-            //history
-            $history = new App\Models\Admin\ItemHistory;
-            $warehouse = App\Models\Admin\Warehouse::find($item->CurrentWarehouse);
-
-            $history->ItemID = $item->ItemID;
-            $history->Log = "Successfully moved to warehouse " . $warehouse->Barangay_Street_Address . ', ' . $warehouse->city->CityName . ', ' . $warehouse->city->province->ProvinceName;
-            $history->Date = Carbon::now('Asia/Manila');
-
-            $history->save();
+            $this->ItemLog(
+                $item, 
+                "Item successfully moved to warehouse " . $item->current_warehouse->Barangay_Street_Address . ", " . $item->current_warehouse->city->province->ProvinceName . ", " . $item->current_warehouse->city->CityName
+                );
         }
 
         return redirect('approvalOfMovingItems');

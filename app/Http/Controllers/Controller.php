@@ -29,4 +29,14 @@ abstract class Controller extends BaseController
             return 'false';
         }
     }
+
+    public function ItemLog($item, $log){
+        $history = new App\Models\Admin\ItemHistory;
+
+        $history->ItemID = $item->ItemID;
+        $history->Date = Carbon::now('Asia/Manila');
+        $history->Log = $log;
+
+        $history->save();
+    }
 }

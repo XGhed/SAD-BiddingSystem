@@ -38,6 +38,11 @@ class ItemCheckingController extends Controller
 
             $item->save();
 
+            $this->ItemLog(
+                $item, 
+                "Item successfully checked"
+                );
+
             return redirect('itemChecking');
 
         } catch (Exception $e) {
@@ -59,6 +64,11 @@ class ItemCheckingController extends Controller
             }
 
             $item->save();
+
+            $this->ItemLog(
+                $item, 
+                "Item successfully defect description and/or image updated"
+                );
 
             return redirect('itemChecking');
 

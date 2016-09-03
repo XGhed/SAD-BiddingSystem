@@ -52,6 +52,11 @@ class ContainerController extends Controller
 
         $this->colorDatabase($request->color);
 
+        $this->ItemLog(
+                $item, 
+                "Item added to container " . $item->container->ContainerName . ' and expected to be delivered at ' . $item->container->warehouse->Barangay_Street_Address . ", " . $item->container->warehouse->city->province->ProvinceName . ", " . $item->container->warehouse->city->CityName
+                );
+
         return redirect('/itemContainer?containerID=' . $request->containerID);
     }
 
@@ -88,7 +93,10 @@ class ContainerController extends Controller
 
             $item->save();
 
-            $this->ItemDeliveredLog($item);
+            $this->ItemLog(
+                $item, 
+                "Item successfully delivered to warehouse " . $item->current_warehouse->Barangay_Street_Address . ", " . $item->current_warehouse->city->province->ProvinceName . ", " . $item->current_warehouse->city->CityName
+                );
 
             $this->colorDatabase($request->color);
         }
@@ -108,16 +116,6 @@ class ContainerController extends Controller
             $insertColor->save();
             return;
         }
-    }
-
-    public function ItemDeliveredLog($item){
-        $history = new App\Models\Admin\ItemHistory;
-
-        $history->ItemID = $item->ItemID;
-        $history->Date = Carbon::now('Asia/Manila');
-        $history->Log = "Item successfully delivered to warehouse " . $item->current_warehouse->Barangay_Street_Address . ", " . $item->current_warehouse->city->province->ProvinceName . ", " . $item->current_warehouse->city->CityName;
-
-        $history->save();
     }
 
     public function containerArrived(Request $request){

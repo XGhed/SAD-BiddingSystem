@@ -123,6 +123,13 @@ class BiddingEventController extends Controller
         ->where('ItemID', $item_auction->ItemID)
         ->first();
 
+        $item = App\Models\Admin\Item::find($request->itemID);
+        $auction = App\Models\Admin\Auction::find($request->eventID);
+        $this->ItemLog(
+                $item, 
+                "Item added to event " . $auction->EventName . ' with price of P' . $item_auction->ItemPrice . ' and ' . $item_auction->Points . ' points'
+                );
+
         return $returndata;
     }
 
@@ -130,6 +137,13 @@ class BiddingEventController extends Controller
         $item_auction = App\Models\Admin\Item_Auction::find($request->itemID);
 
         $item_auction->delete();
+
+        $item = App\Models\Admin\Item::find($request->itemID);
+        $auction = App\Models\Admin\Auction::find($item_auction->AuctionID);
+        $this->ItemLog(
+                $item, 
+                "Item removed from event " . $auction->EventName
+                );
 
         return 'success';
     }

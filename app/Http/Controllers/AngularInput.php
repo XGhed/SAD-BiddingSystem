@@ -22,6 +22,12 @@ class AngularInput extends Controller
 
         $pullRequest->save();
 
+        $item = App\Models\Admin\Item::find($request->itemID);
+        $this->ItemLog(
+                $item, 
+                "Item requested for disposal"
+                );
+
         return "success";
     }
 
@@ -29,6 +35,12 @@ class AngularInput extends Controller
         $pullRequest = App\Models\Admin\PullRequest::where('ItemID', $request->itemID)->first();
 
         $pullRequest->delete();
+
+        $item = App\Models\Admin\Item::find($request->itemID);
+        $this->ItemLog(
+                $item, 
+                "Item request for disposal cancelled"
+                );
 
         return "success";
     }
@@ -40,14 +52,10 @@ class AngularInput extends Controller
             $item->status = 3;
             $item->save();
 
-            $pullRequest = App\Models\Admin\PullRequest::where('ItemID', $request->itemID)->first();
-            $pullRequest->delete();
-
-            $itemhistory = new App\Models\Admin\ItemHistory;
-            $itemhistory->ItemID = $request->itemID;
-            $itemhistory->Log = "Item successfully pulled out (disposed)";
-            $itemhistory->Date = Carbon::now('Asia/Manila');
-            $itemhistory->save();
+            $this->ItemLog(
+                $item, 
+                "Item successfully pulled out (disposed)"
+                );
 
             return 'success';
         }

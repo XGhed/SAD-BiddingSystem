@@ -56,7 +56,7 @@ class PageController extends Controller
 
     public function inventory(Request $request){
 
-       return view('admin.inventory');
+       return view('admin1.Transaction.inventory');
     }
 
     public function admin(Request $request){
@@ -151,7 +151,7 @@ class PageController extends Controller
 
     public function accountApproval(Request $request){
 
-       return view('admin1.Transaction.accountApproval');
+       return view('admin1.Queries.accountApproval');
     }
 
     public function itemPullouts(Request $request){
