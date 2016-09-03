@@ -31,6 +31,7 @@
                 <tr>
                   <th></th>
                   <th>Container</th>
+                  <th>ItemID</th>
                   <th>Item</th>
                   <!--<th>Defect</th> -->
                   <th>Color</th>
@@ -44,6 +45,7 @@
                       <input type="checkbox" name="delivereditems[]" class="ui checkbox" value="@{{item.ItemID}}"/>
                     </td>
                     <td>@{{item.container.ContainerName}}</td>
+                    <td>@{{item.ItemID}}</td>
                     <td>@{{item.item_model.ItemName}}</td>
                     <!--<td>@{{item.DefectDescription}}</td> -->
                     <td>@{{item.color}}</td>

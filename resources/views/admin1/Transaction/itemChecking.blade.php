@@ -28,6 +28,7 @@
           <thead>
             <tr>
               <th></th>
+              <th>Item ID</th>
               <th>Item Name</th>
               <th>Container</th>
             </tr>
@@ -37,6 +38,7 @@
                     <td>
                       <button ng-click="uncheckModal(uncheck.ItemID)" class="ui basic green button" name="tdID" value="@{{uncheck.ItemID}}">View Item</button>
                     </td>
+                    <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{item.ItemID}}</td>
                     <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.item_model.ItemName}}</td>
                     <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.container.ContainerName}}</td>
                   </tr>
@@ -76,6 +78,7 @@
           <thead>
             <tr>
               <th></th>
+              <th>Item ID</th>
               <th>Item Name</th>
               <th>Defect</th>
               <th>Warehouse</th>
@@ -86,6 +89,7 @@
                     <td>
                       <button ng-click="checkModal(check.ItemID, check.image_path)" class="ui basic green button">View Item</button>
                     </td>
+                    <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{item.ItemID}}</td>
                     <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.item_model.ItemName}}</td>
                     <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.DefectDescription}}</td>
                     <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.container.warehouse.Barangay_Street_Address}},

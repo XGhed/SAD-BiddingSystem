@@ -18,6 +18,7 @@
           <thead>
             <tr>
               <th></th>
+              <th>ID</th>
               <th>Name</th>
               <th>Category</th>
               <th>Photo</th>
@@ -43,6 +44,7 @@
                   </div>
                 </div> 
               </td>
+              <td >@{{item.ItemID}}</td>
               <td id="tableRow">@{{item.item_model.ItemName}}</td>
               <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
               <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
@@ -62,6 +64,7 @@
         <thead>
           <tr>
             <th></th>
+            <th>ID</th>
             <th>Name</th>
             <th>Category</th>
             <th>SubCategory</th>
@@ -76,6 +79,7 @@
                 View Stocks
               </a>              
             </td>
+            <td>@{{item.ItemID}}</td>
             <td>@{{itemmodel.ItemName}}</td>
             <td>@{{itemmodel.sub_category.category.CategoryName}}</td>
             <td>@{{itemmodel.sub_category.SubCategoryName}}</td>
@@ -92,6 +96,7 @@
           <thead>
             <tr>
               <th></th>
+              <th>ID</th>
               <th>Name</th>
               <th>Category</th>
               <th>Photo</th>
@@ -117,6 +122,7 @@
                   </div>
                 </div> 
               </td>
+              <td id="tableRow">@{{item.item_model.ItemID}}</td>
               <td id="tableRow">@{{item.item_model.ItemName}}</td>
               <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
               <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
