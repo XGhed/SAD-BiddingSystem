@@ -17,9 +17,9 @@ class CustomerCartController extends Controller
         $items = App\Models\Admin\Item::has('checkoutRequest_item', '<', 1)->
             orWhereHas('checkoutRequest_item', function($query){
                 $query->whereHas('checkoutRequest', function($query){
-                    $query->where('Status', '<', 0);
+                    $query->where('Status', '>=', 0);
                 });
-            })->get();
+            }, '<', 1)->get();
         $itemsWon = [];
 
         foreach ($items as $key => $item) {

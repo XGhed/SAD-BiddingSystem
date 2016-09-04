@@ -14,12 +14,16 @@ use Illuminate\Support\Collection;
 class CustomerCheckoutController extends Controller
 {
     public function view(Request $request){        
+        return view('customer.checkout');
+    }
+
+    public function itemsWon(Request $request){
         $items = App\Models\Admin\Item::has('checkoutRequest_item', '<', 1)->
             orWhereHas('checkoutRequest_item', function($query){
                 $query->whereHas('checkoutRequest', function($query){
-                    $query->where('Status', '<', 0);
+                    $query->where('Status', '>=', 0);
                 });
-            })->get();
+            }, '<', 1)->get();
         $itemsWon = [];
 
         foreach ($items as $key => $item) {
@@ -33,6 +37,9 @@ class CustomerCheckoutController extends Controller
                     $auctionEndTime = explode(' ', $item->winners->first()->auction->EndDateTime);
 
                     if ($currentDatetime[0] > $auctionEndTime[0] || ($currentDatetime[0] == $auctionEndTime[0] && $currentDatetime[1] > $auctionEndTime[1])){
+                        $item->DateTime = $item->winners->last()->bid->DateTime;
+                        $item->Price = $item->winners->last()->bid->Price;
+                        $item->Model = $item->itemModel->ItemName;
                         array_push($itemsWon, $item);
                     }
 
@@ -43,8 +50,8 @@ class CustomerCheckoutController extends Controller
         }
         
         $itemsWon = collect($itemsWon);
-        
-        return view('customer.checkout')->with('itemsWon', $itemsWon);
+
+        return $itemsWon;
     }
 
     public function insert(Request $request){

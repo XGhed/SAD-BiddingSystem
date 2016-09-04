@@ -40,10 +40,10 @@
 
 @section('content')
 	<div style="margin: 35px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController">
+	<form class="ui form" action="/submitCheckout" method="POST">
 		<a href="/cart/"><i class="arrow left icon"></i>back to cart</a>
 		<div class="ui internally celled grid container">
 				<div class="ui column nine wide segment" style="margin: 5px 5px 5px 15px;">
-				<form class="ui form" action="/submitCheckout" method="POST">
 				<h2 class="ui header">
 				  <i class="shop icon"></i>
 				  <div class="content">
@@ -56,13 +56,13 @@
 					<div class="row"></div>
 					<div class="field">
 				      <div class="ui radio checkbox">
-				        <input type="radio" name="checkoutType" id="radioDelivery" checked="checked" value="Deliver">
+				        <input type="radio" name="checkoutType" id="radioDelivery" ng-click="checkoutType = 'Deliver'" checked="checked" value="Deliver">
 				        <label>Delivery</label>
 				      </div>
 				    </div>
 				    <div class="field">
 				      <div class="ui radio checkbox">
-				        <input type="radio" name="checkoutType" id="radioPickup" value="Pick up">
+				        <input type="radio" name="checkoutType" id="radioPickup" ng-click="checkoutType = 'Pick up'" value="Pick up">
 				        <label>Pick up</label>
 				      </div>
 				    </div>
@@ -79,17 +79,17 @@
 						</tr>
 					  </thead>
 					  <tbody>
-					    @foreach($itemsWon as $key => $itemWon)
-					    	<tr>
-						      <td>
-						      	<input type="checkbox" class="ui checkbox" name="items[]" value="{{$itemWon->ItemID}}" ng-click="addItem({{$itemWon}})"/>
-						      </td>
-						      <td>{{$itemWon->ItemID}}</td>
-						      <td>{{$itemWon->itemModel->ItemName}}</td>
-						      <td>{{$itemWon->winners->last()->bid->DateTime}}</td>
-						      <td>{{$itemWon->winners->last()->bid->Price}}</td>
-						    </tr>
-					    @endforeach
+					    
+				    	<tr ng-repeat="item in itemsWon">
+					      <td>
+					      	<input type="checkbox" class="ui checkbox" name="itemsWon[]" value="@{{$item.ItemID}}" ng-click="addToCart(item, $index)"/>
+					      </td>
+					      <td>@{{item.ItemID}}</td>
+					      <td>@{{item.Model}}</td>
+					      <td>@{{item.DateTime}}</td>
+					      <td>@{{item.Price}}</td>
+					    </tr>
+					    
 					  </tbody>
 					</table>
 					</div>
@@ -138,7 +138,7 @@
 							</div>
 							<div class="field">
 							 	<div class="ui sub header">City</div>
-								<select class="ui fluid search normal selection dropdown" name="city" id="city">
+								<select class="ui fluid search normal selection dropdown" name="city" id="city" ng-model="inputCity" ng-change="shipmentFee()">
 									<option value="" disabled selected>Select City</option>
 									<option ng-repeat="city in cities" value="@{{city.CityID}}">@{{city.CityName}}</option>
 								</select>
@@ -161,7 +161,7 @@
 				  			<button class="ui button" type="submit">Submit</button>
 				  		</div>
 				  	</div>
-				</form>
+				
 			</div>
 
 			<div class="ui column six wide right floated" style="margin: 5px 0 5px 15px;">
@@ -176,22 +176,30 @@
 				<table class="ui selectable green table">
 				  	<thead>
 				    	<tr>
+				    		<th></th>
 					    	<th>Item</th>
 					    	<th>Price</th>
 				  		</tr>
 				  	</thead>
 				  	<tbody>
-				    	<tr>
-				      		<td>Mar Roxas</td>
-				      		<td>100.00</td>
+				    	<tr ng-repeat="item in cartItems">
+				    		<td>
+				    			<input type="checkbox" class="ui checkbox" name="items[]" value="@{{item.ItemID}}" ng-click="removeFromCart(item, $index)" checked/>
+				    		</td>
+				      		<td>@{{item.Model}}</td>
+				      		<td>@{{item.Price}}</td>
 				    	</tr>
 				    	<tr class="warning">
+					      <td>Sub total:</td>
+					      <td>@{{subTotalPrice}}</td>
+					    </tr>
+				    	<tr class="warning" ng-if="checkoutType == 'Deliver'">
 					      <td>Shipping fee:</td>
-					      <td>75.00</td>
+					      <td>@{{shippingFee}}</td>
 					    </tr>
 					    <tr class="positive">
 					      <td>Total fee:</td>
-					      <td>275.00</td>
+					      <td>@{{totalPrice}}</td>
 					    </tr>
 				  	</tbody>
 				</table>
@@ -200,6 +208,7 @@
 				</div>
 			</div>
 	  	</div>
+	</form>
 	</div>
 
 <script>
@@ -252,9 +261,19 @@ $('.ui.normal.dropdown')
 
 	var app = angular.module('myApp', []);
 	app.controller('myController', function($scope, $http){
+		$scope.cartItems = [];
+		$scope.shippingFee = 0;
+		$scope.subTotalPrice = 0;
+		$scope.checkoutType = 'Deliver';
+
 		$http.get('/provinces')
 	    .then(function(response){
 	    	$scope.provinces = response.data;
+	    });
+
+	    $http.get('/itemsWon')
+	    .then(function(response){
+	    	$scope.itemsWon = response.data;
 	    });
 
 	    $scope.reloadCities = function(){
@@ -269,8 +288,36 @@ $('.ui.normal.dropdown')
 	      $scope.warehouses = response.data;
 	    });
 
-	    $scope.addItem = function(item){
-	    	alert(JSON.stringify(item));
+	    $scope.addToCart = function(item, index){
+	    	$scope.cartItems.push(item);
+	    	$scope.itemsWon.splice(index, 1);
+
+	    	$scope.computePrice();
+	    }
+
+	    $scope.removeFromCart = function(item, index){
+	    	$scope.cartItems.splice(index, 1);
+	    	$scope.itemsWon.push(item);
+
+	    	$scope.computePrice();
+	    }
+
+	    $scope.computePrice = function(){
+	    	$scope.subTotalPrice = 0;
+	    	for(var i=0; i<$scope.cartItems.length; i++){
+	    		$scope.subTotalPrice += $scope.cartItems[i].Price;
+	    	}
+
+	    	$scope.totalPrice = $scope.shippingFee*1 + $scope.subTotalPrice*1;
+	    }
+
+	    $scope.shipmentFee = function(){
+	    	$http.get('/shipmentFee?provinceID=' + $scope.inputProvince)
+		    .then(function(response){
+		      $scope.shippingFee = response.data.ShipmentFee;
+
+		      $scope.computePrice();
+		    });
 	    }
 	})
 </script>

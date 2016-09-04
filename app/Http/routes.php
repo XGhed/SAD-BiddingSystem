@@ -207,6 +207,10 @@ Route::get('/readyForCheckoutDelivery', 'ItemOutboundController@readyForCheckout
 
 Route::get('/readyForCheckoutPickup', 'ItemOutboundController@readyForCheckoutPickup');
 
+Route::get('/itemsWon', 'CustomerCheckoutController@itemsWon');
+
+Route::get('/shipmentFee', 'AngularOutput@shipmentFee');
+
 
 //Angular Input
 

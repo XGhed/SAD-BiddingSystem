@@ -220,4 +220,10 @@ class AngularOutput extends Controller
 
         return $accounts;
     }
+
+    public function shipmentFee(Request $request){
+        $shipment = App\Models\Admin\Shipment::find($request->provinceID);
+
+        return $shipment;
+    }
 }
