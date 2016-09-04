@@ -20,6 +20,7 @@
             <tr>
               <th></th>
               <th>Warehouse</th>
+              <th>Item ID</th>
               <th>Item</th>
               <th>Color</th>
               <th>Size</th>
@@ -32,6 +33,7 @@
                 <input name="movingItems[]" value="@{{item.ItemID}}" type="checkbox" class="ui checkbox">
               </td>
               <td>@{{item.current_warehouse.Barangay_Street_Address}}, @{{item.current_warehouse.city.CityName}}, @{{item.current_warehouse.city.province.ProvinceName}}</td>
+              <td>@{{item.ItemID}}</td>
               <td>@{{item.item_model.ItemName}}</td>
               <td>@{{item.color}}</td>
               <td>@{{item.size}}</td>
