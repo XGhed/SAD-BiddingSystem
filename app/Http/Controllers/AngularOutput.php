@@ -105,7 +105,9 @@ class AngularOutput extends Controller
     public function itemsInventory(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory',
-            'pullRequest')->where('status', 1)->orWhere('status', 2)->get();
+            'pullRequest')->where('DefectDescription', '!=', '')->where('image_path', '!=', '')
+            ->where('status', 1)->orWhere('status', 2)
+            ->get();
 
         return $items;
     }
@@ -125,8 +127,8 @@ class AngularOutput extends Controller
         $returnData = [];
 
         foreach ($itemModels as $key => $itemModel) {
-            $items = App\Models\Admin\Item::where('ItemModelID', $itemModel->ItemModelID)->where('status', '>', 0)
-            ->where('status', '<', 3)->get();
+            $items = App\Models\Admin\Item::where('ItemModelID', $itemModel->ItemModelID)->where('DefectDescription', '!=', '')->where('image_path', '!=', '')
+            ->where('status', 1)->orWhere('status', 2)->get();
             $itemModel->stocksCount = $items->count();
             array_push($returnData, $itemModel);
         }

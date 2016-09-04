@@ -14,7 +14,12 @@ use Illuminate\Support\Collection;
 class CustomerCartController extends Controller
 {
     public function view(Request $request){        
-        $items = App\Models\Admin\Item::all();
+        $items = App\Models\Admin\Item::has('checkoutRequest_item', '<', 1)->
+            orWhereHas('checkoutRequest_item', function($query){
+                $query->whereHas('checkoutRequest', function($query){
+                    $query->where('Status', '<', 0);
+                });
+            })->get();
         $itemsWon = [];
 
         foreach ($items as $key => $item) {
