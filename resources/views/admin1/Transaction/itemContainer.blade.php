@@ -149,7 +149,7 @@
                     <i class="large edit icon"></i>
                   </div>
                 </div>
-                <div class="ui vertical animated button" tabindex="0" ng-click="deleteOrderedItem($index)">
+                <div class="ui vertical animated button" tabindex="0" ng-if="{{$container->ActualArrival}} != NULL" ng-click="deleteOrderedItem($index)">
                   <div class="hidden content">Delete</div>
                   <div class="visible content">
                     <i class="large trash icon"></i>
