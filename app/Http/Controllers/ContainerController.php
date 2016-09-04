@@ -124,11 +124,4 @@ class ContainerController extends Controller
         $container->save();
         return 'success';
     }
-
-    public function itemMissing(Request $request){
-        $item = App\Models\Admin\Item::find($request->itemID);
-        $item->status = -1;
-        $item->save();
-        return 'success';
-    }    
 }

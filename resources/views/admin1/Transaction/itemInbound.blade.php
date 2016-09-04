@@ -197,13 +197,10 @@
               </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="item in itemsInbound">
+                <tr ng-repeat="item in itemsMissing">
                   <td>
-                    <div class="ui vertical animated button" ng-click="">
-                      <div class="hidden content">View Items</div>
-                      <div class="visible content">
-                        Item Arrived
-                      </div>
+                    <div class="ui vertical animated button" ng-click="itemFound(item, $index)">
+                      <div class="content">Found/Arrived</div>
                     </div>
                   </td>
                   <td>@{{item.container.ContainerName}}</td>
@@ -240,6 +237,11 @@
     $http.get('itemsInbound')
     .then(function(response){
       $scope.itemsInbound = response.data;
+    });
+
+    $http.get('itemsMissing')
+    .then(function(response){
+      $scope.itemsMissing = response.data;
     });
 
     $http.get('unexpectedItems')
@@ -303,6 +305,17 @@
         }
       });
     }
+
+    $scope.itemFound = function(item, index){
+      $http.get('/itemFound?itemID=' + item.ItemID)
+      .then(function(response){
+        alert(response.data);
+        if(response.data == 'success'){
+          $scope.itemsMissing.splice(index, 1);
+        }
+      });
+    }
+
   });
 
 

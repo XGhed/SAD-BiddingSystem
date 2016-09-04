@@ -157,6 +157,8 @@ Route::get('/singleItem', 'AngularOutput@singleItem');
 
 Route::get('/itemsInbound', 'AngularOutput@itemsInbound');
 
+Route::get('/itemsMissing', 'AngularOutput@itemsMissing');
+
 Route::get('/unexpectedItems', 'AngularOutput@unexpectedItems');
 
 Route::get('/itemsChecking', 'AngularOutput@itemsChecking');
@@ -242,9 +244,11 @@ Route::get('/approveOutbound', 'ItemOutboundController@approveOutbound');
 
 Route::get('/containerArrived', 'ContainerController@containerArrived');
 
-Route::get('/itemMissing', 'ContainerController@itemMissing');
+Route::get('/itemMissing', 'ItemInboundController@itemMissing');
 
 Route::get('/itemDelivered', 'ItemInboundController@itemDelivered');
+
+Route::get('/itemFound', 'ItemInboundController@itemFound');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');
@@ -283,7 +287,7 @@ Route::get('/warehouse1', 'PageController@warehouse1');
 
 //Route::get('/inventory1', 'PageController@inventory1');
 
-Route::get('/biddingEvent', 'PageController@bidEvent1');
+Route::get('/biddingEvent', 'BiddingEventController@view');
 
 Route::get('/orderedItem', 'PageController@orderedItem');
 

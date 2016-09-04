@@ -33,4 +33,33 @@ class ItemInboundController extends Controller
 
         return 'success';
     }
+
+    public function itemMissing(Request $request){
+        $item = App\Models\Admin\Item::find($request->itemID);
+        $item->status = -1;
+        $item->save();
+
+        $this->ItemLog(
+            $item, 
+            "Item is missing from the container " . $item->container->ContainerName
+            );
+
+        return 'success';
+    } 
+
+    public function itemFound(Request $request){
+        $item = App\Models\Admin\Item::find($request->itemID);
+        $item->status = 1;
+        $item->CurrentWarehouse = $item->container->warehouse->WarehouseNo;
+
+        $item->save();
+
+        $this->ItemLog(
+            $item, 
+            "Item was found or was redelivered to warehouse " . $item->current_warehouse->Barangay_Street_Address . ", " . $item->current_warehouse->city->province->ProvinceName . ", " . $item->current_warehouse->city->CityName
+            );
+        
+
+        return 'success';
+    }
 }

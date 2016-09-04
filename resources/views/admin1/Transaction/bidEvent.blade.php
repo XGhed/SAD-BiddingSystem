@@ -108,37 +108,41 @@
           <!-- details -->
           <div class="ui segment">
           <div class="ui three cards">
-            <div class="card" ng-repeat="event in events">
-              <div class="content">
-                <div class="header">@{{event.EventName}}
-                  <div class="ui top right attached label"><a id="editBtn" data-content="Edit event"><i class="edit icon"></i></a></div>
+            @foreach($events as $event)
+              <div class="card">
+                <div class="content">
+                  <div class="header">{{$event->EventName}}
+                    <div class="ui top right attached label"><a id="editBtn" data-content="Edit event"><i class="edit icon"></i></a></div>
+                  </div>
                 </div>
-              </div>
-              <div class="content">
-                <h4 class="ui sub header centered">Details</h4>
-                <div class="ui small feed">
-                  <div class="event">
-                    <div class="content">
-                      <div class="summary">
-                        <span>Start Time: @{{event.StartDateTime}}</span>
-                      </div>
-                      <div class="summary">
-                        <span>End Time: @{{event.EndDateTime}}</span>
-                      </div>
-                      <div class="summary">
-                        <span>Description: @{{event.Description}}</span>
+                <div class="content">
+                  <h4 class="ui sub header centered">Details</h4>
+                  <div class="ui small feed">
+                    <div class="event">
+                      <div class="content">
+                        <div class="summary">
+                          <span>Start Time: {{$event->StartDateTime}}</span>
+                        </div>
+                        <div class="summary">
+                          <span>End Time: {{$event->EndDateTime}}</span>
+                        </div>
+                        <div class="summary">
+                          <span>Description: {{$event->Description}}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="extra content">
-                <button class="ui button" ng-click="viewItems(event.AuctionID)">View Event</button>
-              </div>
+                <div class="extra content">
+                  <button class="ui button" ng-click="viewItems(event.AuctionID)">View Event</button>
+                </div>
             </div>
+            @endforeach 
+          </div>
+          <div class="field">
+            {!! $events->render() !!}
           </div>
         </div>
-
         <div class="ui green compact message">
           <div class="header">Click today to open Calendar</div>
         </div>

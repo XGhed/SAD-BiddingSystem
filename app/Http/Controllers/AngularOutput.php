@@ -70,6 +70,16 @@ class AngularOutput extends Controller
         return $items;
     }
 
+    public function itemsMissing(Request $request){
+        $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
+            'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province')
+            ->where('status', -1)->whereHas('container', function($query){
+                $query->whereNotNull('ActualArrival');
+            })->get();
+
+        return $items;
+    }
+
     public function unexpectedItems(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province')

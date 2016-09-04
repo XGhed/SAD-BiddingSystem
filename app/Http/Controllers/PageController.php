@@ -159,11 +159,6 @@ class PageController extends Controller
        return view('admin1.Transaction.itemPullouts');
     }
 
-    public function bidEvent1(Request $request){
-
-       return view('admin1.Transaction.bidEvent');
-    }
-
     public function movingItems(Request $request){
 
        return view('admin1.Transaction.movingOfItems');
