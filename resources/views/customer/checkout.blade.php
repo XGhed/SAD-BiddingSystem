@@ -82,7 +82,7 @@
 					    @foreach($itemsWon as $key => $itemWon)
 					    	<tr>
 						      <td>
-						      	<input type="checkbox" class="ui checkbox" name="items[]" value="{{$itemWon->ItemID}}"/>
+						      	<input type="checkbox" class="ui checkbox" name="items[]" value="{{$itemWon->ItemID}}" ng-click="addItem({{$itemWon}})"/>
 						      </td>
 						      <td>{{$itemWon->ItemID}}</td>
 						      <td>{{$itemWon->itemModel->ItemName}}</td>
@@ -177,33 +177,19 @@
 				  	<thead>
 				    	<tr>
 					    	<th>Item</th>
-					    	<th>Quantity</th>
 					    	<th>Price</th>
 				  		</tr>
 				  	</thead>
 				  	<tbody>
 				    	<tr>
 				      		<td>Mar Roxas</td>
-				      		<td>5</td>
 				      		<td>100.00</td>
 				    	</tr>
-				    	<tr>
-				      		<td>Jejomar Binay</td>
-				      		<td>2</td>
-				      		<td>40.00</td>
-				    	</tr>
-				    	<tr>
-				      		<td>Digong Duterte</td>
-				      		<td>3</td>
-				      		<td>60.00</td>
-				    	</tr>
 				    	<tr class="warning">
-					      <td></td>
 					      <td>Shipping fee:</td>
 					      <td>75.00</td>
 					    </tr>
 					    <tr class="positive">
-					      <td></td>
 					      <td>Total fee:</td>
 					      <td>275.00</td>
 					    </tr>
@@ -282,6 +268,10 @@ $('.ui.normal.dropdown')
 	    .then(function(response){
 	      $scope.warehouses = response.data;
 	    });
+
+	    $scope.addItem = function(item){
+	    	alert(JSON.stringify(item));
+	    }
 	})
 </script>
 @endsection

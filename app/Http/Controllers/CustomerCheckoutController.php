@@ -14,25 +14,30 @@ use Illuminate\Support\Collection;
 class CustomerCheckoutController extends Controller
 {
     public function view(Request $request){        
-        $items = App\Models\Admin\Item::all();
+        $items = App\Models\Admin\Item::has('checkoutRequest_item', '<', 1)->
+            orWhereHas('checkoutRequest_item', function($query){
+                $query->whereHas('checkoutRequest', function($query){
+                    $query->where('Status', '<', 0);
+                });
+            })->get();
         $itemsWon = [];
 
         foreach ($items as $key => $item) {
             if (count($item->winners) > 0){
                 //check if not yet checked out
-                if(count($item->checkoutRequest_item) < 1){
-                    if ($item->winners->last()->bid->AccountID == $request->session()->get('accountID')){
-                        //check if event has ended
-                        $currentDatetime = Carbon::now('Asia/Manila');
-                        $currentDatetime = explode(' ', $currentDatetime);
-                        $auctionEndTime = explode(' ', $item->winners->first()->auction->EndDateTime);
+                
+                if ($item->winners->last()->bid->AccountID == $request->session()->get('accountID')){
+                    //check if event has ended
+                    $currentDatetime = Carbon::now('Asia/Manila');
+                    $currentDatetime = explode(' ', $currentDatetime);
+                    $auctionEndTime = explode(' ', $item->winners->first()->auction->EndDateTime);
 
-                        if ($currentDatetime[0] > $auctionEndTime[0] || ($currentDatetime[0] == $auctionEndTime[0] && $currentDatetime[1] > $auctionEndTime[1])){
-                            array_push($itemsWon, $item);
-                        }
-
+                    if ($currentDatetime[0] > $auctionEndTime[0] || ($currentDatetime[0] == $auctionEndTime[0] && $currentDatetime[1] > $auctionEndTime[1])){
+                        array_push($itemsWon, $item);
                     }
+
                 }
+                
                 
             }
         }

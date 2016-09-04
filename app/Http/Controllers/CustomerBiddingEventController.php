@@ -85,6 +85,16 @@ class CustomerBiddingEventController extends Controller
     public function auction(Request $request){
         $item = App\Models\Admin\Item::with('itemModel', 'item_auction')->where('ItemID', $request->itemID)->first();
 
+        $auction = App\Models\Admin\Auction::find($item->item_auction->last()->AuctionID);
+
+        $currentDatetime = Carbon::now('Asia/Manila');
+        $auctionEndTime = explode(' ', $auction->EndDateTime);
+        $currentDatetime = explode(' ', $currentDatetime);
+
+        if ($currentDatetime[0] > $auctionEndTime[0] || ($currentDatetime[0] == $auctionEndTime[0] && $currentDatetime[1] > $auctionEndTime[1])){
+            return "Event has ended";
+        }
+
         return view('customer.auction')->with('item', $item);
     }
 
@@ -92,7 +102,7 @@ class CustomerBiddingEventController extends Controller
         //if bid is lower than highest bid
         $currentBids = App\Models\Admin\Bid::where('ItemID', $request->itemID)->get()->sortByDesc('price');
         if (count($currentBids) > 0){
-            $highestBid = $currentBids->first()->Price;
+            $highestBid = $currentBids->last()->Price;
 
             if($highestBid >= $request->price){
                 return 'error';

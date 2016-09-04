@@ -9,3 +9,4 @@ checkoutreq status
 1 - approved preparation (moving wh)
 2 - paid
 3 - outbound
+-1 - void

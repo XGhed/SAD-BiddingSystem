@@ -15,7 +15,8 @@ use Illuminate\Support\Collection;
 class BiddingEventController extends Controller
 {
     public function view(Request $request){
-        $events = App\Models\Admin\Auction::paginate(6);
+        $events = App\Models\Admin\Auction::orderBy('StartDateTime', 'desc')->orderBy('EndDateTime', 'desc')->
+        paginate(6);
 
         return view('admin1.Transaction.bidEvent')->with('events', $events);
     }

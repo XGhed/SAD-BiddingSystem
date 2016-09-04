@@ -134,7 +134,7 @@
                   </div>
                 </div>
                 <div class="extra content">
-                  <button class="ui button" ng-click="viewItems(event.AuctionID)">View Event</button>
+                  <button class="ui button" ng-click="viewItems({{$event->AuctionID}})">View Event</button>
                 </div>
             </div>
             @endforeach 
