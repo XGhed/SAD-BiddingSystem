@@ -140,7 +140,7 @@
             @endforeach 
           </div>
           <div class="field">
-            {!! $events->render() !!}
+          {!! (new Landish\Pagination\SemanticUI($events))->render() !!}
           </div>
         </div>
         <div class="ui green compact message">
