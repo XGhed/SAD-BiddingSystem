@@ -9,6 +9,7 @@
         <div class="ui top attached tabular menu">
           <a class="active item" data-tab="first">Expected Item</a>
           <a class="item" data-tab="second">Unexpected Item</a>
+          <a class="item" data-tab="third">Missing Items</a>
         </div>
 
         
@@ -24,38 +25,42 @@
             </div>
           </div>
 
-          <form action="/itemDelivered" method="POST">
-            <input type="hidden" name="samp" value="sa">
-            <table datatable="ng" class="ui compact celled definition table">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Container</th>
-                  <th>ItemID</th>
-                  <th>Item</th>
-                  <!--<th>Defect</th> -->
-                  <th>Color</th>
-                  <th>Size</th>
-                  <!--<th>Image</th> -->
+          <table datatable="ng" class="ui compact celled definition table">
+            <thead>
+              <tr>
+                <th>Arrived</th>
+                <th>Missing?</th>
+                <th>Container</th>
+                <th>ItemID</th>
+                <th>Item</th>
+                <!--<th>Defect</th> -->
+                <th>Color</th>
+                <th>Size</th>
+                <!--<th>Image</th> -->
+              </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itemsInbound">
+                  <td>
+                    <div class="ui button" ng-click="itemDelivered(item, $index)">
+                      <div class="content">Arrived</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="ui button" ng-click="itemMissing(item, $index)">
+                      <div class="content">Missing</div>
+                    </div>
+                  </td>
+                  <td>@{{item.container.ContainerName}}</td>
+                  <td>@{{item.ItemID}}</td>
+                  <td>@{{item.item_model.ItemName}}</td>
+                  <!--<td>@{{item.DefectDescription}}</td> -->
+                  <td>@{{item.color}}</td>
+                  <td>@{{item.size}}</td>
+                 <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
                 </tr>
-              </thead>
-              <tbody>
-                  <tr ng-repeat="item in itemsInbound">
-                    <td>
-                      <input type="checkbox" name="delivereditems[]" class="ui checkbox" value="@{{item.ItemID}}"/>
-                    </td>
-                    <td>@{{item.container.ContainerName}}</td>
-                    <td>@{{item.ItemID}}</td>
-                    <td>@{{item.item_model.ItemName}}</td>
-                    <!--<td>@{{item.DefectDescription}}</td> -->
-                    <td>@{{item.color}}</td>
-                    <td>@{{item.size}}</td>
-                   <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
-                  </tr>
-              </tbody>
-            </table>
-              <input type="submit" class="ui button" value="Confirm"/>
-          </form>
+            </tbody>
+          </table>
         </div>
 
         <div class="ui bottom attached tab segment" data-tab="second">
@@ -66,15 +71,14 @@
 
                   <!-- add modal -->
           <div class="ui small modal" id="addModal">
-            <i class="close icon"></i>
+            <form class="ui form" action="/addUnexpectedItem" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <input type="hidden" name="containerID" value="">
+              <i class="close icon"></i>
               <div class="header">
                 Add Item
               </div>
               <div class="content">
-                <form class="ui form" action="/addUnexpectedItem" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="containerID" value="">
-                
                 <div class="required fields">
                   <div class="five wide field">
                     <div class="ui sub header">Container</div>
@@ -132,11 +136,12 @@
                       <input type="number" id="quantity" name="quantity" min="1" placeholder="1" value="1" required>
                     </div>
                   </div>
-              </div>
+                </div>
               <div class="actions">
                 <button class="ui button" type="submit">Confirm</button>
-                </form>
+                
               </div>
+            </form>
           </div>
             <!-- END add modal -->
             <input type="hidden" name="samp" value="sa">
@@ -166,6 +171,52 @@
             </table>
         </div>  
 
+        <div class="ui bottom attached tab segment" data-tab="third">
+           <!-- message -->
+          <div class="ui icon message">
+            <i class="info icon"></i>
+            <div class="content">
+              <div class="header">
+                Info
+              </div>
+              <p>Items missing from the containers.</p>
+            </div>
+          </div>
+
+          <table datatable="ng" class="ui compact celled definition table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Container</th>
+                <th>ItemID</th>
+                <th>Item</th>
+                <!--<th>Defect</th> -->
+                <th>Color</th>
+                <th>Size</th>
+                <!--<th>Image</th> -->
+              </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itemsInbound">
+                  <td>
+                    <div class="ui vertical animated button" ng-click="">
+                      <div class="hidden content">View Items</div>
+                      <div class="visible content">
+                        Item Arrived
+                      </div>
+                    </div>
+                  </td>
+                  <td>@{{item.container.ContainerName}}</td>
+                  <td>@{{item.ItemID}}</td>
+                  <td>@{{item.item_model.ItemName}}</td>
+                  <!--<td>@{{item.DefectDescription}}</td> -->
+                  <td>@{{item.color}}</td>
+                  <td>@{{item.size}}</td>
+                 <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
+                </tr>
+            </tbody>
+          </table>
+        </div>
     </div><!-- segment -->
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->
@@ -231,6 +282,26 @@
 
       $scope.unexpected_size = item.size;
       $('#unexpected_color').dropdown('set selected', item.color);
+    }
+
+    $scope.itemMissing = function(item, index){
+      $http.get('/itemMissing?itemID=' + item.ItemID)
+      .then(function(response){
+        alert(response.data);
+        if(response.data == 'success'){
+          $scope.itemsInbound.splice(index, 1);
+        }
+      });
+    }
+
+    $scope.itemDelivered = function(item, index){
+      $http.get('/itemDelivered?itemID=' + item.ItemID)
+      .then(function(response){
+        alert(response.data);
+        if(response.data == 'success'){
+          $scope.itemsInbound.splice(index, 1);
+        }
+      });
     }
   });
 

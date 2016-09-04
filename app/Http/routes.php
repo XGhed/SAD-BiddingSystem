@@ -63,8 +63,6 @@ Route::post('/editItemToContainer', 'ContainerController@editItemToContainer');
 
 Route::post('/addUnexpectedItem', 'ContainerController@addUnexpectedItem');
 
-Route::post('/itemDelivered', 'ItemInboundController@itemDelivered');
-
 Route::post('/itemMoveRequest', 'MovingController@itemMoveRequest');
 
 Route::post('/approveMovingOfItems', 'MovingController@approveMovingOfItems');
@@ -243,6 +241,10 @@ Route::get('/approvePayment', 'PaymentCheckoutController@approvePayment');
 Route::get('/approveOutbound', 'ItemOutboundController@approveOutbound');
 
 Route::get('/containerArrived', 'ContainerController@containerArrived');
+
+Route::get('/itemMissing', 'ContainerController@itemMissing');
+
+Route::get('/itemDelivered', 'ItemInboundController@itemDelivered');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');

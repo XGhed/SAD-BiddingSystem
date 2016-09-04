@@ -19,19 +19,18 @@ class ItemInboundController extends Controller
     }
 
     public function itemDelivered(Request $request){
-        foreach ($request->delivereditems as $key => $ItemID) {
-            $item = App\Models\Admin\Item::find($ItemID);
-            $item->status = 1;
-            $item->CurrentWarehouse = $item->container->warehouse->WarehouseNo;
+        $item = App\Models\Admin\Item::find($request->itemID);
+        $item->status = 1;
+        $item->CurrentWarehouse = $item->container->warehouse->WarehouseNo;
 
-            $item->save();
+        $item->save();
 
-            $this->ItemLog(
-                $item, 
-                "Item successfully delivered to warehouse " . $item->current_warehouse->Barangay_Street_Address . ", " . $item->current_warehouse->city->province->ProvinceName . ", " . $item->current_warehouse->city->CityName
-                );
-        }
+        $this->ItemLog(
+            $item, 
+            "Item successfully delivered to warehouse " . $item->current_warehouse->Barangay_Street_Address . ", " . $item->current_warehouse->city->province->ProvinceName . ", " . $item->current_warehouse->city->CityName
+            );
+        
 
-        return redirect('itemInbound');
+        return 'success';
     }
 }

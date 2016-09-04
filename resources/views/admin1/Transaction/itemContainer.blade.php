@@ -7,10 +7,13 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
       <h1 class="ui centered header">{{$container->ContainerName}}</h1>
-       <a class="ui basic blue button" id="addBtn" ng-if="{{$container->ActualArrival}} != NULL">
-          <i class="add user icon"></i>
-          Add Item
-        </a>
+        @if($container->ActualArrival == NULL)
+          <a class="ui basic blue button" id="addBtn">
+            <i class="add user icon"></i>
+            Add Item
+          </a>
+        @endif
+        
 
         <!-- add modal -->
         <div class="ui small modal" id="addModal">
