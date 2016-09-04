@@ -99,6 +99,8 @@ Route::get('/discount', 'DiscountController@manageDiscount');
 
 Route::get('/itemContainer', 'ContainerController@viewContainer');
 
+Route::get('/sampleGraph', 'GraphController@salesGraph');
+
 //Route::get('/itemChecking', 'ItemCheckingController@viewItems');
 //Route::get('/shipment', 'PageController@shipment');
 
@@ -186,6 +188,8 @@ Route::get('/colors', 'AngularOutput@colors');
 Route::get('/accountsList', 'AngularOutput@accountsList');
 
 Route::get('/itemModelsOfSubcat', 'AngularOutput@itemModelsOfSubcat');
+
+Route::get('/salesGraph', 'AngularOutput@salesGraph');
 
 //
 

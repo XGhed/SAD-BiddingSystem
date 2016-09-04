@@ -226,4 +226,12 @@ class AngularOutput extends Controller
 
         return $shipment;
     }
+
+    public function salesGraph(){
+        $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'item_auction',
+            'item_auction.auction.AuctionID', 'item_auction.auction.EndDateTime', 'item_auction.ItemID', 'item_auction.Points')
+            ->where('status', 3)->whereHas('container', function($query){
+                $query->whereNotNull('ActualArrival');
+            })->get();
+    }
 }
