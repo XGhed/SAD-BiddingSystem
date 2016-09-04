@@ -131,13 +131,13 @@
               <tr ng-repeat="container in containers">
                 <td class="collapsing inline field">
                   <div class="inline field">
-                    <div class="ui vertical animated button"  ng-click="addItems(container.ContainerID)" style="width:50px">
+                    <div class="ui vertical animated button"  ng-click="addItems(container.ContainerID)" ng-if="container.ActualArrival == null" style="width:50px">
                       <div class="hidden content">View Items</div>
                       <div class="visible content">
                         <i class="ordered list icon"></i>
                       </div>
                     </div>
-                    <div class="ui vertical animated button"  ng-click="editModal(container)" style="width:50px">
+                    <div class="ui vertical animated button"  ng-click="editModal(container)" ng-if="container.ActualArrival == null" style="width:50px">
                       <div class="hidden content">Edit</div>
                       <div class="visible content">
                         <i class=" edit icon"></i>

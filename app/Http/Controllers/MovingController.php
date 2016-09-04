@@ -16,13 +16,16 @@ class MovingController extends Controller
         foreach ($request->movingItems as $key => $movingItem) {
             $item = App\Models\Admin\Item::find($movingItem);
 
-            $item->RequestedWarehouse = $request->warehouse;
-            $item->save();
+            if($item->CurrentWarehouse != $request->warehouse){
+                $item->RequestedWarehouse = $request->warehouse;
+                $item->save();
 
-            $this->ItemLog(
-                $item, 
-                "Item requested to move to warehouse " . $item->requested_warehouse->Barangay_Street_Address . ", " . $item->requested_warehouse->city->province->ProvinceName . ", " . $item->requested_warehouse->city->CityName
-                );
+                $this->ItemLog(
+                    $item, 
+                    "Item requested to move to warehouse " . $item->requested_warehouse->Barangay_Street_Address . ", " . $item->requested_warehouse->city->province->ProvinceName . ", " . $item->requested_warehouse->city->CityName
+                    );
+            }
+            
         }
 
         return redirect('movingOfItems');
