@@ -167,7 +167,7 @@
             Item Logs
             </div>
             <div class="content">
-              <table class="ui celled table">
+              <table class="ui celled table" datatable="ng">
                 <thead>
                   <tr>
                     <th></th>
@@ -264,7 +264,7 @@ $('.menu .item').tab();
 
 ////////////////////////////////////////////////////////////////////////// 
   var app = angular.module('myApp', ['datatables']);
-  app.controller('myController', function($scope, $http){
+  app.controller('myController', function($scope, $http, $timeout){
     $http.get('itemsInventory')
     .then(function(response){
       $scope.items = response.data;
@@ -276,17 +276,23 @@ $('.menu .item').tab();
     });
 
     $scope.viewStocks = function(index){
-      var ItemModelID = $scope.itemmodels[index].ItemModelID;
-      $('#itemLists').modal('show');    
+      var ItemModelID = $scope.itemmodels[index].ItemModelID; 
       $http.get('itemsOfModelInventory?itemID=' + ItemModelID)
       .then(function(response){
         $scope.itemsOfModel = response.data;
+        $('#itemLists').modal('refresh');    
+        $timeout(function(){
+          $('#itemLists').modal('show');
+        }, 100);
       });
     }
 
     $scope.viewItemHistory = function(index){
       $scope.histories = $scope.items[index].item_history;
-      $('#itemHistory').modal('show');
+      $('#itemHistory').modal('refresh');
+      $timeout(function(){
+        $('#itemHistory').modal('show');
+      }, 100);
     }
 
     $scope.dispose = function(index){

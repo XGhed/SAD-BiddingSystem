@@ -14,7 +14,8 @@ use Illuminate\Support\Collection;
 class PrepareCheckoutController extends Controller
 {
     public function deliveryRequests(Request $request){
-        $checkoutRequest = App\Models\Admin\CheckoutRequest::with('account', 'checkoutRequest_Item', 'checkoutRequest_Item.item', 'checkoutRequest_Item.item.itemModel', 'city', 'city.province')->where('CheckoutType', 'Deliver')->where('Status', 0)->get();
+        $checkoutRequest = App\Models\Admin\CheckoutRequest::with('account', 'checkoutRequest_Item', 'checkoutRequest_Item.item', 'checkoutRequest_Item.item.itemModel', 'city', 'city.province')
+            ->where('CheckoutType', 'Deliver')->where('Status', 0)->get();
 
         return $checkoutRequest;
     }
@@ -27,6 +28,12 @@ class PrepareCheckoutController extends Controller
 
             if($item->CurrentWarehouse != $request->warehouse){
                 $item->RequestedWarehouse = $request->warehouse;
+
+                $this->ItemLog(
+                    $item, 
+                    "Item requested to move to warehouse " . $item->requested_warehouse->Barangay_Street_Address . ", " . $item->requested_warehouse->city->province->ProvinceName . ", " . $item->requested_warehouse->city->CityName
+                    . ' due to checkout request.'
+                    );
 
                 $item->save();
             }
