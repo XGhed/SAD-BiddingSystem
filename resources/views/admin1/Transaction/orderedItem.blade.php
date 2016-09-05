@@ -150,7 +150,7 @@
                         Not Yet
                       </div>
                     </div>
-                    <div class="ui green vertical animated button" style="width:125px" ng-if="container.ActualArrival != null">
+                    <div class="ui green vertical animated button" style="width:125px" ng-if="container.ActualArrival != null" style="cursor: default;">
                       <div class="hidden content"><i class="checkmark icon"></i></div>
                       <div class="visible content">
                         Arrived
@@ -167,6 +167,16 @@
           </table>
 
           
+
+          <div class="ui basic modal" id="alert">
+            <h1 class='ui centered header'>
+              Container Arrived!!
+             </h1>
+          </div>
+
+
+
+
     </div><!-- segment -->
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->
@@ -226,7 +236,7 @@
       $http.get('/containerArrived?containerID=' + containerID)
       .then(function(response){
         if(response.data == 'success'){
-          alert('success');
+          $('#alert').modal('show');
           $http.get('/allContainers')
           .then(function(response){
             $scope.containers = response.data;

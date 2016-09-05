@@ -71,8 +71,8 @@
             <p>Contact Number: <span ng-bind="info_contact"></span> </p>
             <p>Email Address: <span ng-bind="info_email"></span> </p>
             <p>Documents: 
-              <p ng-if="info_id != ''">Valid ID: <a ng-bind="info_id" ng-click="gotoUrl(info_id)"></a> </p>
-              <p ng-if="info_dti != ''">Valid ID: <a ng-bind="info_dti"></a> </p>
+              <p ng-if="info_id != ''">Valid ID: <a ng-click="showID(info_id)" style="cursor: pointer">Click to preview photo</a> </p>
+              <p ng-if="info_dti != ''">Valid ID: <a ng-click="showDti(info_dti)" style="cursor: pointer">Click to preview photo</a> </p>
             </p>
           </div>
         </div>
@@ -81,6 +81,24 @@
         </div>
       </div>
       <!-- END account info modal -->
+
+      <div class="ui small modal" id="showIDmdl">
+          <i class="close icon"></i>
+          <div class="ui segment center aligned" style="margin: 10px 10px 10px 10px;">
+             <img ng-src="@{{info_id}}" style="width: 600px; height: 800px;">
+          </div>
+      </div>
+
+      <div class="ui small modal" id="showDtiMdl">
+          <i class="close icon"></i>
+          <div class="ui segment center aligned" style="margin: 10px 10px 10px 10px;">
+             <img ng-src="@{{info_dti}}"  style="width: 600px; height: 800px;">
+          </div>
+      </div>
+
+
+
+
 
     </div><!-- segment -->
   </div><!-- twelve wide column -->
@@ -110,8 +128,16 @@
       $('#infoModal').modal('show');
     }
 
-    $scope.gotoUrl = function(url){
+  /*  $scope.gotoUrl = function(url){
       $window.open(url);
+    } */
+
+    $scope.showID = function(){
+      $('#showIDmdl').modal('setting', 'transition', 'vertical flip').modal('show');
+    }
+
+    $scope.showDti = function(){
+      $('#showDtiMdl').modal('setting', 'transition', 'vertical flip').modal('show');
     }
 
     $scope.approveAccount = function(selectedAccountID, index){

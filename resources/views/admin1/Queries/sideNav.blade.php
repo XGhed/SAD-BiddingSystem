@@ -7,8 +7,11 @@
         <a class="item" href="/listOfBidders">
           List of Bidders
         </a>
-        <a class="item" href="/expectItemPercent">
-          expectItemPercent
+        <a class="item" href="/expectedItemPercent">
+          Expect Item Percent
+        </a>
+        <a class="item" href="/sampleGraph">
+          Sample Graph
         </a>
        
     </div>

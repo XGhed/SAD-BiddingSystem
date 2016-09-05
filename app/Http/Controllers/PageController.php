@@ -225,13 +225,18 @@ class PageController extends Controller
 
     public function expectedItemPercent(Request $request){
 
-      return view('admin1.expectedItemPercent');
+      return view('admin1.Queries.expectedItemPercent');
     }
 
     public function reportPage(Request $request){
 
       return view('customer.reportPage');
     }
+
+    public function sampleGraph(Request $request){
+
+      return view('admin1.Queries.sampleGraph');
+    }    
 }
 
 

@@ -44,7 +44,7 @@
                   </div>
                 </div> 
               </td>
-              <td >@{{item.ItemID}}</td>
+              <td>@{{item.ItemID}}</td>
               <td id="tableRow">@{{item.item_model.ItemName}}</td>
               <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
               <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
@@ -79,7 +79,7 @@
                 View Stocks
               </a>              
             </td>
-            <td>@{{item.ItemID}}</td>
+            <td>@{{itemmodel.ItemModelID}}</td>
             <td>@{{itemmodel.ItemName}}</td>
             <td>@{{itemmodel.sub_category.category.CategoryName}}</td>
             <td>@{{itemmodel.sub_category.SubCategoryName}}</td>
@@ -122,8 +122,8 @@
                   </div>
                 </div> 
               </td>
-              <td id="tableRow">@{{item.item_model.ItemID}}</td>
-              <td id="tableRow">@{{item.item_model.ItemName}}</td>
+              <td>@{{item.ItemID}}</td>
+              <td>@{{item.item_model.ItemName}}</td>
               <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
               <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
               <td>@{{item.size}}</td>
@@ -216,20 +216,17 @@
   </div>
 </div>
 
+          <div class="ui basic modal" id="alert">
+            <h1 class='ui centered header'>
+              Cancelled for disposal!!
+             </h1>
+          </div>
 
-<div class="ui modal" id="history">
-  <i class="close icon"></i>
-  <div class="header">
-    History Log
-  </div>
-  <div class="content">
-
-  </div>
-  <div class="actions">
-    <div class="ui button" onclick="modalClose()">Cancel</div>
-    <div class="ui button">OK</div>
-  </div>
-</div>
+          <div class="ui basic modal" id="requestDispose">
+            <h1 class='ui centered header'>
+              Request for dispose!!
+             </h1>
+          </div>
 
 
 <script>
@@ -299,7 +296,7 @@ $('.menu .item').tab();
       $http.get('disposeItem?itemID=' + $scope.items[index].ItemID)
       .then(function(response){
         if(response.data == "success"){
-          alert('Requested for dispose');
+        $('#requestDispose').modal('show');
           return $http.get('singleItem?itemID=' + $scope.items[index].ItemID);
         }
       })
@@ -311,7 +308,7 @@ $('.menu .item').tab();
     $scope.cancelDispose = function(index){
       $http.get('cancelDisposeItem?itemID=' + $scope.items[index].ItemID)
       .then(function(response){
-        alert('Cancelled for disposal');
+        $('#alert').modal('show');
         return $http.get('singleItem?itemID=' + $scope.items[index].ItemID);
       })
       .then(function(response){

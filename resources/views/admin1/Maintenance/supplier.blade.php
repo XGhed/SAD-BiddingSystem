@@ -12,13 +12,7 @@
             Add supplier
           </a>
 
-          <!-- status -->
-        <div class="ui success message">
-          <i class="close icon"></i>
-          <div class="header">
-            Status Changed
-          </div>
-        </div>
+        @include('admin1.Maintenance.alerts')
 
           <!-- add modal -->
         <div class="ui small modal" id="addModal">
@@ -289,4 +283,6 @@
   })
 ;
 </script>
+
+
 @endsection

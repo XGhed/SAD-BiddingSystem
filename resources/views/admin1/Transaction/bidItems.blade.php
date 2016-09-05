@@ -18,6 +18,13 @@
             <div class="summary">
               <span>Description: <span ng-bind="eventDetails.Description"></span></span>
             </div>
+            <div class="ui middle aligned divided list">
+            <div class="item">
+              <div class="right floated content">
+                <div class="ui green button" ng-click="editModal(eventID)">Edit Information</div>
+              </div>
+            </div>
+          </div>
           </div>
           <div class="ui divider"></div>
           <h4 class="ui header centered">List of Items</h4>
@@ -26,8 +33,42 @@
               Add Items
             </a>
 
-            <!-- add modal -->
-          <div class="ui long modal" id="addModal">
+            <!-- edit modal -->
+          <div class="ui long modal" id="editModal">
+            <i class="close icon"></i>
+            <div class="header">
+              Edit Event Information
+            </div>
+            <div class="content">
+              <form class="ui form" action="" method="POST">
+                <div class="fields">
+                  <div class="five wide field">
+                    <div class="ui sub header">Event Name</div>
+                    <input type="text" name="eventname" id="edit_name" ng-model=""/>
+                  </div>
+                  <div class="five wide field">
+                    <div class="ui sub header">Start Time:</div>
+                    <input type="text" name="starttime" id="edit_startTime" ng-model=""/>
+                  </div>
+                  <div class="five wide field">
+                    <div class="ui sub header">End Time</div>
+                    <input type="text" name="endtime" id="edit_endTime" ng-model=""/>
+                  </div>
+                </div>
+
+                  <div class="five wide field">
+                    <div class="ui sub header">Description</div>
+                    <textarea type="text" name="description" id="edit_desc" ng-model="" rows="2"></textarea>
+                  </div>
+
+                <button class="ui green basic button" type="submit">Confirm</button>
+              </form>
+              
+            </div>
+          </div>
+            <!-- END edit modal -->
+
+            <div class="ui long modal" id="addModal">
             <i class="close icon"></i>
             <div class="header">
               Add Item
@@ -95,6 +136,9 @@
             </div>
           </div>
             <!-- END add modal -->
+
+
+
         </div>
          <table class="ui celled table" datatable="ng">
           <thead>
@@ -126,6 +170,13 @@
             $('#addModal').modal('show');    
          });
     });
+//edit modal
+    $(document).ready(function(){
+         $('#editBtn').click(function(){
+            $('#editModal').modal('show');    
+         });
+    });
+
 
 
 var app = angular.module('myApp', ['datatables']);
@@ -194,6 +245,18 @@ app.controller('myController', function($scope, $http, $timeout){
       }
     });
   }
+
+  $scope.editModal = function(container){
+      $('#editModal').modal('show');
+      $scope.edit_containerID = container.ContainerID;
+      $('#edit_supplier').val(container.SupplierID);
+      $('#edit_warehouse').val(container.WarehouseNo);
+      $scope.edit_container = container.ContainerName;
+
+      var dateAndTime = container.Arrival.split(" ");
+      $('#edit_date').val(dateAndTime[0]);
+      $('#edit_time').val(dateAndTime[1]);
+    }
 });
 
 

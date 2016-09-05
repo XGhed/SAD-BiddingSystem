@@ -25,7 +25,7 @@
             </div>
           </div>
 
-          <table datatable="ng" class="ui compact celled definition table">
+          <table datatable="ng" class="ui compact celled table">
             <thead>
               <tr>
                 <th>Arrived</th>
@@ -42,12 +42,12 @@
             <tbody>
                 <tr ng-repeat="item in itemsInbound">
                   <td>
-                    <div class="ui button" ng-click="itemDelivered(item, $index)">
+                    <div class="ui green button" ng-click="itemDelivered(item, $index)">
                       <div class="content">Arrived</div>
                     </div>
                   </td>
                   <td>
-                    <div class="ui button" ng-click="itemMissing(item, $index)">
+                    <div class="ui red button" ng-click="itemMissing(item, $index)">
                       <div class="content">Missing</div>
                     </div>
                   </td>
