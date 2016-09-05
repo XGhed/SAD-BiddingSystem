@@ -120,8 +120,14 @@ class ContainerController extends Controller
 
     public function containerArrived(Request $request){
         $container = App\Models\Admin\Container::find($request->containerID);
-        $container->ActualArrival = Carbon::now('Asia/Manila');
-        $container->save();
-        return 'success';
+
+        if(count($container->Item)){
+            $container->ActualArrival = Carbon::now('Asia/Manila');
+            $container->save();
+            return 'success';
+        }
+        else {
+            return 'empty';
+        }
     }
 }

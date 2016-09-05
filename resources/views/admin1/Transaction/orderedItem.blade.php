@@ -174,6 +174,12 @@
              </h1>
           </div>
 
+          <div class="ui basic modal" id="empty">
+            <h1 class='ui centered header'>
+              Container Empty!!
+             </h1>
+          </div>
+
 
 
 
@@ -241,6 +247,9 @@
           .then(function(response){
             $scope.containers = response.data;
           });
+        }
+        else if (response.data == 'empty'){
+          $('#empty').modal('show');
         }
       });
     }
