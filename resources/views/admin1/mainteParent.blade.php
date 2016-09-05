@@ -48,27 +48,8 @@
       @yield('content')
     </div>
 
-          <!-- message -->
-        <div class="ui hidden success message">
-          <i class="close icon"></i>
-          <div class="header">
-            Added
-          </div>
-        </div>
 
-        <div class="ui hidden success message">
-          <i class="close icon"></i>
-          <div class="header">
-            Updated
-          </div>
-        </div>
 
-        <div class="ui hidden success message">
-          <i class="close icon"></i>
-          <div class="header">
-            Deleted
-          </div>
-        </div>
-        
+
   </body>
 </html>
