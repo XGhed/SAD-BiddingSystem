@@ -135,6 +135,7 @@
           <thead>
             <tr>
               <th></th>
+              <th>Item ID</th>
               <th>Name</th>
               <th>Category</th>
              <!-- <th>Photo</th> -->
@@ -159,6 +160,7 @@
                   </div>
                 </div> 
               </td>
+              <td>@{{item.ItemID}}</td>
               <td>@{{item.item_model.ItemName}}</td>
               <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
               <!--<td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td> -->

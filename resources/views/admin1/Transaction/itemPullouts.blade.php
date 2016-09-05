@@ -29,7 +29,7 @@
                 </div>
               </div>
             </td>
-            <td>@{{item.item_model.ItemID}}</td>
+            <td>@{{item.ItemID}}</td>
             <td id="tableRow">@{{item.item_model.ItemName}}</td>
             <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
             <td>@{{item.size}}</td>

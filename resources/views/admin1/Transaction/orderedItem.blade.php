@@ -150,7 +150,7 @@
                         Not Yet
                       </div>
                     </div>
-                    <div class="ui green vertical animated button" style="width:125px" ng-if="container.ActualArrival != null">
+                    <div class="ui green vertical animated button" style="width:125px" ng-if="container.ActualArrival != null" style="cursor: default;">
                       <div class="hidden content"><i class="checkmark icon"></i></div>
                       <div class="visible content">
                         Arrived

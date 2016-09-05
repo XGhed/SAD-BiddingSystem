@@ -44,7 +44,7 @@
                   </div>
                 </div> 
               </td>
-              <td >@{{item.ItemID}}</td>
+              <td>@{{item.ItemID}}</td>
               <td id="tableRow">@{{item.item_model.ItemName}}</td>
               <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
               <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
@@ -79,7 +79,7 @@
                 View Stocks
               </a>              
             </td>
-            <td>@{{item.ItemID}}</td>
+            <td>@{{itemmodel.ItemModelID}}</td>
             <td>@{{itemmodel.ItemName}}</td>
             <td>@{{itemmodel.sub_category.category.CategoryName}}</td>
             <td>@{{itemmodel.sub_category.SubCategoryName}}</td>
@@ -122,8 +122,8 @@
                   </div>
                 </div> 
               </td>
-              <td id="tableRow">@{{item.item_model.ItemID}}</td>
-              <td id="tableRow">@{{item.item_model.ItemName}}</td>
+              <td>@{{item.ItemID}}</td>
+              <td>@{{item.item_model.ItemName}}</td>
               <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
               <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
               <td>@{{item.size}}</td>
