@@ -167,6 +167,16 @@
           </table>
 
           
+
+          <div class="ui basic modal" id="alert">
+            <h1 class='ui centered header'>
+              Container Arrived!!
+             </h1>
+          </div>
+
+
+
+
     </div><!-- segment -->
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->
@@ -226,7 +236,7 @@
       $http.get('/containerArrived?containerID=' + containerID)
       .then(function(response){
         if(response.data == 'success'){
-          alert('success');
+          $('#alert').modal('show');
           $http.get('/allContainers')
           .then(function(response){
             $scope.containers = response.data;
