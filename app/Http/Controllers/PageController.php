@@ -223,6 +223,11 @@ class PageController extends Controller
        return view('admin1.Transaction.paymentCheckout');
     }
 
+    public function postEventNoBidItems(Request $request){
+
+       return view('admin1.Transaction.postEventNoBidItems');
+    }
+
     public function expectedItemPercent(Request $request){
 
       return view('admin1.Queries.expectedItemPercent');

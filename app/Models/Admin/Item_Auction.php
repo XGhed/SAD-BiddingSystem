@@ -14,4 +14,9 @@ class Item_Auction extends Model
 	{
 	    return $this->hasOne('App\Models\Admin\Item', 'ItemID', 'ItemID');
 	}
+
+	public function auction()
+	{
+	    return $this->hasOne('App\Models\Admin\Auction', 'AuctionID', 'AuctionID');
+	}
 }

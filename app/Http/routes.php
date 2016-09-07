@@ -76,6 +76,8 @@ Route::post('/itemCheck', 'itemCheckingController@itemCheck');
 
 Route::post('/submitCheckout', 'CustomerCheckoutController@insert');
 
+Route::post('/postEventProcessItems', 'PostEventNoBidItemsController@postEventProcessItems');
+
 Route::get('/logout', 'LoginController@logout');
 
 
@@ -101,6 +103,8 @@ Route::get('/inventory', 'PageController@inventory');
 Route::get('/discount', 'DiscountController@manageDiscount');
 
 Route::get('/itemContainer', 'ContainerController@viewContainer');
+
+Route::get('/postEventNoBidItems', 'PageController@postEventNoBidItems');
 
 Route::get('/sampleGraph', 'GraphController@salesGraph');
 
@@ -217,6 +221,8 @@ Route::get('/readyForCheckoutPickup', 'ItemOutboundController@readyForCheckoutPi
 Route::get('/itemsWon', 'CustomerCheckoutController@itemsWon');
 
 Route::get('/shipmentFee', 'AngularOutput@shipmentFee');
+
+Route::get('/postEventsList', 'PostEventNoBidItemsController@postEventsList');
 
 
 //Angular Input
