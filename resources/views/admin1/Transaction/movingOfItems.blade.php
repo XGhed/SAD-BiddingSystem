@@ -8,13 +8,6 @@
     <div class="ui segment">
       <h2 class="ui centered header">Request to move items</h2>
       <form action="itemMoveRequest" method="POST">
-
-          <select class="ui dropdown" name="warehouse">
-            <option disabled selected value="">Destination Warehouse</option>
-            <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
-          </select>
-          <button class="ui green button" type="submit">Confirm</button>
-
         <table class="ui celled table" datatable="ng">
           <thead>
             <tr>
@@ -42,7 +35,18 @@
           </tbody>
         </table>
 
-        
+        <div class="field">
+          <select class="ui search selection dropdown" name="warehouse">
+            <option disabled selected value="">Destination Warehouse</option>
+            <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
+          </select>
+        </div>
+        <div class="field">
+          <input type="text" name="remarks" placeholder="Remarks" />
+        </div>
+        <div class="actions">
+          <button class="ui green button" type="submit">Confirm</button>
+        </div>
       </form>
     </div><!-- segment -->
   </div><!-- twelve wide column -->

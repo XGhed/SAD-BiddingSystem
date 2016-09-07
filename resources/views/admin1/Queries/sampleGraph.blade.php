@@ -53,7 +53,11 @@ $(function() {
             }
         },
         series: [{
-            
+            data: [
+            <?php for ($i=0; $i<4; $i++): ?>
+                {{$items[$i]}},
+            <?php endfor ?>
+            ]
         }]
     });
 });

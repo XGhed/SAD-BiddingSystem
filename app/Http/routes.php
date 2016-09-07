@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/insertPlaces', 'InsertSqlController@insertPlaces');
 
 Route::get('/', 'HomepageController@displayHomepage');
 
@@ -66,6 +67,8 @@ Route::post('/addUnexpectedItem', 'ContainerController@addUnexpectedItem');
 Route::post('/itemMoveRequest', 'MovingController@itemMoveRequest');
 
 Route::post('/approveMovingOfItems', 'MovingController@approveMovingOfItems');
+
+Route::post('/approveAllMovingOfItems', 'MovingController@approveAllMovingOfItems');
 
 Route::post('/addBiddingEvent', 'BiddingEventController@addBiddingEvent');
 
@@ -171,7 +174,7 @@ Route::get('/itemsInventory', 'AngularOutput@itemsInventory');
 
 Route::get('/itemsMoveSelect', 'AngularOutput@itemsMoveSelect');
 
-Route::get('/itemsMoveApproval', 'AngularOutput@itemsMoveApproval');
+Route::get('/itemsMoveApprovalRequests', 'AngularOutput@itemsMoveApprovalRequests');
 
 Route::get('/itemmodelsInventory', 'AngularOutput@itemmodelsInventory');
 

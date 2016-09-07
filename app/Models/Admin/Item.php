@@ -69,4 +69,9 @@ class Item extends Model
 	{
 	    return $this->hasMany('App\Models\Admin\CheckoutRequest_Item', 'ItemID', 'ItemID');
 	}
+
+	public function item_movingRequest()
+	{
+	    return $this->hasMany('App\Models\Admin\Item_MovingRequest', 'ItemID', 'ItemID');
+	}
 }

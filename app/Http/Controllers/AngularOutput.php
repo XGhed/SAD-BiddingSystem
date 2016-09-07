@@ -149,14 +149,27 @@ class AngularOutput extends Controller
         return $items;
     }
 
-    public function itemsMoveApproval(Request $request){
-        $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
-            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'current_warehouse', 
-            'current_warehouse.city', 'current_warehouse.city.province', 'requested_warehouse', 'requested_warehouse.city', 'requested_warehouse.city.province')
-            ->where('status', 2)
-            ->whereNotNull('RequestedWarehouse')->get();
+    public function itemsMoveApprovalRequests(Request $request){
+        $requests = App\Models\Admin\MovingRequest::with('item_movingRequest.item.itemModel', 'item_movingRequest.item.itemModel.subCategory', 'item_movingRequest.item.itemModel.subCategory.category', 'item_movingRequest.item.container', 
+            'item_movingRequest.item.container.Supplier', 'item_movingRequest.item.container.warehouse', 'item_movingRequest.item.container.warehouse.city', 'item_movingRequest.item.container.warehouse.city.province', 'item_movingRequest.item.current_warehouse', 
+            'item_movingRequest.item.current_warehouse.city', 'item_movingRequest.item.current_warehouse.city.province', 'item_movingRequest.item.requested_warehouse', 'item_movingRequest.item.requested_warehouse.city', 'item_movingRequest.item.requested_warehouse.city.province')
+            ->where('Status', 0)
+            ->get();
 
-        return $items;
+        $returnData = $requests;
+
+        //remove received items
+        foreach($requests as $key => $request){
+            $removed = 0;
+            foreach($request->item_movingRequest as $key2 => $item_request){
+                if($item_request->item->RequestedWarehouse == null){
+                    $returnData[$key]->item_movingRequest->splice($key2-$removed, 1);
+                    $removed++;
+                }
+            }
+        }
+
+        return $returnData;
     }
 
     public function allContainers(){
