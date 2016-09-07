@@ -6,6 +6,22 @@
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
+      <div class="ui segment">
+        <div class="ui field">
+          Warehouse Source
+          <select class="ui search selection dropdown" ng-model="warehouseTo" ng-change="loadItems()">
+            <option disabled selected value="">Destination Warehouse</option>
+            <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
+          </select>
+        </div>
+        <div class="ui field">
+          Warehouse Destination
+          <select class="ui search selection dropdown" ng-model="warehouseFrom" ng-change="loadItems()">
+            <option disabled selected value="">Destination Warehouse</option>
+            <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
+          </select>
+        </div>
+      </div>
       <h2 class="ui centered header">Request to move items</h2>
       <form action="itemMoveRequest" method="POST">
         <table class="ui celled table" datatable="ng">
@@ -58,10 +74,12 @@ $('.ui.dropdown').dropdown();
 
 var app = angular.module('myApp', ['datatables']);
 app.controller('myController', function($scope, $http){
-  $http.get('itemsMoveSelect')
-  .then(function(response){
-    $scope.items = response.data;
-  });
+  $scope.loadItems = function(){
+    $http.get('itemsMoveSelect?warehouseTo=' + $scope.warehouseTo + '&warehouseFrom=' + $scope.warehouseFrom)
+    .then(function(response){
+      $scope.items = response.data;
+    });
+  }
 
   $http.get('warehouses')
   .then(function(response){

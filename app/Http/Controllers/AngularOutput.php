@@ -143,6 +143,8 @@ class AngularOutput extends Controller
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'current_warehouse', 
             'current_warehouse.city', 'current_warehouse.city.province')
+            ->where('CurrentWarehouse', $request->warehouseFrom)
+            ->where('CurrentWarehouse', '!=', $request->warehouseTo)
             ->where('status', 2)
             ->where('RequestedWarehouse', null)->get();
 
