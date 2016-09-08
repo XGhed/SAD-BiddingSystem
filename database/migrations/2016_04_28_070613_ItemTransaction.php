@@ -11,6 +11,7 @@ class ItemTransaction extends Migration
         {
             $table->increments('ItemID');
             $table->integer('ContainerID')->unsigned();
+            $table->integer('ItemDefectID')->unsigned()->nullable();;
             $table->string('DefectDescription', 50);
             $table->string('status', 30);
             $table->string('size');
@@ -21,6 +22,7 @@ class ItemTransaction extends Migration
             $table->integer('RequestedWarehouse')->unsigned()->nullable();
             $table->integer('ItemModelID')->unsigned();
             $table->foreign('ContainerID')->references('ContainerID')->on('Containers');
+            $table->foreign('ItemDefectID')->references('ItemDefectID')->on('ItemDefects');
             $table->foreign('ItemModelID')->references('ItemModelID')->on('ItemModels');
             $table->foreign('CurrentWarehouse')->references('WarehouseNo')->on('Warehouse');
             $table->foreign('RequestedWarehouse')->references('WarehouseNo')->on('Warehouse');

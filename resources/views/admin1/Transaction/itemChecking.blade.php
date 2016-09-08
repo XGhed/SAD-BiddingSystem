@@ -58,10 +58,23 @@
                   </div>
                 </div>
 
+                <div class="ui sub header">Defect</div>
+
+                <div class="fields">
+                  <div class="five wide field">
+                    <select name="defect" class="ui search selection dropdown" REQUIRED>
+                        <option value="" disabled selected>Defect</option>
+                        @foreach($defects as $key => $defect)
+                          <option value="{{$defect->ItemDefectID}}">{{$defect->DefectName}}</option>
+                        @endforeach
+                        <option value="null">Others/None (Pls specify)</option>
+                      </select>
+                  </div>
+                </div>
+
                 <div class="fields">
                   <div class="five wide field" id="defectDesc">
-                    <div class="ui sub header">Defect</div>
-                    <input id="defectDesc" type="text" name="defectDesc" placeholder="Description" />
+                    <input id="defectDesc" type="text" name="defectDesc" placeholder="None" />
                   </div>
                 </div>
               </div>
@@ -129,6 +142,18 @@
                       <label>Defect</label>
                     </div>
                   </div>
+
+                  <div class="fields">
+                  <div class="three wide field">
+                    <select name="defect" class="ui search selection dropdown" REQUIRED>
+                        <option value="" disabled selected>Defect</option>
+                        @foreach($defects as $key => $defect)
+                          <option value="{{$defect->ItemDefectID}}">{{$defect->DefectName}}</option>
+                        @endforeach
+                        <option value="null">Others</option>
+                      </select>
+                  </div>
+                </div>
 
                   <div class="five wide field" style="display: none" id="checkdefectDesc">
                     <input id="defectDesc" type="text" name="defectDesc" placeholder="Description" />

@@ -92,6 +92,19 @@ class StatusUpdate extends Controller
         }
     }
 
+    public function ItemDefect(){
+        $itemDefect = new App\Models\Admin\ItemDefect;
+        $itemDefect = App\Models\Admin\ItemDefect::find(Input::get('defectID'));
+
+        if ($itemDefect->Status == 1){
+            $itemDefect->Status = 0;
+        }
+        elseif ($itemDefect->Status == 0){
+            $itemDefect->Status = 1;
+        }
+        $itemDefect->save();
+    }
+
     public function Warehouse(){
         $warehouse = new App\Models\Admin\Warehouse;
         $warehouse = App\Models\Admin\Warehouse::find(Input::get('WarehouseNo'));

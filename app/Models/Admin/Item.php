@@ -20,6 +20,12 @@ class Item extends Model
 	    return $this->hasOne('App\Models\Admin\ItemModel', 'ItemModelID', 'ItemModelID');
 	}
 
+	  public function itemDefect()
+	{
+	    return $this->hasOne('App\Models\Admin\ItemDefect', 'ItemDefectID', 'ItemDefectID');
+	}
+
+
 	public function itemHistory()
 	{
 	    return $this->hasMany('App\Models\Admin\ItemHistory', 'ItemID', 'ItemID');

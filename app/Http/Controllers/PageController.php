@@ -8,6 +8,7 @@ use App\Dal\MemberDao;
 use App\Member;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App;
 use App\Models\Admin;
 
 
@@ -97,11 +98,6 @@ class PageController extends Controller
     public function dashboard(Request $request){
 
        return view('admin1.Dashboard.dashboard');
-    } 
-
-    public function itemDefects(Request $request){
-
-       return view('admin1.Maintenance.itemDefects');
     } 
 
  /*   public function supplier1(Request $request){
@@ -209,8 +205,9 @@ class PageController extends Controller
     }
 
     public function itemChecking(Request $request){
+       $defects = App\Models\Admin\ItemDefect::all();
 
-       return view('admin1.Transaction.itemChecking');
+       return view('admin1.Transaction.itemChecking')->with('defects', $defects);
     }
 
     public function itemOutbound(Request $request){

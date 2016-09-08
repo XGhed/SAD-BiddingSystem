@@ -44,6 +44,12 @@ Route::post('/confirmDiscount', 'DiscountController@confirmDiscount');
 
 Route::post('/confirmRegister', 'RegisterController@confirmRegister');
 
+Route::post('/addItemDefect', 'ItemDefectController@insert');
+
+Route::post('/editItemDefect', 'ItemDefectController@update');
+
+Route::post('/deleteItemDefect', 'ItemDefectController@delete');
+
 Route::post('/updateReward', 'DiscountController@updateReward');
 
 Route::post('/updateShipment', 'ShipmentController@updateShipment');
@@ -127,6 +133,8 @@ Route::get('/status_Category', 'StatusUpdate@Category');
 Route::get('/status_SubCategory', 'StatusUpdate@SubCategory');
 
 Route::get('/status_Warehouse', 'StatusUpdate@Warehouse');
+
+Route::get('/status_ItemDefect', 'StatusUpdate@ItemDefect');
 
 Route::get('/warehouse', 'WarehouseController@manageWarehouse');
 
@@ -322,7 +330,7 @@ Route::get('/userProfile', 'PageController@userProfile');
 
 Route::get('/bidHistory', 'PageController@bidHistory');
 
-Route::get('/itemDefects', 'PageController@itemDefects');
+Route::get('/itemDefects', 'ItemDefectController@view');
 
 Route::get('/deliveryStatus', 'PageController@deliveryStatus');
 
