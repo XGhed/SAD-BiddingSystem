@@ -85,14 +85,14 @@
       <div class="ui small modal" id="showIDmdl">
           <i class="close icon"></i>
           <div class="ui segment center aligned" style="margin: 10px 10px 10px 10px;">
-             <img ng-src="@{{info_id}}" style="width: 600px; height: 800px;">
+             <img ng-src="@{{info_id}}" style="width: 600px; height: 600px;">
           </div>
       </div>
 
       <div class="ui small modal" id="showDtiMdl">
           <i class="close icon"></i>
           <div class="ui segment center aligned" style="margin: 10px 10px 10px 10px;">
-             <img ng-src="@{{info_dti}}"  style="width: 600px; height: 800px;">
+             <img ng-src="@{{info_dti}}"  style="width: 600px; height: 600px;">
           </div>
       </div>
 

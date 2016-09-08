@@ -96,7 +96,7 @@ class PageController extends Controller
 
     public function dashboard(Request $request){
 
-       return view('admin1.dashboard');
+       return view('admin1.Dashboard.dashboard');
     } 
 
  /*   public function supplier1(Request $request){
