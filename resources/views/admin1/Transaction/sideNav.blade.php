@@ -25,6 +25,9 @@
               <a class="item" href="/biddingEvent">
                 Bidding Event
               </a>
+              <a class="item" href="/postEventNoBidItems">
+                Post Event
+              </a> 
               <a class="item" href="/accountApproval">
                 Account Approval
               </a>

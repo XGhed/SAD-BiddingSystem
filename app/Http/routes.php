@@ -322,6 +322,8 @@ Route::get('/userProfile', 'PageController@userProfile');
 
 Route::get('/bidHistory', 'PageController@bidHistory');
 
+Route::get('/itemDefects', 'PageController@itemDefects');
+
 Route::get('/deliveryStatus', 'PageController@deliveryStatus');
 
 Route::get('/listOfBidders', 'PageController@listOfBidders');
