@@ -97,6 +97,7 @@ class BiddingEventController extends Controller
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory', 'item_auction')
             ->where('status', 2)
             ->where('ItemModelID', $request->itemID)
+            ->whereHas('pullRequest', function($query){}, '<', 1)
             ->get();
 
         $returndata = [];

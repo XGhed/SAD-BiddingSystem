@@ -84,11 +84,8 @@ app.controller('myController', function($scope, $http){
     $http.get('confirmDispose?itemID=' + $scope.items[index].ItemID)
     .then(function(response){
       if(response.data == 'success'){
-        return $http.get('singleItem?itemID=' + $scope.items[index].ItemID);
+        $scope.items.splice(index, 1);
       }
-    })
-    .then(function(response){
-      $scope.items[index] = response.data;
     });
   }
 });
