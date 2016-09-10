@@ -4,7 +4,7 @@
         <a class="item" href="/dashboard">
           Home
         </a>
-        <a class="item" href="/announceCustomer">
+        <a class="item" href="/announcements">
           Announcements
         </a>
     </div>

@@ -100,6 +100,11 @@ class PageController extends Controller
        return view('admin1.Dashboard.dashboard');
     } 
 
+    public function announcements(Request $request){
+
+       return view('admin1.Dashboard.announcements');
+    } 
+
  /*   public function supplier1(Request $request){
 
        return view('admin1.supplier');

@@ -304,6 +304,8 @@ Route::get('/bidItem', 'CustomerBiddingEventController@bidItem');
 // new mainte
 Route::get('/dashboard', 'PageController@dashboard');
 
+Route::get('/announcements', 'PageController@announcements');
+
 Route::get('/discount1', 'PageController@discount1');
 
 //Route::get('/shipment1', 'PageController@shipment1');
