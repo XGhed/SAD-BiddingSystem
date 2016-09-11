@@ -31,8 +31,8 @@ class Kernel extends ConsoleKernel
         //$schedule->command('inspire')
         //         ->hourly();
 
-        $schedule->command('defect')
-                 ->everyMinute();
+        //$schedule->command('defect')
+         //        ->everyMinute();
 
         $schedule->command('log:demo')
                  ->everyMinute();
