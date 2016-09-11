@@ -117,6 +117,5 @@
 </div>
 
 <script>
-
 </script>
 @endsection

@@ -26,14 +26,7 @@
     <body style="background-image: url('/icons/bg3.png');  background-repeat: no-repeat;
     background-attachment: fixed;" class="ui container"> 
 
-
-    @yield('nav')
-      <div class="ui grid">
-      <div class="row">
-      <div class="row">
-      </div>
-      </div>
-      </div>
+      
     @yield('content')
   <div class="ui small modal" id="login">
     <i class="close icon"></i>
