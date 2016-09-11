@@ -19,54 +19,16 @@ class PageController extends Controller
        return view('customer.homepage');
     }
 
-    public function bidItems(Request $request){
-
-       return view('admin.bidItems');
-    }
-
-    public function shipmentAdd(Request $request){
-
-       return view('shipmentAdd');
-    }
-
-    public function shipmentEdit(Request $request){
-
-       return view('shipmentEdit');
-    }
-
-    public function warehouse(Request $request){
-
-       return view('warehouse');
-    }
-
-    public function shipment(Request $request){
-
-       return view('shipment');
-    }
 
     public function checkout(Request $request){
 
        return view('customer.checkout');
     }
 
-    public function bidEvent(Request $request){
-
-       return view('admin.bidEvent');
-    } 
 
     public function inventory(Request $request){
 
        return view('admin1.Transaction.inventory');
-    }
-
-    public function admin(Request $request){
-
-       return view('admin.admin');
-    }
-
-    public function discount(Request $request){
-
-       return view('admin.discount');
     }
 
     //customer
@@ -101,7 +63,17 @@ class PageController extends Controller
 
     public function announcements(Request $request){
 
-       return view('admin1.Dashboard.announcements');
+       return view('admin1.Utilities.announcements');
+    } 
+
+    public function messages(Request $request){
+
+       return view('admin1.Utilities.messages');
+    } 
+
+    public function inbox(Request $request){
+
+       return view('customer.messages');
     } 
 
  /*   public function supplier1(Request $request){

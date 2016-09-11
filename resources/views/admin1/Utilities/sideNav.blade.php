@@ -1,8 +1,11 @@
 <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
-      <div class="ui centered header"><i class="home icon"></i>Dashboard</div>
-        <a class="item" href="/dashboard">
-          Home
+      <div class="ui centered header"><i class="home icon"></i>Utilities</div>
+        <a class="item" href="/announcements">
+          Announcements
+        </a>
+        <a class="item" href="/messages">
+          Messages
         </a>
     </div>
   </div>

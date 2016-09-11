@@ -11,8 +11,8 @@
         <a class="item" href="/cart">
             <i class="cart icon"></i>Cart
         </a>
-        <a class="item" href="/announcements">
-            <i class="mail icon"></i>Message
+        <a class="item" href="/inbox">
+            <i class="mail icon"></i>Inbox
         </a>
         
         <div class="right menu">
