@@ -21,7 +21,7 @@
           </div>
           <div class="twelve wide field">
             <div class="ui subheader">TO:</div>
-              <div class="ui fluid multiple search normal selection dropdown">
+              <div class="ui fluid multiple search normal selection dropdown" id="selectUser">
                 <input type="hidden" name="country">
                 <i class="dropdown icon"></i>
                 <div class="default text">Select Customer</div>
@@ -32,6 +32,12 @@
                 <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
               </div>
               </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="" id="sendToAll">
+              <label>Send to all</label>
+            </div>
           </div>
           <button class="ui green button"><i class="send icon"></i>SEND</button>
         </div>
@@ -48,5 +54,16 @@
   document.getElementById("curDate").innerHTML = d.toDateString();
 
   $('.ui.normal.dropdown').dropdown();
+
+  $(document).ready(function () {
+      $('#sendToAll').click(function () {
+          var $this = $(this);
+          if ($this.is(':checked')) {
+              document.getElementById('selectUser').style.display = 'none';
+          } else {
+              document.getElementById('selectUser').style.display = 'block';
+          }
+     });
+    });
 </script>
 @endsection
