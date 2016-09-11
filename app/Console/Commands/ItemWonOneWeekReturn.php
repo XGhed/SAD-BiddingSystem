@@ -58,7 +58,7 @@ class ItemWonOneWeekReturn extends Command
                   ->hour($eventEnded['time'][0])->minute($eventEnded['time'][1])->second($eventEnded['time'][2])
                   ->toDateTimeString();
 
-          if ($current->diffInDays($endDateTime) <= -7){
+          if ($current->diffInDays($endDateTime, false) <= -7){
           	$item = App\Models\Admin\Item::find($winner->ItemID);
           	$this->ItemLog(
           		$item,

@@ -19,6 +19,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\Defect::class,
         \App\Console\Commands\LogDemo::class,
         \App\Console\Commands\ItemWonOneWeekReturn::class,
+        \App\Console\Commands\CancelCheckoutRequest::class,
     ];
 
     /**
@@ -38,6 +39,9 @@ class Kernel extends ConsoleKernel
         //$schedule->command('log:demo')
         //         ->everyMinute();
         $schedule->command('oneWeekForfeit')
+                 ->everyMinute();
+                 
+        $schedule->command('checkoutForfeit')
                  ->everyMinute();
         
     }

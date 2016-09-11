@@ -35,7 +35,7 @@ class PostEventNoBidItemsController extends Controller
                 $auctions[$key]['noBidItems'] = $noBidItems;
             }
             else {
-                $auction->splice($key-$removed, 1);
+                $auctions->splice($key-$removed, 1);
                 $removed++;
             }
         }
