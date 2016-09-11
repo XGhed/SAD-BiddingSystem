@@ -4,6 +4,9 @@
         <a class="item" href="/announcements">
           Announcements
         </a>
+        <a class="item" href="/messages">
+          Messages
+        </a>
     </div>
   </div>
 

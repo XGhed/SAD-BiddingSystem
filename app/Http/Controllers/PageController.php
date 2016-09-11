@@ -106,6 +106,16 @@ class PageController extends Controller
        return view('admin1.Utilities.announcements');
     } 
 
+    public function messages(Request $request){
+
+       return view('admin1.Utilities.messages');
+    } 
+
+    public function inbox(Request $request){
+
+       return view('customer.messages');
+    } 
+
  /*   public function supplier1(Request $request){
 
        return view('admin1.supplier');
