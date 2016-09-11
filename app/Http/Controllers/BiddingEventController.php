@@ -138,7 +138,30 @@ class BiddingEventController extends Controller
     public function removeFromEvent(Request $request){
         $item_auction = App\Models\Admin\Item_Auction::find($request->itemID);
 
-        $item_auction->delete();
+        $current = Carbon::now('Asia/Manila');
+
+        $eventStarted = collect(explode(' ', $item_auction->auction->StartDateTime));
+
+        $eventStarted->date = explode('-', $eventStarted[0]);
+        $eventStarted->time = explode(':', $eventStarted[1]);
+
+        $eventStarted = collect([
+          'date' => $eventStarted->date,
+          'time' => $eventStarted->time
+          ]);
+
+        $startDateTime = Carbon::now();
+        $startDateTime->timezone = 'Asia/Manila';
+        $startDateTime->year($eventStarted['date'][0])->month($eventStarted['date'][1])->day($eventStarted['date'][2])
+                ->hour($eventStarted['time'][0])->minute($eventStarted['time'][1])->second($eventStarted['time'][2])
+                ->toDateTimeString();
+
+        if ($current->diffInMinutes($startDateTime->addSeconds(60)) <= 0){
+            return $current->diffInMinutes($startDateTime->addSeconds(60));
+        }
+        else {
+            $item_auction->delete();
+        }
 
         $item = App\Models\Admin\Item::find($request->itemID);
         $auction = App\Models\Admin\Auction::find($item_auction->AuctionID);
