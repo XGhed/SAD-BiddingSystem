@@ -28,6 +28,7 @@
 
       
     @yield('content')
+
   <div class="ui small modal" id="login">
     <i class="close icon"></i>
     <div class="ui vertical divider"></div>

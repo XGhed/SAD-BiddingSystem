@@ -42,7 +42,6 @@
           <button class="ui green button"><i class="send icon"></i>SEND</button>
         </div>
       </form>
-
     </div>
   </div>
 </div>
