@@ -156,8 +156,8 @@ class BiddingEventController extends Controller
                 ->hour($eventStarted['time'][0])->minute($eventStarted['time'][1])->second($eventStarted['time'][2])
                 ->toDateTimeString();
 
-        if ($current->diffInMinutes($startDateTime->addSeconds(60)) <= 0){
-            return $current->diffInMinutes($startDateTime->addSeconds(60));
+        if ($current->diffInMinutes($startDateTime->addSeconds(60), false) >= 0){
+            return 'event has started';
         }
         else {
             $item_auction->delete();
