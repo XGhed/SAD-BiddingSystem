@@ -13,7 +13,7 @@
 Route::get('/insertPlaces', 'InsertSqlController@insertPlaces');
 
 Route::get('/', 'HomepageController@displayHomepage');
-
+Route::get('/tryPage', 'PageController@tryPage');
 
 //POST
 Route::post('/confirmSupplier', 'SupplierController@confirmSupplier');

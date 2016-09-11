@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\Inspire::class,
         \App\Console\Commands\Defect::class,
         \App\Console\Commands\LogDemo::class,
+        \App\Console\Commands\ItemWonOneWeekReturn::class,
     ];
 
     /**
@@ -34,7 +35,10 @@ class Kernel extends ConsoleKernel
         //$schedule->command('defect')
          //        ->everyMinute();
 
-        $schedule->command('log:demo')
+        //$schedule->command('log:demo')
+        //         ->everyMinute();
+        $schedule->command('oneWeekForfeit')
                  ->everyMinute();
+        
     }
 }
