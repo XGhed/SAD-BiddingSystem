@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="ui grid">
-  @include('admin1.Dashboard.sideNav')
+  @include('admin1.Utilities.sideNav')
   <div class="twelve wide stretched column">
     <div class="ui segment">
     <h1 class="ui centered header"><i class="mail icon"></i>Send announcements </h1>
