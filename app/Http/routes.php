@@ -84,6 +84,8 @@ Route::post('/submitCheckout', 'CustomerCheckoutController@insert');
 
 Route::post('/postEventProcessItems', 'PostEventNoBidItemsController@postEventProcessItems');
 
+Route::post('/makeAnnouncement', 'AnnouncementController@makeAnnouncement');
+
 Route::get('/logout', 'LoginController@logout');
 
 
@@ -231,6 +233,8 @@ Route::get('/itemsWon', 'CustomerCheckoutController@itemsWon');
 Route::get('/shipmentFee', 'AngularOutput@shipmentFee');
 
 Route::get('/postEventsList', 'PostEventNoBidItemsController@postEventsList');
+
+Route::get('/latestAnnouncement', 'AnnouncementController@latestAnnouncement');
 
 
 //Angular Input

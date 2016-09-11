@@ -1,13 +1,13 @@
 
 
-				<div class="ui basic modal">
+				<div class="ui basic modal" ng-app="announcementApp" ng-controller="announcementController">
 				  <i class="close icon"></i>
 				  <div class="ui centered header">
-				    JOANNE DITO MO LAGAY UNG ANNOUNCEMENTS (DITO UNG TITLE NG MESSAGE)
+				    @{{latestAnnouncement.Subject}}
 				  </div>
 				  <div class="content">
 				  	<div class="ui inverted segment">
-				  		DITO UNG MESSAGE
+				  		@{{latestAnnouncement.Content}}
 				  	</div>
 				  </div>
 				  <div class="actions">
@@ -21,4 +21,12 @@ $('.ui.basic.modal').modal({
   })
   .modal('show')
 ;
+
+var app = angular.module('announcementApp', []);
+app.controller('announcementController', function($scope, $http){
+	$http.get('/latestAnnouncement')
+	.then(function(response){
+		$scope.latestAnnouncement = response.data;
+	});
+});
 </script>
