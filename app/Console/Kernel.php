@@ -5,6 +5,8 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+use Carbon\Carbon;
+
 class Kernel extends ConsoleKernel
 {
     /**
@@ -14,6 +16,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \App\Console\Commands\Inspire::class,
+        \App\Console\Commands\Defect::class,
+        \App\Console\Commands\LogDemo::class,
     ];
 
     /**
@@ -24,7 +28,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
+        //$schedule->command('inspire')
+        //         ->hourly();
+
+        $schedule->command('defect')
+                 ->everyMinute();
+
+        $schedule->command('log:demo')
+                 ->everyMinute();
     }
 }
