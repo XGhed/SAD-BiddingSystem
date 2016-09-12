@@ -293,6 +293,8 @@ Route::get('/itemDelivered', 'ItemInboundController@itemDelivered');
 
 Route::get('/itemFound', 'ItemInboundController@itemFound');
 
+Route::get('/replyMessageAdmin', 'MessageController@reply');
+
 
 Route::post('/edit', 'ShipmentController@editShipment');
 

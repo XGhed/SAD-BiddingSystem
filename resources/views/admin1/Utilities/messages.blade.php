@@ -20,7 +20,7 @@
                     Create message
                   </a>
                 </div>
-                <div class="item" ng-repeat="thread in threads" ng-click="">
+                <div class="item" ng-repeat="thread in threads" ng-click="openThread(thread)">
                   <div class="content">
                     <div class="header">
                     @{{thread.account.AccountID}} - 
@@ -39,23 +39,23 @@
               <div class="ui segment" id="inbox">
                 <div class="ui sub header">SUBJECT:</div>
                   <div class="ui inverted segment">
-                    <p>TITLE OF THE MESSAGE</p>
+                    <p>@{{selectedThread.Subject}}</p>
                   </div>
 
                 <div class="ui sub header">MESSAGE:</div>
                   <div class="ui inverted segment">
-                          <p class="ui right aligned  basic segment">
-                            <span class="ui segment">FROM admin</span>
-                          </p>
-                          <p class="ui left aligned basic segment">
-                            <span class="ui segment">FROM customer</span>
-                          </p>
-                        </div>
+                    <p class="ui right aligned  basic segment" ng-repeat="message in selectedThread.messages" ng-if="message.Sender == 'Admin'">
+                      <span class="ui segment">@{{message.Message}}</span>
+                    </p>
+                    <p class="ui left aligned basic segment" ng-repeat="message in selectedThread.messages" ng-if="message.Sender != 'Admin'">
+                      <span class="ui segment">@{{message.Message}}</span>
+                    </p>
+                  </div>
                 <div class="field">
                   <div class="ui sub header">REPLY:</div>
-                  <textarea cols="3" rows="2"></textarea>
+                  <textarea cols="3" rows="2" ng-model="replyArea"></textarea>
                   <p></p>
-                  <button type="submit" class="ui green button"><i class="send icon"></i>REPLY</button>
+                  <button class="ui green button" ng-click="reply()"><i class="send icon"></i>REPLY</button>
                 </div>
               </div>
             </div>
@@ -121,6 +121,28 @@
     .then(function(response){
       $scope.threads = response.data;
     });
+
+    $scope.openThread = function(thread){
+      $scope.selectedThread = thread;
+      $http.get('threadList')
+      .then(function(response){
+        $scope.threads = response.data;
+      });
+    }
+
+    $scope.reply = function(){
+      $http.get('replyMessageAdmin?threadID=' + $scope.selectedThread.ThreadID + '&message=' + $scope.replyArea)
+      .then(function(response){
+        if(response.data == "error"){
+          alert('error');
+        }
+        else {
+          alert('success');
+          $scope.selectedThread = response.data;
+          $scope.replyArea = "";
+        }
+      });
+    }
   });
 
 </script>

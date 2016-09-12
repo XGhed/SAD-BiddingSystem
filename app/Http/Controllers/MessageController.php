@@ -35,8 +35,25 @@ class MessageController extends Controller
     }
 
     public function threadList(){
-    	$threads = App\Models\Admin\Thread::with('account', 'account.membership', 'messages')->get();
+    	$threads = App\Models\Admin\Thread::with('account', 'account.membership', 'messages')
+        ->orderBy('ThreadID', 'desc')->get();
 
     	return $threads;
+    }
+
+    public function reply(Request $request){
+        $message = new App\Models\Admin\Message;
+
+        $message->ThreadID = $request->threadID;
+        $message->DateAndTime = Carbon::now('Asia/Manila');
+        $message->Sender = 'Admin';
+        $message->Message = $request->message;
+
+        $message->save();
+
+        $thread = App\Models\Admin\Thread::with('account', 'account.membership', 'messages')
+        ->where('ThreadID', $request->threadID)->first();
+
+        return $thread;
     }
 }
