@@ -69,7 +69,12 @@ class PageController extends Controller
     public function messages(Request $request){
 
        return view('admin1.Utilities.messages');
-    } 
+    }
+
+    public function problemTypes(Request $request){
+
+       return view('admin1.Maintenance.problemTypes');
+    }
 
     public function inbox(Request $request){
 

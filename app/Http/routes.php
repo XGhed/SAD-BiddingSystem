@@ -314,6 +314,8 @@ Route::get('/messages', 'PageController@messages');
 
 Route::get('/inbox', 'PageController@inbox');
 
+Route::get('/problemTypes', 'PageController@problemTypes');
+
 Route::get('/discount1', 'PageController@discount1');
 
 //Route::get('/shipment1', 'PageController@shipment1');

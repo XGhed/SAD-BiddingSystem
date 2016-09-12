@@ -25,6 +25,9 @@
         <a class="item" href="/warehouse">
           Warehouse
         </a>
+        <a class="item" href="/problemTypes">
+          Problem Types
+        </a>
     </div>
   </div>
 
