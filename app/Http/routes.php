@@ -94,6 +94,8 @@ Route::post('/makeAnnouncement', 'AnnouncementController@makeAnnouncement');
 
 Route::post('/sendMessageAdmin', 'MessageController@send');
 
+Route::post('/sendMessageCustomer', 'CustomerMessageController@send');
+
 Route::get('/logout', 'LoginController@logout');
 
 
@@ -250,6 +252,8 @@ Route::get('/latestAnnouncement', 'AnnouncementController@latestAnnouncement');
 
 Route::get('/threadList', 'MessageController@threadList');
 
+Route::get('/customerThreadList', 'CustomerMessageController@threadList');
+
 
 //Angular Input
 
@@ -294,6 +298,8 @@ Route::get('/itemDelivered', 'ItemInboundController@itemDelivered');
 Route::get('/itemFound', 'ItemInboundController@itemFound');
 
 Route::get('/replyMessageAdmin', 'MessageController@reply');
+
+Route::get('/replyMessageCustomer', 'CustomerMessageController@reply');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');

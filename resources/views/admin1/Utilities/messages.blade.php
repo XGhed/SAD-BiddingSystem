@@ -44,12 +44,14 @@
 
                 <div class="ui sub header">MESSAGE:</div>
                   <div class="ui inverted segment">
-                    <p class="ui right aligned  basic segment" ng-repeat="message in selectedThread.messages" ng-if="message.Sender == 'Admin'">
-                      <span class="ui segment">@{{message.Message}}</span>
-                    </p>
-                    <p class="ui left aligned basic segment" ng-repeat="message in selectedThread.messages" ng-if="message.Sender != 'Admin'">
-                      <span class="ui segment">@{{message.Message}}</span>
-                    </p>
+                    <div ng-repeat="message in selectedThread.messages">
+                      <p class="ui right aligned  basic segment" ng-if="message.Sender == 'Admin'">
+                        <span class="ui segment">@{{message.Message}}</span>
+                      </p>
+                      <p class="ui left aligned basic segment" ng-if="message.Sender != 'Admin'">
+                        <span class="ui segment">@{{message.Message}}</span>
+                      </p>
+                    </div>
                   </div>
                 <div class="field">
                   <div class="ui sub header">REPLY:</div>
