@@ -27,6 +27,11 @@ class AnnouncementController extends Controller
     public function latestAnnouncement(Request $request){
         $latestAnnouncement = App\Models\Admin\Announcement::all()->last();
 
-        return $latestAnnouncement;
+        if($latestAnnouncement != null){
+            return $latestAnnouncement;
+        }
+        else {
+            return 'No Announcement';
+        }
     }
 }

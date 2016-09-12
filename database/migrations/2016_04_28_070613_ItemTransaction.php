@@ -11,7 +11,7 @@ class ItemTransaction extends Migration
         {
             $table->increments('ItemID');
             $table->integer('ContainerID')->unsigned();
-            $table->integer('ItemDefectID')->unsigned()->nullable();;
+            $table->integer('ItemDefectID')->unsigned()->nullable();
             $table->string('DefectDescription', 50);
             $table->string('status', 30);
             $table->string('size');

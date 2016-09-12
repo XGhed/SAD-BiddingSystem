@@ -1,7 +1,6 @@
 @extends('customer.homepage')
 
 @section('content')
-@include('customer.announcements')
 <div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController">
 	@include('customer.sidenav')
 	<div class="ui grid">
@@ -91,6 +90,7 @@
 			</div>
 		</div>
 	</div>
+	@include('customer.announcements')
 </div>
 
 <script>

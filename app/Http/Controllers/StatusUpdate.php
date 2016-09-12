@@ -117,4 +117,17 @@ class StatusUpdate extends Controller
         }
         $warehouse->save();
     }
+
+    public function ProblemType(){
+        $problemType = new App\Models\Admin\ProblemType;
+        $problemType = App\Models\Admin\ProblemType::find(Input::get('problemtypeID'));
+
+        if ($problemType->Status == 1){
+            $problemType->Status = 0;
+        }
+        elseif ($problemType->Status == 0){
+            $problemType->Status = 1;
+        }
+        $problemType->save();
+    }
 }

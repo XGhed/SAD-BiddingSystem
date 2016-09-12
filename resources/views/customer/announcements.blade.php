@@ -1,6 +1,6 @@
 
 
-				<div class="ui basic modal" ng-app="announcementApp" ng-controller="announcementController">
+				<div class="ui basic modal" id="announcement" ng-app="myApp" ng-controller="announcementController">
 				  <i class="close icon"></i>
 				  <div class="ui centered header">
 				    @{{latestAnnouncement.Subject}}
@@ -19,14 +19,18 @@
 $('.ui.basic.modal').modal({
     closable  : false
   })
-  .modal('show')
 ;
 
-var app = angular.module('announcementApp', []);
 app.controller('announcementController', function($scope, $http){
 	$http.get('/latestAnnouncement')
 	.then(function(response){
-		$scope.latestAnnouncement = response.data;
+		if(response.data != 'No Announcement'){
+			$scope.latestAnnouncement = response.data;
+			$('#announcement').modal('show');
+		}
+		else {
+			$scope.latestAnnouncement = null;
+		}
 	});
 });
 </script>

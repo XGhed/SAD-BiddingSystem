@@ -20,11 +20,15 @@
               Add Problem Type
             </div>
             <div class="content">
-              <form class="ui form" action="/addItemDefect" method="POST">
+              <form class="ui form" action="/addProblemType" method="POST">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
                <div class="seven wide required field">
                   <label>Problem</label>
                   <input type="text" name="problem" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                </div>
+                <div class="seven wide required field">
+                  <label>Description</label>
+                  <input type="text" name="description" length="60" maxlength="60" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                 </div>
             </div>
             <div class="actions">
@@ -41,12 +45,16 @@
               Edit Item Defects
             </div>
             <div class="content">
-              <form class="ui form" action="/editItemDefect" method="POST">
-                <input type="hidden" name="defectID" id="defectID">
+              <form class="ui form" action="/editProblemType" method="POST">
+                <input type="hidden" name="problemtypeID" id="problemID">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                 <div class="seven wide required field">
-                    <label>Defect</label>
-                    <input type="text" id="edit_defect" name="defect" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                  <div class="seven wide required field">
+                    <label>Problem</label>
+                    <input type="text" id="edit_problem" name="problem" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                  </div>
+                  <div class="seven wide required field">
+                    <label>Description</label>
+                    <input type="text" id="edit_description" name="description" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                   </div>
 
             </div>
@@ -68,18 +76,18 @@
             </tr>
           </thead>
           <tbody>
-
+              @foreach($problemTypes as $key => $problemType)
                 <tr>
                   <td class="collapsing">
-                    <form class="row " action="/" method="POST">
+                    <form class="row " action="/deleteProblemType" method="POST">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <div class="edit ui vertical animated button" id="">
+                      <div class="edit ui vertical animated button" id="{{$key}}">
                         <div class="hidden content">Edit</div>
                         <div class="visible content">
                           <i class="large edit icon"></i>
                         </div>
                       </div>
-                      <input type="hidden" class="items" id="" name="" value="">
+                      <input type="hidden" class="items" id="id{{$key}}" name="problemtypeID" value="{{$problemType->ProblemTypeID}}">
                       <button name="delete" type="submit" class="ui large vertical animated button">
                         <div class="hidden content">Delete</div>
                         <div class="visible content">
@@ -88,19 +96,19 @@
                       </button>
                     </form>
                   </td>
-                  <td id="">name</td>
-                  <td id="">description</td>
+                  <td id="problem{{$key}}">{{$problemType->Problem}}</td>
+                  <td id="description{{$key}}">{{$problemType->Description}}</td>
                   <td class="collapsing">
-                    <div class="ui fitted slider checkbox">
-
-                          <input type="checkbox" value="" checked>
-
-                          <input type="checkbox" value="" >
-                          <label></label>
+                    <div class="ui fitted slider checkbox">                      
+                      @if ($problemType->Status == 1)
+                          <input type="checkbox" value="{{$problemType->ProblemTypeID}}" checked>
+                      @elseif ($problemType->Status == 0)
+                          <input type="checkbox" value="{{$problemType->ProblemTypeID}}" >
+                      @endif <label></label>
                     </div>
                   </td>
                 </tr>
-
+              @endforeach
           </tbody>
         </table>
 
@@ -111,9 +119,20 @@
 
 
 <script>
+    $("#tableOutput").DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null,
+        null,
+        null
+      ] 
+    });
+
   $(document).ready(function(){
     $(":checkbox").click(function(){
-      $.get('/status_ItemDefect?defectID=' + $(this).val(), function(data){
+      $.get('/status_ProblemType?problemtypeID=' + $(this).val(), function(data){
           //NOTIFICATION HERE MUMING :*
           alert('success');
         });
@@ -129,8 +148,9 @@
     $('#tableOutput').on('click', '.edit', function(){
       $('#editModal').modal('show');
       var key = this.id;
-      $('#defectID').val($('#id'+key).val());
-      $('#edit_defect').val($('#name'+key).text());
+      $('#problemID').val($('#id'+key).val());
+      $('#edit_problem').val($('#problem'+key).text());
+      $('#edit_description').val($('#description'+key).text());
     });
   });
   

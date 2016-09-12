@@ -17,6 +17,7 @@ class Messages extends Migration
             $table->increments('MessageID');
             $table->integer('ThreadID')->unsigned();
             $table->datetime('DateAndTime');
+            $table->string('Sender');
             $table->string('Message');
             $table->foreign('ThreadID')->references('ThreadID')->on('Threads');
 

@@ -89,12 +89,13 @@
                   </td>
                   <td id="name{{$key}}">{{$defect->DefectName}}</td>
                   <td class="collapsing">
-                    <div class="ui fitted slider checkbox">
-
+                    <div class="ui fitted slider checkbox">                     
+                      <label></label>
+                      @if ($defect->Status == 1)
                           <input type="checkbox" value="{{$defect->ItemDefectID}}" checked>
-
+                      @elseif ($defect->Status == 0)
                           <input type="checkbox" value="{{$defect->ItemDefectID}}" >
-                          <label></label>
+                      @endif <label></label>
                     </div>
                   </td>
                 </tr>
@@ -110,6 +111,17 @@
 
 
 <script>
+
+    $("#tableOutput").DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null,
+        null
+      ] 
+    });
+
   $(document).ready(function(){
     $(":checkbox").click(function(){
       $.get('/status_ItemDefect?defectID=' + $(this).val(), function(data){
