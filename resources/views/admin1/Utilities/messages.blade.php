@@ -13,6 +13,12 @@
             <!-- <a class="ui fluid green button" id="inboxBtn"><i class="mail icon"></i> Inbox</a><br>
             <a class="ui fluid blue button" id="sendBtn">Send Message</a> -->
             <div class="ui middle aligned selection list">
+              <div class="item">
+                <a class="ui basic blue button" id="addBtn">
+                  <i class="mail icon"></i>
+                  Create message
+                </a>
+              </div>
               <div class="item" id="shit">
                 <div class="content">
                   <div class="header">Don't CLICK ME </div>
@@ -66,13 +72,48 @@
               </div>
             </div>
           </div>
-
         </div>
       </form>
     </div>
   </div>
 </div>
 
+        <div class="ui small modal" id="addModal">
+          <i class="close icon"></i>
+            <div class="header">
+              Create Message
+            </div>
+            <div class="content">
+              <form class="ui form" action="" method="POST">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="ui inverted segment">
+                  <div class="field">
+                    <div class="ui subheader">SUBJECT:</div>
+                    <input type="text" name="subject">
+                  </div>
+                  <div class="field">
+                    <div class="ui subheader">MESSAGE:</div>
+                    <textarea name="content"> </textarea>
+                  </div>
+                  <div class="field">
+                    <div class="ui subheader">TO:</div>
+                      <div class="ui fluid multiple search normal selection dropdown">
+                        <input type="hidden" name="country">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select Customer</div>
+                        <div class="menu">
+                          <div class="item" data-value="ye"><i class="ye flag"></i>Yemen</div>
+                          <div class="item" data-value="zm"><i class="zm flag"></i>Zambia</div>
+                          <div class="item" data-value="zw"><i class="zw flag"></i>Zimbabwe</div>
+                        </div>
+                      </div>
+                  </div>
+
+                  <button class="ui green button"><i class="send icon"></i>Send Message</button>
+                </div>
+              </form>
+            </div>
+        </div>
 
 
 <script>
@@ -80,8 +121,13 @@
   document.getElementById("curDate").innerHTML = d.toDateString();
 
   $('.ui.normal.dropdown').dropdown();
-  $('.ui.accordion').accordion();
 
+  //add modal
+  $(document).ready(function(){
+       $('#addBtn').click(function(){
+          $('#addModal').modal('show');    
+       });
+  });
  
   $('#shit').click(function (){
     $('#sendMessage').hide();
