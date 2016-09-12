@@ -15,9 +15,11 @@ class Threads extends Migration
         Schema::create('Threads', function(Blueprint $table)
         {
             $table->increments('ThreadID');
+            $table->integer('AccountID')->unsigned();
             $table->integer('ProblemTypeID')->unsigned()->nullable()->default(null);
             $table->string('Subject');
             $table->foreign('ProblemTypeID')->references('ProblemTypeID')->on('ProblemTypes');
+            $table->foreign('AccountID')->references('AccountID')->on('Account');
         });
     }
 

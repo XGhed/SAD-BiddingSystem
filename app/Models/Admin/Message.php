@@ -10,7 +10,7 @@ class Message extends Model
     protected $primaryKey = 'MessageID';
     public $timestamps = false;
 
-		public function item()
+		public function thread()
 		{
 		    return $this->hasOne('App\Models\Admin\Thread', 'ThreadID', 'ThreadID');
 		}

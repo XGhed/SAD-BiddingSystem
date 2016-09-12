@@ -92,6 +92,8 @@ Route::post('/postEventProcessItems', 'PostEventNoBidItemsController@postEventPr
 
 Route::post('/makeAnnouncement', 'AnnouncementController@makeAnnouncement');
 
+Route::post('/sendMessageAdmin', 'MessageController@send');
+
 Route::get('/logout', 'LoginController@logout');
 
 
@@ -214,6 +216,8 @@ Route::get('/accountsList', 'AngularOutput@accountsList');
 
 Route::get('/itemModelsOfSubcat', 'AngularOutput@itemModelsOfSubcat');
 
+Route::get('/problemTypesList', 'AngularOutput@problemTypesList');
+
 Route::get('/salesGraph', 'AngularOutput@salesGraph');
 
 //
@@ -243,6 +247,8 @@ Route::get('/shipmentFee', 'AngularOutput@shipmentFee');
 Route::get('/postEventsList', 'PostEventNoBidItemsController@postEventsList');
 
 Route::get('/latestAnnouncement', 'AnnouncementController@latestAnnouncement');
+
+Route::get('/threadList', 'MessageController@threadList');
 
 
 //Angular Input

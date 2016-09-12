@@ -29,6 +29,11 @@ class AngularOutput extends Controller
         return $suppliers;
     }
 
+    public function problemTypesList(){
+        $problemTypes = App\Models\Admin\ProblemType::all();
+        return $problemTypes;
+    }
+
     public function itemModels(){
         $itemModels = App\Models\Admin\ItemModel::all();
         return $itemModels;

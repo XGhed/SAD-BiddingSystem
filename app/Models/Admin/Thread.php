@@ -10,8 +10,13 @@ class Thread extends Model
     protected $primaryKey = 'ThreadID';
     public $timestamps = false;
 
-		public function item()
+		public function messages()
 		{
 		    return $this->hasMany('App\Models\Admin\Message', 'ThreadID', 'ThreadID');
+		}
+
+		public function account()
+		{
+		    return $this->hasOne('App\Models\Admin\Account', 'AccountID', 'AccountID');
 		}
 }
