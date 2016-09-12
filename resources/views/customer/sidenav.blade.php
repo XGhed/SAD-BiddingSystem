@@ -13,6 +13,7 @@
         </a>
         <a class="item" href="/inbox">
             <i class="mail icon"></i>Inbox
+            <div class="ui red horizontal label">new</div>
         </a>
         
         <div class="right menu">
