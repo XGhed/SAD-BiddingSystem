@@ -31,7 +31,7 @@
 
 					<div class="field"></div>
 
-					<div class="ten wide field ui segment">
+					<div class="ten wide field">
 						<div class="ui segment" id="inbox">
 							<div class="ui sub header">SUBJECT:</div>
 								<div class="ui inverted segment">
@@ -39,13 +39,18 @@
 								</div>
 
 							<div class="ui sub header">MESSAGE:</div>
-								<div class="ui inverted segment">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-								</div>
+			                  <div class="ui inverted segment">
+			                    <p class="ui right aligned  basic segment">
+			                    	<span class="ui segment">FROM admin</span>
+			                    </p>
+			                    <p class="ui left aligned basic segment">
+			                    	<span class="ui segment">FROM customer</span>
+			                    </p>
+			                  </div>
 
 							<div class="field">
 								<div class="ui sub header">REPLY:</div>
-								<textarea></textarea>
+								<textarea cols="3" rows="2"></textarea>
 								<p></p>
 								<button type="submit" class="ui green button"><i class="send icon"></i>REPLY</button>
 							</div>
