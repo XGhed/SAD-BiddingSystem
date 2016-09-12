@@ -124,7 +124,7 @@ Route::get('/itemContainer', 'ContainerController@viewContainer');
 
 Route::get('/postEventNoBidItems', 'PageController@postEventNoBidItems');
 
-Route::get('/sampleGraph', 'GraphController@salesGraph');
+Route::get('/salesGraphCat', 'GraphController@salesGraphCat');
 
 //Route::get('/itemChecking', 'ItemCheckingController@viewItems');
 //Route::get('/shipment', 'PageController@shipment');
@@ -220,7 +220,7 @@ Route::get('/itemModelsOfSubcat', 'AngularOutput@itemModelsOfSubcat');
 
 Route::get('/problemTypesList', 'AngularOutput@problemTypesList');
 
-Route::get('/salesGraph', 'AngularOutput@salesGraph');
+//Route::get('/salesGraph', 'AngularOutput@salesGraph');
 
 //
 
