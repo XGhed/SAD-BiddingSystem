@@ -37,8 +37,23 @@ class CustomerBiddingEventController extends Controller
     	return view('customer.items')->with('categories', $categories)->with('eventID', $request->eventID)->with('joined', $joined);
     }
 
+    public function allItemsInEvent(Request $request){
+        $items = App\Models\Admin\Item::with('itemModel', 'itemDefect', 'item_auction', 'bids')->get();
+        $itemsOnAuction = [];
+
+        foreach ($items as $key => $item) {
+            foreach ($item->item_auction as $key => $itemauction){
+                if($itemauction->AuctionID == $request->eventID){
+                    array_push($itemsOnAuction, $item);
+                }
+            }
+        }
+
+        return $itemsOnAuction;
+    }
+
     public function itemsOfSubcategory(Request $request){
-    	$items = App\Models\Admin\Item::all();
+    	$items = App\Models\Admin\Item::with('itemModel', 'itemDefect', 'item_auction', 'bids')->get();
     	$itemsOnAuction = [];
     	$returndata = [];
 

@@ -1,6 +1,6 @@
 
 
-				<div class="ui basic modal" id="announcement" ng-app="myApp" ng-controller="announcementController">
+				<div class="ui basic modal" id="announcement" ng-app="announcementApp" ng-controller="announcementController">
 				  <i class="close icon"></i>
 				  <div class="ui centered header">
 				    @{{latestAnnouncement.Subject}}
@@ -20,7 +20,7 @@ $('.ui.basic.modal').modal({
     closable  : false
   })
 ;
-
+var app = angular.module('announcementApp', []);
 app.controller('announcementController', function($scope, $http){
 	$http.get('/latestAnnouncement')
 	.then(function(response){
@@ -33,4 +33,6 @@ app.controller('announcementController', function($scope, $http){
 		}
 	});
 });
+
+angular.bootstrap(document.getElementById("announcement"), ['announcementApp']);
 </script>

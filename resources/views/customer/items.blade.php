@@ -42,12 +42,28 @@
 		  </div>
 		</div>	
 		<div class="ui divider"></div>
-		<div class="ui sub header">countdown: <timer countdown="event.remainingTime" max-time-unit="'hour'" interval="1000" ng-if="event.remainingTime > 0">@{{hhours}} hour@{{hourS}}, @{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</timer></div>
+		<div class="ui sub header">
+			countdown: <timer countdown="event.remainingTime" max-time-unit="'hour'" interval="1000" ng-if="event.remainingTime > 0">
+			@{{hhours}} hour@{{hourS}}, @{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</timer>
+
+			<select ng-model="orderBy">
+				<option value="" disabled selected>Filter</option>
+				<option value="item_model.ItemName">Name</option>
+				<option value="item_auction[0].ItemPrice">Price</option>
+			</select>
+			<select ng-model="sortingOrder">
+			<option value="" disabled selected>Order</option>
+				<option value="">Ascending</option>
+				<option value="true">Descending</option>
+			</select>
+			<input type="text" data-ng-model="filterText.item_model.ItemName">
+		</div>
 		<br>
 		<div class="ui three column equal width relaxed grid">
 		  	<div class="stretched row">
 		  		<div class="three wide compact column">
 			        <div class="ui vertical menu">
+			        	<a class="item" ng-click="allCategories()">All Categories</a>
 			        	@foreach($categories as $key => $category)
 			        		<a class="item">{{$category->CategoryName}}</a>
 					        <div class="ui fluid popup">
@@ -68,12 +84,12 @@
 			    <div class="column">
 					<div class="ui segment">
 					    <div class="ui special cards">
-							<div class="green card" ng-repeat="item in itemsView">
+							<div class="green card" ng-repeat="item in itemsView | filter: filterText | orderBy : orderBy:sortingOrder">
 							    <div class="blurring dimmable image">
 							    	<div class="ui dimmer">
 					                	<div class="content">
 					                  		<div class="center">
-					                    		<a class="ui inverted button" href="/items/auction">Bid Now</a>
+					                    		<span class="ui inverted button" href="/items/auction">Bid Now</span>
 					                  		</div>
 					                	</div>
 					              	</div>
@@ -82,12 +98,15 @@
 							      	</div>
 							    </div>
 							    <div class="content">
-					              	<a class="header" href="/try">@{{item.item_model.ItemName}}</a>
+					              	<a class="header">@{{item.item_model.ItemName}}</a>
 					              	<div>
 					                	Defect: @{{item.DefectDescription}}
 					              	</div>
 					              	<div>
-					              		Price: @{{item.item_auction[0].ItemPrice}}
+					              		Starting Price: @{{item.item_auction[0].ItemPrice}}
+					              	</div>
+					              	<div>
+					              		Last Bid: @{{item.bids[item.bids.length - 1].Price}}
 					              	</div>
 					            </div>
 							    <div class="ui bottom attached button" ng-click="bidItem($index)">
@@ -120,7 +139,17 @@
 			.then(function(response){
 				$scope.event = response.data;
 			});
+
+			$scope.allCategories();
 		}, 1000);
+
+		$scope.allCategories = function(){
+			$http.get('/allItemsInEvent?eventID=' + $scope.eventID)
+			.then(function(response){
+				$scope.allItemsInEvent = response.data;
+				$scope.itemsView = $scope.allItemsInEvent;
+			});
+		}
 
 		$scope.subcatViewItems = function(subcatID, subcatname){
 			$http.get('/itemsOfSubcategory?subcatID=' + subcatID + '&eventID=' + $scope.eventID)

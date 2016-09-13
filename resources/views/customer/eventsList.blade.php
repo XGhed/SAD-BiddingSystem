@@ -90,7 +90,6 @@
 			</div>
 		</div>
 	</div>
-	@include('customer.announcements')
 </div>
 
 <script>
@@ -111,8 +110,8 @@
 			$scope.currentTime = response.data;
 		});
 	});
-
-
-
 </script>
+
+@include('customer.announcements')
+
 @endsection

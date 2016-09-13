@@ -24,20 +24,17 @@ class ItemCheckingController extends Controller
 
     public function uncheck(Request $request){
         try {
-            if($request->defectDesc == ""){
-                $defectDesc = 'None';
-            }
-            else {
-                $defectDesc = $request->defectDesc;
-            }
-
             $item = new App\Models\Admin\Item;
             $item = App\Models\Admin\Item::find($request->input('itemID'));
-            $item->DefectDescription = $defectDesc;
+            
             $item->status = 2;
 
             if($request->defect != "null"){
                 $item->ItemDefectID = $request->defect;
+                $item->DefectDescription = $request->defectDesc;
+            }
+            else {
+                $item->DefectDescription = 'None';
             }
 
             if($request->hasFile('add_photo')){
@@ -63,19 +60,16 @@ class ItemCheckingController extends Controller
 
     public function check(Request $request){
         try {
-            if($request->defectDesc == ""){
-                $defectDesc = 'None';
-            }
-            else {
-                $defectDesc = $request->defectDesc;
-            }
 
             $item = new App\Models\Admin\Item;
             $item = App\Models\Admin\Item::find($request->input('itemID2'));
-            $item->DefectDescription = $request->defectDesc;
 
             if($request->defect != "null"){
                 $item->ItemDefectID = $request->defect;
+                $item->DefectDescription = $request->defectDesc;
+            }
+            else {
+                $item->DefectDescription = 'None';
             }
 
             if($request->hasFile('add_photo')){

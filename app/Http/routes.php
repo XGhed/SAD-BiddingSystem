@@ -275,6 +275,8 @@ Route::get('/itemsToAddToEvent', 'BiddingEventController@itemsToAddToEvent');
 
 Route::get('/removeFromEvent', 'BiddingEventController@removeFromEvent');
 
+Route::get('/allItemsInEvent', 'CustomerBiddingEventController@allItemsInEvent');
+
 Route::get('/itemsOfSubcategory', 'CustomerBiddingEventController@itemsOfSubcategory');
 
 Route::get('/hasJoinedThisEvent', 'CustomerBiddingEventController@hasJoinedThisEvent');
