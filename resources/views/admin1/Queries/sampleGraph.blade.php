@@ -49,7 +49,7 @@ $(function() {
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0"></td>' +
-                '<td style="padding:0"><b>Php {point.y:.2f}</b></td></tr>',
+                '<td style="padding:0"><b>Php {point.y:.1f}k</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -61,33 +61,22 @@ $(function() {
             }
         },
         series: [{
-            name:
-            <?php
-                $ctr = count($item);
-                for ($i=0; $i<$ctr; $i++) {
-                    $ctr2 = count($item[$i]);
-                    $k = 1;
-                    echo "'".$item[$i][0]."',data:[";
-                    for ($j=1; $j<=12; $j++) { 
-                        if($item[$i][$k]==$j){
-                            echo $item[$i][$k+1].",";
-                            $k+=2;
-                        } else{
-                            echo "0, ";
-                        }
-                        if ($k==$ctr2){
-                            $l = 12 - $j;
-                            for ($m=0; $m < $l; $m++) { 
-                                echo "0,";
-                            }
-                            break;
-                        }
-                    }
-                    echo "]";
-                    //echo $ctr;
-                    //echo $ctr2;
+            name: [
+                <?php
+                $i = count($item);
+                for ($j=0; $j<$i; $j++){
+                    echo "'".$item[$j][1]."',";
                 }
-            ?>
+                ?>
+            ],
+            data: [
+                <?php 
+                $i = count($item);
+                for ($j=0; $j<$i; $j++){
+                    echo $item[$j][2].",";
+                }
+                ?>
+            ]
         }]
     });
 });
