@@ -177,7 +177,7 @@
 
 		$scope.bidItem = function(index){
 			if($scope.joined == true){
-				$window.open('/auction?itemID='+$scope.itemsView[index].ItemID);
+				$window.open('/auction?itemID='+$scope.itemsView[index].ItemID + "&eventID=" + $scope.eventID);
 			}
 			else {
 				alert('Please join this event first!');

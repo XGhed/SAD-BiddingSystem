@@ -110,18 +110,24 @@ class CustomerBiddingEventController extends Controller
             return "Event has ended";
         }
 
-        return view('customer.auction')->with('item', $item);
+        return view('customer.auction')->with('item', $item)->with('eventID', $request->eventID);
     }
 
     public function bidItem(Request $request){
         //if bid is lower than highest bid
-        $currentBids = App\Models\Admin\Bid::where('ItemID', $request->itemID)->get()->sortByDesc('price');
+        $currentBids = App\Models\Admin\Bid::where('ItemID', $request->itemID)->where('AuctionID', $request->eventID)->get()->sortByDesc('price');
         if (count($currentBids) > 0){
             $highestBid = $currentBids->last()->Price;
 
             if($highestBid >= $request->price){
-                return 'error';
+                return 'Someone bidded higher';
             }
+        }
+
+        //if bid is lower than starting price
+        $item_auction = App\Models\Admin\Item_Auction::where('ItemID', $request->itemID)->get()->last();
+        if($request->price < $item_auction->ItemPrice){
+            return 'Your bid is lower than the starting price';
         }
 
         //add bid
@@ -129,6 +135,7 @@ class CustomerBiddingEventController extends Controller
 
         $bid->AccountID = $request->session()->get('accountID');
         $bid->ItemID = $request->itemID;
+        $bid->AuctionID = $request->eventID;
         $bid->Price = $request->price;
         $bid->DateTime = Carbon::now('Asia/Manila');
 
@@ -149,13 +156,13 @@ class CustomerBiddingEventController extends Controller
     }
 
     public function getHighestBid(Request $request){
-        $bid = App\Models\Admin\Bid::with('item')->where('ItemID', $request->itemID)->get()->sortByDesc('Price')->first();
+        $bid = App\Models\Admin\Bid::with('item')->where('ItemID', $request->itemID)->where('AuctionID', $request->eventID)->get()->sortByDesc('Price')->first();
 
         return $bid->Price;
     }
 
     public function getBidHistory(Request $request){
-        $bids = App\Models\Admin\Bid::with('account', 'item')->where('ItemID', $request->itemID)->get();
+        $bids = App\Models\Admin\Bid::with('account', 'item')->where('ItemID', $request->itemID)->where('AuctionID', $request->eventID)->get();
 
         return $bids;
     }

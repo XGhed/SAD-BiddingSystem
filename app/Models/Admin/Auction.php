@@ -14,4 +14,9 @@ class Auction extends Model
 	{
 	    return $this->hasMany('App\Models\Admin\Item_Auction', 'AuctionID', 'AuctionID');
 	}
+
+	public function bids()
+	{
+	    return $this->hasMany('App\Models\Admin\Bid', 'AuctionID', 'AuctionID');
+	}
 }

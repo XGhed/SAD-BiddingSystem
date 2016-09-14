@@ -37,6 +37,8 @@ class ContainerController extends Controller
     }*/
 
     public function addItemToContainer(Request $request){
+        $request->color = $this->colorDatabase($request->color);
+
         for ($i=0; $i < $request->quantity ; $i++) { 
             $item = new App\Models\Admin\Item;
 
@@ -50,8 +52,6 @@ class ContainerController extends Controller
             $item->save();
         }
 
-        $this->colorDatabase($request->color);
-
         $this->ItemLog(
                 $item, 
                 "Item added to container " . $item->container->ContainerName . ' and expected to be delivered at ' . $item->container->warehouse->Barangay_Street_Address . ", " . $item->container->warehouse->city->province->ProvinceName . ", " . $item->container->warehouse->city->CityName
@@ -61,6 +61,8 @@ class ContainerController extends Controller
     }
 
     public function editItemToContainer(Request $request){
+        $request->color = $this->colorDatabase($request->color);
+
         $item = App\Models\Admin\Item::find($request->itemID);
 
         if($item->image_path == "" && $item->DefectDescription == ""){
@@ -69,8 +71,6 @@ class ContainerController extends Controller
             $item->TransacDate = Carbon::now('Asia/Manila');
 
             $item->save();
-
-            $this->colorDatabase($request->color);
         }
 
         return redirect('/itemContainer?containerID=' . $request->containerID);
@@ -102,20 +102,6 @@ class ContainerController extends Controller
         }
 
         return redirect('itemInbound');
-    }
-
-    public function colorDatabase($color){
-        $findColor = App\Models\Admin\Color::where('ColorName', $color)->get();
-
-        if(count($findColor) > 0){
-            return;
-        }
-        else{
-            $insertColor = new App\Models\Admin\Color;
-            $insertColor->ColorName = $color;
-            $insertColor->save();
-            return;
-        }
     }
 
     public function containerArrived(Request $request){

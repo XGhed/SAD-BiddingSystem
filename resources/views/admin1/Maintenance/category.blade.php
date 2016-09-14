@@ -145,7 +145,7 @@
               <form class="ui form" action="/confirmSubCategory" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="field">
-                  <div class="ui sub header">Province</div>
+                  <div class="ui sub header">Category</div>
                   <select name="add_ID" REQUIRED>
                     <option value="" disabled selected>Choose your Category</option>
                       @foreach($results as $key => $result)

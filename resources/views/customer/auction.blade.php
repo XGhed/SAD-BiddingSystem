@@ -1,7 +1,7 @@
 @extends('customer.homepage')
 
 @section('content')
-	<div ng-app="myApp" ng-controller="myController" ng-init="itemID = {{$item->ItemID}}">
+	<div ng-app="myApp" ng-controller="myController" ng-init="itemID = {{$item->ItemID}}; eventID = {{$eventID}}">
     <div style="margin: 100px 0 0 0" class="ui container segment">
       @include('customer.sidenav')
 
@@ -98,11 +98,11 @@
     }
 
     $scope.bidItem = function(itemID){
-      $http.get('/bidItem?itemID=' + itemID + '&price=' + $scope.price)
+      $http.get('/bidItem?itemID=' + itemID + '&price=' + $scope.price + "&eventID=" + $scope.eventID)
       .then(function(response){
         if (response.data == 'success'){
           alert('success');
-          $http.get('/getHighestBid?itemID=' + $scope.itemID)
+          $http.get('/getHighestBid?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
           .then(function(response){
             $scope.highestBid = response.data;
           });
@@ -110,7 +110,7 @@
         else {
           alert(JSON.stringify(response.data));
         }
-        $http.get('/getBidHistory?itemID=' + $scope.itemID)
+        $http.get('/getBidHistory?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
         .then(function(response){
           $scope.bidlists = response.data;
         });
@@ -119,12 +119,12 @@
     }
 
     $timeout(function(){
-      $http.get('/getHighestBid?itemID=' + $scope.itemID)
+      $http.get('/getHighestBid?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
       .then(function(response){
         $scope.highestBid = response.data;
       });
 
-      $http.get('/getBidHistory?itemID=' + $scope.itemID)
+      $http.get('/getBidHistory?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
       .then(function(response){
         $scope.bidlists = response.data;
       });
