@@ -21,9 +21,9 @@ class GraphController extends Controller
             $item = $this->salesGraphReg($request);
             //return $item;
             return view('admin1.Queries.salesGraphReg')->with('item', $item);
-        } elseif (isset($_POST['nothing'])){
-            $item = $this->salesGraphCat($request);
-            return view('admin1.Queries.salesGraph')->with('item', $item);
+        } else{
+            return $this->salesGraphCat($request);
+            //return view('admin1.Queries.salesGraph')->with('item', $item);
         }
 
         //return redirect('salesGraphCat');

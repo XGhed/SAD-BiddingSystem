@@ -100,7 +100,7 @@ Route::get('/salesGraphDate', 'GraphController@salesGraphDate');
 
 Route::post('/salesGraphReg', 'GraphController@salesGraphReg');
 
-Route::post('/salesGraph', 'GraphController@salesGraph');
+Route::any('/salesGraph', 'GraphController@salesGraph');
 
 Route::get('/logout', 'LoginController@logout');
 
