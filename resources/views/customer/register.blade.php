@@ -1,22 +1,9 @@
 @extends('customer.homepage')
 
-@section('nav')
-	<div class="ui fixed inverted menu">
-        <a class="item" href="/">
-            <img src="icons/icon.png">
-        </a>
-        
-        <div class="right menu">
-          <a class="ui item">
-            help
-            <i class="help icon"></i>
-          </a>
-        </div>
-      </div>
-@endsection
-
 @section('content')
-	<div style="margin: 35px 0 0 0" class="ui container segment">
+
+	<div style="margin: 100px 0 0 0" class="ui container segment">
+      @include('customer.sidenav')
 		<h1 class="ui centered header">Registration</h1>
 		<div class="ui info message">
 			<i class="info icon"></i>

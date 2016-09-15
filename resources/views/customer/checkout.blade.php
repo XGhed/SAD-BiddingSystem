@@ -1,7 +1,8 @@
 @extends('customer.homepage')
 
 @section('content')
-	<div style="margin: 35px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController">
+	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController">
+      @include('customer.sidenav')
 	<form class="ui form" action="/submitCheckout" method="POST">
 		<a href="/cart/"><i class="arrow left icon"></i>back to cart</a>
 		<div class="ui internally celled grid container">

@@ -62,7 +62,7 @@
 				    </div>
 				  </div>
 				</div>
-				<h2>Upcoming Events</h2>
+				<!-- <h2>Upcoming Events</h2> -->
 				<div class="ui cards" ng-repeat="event in events" ng-if="event.StartDateTime > currentTime">
 				  <div class="card">
 				    <div class="content">

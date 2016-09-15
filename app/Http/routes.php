@@ -342,9 +342,11 @@ Route::get('/announcements', 'PageController@announcements');
 
 Route::get('/messages', 'PageController@messages');
 
-Route::get('/inbox', 'PageController@inbox');
+
 
 Route::get('/problemTypes', 'ProblemTypeController@view');
+
+Route::get('/proofPayment', 'PageController@proofPayment');
 
 Route::get('/discount1', 'PageController@discount1');
 
@@ -405,6 +407,8 @@ Route::group(['middleware' => 'customer'], function () {
 	Route::get('/bidList', 'CustomerBiddingEventController@bidList');
 
 	Route::get('checkout', 'CustomerCheckoutController@view');
+
+	Route::get('/inbox', 'PageController@inbox');
 });
 
 

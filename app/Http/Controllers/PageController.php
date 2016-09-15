@@ -221,6 +221,11 @@ class PageController extends Controller
       return view('customer.reportPage');
     }
 
+    public function proofPayment(Request $request){
+
+      return view('customer.proofOfPayment');
+    }
+
     public function sampleGraph(Request $request){
 
       return view('admin1.Queries.sampleGraph');

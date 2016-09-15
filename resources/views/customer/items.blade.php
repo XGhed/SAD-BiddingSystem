@@ -43,20 +43,33 @@
 		</div>	
 		<div class="ui divider"></div>
 		<div class="ui sub header">
-			countdown: <timer countdown="event.remainingTime" max-time-unit="'hour'" interval="1000" ng-if="event.remainingTime > 0">
-			@{{hhours}} hour@{{hourS}}, @{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</timer>
-
-			<select ng-model="orderBy">
-				<option value="" disabled selected>Filter</option>
-				<option value="item_model.ItemName">Name</option>
-				<option value="item_auction[0].ItemPrice">Price</option>
-			</select>
-			<select ng-model="sortingOrder">
-			<option value="" disabled selected>Order</option>
-				<option value="">Ascending</option>
-				<option value="true">Descending</option>
-			</select>
-			<input type="text" data-ng-model="filterText.item_model.ItemName">
+			<form class="ui form">
+			<div class="field">
+				<timer class="ui centered header" countdown="event.remainingTime" max-time-unit="'hour'" interval="1000" ng-if="event.remainingTime > 0">
+				<h2 class="ui centered header inverted segment">Countdown till event ends: @{{hhours}} hour@{{hourS}}, @{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</h2></timer>
+			</div>
+			<div class="fields">
+				<div class="two widefield">
+					<div class="ui subheader inverted segment">Filter by:</div>
+				</div>
+				<div class="three wide field">
+					<select ng-model="orderBy">
+						<option value="" disabled selected>Filter By</option>
+						<option value="item_model.ItemName">Name</option>
+						<option value="item_auction[0].ItemPrice">Price</option>
+					</select>
+				</div>
+				<div class="three wide field">
+					<select ng-model="sortingOrder">
+					<option value="" disabled selected>Order</option>
+						<option value="">Ascending</option>
+						<option value="true">Descending</option>
+					</select>
+				</div>
+				<div class="five wide field">
+					<input type="text" data-ng-model="filterText.item_model.ItemName" placeholder="Search Item here...">
+				</div>
+			</form>
 		</div>
 		<br>
 		<div class="ui three column equal width relaxed grid">
@@ -93,8 +106,8 @@
 					                  		</div>
 					                	</div>
 					              	</div>
-					              	<div class="ui small image">
-							      		<img src="@{{item.image_path}}" class="ui tiny image">
+					              	<div class="ui image">
+							      		<img src="@{{item.image_path}}" style="height: 300px; width:500px ">
 							      	</div>
 							    </div>
 							    <div class="content">
@@ -109,8 +122,8 @@
 					              		Last Bid: @{{item.bids[item.bids.length - 1].Price}}
 					              	</div>
 					            </div>
-							    <div class="ui bottom attached button" ng-click="bidItem($index)">
-							      <i class="add icon"></i>
+							    <div class="ui green bottom attached button" ng-click="bidItem($index)">
+							      <i class="thumbs up icon"></i>
 							      Bid Item
 							    </div>
 							</div>
