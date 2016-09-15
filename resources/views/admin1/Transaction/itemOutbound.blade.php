@@ -102,6 +102,7 @@
               <div class="ui actions">
                 <button class="ui right floated basic green button large" ng-click="approveOutbound(requestSelected.CheckoutRequestID)">Deliver!</button>
               </div>
+              <br><br>
             </div>
         </div>
 

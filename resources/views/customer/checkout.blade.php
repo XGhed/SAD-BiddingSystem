@@ -28,36 +28,37 @@
 				        <label>Pick up</label>
 				      </div>
 				    </div>
-				    <!--items modal-->
-				    <div class="ui segment">
-				    <table class="ui definition celled table">
-					  <thead>
-					    <tr>
-					    	<th></th>
-						    <th>Item ID</th>
-						    <th>Item Name</th>
-						    <th>Date Bidded</th>
-						    <th>Price</th>
-						</tr>
-					  </thead>
-					  <tbody>
-					    
-				    	<tr ng-repeat="item in itemsWon">
-					      <td>
-					      	<input type="checkbox" class="ui checkbox" name="itemsWon[]" value="@{{$item.ItemID}}" ng-click="addToCart(item, $index)"/>
-					      </td>
-					      <td>@{{item.ItemID}}</td>
-					      <td>@{{item.Model}}</td>
-					      <td>@{{item.DateTime}}</td>
-					      <td>@{{item.Price}}</td>
-					    </tr>
-					    
-					  </tbody>
-					</table>
-					</div>
-
 				</div>
-				<div class="ui grid"><div class="row"></div></div>
+				<br>
+				<div class="ui divider"></div>
+				<div class="field">
+					<h3 class="ui centered header">ITEM DETAILS</h3>
+					    <table class="ui definition celled table">
+						  <thead>
+						    <tr>
+						    	<th></th>
+							    <th>Item ID</th>
+							    <th>Item Name</th>
+							    <th>Date Bidded</th>
+							    <th>Price</th>
+							</tr>
+						  </thead>
+						  <tbody>
+						    
+					    	<tr ng-repeat="item in itemsWon">
+						      <td>
+						      	<input type="checkbox" class="ui checkbox" name="itemsWon[]" value="@{{$item.ItemID}}" ng-click="addToCart(item, $index)"/>
+						      </td>
+						      <td>@{{item.ItemID}}</td>
+						      <td>@{{item.Model}}</td>
+						      <td>@{{item.DateTime}}</td>
+						      <td>@{{item.Price}}</td>
+						    </tr>
+						    
+						  </tbody>
+						</table>
+
+					</div>
 				  	<h4 class="ui dividing header">Delivery Information</h4>
 				  	<div class="field">
 					    <label>Name</label>

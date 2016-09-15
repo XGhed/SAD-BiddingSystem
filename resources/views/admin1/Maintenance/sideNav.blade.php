@@ -10,8 +10,8 @@
         <a class="item" href="/item">
           Item
         </a>
-        <a class="item" href="/itemDefects">
-          Item Defects
+        <a class="item" href="/defects">
+          Defects
         </a>
         <!-- <a class="item" href="/accountType">
           Account Type

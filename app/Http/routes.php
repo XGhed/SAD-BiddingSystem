@@ -366,7 +366,7 @@ Route::get('/userProfile', 'PageController@userProfile');
 
 Route::get('/bidHistory', 'PageController@bidHistory');
 
-Route::get('/itemDefects', 'ItemDefectController@view');
+Route::get('/defects', 'ItemDefectController@view');
 
 Route::get('/deliveryStatus', 'PageController@deliveryStatus');
 

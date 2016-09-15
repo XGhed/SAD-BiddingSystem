@@ -69,7 +69,7 @@
             <div class="ui small modal" id="addModal">
               <i class="close icon"></i>
                 <div class="header">
-                  Modal 1
+                  Pick-up Details
                 </div>
                 <div class="content">
                   <form>
@@ -91,17 +91,25 @@
                       </tbody>
                     </table>
 
+                    <div class="ui divider"></div>
                     <div class="field">
-                      <div class="ui grid"><div class="row"></div></div>
+                      <br><br>
                       <div class="ui header">Move the following items to a common Warehouse:</div>
                       <select class="ui selection dropdown" ng-model="selectedWarehouse">
                         <option value="" disabled selected>Select Warehouse</option>
-                        <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
+                        <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">
+                          @{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}
+                        </option>
                       </select>
                     </div>
 
-                    <button class="ui right floated basic green button" ng-click="approve()"><i class="green checkmark icon"></i>Confirm</button>
+                    <div class="actions">
+                      <button class="ui right floated basic green button" ng-click="approve()">
+                        <i class="green checkmark icon"></i>Confirm
+                      </button>
                   </form>
+                    <br><br>
+                    </div>
                 </div>
             </div>
 

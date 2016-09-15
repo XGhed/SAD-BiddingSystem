@@ -6,7 +6,7 @@
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
-
+    <h1 class="ui centered header">POST EVENT</h1>
       <table datatable="ng" class="ui compact celled definition table">
         <thead>
           <tr>
@@ -35,42 +35,46 @@
         </tbody>
       </table>
 
-      <!-- account info modal -->
+      <!-- modal -->
     	<div class="ui small modal" id="itemsModal">
-	    	<form action="postEventProcessItems" method="POST">
-		        <i class="close icon"></i>
-		        <div class="header">
-		          Items
-		        </div>
-		        <div class="content">
-			    <table datatable="ng" class="ui compact celled definition table">
-			        <thead>
-				        <tr>
-				            <th></th>
-				            <th>Item ID</th>
-				            <th>Item Name</th>
-				        </tr>
-				        </thead>
-				    <tbody>
-				        <tr ng-repeat="item_auction in selectedEvent.item_auction">
-				            <td>
-				            	<input type="checkbox" name="items[]" value="@{{item_auction.item.ItemID}}" />
-				            </td>
-				            <td>@{{item_auction.item.ItemID}}</td>
-				            <td>@{{item_auction.item.item_model.ItemName}}</td>
-				        </tr>
-			        </tbody>
-			    </table>
-		        </div>
-
-		        <div class="actions">
-		        	<button class="ui button" type="submit" name="dispose">Dispose</button>
-		        	<br>
-		        	<button class="ui button" type="submit" name="return">Return to Inventory</button>
-		        </div>
+          <i class="close icon"></i>
+            <div class="header">
+	             Items
+            </div>
+            <div class="content">
+	       <form action="postEventProcessItems" method="POST">
+              <table datatable="ng" class="ui compact celled definition table">
+                 <thead>
+					<tr>
+						<th></th>
+					    <th>Item ID</th>
+					    <th>Item Name</th>
+					</tr>
+				 </thead>
+                 <tbody>
+					<tr ng-repeat="item_auction in selectedEvent.item_auction">
+						<td>
+					    	<input type="checkbox" name="items[]" value="@{{item_auction.item.ItemID}}" />
+					    </td>
+					    <td>@{{item_auction.item.ItemID}}</td>
+					    <td>@{{item_auction.item.item_model.ItemName}}</td>
+					</tr>
+				 </tbody>
+              </table>
+              <div class="ui divider"></div>
+              <div class="actions">
+		        <div class="ui buttons">
+				  <button class="ui green button" type="submit" name="dispose">Dispose</button>
+				  <div class="or"></div>
+				  <button class="ui blue button" type="submit" name="return">Return to Inventory</button>
+				</div>
+		      </div>
+            </div>
 	    	</form>
-      </div>
+        </div>
       <!-- END of modal -->
+
+      
 
     </div><!-- segment -->
   </div><!-- twelve wide column -->

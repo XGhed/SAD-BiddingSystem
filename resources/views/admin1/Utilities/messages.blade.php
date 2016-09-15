@@ -10,7 +10,7 @@
         <p id="curDate" style="font-size:20px" class="ui basic right aligned segment"></p>
         <form class="ui form">
           <div class="fields">
-            <div class="five wide field ui compact segment">
+            <div class="three wide field ui segment">
               <!-- <a class="ui fluid green button" id="inboxBtn"><i class="mail icon"></i> Inbox</a><br>
               <a class="ui fluid blue button" id="sendBtn">Send Message</a> -->
               <div class="ui middle aligned selection list">
@@ -28,6 +28,7 @@
                     @{{thread.account.membership[0].FirstName}} 
                     @{{thread.account.membership[0].MiddleName}}
                     </div>
+                    <div class="ui divider"></div>
                   </div>
                 </div>
               </div>
@@ -35,7 +36,7 @@
 
             <div class="field"></div>
 
-            <div class="ten wide field">
+            <div class="thirteen wide field">
               <div class="ui segment" id="inbox">
                 <div class="ui sub header">SUBJECT:</div>
                   <div class="ui inverted segment">
