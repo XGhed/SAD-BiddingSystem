@@ -81,9 +81,19 @@ class BiddingEventController extends Controller
     }
 
     public function viewEventItems(Request $request){
-        $eventID = $request->eventID;
+        $auction = App\Models\Admin\Auction::find($request->eventID);
 
-        return view('admin1.Transaction.bidItems')->with('eventID', $eventID);
+        $currentDatetime = Carbon::now('Asia/Manila');
+        $auctionEndTime = explode(' ', $auction->EndDateTime);
+        $currentDatetime = explode(' ', $currentDatetime);
+
+        //check if event has ended
+        if ($currentDatetime[0] > $auctionEndTime[0] || ($currentDatetime[0] == $auctionEndTime[0] && $currentDatetime[1] > $auctionEndTime[1])){
+            return "Event has ended";
+        }
+        else {
+            return view('admin1.Transaction.bidItems')->with('eventID', $request->eventID);
+        }
     }
 
     public function getEventItems(Request $request){

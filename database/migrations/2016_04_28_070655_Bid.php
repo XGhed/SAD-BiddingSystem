@@ -13,8 +13,10 @@ class Bid extends Migration
         $table->increments('BidID');
         $table->integer('AccountID')->unsigned();
         $table->integer('ItemID')->unsigned();
+        $table->integer('AuctionID')->unsigned();
         $table->foreign('AccountID')->references('AccountID')->on('Account');
         $table->foreign('ItemID')->references('ItemID')->on('Items');
+        $table->foreign('AuctionID')->references('AuctionID')->on('Auction');
         $table->integer('Price');
         $table->Timestamp('DateTime');
     });

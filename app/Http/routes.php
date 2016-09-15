@@ -96,6 +96,12 @@ Route::post('/sendMessageAdmin', 'MessageController@send');
 
 Route::post('/sendMessageCustomer', 'CustomerMessageController@send');
 
+Route::get('/salesGraphDate', 'GraphController@salesGraphDate');
+
+Route::post('/salesGraphReg', 'GraphController@salesGraphReg');
+
+Route::any('/salesGraph', 'GraphController@salesGraph');
+
 Route::get('/logout', 'LoginController@logout');
 
 

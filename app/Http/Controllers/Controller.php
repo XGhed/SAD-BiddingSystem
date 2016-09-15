@@ -39,4 +39,19 @@ abstract class Controller extends BaseController
 
         $history->save();
     }
+
+    public function colorDatabase($color){
+        $color = ucfirst(strtolower($color));
+        $findColor = App\Models\Admin\Color::where('ColorName', $color)->get();
+
+        if(count($findColor) > 0){
+            return $color;
+        }
+        else{
+            $insertColor = new App\Models\Admin\Color;
+            $insertColor->ColorName = $color;
+            $insertColor->save();
+            return $color;
+        }
+    }
 }
