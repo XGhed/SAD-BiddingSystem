@@ -28,7 +28,7 @@
       <meta name="csrf-token" content="{{ csrf_token() }}">
   </head>
 
-  <body style="background-image: url('icons/bg2.png');  background-repeat: no-repeat;
+  <body style="background-image: url('icons/background9.png');  background-repeat: no-repeat;
     background-attachment: fixed;">
 
     

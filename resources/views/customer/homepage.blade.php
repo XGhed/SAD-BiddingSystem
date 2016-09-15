@@ -23,7 +23,7 @@
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/angular-datatables.css')!!}"/>
     </head>
 
-    <body style="background-image: url('/icons/bg3.png');  background-repeat: no-repeat;
+    <body style="background-image: url('/icons/bg2.png');  background-repeat: no-repeat;
     background-attachment: fixed;" class="ui container"> 
 
       
