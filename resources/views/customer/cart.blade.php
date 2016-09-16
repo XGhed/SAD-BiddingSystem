@@ -40,7 +40,7 @@
 					<h2 class="ui header">
 				  <i class="payment icon"></i>
 				  <div class="content">
-				    Order Summary
+				  	Transaction History
 				  </div>
 				</h2>
 				<div class="ui divider"></div>

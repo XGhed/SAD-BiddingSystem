@@ -167,7 +167,7 @@ class PageController extends Controller
 
     public function userProfile(Request $request){
 
-       return view('customer.userProfile');
+       return view('customer.transactionHistory');
     }
 
     public function bidHistory(Request $request){
