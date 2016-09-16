@@ -54,4 +54,19 @@ abstract class Controller extends BaseController
             return $color;
         }
     }
+
+    public function customerDiscount($accountID){
+        $account = App\Models\Admin\Account::find($accountID);
+        $discounts = App\Models\Admin\Discount::where('AccountTypeID', $account->membership->first()
+            ->AccountTypeID)->orderBy('RequiredPoints', 'asc')->get();
+
+        $currentDiscountOfCustomer = 0;
+        foreach ($discounts as $key => $discount) {
+            if($account->Points >= $discount->RequiredPoints){
+                $currentDiscountOfCustomer = $discount->Discount;
+            }
+        }
+
+        return $currentDiscountOfCustomer;
+    }
 }

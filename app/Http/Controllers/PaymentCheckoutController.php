@@ -26,6 +26,18 @@ class PaymentCheckoutController extends Controller
 
         $checkoutRequest->save();
 
+        //add points to customer
+        $additionalPoints = 0;
+        foreach ($checkoutRequest->checkoutRequest_Item as $key => $checkoutRequest_Item) {
+            $additionalPoints += $checkoutRequest_Item->item->item_auction->last()->Points;
+        }
+
+        $account = App\Models\Admin\Account::find($checkoutRequest->AccountID);
+
+        $account->Points += $additionalPoints;
+
+        $account->save();
+
         return 'success';
     }
 }

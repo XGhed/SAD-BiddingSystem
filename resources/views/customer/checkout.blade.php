@@ -1,7 +1,7 @@
 @extends('customer.homepage')
 
 @section('content')
-	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController">
+	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="customerDiscount = {{$customerDiscount}}">
       @include('customer.sidenav')
 	<form class="ui form" action="/submitCheckout" method="POST">
 		<a href="/cart/"><i class="arrow left icon"></i>back to cart</a>
@@ -154,6 +154,10 @@
 				      		<td>@{{item.Price}}</td>
 				    	</tr>
 				    	<tr class="warning">
+					      <td>Discount (%):</td>
+					      <td>@{{customerDiscount}}</td>
+					    </tr>
+				    	<tr class="positive">
 					      <td>Sub total:</td>
 					      <td>@{{subTotalPrice}}</td>
 					    </tr>
@@ -271,6 +275,9 @@ $('.ui.normal.dropdown')
 	    	for(var i=0; i<$scope.cartItems.length; i++){
 	    		$scope.subTotalPrice += $scope.cartItems[i].Price;
 	    	}
+
+	    	//subTotal = subTotal - discountAmount;
+	    	$scope.subTotalPrice = $scope.subTotalPrice - ($scope.subTotalPrice * ($scope.customerDiscount / 100));
 
 	    	$scope.totalPrice = $scope.shippingFee*1 + $scope.subTotalPrice*1;
 	    }

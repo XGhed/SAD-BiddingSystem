@@ -14,7 +14,9 @@ use Illuminate\Support\Collection;
 class CustomerCheckoutController extends Controller
 {
     public function view(Request $request){        
-        return view('customer.checkout');
+        $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
+
+        return view('customer.checkout')->with('customerDiscount', $customerDiscount);
     }
 
     public function itemsWon(Request $request){
@@ -56,6 +58,7 @@ class CustomerCheckoutController extends Controller
 
     public function insert(Request $request){
         $checkoutRequest = new App\Models\Admin\CheckoutRequest;
+        $customerDiscount = $this->customerDiscount($request->session()->get('accountID'))
 
         $checkoutRequest->CheckoutType = $request->checkoutType;
         $checkoutRequest->AccountID = $request->session()->get('accountID');
@@ -72,6 +75,8 @@ class CustomerCheckoutController extends Controller
 
             $ItemPrice = $ItemPrice + $lastBid->Price;
         }
+        //compute discounted price
+        $ItemPrice = $ItemPrice - ($ItemPrice * ($customerDiscount / 100));
         $checkoutRequest->ItemPrice = $ItemPrice;
 
         if($request->checkoutType == "Pick up"){

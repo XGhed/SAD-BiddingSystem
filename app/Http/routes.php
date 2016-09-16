@@ -170,6 +170,8 @@ Route::get('/bidItems', 'BiddingEventController@viewEventItems');
 
 Route::get('/admin', 'PageController@admin');
 
+Route::get('/tryLang', 'AngularOutput@customerDiscount');
+
 
 //Angular AngularOutput
 Route::get('/provinces', 'AngularOutput@provinces');
