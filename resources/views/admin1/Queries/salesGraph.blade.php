@@ -24,7 +24,7 @@
 
 <script>
     <?php
-        if(isset($item)){
+        if(is_null($item)){
             echo "alert('Nothing to display!');";
         }
     ?>
@@ -80,7 +80,7 @@ $(function() {
             data: [3,2,1]*/
             <?php
                 //echo "alert(JSON.stringify(".$item."))";
-                if(!isset($item)){
+                if(!is_null($item)){
                     $ctr = count($item);
                     for ($i=0; $i<$ctr; $i++) {
                         $ctr2 = count($item[$i]);
