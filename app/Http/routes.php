@@ -13,7 +13,6 @@
 Route::get('/insertPlaces', 'InsertSqlController@insertPlaces');
 
 Route::get('/', 'HomepageController@displayHomepage');
-Route::get('/tryPage', 'PageController@tryPage');
 
 //POST
 Route::post('/confirmSupplier', 'SupplierController@confirmSupplier');
@@ -261,6 +260,8 @@ Route::get('/latestAnnouncement', 'AnnouncementController@latestAnnouncement');
 Route::get('/threadList', 'MessageController@threadList');
 
 Route::get('/customerThreadList', 'CustomerMessageController@threadList');
+
+Route::get('/getPendingCheckoutRequests', 'ProofPaymentController@getPendingCheckoutRequests');
 
 
 //Angular Input

@@ -23,19 +23,16 @@ class CategoryController extends Controller
     public function confirmCategory(Request $request){
 
 		if (isset($_POST['add'])) {
-			$this->insertCategory($request);
 			Session::put('message', '1');
-			return redirect('category');
+			return $this->insertCategory($request);
 		}
 		elseif (isset($_POST['edit'])) {
-	        $this->updateCategory($request);
 	        Session::put('message', '2');
-			return redirect('category');
+	        return $this->updateCategory($request);
 	    }
 	    elseif (isset($_POST['delete'])) {
-	        $this->deleteCategory($request);
 	        Session::put('message', '3');
-			return redirect('category');
+	        return $this->deleteCategory($request);
 	    }
     }
 
@@ -75,6 +72,11 @@ class CategoryController extends Controller
 		$category = new App\Models\Admin\Category;
 		$category = App\Models\Admin\Category::find($request->input('del_ID'));
 		
+		if(count($category->subCategory) > 0){
+			Session::put('message', '-1');
+			return redirect('category');
+		}
+
 			$category->delete();
 		} catch (Exception $e) {
 			Session::put('message', '-1');

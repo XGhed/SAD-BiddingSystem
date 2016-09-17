@@ -58,7 +58,7 @@ class CustomerCheckoutController extends Controller
 
     public function insert(Request $request){
         $checkoutRequest = new App\Models\Admin\CheckoutRequest;
-        $customerDiscount = $this->customerDiscount($request->session()->get('accountID'))
+        $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
 
         $checkoutRequest->CheckoutType = $request->checkoutType;
         $checkoutRequest->AccountID = $request->session()->get('accountID');
