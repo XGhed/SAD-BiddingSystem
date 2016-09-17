@@ -136,67 +136,13 @@
           </tbody>
         </table>
     </div><!-- tab1 -->
-
-    <!-- rewards -->
-    <div class="ui bottom attached tab segment" data-tab="second">
-       <a class="ui basic blue button" id="addBtn1">
-            <i class="add user icon"></i>
-            Add Rewards
-          </a>
-
-          <!-- add modal -->
-        <div class="ui small modal" id="addModal1">
-          <i class="close icon"></i>
-            <div class="header">
-              Update Rewards
-            </div>
-            <div class="content">
-              <form class="ui form" action="/updateReward" method="POST">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="equal width required fields">
-                  <div class="field">
-                    <label>Rewards Percentage</label>
-                    <input type="number" name="add_reward" length="30" maxlength="30" REQUIRED>
-                  </div>
-
-                  <div class="field">
-                    <label>Reward Date</label>
-                    <input type="date" name="add_date">
-                  </div>
-                </div>
-            </div>
-            <div class="actions">
-              <button class="ui button" type="submit" name="add">Confirm</button>
-              </form>
-            </div>
-        </div>
-          <!-- END add modal -->
-
-          <!-- table -->
-        <table class="ui celled table" id="tableOutput1">
-          <thead>
-            <tr>
-              <th>Reward Percentage</th>
-              <th>Starting Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($rewards as $key => $reward)
-              <tr>
-                <td>{{$reward->RewardPercentage}}%</td>
-                <td>{{$reward->RewardDate}}</td>
-              </tr>
-            @endforeach
-          </tbody>
-        </table>
-    </div><!-- tab2 -->
   </div><!-- column -->
 </div><!-- ui grid -->
 
 
 <script>
   //cat
-  $(function(){   
+  $(function(){
     $('#tableOutput').DataTable({
         "lengthChange": false,
         "pageLength": 5,
@@ -207,71 +153,35 @@
           null
         ] 
     });
-    $('#tableOutput1').DataTable({
-        "lengthChange": false,
-        "pageLength": 5
+
+     
+    $('#tableOutput').on('click', '.edit', function(){
+        var selected = this.id;
+        var keyID = $("#tdID"+selected).val();
+        var keyType = $("#tdtype"+selected).val();
+        var keyPoints = $("#tdpoints"+selected).text();
+        var keyDiscount = $("#tddisc"+selected).val();
+
+        $("#editID").val(keyID);
+        $("#edit_discount").val(keyDiscount);
+        $("#edit_points").val(keyPoints);
+        $("#edit_name").val(keyType);
+
+        $('#editModal').modal('show');
     });
-  });
-
-    $(function(){   
-        $('#tableOutput').on('click', '.edit', function(){
-            var selected = this.id;
-            var keyID = $("#tdID"+selected).val();
-            var keyType = $("#tdtype"+selected).val();
-            var keyPoints = $("#tdpoints"+selected).text();
-            var keyDiscount = $("#tddisc"+selected).val();
-
-            $("#editID").val(keyID);
-            $("#edit_discount").val(keyDiscount);
-            $("#edit_points").val(keyPoints);
-            $("#edit_name").val(keyType);
-            $("#edit_name").material_select();
-        });
-    });   
+    
     //add modal
-    $(document).ready(function(){
+
          $('#addBtn').click(function(){
             $('#addModal').modal('show');    
          });
-    });
 
-    //edit modal
-    $(document).ready(function(){
-         $('#editBtn').click(function(){
-            $('#editModal').modal('show');    
-         });
-    });
-  //subcat
-    //add modal
-    $(document).ready(function(){
-         $('#addBtn1').click(function(){
-            $('#addModal1').modal('show');    
-         });
-    });
-
-    //edit modal
-    $(document).ready(function(){
-         $('#editBtn1').click(function(){
-            $('#editModal1').modal('show');    
-         });
-    });
 
     //accounttype
     $('.ui.normal.dropdown')
     .dropdown();
 
-  //message
-  $('.message .close')
-  .on('click', function() {
-    $(this)
-      .closest('.message')
-      .transition('fade')
-    ;
-  })
-;
-
-  //tab
-  $('.tabular.menu .item').tab();
+});   
 
 </script>
 @endsection
