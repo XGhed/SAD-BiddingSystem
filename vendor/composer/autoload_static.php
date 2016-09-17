@@ -787,6 +787,8 @@ class ComposerStaticInite8d8189b96e81a66ea66b71b83246d29
         'Pickup' => __DIR__ . '/../..' . '/database/migrations/2016_04_28_070731_Pickup.php',
         'PickupList' => __DIR__ . '/../..' . '/database/migrations/2016_04_28_070743_Pickup_List.php',
         'PlacesTable' => __DIR__ . '/../..' . '/database/migrations/2016_04_28_070710_PlacesTable.php',
+        'ProblemTypes' => __DIR__ . '/../..' . '/database/migrations/2016_09_11_181947_ProblemTypes.php',
+        'ProofPayment' => __DIR__ . '/../..' . '/database/migrations/2016_09_17_141654_ProofPayment.php',
         'Province' => __DIR__ . '/../..' . '/database/migrations/2016_04_28_070414_Province.php',
         'ProvinceCompany' => __DIR__ . '/../..' . '/database/migrations/2016_04_28_070941_Province_Company.php',
         'ProvinceThirdParty' => __DIR__ . '/../..' . '/database/migrations/2016_04_28_070954_Province_ThirdParty.php',

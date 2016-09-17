@@ -511,6 +511,8 @@ return array(
     'Pickup' => $baseDir . '/database/migrations/2016_04_28_070731_Pickup.php',
     'PickupList' => $baseDir . '/database/migrations/2016_04_28_070743_Pickup_List.php',
     'PlacesTable' => $baseDir . '/database/migrations/2016_04_28_070710_PlacesTable.php',
+    'ProblemTypes' => $baseDir . '/database/migrations/2016_09_11_181947_ProblemTypes.php',
+    'ProofPayment' => $baseDir . '/database/migrations/2016_09_17_141654_ProofPayment.php',
     'Province' => $baseDir . '/database/migrations/2016_04_28_070414_Province.php',
     'ProvinceCompany' => $baseDir . '/database/migrations/2016_04_28_070941_Province_Company.php',
     'ProvinceThirdParty' => $baseDir . '/database/migrations/2016_04_28_070954_Province_ThirdParty.php',

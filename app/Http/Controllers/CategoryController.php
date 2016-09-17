@@ -24,15 +24,18 @@ class CategoryController extends Controller
 
 		if (isset($_POST['add'])) {
 			Session::put('message', '1');
-			return $this->insertCategory($request);
+			$this->insertCategory($request);
+			return redirect('category');
 		}
 		elseif (isset($_POST['edit'])) {
 	        Session::put('message', '2');
-	        return $this->updateCategory($request);
+	        $this->updateCategory($request);
+	        return redirect('category');
 	    }
 	    elseif (isset($_POST['delete'])) {
 	        Session::put('message', '3');
-	        return $this->deleteCategory($request);
+	        $this->deleteCategory($request);
+	        return redirect('category');
 	    }
     }
 
