@@ -83,6 +83,8 @@ Route::post('/approveAllMovingOfItems', 'MovingController@approveAllMovingOfItem
 
 Route::post('/addBiddingEvent', 'BiddingEventController@addBiddingEvent');
 
+Route::post('/editBiddingEvent', 'BiddingEventController@editBiddingEvent');
+
 Route::post('/itemCheck', 'itemCheckingController@itemCheck');
 
 Route::post('/submitCheckout', 'CustomerCheckoutController@insert');

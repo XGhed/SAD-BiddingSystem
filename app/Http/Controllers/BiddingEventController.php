@@ -80,6 +80,22 @@ class BiddingEventController extends Controller
         return redirect('/biddingEvent');
     }
 
+    public function editBiddingEvent(Request $request){
+        $event = App\Models\Admin\Auction::find($request->eventID);
+
+        $start = $request->startdate . ' ' . $request->starttime;
+        $end = $request->enddate . ' ' . $request->endtime;
+
+        $event->EventName = $request->eventname;
+        $event->StartDateTime = $start;
+        $event->EndDateTime = $end;
+        $event->Description = $request->description;
+
+        $event->save();
+
+        return redirect('/bidItems?eventID=' . $request->eventID);
+    }
+
     public function viewEventItems(Request $request){
         $auction = App\Models\Admin\Auction::find($request->eventID);
 

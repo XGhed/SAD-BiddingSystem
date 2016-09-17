@@ -40,25 +40,28 @@
               Edit Event Information
             </div>
             <div class="content">
-              <form class="ui form" action="" method="POST">
+              <form class="ui form" action="/editBiddingEvent" method="POST">
+                <input type="hidden" name="eventID" value="@{{eventDetails.AuctionID}}" />
                 <div class="fields">
                   <div class="five wide field">
                     <div class="ui sub header">Event Name</div>
-                    <input type="text" name="eventname" id="edit_name" ng-model=""/>
+                    <input type="text" name="eventname" id="edit_name" value="@{{eventDetails.EventName}}"/>
                   </div>
                   <div class="five wide field">
                     <div class="ui sub header">Start Time:</div>
-                    <input type="text" name="starttime" id="edit_startTime" ng-model=""/>
+                    <input type="date" id="startDate" name="startdate" value="@{{eventDetails.StartDateTime.split(' ')[0]}}">
+                    <input type="time" name="starttime" required value="@{{eventDetails.StartDateTime.split(' ')[1]}}">
                   </div>
                   <div class="five wide field">
                     <div class="ui sub header">End Time</div>
-                    <input type="text" name="endtime" id="edit_endTime" ng-model=""/>
+                    <input type="date" id="endDate" name="enddate" value="@{{eventDetails.EndDateTime.split(' ')[0]}}">
+                    <input type="time" name="endtime" required value="@{{eventDetails.EndDateTime.split(' ')[1]}}">
                   </div>
                 </div>
 
                   <div class="five wide field">
                     <div class="ui sub header">Description</div>
-                    <textarea type="text" name="description" id="edit_desc" ng-model="" rows="2"></textarea>
+                    <textarea type="text" name="description" id="edit_desc" rows="2">@{{eventDetails.Description}}</textarea>
                   </div>
 
                 <button class="ui green basic button" type="submit">Confirm</button>
@@ -247,16 +250,8 @@ app.controller('myController', function($scope, $http, $timeout){
   }
 
   $scope.editModal = function(container){
-      $('#editModal').modal('show');
-      $scope.edit_containerID = container.ContainerID;
-      $('#edit_supplier').val(container.SupplierID);
-      $('#edit_warehouse').val(container.WarehouseNo);
-      $scope.edit_container = container.ContainerName;
-
-      var dateAndTime = container.Arrival.split(" ");
-      $('#edit_date').val(dateAndTime[0]);
-      $('#edit_time').val(dateAndTime[1]);
-    }
+    $('#editModal').modal('show');
+  }
 });
 
 
