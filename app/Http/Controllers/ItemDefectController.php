@@ -23,7 +23,7 @@ class ItemDefectController extends Controller
         $itemDefect->DefectName = $request->defect;
         $itemDefect->save();
 
-        return redirect ('itemDefects');
+        return redirect ('defects');
     }
 
     public function update(Request $request){
@@ -32,7 +32,7 @@ class ItemDefectController extends Controller
         $itemDefect->DefectName = $request->defect;
         $itemDefect->save();
 
-        return redirect ('itemDefects');
+        return redirect ('defects');
     }
 
     public function delete(Request $request){
@@ -40,6 +40,6 @@ class ItemDefectController extends Controller
 
         $itemDefect->delete();
 
-        return redirect ('itemDefects');
+        return redirect ('defects');
     }
 }
