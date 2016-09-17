@@ -23,20 +23,29 @@ class PrepareCheckoutController extends Controller
     public function approveCheckoutRequest(Request $request){
         $checkoutRequest = App\Models\Admin\CheckoutRequest::find($request->checkoutRequestID);
 
+        $movingRequest = new App\Models\Admin\MovingRequest;
+        $movingRequest->RequestDate = Carbon::now('Asia/Manila');
+        $movingRequest->Remarks = 'Preparing Checkout';
+        $movingRequest->save();
+
         foreach ($checkoutRequest->checkoutRequest_Item as $key => $requestedItem) {
             $item = App\Models\Admin\Item::find($requestedItem->ItemID);
 
             if($item->CurrentWarehouse != $request->warehouse){
                 $item->RequestedWarehouse = $request->warehouse;
+                $item->save();
 
                 $this->ItemLog(
                     $item, 
                     "Item requested to move to warehouse " . $item->requested_warehouse->Barangay_Street_Address . ", " . $item->requested_warehouse->city->province->ProvinceName . ", " . $item->requested_warehouse->city->CityName
-                    . ' due to checkout request.'
                     );
 
-                $item->save();
+                $item_MovingRequest = new App\Models\Admin\Item_MovingRequest;
+                $item_MovingRequest->MovingRequestID = $movingRequest->MovingRequestID;
+                $item_MovingRequest->ItemID = $item->ItemID;
+                $item_MovingRequest->save();
             }
+            
         }
 
         $checkoutRequest->Status = 1;

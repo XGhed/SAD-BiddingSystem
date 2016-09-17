@@ -222,8 +222,9 @@ class PageController extends Controller
     }
 
     public function proofPayment(Request $request){
+      $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
 
-      return view('customer.proofOfPayment');
+      return view('customer.proofOfPayment')->with('customerDiscount', $customerDiscount);
     }
 
     public function sampleGraph(Request $request){

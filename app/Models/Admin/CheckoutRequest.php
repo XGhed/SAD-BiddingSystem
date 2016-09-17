@@ -29,4 +29,9 @@ class CheckoutRequest extends Model
 	{
 	    return $this->hasOne('App\Models\Admin\Warehouse', 'WarehouseNo', 'WarehouseNo');
 	}
+
+	public function proofs()
+	{
+	    return $this->hasMany('App\Models\Admin\ProofPayment', 'CheckoutRequestID');
+	}
 }

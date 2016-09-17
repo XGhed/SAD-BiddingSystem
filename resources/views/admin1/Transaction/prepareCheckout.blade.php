@@ -27,7 +27,7 @@
           <tbody>
             <tr ng-repeat="request in deliveryRequests">
               <td class="collapsing">
-               <a class="ui basic blue button" ng-click="viewDeliveryRequest($index)">
+               <a class="ui basic blue button" ng-click="viewDeliveryRequest($index, request)">
                 <i class="unhide icon"></i>
                 View
               </a>
@@ -54,7 +54,7 @@
           <tbody>
             <tr ng-repeat="request in pickupRequests">
               <td class="collapsing">
-               <a class="ui basic blue button" ng-click="viewPickupRequest($index)">
+               <a class="ui basic blue button" ng-click="viewPickupRequest($index, request)">
                 <i class="unhide icon"></i>
                 View
               </a>
@@ -73,7 +73,6 @@
                 </div>
                 <div class="content">
                   <form>
-                    <input type="hidden" ng-model="selectedRequest">
                     <table class="ui celled table" datatable="ng">
                       <thead>
                         <tr>
@@ -95,12 +94,21 @@
                     <div class="field">
                       <br><br>
                       <div class="ui header">Move the following items to a common Warehouse:</div>
-                      <select class="ui selection dropdown" ng-model="selectedWarehouse">
-                        <option value="" disabled selected>Select Warehouse</option>
-                        <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">
+
+                      <div ng-if="selectedRequest.CheckoutType == 'Deliver'">
+                        <select class="ui selection dropdown" ng-model="selectedWarehouse">
+                          <option value="" disabled selected>Select Warehouse</option>
+                          <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">
+                            @{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}
+                          </option>
+                        </select>
+                      </div>
+                      
+                      <div ng-if="selectedRequest.CheckoutType == 'Pick up'" ng-repeat="warehouse in warehouses">
+                        <span ng-if="warehouse.WarehouseNo == selectedRequest.WarehouseNo">
                           @{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}
-                        </option>
-                      </select>
+                        </span>
+                      </div>
                     </div>
 
                     <div class="actions">
@@ -137,20 +145,21 @@
       $scope.warehouses = response.data;
     });
 
-    $scope.viewDeliveryRequest = function(index){
+    $scope.viewDeliveryRequest = function(index, request){
       $('.ui.modal').modal('show');
       $scope.requestItems = $scope.deliveryRequests[index].checkout_request__item;
-      $scope.selectedRequest = $scope.deliveryRequests[index].CheckoutRequestID;
+      $scope.selectedRequest = request;
     }
 
-    $scope.viewPickupRequest = function(index){
+    $scope.viewPickupRequest = function(index, request){
       $('.ui.modal').modal('show');
       $scope.requestItems = $scope.pickupRequests[index].checkout_request__item;
-      $scope.selectedRequest = $scope.pickupRequests[index].CheckoutRequestID;
+      $scope.selectedRequest = request;
+      $scope.selectedWarehouse = $scope.selectedRequest.WarehouseNo;
     }
 
-    $scope.approve = function(){
-      $http.get('/approveCheckoutRequest?warehouse=' + $scope.selectedWarehouse + '&checkoutRequestID=' + $scope.selectedRequest)
+    $scope.approve = function(){alert($scope.selectedRequest.CheckoutRequestID);
+      $http.get('/approveCheckoutRequest?warehouse=' + $scope.selectedWarehouse + '&checkoutRequestID=' + $scope.selectedRequest.CheckoutRequestID)
       .then(function(response){
         if(response.data == "success"){
           alert('success');

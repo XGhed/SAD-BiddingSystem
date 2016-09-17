@@ -14,7 +14,13 @@ use Illuminate\Support\Collection;
 class PaymentCheckoutController extends Controller
 {
     public function unpaidRequests(Request $request){
-        $checkoutRequests = App\Models\Admin\CheckoutRequest::where('Status', 1)->get();
+        $checkoutRequests = App\Models\Admin\CheckoutRequest::with('checkoutRequest_Item', 'checkoutRequest_Item.item',
+        'checkoutRequest_Item.item.itemModel', 'checkoutRequest_Item.item.bids', 'proofs')
+        ->where('Status', 1)->get();
+
+        foreach ($checkoutRequests as $key => $checkoutRequest) {
+            $checkoutRequests[$key]->discount = $this->customerDiscount($checkoutRequest->AccountID);
+        }
 
         return $checkoutRequests;
     }

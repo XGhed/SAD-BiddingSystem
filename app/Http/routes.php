@@ -95,7 +95,9 @@ Route::post('/sendMessageAdmin', 'MessageController@send');
 
 Route::post('/sendMessageCustomer', 'CustomerMessageController@send');
 
-Route::get('/salesGraphDate', 'GraphController@salesGraphDate');
+Route::post('/sendMessageCustomer', 'CustomerMessageController@send');
+
+Route::post('/sendProofPayment', 'ProofPaymentController@insert');
 
 Route::post('/salesGraphReg', 'GraphController@salesGraphReg');
 
@@ -263,6 +265,8 @@ Route::get('/customerThreadList', 'CustomerMessageController@threadList');
 
 Route::get('/getPendingCheckoutRequests', 'ProofPaymentController@getPendingCheckoutRequests');
 
+Route::get('/getPendingCheckoutRequestsWithProof', 'ProofPaymentController@getPendingCheckoutRequestsWithProof');
+
 
 //Angular Input
 
@@ -311,6 +315,8 @@ Route::get('/itemFound', 'ItemInboundController@itemFound');
 Route::get('/replyMessageAdmin', 'MessageController@reply');
 
 Route::get('/replyMessageCustomer', 'CustomerMessageController@reply');
+
+Route::get('/removeProof', 'ProofPaymentController@delete');
 
 
 Route::post('/edit', 'ShipmentController@editShipment');
