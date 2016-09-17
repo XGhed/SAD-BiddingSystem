@@ -131,6 +131,8 @@ Route::get('/postEventNoBidItems', 'PageController@postEventNoBidItems');
 
 Route::get('/salesGraphCat', 'GraphController@salesGraphCat');
 
+Route::get('/mostBidItem', 'GraphController@mostBidItem');
+
 //Route::get('/itemChecking', 'ItemCheckingController@viewItems');
 //Route::get('/shipment', 'PageController@shipment');
 

@@ -34,17 +34,15 @@ $(function() {
             type: 'column'
         },
         title: {
-            text: 'Sales of Specific Date'
+            text: 'Most Bid Items'
         },
         xAxis: {
-            categories:[
+            categories: [
                 <?php
-                    $ctr = count($item);
-                    for ($i=0; $i<$ctr; $i++) { 
-                        $ctr2 = count($item[$i]);
-                        for ($j=1; $j<$ctr2; $j++) { 
-                            echo "'".$item[$i][$j]."',";
-                            $j++;
+                    if(!is_null($item)){
+                        $ctr = count($item);
+                        for ($i=0; $i<$ctr; $i++) { 
+                            echo "'".$item[$i][0]."',";
                         }
                     }
                 ?>
@@ -54,13 +52,13 @@ $(function() {
         yAxis: {
             min: 0,
             title: {
-                text: 'Sales'
+                text: 'Number of Bids'
             }
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0"></td>' +
-                '<td style="padding:0"><b>Php {point.y:.2f}</b></td></tr>',
+                '<td style="padding:0"><b>Count: {point.y:.0f}</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -72,26 +70,16 @@ $(function() {
             }
         },
         series: [{
+            /*name: 'asdasd',
+            data: [1,2,3],
+            name: 'asdadasdasd',
+            data: [3,2,1]*/
             <?php
+                //echo "alert(JSON.stringify(".$item."))";
                 if(!is_null($item)){
                     $ctr = count($item);
                     for ($i=0; $i<$ctr; $i++) {
-                        $ctr2 = count($item[$i]);
-                        $k = 1;
-                        echo "name: '".$item[$i][0]."',data:[";
-                        for ($j=2; $j<$ctr2; $j++) { 
-                            echo $item[$i][$j];
-                            $j++;
-                            if($j+1!=$ctr2){
-                                echo ",";
-                            }
-                        }
-                        echo "]";
-                        if($i+1!=$ctr){
-                            echo ",";
-                        }
-                        //echo $ctr;
-                        //echo $ctr2;
+                        echo "name: '".$item[$i][0]."',data:[".$item[$i][1]."]";
                     }
                 } else{
                     echo "name: 'Nothing to show'";

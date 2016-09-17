@@ -13,6 +13,9 @@
         <a class="item" href="/salesGraph">
           Sales Graph
         </a>
+        <a class="item" href="/mostBidItem">
+          Sales Graph
+        </a>
        
     </div>
   </div>

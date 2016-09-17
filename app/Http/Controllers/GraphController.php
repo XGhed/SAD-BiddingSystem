@@ -13,7 +13,6 @@ use Carbon\Carbon;
 class GraphController extends Controller
 {
     public function salesGraph(Request $request){
-        //return $_POST;
         if (isset($_POST['date'])) {
             $item = $this->salesGraphDate($request);
             return view('admin1.Queries.salesGraphDate')->with('item', $item);
@@ -25,8 +24,6 @@ class GraphController extends Controller
             return $this->salesGraphCat($request);
             //return view('admin1.Queries.salesGraph')->with('item', $item);
         }
-
-        //return redirect('salesGraphCat');
     }
 
     public function salesGraphCat(Request $request){
@@ -36,18 +33,16 @@ class GraphController extends Controller
                 $query->where('status', 2)->orWhere('status', 3);
         })->get();
 
-        $item = array(array());
+        $item = NULL;
         foreach ($items as $key => $result) {
             $i = count($result->checkoutrequest_item);
-        //    $year = $result->checkoutrequest_item[0]->checkoutrequest->RequestDate[0].$result->checkoutrequest_item[0]->checkoutrequest->RequestDate[1].$result->checkoutrequest_item[0]->checkoutrequest->RequestDate[2].$result->checkoutrequest_item[0]->checkoutrequest->RequestDate[3];
-//            return $result->checkoutrequest_item[1];
             for ($j=0; $j < $i; $j++) {
                 $month = $result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[5].$result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[6];
                 $cat = $result->itemModel->subCategory->category->CategoryName;
                 $month = intval($month);
                 $ctr = 0;
                 $ctr2 = 3;
-                if(empty($item[$ctr])){
+                if(is_null($item[$ctr])){
                     $item[$ctr][0] = $cat;
                     $item[$ctr][1] = $month;
                     $item[$ctr][2] = intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
@@ -85,7 +80,7 @@ class GraphController extends Controller
         $start = Carbon::createFromFormat('Y-m-d', $start);
         $end = Carbon::createFromFormat('Y-m-d', $end);
 
-        $item = array(array());
+        $item = NULL;
 
         foreach ($items as $key => $result) {
             $city = $result->checkoutrequest_item[0]->checkoutrequest->CityID;
@@ -99,9 +94,8 @@ class GraphController extends Controller
                 if($date->between($start, $end)==true){
                     $ctr = 0;
                     $ctr2 = 3;
-                    //$itemdate = $result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[5].$result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[6].$result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[8].$result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[9];
                     $cat = $result->itemModel->subCategory->category->CategoryName;
-                    if(empty($item[$ctr])){
+                    if(is_null($item[$ctr])){
                         $date = $date->format('Y-m-d');
                         $item[$ctr][0] = $region;
                         $item[$ctr][1] = $date;
@@ -127,20 +121,12 @@ class GraphController extends Controller
                     }
                 }
             }
-
-            //echo $list->province->region->RegionName;
         }
 
         return $item;
     }
 
     public function salesGraphDate(Request $request){
-        //$start = Carbon::create(2016, 9, 1, 0, 0, 0);
-        //$end = Carbon::create(2016, 10, 30, 0, 0, 0);
-        //$start->setDateTime(2016, 9, 1, 0, 0, 0);
-        //$end->setDateTime(2016, 9, 30, 0, 0, 0);
-        //$start = '2016-09-01';
-        //$end = '2016-09-30';
         $start = $request->start;
         $end = $request->end;
         $start = Carbon::createFromFormat('Y-m-d', $start);
@@ -148,12 +134,11 @@ class GraphController extends Controller
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category',
             'item_auction', 'checkoutrequest_item')
         ->where('status', 3)
-        //->whereBetween($request->input('start'), $request->input('end'))
         ->whereHas('checkoutrequest_item.checkoutrequest', function($query){
                 $query->where('status', 2)->orWhere('status', 3);
         })->get();
 
-        $item = array(array());
+        $item = NULL;
 
         foreach ($items as $key => $result) {
             $i = count($result->checkoutrequest_item);
@@ -163,9 +148,8 @@ class GraphController extends Controller
                 if($date->between($start, $end)==true){
                     $ctr = 0;
                     $ctr2 = 3;
-                    //$itemdate = $result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[5].$result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[6].$result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[8].$result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[9];
                     $cat = $result->itemModel->subCategory->category->CategoryName;
-                    if(empty($item[$ctr])){
+                    if(is_null($item[$ctr])){
                         $date = $date->format('Y-m-d');
                         $item[$ctr][0] = $cat;
                         $item[$ctr][1] = $date;
@@ -189,14 +173,44 @@ class GraphController extends Controller
                     }
                 }
             }
-
-            //$interval = $start->diff($end)->days;
-            //echo $interval;
         }
         //return view('admin1.Queries.salesGraphDate')->with('item', $item);
 
-        //echo $request;
-
         return $item;
+    }
+
+    public function mostBidItem(Request $request){
+        $bid = App\Models\Admin\Bid::with('Item', 'Item.itemModel')
+        ->get();
+        $item = NULL;
+
+        foreach ($bid as $key => $result) {
+            $i = count($bid);
+            $itemName = $result->item->itemModel->ItemName;
+            for ($j=0; $j<$i; $j++) {
+                $ctr = count($item);
+                if($ctr==0){
+                    $item[$ctr][0] = $itemName;
+                    $item[$ctr][1] = 1;
+                } else{
+                    $ctr2=0;
+                    for ($k=0; $k<$ctr; $k++) { 
+                        if($item[$k][0]==$itemName){
+                            $item[$k][1]++;
+                            $ctr2=$k;
+                        }
+                    }
+                    if($ctr2!=0){
+                        $item[$ctr2][0] = $itemName;
+                        $item[$ctr2][1] = 1;
+                    }
+                }
+                
+            }
+        }
+
+        //return $item;
+
+        return view('admin1.Queries.mostBidItem')->with('item', $item);
     }
 }
