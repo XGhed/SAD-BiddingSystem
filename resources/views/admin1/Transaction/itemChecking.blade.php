@@ -145,7 +145,7 @@
 
                   <div class="fields">
                   <div class="three wide field">
-                    <select name="defect" class="ui search selection dropdown" REQUIRED>
+                    <select id="checkselect" style="display: none" name="defect" class="ui search selection dropdown" REQUIRED>
                         <option value="" disabled selected>Defect</option>
                         @foreach($defects as $key => $defect)
                           <option value="{{$defect->ItemDefectID}}">{{$defect->DefectName}}</option>
@@ -219,11 +219,23 @@ $('.menu .item').tab();
       $('#checkDef').click(function () {
           var $this = $(this);
           if ($this.is(':checked')) {
-              document.getElementById('checkdefectDesc').style.display = 'block';
+              document.getElementById('checkselect').style.display = 'block';
           } else {
-              document.getElementById('checkdefectDesc').style.display = 'none';
+              document.getElementById('checkselect').style.display = 'none';
           }
      });
+    });
+
+    $(document).ready(function () {
+      $('#checkselect').change(function(){
+        var checkbox = document.getElementById('checkselect');
+        //alert(checkbox.options[checkbox.selectedIndex].text);
+        if(checkbox.options[checkbox.selectedIndex].text=='Others'){
+          document.getElementById('checkdefectDesc').style.display = 'block';
+        } else{
+          document.getElementById('checkdefectDesc').style.display = 'none';
+        }
+      });
     });
 
   //check img

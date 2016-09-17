@@ -70,7 +70,7 @@ class GraphController extends Controller
         }
 
         //return $item;
-
+        
         return view('admin1.Queries.salesGraph')->with('item', $item);
     }
 

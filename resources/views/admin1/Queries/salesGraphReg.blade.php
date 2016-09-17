@@ -14,8 +14,8 @@
         <button type="submit" name="date">Go!</button>
         <button type="submit" name="region">Per Region</button>
     </form><br>
-        <script type="text/javascript" src="{!!URL::asset('js/highcharts.js')!!}"></script>
-        <!--<script type="text/javascript" src="{!!URL::asset('js/exporting.js')!!}"></script>-->
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
   </div>
