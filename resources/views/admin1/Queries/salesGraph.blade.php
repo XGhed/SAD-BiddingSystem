@@ -8,9 +8,9 @@
     <div class="ui segment">
     <form method="post" action="/salesGraph">
         <label>From: </label>
-        <input type="date" name="start">
+        <input type="date" name="start" required>
         <label>To: </label>
-        <input type="date" name="end">
+        <input type="date" name="end" required>
         <button type="submit" name="date">Go!</button>
         <button type="submit" name="region">Per Region</button>
     </form><br>
@@ -111,6 +111,8 @@ $(function() {
                         //echo $ctr;
                         //echo $ctr2;
                     }
+                } else{
+                    echo "name: 'Nothing to show'";
                 }
             ?>
         }]

@@ -8,9 +8,9 @@
     <div class="ui segment">
     <form method="post" action="/salesGraph">
         <label>From: </label>
-        <input type="date" name="start">
+        <input type="date" name="start" required>
         <label>To: </label>
-        <input type="date" name="end">
+        <input type="date" name="end" required>
         <button type="submit" name="date">Go!</button>
         <button type="submit" name="region">Per Region</button>
     </form><br>
@@ -23,6 +23,11 @@
 
 
 <script>
+    <?php
+        if(isset($item)){
+            echo "alert('Nothing to display!');";
+        }
+    ?>
 $(function() {
     $('#container').highcharts({
         chart: {
@@ -34,17 +39,18 @@ $(function() {
         xAxis: {
             categories:[
                 <?php
-                    $ctr = count($item);
-                    for ($i=0; $i<$ctr; $i++) { 
-                        $ctr2 = count($item[$i]);
-                        for ($j=1; $j<$ctr2; $j++) { 
-                            echo "'".$item[$i][$j]."',";
-                            $j+=2;
+                    if(!isset($item)){
+                        $ctr = count($item);
+                        for ($i=0; $i<$ctr; $i++) { 
+                            $ctr2 = count($item[$i]);
+                            for ($j=1; $j<$ctr2; $j++) { 
+                                echo "'".$item[$i][$j]."',";
+                                $j+=2;
+                            }
                         }
                     }
                 ?>
                 //'asd','asdasdads'
-                
             ],
             crosshair: true
         },
@@ -70,24 +76,28 @@ $(function() {
         },
         series: [{
             <?php
-                $ctr = count($item);
-                for ($i=0; $i<$ctr; $i++) {
-                    $ctr2 = count($item[$i]);
-                    $k = 1;
-                    echo "name: '".$item[$i][0]."',data:[";
-                    for ($j=2; $j<$ctr2; $j++) { 
-                        echo $item[$i][$j];
-                        $j++;
-                        if($j+1!=$ctr2){
+                if(!isset($item)){
+                    $ctr = count($item);
+                    for ($i=0; $i<$ctr; $i++) {
+                        $ctr2 = count($item[$i]);
+                        $k = 1;
+                        echo "name: '".$item[$i][0]."',data:[";
+                        for ($j=2; $j<$ctr2; $j++) { 
+                            echo $item[$i][$j];
+                            $j++;
+                            if($j+1!=$ctr2){
+                                echo ",";
+                            }
+                        }
+                        echo "]";
+                        if($i+1!=$ctr){
                             echo ",";
                         }
+                        //echo $ctr;
+                        //echo $ctr2;
                     }
-                    echo "]";
-                    if($i+1!=$ctr){
-                        echo ",";
-                    }
-                    //echo $ctr;
-                    //echo $ctr2;
+                } else{
+                    echo "name: 'Nothing to show'";
                 }
             ?>
         }]

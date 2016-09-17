@@ -10,12 +10,9 @@
         <a class="item" href="/expectedItemPercent">
           Expect Item Percent
         </a>
-        <form action="/salesGraph" method="post">
-        <input type="hidden" name="ads" value="ads">
-        <button class="item" type="submit" name="nothing">
+        <a class="item" href="/salesGraph">
           Sales Graph
-        </button>
-        </form>
+        </a>
        
     </div>
   </div>

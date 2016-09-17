@@ -16,7 +16,7 @@ class GraphController extends Controller
         //return $_POST;
         if (isset($_POST['date'])) {
             $item = $this->salesGraphDate($request);
-           // return view('admin1.Queries.salesGraphDate')->with('item', $item);
+            return view('admin1.Queries.salesGraphDate')->with('item', $item);
         } elseif (isset($_POST['region'])){
             $item = $this->salesGraphReg($request);
             //return $item;
@@ -70,7 +70,7 @@ class GraphController extends Controller
         }
 
         //return $item;
-        
+
         return view('admin1.Queries.salesGraph')->with('item', $item);
     }
 
@@ -84,6 +84,8 @@ class GraphController extends Controller
         $end = $request->end;
         $start = Carbon::createFromFormat('Y-m-d', $start);
         $end = Carbon::createFromFormat('Y-m-d', $end);
+
+        $item = array(array());
 
         foreach ($items as $key => $result) {
             $city = $result->checkoutrequest_item[0]->checkoutrequest->CityID;
@@ -150,6 +152,8 @@ class GraphController extends Controller
         ->whereHas('checkoutrequest_item.checkoutrequest', function($query){
                 $query->where('status', 2)->orWhere('status', 3);
         })->get();
+
+        $item = array(array());
 
         foreach ($items as $key => $result) {
             $i = count($result->checkoutrequest_item);
