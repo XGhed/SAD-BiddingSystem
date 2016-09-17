@@ -26,6 +26,17 @@ class GraphController extends Controller
         }
     }
 
+    public function mostBid(Request $request){
+        if (isset($_POST['category'])) {
+            $item = $this->mostBidCat($request);
+            //return $item;
+            return view('admin1.Queries.mostBidCat')->with('item', $item);
+        } else{
+            $item = $this->mostBidItem($request);
+            return view('admin1.Queries.mostBidItem')->with('item', $item);
+        }
+    }
+
     public function salesGraphCat(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category',
             'item_auction', 'checkoutrequest_item', 'checkoutrequest_item.checkoutrequest')
@@ -205,12 +216,46 @@ class GraphController extends Controller
                         $item[$ctr2][1] = 1;
                     }
                 }
-                
             }
         }
 
-        //return $item;
+        return $item;
 
-        return view('admin1.Queries.mostBidItem')->with('item', $item);
+        //return view('admin1.Queries.mostBidItem')->with('item', $item);
+    }
+
+    public function mostBidCat(Request $request){
+        $bid = App\Models\Admin\Bid::with('Item', 'Item.itemModel', 'Item.itemModel.subCategory', 'Item.itemModel.subCategory.category')
+        ->get();
+        $item = NULL;
+
+        foreach ($bid as $key => $result) {
+            $i = count($bid);
+            $cat = $result->item->itemModel->subCategory->category->CategoryName;
+            for ($j=0; $j<$i; $j++) {
+                $ctr = count($item);
+                if($ctr==0){
+                    $item[$ctr][0] = $cat;
+                    $item[$ctr][1] = 1;
+                } else{
+                    $ctr2=0;
+                    for ($k=0; $k<$ctr; $k++) { 
+                        if($item[$k][0]==$cat){
+                            $item[$k][1]++;
+                            $ctr2=$k;
+                        }
+                    }
+                    if($ctr2!=0){
+                        $item[$ctr2][0] = $cat;
+                        $item[$ctr2][1] = 1;
+                    }
+                }
+            }
+            //echo $result->item->itemModel->subCategory->category->CategoryName;
+        }
+
+        return $item;
+
+        //return view('admin1.Queries.mostBidCat')->with('item', $item);
     }
 }

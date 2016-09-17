@@ -30,7 +30,7 @@ $(function() {
             type: 'column'
         },
         title: {
-            text: 'Most Bid Items'
+            text: 'Most Bid Categories'
         },
         xAxis: {
             categories: [
