@@ -6,7 +6,7 @@
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
-      <table class="ui celled table" datatable="ng">
+      <table class="ui celled definition inverted table" datatable="ng">
         <thead>
           <th></th>
           <th>Request ID</th>
@@ -15,7 +15,7 @@
         </thead>
         <tr ng-repeat="request in requests">
           <td>
-            <div class="ui black button" ng-click="viewRequest(request.item_moving_request)">View</div>
+            <div class="ui blue basic button" ng-click="viewRequest(request.item_moving_request)">View Reqest</div>
           </td>
           <td>@{{request.MovingRequestID}}</td>
           <td>@{{request.item_moving_request.length}}</td>

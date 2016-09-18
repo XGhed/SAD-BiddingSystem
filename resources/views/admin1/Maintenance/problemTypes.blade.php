@@ -7,7 +7,7 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
        <a class="ui basic blue button" id="addBtn">
-            <i class="add user icon"></i>
+            <i class="add square icon"></i>
             Add problem type
           </a>
 
@@ -16,8 +16,8 @@
           <!-- add modal -->
         <div class="ui small modal" id="addModal">
           <i class="close icon"></i>
-            <div class="header">
-              Add Problem Type
+            <div class="ui centered header">
+              Add Problem
             </div>
             <div class="content">
               <form class="ui form" action="/addProblemType" method="POST">
@@ -26,13 +26,13 @@
                   <label>Problem</label>
                   <input type="text" name="problem" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                 </div>
-                <div class="seven wide required field">
+                <div class="nine wide required field">
                   <label>Description</label>
-                  <input type="text" name="description" length="60" maxlength="60" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                  <input type="text" name="description" length="60" maxlength="60" pattern="([A-z0-9 '.-]){2,}">
                 </div>
             </div>
             <div class="actions">
-              <button class="ui blue button" type="submit" name="add">Add Defect</button>
+              <button class="ui blue button" type="submit" name="add"><i class="checkmark icon"></i> Add problem</button>
               </form>
             </div>
         </div>
@@ -41,8 +41,8 @@
           <!--edit modal -->
         <div class="ui small modal" id="editModal">
           <i class="close icon"></i>
-            <div class="header">
-              Edit Item Defects
+            <div class="ui centered header">
+              Edit Problem
             </div>
             <div class="content">
               <form class="ui form" action="/editProblemType" method="POST">
@@ -59,7 +59,7 @@
 
             </div>
             <div class="actions">
-              <button class="ui button" type="submit" name="edit">Confirm item</button>
+              <button class="ui blue button" type="submit" name="edit"><i class="checkmark icon"></i>Confirm</button>
               </form>
             </div>
         </div>
@@ -81,14 +81,14 @@
                   <td class="collapsing">
                     <form class="row " action="/deleteProblemType" method="POST">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <div class="edit ui vertical animated button" id="{{$key}}">
+                      <div class="edit ui green basic vertical animated button" id="{{$key}}">
                         <div class="hidden content">Edit</div>
                         <div class="visible content">
                           <i class="large edit icon"></i>
                         </div>
                       </div>
                       <input type="hidden" class="items" id="id{{$key}}" name="problemtypeID" value="{{$problemType->ProblemTypeID}}">
-                      <button name="delete" type="submit" class="ui large vertical animated button">
+                      <button name="delete" type="submit" class="ui red basic large vertical animated button">
                         <div class="hidden content">Delete</div>
                         <div class="visible content">
                           <i class="trash icon"></i>

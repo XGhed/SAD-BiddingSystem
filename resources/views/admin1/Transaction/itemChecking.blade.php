@@ -82,7 +82,7 @@
               </div>
           </div>
           <div class="actions">
-            <button class="ui basic blue button" name="Uncheck" type="submit">Confirm</button>
+            <button class="ui blue button" name="Uncheck" type="submit"><i class="checkmark icon"></i> Confirm</button>
           </div>
             </form>
         </div>
@@ -159,7 +159,7 @@
                   </div>
           </div>
           <div class="actions">
-            <button class="ui basic blue button" name="Check" type="submit">Confirm</button>
+            <button class="ui blue button" name="Check" type="submit"><i class="checkmark icon"></i> Confirm</button>
           </div>
             </form>
         </div>

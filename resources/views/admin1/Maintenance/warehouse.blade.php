@@ -7,7 +7,7 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
        <a class="ui basic blue button" id="addBtn">
-            <i class="add user icon"></i>
+            <i class="add square icon"></i>
             Add warehouse
           </a>
 
@@ -17,7 +17,7 @@
           <!-- add modal -->
         <div class="ui small modal" id="addModal">
           <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
               Add warehouse
             </div>
             <div class="content">
@@ -27,7 +27,7 @@
                 <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">Province</div>
-                    <select name="add_province" id="prov" class="ui search selection dropdown">
+                    <select name="add_province" id="prov" class="ui search selection dropdown" style="height:45px">
                       <option value="" disabled selected>Choose your Province</option>
                         @foreach($provinces as $key => $province)
                           <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
@@ -36,19 +36,19 @@
                   </div>
                   <div class="field">
                     <div class="ui sub header">City</div>
-                    <select name="add_city" id="city" class="ui search selection dropdown" REQUIRED>
+                    <select name="add_city" id="city" class="ui search selection dropdown" style="height:45px" REQUIRED>
                       <option value="" disabled selected>City</option>
                     </select>
                   </div>
                 </div>
                   
-                <div class="seven wide required field">
+                <div class="nine wide required field">
                   <label>Warehouse Address</label>
                   <input type="text" name="add_barangay_street" REQUIRED>
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit" name="add">Add</button>
+              <button class="ui blue button" type="submit" name="add"><i class="checkmark icon"></i> Add Warehouse</button>
               </form>
             </div>
         </div>
@@ -57,7 +57,7 @@
           <!--edit modal -->
         <div class="ui small modal" id="editModal">
           <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
               Edit Warehouse
             </div>
             <div class="content">
@@ -68,7 +68,7 @@
                 <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">Province</div>
-                    <select name="add_province" id="provE" class="ui search selection dropdown">
+                    <select name="add_province" id="provE" class="ui search selection dropdown" style="height:45px">
                       <option value="" disabled selected>Choose your Province</option>
                         @foreach($provinces as $key => $province)
                           <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
@@ -77,19 +77,19 @@
                   </div>
                   <div class="field">
                     <div class="ui sub header">City</div>
-                    <select name="edit_city" id="cityE" class="ui search selection dropdown" REQUIRED>
+                    <select name="edit_city" id="cityE" class="ui search selection dropdown" style="height:45px" REQUIRED>
                       <option value="" disabled selected>City</option>
                     </select>
                   </div>
                 </div>
                   
-                <div class="seven wide required field">
+                <div class="nine wide required field">
                   <label>Warehouse Address</label>
                   <input type="text" id="edit_barangaystreet" name="edit_barangaystreet" length="30" maxlength="30" REQUIRED>
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit" name="edit">Add</button>
+              <button class="ui blue button" type="submit" name="edit"><i class="checkmark icon"></i> Confirm</button>
               </form>
             </div>
         </div>
@@ -112,14 +112,14 @@
                       <form action="/confirmWarehouse" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->WarehouseNo}}">
-                        <div class="edit ui vertical animated button" tabindex="1" id="{{$key}}" value="{{$key}}">
+                        <div class="edit green basic ui vertical animated button" tabindex="1" id="{{$key}}" value="{{$key}}">
                           <div class="hidden content">Edit</div>
                           <div class="visible content">
                             <i class="large edit icon"></i>
                           </div>
                         </div>
                     <input type="hidden" id="" name="del_ID" value="">
-                    <button id="delete" name="delete" class="ui large vertical animated button">
+                    <button id="delete" name="delete" class="ui red basic large vertical animated button">
                       <div class="hidden content">Delete</div>
                       <div class="visible content">
                         <i class="trash icon"></i>

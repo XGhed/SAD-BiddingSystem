@@ -45,24 +45,26 @@
             <div class="content">
               <form class="ui form" action="/editBiddingEvent" method="POST">
                 <input type="hidden" name="eventID" value="@{{eventDetails.AuctionID}}" />
-                <div class="fields">
-                  <div class="five wide field" ng-if="secondsLeft > 0">
+                <div class="equal width fields">
+                  <div class="field" ng-if="secondsLeft > 0">
                     <div class="ui sub header">Event Name</div>
                     <input type="text" name="eventname" id="edit_name" value="@{{eventDetails.EventName}}"/>
                   </div>
-                  <div class="five wide field" ng-if="secondsLeft > 0">
-                    <div class="ui sub header">Start Time:</div>
+                  <div class="field" ng-if="secondsLeft > 0">
+                    <div class="ui sub header">Start Day:</div>
                     <input type="date" id="startDate" name="startdate" value="@{{eventDetails.StartDateTime.split(' ')[0]}}">
+                    <div class="ui sub header">Start Time</div>
                     <input type="time" name="starttime" required value="@{{eventDetails.StartDateTime.split(' ')[1]}}">
                   </div>
-                  <div class="five wide field">
-                    <div class="ui sub header">End Time</div>
+                  <div class="field">
+                    <div class="ui sub header">End Day</div>
                     <input type="date" id="endDate" name="enddate" value="@{{eventDetails.EndDateTime.split(' ')[0]}}">
-                    <input type="time" name="endtime" required value="@{{eventDetails.EndDateTime.split(' ')[1]}}">
+                    <div class="ui sub header">End Time</div>
+                    <input type="time" name="endtime" value="@{{eventDetails.EndDateTime.split(' ')[1]}}">
                   </div>
                 </div>
 
-                  <div class="five wide field">
+                  <div class="field">
                     <div class="ui sub header">Description</div>
                     <textarea type="text" name="description" id="edit_desc" rows="2">@{{eventDetails.Description}}</textarea>
                   </div>
@@ -86,21 +88,21 @@
                 <div class="equal width fields">
                   <div class="five wide field">
                     <div class="ui sub header">Category</div>
-                    <select name="item" id="item" class="ui search selection dropdown" ng-model="category" ng-change="loadSubcat()" REQUIRED>
+                    <select name="item" id="item" class="ui search selection dropdown" ng-model="category" ng-change="loadSubcat()" style="height: 45px" REQUIRED>
                       <option value="" disabled selected>Category</option>
                       <option ng-repeat="category in categories" value="@{{category.CategoryID}}">@{{category.CategoryName}}</option>
                     </select>
                   </div>
                   <div class="five wide field">
                     <div class="ui sub header">Subcategory</div>
-                    <select name="item" id="item" class="ui search selection dropdown" ng-model="subCategory" ng-change="loadModels()" REQUIRED>
+                    <select name="item" id="item" class="ui search selection dropdown" ng-model="subCategory" ng-change="loadModels()" style="height: 45px" REQUIRED>
                       <option value="" disabled selected>Subcategory</option>
                       <option ng-repeat="subCategory in subCategories" value="@{{subCategory.SubCategoryID}}">@{{subCategory.SubCategoryName}}</option>
                     </select>
                   </div>
                   <div class="field">
                     <div class="ui sub header">Item</div>
-                    <select name="itemModels" class="ui search selection dropdown" ng-model="itemmodelSelected" ng-change="loadItems()">
+                    <select name="itemModels" class="ui search selection dropdown" ng-model="itemmodelSelected" ng-change="loadItems()"style="height: 45px" >
                         <option value="" disabled selected style="">Item</option>
                       <option ng-repeat="itemmodel in itemmodels" value="@{{itemmodel.ItemModelID}}">@{{itemmodel.ItemName}}</option>
                     </select>
@@ -108,7 +110,7 @@
 
                   <div class="field">
                     <div class="ui sub header">Stock ID</div>
-                    <select name="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loadItemInfo()">
+                    <select name="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loadItemInfo()"style="height: 45px" >
                       <option ng-repeat="item in items" value="@{{item.ItemID}}">@{{item.ItemID}}</option>
                     </select>
                   </div>
@@ -291,6 +293,20 @@ app.controller('myController', function($scope, $http, $timeout){
 
 });
 
+
+  //min endDate
+      var date = new Date();
+
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
+
+      var today = year + "-" + month + "-" + day;
+      document.getElementById("endDate").value = today;
+      document.getElementById("endDate").min = today;
 
 </script>
 @endsection

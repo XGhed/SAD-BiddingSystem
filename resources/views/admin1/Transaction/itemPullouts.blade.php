@@ -22,7 +22,7 @@
         <tbody>
           <tr ng-repeat="item in items" ng-if="item.pull_request.length > 0">
             <td class="collapsing">
-              <div class="ui vertical animated button " tabindex="1" ng-click="confirmDispose($index)">
+              <div class="ui red basic vertical animated button " tabindex="1" ng-click="confirmDispose($index)">
                 <div class="hidden content">Dispose</div>
                 <div class="visible content">
                   <i class="large trash icon"></i>

@@ -31,13 +31,13 @@
           <tbody>
             <tr ng-repeat="item in items" ng-if="item.pull_request.length == 0">
               <td class="collapsing">
-                <div class="ui vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
+                <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
                   <div class="hidden content">Item Logs</div>
                   <div class="visible content">
                     <i class="large history icon"></i>
                   </div>
                 </div><br>
-                <div class="ui vertical animated button" tabindex="0" ng-click="dispose($index)">
+                <div class="ui red basic vertical animated button" tabindex="0" ng-click="dispose($index)">
                   <div class="hidden content">Dispose</div>
                   <div class="visible content">
                     <i class="large trash icon"></i>
@@ -73,9 +73,8 @@
         </thead>
         <tbody>
           <tr ng-repeat="itemmodel in itemmodels">
-            <td>
+            <td class="collapsing">
               <a class="ui basic blue button" ng-click="viewStocks($index)">
-                <i class="add user icon"></i>
                 View Stocks
               </a>              
             </td>
@@ -109,13 +108,13 @@
           <tbody>
             <tr ng-repeat="item in items" ng-if="item.pull_request.length > 0">
               <td class="collapsing">
-                <div class="ui vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
+                <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
                   <div class="hidden content">Item Logs</div>
                   <div class="visible content">
                     <i class="large history icon"></i>
                   </div>
                 </div><br>
-                <div class="ui vertical animated button" tabindex="0" ng-click="cancelDispose($index)">
+                <div class="ui red basic vertical animated button" tabindex="0" ng-click="cancelDispose($index)">
                   <div class="hidden content">Cancel</div>
                   <div class="visible content">
                     <i class="large ban icon"></i>
@@ -138,11 +137,11 @@
           <!--item History modal -->
         <div class="ui small modal" id="itemHistory">
            <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
             Item Logs
             </div>
             <div class="content">
-              <table class="ui celled table">
+              <table class="ui inverted celled table">
                 <thead>
                   <tr>
                     <th>Date</th>
@@ -163,11 +162,11 @@
              <!--item list modal -->
         <div class="ui modal" id="itemLists">
            <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
             Item Logs
             </div>
             <div class="content">
-              <table class="ui celled table" datatable="ng">
+              <table class="ui celled definition inverted table" datatable="ng">
                 <thead>
                   <tr>
                     <th></th>
@@ -184,13 +183,13 @@
                 <tbody>
                   <tr ng-repeat="item in itemsOfModel">
                     <td class="collapsing">
-                      <div class="ui vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
+                      <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
                         <div class="hidden content">Item Logs</div>
                         <div class="visible content">
                           <i class="large history icon"></i>
                         </div>
                       </div>
-                      <div class="ui vertical animated button" tabindex="0">
+                      <div class="ui red basic vertical animated button" tabindex="0">
                         <div class="hidden content">Dispose</div>
                         <div class="visible content">
                           <i class="large trash icon"></i>

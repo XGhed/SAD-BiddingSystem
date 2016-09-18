@@ -9,8 +9,8 @@
       <h1 class="ui centered header">{{$container->ContainerName}}</h1>
         @if($container->ActualArrival == NULL)
           <a class="ui basic blue button" id="addBtn">
-            <i class="add user icon"></i>
-            Add Item
+            <i class="add square icon"></i>
+            Add Item in container
           </a>
         @endif
         
@@ -18,7 +18,7 @@
         <!-- add modal -->
         <div class="ui small modal" id="addModal">
           <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centetered header">
               Add Item
             </div>
             <div class="content">
@@ -34,6 +34,7 @@
                     <option ng-repeat="category in categories" value="@{{category.CategoryID}}">@{{category.CategoryName}}</option>
                   </select>
                 </div>
+
                 <div class="field">
                   <div class="ui sub header">Subcategory</div>
                   <select name="item" id="item" class="ui search selection dropdown" ng-model="subCategory" ng-change="loadItems()" REQUIRED>
@@ -41,6 +42,7 @@
                     <option ng-repeat="subCategory in subCategories" value="@{{subCategory.SubCategoryID}}">@{{subCategory.SubCategoryName}}</option>
                   </select>
                 </div>
+
                 <div class="field">
                   <div class="ui sub header">Item</div>
                   <select name="item" id="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loaditemDetails()" REQUIRED>
@@ -50,34 +52,29 @@
                 </div>
               </div>                
 
-                
-
-                  
-
-                <div class="equal width fields">
-                  <div class="field">
-                    <div class="ui sub header">Default Size</div>
+              <div class="equal width fields">
+                <div class="field">
+                  <div class="ui sub header">Default Size</div>
                     <input type="text" name="size" placeholder="dimensions" ng-model="size" required>
-                  </div>
+                </div>
 
-                  <div class="field">
-                    <div class="ui sub header">Default Color</div>
+                <div class="field">
+                  <div class="ui sub header">Default Color</div>
                     <select class="ui fluid search selection dropdown" id="color" name="color" ng-model="color">
                       <option value="" disabled selected>Color</option>
                       <option ng-repeat="color in colors" value="@{{color.ColorName}}">@{{color.ColorName}}</option>
                     </select>
                   </div>
 
-                  <div class="field">
-                    <div class="ui sub header">Quantity</div>
+                <div class="field">
+                  <div class="ui sub header">Quantity</div>
                     <input type="number" id="quantity" name="quantity" min="1" placeholder="1" value="1" required>
-                  </div>
                 </div>
-
-                
+              </div>
             </div>
+
             <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
+              <button class="ui blue button" type="submit"><i class="checkmark icon"></i> Add Item</button>
               </form>
             </div>
         </div>
@@ -86,7 +83,7 @@
            <!-- edit modal -->
         <div class="ui small modal" id="editModal">
           <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
               Edit Item
             </div>
             <div class="content">
@@ -94,21 +91,27 @@
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" name="containerID" value="{{$container->ContainerID}}">
               <input type="hidden" name="itemID" value="@{{edit_itemID}}">
-              <div class="required fields">
-                <div class="five wide field">
+
+              <div class="equal width required fields">
+                <div class="field">
                   <div class="ui sub header">Category</div>
-                  @{{edit_category}}
+                  <input type="text" value="@{{edit_category}}" style="color:black" disabled>
                 </div>
-                <div class="five wide field">
+
+                <div class="field">
                   <div class="ui sub header">Subcategory</div>
-                  @{{edit_subcategory}}
+                  <input type="text" value="@{{edit_subcategory}}" style="color:black" disabled>
                 </div>
-                <div class="five wide required field">
+
+                <div class="field">
                   <div class="ui sub header">Item</div>
-                  @{{edit_item}}
+                  <input type="text" value=" @{{edit_item}}" style="color:black" disabled>
                 </div>
               </div>
+
+              <div class="ui divider"></div>
               <div class="ui header">Defaul Values</div>
+
               <div class="equal width fields">
                 <div class="field">
                   <div class="ui sub header">size</div>
@@ -125,7 +128,7 @@
               </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit">Confirm</button>
+              <button class="ui blue button" type="submit"><i class="checkmark icon"></i> Confirm</button>
             </div>
             </form>
         </div>
@@ -147,7 +150,7 @@
           <tbody>
             <tr ng-repeat="item in viewitems">
               <td class="collapsing">
-                <div class="editBtn ui vertical animated button" tabindex="1" ng-click="editModal(item)">
+                <div class="editBtn ui basic green vertical animated button" tabindex="1" ng-click="editModal(item)">
                   <div class="hidden content">Edit</div>
                   <div class="visible content">
                     <i class="large edit icon"></i>

@@ -20,12 +20,9 @@
         <tbody>
           <tr ng-repeat="event in events" ng-if="event.noBidItems > 0">
             <td class="collapsing">
-            	<div class="ui vertical animated button"  ng-click="showItems(event)" >
-	            	<div class="hidden content">View Items</div>
-	            	<div class="visible content">
-	                <i class="ordered list icon"></i>
-	            	</div>
-	            </div>
+               <button class="ui blue basic button " tabindex="1"  ng-click="showItems(event)">
+               View items left
+              </button>
             </td>
             <td>@{{event.EventName}}</td>
             <td>@{{event.StartDateTime}}</td>
@@ -38,40 +35,36 @@
       <!-- modal -->
     	<div class="ui small modal" id="itemsModal">
           <i class="close icon"></i>
-            <div class="header">
-	             Items
-            </div>
             <div class="content">
-	       <form action="postEventProcessItems" method="POST">
-              <table datatable="ng" class="ui compact celled definition table">
-                 <thead>
-					<tr>
-						<th></th>
-					    <th>Item ID</th>
-					    <th>Item Name</th>
-					</tr>
-				 </thead>
-                 <tbody>
-					<tr ng-repeat="item_auction in selectedEvent.item_auction">
-						<td>
-					    	<input type="checkbox" name="items[]" value="@{{item_auction.item.ItemID}}" />
-					    </td>
-					    <td>@{{item_auction.item.ItemID}}</td>
-					    <td>@{{item_auction.item.item_model.ItemName}}</td>
-					</tr>
-				 </tbody>
-              </table>
-              <div class="ui divider"></div>
-              <div class="actions">
-		        <div class="ui buttons">
-				  <button class="ui green button" type="submit" name="dispose">Dispose</button>
-				  <div class="or"></div>
-				  <button class="ui blue button" type="submit" name="return">Return to Inventory</button>
-				</div>
-		      </div>
+              <form action="postEventProcessItems" method="POST">
+                <table datatable="ng" class="ui compact celled definition table">
+                  <thead>
+    					      <tr>
+    						      <th></th>
+                      <th>Item ID</th>
+    					       <th>Item Name</th>
+                    </tr>
+    				      </thead>
+                  <tbody>
+                    <tr ng-repeat="item_auction in selectedEvent.item_auction">
+    						      <td class="collapsing">
+    					    	    <input type="checkbox" name="items[]" value="@{{item_auction.item.ItemID}}" />
+    				          </td>
+        					    <td>@{{item_auction.item.ItemID}}</td>
+        					    <td>@{{item_auction.item.item_model.ItemName}}</td>
+                    </tr>
+    				      </tbody>
+                </table>
             </div>
-	    	</form>
-        </div>
+            <div class="actions">
+		          <div class="ui buttons">
+				        <button class="ui green button" type="submit" name="dispose">Dispose</button>
+				        <div class="or"></div>
+				        <button class="ui blue button" type="submit" name="return">Return to Inventory</button>
+              </form>
+				      </div>
+		        </div>
+      </div>
       <!-- END of modal -->
 
       

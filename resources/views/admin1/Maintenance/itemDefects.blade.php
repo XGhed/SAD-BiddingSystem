@@ -7,7 +7,7 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
        <a class="ui basic blue button" id="addBtn">
-            <i class="add user icon"></i>
+            <i class="add square icon"></i>
             Add Item Defects
           </a>
 
@@ -16,7 +16,7 @@
           <!-- add modal -->
         <div class="ui small modal" id="addModal">
           <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
               Add Item Defects
             </div>
             <div class="content">
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="actions">
-              <button class="ui blue button" type="submit" name="add">Add Defect</button>
+              <button class="ui blue button" type="submit" name="add"><i class="checkmark icon"></i> Add Defect</button>
               </form>
             </div>
         </div>
@@ -37,7 +37,7 @@
           <!--edit modal -->
         <div class="ui small modal" id="editModal">
           <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
               Edit Item Defects
             </div>
             <div class="content">
@@ -51,7 +51,7 @@
 
             </div>
             <div class="actions">
-              <button class="ui button" type="submit" name="edit">Confirm item</button>
+              <button class="ui blue button" type="submit" name="edit"><i class="checkmark icon"></i> Confirm</button>
               </form>
             </div>
         </div>
@@ -72,14 +72,14 @@
                   <td class="collapsing">
                     <form class="row " action="/deleteItemDefect" method="POST">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <div class="edit ui vertical animated button" id="{{$key}}">
+                      <div class="edit ui green basic vertical animated button" id="{{$key}}">
                         <div class="hidden content">Edit</div>
                         <div class="visible content">
                           <i class="large edit icon"></i>
                         </div>
                       </div>
                       <input type="hidden" class="items" id="id{{$key}}" name="defectID" value="{{$defect->ItemDefectID}}">
-                      <button name="delete" type="submit" class="ui large vertical animated button">
+                      <button name="delete" type="submit" class="ui red basic large vertical animated button">
                         <div class="hidden content">Delete</div>
                         <div class="visible content">
                           <i class="trash icon"></i>

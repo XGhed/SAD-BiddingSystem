@@ -7,7 +7,7 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
        <a class="ui basic blue button" id="addBtn">
-            <i class="add user icon"></i>
+            <i class="add square icon"></i>
             Add Item
           </a>
 
@@ -16,7 +16,7 @@
           <!-- add modal -->
         <div class="ui small modal" id="addModal">
           <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
               Add Item
             </div>
             <div class="content">
@@ -26,7 +26,7 @@
                   <div class="field">
                     <div class="ui sub header">Category</div>
                     <select name="add_cat" id="cat">
-                      <option value="" disabled selected>Category</option>
+                      <option value="" disabled selected>Choose Category</option>
                       @foreach($categories as $key => $category)
                         <option value="{{$category->CategoryID}}">{{$category->CategoryName}}</option>
                       @endforeach
@@ -35,15 +35,15 @@
                   <div class="field">
                     <div class="ui sub header">Subcategory</div>
                     <select name="add_sub" id="add_sub" >
-                      <option value="" disabled selected>Subcategory</option>
+                      <option value="" disabled selected>Choose Subcategory</option>
 
                     </select>
                   </div>
                 </div>
 
-                <div class="six wide required field">
+                <div class="eight wide required field">
                   <label>Item Name</label>
-                  <input type="text" name="add_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                  <input type="text" name="add_name" length="30" maxlength="50" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                 </div>
                 
                 <div class="equal width required fields">
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit" name="add">Add item</button>
+              <button class="ui blue button" type="submit" name="add"><i class="checkmark icon" ></i> Add item</button>
               </form>
             </div>
         </div>
@@ -76,7 +76,7 @@
           <!--edit modal -->
         <div class="ui small modal" id="editModal">
           <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
               Edit Item
             </div>
             <div class="content">
@@ -87,24 +87,24 @@
                   <div class="field">
                     <div class="ui sub header">Category</div>
                     <select name="edit_cat" id="edit_cat">
-                      <option value="" disabled selected>Category</option>
+                      <option value="" disabled selected>Xhoose Category</option>
                       @foreach($categories as $key => $category)
                         <option value="{{$category->CategoryID}}">{{$category->CategoryName}}</option>
                       @endforeach
                     </select>
                   </div>
-                  <<div class="field">
+                  <div class="field">
                     <div class="ui sub header">Subcategory</div>
                     <select name="edit_sub" id="edit_sub" >
-                      <option value="" disabled selected>Subcategory</option>
+                      <option value="" disabled selected>Choose Subcategory</option>
 
                     </select>
                   </div>
                 </div>
 
-                <div class="six wide required field">
+                <div class="eight wide required field">
                   <label>Item Name</label>
-                  <input type="text" name="edit_name" id="edit_name" length="30" maxlength="30" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
+                  <input type="text" name="edit_name" id="edit_name" length="30" maxlength="50" pattern="([A-z0-9 '.-]){2,}" REQUIRED>
                 </div>
                 
                 <div class="equal width required fields">
@@ -128,7 +128,7 @@
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit" name="edit">Confirm item</button>
+              <button class="ui blue button" type="submit" name="edit"><i class="checkmark icon"></i> Confirm</button>
               </form>
             </div>
         </div>
@@ -154,13 +154,13 @@
                   <form action="/confirmItem" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="" name="del_ID" value="{{$result->ItemModelID}}">
-                    <div class="edit ui vertical animated button" tabindex="1" id="{{$key}}">
+                    <div class="edit ui basic green vertical animated button" tabindex="1" id="{{$key}}">
                       <div class="hidden content">Edit</div>
                       <div class="visible content">
                         <i class="large edit icon"></i>
                       </div>
                     </div>
-                     <button name="delete" type="submit" class="ui large vertical animated button">
+                     <button name="delete" type="submit" class="ui basic red large vertical animated button">
                       <div class="hidden content">Delete</div>
                       <div class="visible content">
                         <i class="trash icon"></i>

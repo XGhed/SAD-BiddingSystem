@@ -5,16 +5,13 @@
  @include('admin1.Transaction.sideNav')
 
   <div class="twelve wide stretched column">
-    <div class="ui segment">
-
-      
+    <div class="ui segment">      
 
         <div class="ui top attached tabular menu">
           <a class="active item" data-tab="first">Expected Item</a>
           <a class="item" data-tab="second">Unexpected Item</a>
           <a class="item" data-tab="third">Missing Items</a>
         </div>
-
         
         <div class="ui bottom attached active tab segment" data-tab="first">
            
@@ -72,14 +69,14 @@
 
         <div class="ui bottom attached tab segment" data-tab="second">
           <a class="ui basic blue button" id="addBtn">
-            <i class="add user icon"></i>
+            <i class="add square icon"></i>
             Add Item
           </a>
 
                   <!-- add modal -->
           <div class="ui small modal" id="addModal">
               <i class="close icon"></i>
-              <div class="header">
+              <div class="ui centered header">
                 Add Item
               </div>
               <div class="content">
@@ -145,7 +142,7 @@
                   </div>
                 </div>
               <div class="actions">
-                <button class="ui button" type="submit">Confirm</button>
+                <button class="ui blue button" type="submit"><i class="checkmark icon"></i> Add Item</button>
                 
               </div>
             </form>

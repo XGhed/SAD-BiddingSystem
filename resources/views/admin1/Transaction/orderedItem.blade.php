@@ -7,14 +7,14 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
        <a class="ui basic blue button" id="addBtn">
-          <i class="add user icon"></i>
+          <i class="add square icon"></i>
           Add Container
         </a>
 
         <!-- add modal -->
         <div class="ui small modal" id="addModal">
           <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
               Add Container
             </div>
             <div class="content">
@@ -56,8 +56,7 @@
 
             </div><!--content -->
             <div class="actions">
-              <!-- <button class="ui button" onclick="modalClose()">Cancel</button>-->
-              <button class="ui button" type="submit">Confirm</button>
+              <button class="ui blue button" type="submit"><i class="checkmark icon"></i> Add Container</button>
               </form>
             </div>
         </div>
@@ -66,8 +65,8 @@
           <!-- edit modal -->
         <div class="ui small modal" id="editModal">
           <i class="close icon"></i>
-            <div class="header">
-              Edit Item
+            <div class="ui centered header">
+              Edit Container
             </div>
             <div class="content">
               <form class="ui form" action="/editContainer" method="POST">
@@ -112,7 +111,7 @@
                 
               </div>
               <div class="actions">
-                <button class="ui button" type="submit">Confirm</button>
+                <button class="ui blue button" type="submit"><i class="checkmark icon"></i> Confirm</button>
               </div>
             </form>
         </div>
@@ -121,23 +120,24 @@
           <table class="ui celled striped table" datatable="ng">
             <thead>
               <tr>
-              <th></th>
-              <th>Warehouse</th>
-              <th>Container</th>
-              <th>Expected Arrival</th>
-              <th>Supplier</th>
-            </tr></thead>
+                <th></th>
+                <th>Warehouse</th>
+                <th>Container</th>
+                <th>Expected Arrival</th>
+                <th>Supplier</th>
+              </tr>
+            </thead>
             <tbody>
               <tr ng-repeat="container in containers">
                 <td class="collapsing inline field">
                   <div class="inline field">
-                    <div class="ui vertical animated button"  ng-click="addItems(container.ContainerID)" style="width:50px">
+                    <div class="ui basic violet vertical animated button"  ng-click="addItems(container.ContainerID)" style="width:50px">
                       <div class="hidden content">View Items</div>
                       <div class="visible content">
                         <i class="ordered list icon"></i>
                       </div>
                     </div>
-                    <div class="ui vertical animated button"  ng-click="editModal(container)" ng-if="container.ActualArrival == null" style="width:50px">
+                    <div class="ui green basic vertical animated button"  ng-click="editModal(container)" ng-if="container.ActualArrival == null" style="width:50px">
                       <div class="hidden content">Edit</div>
                       <div class="visible content">
                         <i class=" edit icon"></i>
@@ -145,15 +145,17 @@
                     </div>
                     <p></p>
                     <div class="ui red vertical animated button" style="width:125px" ng-if="container.ActualArrival == null" ng-click="containerArrived(container.ContainerID)">
-                      <div class="hidden content">Arrived</div>
+                      <div class="hidden content">Click to Confirm</div>
                       <div class="visible content">
-                        Not Yet
+                        Not Yet Arrived
                       </div>
                     </div>
-                    <div class="ui green vertical animated button" style="width:125px" ng-if="container.ActualArrival != null" style="cursor: default;">
-                      <div class="hidden content"><i class="checkmark icon"></i></div>
+                    <div class="ui blue vertical animated button" style="width:125px" ng-if="container.ActualArrival != null" style="cursor: default;">
+                      <div class="hidden content" style="cursor: default;">
+                        Container Arrived!
+                      </div>
                       <div class="visible content">
-                        Arrived
+                        <i class="checkmark icon" ></i>Arrived
                       </div>
                     </div>
                   </div>

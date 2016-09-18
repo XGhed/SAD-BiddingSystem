@@ -29,7 +29,7 @@
       <h2 class="ui centered header">Request to move items</h2>
       <form class="ui form" action="itemMoveRequest" method="POST">
       
-        <table class="ui definition celled table" datatable="ng">
+        <table class="ui definition celled inverted table" datatable="ng">
           <thead>
             <tr>
               <th></th>

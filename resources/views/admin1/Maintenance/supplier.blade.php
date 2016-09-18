@@ -17,7 +17,7 @@
           <!-- add modal -->
         <div class="ui small modal" id="addModal">
           <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
               Add Supplier
             </div>
             <div class="content">
@@ -40,7 +40,7 @@
                   </div>
                   <div class="field">
                     <div class="ui sub header">City</div>
-                      <select name="add_city" id="city" class="ui search selection dropdown" REQUIRED>
+                      <select name="add_city" id="city" class="ui search selection dropdown" style="height: 45px" REQUIRED>
                         <option value="" disabled selected>City</option>
                           
                       </select>
@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" name="add" type="submit">Confirm</button>
+              <button class="ui blue button" name="add" type="submit"><i class="checkmark icon"></i>Add Supplier</button>
               </form>
             </div>
         </div>
@@ -72,7 +72,7 @@
           <!--edit modal -->
         <div class="ui small modal" id="editModal">
           <i class="close icon"></i>
-          <div class="header">
+          <div class="ui centered header">
           Edit Supplier
           </div>
           <div class="content">
@@ -87,7 +87,7 @@
               <div class="equal width fields">
                 <div class="field">
                   <div class="ui sub header">Province</div>
-                  <select name="edit_province" class="ui search selection dropdown" id="provE" required>
+                  <select name="edit_province" class="ui search selection dropdown" id="provE"  style="height: 45px" required>
                     <option value="" disabled selected>Province</option>
                     @foreach($provinces as $key => $province)
                       <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
@@ -96,7 +96,7 @@
                 </div>
                 <div class="field">
                   <div class="ui sub header">City</div>
-                  <select name="edit_city" class="ui search selection dropdown" id="cityE" required>
+                  <select name="edit_city" class="ui search selection dropdown" id="cityE" style="height: 45px" required>
                     <option value="" disabled selected>City</option>
                     
                   </select>
@@ -119,15 +119,14 @@
                 </div>
           </div>
             <div class="actions">
-              <div class="ui button">Cancel</div>
-              <button class="ui button" type="submit" name="edit">Submit</button>
+              <button class="ui blue button" type="submit" name="edit"><i class="checkmark icon"></i> Confirm</button>
             </form>
             </div>
         </div>
           <!-- END edit modal -->
 
           <!-- table -->
-        <table class="ui compact celled definition table" cellspacing="0" width="100%" id="tableOutput">
+        <table class="ui compact celled definition inverted table" cellspacing="0" width="100%" id="tableOutput">
           <thead>
             <tr>
               <th></th>
@@ -140,18 +139,19 @@
           </thead>
           <tbody>
             @foreach($results as $key => $result)
-              <tr class="collapsing">
-                <td>
-                  <div class="edit ui vertical animated button" tabindex="" id="{{$key}}" value="{{$key}}" name="edit">
+              <tr>
+                <td class="collapsing">
+                  <div class="edit ui vertical green basic animated button" tabindex="" id="{{$key}}" value="{{$key}}" name="edit">
                     <div class="hidden content">Edit</div>
                     <div class="visible content">
                       <i class="large edit icon"></i>
                     </div>
                   </div>
+                  <br><br>
                   <form action="confirmSupplier" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="edit_ID" id="tdID{{$key}}" value="{{$result->SupplierID}}">
-                    <button id="delete" name="delete" type="submit" class="ui large vertical animated button">
+                    <button id="delete" name="delete" type="submit" class="ui red basic large vertical animated button">
                       <div class="hidden content">Delete</div>
                       <div class="visible content">
                         <i class="trash icon"></i>

@@ -13,20 +13,21 @@
     <!-- category -->
     <div class="ui bottom attached active tab segment" data-tab="first">
        <a class="ui basic blue button" id="addBtn">
-            <i class="add user icon"></i>
+            <i class="add square icon"></i>
             Add Discounts
           </a>
 
+       @include('admin1.Maintenance.alerts')
           <!-- add modal -->
         <div class="ui small modal" id="addModal">
           <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
               Add Discounts
             </div>
             <div class="content">
               <form class="ui form" action="/confirmDiscount" method="POST">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="field">
+                <div class="seven wide field">
                   <div class="ui sub header">Account Type</div>
                     <select name="add_Type">
                       <option value="" disabled selected>Choose Account Type</option>
@@ -48,7 +49,7 @@
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit" name="add">Add Discount</button>
+              <button class="ui blue button" type="submit" name="add"><i class="checkmark icon"></i> Add Discount</button>
               </form>
             </div>
         </div>
@@ -57,8 +58,8 @@
           <!--edit modal -->
         <div class="ui small modal" id="editModal">
           <i class="close icon"></i>
-            <div class="header">
-              Edit Discounts
+            <div class="ui centered header">
+              Edit Discount
             </div>
             <div class="content">
               <form class="ui form" action="/confirmDiscount" method="POST">
@@ -86,7 +87,7 @@
                 </div>
             </div>
             <div class="actions">
-              <button class="ui button" type="submit" name="edit">Confirm</button>
+              <button class="ui blue button" type="submit" name="edit"><i class="checkmark icon"></i>Confirm</button>
               </form>
             </div>
         </div>
@@ -110,13 +111,13 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="center">
                       <input type="hidden" class="items" id="" name="deleteID" value="{{$result->DiscountID}}">
-                      <div class="edit ui vertical animated button" tabindex="" id="{{$key}}" >
+                      <div class="edit ui green basic vertical animated button" tabindex="" id="{{$key}}" >
                         <div class="hidden content">Edit</div>
                         <div class="visible content">
                           <i class="large edit icon"></i>
                         </div>
                       </div>
-                      <button id="delete" name="delete" type="submit" class="ui large vertical animated button">
+                      <button id="delete" name="delete" type="submit" class="ui basic red large vertical animated button">
                         <div class="hidden content">Delete</div>
                         <div class="visible content">
                           <i class="trash icon"></i>
@@ -183,5 +184,14 @@
 
 });   
 
+//message
+  $('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
 </script>
 @endsection

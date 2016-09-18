@@ -208,7 +208,7 @@
           });
         });
 
-    //startDate
+     //startDate
       var date = new Date();
 
       var day = date.getDate();
@@ -235,6 +235,7 @@
       var today = year + "-" + month + "-" + day;
       document.getElementById("endDate").value = today;
       document.getElementById("endDate").min = today;
+
 
     var app = angular.module('myApp', ['datatables']);
     app.controller('myController', function($scope, $http, $window){
