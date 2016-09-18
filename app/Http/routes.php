@@ -107,6 +107,8 @@ Route::any('/salesGraph', 'GraphController@salesGraph');
 
 Route::get('/logout', 'LoginController@logout');
 
+Route::get('pdfFile', 'PdfController@index');
+
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');

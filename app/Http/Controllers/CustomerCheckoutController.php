@@ -114,6 +114,6 @@ class CustomerCheckoutController extends Controller
             $request_item->save();
         }
 
-        return redirect('/checkout');
+        return redirect('/pdfFile');
     }
 }
