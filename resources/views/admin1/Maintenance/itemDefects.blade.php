@@ -89,8 +89,7 @@
                   </td>
                   <td id="name{{$key}}">{{$defect->DefectName}}</td>
                   <td class="collapsing">
-                    <div class="ui fitted slider checkbox">                     
-                      <label></label>
+                    <div class="ui fitted slider checkbox">
                       @if ($defect->Status == 1)
                           <input type="checkbox" value="{{$defect->ItemDefectID}}" checked>
                       @elseif ($defect->Status == 0)

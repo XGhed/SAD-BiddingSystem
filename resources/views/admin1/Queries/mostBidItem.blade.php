@@ -6,9 +6,9 @@
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
-    <form method="post" action="/mostBid">
-        <button type="submit" name="item">Per Item</button>
-        <button type="submit" name="category">Per Category</button>
+    <form method="post" action="/mostBid" class="ui form">
+        <button type="submit" name="item" class="ui green button">Per Item</button>
+        <button type="submit" name="category" class="ui blue button">Per Category</button>
     </form><br>
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/modules/exporting.js"></script>

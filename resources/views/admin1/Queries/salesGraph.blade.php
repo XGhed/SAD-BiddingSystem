@@ -6,14 +6,25 @@
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
-    <form method="post" action="/salesGraph">
-        <label>From: </label>
-        <input type="date" name="start" required>
-        <label>To: </label>
-        <input type="date" name="end" required>
-        <button type="submit" name="date">Go!</button>
-        <button type="submit" name="region">Per Region</button>
-    </form><br>
+    <form method="post" action="/salesGraph" class="ui form">
+        <div class="fields">
+            <div class="three wide field">
+                <div class="ui sub header"> FROM: </div>
+                <input type="date" name="start" required>
+            </div>
+            <div class="three wide field">
+                <div class="ui sub header"> TO: </div>
+                <input type="date" name="end" required>
+            </div>
+            <div class="siex wide field">
+                <div class="ui sub header">;</div>
+                 <button class="ui green button" type="submit" name="date">Go!</button>
+            </div>
+        </div>
+       
+        <button class="ui green button" type="submit" name="region">Per Region</button>
+    </form>
+    <br>
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/modules/exporting.js"></script>
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>

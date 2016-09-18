@@ -74,7 +74,7 @@
 		<br>
 		<div class="ui three column equal width relaxed grid">
 		  	<div class="stretched row">
-		  		<div class="three wide compact column">
+		  		<!-- <div class="three wide compact column">
 			        <div class="ui vertical menu">
 			        	<a class="item" ng-click="allCategories()">All Categories</a>
 			        	@foreach($categories as $key => $category)
@@ -93,11 +93,11 @@
 					        </div>
 			        	@endforeach
 				    </div>
-				</div>
+				</div> -->
 			    <div class="column">
 					<div class="ui segment">
-					    <div class="ui special cards">
-							<div class="green card" ng-repeat="item in itemsView | filter: filterText | orderBy : orderBy:sortingOrder">
+					    <div class="ui four special cards">
+							<div class="green card" ng-repeat="item in itemsView | filter: filterText | orderBy : orderBy:sortingOrder" >
 							    <div class="blurring dimmable image">
 							    	<div class="ui dimmer">
 					                	<div class="content">
@@ -107,7 +107,7 @@
 					                	</div>
 					              	</div>
 					              	<div class="ui image">
-							      		<img src="@{{item.image_path}}" style="height: 300px; width:500px ">
+							      		<img src="@{{item.image_path}}" style="height: 200px; width:500px ">
 							      	</div>
 							    </div>
 							    <div class="content">
@@ -131,7 +131,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> 
 	</div>
 
 @if($joined == 'false')
