@@ -95,20 +95,16 @@
                       <br><br>
                       <div class="ui header">Move the following items to a common Warehouse:</div>
 
-                      <div ng-if="selectedRequest.CheckoutType == 'Deliver'">
-                        <select class="ui selection dropdown" ng-model="selectedWarehouse">
-                          <option value="" disabled selected>Select Warehouse</option>
-                          <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">
-                            @{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}
-                          </option>
-                        </select>
-                      </div>
                       
-                      <div ng-if="selectedRequest.CheckoutType == 'Pick up'" ng-repeat="warehouse in warehouses">
-                        <span ng-if="warehouse.WarehouseNo == selectedRequest.WarehouseNo">
+                      <select id="selectedWarehouse" class="ui selection dropdown" ng-model="selectedWarehouse">
+                        <option value="" disabled selected>Select Warehouse</option>
+                        <option ng-repeat="warehouse in warehouses" ng-if="selectedRequest.CheckoutType == 'Deliver'" value="@{{warehouse.WarehouseNo}}">
                           @{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}
-                        </span>
-                      </div>
+                        </option>
+                        <option ng-repeat="warehouse in warehouses" ng-if="selectedRequest.CheckoutType == 'Pick up' && warehouse.WarehouseNo == selectedRequest.WarehouseNo" value="@{{warehouse.WarehouseNo}}" selected>
+                          @{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}
+                        </option>
+                      </select>
                     </div>
 
                     <div class="actions">
@@ -155,10 +151,10 @@
       $('.ui.modal').modal('show');
       $scope.requestItems = $scope.pickupRequests[index].checkout_request__item;
       $scope.selectedRequest = request;
-      $scope.selectedWarehouse = $scope.selectedRequest.WarehouseNo;
+      $('#selectedWarehouse').dropdown('set selected', $scope.selectedRequest.WarehouseNo);
     }
 
-    $scope.approve = function(){alert($scope.selectedRequest.CheckoutRequestID);
+    $scope.approve = function(){
       $http.get('/approveCheckoutRequest?warehouse=' + $scope.selectedWarehouse + '&checkoutRequestID=' + $scope.selectedRequest.CheckoutRequestID)
       .then(function(response){
         if(response.data == "success"){
@@ -180,7 +176,9 @@
     }
   });
 
-  $('.ui.dropdown').dropdown();
-  $('.menu .item').tab();
+  $(function(){
+    $('.ui.dropdown').dropdown();
+    $('.menu .item').tab();
+  });
 </script>
 @endsection
