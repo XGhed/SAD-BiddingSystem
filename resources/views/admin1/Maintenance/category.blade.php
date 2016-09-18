@@ -127,14 +127,6 @@
             Add subcategory
           </a>
 
-          <!-- status -->
-        <div class="ui success message">
-          <i class="close icon"></i>
-          <div class="header">
-            Status Changed
-          </div>
-        </div>
-
           <!-- add modal -->
         <div class="ui small modal" id="addModal1">
           <i class="close icon"></i>

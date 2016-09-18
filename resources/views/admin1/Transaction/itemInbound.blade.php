@@ -6,6 +6,9 @@
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
+
+      
+
         <div class="ui top attached tabular menu">
           <a class="active item" data-tab="first">Expected Item</a>
           <a class="item" data-tab="second">Unexpected Item</a>
@@ -14,14 +17,18 @@
 
         
         <div class="ui bottom attached active tab segment" data-tab="first">
-           <!-- message -->
-          <div class="ui icon message">
-            <i class="info icon"></i>
-            <div class="content">
-              <div class="header">
-                Info
-              </div>
-              <p>Check the items that arrived.</p>
+           
+          <div class="ui success message" ng-show="showMessage">
+            <i class='close icon'></i>
+            <div class='ui centered header'>
+              Item Arrived!!
+            </div>
+          </div>
+
+          <div class="ui success message" ng-show="showMissing">
+            <i class='close icon'></i>
+            <div class='ui centered header'>
+              Item moved to missing!!
             </div>
           </div>
 
@@ -42,7 +49,7 @@
             <tbody>
                 <tr ng-repeat="item in itemsInbound">
                   <td>
-                    <div class="ui green button" ng-click="itemDelivered(item, $index)">
+                    <div class="ui green button" ng-click="itemDelivered(item, $index)" ng-model="showMessage">
                       <div class="content">Arrived</div>
                     </div>
                   </td>
@@ -71,45 +78,45 @@
 
                   <!-- add modal -->
           <div class="ui small modal" id="addModal">
-            <form class="ui form" action="/addUnexpectedItem" method="POST" enctype="multipart/form-data">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="hidden" name="containerID" value="">
               <i class="close icon"></i>
               <div class="header">
                 Add Item
               </div>
               <div class="content">
+              <form class="ui form" action="/addUnexpectedItem" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <input type="hidden" name="containerID" value="">
                 <div class="required fields">
                   <div class="five wide field">
                     <div class="ui sub header">Container</div>
-                    <select name="containerID" id="item" class="ui search selection dropdown" ng-model="container" REQUIRED>
-                      <option selected disabled value="">Containers</option>
+                    <select name="containerID" id="item" class="ui search selection dropdown" ng-model="container" style="height:45px" REQUIRED>
+                      <option selected disabled value="">Choose Containers</option>
                       <option ng-repeat="container in containers" value="@{{container.ContainerID}}">@{{container.ContainerName}}</option>
                     </select>
                   </div>
                 </div>
 
-                <div class="required fields">
-                  <div class="five wide field">
+                <div class="equal width required fields">
+                  <div class="field">
                     <div class="ui sub header">Category</div>
-                    <select name="category" id="item" class="ui search selection dropdown" ng-model="category" ng-change="loadSubcat()" REQUIRED>
-                      <option selected disabled value="">Category</option>
+                    <select name="category" id="item" class="ui search selection dropdown" ng-model="category" ng-change="loadSubcat()" style="height:45px" REQUIRED>
+                      <option selected disabled value="">Choose Category</option>
                       <option ng-repeat="category in categories" value="@{{category.CategoryID}}">@{{category.CategoryName}}</option>
                     </select>
                   </div>
 
-                  <div class="five wide field">
+                  <div class="field">
                     <div class="ui sub header">Subcategory</div>
-                    <select name="subcategory" id="item" class="ui search selection dropdown" ng-model="subCategory" ng-change="loadItems()" REQUIRED>
-                      <option selected disabled value="">Sub Category</option>
+                    <select name="subcategory" id="item" class="ui search selection dropdown" ng-model="subCategory" ng-change="loadItems()" style="height:45px" REQUIRED>
+                      <option selected disabled value="">Choose Subcategory</option>
                       <option ng-repeat="subCategory in subCategories" value="@{{subCategory.SubCategoryID}}">@{{subCategory.SubCategoryName}}</option>
                     </select>
                   </div>
 
-                  <div class="five wide required field">
+                  <div class="required field">
                     <div class="ui sub header">Item</div>
-                    <select name="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loadItemDetails()" REQUIRED>
-                      <option selected disabled value="">Items</option>
+                    <select name="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loadItemDetails()"style="height:45px"  REQUIRED>
+                      <option selected disabled value="">Choose Items</option>
                       <option ng-repeat="item in additems" value="@{{item.ItemModelID}}">@{{item.ItemName}}</option>
                     </select>
                   </div>
@@ -182,6 +189,13 @@
               <p>Items missing from the containers.</p>
             </div>
           </div>
+          
+          <div class="ui success message" ng-show="showFound">
+            <i class='close icon'></i>
+            <div class='ui centered header'>
+              Item Found!!
+            </div>
+          </div>
 
           <table datatable="ng" class="ui compact celled definition table">
             <thead>
@@ -198,8 +212,8 @@
             </thead>
             <tbody>
                 <tr ng-repeat="item in itemsMissing">
-                  <td>
-                    <div class="ui vertical animated button" ng-click="itemFound(item, $index)">
+                  <td class="collapsing">
+                    <div class="ui blue button" ng-click="itemFound(item, $index)">
                       <div class="content">Found/Arrived</div>
                     </div>
                   </td>
@@ -289,7 +303,8 @@
     $scope.itemMissing = function(item, index){
       $http.get('/itemMissing?itemID=' + item.ItemID)
       .then(function(response){
-        alert(response.data);
+        $scope.showMissing = true;
+        $scope.showMessage = false;
         if(response.data == 'success'){
           $scope.itemsInbound.splice(index, 1);
         }
@@ -299,7 +314,8 @@
     $scope.itemDelivered = function(item, index){
       $http.get('/itemDelivered?itemID=' + item.ItemID)
       .then(function(response){
-        alert(response.data);
+        $scope.showMessage = true;
+        $scope.showMissing = false;
         if(response.data == 'success'){
           $scope.itemsInbound.splice(index, 1);
         }
@@ -309,15 +325,25 @@
     $scope.itemFound = function(item, index){
       $http.get('/itemFound?itemID=' + item.ItemID)
       .then(function(response){
-        alert(response.data);
+        $scope.showFound = true;
         if(response.data == 'success'){
           $scope.itemsMissing.splice(index, 1);
         }
       });
     }
 
+
   });
 
+
+$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
 
 $('.menu .item').tab();
 </script>

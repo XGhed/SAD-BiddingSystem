@@ -23,7 +23,7 @@
               <div class="equal width fields">
                 <div class="field">
                   <div class="ui sub header">Supplier</div>
-                  <select name="supplier" id="supplier" class="ui search selection dropdown" REQUIRED>
+                  <select name="supplier" id="supplier" class="ui search selection dropdown" style="height: 45px;" REQUIRED>
                     <option disabled selected value="">Supplier</option>
                     <option ng-repeat="supplier in suppliers" value="@{{supplier.SupplierID}}">@{{supplier.SupplierName}}</option>
                   </select>
@@ -31,7 +31,7 @@
 
                 <div class="field">
                   <div class="ui sub header">Warehouse</div>
-                  <select name="warehouse" id="warehouse" class="ui search selection dropdown" REQUIRED>
+                  <select name="warehouse" id="warehouse" class="ui search selection dropdown" style="height: 45px;" REQUIRED>
                     <option disabled selected value="">Warehouse</option>
                     <option ng-repeat="warehouse in addwarehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
                   </select>
@@ -77,7 +77,7 @@
                 <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">Supplier</div>
-                    <select name="supplier" id="edit_supplier" ng-model="edit_supplier" class="ui search selection dropdown" REQUIRED>
+                    <select name="supplier" id="edit_supplier" ng-model="edit_supplier" class="ui search selection dropdown" style="height:45px" REQUIRED>
                       <option disabled selected>Supplier</option>
                       <option ng-repeat="supplier in suppliers" value="@{{supplier.SupplierID}}">@{{supplier.SupplierName}}</option>
                     </select>
@@ -86,7 +86,7 @@
                   <div class="equal width required fields">
                     <div class="field">
                       <div class="ui sub header">Warehouse</div>
-                      <select name="warehouse" id="edit_warehouse" ng-model="edit_warehouse" class="ui search selection dropdown" REQUIRED>
+                      <select name="warehouse" id="edit_warehouse" ng-model="edit_warehouse" class="ui search selection dropdown" style="height:45px" REQUIRED>
                         <option disabled selected>Warehouse</option>
                         <option ng-repeat="warehouse in addwarehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
                       </select>

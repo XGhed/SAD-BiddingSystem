@@ -7,24 +7,29 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
       <div class="ui segment">
-        <div class="ui field">
-          Warehouse Source
-          <select class="ui search selection dropdown" ng-model="warehouseTo" ng-change="loadItems()">
-            <option disabled selected value="">Destination Warehouse</option>
-            <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
-          </select>
-        </div>
-        <div class="ui field">
-          Warehouse Destination
-          <select class="ui search selection dropdown" ng-model="warehouseFrom" ng-change="loadItems()">
-            <option disabled selected value="">Destination Warehouse</option>
-            <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
-          </select>
-        </div>
+        <form class="ui form">
+          <div class="field">
+            <div class="ui sub header">From Warehouse (Source warehouse)</div>
+            <select class="ui search selection dropdown" ng-model="warehouseTo" ng-change="loadItems()">
+              <option disabled selected value="">Choose Warehouse</option>
+              <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
+            </select>
+          </div>
+          <br>
+          <div class="field">
+            <div class="ui sub header">To Warehouse (Destination warehouse)</div>
+            <select class="ui search selection dropdown" ng-model="warehouseFrom" ng-change="loadItems()">
+              <option disabled selected value="">Choose Warehouse</option>
+              <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
+            </select>
+          </div>
+        </form>
       </div>
+
       <h2 class="ui centered header">Request to move items</h2>
-      <form action="itemMoveRequest" method="POST">
-        <table class="ui celled table" datatable="ng">
+      <form class="ui form" action="itemMoveRequest" method="POST">
+      
+        <table class="ui definition celled table" datatable="ng">
           <thead>
             <tr>
               <th></th>
@@ -51,13 +56,14 @@
           </tbody>
         </table>
 
-        <div class="field">
+        <div class="ten wide field">
           <select class="ui search selection dropdown" name="warehouse">
             <option disabled selected value="">Destination Warehouse</option>
             <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
           </select>
         </div>
-        <div class="field">
+        <div class="seven wide field">
+          <div class="ui sub header">Remarks</div>
           <input type="text" name="remarks" placeholder="Remarks" />
         </div>
         <div class="actions">

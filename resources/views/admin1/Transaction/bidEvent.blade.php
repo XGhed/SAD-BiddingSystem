@@ -106,13 +106,15 @@
             <!-- END edit modal -->
 
           <!-- details -->
-          <div class="ui segment">
-          <div class="ui three cards">
+          <div class="ui inverted segment">
+          <div class="ui three raised link cards">
             @foreach($events as $event)
-              <div class="card">
+              <div class="blue card" ng-click="viewItems({{$event->AuctionID}})">
                 <div class="content">
-                  <div class="header">{{$event->EventName}}
-                    <div class="ui top right attached label"><a id="editBtn" data-content="Edit event"><i class="edit icon"></i></a></div>
+                  <div class="ui centered blue header">{{$event->EventName}}
+                    <!-- <div class="ui top right attached label">
+                    <a id="editBtn" data-content="Edit event"><i class="edit icon"></i></a>
+                    </div>-->
                   </div>
                 </div>
                 <div class="content">
@@ -134,7 +136,7 @@
                   </div>
                 </div>
                 <div class="extra content">
-                  <button class="ui button" ng-click="viewItems({{$event->AuctionID}})">View Event</button>
+                  <button class="ui right floated blue button" ng-click="viewItems({{$event->AuctionID}})">View Event</button>
                 </div>
             </div>
             @endforeach 

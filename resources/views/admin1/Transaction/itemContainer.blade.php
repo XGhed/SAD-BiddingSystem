@@ -26,25 +26,25 @@
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" name="containerID" value="{{$container->ContainerID}}">
               
-              <div class="required fields">
-                <div class="five wide field">
+              <div class="equal width required fields">
+                <div class="field">
                   <div class="ui sub header">Category</div>
                   <select name="item" id="item" class="ui search selection dropdown" ng-model="category" ng-change="loadSubcat()" REQUIRED>
-                    <option value="" disabled selected>Category</option>
+                    <option value="" disabled selected>Choose Category</option>
                     <option ng-repeat="category in categories" value="@{{category.CategoryID}}">@{{category.CategoryName}}</option>
                   </select>
                 </div>
-                <div class="five wide field">
+                <div class="field">
                   <div class="ui sub header">Subcategory</div>
                   <select name="item" id="item" class="ui search selection dropdown" ng-model="subCategory" ng-change="loadItems()" REQUIRED>
-                    <option value="" disabled selected>Subcategory</option>
+                    <option value="" disabled selected>Choose Subcategory</option>
                     <option ng-repeat="subCategory in subCategories" value="@{{subCategory.SubCategoryID}}">@{{subCategory.SubCategoryName}}</option>
                   </select>
                 </div>
-                <div class="five wide required field">
+                <div class="field">
                   <div class="ui sub header">Item</div>
                   <select name="item" id="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loaditemDetails()" REQUIRED>
-                    <option value="" disabled selected>Item</option>
+                    <option value="" disabled selected>Choose Item</option>
                     <option ng-repeat="item in additems" value="@{{item.ItemModelID}}">@{{item.ItemName}}</option>
                   </select>
                 </div>

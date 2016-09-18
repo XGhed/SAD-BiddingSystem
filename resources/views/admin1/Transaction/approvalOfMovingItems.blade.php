@@ -15,7 +15,7 @@
         </thead>
         <tr ng-repeat="request in requests">
           <td>
-            <div class="ui button" ng-click="viewRequest(request.item_moving_request)">View</div>
+            <div class="ui black button" ng-click="viewRequest(request.item_moving_request)">View</div>
           </td>
           <td>@{{request.MovingRequestID}}</td>
           <td>@{{request.item_moving_request.length}}</td>
@@ -29,43 +29,53 @@
 
 
       <div class="ui modal" id="showItems">
-        <form action="approveMovingOfItems" method="POST">
-          <input type="hidden" name="requestID" value="@{{requestID}}" />
-          <table class="ui celled table" datatable="ng">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Current Warehouse</th>
-                <th>Requested Warehouse</th>
-                <th>Item ID</th>
-                <th>Item</th>
-                <th>Color</th>
-                <th>Size</th>
-                <th>Defect</th>
-            </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="item_movingrequest in item_movingrequests" ng-if="item_movingrequest.item.RequestedWarehouse != 'null'">
-                <td>
-                  <input name="approvedItems[]" value="@{{item_movingrequest.item.ItemID}}" type="checkbox" class="ui checkbox">
-                </td>
-                <td>@{{item_movingrequest.item.current_warehouse.Barangay_Street_Address}}, @{{item.current_warehouse.city.CityName}}, @{{item.current_warehouse.city.province.ProvinceName}}</td>
-                <td>@{{item_movingrequest.item.requested_warehouse.Barangay_Street_Address}}, @{{item.requested_warehouse.city.CityName}}, @{{item.requested_warehouse.city.province.ProvinceName}}</td>
-                <td>@{{item_movingrequest.item.ItemID}}</td>
-                <td>@{{item_movingrequest.item.item_model.ItemName}}</td>
-                <td>@{{item_movingrequest.item.color}}</td>
-                <td>@{{item_movingrequest.item.size}}</td>
-                <td>@{{item_movingrequest.item.DefectDescription}}</td>
+        <i class="close icon"></i>
+          
+        <div class="content">
+         <input type="hidden" name="requestID" value="@{{requestID}}" />
+          <form action="approveMovingOfItems" method="POST">
+            <table class="ui celled table" datatable="ng">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Current Warehouse</th>
+                  <th>Requested Warehouse</th>
+                  <th>Item ID</th>
+                  <th>Item</th>
+                  <th>Color</th>
+                  <th>Size</th>
+                  <th>Defect</th>
               </tr>
-            </tbody>
-          </table>
-          <button class="ui button" type="submit">Approve</button>
-        </form>
-        <form action="approveAllMovingOfItems" method="POST">
-          <input type="hidden" name="requestID" value="@{{requestID}}" />
-          <button class="ui button" type="submit">Approve All</button>
-        </form>
-      </div>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item_movingrequest in item_movingrequests" ng-if="item_movingrequest.item.RequestedWarehouse != 'null'">
+                  <td>
+                    <input name="approvedItems[]" value="@{{item_movingrequest.item.ItemID}}" type="checkbox" class="ui checkbox">
+                  </td>
+                  <td>@{{item_movingrequest.item.current_warehouse.Barangay_Street_Address}}, @{{item.current_warehouse.city.CityName}}, @{{item.current_warehouse.city.province.ProvinceName}}</td>
+                  <td>@{{item_movingrequest.item.requested_warehouse.Barangay_Street_Address}}, @{{item.requested_warehouse.city.CityName}}, @{{item.requested_warehouse.city.province.ProvinceName}}</td>
+                  <td>@{{item_movingrequest.item.ItemID}}</td>
+                  <td>@{{item_movingrequest.item.item_model.ItemName}}</td>
+                  <td>@{{item_movingrequest.item.color}}</td>
+                  <td>@{{item_movingrequest.item.size}}</td>
+                  <td>@{{item_movingrequest.item.DefectDescription}}</td>
+                </tr>
+              </tbody>
+            </table>
+          <div class="actions">
+            <div class="ui right buttons">
+              <button class="ui blue button" type="submit">Approve</button>
+          </form>
+              <div class="or"></div>
+              <form action="approveAllMovingOfItems" method="POST">
+                <input type="hidden" name="requestID" value="@{{requestID}}" />
+                <button class="ui green button" type="submit">Approve All</button>
+              </form>
+            </div><!-- ui buttons -->
+          </div><!-- actions -->
+      </div><!-- modal -->
+
+
     </div><!-- segment -->
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->

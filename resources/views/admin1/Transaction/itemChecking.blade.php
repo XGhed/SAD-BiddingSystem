@@ -35,7 +35,7 @@
           </thead>
           <tbody>
              <tr ng-repeat="uncheck in itemsChecking">
-                    <td>
+                    <td class="collapsing">
                       <button ng-click="uncheckModal(uncheck.ItemID)" class="ui basic green button" name="tdID" value="@{{uncheck.ItemID}}">View Item</button>
                     </td>
                     <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.ItemID}}</td>
@@ -53,17 +53,18 @@
               <div class="field">
                 <div class="four wide field">
                   <div class="field">
-                    <div class="ui sub header">Image</div>
+                    <div class="ui sub header">Attach image for item.</div>
                     <input type="file" id="add_photo" name="add_photo" REQUIRED>
                   </div>
                 </div>
 
-                <div class="ui sub header">Defect</div>
+                <div class="ui divider"></div>        
 
                 <div class="fields">
-                  <div class="five wide field">
-                    <select name="defect" class="ui search selection dropdown" REQUIRED>
-                        <option value="" disabled selected>Defect</option>
+                  <div class="nine wide field">
+                    <div class="ui sub header">Defect</div>
+                    <select name="defect" class="ui search selection dropdown" ng-model="dropDown" REQUIRED style="height:45px">
+                        <option value="" disabled selected>Choose Option</option>
                         @foreach($defects as $key => $defect)
                           <option value="{{$defect->ItemDefectID}}">{{$defect->DefectName}}</option>
                         @endforeach
@@ -73,8 +74,9 @@
                 </div>
 
                 <div class="fields">
-                  <div class="five wide field" id="defectDesc">
-                    <input id="defectDesc" type="text" name="defectDesc" placeholder="None" />
+                  <div class="seven wide field" id="defectDesc" ng-show="dropDown=='null'">
+                    <div class="ui sub header">OTHERS:</div>
+                    <input id="defectDesc" type="text" name="defectDesc" placeholder="Put description of defect here..." />
                   </div>
                 </div>
               </div>
@@ -99,7 +101,7 @@
           </thead>
           <tbody>
              <tr ng-repeat="check in itemsChecked">
-                    <td>
+                    <td class="collapsing">
                       <button ng-click="checkModal(check.ItemID, check.image_path)" class="ui basic green button">View Item</button>
                     </td>
                     <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.ItemID}}</td>
@@ -120,46 +122,41 @@
           <div class="content">
             <form class="ui form" action="/itemCheck" method="POST" enctype="multipart/form-data">
               <input type="hidden" name="itemID2" id="itemID2">
-              <div class="field">
-              <img id="checkimage" style="width:10cm; height:10cm">
-                <div class="fields">
-                  <div class="three wide field">
+
+                <img class="ui centered image" id="checkimage" style="width: 300px; height: 300px;">
+                <br><br>
+
+                  <div class="field">
                     <div class="ui checkbox">
-                      <input type="checkbox" id="checkImg" name="img" />
-                      <label>Image</label>
+                      <input type="checkbox" ng-model="checkImg" name="img" />
+                      <label>Change Image</label>
                     </div>
                   </div>
 
-                  <div class="five wide field" style="display: none" id="imgcheck">
+                  <div class="five wide field" ng-show="checkImg">
                     <input type="file" id="add_photo" name="add_photo">
                   </div>
-                </div>
 
-                <div class="fields">
-                  <div class="three wide field">
+                  <div class="field">
                     <div class="ui checkbox">
-                      <input type="checkbox" id="checkDef" name="defect" />
-                      <label>Defect</label>
+                      <input type="checkbox" ng-model="checkDef" name="defect" />
+                      <label>Change Defect</label>
                     </div>
                   </div>
 
-                  <div class="fields">
-                  <div class="three wide field">
-                    <select id="checkselect" style="display: none" name="defect" class="ui search selection dropdown" REQUIRED>
-                        <option value="" disabled selected>Defect</option>
-                        @foreach($defects as $key => $defect)
-                          <option value="{{$defect->ItemDefectID}}">{{$defect->DefectName}}</option>
-                        @endforeach
-                        <option value="null">Others</option>
-                      </select>
+                  <div class="nine wide field">
+                    <select id="checkselect" name="defect" class="ui search selection dropdown" ng-model="dropDown" ng-show="checkDef" style="height:45px">
+                      <option value="" disabled selected>Choose Defect</option>
+                      @foreach($defects as $key => $defect)
+                      <option value="{{$defect->ItemDefectID}}">{{$defect->DefectName}}</option>
+                      @endforeach
+                      <option value="null">Others</option>
+                    </select>
                   </div>
-                </div>
 
-                  <div class="five wide field" style="display: none" id="checkdefectDesc">
+                  <div class="seven wide field" ng-show="dropDown=='null'">
                     <input id="defectDesc" type="text" name="defectDesc" placeholder="Description" />
                   </div>
-                </div>
-              </div>
           </div>
           <div class="actions">
             <button class="ui basic blue button" name="Check" type="submit">Confirm</button>
