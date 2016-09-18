@@ -15,6 +15,9 @@
       <script type="text/javascript" src="{!!URL::asset('js/dataTables.semanticui.min.js')!!}"></script>
       <script type="text/javascript" src="js/angular.min.js"></script>
       <script type="text/javascript" src="{!!URL::asset('js/angular-datatables.min.js')!!}"></script>
+      <script type="text/javascript" src="{!!URL::asset('js/moment.min.js')!!}"></script>
+      <script type="text/javascript" src="{!!URL::asset('js/humanize-duration.js')!!}"></script>
+      <script type="text/javascript" src="{!!URL::asset('js/angular-timer.min.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/semantic.min.js')!!}"></script>
 
       <!--calendar -->

@@ -9,6 +9,8 @@
          <h2 class="ui header centered" ng-bind="eventDetails.EventName"></h2>
          <div class="event">
           <div class="content">
+            <timer class="ui centered header" countdown="eventDetails.remainingTime" max-time-unit="'hour'" interval="1000" ng-if="eventDetails.remainingTime > 0">
+            <h2 class="ui centered header inverted segment">Countdown till event ends: @{{hhours}} hour@{{hourS}}, @{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</h2></timer>
             <div class="summary">
               <span>Start Time: <span ng-bind="eventDetails.StartDateTime"></span> </span>
             </div>
@@ -182,7 +184,7 @@
 
 
 
-var app = angular.module('myApp', ['datatables']);
+var app = angular.module('myApp', ['datatables', 'timer']);
 app.controller('myController', function($scope, $http, $timeout){
   //timeout for delay, waiting for eventID to initialize
   $timeout(function(){
@@ -200,7 +202,6 @@ app.controller('myController', function($scope, $http, $timeout){
     .then(function(response){
       $scope.itemmodels = response.data;
     });
-
     
   }, 1000);
 
@@ -252,6 +253,10 @@ app.controller('myController', function($scope, $http, $timeout){
   $scope.editModal = function(container){
     $('#editModal').modal('show');
   }
+
+  $scope.$on('timer-tick', function (event, data) {
+    //alert(data.millis);
+  });
 });
 
 
