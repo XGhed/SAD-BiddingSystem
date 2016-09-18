@@ -10,6 +10,7 @@ use App\Models\Admin;
 use Session;
 use Carbon\Carbon;
 
+
 class GraphController extends Controller
 {
     public function salesGraph(Request $request){
