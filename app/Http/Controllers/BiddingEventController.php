@@ -58,6 +58,7 @@ class BiddingEventController extends Controller
         ->hour($end['time'][0])->minute($end['time'][1])->second($end['time'][2])
         ->toDateTimeString();
 
+        $event->timeBeforeStart = Carbon::now('Asia/Manila')->diffInSeconds($startDateTime, false);
         $event->remainingTime = Carbon::now('Asia/Manila')->diffInSeconds($endDateTime);
 
         return $event;

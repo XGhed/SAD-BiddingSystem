@@ -9,8 +9,9 @@
          <h2 class="ui header centered" ng-bind="eventDetails.EventName"></h2>
          <div class="event">
           <div class="content">
-            <timer class="ui centered header" countdown="eventDetails.remainingTime" max-time-unit="'hour'" interval="1000" ng-if="eventDetails.remainingTime > 0">
-            <h2 class="ui centered header inverted segment">Countdown till event ends: @{{hhours}} hour@{{hourS}}, @{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</h2></timer>
+            <timer class="ui centered header" countdown="eventDetails.timeBeforeStart" max-time-unit="'hour'" interval="1000" ng-if="eventDetails.timeBeforeStart > 0">
+            <h2 class="ui centered header inverted segment">Countdown till event starts: @{{hhours}} hour@{{hourS}}, @{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</h2></timer>
+            <div class="ui centered header" ng-if="eventDetails.timeBeforeStart <= 0">Event has ended</div>
             <div class="summary">
               <span>Start Time: <span ng-bind="eventDetails.StartDateTime"></span> </span>
             </div>
@@ -45,11 +46,11 @@
               <form class="ui form" action="/editBiddingEvent" method="POST">
                 <input type="hidden" name="eventID" value="@{{eventDetails.AuctionID}}" />
                 <div class="fields">
-                  <div class="five wide field">
+                  <div class="five wide field" ng-if="secondsLeft > 0">
                     <div class="ui sub header">Event Name</div>
                     <input type="text" name="eventname" id="edit_name" value="@{{eventDetails.EventName}}"/>
                   </div>
-                  <div class="five wide field">
+                  <div class="five wide field" ng-if="secondsLeft > 0">
                     <div class="ui sub header">Start Time:</div>
                     <input type="date" id="startDate" name="startdate" value="@{{eventDetails.StartDateTime.split(' ')[0]}}">
                     <input type="time" name="starttime" required value="@{{eventDetails.StartDateTime.split(' ')[1]}}">
@@ -255,7 +256,7 @@ app.controller('myController', function($scope, $http, $timeout){
   }
 
   $scope.$on('timer-tick', function (event, data) {
-    //alert(data.millis);
+    $scope.secondsLeft = data.millis;
   });
 });
 
