@@ -116,4 +116,10 @@ class CustomerCheckoutController extends Controller
 
         return redirect('/pdfFile');
     }
+
+    public function checkoutList(Request $request){
+        $checkoutRequests = App\Models\Admin\CheckoutRequest::where('AccountID', $request->session()->get('accountID'))->get();
+
+        return $checkoutRequests;
+    }
 }

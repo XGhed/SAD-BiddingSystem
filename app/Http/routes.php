@@ -263,6 +263,8 @@ Route::get('/readyForCheckoutPickup', 'ItemOutboundController@readyForCheckoutPi
 
 Route::get('/itemsWon', 'CustomerCheckoutController@itemsWon');
 
+Route::get('/checkoutList', 'CustomerCheckoutController@checkoutList');
+
 Route::get('/shipmentFee', 'AngularOutput@shipmentFee');
 
 Route::get('/postEventsList', 'PostEventNoBidItemsController@postEventsList');

@@ -181,7 +181,9 @@ class AngularOutput extends Controller
 
     public function allContainers(){
 
-        $containers = App\Models\Admin\Container::orderBy('Arrival', 'desc')->with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province')
+        $containers = App\Models\Admin\Container::orderBy('ActualArrival', 'asc')
+        ->orderBy('Arrival', 'desc')
+        ->with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province')
         ->get();
 
         return $containers;
