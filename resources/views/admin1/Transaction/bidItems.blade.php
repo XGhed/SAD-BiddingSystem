@@ -11,7 +11,7 @@
           <div class="content">
             <timer class="ui centered header" countdown="eventDetails.timeBeforeStart" max-time-unit="'hour'" interval="1000" ng-if="eventDetails.timeBeforeStart > 0">
             <h2 class="ui centered header inverted segment">Countdown till event starts: @{{hhours}} hour@{{hourS}}, @{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</h2></timer>
-            <div class="ui centered header" ng-if="eventDetails.timeBeforeStart <= 0">Event has ended</div>
+            <div class="ui centered header" ng-if="eventDetails.timeBeforeStart <= 0">Event has started</div>
             <div class="summary">
               <span>Start Time: <span ng-bind="eventDetails.StartDateTime"></span> </span>
             </div>
@@ -84,6 +84,20 @@
               <div class="ui form ">
 
                 <div class="equal width fields">
+                  <div class="five wide field">
+                    <div class="ui sub header">Category</div>
+                    <select name="item" id="item" class="ui search selection dropdown" ng-model="category" ng-change="loadSubcat()" REQUIRED>
+                      <option value="" disabled selected>Category</option>
+                      <option ng-repeat="category in categories" value="@{{category.CategoryID}}">@{{category.CategoryName}}</option>
+                    </select>
+                  </div>
+                  <div class="five wide field">
+                    <div class="ui sub header">Subcategory</div>
+                    <select name="item" id="item" class="ui search selection dropdown" ng-model="subCategory" ng-change="loadModels()" REQUIRED>
+                      <option value="" disabled selected>Subcategory</option>
+                      <option ng-repeat="subCategory in subCategories" value="@{{subCategory.SubCategoryID}}">@{{subCategory.SubCategoryName}}</option>
+                    </select>
+                  </div>
                   <div class="field">
                     <div class="ui sub header">Item</div>
                     <select name="itemModels" class="ui search selection dropdown" ng-model="itemmodelSelected" ng-change="loadItems()">
@@ -98,7 +112,9 @@
                       <option ng-repeat="item in items" value="@{{item.ItemID}}">@{{item.ItemID}}</option>
                     </select>
                   </div>
+                </div>
 
+                <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">Price</div>
                     <div class="ui input">
@@ -198,11 +214,6 @@ app.controller('myController', function($scope, $http, $timeout){
     .then(function(response){
       $scope.auctionitems = response.data;
     });
-
-    $http.get('/itemModels')
-    .then(function(response){
-      $scope.itemmodels = response.data;
-    });
     
   }, 1000);
 
@@ -258,6 +269,26 @@ app.controller('myController', function($scope, $http, $timeout){
   $scope.$on('timer-tick', function (event, data) {
     $scope.secondsLeft = data.millis;
   });
+
+  $http.get('/categories')
+  .then(function(response){
+    $scope.categories = response.data;
+  });
+
+  $scope.loadSubcat = function(){
+    $http.get('/subcatOptions?catID=' + $scope.category)
+    .then(function(response){
+      $scope.subCategories = response.data;  
+    });
+  }
+
+  $scope.loadModels = function(){
+    $http.get('/itemModelsOfSubcat?subcatID=' + $scope.subCategory)
+    .then(function(response){
+      $scope.itemmodels = response.data;
+    });
+  }
+
 });
 
 
