@@ -13,6 +13,7 @@ class Account extends Migration
         $table->String('Username', 30);
         $table->String('Password', 15);
         $table->integer('Points');
+        $table->dateTime('DateApproved');
         $table->integer('status');
         $table->rememberToken();
     });
