@@ -25,7 +25,7 @@
 <script>
     <?php
         if(is_null($item)){
-            echo "alert('Nothing to display!');";
+            echo "alert('Nothing to display or invalid date inputs!');";
         }
     ?>
 $(function() {

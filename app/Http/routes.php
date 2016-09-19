@@ -105,7 +105,7 @@ Route::post('/sendMessageCustomer', 'CustomerMessageController@send');
 
 Route::post('/sendProofPayment', 'ProofPaymentController@insert');
 
-Route::post('/salesGraphReg', 'GraphController@salesGraphReg');
+Route::get('/salesGraphReg', 'GraphController@salesGraphReg');
 
 Route::any('/salesGraph', 'GraphController@salesGraph');
 
@@ -146,6 +146,8 @@ Route::any('/mostBid', 'GraphController@mostBid');
 Route::get('/mostBidItem', 'GraphController@mostBidItem');
 
 Route::get('/mostBidCat', 'GraphController@mostBidCat');
+
+Route::get('/customerGraph', 'GraphController@customerGraph');
 
 //Route::get('/itemChecking', 'ItemCheckingController@viewItems');
 //Route::get('/shipment', 'PageController@shipment');
