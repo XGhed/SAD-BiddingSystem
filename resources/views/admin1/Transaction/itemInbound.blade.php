@@ -29,42 +29,36 @@
             </div>
           </div>
 
-          <table datatable="ng" class="ui compact celled table">
-            <thead>
-              <tr>
-                <th>Arrived</th>
-                <th>Missing?</th>
-                <th>Container</th>
-                <th>ItemID</th>
-                <th>Item</th>
-                <!--<th>Defect</th> -->
-                <th>Color</th>
-                <th>Size</th>
-                <!--<th>Image</th> -->
-              </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="item in itemsInbound">
-                  <td>
-                    <div class="ui green button" ng-click="itemDelivered(item, $index)" ng-model="showMessage">
-                      <div class="content">Arrived</div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="ui red button" ng-click="itemMissing(item, $index)">
-                      <div class="content">Missing</div>
-                    </div>
-                  </td>
-                  <td>@{{item.container.ContainerName}}</td>
-                  <td>@{{item.ItemID}}</td>
-                  <td>@{{item.item_model.ItemName}}</td>
-                  <!--<td>@{{item.DefectDescription}}</td> -->
-                  <td>@{{item.color}}</td>
-                  <td>@{{item.size}}</td>
-                 <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
+          <form action="/itemInbound" method="POST">
+            <table datatable="ng" class="ui compact celled table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Container</th>
+                  <th>ItemID</th>
+                  <th>Item</th>
+                  <!--<th>Defect</th> -->
+                  <th>Color</th>
+                  <th>Size</th>
+                  <!--<th>Image</th> -->
                 </tr>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="item in itemsInbound">
+                    <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}"></td>
+                    <td>@{{item.container.ContainerName}}</td>
+                    <td>@{{item.ItemID}}</td>
+                    <td>@{{item.item_model.ItemName}}</td>
+                    <!--<td>@{{item.DefectDescription}}</td> -->
+                    <td>@{{item.color}}</td>
+                    <td>@{{item.size}}</td>
+                   <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
+                  </tr>
+              </tbody>
+            </table>
+            <button class="ui green button" type="submit" name="inbound">Inbound</button>
+            <button class="ui red button" type="submit" name="missing">Missing</button>
+          </form>
         </div>
 
         <div class="ui bottom attached tab segment" data-tab="second">
@@ -295,28 +289,6 @@
 
       $scope.unexpected_size = item.size;
       $('#unexpected_color').dropdown('set selected', item.color);
-    }
-
-    $scope.itemMissing = function(item, index){
-      $http.get('/itemMissing?itemID=' + item.ItemID)
-      .then(function(response){
-        $scope.showMissing = true;
-        $scope.showMessage = false;
-        if(response.data == 'success'){
-          $scope.itemsInbound.splice(index, 1);
-        }
-      });
-    }
-
-    $scope.itemDelivered = function(item, index){
-      $http.get('/itemDelivered?itemID=' + item.ItemID)
-      .then(function(response){
-        $scope.showMessage = true;
-        $scope.showMissing = false;
-        if(response.data == 'success'){
-          $scope.itemsInbound.splice(index, 1);
-        }
-      });
     }
 
     $scope.itemFound = function(item, index){

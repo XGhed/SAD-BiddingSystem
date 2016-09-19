@@ -18,33 +18,48 @@ class ItemInboundController extends Controller
         return view('admin1.Transaction.itemInbound')->with('colors', $colors);
     }
 
+    public function itemInbound(Request $request){
+        if($request->has('inbound')){
+            $this->itemDelivered($request);
+        }
+        else if ($request->has('missing')){
+            $this->itemMissing($request);
+        }
+
+        return redirect('/itemInbound');
+    }
+
     public function itemDelivered(Request $request){
-        $item = App\Models\Admin\Item::find($request->itemID);
-        $item->status = 1;
-        $item->CurrentWarehouse = $item->container->warehouse->WarehouseNo;
+        foreach ($request->items as $key => $itemID) {
+            $item = App\Models\Admin\Item::find($itemID);
+            $item->status = 1;          $this->itemMissing($request);
+            $item->CurrentWarehouse = $item->container->warehouse->WarehouseNo;
 
-        $item->save();
+            $item->save();
 
-        $this->ItemLog(
-            $item, 
-            "Item successfully delivered to warehouse " . $item->current_warehouse->Barangay_Street_Address . ", " . $item->current_warehouse->city->province->ProvinceName . ", " . $item->current_warehouse->city->CityName
-            );
+            $this->ItemLog(
+                $item, 
+                "Item successfully delivered to warehouse " . $item->current_warehouse->Barangay_Street_Address . ", " . $item->current_warehouse->city->province->ProvinceName . ", " . $item->current_warehouse->city->CityName
+                );
+        }
         
 
-        return 'success';
+        return redirect('/itemInbound');
     }
 
     public function itemMissing(Request $request){
-        $item = App\Models\Admin\Item::find($request->itemID);
-        $item->status = -1;
-        $item->save();
+        foreach ($request->items as $key => $itemID) {
+            $item = App\Models\Admin\Item::find($itemID);
+            $item->status = -1;
+            $item->save();
 
-        $this->ItemLog(
-            $item, 
-            "Item is missing from the container " . $item->container->ContainerName
-            );
+            $this->ItemLog(
+                $item, 
+                "Item is missing from the container " . $item->container->ContainerName
+                );
+        }
 
-        return 'success';
+        return redirect('/itemInbound');
     } 
 
     public function itemFound(Request $request){
