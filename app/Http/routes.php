@@ -243,6 +243,8 @@ Route::get('/itemModelsOfSubcat', 'AngularOutput@itemModelsOfSubcat');
 
 Route::get('/problemTypesList', 'AngularOutput@problemTypesList');
 
+Route::get('/accountInfo', 'AngularOutput@accountInfo');
+
 //Route::get('/salesGraph', 'AngularOutput@salesGraph');
 
 //

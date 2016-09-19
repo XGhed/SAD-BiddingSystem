@@ -1,7 +1,7 @@
 @extends('admin1.mainteParent')
 
 @section('content')
-  <div class="ui grid" ng-app="myApp" ng-controller="myController" ng-init="eventID = {{$eventID}}">
+  <div class="ui grid" ng-app="myApp" ng-controller="myController" ng-init="eventID = {{$eventID}}; ended = {{$ended}};">
      @include('admin1.Transaction.sideNav')
 
     <div class="twelve wide stretched column">
@@ -11,7 +11,8 @@
           <div class="content">
             <timer class="ui centered header" countdown="eventDetails.timeBeforeStart" max-time-unit="'hour'" interval="1000" ng-if="eventDetails.timeBeforeStart > 0">
             <h2 class="ui centered header inverted segment">Countdown till event starts: @{{hhours}} hour@{{hourS}}, @{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</h2></timer>
-            <div class="ui centered header" ng-if="eventDetails.timeBeforeStart <= 0">Event has started</div>
+            <div class="ui centered header" ng-if="eventDetails.timeBeforeStart <= 0 && ended == false">Event has started</div>
+            <div class="ui centered header" ng-if="ended == true">Event has ended</div>
             <div class="summary">
               <span>Start Time: <span ng-bind="eventDetails.StartDateTime"></span> </span>
             </div>
@@ -31,7 +32,7 @@
           </div>
           <div class="ui divider"></div>
           <h4 class="ui header centered">List of Items</h4>
-          <a class="ui basic blue button" id="addBtn">
+          <a class="ui basic blue button" id="addBtn" ng-if="ended == false">
               <i class="Add to cart icon"></i>
               Add Items
             </a>
@@ -171,7 +172,7 @@
             <th>Item Name</th>
             <th>Price</th>
             <th>Points</th>
-            <th>Manage</th>
+            <th ng-if="ended == false && eventDetails.timeBeforeStart > 0">Manage</th>
           </tr></thead>
           <tbody>
             <tr ng-repeat="auctionitem in auctionitems">
@@ -179,7 +180,7 @@
               <td>@{{auctionitem.item.item_model.ItemName}}</td>
               <td>@{{auctionitem.ItemPrice}}</td>
               <td>@{{auctionitem.Points}}</td>
-              <td><div class="ui basic red button" ng-click="removeFromEvent($index)">Remove</div></td>
+              <td><div class="ui basic red button" ng-click="removeFromEvent($index)" ng-if="ended == false && eventDetails.timeBeforeStart > 0">Remove</div></td>
             </tr>
           </tbody>
         </table>
