@@ -1,84 +1,225 @@
 @extends('customer.homepage')
 
 @section('content')
-<div style="margin: 100px 0 0 0" class="ui container segment">
-	@include('customer.sidenav')
-	<div class="ui grid">
-		<div class="three wide column">
-          @if(session('accountID') != "")
-				<div class="ui list">
-				  <div class="item">
-				    <div class="ui tiny image">
-				      <img src="/icons/avatar_2.jpg">
-				    </div>
-				    <div class="content">
-				      <div class="header">Username</div>
-				    </div>
-				  </div>
-				  <br><br>
-				  <div class="item">
-				    <i class="shop icon"></i>
-				    <div class="content">
-				      Current no of Items Bidded
-				    </div>
-				  </div>
-				  <div class="item">
-				    <i class="user icon"></i>
-				    <div class="content">
-				      account type
-				    </div>
-				  </div>
-				  <div class="item">
-				    <i class="mail icon"></i>
-				    <div class="content">
-				      <a href="mailto:jack@semantic-ui.com">jack@semantic-ui.com</a>
-				    </div>
-				  </div>
-				</div>
-          @else
-          	<div class="ui segment">
-				<h2>Register now!</h2>
-				<p><a href="/register">Click here</a> to register</p>
-			</div>
-	      @endif
-			
-		</div>
-		<div class="ten wide column">
-			<div class="ui segment">
-				<h2>Today's Events</h2>
-				<div class="ui raised link cards">
-				  <a class="ui card" href="/eventsList">
-					  <div class="content">
-					    <div class="header">Event Name</div>
-					    <div class="meta">
-					      <span class="category">Description</span>
-					    </div>
-					    <div class="description">
-					      <div class="ui tiny images">
-							  <img class="ui image" src="/icons/avatar_2.jpg">
-							  <img class="ui image" src="/icons/avatar_2.jpg">
-							  <img class="ui image" src="/icons/avatar_2.jpg">
-							</div>
-					    </div>
-					  </div>
-					  <div class="extra content">
-					  	<i class="info circle icon"></i>
-					  	Join this event to Bid.
-					  </div>
-					</a>
-				</div>
-			</div>
-		</div>	
-		<div class="three wide column">
-			<div class="ui segment">
-				<div class="ui sub header">
-				Recent Events
-				</div> 
-			</div>
-		</div>
-	</div>
+	@include('customer.topnav')
+
+  
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui vertical masthead center aligned segment">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted pointing menu">
+        <a class="active item" href="/">Home</a>
+        <div class="right item">
+          <a class="ui inverted button logIn">Log in</a>
+          <a class="ui inverted basic button" href="/register">Sign Up</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container">
+      <h1 class="ui inverted header">
+        Online Bidding 
+      </h1>
+      <h2 class="ui inverted header">Mangement System with Logistics.</h2>
+    </div>
+
+  </div>
+
+  <!--<div class="ui vertical stripe segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+        <div class="eight wide column">
+          <h3 class="ui header">We Help Companies and Companions</h3>
+          <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
+          <h3 class="ui header">We Make Bananas That Can Dance</h3>
+          <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
+        </div>
+        <div class="six wide right floated column">
+          <img src="assets/images/wireframe/white-image.png" class="ui large bordered rounded image">
+        </div>
+      </div>
+      <div class="row">
+        <div class="center aligned column">
+          <a class="ui huge button">Check Them Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="ui vertical stripe quote segment">
+    <div class="ui equal width stackable internally celled grid">
+      <div class="center aligned row">
+        <div class="column">
+          <h3>"What a Company"</h3>
+          <p>That is what they all say about us</p>
+        </div>
+        <div class="column">
+          <h3>"I shouldn't have gone with their competitor."</h3>
+          <p>
+            <img src="assets/images/avatar/nan.jpg" class="ui avatar image"> <b>Nan</b> Chief Fun Officer Acme Toys
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+  <div class="ui vertical stripe segment">
+    <div class="ui text container">
+      <h3 class="ui inverted header">Register now to see what's inside.</h3>
+      <p style="color:white;">We offer item that are purchasable at a small amount with high quality we deliver anywhere where our branch reaches you.</p>
+
+
+      <h3 class="ui inverted header">Did We Tell You How Easy It Is To Register In Our Website?</h3>
+      <p style="color:white;">You'll just click the register button and you'll fill up the required fields and our administrator will look up to your profile to be approved.</p>
+      <a class="ui inverted red large button" href='/register'>Register Here!!</a>
+    </div>
+  </div> 
+
+
+  <!--<div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">About</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Sitemap</a>
+            <a href="#" class="item">Contact Us</a>
+            <a href="#" class="item">Religious Ceremonies</a>
+            <a href="#" class="item">Gazebo Plans</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Services</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Banana Pre-Order</a>
+            <a href="#" class="item">DNA FAQ</a>
+            <a href="#" class="item">How To Access</a>
+            <a href="#" class="item">Favorite X-Men</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Footer Header</h4>
+          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
 </div>
 
-<script>
-</script>
+
+  <script>
+  $(document)
+    .ready(function() {
+
+      // fix menu when passed
+      $('.masthead')
+        .visibility({
+          once: false,
+          onBottomPassed: function() {
+            $('.fixed.menu').transition('fade in');
+          },
+          onBottomPassedReverse: function() {
+            $('.fixed.menu').transition('fade out');
+          }
+        })
+      ;
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+  </script>
+
+  <style type="text/css">
+    .hidden.menu {
+      display: none;
+    }
+    .masthead.segment {
+      min-height: 700px;
+      padding: 1em 0em;
+    }
+    .masthead .logo.item img {
+      margin-right: 1em;
+    }
+    .masthead .ui.menu .ui.button {
+      margin-left: 0.5em;
+    }
+    .masthead h1.ui.header {
+      margin-top: 3em;
+      margin-bottom: 0em;
+      font-size: 4em;
+      font-weight: normal;
+    }
+    .masthead h2 {
+      font-size: 1.7em;
+      font-weight: normal;
+    }
+
+    .ui.vertical.stripe {
+      padding: 8em 0em;
+    }
+    .ui.vertical.stripe h3 {
+      font-size: 2em;
+    }
+    .ui.vertical.stripe .button + h3,
+    .ui.vertical.stripe p + h3 {
+      margin-top: 3em;
+    }
+    .ui.vertical.stripe .floated.image {
+      clear: both;
+    }
+    .ui.vertical.stripe p {
+      font-size: 1.33em;
+    }
+    .ui.vertical.stripe .horizontal.divider {
+      margin: 3em 0em;
+    }
+
+    .quote.stripe.segment {
+      padding: 0em;
+    }
+    .quote.stripe.segment .grid .column {
+      padding-top: 5em;
+      padding-bottom: 5em;
+    }
+
+    .footer.segment {
+      padding: 5em 0em;
+    }
+
+    .secondary.pointing.menu .toc.item {
+      display: none;
+    }
+
+    @media only screen and (max-width: 700px) {
+      .ui.fixed.menu {
+        display: none !important;
+      }
+      .secondary.pointing.menu .item,
+      .secondary.pointing.menu .menu {
+        display: none;
+      }
+      .secondary.pointing.menu .toc.item {
+        display: block;
+      }
+      .masthead.segment {
+        min-height: 350px;
+      }
+      .masthead h1.ui.header {
+        font-size: 2em;
+        margin-top: 1.5em;
+      }
+      .masthead h2 {
+        margin-top: 0.5em;
+        font-size: 1.5em;
+      }
+    }
+  </style>
 @endsection
+

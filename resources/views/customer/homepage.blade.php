@@ -24,7 +24,7 @@
     </head>
 
     <body style="background-image: url('/icons/bg2.png');  background-repeat: no-repeat;
-    background-attachment: fixed;" class="ui container"> 
+    background-attachment: fixed;"> 
 
       
     @yield('content')
@@ -84,7 +84,7 @@
 
 <script>
 $(document).ready(function(){
-     $('#logIn').click(function(){
+     $('.logIn').click(function(){
         $('#login').modal('show');    
      });
 });

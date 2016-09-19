@@ -3,13 +3,15 @@
 @section('content')
 <div ng-app="myApp" ng-controller="myController">
 	<div style="margin: 100px 0 0 0" class="ui container segment">
-	@include('customer.sidenav')
+	@include('customer.topnav')
 		<div class="ui segment">
 			<h1 class="ui centered header">Inbox</h1>
 
 			<form class="ui form">
 				<div class="fields">
-					<div class="five wide field ui compact segment">
+        <div class="field">
+        </div>
+					<div class="three wide field ui compact segment">
 						<div class="ui middle aligned selection list">
 			              <div class="item">
 			                <a class="ui basic blue button" id="addBtn">
@@ -29,7 +31,7 @@
 
 					<div class="field"></div>
 
-					<div class="ten wide field">
+					<div class="twelve wide field">
 						<div class="ui segment" id="inbox">
 							<div class="ui sub header">SUBJECT:</div>
 								<div class="ui inverted segment">

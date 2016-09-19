@@ -2,7 +2,7 @@
 
 @section('content')
 	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="customerDiscount = {{$customerDiscount}}">
-      @include('customer.sidenav')
+      @include('customer.topnav')
 		<h1 class="ui centered header">Proof of Payment</h1>
 			<a class="ui basic blue button" id="addBtn">
            		<i class="send icon"></i>

@@ -2,7 +2,7 @@
 
 @section('content')
 	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="customerDiscount = {{$customerDiscount}}">
-      @include('customer.sidenav')
+      @include('customer.topnav')
 	<form class="ui form" action="/submitCheckout" method="POST">
 		<a href="/cart/"><i class="arrow left icon"></i>back to cart</a>
 		<div class="ui internally celled grid container">

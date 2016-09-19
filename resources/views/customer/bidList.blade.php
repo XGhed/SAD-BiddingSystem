@@ -3,7 +3,7 @@
 
 @section('content')
 	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController">
-	@include('customer.sidenav')
+	@include('customer.topnav')
 		<div class="ui grid">
 			<div class="ten wide column">
 				<div class="ui segment">

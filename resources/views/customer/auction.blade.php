@@ -3,7 +3,7 @@
 @section('content')
 	<div ng-app="myApp" ng-controller="myController" ng-init="itemID = {{$item->ItemID}}; eventID = {{$eventID}}">
     <div style="margin: 100px 0 0 0" class="ui container segment">
-      @include('customer.sidenav')
+      @include('customer.topnav')
 
           <div class="ui grid"><div class="row"></div>
           <a href="/items"><i class="arrow left icon"></i> back to previous page</a></div>

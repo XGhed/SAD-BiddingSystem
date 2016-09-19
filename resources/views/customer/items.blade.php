@@ -2,7 +2,8 @@
 
 @section('content')
 	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="eventID = {{$eventID}}; joined = {{$joined}}">
-      @include('customer.sidenav')
+      @include('customer.topnav')
+      <a href="/eventsList"><i class="left arrow icon"></i>Back to previous page</a>
 		<h1 class="ui center aligned header">@{{event.EventName}}</h1>
 
 		<button class="ui basic green button" id="join0" ng-click="showJoinConfirmation()">

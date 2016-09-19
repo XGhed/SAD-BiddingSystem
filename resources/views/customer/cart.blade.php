@@ -1,11 +1,11 @@
 @extends('customer.homepage')
 
 @section('content')
-	@include('customer.sidenav')
+	@include('customer.topnav')
 	<div style="margin: 100px 0 0 0" class="ui container segment">
 		 @if(session('accountID') != "")
           	<div class="ui grid">
-			<div class="ten wide column">
+			<div class="column">
 				<div class="ui segment">
 					<h2 class="ui header">
 					  <i class="shop icon"></i>
@@ -35,7 +35,7 @@
 				</div>	
 			</div>
 
-			<div class="six wide column">
+			<!--<div class="six wide column">
 				<div class="ui segment">
 					<h2 class="ui header">
 				  <i class="payment icon"></i>
@@ -49,7 +49,7 @@
 				Total: 500.00
 				</div>
 				<a class="ui button" href="/checkout">Proceed to Checkout<i class="arrow right icon"></i></a>
-			</div>
+			</div> -->
 		</div>
           @else
           <div class="ui small modal" id="login">

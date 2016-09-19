@@ -1,9 +1,9 @@
 @extends('customer.homepage')
 
 @section('content')
+@include('customer.topnav')
 
 	<div style="margin: 100px 0 0 0" class="ui container segment">
-      @include('customer.sidenav')
 		<h1 class="ui centered header">Registration</h1>
 		<div class="ui info message">
 			<i class="info icon"></i>
