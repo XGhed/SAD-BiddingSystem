@@ -34,7 +34,7 @@
 				<div class="ui divider"></div>
 				<div class="field">
 					<h3 class="ui centered header">ITEM DETAILS</h3>
-					    <table class="ui definition celled table">
+					    <table class="ui definition celled table" datatable="ng">
 						  <thead>
 						    <tr>
 						    	<th></th>
@@ -227,7 +227,7 @@ $('.ui.normal.dropdown')
 	     });
 	});
 
-	var app = angular.module('myApp', []);
+	var app = angular.module('myApp', ['datatables']);
 	app.controller('myController', function($scope, $http){
 		$scope.cartItems = [];
 		$scope.shippingFee = 0;

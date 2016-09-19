@@ -256,4 +256,10 @@ class AngularOutput extends Controller
                 $query->whereNotNull('ActualArrival');
             })->get();
     }
+
+    public function accountInfo(Request $request){
+        $account = App\Models\Admin\Account::with('membership')->where('AccountID', $request->session()->get('accountID'))->first();
+
+        return $account;
+    }
 }

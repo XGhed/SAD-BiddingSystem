@@ -106,11 +106,13 @@ class BiddingEventController extends Controller
 
         //check if event has ended
         if ($currentDatetime[0] > $auctionEndTime[0] || ($currentDatetime[0] == $auctionEndTime[0] && $currentDatetime[1] > $auctionEndTime[1])){
-            return "Event has ended";
+            $ended = "true";
         }
         else {
-            return view('admin1.Transaction.bidItems')->with('eventID', $request->eventID);
+            $ended = "false";
         }
+
+        return view('admin1.Transaction.bidItems')->with('eventID', $request->eventID)->with('ended', $ended);
     }
 
     public function getEventItems(Request $request){

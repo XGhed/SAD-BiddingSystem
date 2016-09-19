@@ -1,7 +1,7 @@
 @extends('customer.userProfile')
 
 @section('profile')
-	<div class="ui inverted segment" ng-app="requestsApp" ng-controller="requestsController">
+	<div class="ui inverted segment" id="requestsApp" ng-app="requestsApp" ng-controller="requestsController">
 		<h2>Transaction History</h2>
 		<table class="ui celled table" datatable="ng">
 		  <thead>
@@ -31,5 +31,7 @@ app.controller('requestsController', function($scope, $http){
 		$scope.requests = response.data;
 	});
 });
+
+angular.bootstrap(document.getElementById("requestsApp"), ['requestsApp']);
 </script>
 @endsection
