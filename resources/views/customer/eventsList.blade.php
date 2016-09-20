@@ -41,6 +41,12 @@
 					      <div class="header">
 					      	@{{event.EventName}}
 					      </div>
+					      <div class="ui tiny images">
+						    <img src="@{{event.item_auction[randomInRangeOf(0, ongoingEvent.item_auction.length-1)].item.image_path}}">
+						    <img src="@{{event.item_auction[randomInRangeOf(0, ongoingEvent.item_auction.length-1)].item.image_path}}">
+						    <img src="@{{event.item_auction[randomInRangeOf(0, ongoingEvent.item_auction.length-1)].item.image_path}}">
+						     PICTURE NG ITEMS AT LEAST 3 ITEMS
+						  </div>
 					      <div class="description">
 					      	Start: @{{event.StartDateTime}}
 						    	<br>
