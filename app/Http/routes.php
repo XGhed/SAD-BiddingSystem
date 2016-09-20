@@ -113,8 +113,15 @@ Route::any('/customer', 'GraphController@customer');
 
 Route::get('/logout', 'LoginController@logout');
 
-Route::get('pdfFile', 'PdfController@index');
+Route::get('pdfFile', 'CustomerCheckoutController@index');
 
+Route::get('/customerStatus', 'CustomerStatusQueryController@CustomerStatus');
+
+Route::get('/mostBidQuery', 'CustomerStatusQueryController@mostBids');
+
+Route::get('/DeliveryPlaces', 'CustomerStatusQueryController@DeliveryPlaces');
+
+Route::get('/SuppliersItems', 'CustomerStatusQueryController@SuppliersItems');
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');

@@ -14,14 +14,13 @@ class PdfController extends Controller
 {   
     
     public function index(Request $request){        
-
+            
         //$dompdf = new Dompdf();
-        $checkoutType = array(App\Models\Admin\CheckoutRequest::all()->last());
-       
+        $checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
 
         foreach ($checkoutType as $key) {
             
-            if($key->CheckoutType == 'Deliver'){
+            if($key->CheckoutRequest->CheckoutType == 'Deliver'){
 
                 $dompdf = App::make('dompdf.wrapper');
             
@@ -29,12 +28,13 @@ class PdfController extends Controller
                     'checkout' => $checkoutType
                 ]);
                 
+
                 return $dompdf->stream();
              
-                return view('customer.Pdf')->with('checkout', $key);  
+                return view('customer.Pdf')->with('checkout', $key); 
             }
 
-            else if($key->CheckoutType == 'Pick up'){
+            else if($key->CheckoutRequest->CheckoutType == 'Pick up'){
                 $dompdf = App::make('dompdf.wrapper');
                 
                 $dompdf->loadView('customer.pdfPickUp', [

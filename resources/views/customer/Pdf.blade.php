@@ -87,10 +87,16 @@
 			text-align: left;
 			margin-top: 40%;	
 		}
+		.discount{
+			position: absolute;
+			text-align: left;
+			margin-top: 45%;
+
+		}
 		.total{
 			position: absolute;
 			text-align: left;
-			margin-top: 45%;	
+			margin-top: 50%;	
 		}
 		.subt{
 			position: absolute;
@@ -104,11 +110,17 @@
 			margin-left: 70;
 			margin-top: 40%;	
 		}
+		.bawas{
+			position: absolute;
+			text-align: left;
+			margin-left: 50;
+			margin-top: 45%;
+		}
 		.totalfee{
 			position: absolute;
 			text-align: left;
 			margin-left: 50;
-			margin-top: 45%;	
+			margin-top: 50%;	
 		}
 		.note1{
 			position: absolute;
@@ -143,11 +155,11 @@
 	@foreach($checkout as $key)
 	<div>
 		<p class = "name">Name:</p>
-		<p class = "name1">{!! $key->FirstName !!} {!! $key->LastName !!}</p>
+		<p class = "name1">{!! $key->CheckoutRequest->FirstName !!} {!! $key->CheckoutRequest->LastName !!}</p>
 		<p class = "address">Delivery Address:</p>
-		<p class = "add">{!! $key->Barangay_Street_Address !!} {!! $key->City->CityName !!}, {!! $key->City->Province->ProvinceName!!}</p>
+		<p class = "add">{!! $key->CheckoutRequest->Barangay_Street_Address !!} {!! $key->CheckoutRequest->City->CityName !!}, {!! $key->CheckoutRequest->City->Province->ProvinceName!!}</p>
 		<p class = "cell">Cellphone #:</p>
-		<p class = "phone">{!! $key->CellphoneNo !!}</p>
+		<p class = "phone">{!! $key->CheckoutRequest->CellphoneNo !!}</p>
 		<p class = 'line'>-----------------------------------------------------------------------------------------------------------------------------------</p>
 	</div>
 	
@@ -155,8 +167,10 @@
 	<div>
 		<p class = "sub">Sub Total:</p>
 		<p class = "subt">SUB TOTAL DAW</p>
-		<p class = "ship">Shipping fee:</p>
-		<p class = "shipfee">{!! $key->ShippingFee !!}</p>
+		<p class = "ship">Delivery fee:</p>
+		<p class = "discount">Discount:</p>
+		<p class = "bawas">DISCOUNT</p>
+		<p class = "shipfee">{!! $key->CheckoutRequest->ShippingFee !!}</p>
 		<h4 class = "total">Total:</h4>
 		<h4 class = "totalfee">TOTAL MO</h4>
 	</div>

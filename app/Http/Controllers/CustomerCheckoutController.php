@@ -120,8 +120,57 @@ class CustomerCheckoutController extends Controller
 
             //kung ano mang gagawin mo
         }
+        $checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
 
-        return redirect('/pdfFile');
+        return $this->index('/pdfFile?checkoutID='. $CheckoutType->CheckoutRequest_ItemID);
+    }
+
+
+    public function index(Request $request){        
+           // var_dump($request->checkoutType);
+        //$dompdf = new Dompdf();
+        $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
+        $checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
+
+       /* $ItemPrice = 0;
+        foreach ($request->items as $key  => $itemRequestedID) {
+            $lastBid = App\Models\Admin\Bid::where('ItemID', $itemRequestedID)->get()->last();
+
+            $ItemPrice = $ItemPrice + $lastBid->Price;
+        }
+        //compute discounted price
+        $ItemPrice = $ItemPrice - ($ItemPrice * ($customerDiscount / 100));
+        $checkoutRequest->ItemPrice = $ItemPrice;*/
+
+        foreach ($checkoutType as $key) {
+            
+            if($key->CheckoutRequest->CheckoutType == 'Deliver'){
+
+                $dompdf = App::make('dompdf.wrapper');
+            
+                $dompdf->loadView('customer.Pdf', [
+                    'checkout' => $checkoutType
+                ]);
+                
+
+                return $dompdf->stream();
+             
+                return view('customer.Pdf')->with('checkout', $key); 
+            }
+
+            else if($key->CheckoutRequest->CheckoutType == 'Pick up'){
+                $dompdf = App::make('dompdf.wrapper');
+                
+                $dompdf->loadView('customer.pdfPickUp', [
+                    'checkout' => $checkoutType
+                ]);
+                return $dompdf->stream(); 
+                
+                return view('customer.pdfPickUp')->with('checkout', $key);  
+            }
+            
+        }
+     
     }
 
     public function checkoutList(Request $request){
