@@ -48,7 +48,7 @@
                   <tbody>
                     <tr ng-repeat="item_auction in selectedEvent.item_auction">
     						      <td class="collapsing">
-    					    	    <input type="checkbox" name="items[]" value="@{{item_auction.item.ItemID}}" />
+    					    	    <input type="checkbox" name="items[]" value="@{{item_auction.item.ItemID}}" REQUIRED/>
     				          </td>
         					    <td>@{{item_auction.item.ItemID}}</td>
         					    <td>@{{item_auction.item.item_model.ItemName}}</td>

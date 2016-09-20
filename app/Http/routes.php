@@ -109,6 +109,8 @@ Route::get('/salesGraphReg', 'GraphController@salesGraphReg');
 
 Route::any('/salesGraph', 'GraphController@salesGraph');
 
+Route::any('/customer', 'GraphController@customer');
+
 Route::get('/logout', 'LoginController@logout');
 
 Route::get('pdfFile', 'PdfController@index');
@@ -148,6 +150,10 @@ Route::get('/mostBidItem', 'GraphController@mostBidItem');
 Route::get('/mostBidCat', 'GraphController@mostBidCat');
 
 Route::get('/customerGraph', 'GraphController@customerGraph');
+
+Route::get('/customerGraphReg', 'GraphController@customerGraphReg');
+
+Route::get('/customerGraphArea', 'GraphController@customerGraphArea');
 
 //Route::get('/itemChecking', 'ItemCheckingController@viewItems');
 //Route::get('/shipment', 'PageController@shipment');
@@ -397,13 +403,9 @@ Route::get('/accountApproval', 'PageController@accountApproval');
 
 Route::get('/itemPullouts', 'PageController@itemPullouts');
 
-Route::get('/userProfile', 'PageController@userProfile');
-
 Route::get('/bidHistory', 'PageController@bidHistory');
 
 Route::get('/defects', 'ItemDefectController@view');
-
-Route::get('/deliveryStatus', 'PageController@deliveryStatus');
 
 Route::get('/listOfBidders', 'PageController@listOfBidders');
 
@@ -418,6 +420,12 @@ Route::get('/paymentCheckout', 'PageController@paymentCheckout');
 Route::get('/expectedItemPercent', 'PageController@expectedItemPercent');
 
 Route::get('/reportPage', 'PageController@reportPage');
+
+Route::get('/customerInformation', 'PageController@reportPage');
+
+Route::get('/deliveryStatus', 'PageController@deliveryStatusCust');
+
+
 
 
 
@@ -436,6 +444,8 @@ Route::group(['middleware' => 'customer'], function () {
 	Route::get('checkout', 'CustomerCheckoutController@view');
 
 	Route::get('/inbox', 'PageController@inbox');
+
+		Route::get('/userProfile', 'PageController@userProfile');
 });
 
 

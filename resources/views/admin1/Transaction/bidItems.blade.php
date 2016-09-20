@@ -32,15 +32,15 @@
           </div>
           <div class="ui divider"></div>
           <h4 class="ui header centered">List of Items</h4>
-          <a class="ui basic blue button" id="addBtn" ng-if="ended == false">
-              <i class="Add to cart icon"></i>
+          <a class="ui blue basic button" id="addBtn" ng-if="ended == false">
+              <i class="add square icon"></i>
               Add Items
             </a>
 
             <!-- edit modal -->
           <div class="ui long modal" id="editModal">
             <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
               Edit Event Information
             </div>
             <div class="content">
@@ -79,7 +79,7 @@
 
             <div class="ui long modal" id="addModal">
             <i class="close icon"></i>
-            <div class="header">
+            <div class="ui centered header">
               Add Item
             </div>
             <div class="content">
@@ -156,7 +156,7 @@
               
             </div>
             <div class="actions">
-              <button class="ui button" ng-click="addItemToAuction()">Confirm</button>
+              <button class="ui blue button" ng-click="addItemToAuction()"><i class="checkmark icon"></i> Confirm</button>
               
             </div>
           </div>
@@ -202,7 +202,13 @@
          });
     });
 
-
+//search dropdown
+$('.ui.dropdown')
+  .dropdown({
+    useLabels: false,
+    maxSelections: 3
+  })
+;
 
 var app = angular.module('myApp', ['datatables', 'timer']);
 app.controller('myController', function($scope, $http, $timeout){

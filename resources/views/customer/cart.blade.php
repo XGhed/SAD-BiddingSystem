@@ -3,8 +3,8 @@
 @section('content')
 	@include('customer.topnav')
 	<div style="margin: 100px 0 0 0" class="ui container segment">
-		 @if(session('accountID') != "")
-          	<div class="ui grid">
+		@if(session('accountID') != "")
+        <div class="ui grid">
 			<div class="column">
 				<div class="ui segment">
 					<h2 class="ui header">
@@ -29,7 +29,11 @@
 									</div>
 								</div>
 							</div>
+							
 							<div class="ui divider"></div>
+							<div class="ui clearing basic segment">
+							<a class="ui right floated blue button" href="/checkout">Proceed to Checkout<i class="arrow right icon"></i></a>
+							</div>
 						@endforeach
 						<!-- end loop -->
 				</div>	
@@ -48,7 +52,7 @@
 				<div class="ui divider"></div>
 				Total: 500.00
 				</div>
-				<a class="ui button" href="/checkout">Proceed to Checkout<i class="arrow right icon"></i></a>
+				
 			</div> -->
 		</div>
           @else

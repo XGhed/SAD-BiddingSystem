@@ -97,6 +97,11 @@
       </div>
 
 
+          <div class="ui basic modal" id="alert">
+            <h1 class='ui centered header'>
+              Account Approved!!
+             </h1>
+          </div>
 
 
 
@@ -144,7 +149,7 @@
       $http.get('/approveAccount?accountID=' + selectedAccountID)
       .then(function(response){
         if(response.data == 'success'){
-          alert('success');
+          $('#alert').modal('show');
           $http.get('/accountsList')
           .then(function(response){
             $scope.accounts = response.data;

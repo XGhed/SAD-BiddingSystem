@@ -1,4 +1,4 @@
-@extends('admin1.Queries.QueriesParent')
+@extends('admin1.mainteParent')
 
 @section('content')
 <div class="ui grid">
@@ -8,12 +8,15 @@
     <div class="ui segment">
     <form method="post" action="/salesGraph">
         <label>From: </label>
-        <input type="date" name="start" required>
+        <input type="date" name="start" id="start" required>
         <label>To: </label>
-        <input type="date" name="end" required>
+        <input type="date" name="end" id="end" required>
         <button type="submit" name="date">Go!</button>
+        <button type="submit" name="area">Per Area</button>
         <button type="submit" name="region">Per Region</button>
     </form><br>
+        <script src="js/js/highstock.js"></script>
+        <script src="js/js/modules/exporting.js"></script>
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
   </div>
@@ -37,7 +40,7 @@ $(function() {
         xAxis: {
             categories:[
                 <?php
-                    if(!isset($item)){
+                    if(isset($item)){
                         $ctr = count($item);
                         for ($i=0; $i<$ctr; $i++) { 
                             $ctr2 = count($item[$i]);
@@ -55,7 +58,7 @@ $(function() {
         yAxis: {
             min: 0,
             title: {
-                text: 'Sales'
+                text: 'Accounts'
             }
         },
         tooltip: {
@@ -101,6 +104,34 @@ $(function() {
         }]
     });
 });
+
+      //startDate
+      var date = new Date();
+
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
+
+      var today = year + "-" + month + "-" + day;
+      document.getElementById("start").value = today;
+      document.getElementById("start").min = today;
+
+    //endDate
+      var date = new Date();
+
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
+
+      var today = year + "-" + month + "-" + day;
+      document.getElementById("end").value = today;
+      document.getElementById("end").min = today;
 
 </script>
 @endsection

@@ -139,6 +139,12 @@
             Item Logs
             </div>
             <div class="content">
+              <div class="ui message">
+                <div class="header">
+                  History/info/at kung anu-ano pa
+                </div>
+                <a id="prevPhoto" style="cursor:pointer;">Click to preview photo.</a>
+              </div>
               <table class="ui inverted celled table">
                 <thead>
                   <tr>
@@ -153,6 +159,13 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+        </div>
+
+        <div class="ui small modal" id="photoPreview">
+           <i class="close icon"></i>
+            <div class="content">
+              <img src="/icons/avatar_3.png" class="ui centered large image">
             </div>
         </div>
           <!-- END item history modal -->
@@ -232,6 +245,12 @@
   $(document).ready(function(){
        $('#addBtn').click(function(){
           $('#addModal').modal('show');    
+       });
+  });
+
+  $(document).ready(function(){
+       $('#prevPhoto').click(function(){
+          $('#photoPreview').modal('show');    
        });
   });
 

@@ -38,6 +38,18 @@ class GraphController extends Controller
         }
     }
 
+    public function customer(Request $request){
+        if (isset($_POST['region'])){
+            $customer = $this->customerGraphReg($request);
+            return view('admin1.Queries.customerGraphReg')->with('customer', $customer);
+        } else if (isset($_POST['area'])){
+            $customer = $this->customerGraphReg($request);
+            return view('admin1.Queries.customerGraphArea')->with('customer', $customer);
+        } else{
+            return $this->customerGraph($request);
+        }
+    }
+
     public function salesGraphCat(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category',
             'item_auction', 'checkoutrequest_item', 'checkoutrequest_item.checkoutrequest')
@@ -135,6 +147,63 @@ class GraphController extends Controller
                         $ctr++;
                         $date = $date->format('Y-m-d');
                         $item[$ctr][0] = $region;
+                        $item[$ctr][1] = $date;
+                        $item[$ctr][2] = intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
+                        $ctr2 = 3;
+                    }
+                }
+            }
+        }
+
+        return $item;
+    }
+
+    public function salesGraphArea(Request $request){
+        $items = App\Models\Admin\Item::with('itemModel', 'checkoutrequest_item', 'checkoutrequest_item.checkoutrequest')
+        ->where('status', 3)->whereHas('checkoutrequest_item.checkoutrequest', function($query){
+                $query->where('status', 2)->orWhere('status', 3);
+        })->get();
+
+        $start = $request->start;
+        $end = $request->end;
+        $start = Carbon::createFromFormat('Y-m-d', $start);
+        $end = Carbon::createFromFormat('Y-m-d', $end);
+
+        $item = NULL;
+
+        foreach ($items as $key => $result) {
+            $city = $result->checkoutrequest_item[0]->checkoutrequest->CityID;
+            $list = App\Models\Admin\City::with('province')->find($city);
+            $area = $list->province->CityID;
+
+            $i = count($result->checkoutrequest_item);
+            for ($j=0; $j < $i; $j++) {
+                $date = $result->checkoutrequest_item[$j]->RequestDate;
+                $date = Carbon::parse($date);
+                if($date->between($start, $end)==true){
+                    $ctr = 0;
+                    $ctr2 = 3;
+                    $cat = $result->itemModel->subCategory->category->CategoryName;
+                    if(is_null($item[$ctr])){
+                        $date = $date->format('Y-m-d');
+                        $item[$ctr][0] = $area;
+                        $item[$ctr][1] = $date;
+                        $item[$ctr][2] = intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
+                    } else if($item[$ctr][0]==$area){
+                        if($item[$ctr][1]==$date){
+                            $item[$ctr][2] += intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
+                        } else{
+                            $date = $date->format('Y-m-d');
+                            $item[$ctr][$ctr2] = $date;
+                            $ctr2++;
+                            $item[$ctr][$ctr2] = $area;
+                            $ctr2++;
+                            $item[$ctr][$ctr2] = intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
+                        }
+                    } else{
+                        $ctr++;
+                        $date = $date->format('Y-m-d');
+                        $item[$ctr][0] = $area;
                         $item[$ctr][1] = $date;
                         $item[$ctr][2] = intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
                         $ctr2 = 3;
@@ -269,7 +338,7 @@ class GraphController extends Controller
     }
 
     public function customerGraph(Request $request){
-        $customers = App\Models\Admin\Account::where('status', 1)->get();
+        $customers = App\Models\Admin\Account::where('status', 1)->orderBy('DateApproved')->get();
 
         $start = Carbon::create(2016, 1, 1);
         $end = Carbon:: create(2016, 12, 31);
@@ -284,10 +353,13 @@ class GraphController extends Controller
                 if($date->between($start, $end)==true){
                     $month = $result->DateApproved[5].$result->DateApproved[6];
                     $month = intval($month);
-                    $ctr=-1;
+                    $ctr=0;
                     if($customer[$ctr][0]==$month){
                         $customer[$ctr][1] += 1;
-                    } else{
+                    } else if(is_null($customer[$ctr])){
+                        $customer[$ctr][0] = $month;
+                        $customer[$ctr][1] = 1;
+                    }else{
                         $ctr++;
                         $customer[$ctr][0] = $month;
                         $customer[$ctr][1] = 1;
@@ -296,6 +368,104 @@ class GraphController extends Controller
             }
         }
 
+        //return $customer;
+
         return view('admin1.Queries.customerGraph')->with('customer', $customer);
     }
+
+    public function customerGraphReg(Request $request){
+        $customers = App\Models\Admin\Account::with('membership')
+        ->where('status', 1)->orderBy('DateApproved')->get();
+
+        $start = Carbon::create(2016, 1, 1);
+        $end = Carbon:: create(2016, 12, 31);
+
+        $customer = NULL;
+
+        foreach ($customers as $key => $result) {
+            $i = count($result);
+            for ($j=0; $j < $i; $j++) { 
+                $city = $result->membership[$j]->CityID;
+                $list = App\Models\Admin\City::with('province', 'province.region')->find($city);
+                $region = $list->province->region->RegionName;
+                $month = $result->DateApproved[5].$result->DateApproved[6];
+
+                $ctr = 0;
+                $ctr2 = 3;
+                if(is_null($customer[$ctr])){
+                    $customer[$ctr][0] = $region;
+                    $customer[$ctr][1] = $month;
+                    $customer[$ctr][2] = 1;
+                } else if($customer[$ctr][0]==$region){
+                    if($customer[$ctr][1]==$month){
+                        $customer[$ctr][2] += 1;
+                    } else{
+                        $customer[$ctr][$ctr2] = $month;
+                        $ctr2 ++;
+                        $customer[$ctr][$ctr2] = 1;
+                    }
+                } else{
+                    $ctr++;
+                    $customer[$ctr][0] = $region;
+                    $customer[$ctr][1] = $month;
+                    $customer[$ctr][2] = 1;
+                    $ctr2 = 3;
+                }
+            }
+        }
+
+        return $customer;
+
+        //return view('admin1.Queries.customerGraphReg')->with('customer', $customer);
+    }
+
+    public function customerGraphArea(Request $request){
+        $customers = App\Models\Admin\Account::with('membership')
+        ->where('status', 1)->orderBy('DateApproved')->get();
+
+        $start = Carbon::create(2016, 1, 1);
+        $end = Carbon:: create(2016, 12, 31);
+
+        $customer = NULL;
+
+        foreach ($customers as $key => $result) {
+            $i = count($result);
+            for ($j=0; $j < $i; $j++) { 
+                $city = $result->membership[$j]->CityID;
+                $list = App\Models\Admin\City::with('province')->find($city);
+                $area = $list->CityName;
+                $month = $result->DateApproved[5].$result->DateApproved[6];
+
+                $ctr = 0;
+                $ctr2 = 3;
+                if(is_null($customer[$ctr])){
+                    $customer[$ctr][0] = $area;
+                    $customer[$ctr][1] = $month;
+                    $customer[$ctr][2] = 1;
+                } else if($customer[$ctr][0]==$area){
+                    if($customer[$ctr][1]==$month){
+                        $customer[$ctr][2] += 1;
+                    } else{
+                        $customer[$ctr][$ctr2] = $month;
+                        $ctr2 ++;
+                        $customer[$ctr][$ctr2] = 1;
+                    }
+                } else{
+                    $ctr++;
+                    $customer[$ctr][0] = $region;
+                    $customer[$ctr][1] = $month;
+                    $customer[$ctr][2] = 1;
+                    $ctr2 = 3;
+                }
+            }
+        }
+
+        return $customer;
+
+        //return view('admin1.Queries.customerGraphArea')->with('customer', $customer);
+    }
+
+    /*public function totalBidders(Request $request){
+        #
+    }*/
 }

@@ -47,6 +47,7 @@
           <a href="/orderedItem" class="item"><i class="large exchange icon"></i>Transaction</a>
           <a href="/salesGraph" class="item"><i class="large checked calendar icon"></i>Queries</a>
           <a href="/announcements" class="item"><i class="large options icon"></i>Utilities</a>
+          <a href="/" class="item"><i class="large list icon"></i>Reports</a>
         </div>
       </div>
 
