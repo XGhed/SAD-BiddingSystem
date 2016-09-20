@@ -190,6 +190,11 @@ class PageController extends Controller
        return view('customer.deliveryStatus');
     }
 
+    public function loginPage(Request $request){
+
+       return view('customer.loginPage');
+    }
+
     public function listOfBidders(Request $request){
 
        return view('admin1.Queries.listOfBidders');

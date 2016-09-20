@@ -432,6 +432,8 @@ Route::get('/customerInformation', 'PageController@reportPage');
 
 Route::get('/deliveryStatus', 'PageController@deliveryStatusCust');
 
+Route::get('/login', 'PageController@loginPage');
+
 
 
 
