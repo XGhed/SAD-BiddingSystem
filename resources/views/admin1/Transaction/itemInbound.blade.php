@@ -208,6 +208,13 @@
             </div>
           </div>
 
+          <div class="ui success message" ng-show="showMissingRemove">
+            <i class='close icon'></i>
+            <div class='ui centered header'>
+              Item Removed!!
+            </div>
+          </div>
+
           <table datatable="ng" class="ui compact celled definition table">
             <thead>
               <tr>
@@ -228,6 +235,10 @@
                   <td class="collapsing">
                     <div class="ui blue button" ng-click="itemFound(item, $index)">
                       <div class="content">Found/Arrived</div>
+                    </div>
+                    <br>
+                    <div class="ui red button" ng-click="itemMissingRemove(item, $index)">
+                      <div class="content">Remove</div>
                     </div>
                   </td>
                   <td>@{{item.container.ContainerName}}</td>
@@ -319,6 +330,16 @@
       $http.get('/itemFound?itemID=' + item.ItemID)
       .then(function(response){
         $scope.showFound = true;
+        if(response.data == 'success'){
+          $scope.itemsMissing.splice(index, 1);
+        }
+      });
+    }
+
+    $scope.itemMissingRemove = function(item, index){
+      $http.get('/itemMissingRemove?itemID=' + item.ItemID)
+      .then(function(response){
+        $scope.showMissingRemove = true;
         if(response.data == 'success'){
           $scope.itemsMissing.splice(index, 1);
         }
