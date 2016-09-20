@@ -395,8 +395,6 @@ Route::get('/accountApproval', 'PageController@accountApproval');
 
 Route::get('/itemPullouts', 'PageController@itemPullouts');
 
-Route::get('/userProfile', 'PageController@userProfile');
-
 Route::get('/bidHistory', 'PageController@bidHistory');
 
 Route::get('/defects', 'ItemDefectController@view');
@@ -417,6 +415,9 @@ Route::get('/expectedItemPercent', 'PageController@expectedItemPercent');
 
 Route::get('/reportPage', 'PageController@reportPage');
 
+Route::get('/customerInformation', 'PageController@reportPage');
+
+
 
 
 //login restriction
@@ -434,6 +435,8 @@ Route::group(['middleware' => 'customer'], function () {
 	Route::get('checkout', 'CustomerCheckoutController@view');
 
 	Route::get('/inbox', 'PageController@inbox');
+
+	Route::get('/userProfile', 'PageController@userProfile');
 });
 
 

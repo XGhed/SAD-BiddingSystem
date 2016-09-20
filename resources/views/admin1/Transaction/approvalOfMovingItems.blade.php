@@ -50,7 +50,7 @@
               <tbody>
                 <tr ng-repeat="item_movingrequest in item_movingrequests" ng-if="item_movingrequest.item.RequestedWarehouse != 'null'">
                   <td>
-                    <input name="approvedItems[]" value="@{{item_movingrequest.item.ItemID}}" type="checkbox" class="ui checkbox">
+                    <input name="approvedItems[]" value="@{{item_movingrequest.item.ItemID}}" type="checkbox" class="ui checkbox" REQUIRED>
                   </td>
                   <td>@{{item_movingrequest.item.current_warehouse.Barangay_Street_Address}}, @{{item.current_warehouse.city.CityName}}, @{{item.current_warehouse.city.province.ProvinceName}}</td>
                   <td>@{{item_movingrequest.item.requested_warehouse.Barangay_Street_Address}}, @{{item.requested_warehouse.city.CityName}}, @{{item.requested_warehouse.city.province.ProvinceName}}</td>

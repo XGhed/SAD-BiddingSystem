@@ -46,7 +46,7 @@
               <div class="equal width fields">
                 <div class="field">
                   <div class="ui sub header">Date</div>
-                  <input type="date" name="date" />
+                  <input type="date" name="date" id="mindate" />
                 </div>
                 <div class="field">
                   <div class="ui sub header">Time</div>
@@ -202,6 +202,21 @@
   function modalClose() {
     $('.ui.modal').modal('hide'); 
   }
+
+
+
+  $(function(){
+    $('#mindate').prop('min', function(){
+        return new Date().toJSON().split('T')[0];
+    });
+});
+
+
+
+
+
+
+
 
   //supplier dropdown
   $('ui.dropdown')

@@ -133,7 +133,7 @@
 				</div>
 			</div>
 		</div> 
-	</div>
+	</div>	
 
 @if($joined == 'false')
 <script> $("#join1").hide(); </script>
@@ -194,7 +194,7 @@
 				$window.open('/auction?itemID='+$scope.itemsView[index].ItemID + "&eventID=" + $scope.eventID);
 			}
 			else {
-				alert('Please join this event first!');
+				$('#eventModal').modal('show');
 			}
 		}
 	});

@@ -56,8 +56,11 @@
                   </tr>
               </tbody>
             </table>
+            <div class="ui buttons">
             <button class="ui green button" type="submit" name="inbound">Inbound</button>
+            <div class="or"></div>
             <button class="ui red button" type="submit" name="missing">Missing</button>
+            </div>
           </form>
         </div>
 
@@ -236,6 +239,8 @@
   .dropdown({
     allowAdditions: true
   });
+
+  $('.ui.dropdown').dropdown();
 
   var app = angular.module('myApp', ['datatables']);
   app.controller('myController', function($scope, $http){

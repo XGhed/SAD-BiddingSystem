@@ -81,6 +81,11 @@ class PageController extends Controller
        return view('customer.messages');
     } 
 
+    public function accountInformation(Request $request){
+
+       return view('customer.accountInformation');
+    } 
+
  /*   public function supplier1(Request $request){
 
        return view('admin1.supplier');

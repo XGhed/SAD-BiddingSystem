@@ -6,7 +6,7 @@
       @include('customer.topnav')
 
           <div class="ui grid"><div class="row"></div>
-          <a href="/items"><i class="arrow left icon"></i> back to previous page</a></div>
+          <!-- <a href="/items"><i class="arrow left icon"></i> back to previous page</a> --></div> 
 
           <div class="ui grid">
               <div class="six wide column" ng-click="showImage()">
@@ -29,8 +29,10 @@
                           <div class="ui header">Starting Bid: Php @foreach($item->item_auction as $key => $ia) {{$ia->ItemPrice}} @endforeach</div>
                           <form class="ui form">
                               <div class="inline field">
-                                  <input type="text" placeholder="Place bid here.." ng-model="price">
-                                  <button class="ui button" ng-click="bidItem({{$item->ItemID}})">Place bid</button>
+                                  <input type="number" placeholder="Place bid here.." ng-model="price">
+                                  <button class="ui inverted button" ng-click="bidItem({{$item->ItemID}})">
+                                    <i class="legal icon"></i>Place bid
+                                  </button>
                                   <a ng-click="showHistory()">[<span ng-bind="bidlists.length"></span> bids]</a>
                               </div>
                           </form>
@@ -83,6 +85,22 @@
               <img src="{{$item->image_path}}" style="height: 350px; width: 350px;">
           </div>
       </div>
+
+      <div class="ui basic modal" id="alert">
+        <h1 class='ui centered header'>
+          Success!!
+        </h1>
+      </div>
+
+      <div class="ui basic modal" id="error">
+        <h1 class='ui red centered header'>
+          INVALID BID!!
+          <div class="ui divider"></div>
+          bid MUST be higher than previous bid.
+          <div class="ui divider"></div>
+          
+        </h1>
+      </div>
   </div>
 
 
@@ -101,14 +119,14 @@
       $http.get('/bidItem?itemID=' + itemID + '&price=' + $scope.price + "&eventID=" + $scope.eventID)
       .then(function(response){
         if (response.data == 'success'){
-          alert('success');
+          $('#alert').modal('show');
           $http.get('/getHighestBid?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
           .then(function(response){
             $scope.highestBid = response.data;
           });
         }
         else {
-          alert(JSON.stringify(response.data));
+           $('#error').modal('show');
         }
         $http.get('/getBidHistory?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
         .then(function(response){

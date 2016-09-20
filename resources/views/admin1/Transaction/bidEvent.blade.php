@@ -6,7 +6,7 @@
     <div class="twelve wide stretched column">
       <div class="ui segment">
          <a class="ui basic blue button" id="addBtn">
-              <i class="calendar icon"></i>
+              <i class="add square icon"></i>
               Add Event
             </a>
 
@@ -33,7 +33,7 @@
                     <div class="field">
                       <label>Start:</label>
                       <input type="date" id="startDate" name="startdate">
-                      <input type="time" name="starttime" required>
+                      <input type="time" name="starttime" id="starttime" required>
                     </div>
                   </div>
                   
@@ -41,7 +41,7 @@
                     <div class="field">
                       <label>End:</label>
                       <input type="date" id="endDate" name="enddate">
-                      <input type="time" name="endtime" required>
+                      <input type="time" name="endtime" id="endtime" required>
                     </div>
                   </div>
 
@@ -52,58 +52,11 @@
                     </div>
               </ul>
               <div class="actions">
-                <button class="ui button" type="submit">Add Event</button>
+                <button class="ui blue button" type="submit"><i class="checkmark icon"></i> Add Event</button>
                 </form>
               </div>
           </div>
             <!-- END add modal -->
-
-            <!--edit modal -->
-          <div class="ui small modal" id="editModal">
-            <i class="close icon"></i>
-              <div class="header">
-                Edit Event
-              </div>
-              <div class="content">
-                <form class="ui form" action="/" method="POST">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                  <ul class="ui list">
-                    <div class="required inline fields">
-                      <div class="ten wide field">
-                        <label>Event Name</label>
-                        <input type="text" name="event_add" required>
-                      </div>
-                    </div>
-
-                  <div class="required inline fields">
-                    <div class="field">
-                      <label>Start:</label>
-                      <input type="date" id="startDate">
-                      <input type="time" name="" required>
-                    </div>
-                  </div>
-                  
-                  <div class="required inline fields">  
-                    <div class="field">
-                      <label>End:</label>
-                      <input type="date" id="endDate">
-                      <input type="time" name="" required>
-                    </div>
-                  </div>
-
-                    <div class="inline fields">
-                      <label>Description</label>
-                      <textarea rows="2" placeholder="Something about the event"></textarea>
-                    </div>
-                    </div>
-              </ul>
-              <div class="actions">
-                <button class="ui button" type="submit">Confirm</button>
-                </form>
-              </div>
-          </div>
-            <!-- END edit modal -->
 
           <!-- details -->
           <div class="ui inverted segment">
@@ -159,54 +112,15 @@
     //popup
     $('#editBtn').popup();
 
-
-    //add modal
-    $(document).ready(function(){
-         $('#oldEventBtn').click(function(){
-            $('#oldEventModal').modal('show');    
-         });
-    });
-
-
     $(document).ready(function(){
          $('#addBtn').click(function(){
             $('#addModal').modal('show');    
          });
     });
 
-    //edit modal
-    $(document).ready(function(){
-         $('#editBtn').click(function(){
-            $('#editModal').modal('show');    
-         });
-    });
-
     //dropdowns
     $('.ui.normal.dropdown')
       .dropdown();
-
-      //defect description
-      $(document).ready(function () {
-        $('#test5').click(function () {
-            var $this = $(this);
-            if ($this.is(':checked')) {
-                document.getElementById('defectDesc').style.display = 'block';
-            } else {
-                document.getElementById('defectDesc').style.display = 'none';
-            }
-       });
-      });
-
-        $(document).ready(function () {
-          $('#test6').click(function () {
-              var $this = $(this);
-              if ($this.is(':checked')) {
-                  document.getElementById('defectDesc1').style.display = 'block';
-              } else {
-                  document.getElementById('defectDesc1').style.display = 'none';
-            }
-          });
-        });
 
      //startDate
       var date = new Date();
