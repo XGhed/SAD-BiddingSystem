@@ -32,4 +32,10 @@ class CustomerDashboardController extends Controller
         }
         return $returndata;
     }
+
+    public function getUpcomingEvent(){
+        $events = App\Models\Admin\Auction::where('StartDateTime', '>', Carbon::now('Asia/Manila'))->get();
+
+        return $events;
+    }
 }

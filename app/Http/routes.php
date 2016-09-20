@@ -264,13 +264,13 @@ Route::get('/accountInfo', 'AngularOutput@accountInfo');
 
 //
 
-Route::get('/eventList', 'BiddingEventController@eventList');
-
 Route::get('/eventDetails', 'BiddingEventController@eventDetails');
 
 Route::get('/getEventItems', 'BiddingEventController@getEventItems');
 
 Route::get('/getOngoingEvent', 'CustomerDashboardController@getOngoingEvent');
+
+Route::get('/getUpcomingEvent', 'CustomerDashboardController@getUpcomingEvent');
 
 Route::get('/deliveryRequests', 'PrepareCheckoutController@deliveryRequests');
 

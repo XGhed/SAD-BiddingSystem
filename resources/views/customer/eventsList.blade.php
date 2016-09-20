@@ -18,14 +18,17 @@
 					      </div>
 					      <div class="ui divider"></div>
 					      <div class="ui tiny images">
-						    <img src="/icons/avatar_2.jpg">
-						    <img src="/icons/avatar_2.jpg">
-						    <img src="/icons/avatar_2.jpg">
-
+						    <img src="@{{ongoingEvent.item_auction[randomInRangeOf(0, ongoingEvent.item_auction.length-1)].item.image_path}}">
+						    <img src="@{{ongoingEvent.item_auction[randomInRangeOf(0, ongoingEvent.item_auction.length-1)].item.image_path}}">
+						    <img src="@{{ongoingEvent.item_auction[randomInRangeOf(0, ongoingEvent.item_auction.length-1)].item.image_path}}">
 						    <!-- PICTURE NG ITEMS AT LEAST 3 ITEMS-->
 						  </div>
 					      <div class="description">
-					        @{{ongoingEvent.Description}}
+						      Start: @{{ongoingEvent.StartDateTime}}
+						    	<br>
+						    	End: @{{ongoingEvent.EndDateTime}}
+						    	<br> 
+					        Description: @{{ongoingEvent.Description}}
 					      </div>
 					    </div>
 					      <a class="ui bottom orange attached button" href="/items?eventID=@{{ongoingEvent.AuctionID}}">View Event!!</a>
@@ -39,6 +42,9 @@
 					      	@{{event.EventName}}
 					      </div>
 					      <div class="description">
+					      	Start: @{{event.StartDateTime}}
+						    	<br>
+						    	End: @{{event.EndDateTime}}
 					        @{{event.Description}}
 					      </div>
 					    </div>
@@ -57,6 +63,9 @@
 	<script>
 		var app = angular.module('myApp', ['datatables']);
 		app.controller('myController', function($scope, $http){
+			$scope.randomInRangeOf = function(min, max){
+				return Math.floor((Math.random() * max)) + min;
+			}
 			$http.get('/eventList')
 			.then(function(response){
 				$scope.events = response.data;
