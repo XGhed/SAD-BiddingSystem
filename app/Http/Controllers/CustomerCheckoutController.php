@@ -13,10 +13,11 @@ use Illuminate\Support\Collection;
 
 class CustomerCheckoutController extends Controller
 {
-    public function view(Request $request){        
+    public function view(Request $request){
+        $account = App\Models\Admin\Account::find($request->session()->get('accountID'));
         $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
 
-        return view('customer.checkout')->with('customerDiscount', $customerDiscount);
+        return view('customer.checkout')->with('account', $account)->with('customerDiscount', $customerDiscount);
     }
 
     public function itemsWon(Request $request){

@@ -1,7 +1,7 @@
 @extends('customer.homepage')
 
 @section('content')
-	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="customerDiscount = {{$customerDiscount}}">
+	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="customerDiscount = {{$customerDiscount}}; account = {{$account->membership[0]}}; account.ProvinceID = {{$account->membership[0]->city->province->ProvinceID}};">
       @include('customer.topnav')
 	<form class="ui form" action="/submitCheckout" method="POST">
 		<a href="/cart/"><i class="arrow left icon"></i>back to cart</a>
@@ -65,14 +65,14 @@
 					    <label>Name</label>
 					    <div class="three fields">
 					      <div class="field">
-					        <input type="text" name="firstName" pattern="([A-z '.-]){2,}" placeholder="First Name">
+					        <input type="text" name="firstName" pattern="([A-z '.-]){2,}" placeholder="First Name" value="@{{account.FirstName}}">
 					      </div>
 					      <div class="field">
-					        <input type="text" name="middleName" pattern="([A-z '.-]){2,}" placeholder="Middle Name">
+					        <input type="text" name="middleName" pattern="([A-z '.-]){2,}" placeholder="Middle Name" value="@{{account.MiddleName}}">
 					      </div>
 					      <div class="field">
-					        <input type="text" name="lastName" pattern="([A-z '.-]){2,}" placeholder="Last Name">
-					      	</div>
+					        <input type="text" name="lastName" pattern="([A-z '.-]){2,}" placeholder="Last Name" value="@{{account.LastName}}">
+					      </div>
 					    </div>
 					</div>
 
@@ -95,7 +95,7 @@
 						<div class="equal width fields">
 							<div class="field">
 							 	<div class="ui sub header">Province</div>
-								<select class="ui fluid search normal selection dropdown" ng-model="inputProvince" ng-change="reloadCities()">
+								<select class="ui fluid search normal selection dropdown" id="province" ng-model="inputProvince" ng-change="reloadCities()">
 									<option value="" disabled selected>Select Province</option>
 									<option ng-repeat="province in provinces" value="@{{province.ProvinceID}}">@{{province.ProvinceName}}</option>
 								</select>
@@ -113,11 +113,11 @@
 					<div class="equal width fields"> 
 					  	<div class="field">
 							<label>Cellphone Number</label>
-							<input type="text" name="phoneNumber" pattern="([0-9 '.]){2,}" placeholder="+639 XX XXX XXXX">
+							<input type="text" name="phoneNumber" pattern="([0-9 '.]){2,}" placeholder="+639 XX XXX XXXX" value="@{{account.CellphoneNo}}">
 						</div>
 						<div class="field">
 							<label>Telephone Number</label>
-							<input type="text" name="telNumber" pattern="([0-9 '.]){2,}" placeholder="XXX XXXX XXX">
+							<input type="text" name="telNumber" pattern="([0-9 '.]){2,}" placeholder="XXX XXXX XXX" value="@{{account.LandLine}}">
 						</div>
 					</div>
 					<div class="ui one column center aligned page grid">
@@ -228,7 +228,17 @@ $('.ui.normal.dropdown')
 	});
 
 	var app = angular.module('myApp', ['datatables']);
-	app.controller('myController', function($scope, $http){
+	app.controller('myController', function($scope, $http, $timeout){
+		$timeout(function(){
+			$('#province').dropdown('set selected', $scope.account.ProvinceID);
+
+			$http.get('/cityOptions?provID=' + $scope.inputProvince)
+    	.then(function(response){
+    		$scope.cities = response.data;
+    		$('#city').dropdown('set selected', $scope.account.CityID);
+    	});
+		}, 1000);
+
 		$scope.cartItems = [];
 		$scope.shippingFee = 0;
 		$scope.subTotalPrice = 0;
