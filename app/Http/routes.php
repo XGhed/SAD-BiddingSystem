@@ -328,6 +328,8 @@ Route::get('/containerArrived', 'ContainerController@containerArrived');
 
 Route::get('/itemFound', 'ItemInboundController@itemFound');
 
+Route::get('/itemMissingRemove', 'ItemInboundController@itemMissingRemove');
+
 Route::get('/replyMessageAdmin', 'MessageController@reply');
 
 Route::get('/replyMessageCustomer', 'CustomerMessageController@reply');
