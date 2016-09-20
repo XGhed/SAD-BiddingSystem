@@ -32,10 +32,12 @@
           <form action="/itemInbound" method="POST">
             <table datatable="ng" class="ui compact celled table">
               <thead>
-                <tr class="ui input">
+                <tr>
                   <th>Filters</th>
                   <th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th>
                   <th><input type="text" style="width:20px" data-ng-model="filterExpected.ItemID" ></th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.sub_category.category.CategoryName" ></th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.sub_category.SubCategoryName" ></th>
                   <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.ItemName" ></th>
                   <!--<th>Defect</th> -->
                   <th><input type="text" style="width:20px" data-ng-model="filterExpected.color" ></th>
@@ -46,6 +48,8 @@
                   <th></th>
                   <th>Container</th>
                   <th>ItemID</th>
+                  <th>Category</th>
+                  <th>Subcategory</th>
                   <th>Item</th>
                   <!--<th>Defect</th> -->
                   <th>Color</th>
@@ -58,6 +62,8 @@
                     <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}"></td>
                     <td>@{{item.container.ContainerName}}</td>
                     <td>@{{item.ItemID}}</td>
+                    <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+                    <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
                     <td>@{{item.item_model.ItemName}}</td>
                     <!--<td>@{{item.DefectDescription}}</td> -->
                     <td>@{{item.color}}</td>
