@@ -276,6 +276,10 @@ app.controller('myController', function($scope, $http, $timeout){
 
   $scope.$on('timer-tick', function (event, data) {
     $scope.secondsLeft = data.millis;
+
+    if(data.millis == 0){
+
+    }
   });
 
   $http.get('/categories')
