@@ -2,31 +2,29 @@
 
 @section('content')
 <div class="ui grid">
-  @include('admin1.Queries.sideNav')
+  @include('admin1.Reports.sideNav')
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
-    <form method="post" action="/salesGraph">
-        <label>From: </label>
-        <input type="date" name="start" id="start" required>
-        <label>To: </label>
-        <input type="date" name="end" id="end" required>
-        <button type="submit" name="date">Go!</button>
-        <button type="submit" name="area">Per Area</button>
-        <button type="submit" name="region">Per Region</button>
-    </form><br>
-        <script src="js/js/highstock.js"></script>
-        <script src="js/js/modules/exporting.js"></script>
+    @include('admin1.Reports.buttonSales')
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
   </div>
+
+  <div class="ui basic modal" id="alert">
+        <h1 class='ui red centered header'>
+          There is nothing to display yet
+        <div class="ui divider"></div>
+           Invalid Inputs!
+        </h1>
+    </div>
 </div>
 
 
 <script>
     <?php
         if(is_null($item)){
-            echo "alert('Nothing to display or invalid date inputs!');";
+            echo "$('#alert').modal('show');";
         }
     ?>
 $(function() {
@@ -35,30 +33,29 @@ $(function() {
             type: 'column'
         },
         title: {
-            text: 'Sales of 2016 per Area'
+            text: 'Monthly Sales of 2016 per Category'
         },
         xAxis: {
-            categories:[
-                <?php
-                    if(isset($item)){
-                        $ctr = count($item);
-                        for ($i=0; $i<$ctr; $i++) { 
-                            $ctr2 = count($item[$i]);
-                            for ($j=1; $j<$ctr2; $j++) { 
-                                echo "'".$item[$i][$j]."',";
-                                $j+=2;
-                            }
-                        }
-                    }
-                ?>
-                //'asd','asdasdads'
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
             ],
             crosshair: true
         },
         yAxis: {
             min: 0,
             title: {
-                text: 'Accounts'
+                text: 'Sales'
             }
         },
         tooltip: {
@@ -76,17 +73,33 @@ $(function() {
             }
         },
         series: [{
+            /*name: 'asdasd',
+            data: [1,2,3],
+            name: 'asdadasdasd',
+            data: [3,2,1]*/
             <?php
+                //echo "alert(JSON.stringify(".$item."))";
                 if(!is_null($item)){
                     $ctr = count($item);
                     for ($i=0; $i<$ctr; $i++) {
                         $ctr2 = count($item[$i]);
                         $k = 1;
                         echo "name: '".$item[$i][0]."',data:[";
-                        for ($j=2; $j<$ctr2; $j++) { 
-                            echo $item[$i][$j];
-                            $j++;
-                            if($j+1!=$ctr2){
+                        for ($j=1; $j<=12; $j++) { 
+                            if($item[$i][$k]==$j){
+                                echo $item[$i][$k+1].",";
+                                $k+=2;
+                            } else{
+                                echo "0";
+                            }
+                            if ($k==$ctr2){
+                                $l = 12 - $j;
+                                for ($m=0; $m < $l; $m++) { 
+                                    echo "0,";
+                                }
+                                break;
+                            }
+                            if($j+1!=12){
                                 echo ",";
                             }
                         }

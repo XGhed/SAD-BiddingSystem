@@ -1,8 +1,8 @@
-@extends('admin1.Queries.QueriesParent')
+@extends('admin1.mainteParent')
 
 @section('content')
 <div class="ui grid">
-  @include('admin1.Queries.sideNav')
+  @include('admin1.Reports.sideNav')
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
@@ -14,13 +14,21 @@
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
   </div>
+
+  <div class="ui basic modal" id="alert">
+        <h1 class='ui red centered header'>
+          There is nothing to display yet
+        <div class="ui divider"></div>
+           Invalid Inputs!
+        </h1>
+    </div>
 </div>
 
 
 <script>
     <?php
         if(is_null($item)){
-            echo "alert('Nothing to display!');";
+            echo "$('#alert').modal('show');";
         }
     ?>
 $(function() {

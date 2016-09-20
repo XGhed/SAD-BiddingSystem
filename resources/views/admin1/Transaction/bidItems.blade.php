@@ -134,7 +134,7 @@
 
               </div>
 
-              <table class="ui compact celled table">
+              <table class="ui compact celled inverted table">
                 <thead>
                   <th>Defect</th>
                   <th>Size</th>

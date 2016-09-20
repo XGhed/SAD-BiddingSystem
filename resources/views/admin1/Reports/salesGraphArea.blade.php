@@ -2,31 +2,39 @@
 
 @section('content')
 <div class="ui grid">
-  @include('admin1.Queries.sideNav')
+  @include('admin1.Reports.sideNav')
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
-    <form method="post" action="/salesGraph">
-        <label>From: </label>
+    @include('admin1.Reports.buttonSales')
+    <!--<form method="post" action="/salesGraph">
+    
+         <label>From: </label>
         <input type="date" name="start" id="start" required>
         <label>To: </label>
         <input type="date" name="end" id="end" required>
         <button type="submit" name="date">Go!</button>
         <button type="submit" name="area">Per Area</button>
         <button type="submit" name="region">Per Region</button>
-    </form><br>
-        <script src="js/js/highstock.js"></script>
-        <script src="js/js/modules/exporting.js"></script>
+    </form>-->
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
   </div>
+
+  <div class="ui basic modal" id="alert">
+        <h1 class='ui red centered header'>
+          There is nothing to display yet
+        <div class="ui divider"></div>
+           Invalid Inputs!
+        </h1>
+    </div>
 </div>
 
 
 <script>
     <?php
         if(is_null($item)){
-            echo "alert('Nothing to display or invalid date inputs!');";
+            echo "$('#alert').modal('show');";
         }
     ?>
 $(function() {
@@ -35,7 +43,7 @@ $(function() {
             type: 'column'
         },
         title: {
-            text: 'Sales of 2016 per Region'
+            text: 'Sales of 2016 per Area'
         },
         xAxis: {
             categories:[

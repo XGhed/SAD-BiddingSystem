@@ -106,7 +106,7 @@
             </div>
         </div>
 
-    <div class="ui basic modal" id="alert">
+      <div class="ui basic modal" id="alert">
         <h1 class='ui green centered header'>
           Success!!
         </h1>
