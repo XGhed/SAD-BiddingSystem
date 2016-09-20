@@ -109,6 +109,8 @@ Route::get('/salesGraphReg', 'GraphController@salesGraphReg');
 
 Route::any('/salesGraph', 'GraphController@salesGraph');
 
+Route::any('/customer', 'GraphController@customer');
+
 Route::get('/logout', 'LoginController@logout');
 
 Route::get('pdfFile', 'PdfController@index');
@@ -148,6 +150,10 @@ Route::get('/mostBidItem', 'GraphController@mostBidItem');
 Route::get('/mostBidCat', 'GraphController@mostBidCat');
 
 Route::get('/customerGraph', 'GraphController@customerGraph');
+
+Route::get('/customerGraphReg', 'GraphController@customerGraphReg');
+
+Route::get('/customerGraphArea', 'GraphController@customerGraphArea');
 
 //Route::get('/itemChecking', 'ItemCheckingController@viewItems');
 //Route::get('/shipment', 'PageController@shipment');
