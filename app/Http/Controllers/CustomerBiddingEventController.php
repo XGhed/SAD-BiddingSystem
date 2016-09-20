@@ -162,7 +162,8 @@ class CustomerBiddingEventController extends Controller
     }
 
     public function getBidHistory(Request $request){
-        $bids = App\Models\Admin\Bid::with('account', 'item')->where('ItemID', $request->itemID)->where('AuctionID', $request->eventID)->get();
+        $bids = App\Models\Admin\Bid::with('account', 'item')->where('ItemID', $request->itemID)->where('AuctionID', $request->eventID)
+        ->orderBy('DateTime', 'desc')->get();
 
         return $bids;
     }

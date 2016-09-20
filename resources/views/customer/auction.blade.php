@@ -64,7 +64,7 @@
                 </thead>
                 <tbody>
                   <tr ng-repeat="bidlist in bidlists">
-                    <td>@{{bidlist.account.AccountID}}</td>
+                    <td>@{{bidlist.account.Username}}</td>
                     <td>@{{bidlist.Price}}</td>
                     <td>@{{bidlist.DateTime}}</td>
                   </tr>
