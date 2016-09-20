@@ -3,78 +3,58 @@
 
 @section('content')
 <div class="ui grid">
-  @include('admin1.Dashboard.sideNav')
-  <div class="twelve wide stretched column">
+  <div class="sixteen wide stretched column">
     <div class="ui segment">
-      <p id="curDate" style="font-size:20px" class="ui basic right aligned segment"></p>
-
-
-           <div class="ui card">
-            <div class="content">
-              <div class="statistic">
-          <div class="text value">
-            Three<br>
-            Thousand
-          </div>
-          <div class="label">
-            Signups
-          </div>
-        </div>
-            
+      <h1 class="ui centered header">DASHBOARD</h1>
+      <p id="curDate" style="font-size:25px" class="ui basic right aligned segment"></p>
+        <div class="ui inverted segment">
+          <div class="ui three statistics">
+            <div class="ui inverted statistic">
+              <div class="value">
+                6969
+              </div>
+              <div class="label">
+                Current Bidders
+              </div>
             </div>
-            <div class="extra content">
-              <a>
-                <i class="user icon"></i>
-                22 Friends
-              </a>
+            <div class="ui red inverted statistic">
+              <div class="value">
+                6969
+              </div>
+              <div class="label">
+                Current ongoing event
+              </div>
             </div>
-          </div>
-
-      <div class="ui four statistics">
-        <div class="statistic">
-          <div class="value">
-            22
-          </div>
-          <div class="label">
-            Saves
-          </div>
-
-
-
+            <div class="ui orange inverted statistic">
+              <div class="value">
+                6969
+              </div>
+              <div class="label">
+                Pending Delivery requests
+              </div>
+            </div>
+            <div class="ui yellow inverted statistic">
+              <div class="value">
+                6969
+              </div>
+              <div class="label">
+                Pending Pick-up requests
+              </div>
+            </div>
+            <div class="ui yellow inverted statistic">
+              <div class="value">
+                6969
+              </div>
+              <div class="label">
+                Pending Accounts to be approved
+              </div>
+            </div>
+          </div><!-- statistics -->
         </div>
-        <div class="statistic">
-          <div class="text value">
-            Three<br>
-            Thousand
-          </div>
-          <div class="label">
-            Signups
-          </div>
-        </div>
-        <div class="statistic">
-          <div class="value">
-            <i class="plane icon"></i> 5
-          </div>
-          <div class="label">
-            Flights
-          </div>
-        </div>
-        <div class="statistic">
-          <div class="value">
-            <i class="user icon"></i>
-            42
-          </div>
-          <div class="label">
-            Team Members
-          </div>
-        </div>
-      </div>
-      
-      <div class="ui divider"></div>
-
-    </div>
-  </div>
-</div>
+     
+    </div><!-- segment -->
+  </div><!-- column -->
+</div><!-- grid -->
 
 
 

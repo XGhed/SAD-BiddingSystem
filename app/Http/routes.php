@@ -401,8 +401,6 @@ Route::get('/bidHistory', 'PageController@bidHistory');
 
 Route::get('/defects', 'ItemDefectController@view');
 
-Route::get('/deliveryStatus', 'PageController@deliveryStatus');
-
 Route::get('/listOfBidders', 'PageController@listOfBidders');
 
 Route::get('/itemChecking', 'PageController@itemChecking');
@@ -418,6 +416,9 @@ Route::get('/expectedItemPercent', 'PageController@expectedItemPercent');
 Route::get('/reportPage', 'PageController@reportPage');
 
 Route::get('/customerInformation', 'PageController@reportPage');
+
+Route::get('/deliveryStatus', 'PageController@deliveryStatusCust');
+
 
 
 

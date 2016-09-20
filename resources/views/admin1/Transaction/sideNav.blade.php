@@ -40,6 +40,9 @@
               <a class="item" href="/itemOutbound">
                 Item Outbound
               </a>
+              <a class="item" href="/deliveryStatus">
+                Delivery Status
+              </a>
           </div>
         </div>
 
