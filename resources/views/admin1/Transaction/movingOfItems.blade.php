@@ -10,7 +10,7 @@
         <form class="ui form">
           <div class="field">
             <div class="ui sub header">From Warehouse (Source warehouse)</div>
-            <select class="ui search selection dropdown" ng-model="warehouseTo" ng-change="loadItems()">
+            <select class="ui search selection dropdown" ng-model="warehouseFrom" ng-change="loadItems()">
               <option disabled selected value="">Choose Warehouse</option>
               <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
             </select>
@@ -18,7 +18,7 @@
           <br>
           <div class="field">
             <div class="ui sub header">To Warehouse (Destination warehouse)</div>
-            <select class="ui search selection dropdown" ng-model="warehouseFrom" ng-change="loadItems()">
+            <select class="ui search selection dropdown" ng-model="warehouseTo" ng-change="loadItems()">
               <option disabled selected value="">Choose Warehouse</option>
               <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
             </select>
@@ -56,12 +56,7 @@
           </tbody>
         </table>
 
-        <div class="ten wide field">
-          <select class="ui search selection dropdown" name="warehouse">
-            <option disabled selected value="">Destination Warehouse</option>
-            <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
-          </select>
-        </div>
+        <input type="hidden" id="form_warehouse" name="warehouse">
         <div class="seven wide field">
           <div class="ui sub header">Remarks</div>
           <input type="text" name="remarks" placeholder="Remarks" />
@@ -85,6 +80,8 @@ app.controller('myController', function($scope, $http){
     .then(function(response){
       $scope.items = response.data;
     });
+
+    $('#form_warehouse').val($scope.warehouseTo);
   }
 
   $http.get('warehouses')

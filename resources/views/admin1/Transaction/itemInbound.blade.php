@@ -32,20 +32,24 @@
           <form action="/itemInbound" method="POST">
             <table datatable="ng" class="ui compact celled table">
               <thead>
-                <!-- <tr>
+                <tr>
                   <th>Filters</th>
-                  <th class=""><input type="text" data-ng-model="filterExpected.container.ContainerName"></th>
-                  <th><input type="text" data-ng-model="filterExpected.ItemID" ></th>
-                  <th><input type="text" data-ng-model="filterExpected.item_model.ItemName" ></th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.ItemID" ></th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.sub_category.category.CategoryName" ></th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.sub_category.SubCategoryName" ></th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.ItemName" ></th>
                   <!--<th>Defect</th> -->
-                 <!-- <th><input type="text" data-ng-model="filterExpected.color" ></th>
-                  <th><input type="text" data-ng-model="filterExpected.size" ></th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.color" ></th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.size" ></th>
                   <!--<th>Image</th> -->
-               <!-- </tr>-->
+                </tr>
                 <tr>
                   <th></th>
                   <th>Container</th>
                   <th>ItemID</th>
+                  <th>Category</th>
+                  <th>Subcategory</th>
                   <th>Item</th>
                   <!--<th>Defect</th> -->
                   <th>Color</th>
@@ -54,10 +58,12 @@
                 </tr>
               </thead>
               <tbody>
-                  <tr ng-repeat="item in itemsInbound | filter : filterExpected" class="collapsing">
+                  <tr ng-repeat="item in itemsInbound | filter : filterExpected">
                     <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}"></td>
-                    <td class="collapsing">@{{item.container.ContainerName}}</td>
+                    <td>@{{item.container.ContainerName}}</td>
                     <td>@{{item.ItemID}}</td>
+                    <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+                    <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
                     <td>@{{item.item_model.ItemName}}</td>
                     <!--<td>@{{item.DefectDescription}}</td> -->
                     <td>@{{item.color}}</td>
@@ -159,8 +165,10 @@
             <table datatable="ng" class="ui compact celled table">
               <thead>
                 <tr>
-                  <th>ID</th>
                   <th>Container</th>
+                  <th>ID</th>
+                  <th>Category</th>
+                  <th>Subcategory</th>
                   <th>Item</th>
                   <!--<th>Defect</th> -->
                   <th>Color</th>
@@ -170,8 +178,10 @@
               </thead>
               <tbody>
                   <tr ng-repeat="item in unexpectedItems">
-                    <td>@{{item.ItemID}}</td>
                     <td>@{{item.container.ContainerName}}</td>
+                    <td>@{{item.ItemID}}</td>
+                    <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+                    <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
                     <td>@{{item.item_model.ItemName}}</td>
                     <!--<td>@{{item.DefectDescription}}</td> -->
                     <td>@{{item.color}}</td>
@@ -201,12 +211,21 @@
             </div>
           </div>
 
+          <div class="ui success message" ng-show="showMissingRemove">
+            <i class='close icon'></i>
+            <div class='ui centered header'>
+              Item Removed!!
+            </div>
+          </div>
+
           <table datatable="ng" class="ui compact celled definition table">
             <thead>
               <tr>
                 <th></th>
                 <th>Container</th>
                 <th>ItemID</th>
+                <th>Category</th>
+                <th>Subcategory</th>
                 <th>Item</th>
                 <!--<th>Defect</th> -->
                 <th>Color</th>
@@ -220,9 +239,15 @@
                     <div class="ui blue button" ng-click="itemFound(item, $index)">
                       <div class="content">Found/Arrived</div>
                     </div>
+                    <br>
+                    <div class="ui red button" ng-click="itemMissingRemove(item, $index)">
+                      <div class="content">Remove</div>
+                    </div>
                   </td>
                   <td>@{{item.container.ContainerName}}</td>
                   <td>@{{item.ItemID}}</td>
+                  <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+                  <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
                   <td>@{{item.item_model.ItemName}}</td>
                   <!--<td>@{{item.DefectDescription}}</td> -->
                   <td>@{{item.color}}</td>
@@ -310,6 +335,16 @@
       $http.get('/itemFound?itemID=' + item.ItemID)
       .then(function(response){
         $scope.showFound = true;
+        if(response.data == 'success'){
+          $scope.itemsMissing.splice(index, 1);
+        }
+      });
+    }
+
+    $scope.itemMissingRemove = function(item, index){
+      $http.get('/itemMissingRemove?itemID=' + item.ItemID)
+      .then(function(response){
+        $scope.showMissingRemove = true;
         if(response.data == 'success'){
           $scope.itemsMissing.splice(index, 1);
         }
