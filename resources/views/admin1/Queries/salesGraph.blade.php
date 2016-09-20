@@ -1,4 +1,4 @@
-@extends('admin1.Queries.QueriesParent')
+@extends('admin1.mainteParent')
 
 @section('content')
 <div class="ui grid">
@@ -10,11 +10,11 @@
         <div class="fields">
             <div class="three wide field">
                 <div class="ui sub header"> FROM: </div>
-                <input type="date" name="start" required>
+                <input type="date" name="start" id="start" required>
             </div>
             <div class="three wide field">
                 <div class="ui sub header"> TO: </div>
-                <input type="date" name="end" required>
+                <input type="date" name="end" id="end" required>
             </div>
             <div class="siex wide field">
                 <div class="ui sub header">;</div>
@@ -25,6 +25,8 @@
         <button class="ui green button" type="submit" name="region">Per Region</button>
     </form>
     <br>
+        <script src="js/js/highstock.js"></script>
+        <script src="js/js/modules/exporting.js"></script>
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
   </div>
@@ -127,6 +129,34 @@ $(function() {
         }]
     });
 });
+
+      //startDate
+      var date = new Date();
+
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
+
+      var today = year + "-" + month + "-" + day;
+      document.getElementById("start").value = today;
+      document.getElementById("start").min = today;
+
+    //endDate
+      var date = new Date();
+
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
+
+      var today = year + "-" + month + "-" + day;
+      document.getElementById("end").value = today;
+      document.getElementById("end").min = today;
 
 </script>
 @endsection

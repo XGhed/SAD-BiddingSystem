@@ -8,9 +8,9 @@
     <div class="ui segment">
     <form method="post" action="/salesGraph">
         <label>From: </label>
-        <input type="date" name="start" id="startDate" required>
+        <input type="date" name="start" id="start" required>
         <label>To: </label>
-        <input type="date" name="end" id="endDate" required>
+        <input type="date" name="end" id="end" required>
         <button type="submit" name="date">Go!</button>
         <button type="submit" name="area">Per Area</button>
         <button type="submit" name="region">Per Region</button>
@@ -35,29 +35,30 @@ $(function() {
             type: 'column'
         },
         title: {
-            text: 'Sales of Specific Date'
+            text: 'Sales of 2016 per Area'
         },
         xAxis: {
             categories:[
                 <?php
-                if(!is_null($item)){
-                    $ctr = count($item);
-                    for ($i=0; $i<$ctr; $i++) { 
-                        $ctr2 = count($item[$i]);
-                        for ($j=1; $j<$ctr2; $j++) { 
-                            echo "'".$item[$i][$j]."',";
-                            $j++;
+                    if(isset($item)){
+                        $ctr = count($item);
+                        for ($i=0; $i<$ctr; $i++) { 
+                            $ctr2 = count($item[$i]);
+                            for ($j=1; $j<$ctr2; $j++) { 
+                                echo "'".$item[$i][$j]."',";
+                                $j+=2;
+                            }
                         }
                     }
-                }
                 ?>
+                //'asd','asdasdads'
             ],
             crosshair: true
         },
         yAxis: {
             min: 0,
             title: {
-                text: 'Sales'
+                text: 'Accounts'
             }
         },
         tooltip: {
@@ -104,10 +105,33 @@ $(function() {
     });
 });
 
+      //startDate
+      var date = new Date();
+
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
+
+      var today = year + "-" + month + "-" + day;
+      document.getElementById("start").value = today;
+      document.getElementById("start").min = today;
+
     //endDate
-      //var start = document.getElementById("startDate").value;
-      //document.getElementById("End").min = start;
-      //alert(start);
+      var date = new Date();
+
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
+
+      var today = year + "-" + month + "-" + day;
+      document.getElementById("end").value = today;
+      document.getElementById("end").min = today;
 
 </script>
 @endsection
