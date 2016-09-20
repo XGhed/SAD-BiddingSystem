@@ -21,7 +21,7 @@
               <th>ID</th>
               <th>Name</th>
               <th>Category</th>
-              <th>Photo</th>
+              <th>Subcategory</th>
               <th>Size</th>
               <th>Color</th>
               <th>Warehouse</th>
@@ -47,11 +47,11 @@
               <td>@{{item.ItemID}}</td>
               <td id="tableRow">@{{item.item_model.ItemName}}</td>
               <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
-              <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
+              <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
               <td>@{{item.size}}</td>
               <td>@{{item.color}}</td>
               <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
-              <td>@{{item.container.Arrival}}</td>
+              <td>@{{item.container.ActualArrival.split(' ')[0]}}</td>
             </tr>
           </tbody>
         </table>
@@ -64,7 +64,6 @@
         <thead>
           <tr>
             <th></th>
-            <th>ID</th>
             <th>Name</th>
             <th>Category</th>
             <th>SubCategory</th>
@@ -78,7 +77,6 @@
                 View Stocks
               </a>              
             </td>
-            <td>@{{itemmodel.ItemModelID}}</td>
             <td>@{{itemmodel.ItemName}}</td>
             <td>@{{itemmodel.sub_category.category.CategoryName}}</td>
             <td>@{{itemmodel.sub_category.SubCategoryName}}</td>
@@ -98,7 +96,7 @@
               <th>ID</th>
               <th>Name</th>
               <th>Category</th>
-              <th>Photo</th>
+              <th>Subcategory</th>
               <th>Size</th>
               <th>Color</th>
               <th>Warehouse</th>
@@ -124,11 +122,11 @@
               <td>@{{item.ItemID}}</td>
               <td>@{{item.item_model.ItemName}}</td>
               <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
-              <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
+              <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
               <td>@{{item.size}}</td>
               <td>@{{item.color}}</td>
               <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
-              <td>@{{item.container.Arrival}}</td>
+              <td>@{{item.container.ActualArrival.split(' ')[0]}}</td>
             </tr>
           </tbody>
         </table>
@@ -172,7 +170,7 @@
                     <th></th>
                     <th>Name</th>
                     <th>Category</th>
-                    <th>Photo</th>
+                    <th>Subcategory</th>
                     <th>Size</th>
                     <th>Color</th>
                     <th>Warehouse</th>
@@ -198,12 +196,12 @@
                     </td>
                     <td id="tableRow">@{{item.item_model.ItemName}}</td>
                     <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
-                    <td><img src="@{{item.image_path}}" style="width:60px;height:60px;" /></td>
+                    <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
                     <td>@{{item.size}}</td>
                     <td>@{{item.color}}</td>
                     <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
                     <td>@{{item.container.supplier.SupplierName}}</td>
-                    <td>@{{item.container.Arrival}}</td>
+                    <td>@{{item.container.ActualArrival.split(' ')[0]}}</td>
                   </tr>
                 </tbody>
               </table>
