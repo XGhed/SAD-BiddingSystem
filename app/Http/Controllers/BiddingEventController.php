@@ -84,11 +84,16 @@ class BiddingEventController extends Controller
     public function editBiddingEvent(Request $request){
         $event = App\Models\Admin\Auction::find($request->eventID);
 
-        $start = $request->startdate . ' ' . $request->starttime;
+        if($request->has('startdate') && $request->has('starttime')){
+            $start = $request->startdate . ' ' . $request->starttime;
+            $event->StartDateTime = $start;
+        }
+        if($request->has('eventname')){
+            $event->EventName = $request->eventname;
+        }
+
         $end = $request->enddate . ' ' . $request->endtime;
 
-        $event->EventName = $request->eventname;
-        $event->StartDateTime = $start;
         $event->EndDateTime = $end;
         $event->Description = $request->description;
 

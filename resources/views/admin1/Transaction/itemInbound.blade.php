@@ -32,6 +32,16 @@
           <form action="/itemInbound" method="POST">
             <table datatable="ng" class="ui compact celled table">
               <thead>
+                <tr class="ui input">
+                  <th>Filters</th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.ItemID" ></th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.ItemName" ></th>
+                  <!--<th>Defect</th> -->
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.color" ></th>
+                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.size" ></th>
+                  <!--<th>Image</th> -->
+                </tr>
                 <tr>
                   <th></th>
                   <th>Container</th>
@@ -44,7 +54,7 @@
                 </tr>
               </thead>
               <tbody>
-                  <tr ng-repeat="item in itemsInbound">
+                  <tr ng-repeat="item in itemsInbound | filter : filterExpected">
                     <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}"></td>
                     <td>@{{item.container.ContainerName}}</td>
                     <td>@{{item.ItemID}}</td>

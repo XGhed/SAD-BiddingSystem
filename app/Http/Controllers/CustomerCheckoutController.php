@@ -114,6 +114,13 @@ class CustomerCheckoutController extends Controller
             $request_item->save();
         }
 
+        //ITO ANG LOOP PARA SA BAWAT ITEM NA NAPANALUNAN NG BIDDER NA ISINAMA NIYA SA KANYANG CHECKOUT REQUEST NA GINAWA
+        foreach ($request->items as $key  => $itemRequestedID) {
+            $item = App\Models\Admin\Item::find($itemRequestedID);
+
+            //kung ano mang gagawin mo
+        }
+
         return redirect('/pdfFile');
     }
 

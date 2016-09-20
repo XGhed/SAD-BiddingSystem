@@ -13,7 +13,7 @@ use Carbon\Carbon;
 class CustomerDashboardController extends Controller
 {
     public function getOngoingEvent(){
-        $events = App\Models\Admin\Auction::all();
+        $events = App\Models\Admin\Auction::with('item_auction', 'item_auction.item')->get();
 
         $returndata = [];
 

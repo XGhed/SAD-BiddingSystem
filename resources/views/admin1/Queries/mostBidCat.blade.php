@@ -1,4 +1,4 @@
-@extends('admin1.mainteParent')
+@extends('admin1.Queries.QueriesParent')
 
 @section('content')
 <div class="ui grid">
@@ -10,8 +10,7 @@
         <button type="submit" name="item" class="ui green button">Per Item</button>
         <button type="submit" name="category" class="ui blue button">Per Category</button>
     </form><br>
-        <script src="js/js/hightock.js"></script>
-        <script src="js/js/modules/exporting.js"></script>
+
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
   </div>

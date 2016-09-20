@@ -32,7 +32,7 @@ class ItemInboundController extends Controller
     public function itemDelivered(Request $request){
         foreach ($request->items as $key => $itemID) {
             $item = App\Models\Admin\Item::find($itemID);
-            $item->status = 1;          $this->itemMissing($request);
+            $item->status = 1;
             $item->CurrentWarehouse = $item->container->warehouse->WarehouseNo;
 
             $item->save();
