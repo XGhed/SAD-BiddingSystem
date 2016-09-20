@@ -436,7 +436,7 @@ Route::group(['middleware' => 'customer'], function () {
 
 	Route::get('/inbox', 'PageController@inbox');
 
-	Route::get('/userProfile', 'PageController@userProfile');
+		Route::get('/userProfile', 'PageController@userProfile');
 });
 
 
