@@ -46,32 +46,40 @@ class GraphController extends Controller
         })->get();
 
         $item = NULL;
+
+        $start = Carbon::create(2016, 1, 1);
+        $end = Carbon:: create(2016, 12, 31);
+
         foreach ($items as $key => $result) {
             $i = count($result->checkoutrequest_item);
             for ($j=0; $j < $i; $j++) {
-                $month = $result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[5].$result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[6];
-                $cat = $result->itemModel->subCategory->category->CategoryName;
-                $month = intval($month);
-                $ctr = 0;
-                $ctr2 = 3;
-                if(is_null($item[$ctr])){
-                    $item[$ctr][0] = $cat;
-                    $item[$ctr][1] = $month;
-                    $item[$ctr][2] = intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
-                } else if($item[$ctr][0]==$cat){
-                    if($item[$ctr][1]==$month){
-                        $item[$ctr][2] += intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
-                    } else{
-                        $item[$ctr][$ctr2] = $month;
-                        $ctr2 ++;
-                        $item[$ctr][$ctr2] = intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
-                    }
-                } else{
-                    $ctr++;
-                    $item[$ctr][0] = $cat;
-                    $item[$ctr][1] = $month;
-                    $item[$ctr][2] = intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
+                $date = $result->checkoutrequest_item[$j]->checkoutrequest->RequestDate;
+                $date = Carbon::parse($date);
+                if($date->between($start, $end)==true){
+                    $month = $result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[5].$result->checkoutrequest_item[$j]->checkoutrequest->RequestDate[6];
+                    $month = intval($month);
+                    $cat = $result->itemModel->subCategory->category->CategoryName;
+                    $ctr = 0;
                     $ctr2 = 3;
+                    if(is_null($item[$ctr])){
+                        $item[$ctr][0] = $cat;
+                        $item[$ctr][1] = $month;
+                        $item[$ctr][2] = intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
+                    } else if($item[$ctr][0]==$cat){
+                        if($item[$ctr][1]==$month){
+                            $item[$ctr][2] += intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
+                        } else{
+                            $item[$ctr][$ctr2] = $month;
+                            $ctr2 ++;
+                            $item[$ctr][$ctr2] = intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
+                        }
+                    } else{
+                        $ctr++;
+                        $item[$ctr][0] = $cat;
+                        $item[$ctr][1] = $month;
+                        $item[$ctr][2] = intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
+                        $ctr2 = 3;
+                    }
                 }
             }
         }
@@ -258,5 +266,36 @@ class GraphController extends Controller
         return $item;
 
         //return view('admin1.Queries.mostBidCat')->with('item', $item);
+    }
+
+    public function customerGraph(Request $request){
+        $customers = App\Models\Admin\Account::where('status', 1)->get();
+
+        $start = Carbon::create(2016, 1, 1);
+        $end = Carbon:: create(2016, 12, 31);
+
+        $customer = NULL;
+
+        foreach ($customers as $key => $result) {
+            $i = count($result);
+            for ($j=0; $j < $i; $j++) {
+                $date = $result->DateApproved;
+                $date = Carbon::parse($date);
+                if($date->between($start, $end)==true){
+                    $month = $result->DateApproved[5].$result->DateApproved[6];
+                    $month = intval($month);
+                    $ctr=-1;
+                    if($customer[$ctr][0]==$month){
+                        $customer[$ctr][1] += 1;
+                    } else{
+                        $ctr++;
+                        $customer[$ctr][0] = $month;
+                        $customer[$ctr][1] = 1;
+                    }
+                }
+            }
+        }
+
+        return view('admin1.Queries.customerGraph')->with('customer', $customer);
     }
 }

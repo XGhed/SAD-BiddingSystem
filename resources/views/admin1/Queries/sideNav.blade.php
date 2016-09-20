@@ -7,6 +7,9 @@
         <a class="item" href="/mostBid">
           Most Bids
         </a>
+        <a class="item" href="/customerGraph">
+          Approved Customers
+        </a>
        
     </div>
   </div>
