@@ -16,11 +16,11 @@ class GraphController extends Controller
     public function salesGraph(Request $request){
         if (isset($_POST['date'])) {
             $item = $this->salesGraphDate($request);
-            return view('admin1.Queries.salesGraphDate')->with('item', $item);
+            return view('admin1.Reports.salesGraphDate')->with('item', $item);
         } elseif (isset($_POST['region'])){
             $item = $this->salesGraphReg($request);
             //return $item;
-            return view('admin1.Queries.salesGraphReg')->with('item', $item);
+            return view('admin1.Reports.salesGraphReg')->with('item', $item);
         } else{
             return $this->salesGraphCat($request);
             //return view('admin1.Queries.salesGraph')->with('item', $item);
@@ -31,20 +31,20 @@ class GraphController extends Controller
         if (isset($_POST['category'])) {
             $item = $this->mostBidCat($request);
             //return $item;
-            return view('admin1.Queries.mostBidCat')->with('item', $item);
+            return view('admin1.Reports.mostBidCat')->with('item', $item);
         } else{
             $item = $this->mostBidItem($request);
-            return view('admin1.Queries.mostBidItem')->with('item', $item);
+            return view('admin1.Reports.mostBidItem')->with('item', $item);
         }
     }
 
     public function customer(Request $request){
         if (isset($_POST['region'])){
             $customer = $this->customerGraphReg($request);
-            return view('admin1.Queries.customerGraphReg')->with('customer', $customer);
+            return view('admin1.Reports.customerGraphReg')->with('customer', $customer);
         } else if (isset($_POST['area'])){
             $customer = $this->customerGraphReg($request);
-            return view('admin1.Queries.customerGraphArea')->with('customer', $customer);
+            return view('admin1.Reports.customerGraphArea')->with('customer', $customer);
         } else{
             return $this->customerGraph($request);
         }
@@ -98,7 +98,7 @@ class GraphController extends Controller
 
         //return $item;
 
-        return view('admin1.Queries.salesGraph')->with('item', $item);
+        return view('admin1.Reports.salesGraph')->with('item', $item);
     }
 
     public function salesGraphReg(Request $request){
@@ -370,7 +370,7 @@ class GraphController extends Controller
 
         //return $customer;
 
-        return view('admin1.Queries.customerGraph')->with('customer', $customer);
+        return view('admin1.Reports.customerGraph')->with('customer', $customer);
     }
 
     public function customerGraphReg(Request $request){

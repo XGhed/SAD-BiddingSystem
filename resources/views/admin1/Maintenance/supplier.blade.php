@@ -184,6 +184,13 @@
 </div>
 
 
+
+    <div class="ui basic modal" id="alert">
+        <h1 class='ui green centered header'>
+          Status Changed!!
+        </h1>
+      </div>
+
 <script>
 
   $(document).ready(function(){
@@ -205,7 +212,7 @@
     $(":checkbox").click(function(){
       $.get('/status_Supplier?supplierID=' + $(this).val(), function(data){
           //NOTIFICATION HERE MUMING :*
-          alert('success');
+          $('#alert').modal('show');
         });
     });
   });

@@ -21,6 +21,8 @@
       <script type="text/javascript" src="{!!URL::asset('js/angular-datatables.columnfilter.min.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/angular-datatables.columnfilter.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/semantic.min.js')!!}"></script>
+      <script src="js/highcharts/js/highstock.js"></script>
+      <script src="js/highcharts/js/modules/exporting.js"></script>
 
       <!--calendar -->
       <link href="{!!URL::asset('css/fullcalendar.css')!!}" rel='stylesheet' />
@@ -45,9 +47,9 @@
           <a href="/dashboard" class="item"><i class="large home icon"></i>Dashboard</a>
           <a href="/supplier" class="item"><i class="large settings icon"></i>Maintenance</a>
           <a href="/orderedItem" class="item"><i class="large exchange icon"></i>Transaction</a>
-          <a href="/salesGraph" class="item"><i class="large checked calendar icon"></i>Queries</a>
+          <a href="" class="item"><i class="large checked calendar icon"></i>Queries</a>
           <a href="/announcements" class="item"><i class="large options icon"></i>Utilities</a>
-          <a href="/" class="item"><i class="large list icon"></i>Reports</a>
+          <a href="/salesGraph" class="item"><i class="large list icon"></i>Reports</a>
         </div>
       </div>
 

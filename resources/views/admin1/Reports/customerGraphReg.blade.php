@@ -2,41 +2,35 @@
 
 @section('content')
 <div class="ui grid">
-  @include('admin1.Queries.sideNav')
+  @include('admin1.Reports.sideNav')
 
   <div class="twelve wide stretched column">
     <div class="ui segment">
-    <form method="post" action="/salesGraph" class="ui form">
-        <div class="fields">
-            <div class="three wide field">
-                <div class="ui sub header"> FROM: </div>
-                <input type="date" name="start" id="start" required>
-            </div>
-            <div class="three wide field">
-                <div class="ui sub header"> TO: </div>
-                <input type="date" name="end" id="end" required>
-            </div>
-            <div class="siex wide field">
-                <div class="ui sub header">;</div>
-                 <button class="ui green button" type="submit" name="date">Go!</button>
-            </div>
-        </div>
-       
-        <button class="ui green button" type="submit" name="region">Per Region</button>
-    </form>
-    <br>
+    @include('admin1.Reports.buttonCustomer')
+    <!--<form method="post" action="/customer">
+        <button type="submit" name="list">All Approved Customer</button>
+        <button type="submit" name="area">Per Area</button>
+        <button type="submit" name="region">Per Region</button>
+    </form><br>
         <script src="js/js/highstock.js"></script>
         <script src="js/js/modules/exporting.js"></script>
+    -->
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
   </div>
+
+    <div class="ui basic modal" id="alert">
+        <h1 class='ui red centered header'>
+          There is nothing to display yet
+        </h1>
+    </div>
 </div>
 
 
 <script>
     <?php
-        if(is_null($item)){
-            echo "alert('Nothing to display!');";
+        if(is_null($customer)){
+            echo "$('#alert').modal('show');";
         }
     ?>
 $(function() {
@@ -45,10 +39,10 @@ $(function() {
             type: 'column'
         },
         title: {
-            text: 'Monthly Sales of 2016 per Category'
+            text: 'Approved Accounts of 2016 per Region'
         },
         xAxis: {
-            categories: [
+            categories:[
                 'Jan',
                 'Feb',
                 'Mar',
@@ -67,7 +61,7 @@ $(function() {
         yAxis: {
             min: 0,
             title: {
-                text: 'Sales'
+                text: 'Accounts'
             }
         },
         tooltip: {
@@ -85,21 +79,16 @@ $(function() {
             }
         },
         series: [{
-            /*name: 'asdasd',
-            data: [1,2,3],
-            name: 'asdadasdasd',
-            data: [3,2,1]*/
             <?php
-                //echo "alert(JSON.stringify(".$item."))";
-                if(!is_null($item)){
-                    $ctr = count($item);
+                if(!is_null($customer)){
+                    $ctr = count($customer);
                     for ($i=0; $i<$ctr; $i++) {
-                        $ctr2 = count($item[$i]);
+                        $ctr2 = count($customer[$i]);
                         $k = 1;
-                        echo "name: '".$item[$i][0]."',data:[";
+                        echo "name: '".$customer[$i][0]."',data:[";
                         for ($j=1; $j<=12; $j++) { 
-                            if($item[$i][$k]==$j){
-                                echo $item[$i][$k+1].",";
+                            if($customer[$i][$k]==$j){
+                                echo $customer[$i][$k+1].",";
                                 $k+=2;
                             } else{
                                 echo "0";
@@ -115,7 +104,7 @@ $(function() {
                                 echo ",";
                             }
                         }
-                        echo "]";
+                        echo "],";
                         if($i+1!=$ctr){
                             echo ",";
                         }
@@ -129,34 +118,6 @@ $(function() {
         }]
     });
 });
-
-      //startDate
-      var date = new Date();
-
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-
-      if (month < 10) month = "0" + month;
-      if (day < 10) day = "0" + day;
-
-      var today = year + "-" + month + "-" + day;
-      document.getElementById("start").value = today;
-      document.getElementById("start").min = today;
-
-    //endDate
-      var date = new Date();
-
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-
-      if (month < 10) month = "0" + month;
-      if (day < 10) day = "0" + day;
-
-      var today = year + "-" + month + "-" + day;
-      document.getElementById("end").value = today;
-      document.getElementById("end").min = today;
 
 </script>
 @endsection
