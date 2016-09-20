@@ -17,9 +17,6 @@
 			      <a class="active item" href="/userProfile">
 			        Transaction History
 			      </a>
-			      <a class="item" href="/eventsList">
-			        Account Information
-			      </a>
 			    </div>
 		</div>
 

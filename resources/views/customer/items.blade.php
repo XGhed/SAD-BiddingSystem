@@ -75,7 +75,7 @@
 		<br>
 		<div class="ui three column equal width relaxed grid">
 		  	<div class="stretched row">
-		  		<!-- <div class="three wide compact column">
+		  		<div class="three wide compact column">
 			        <div class="ui vertical menu">
 			        	<a class="item" ng-click="allCategories()">All Categories</a>
 			        	@foreach($categories as $key => $category)
@@ -94,10 +94,10 @@
 					        </div>
 			        	@endforeach
 				    </div>
-				</div> -->
+				</div>
 			    <div class="column">
 					<div class="ui segment">
-					    <div class="ui four special cards">
+					    <div class="ui three special cards">
 							<div class="green card" ng-repeat="item in itemsView | filter: filterText | orderBy : orderBy:sortingOrder" >
 							    <div class="blurring dimmable image">
 							    	<div class="ui dimmer">
