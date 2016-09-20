@@ -18,6 +18,8 @@
       <script type="text/javascript" src="{!!URL::asset('js/moment.min.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/humanize-duration.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/angular-timer.min.js')!!}"></script>
+      <script type="text/javascript" src="{!!URL::asset('js/angular-datatables.columnfilter.min.js')!!}"></script>
+      <script type="text/javascript" src="{!!URL::asset('js/angular-datatables.columnfilter.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/semantic.min.js')!!}"></script>
 
       <!--calendar -->

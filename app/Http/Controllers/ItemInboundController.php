@@ -80,7 +80,9 @@ class ItemInboundController extends Controller
 
     public function itemMissingRemove(Request $request){
         $item = App\Models\Admin\Item::find($request->itemID);
-        $item->delete();
+        $item->status = -1;
+
+        $item->save();
         
         return 'success';
     }
