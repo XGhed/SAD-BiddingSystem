@@ -155,7 +155,7 @@
 			});
 
 			$scope.allCategories();
-		}, 1000);
+		}, 100);
 
 		$scope.allCategories = function(){
 			$http.get('/allItemsInEvent?eventID=' + $scope.eventID)
@@ -197,6 +197,15 @@
 				$('#eventModal').modal('show');
 			}
 		}
+
+		$scope.$on('timer-tick', function (event, data) {
+	    $scope.secondsLeft = data.millis;
+
+	    if(data.millis == 0){
+
+	    }
+	  });
+
 	});
 </script>
 @endsection

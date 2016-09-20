@@ -25,8 +25,11 @@
 
                  <div class="content">
                      Desription:<p>{{$item->DefectDescription}}.</p>
-                     Time left: <p>6h 9m 52s(exact date and time here)</p>
-
+                     Time left: 
+                     <p>
+                       <timer class="ui centered header" countdown="event.remainingTime" max-time-unit="'hour'" interval="1000" ng-if="event.remainingTime > 0">
+                       @{{hhours}} hour@{{hourS}}, @{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</timer>
+                     </p>
                      <div class="ui inverted segment">
                           <div class="ui header">Starting Bid: Php @foreach($item->item_auction as $key => $ia) {{$ia->ItemPrice}} @endforeach</div>
                           <form class="ui form">
@@ -107,7 +110,7 @@
 
 
 <script>
-  var app = angular.module('myApp', ['datatables']);
+  var app = angular.module('myApp', ['datatables', 'timer']);
   app.controller('myController', function($scope, $http, $timeout){
     $scope.showImage = function(){
       $('#imge').modal('setting', 'transition', 'vertical flip').modal('show');    
@@ -139,6 +142,11 @@
     }
 
     $timeout(function(){
+      $http.get('/eventDetails?eventID=' + $scope.eventID)
+      .then(function(response){
+        $scope.event = response.data;
+      });
+
       $http.get('/getHighestBid?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
       .then(function(response){
         $scope.highestBid = response.data;
@@ -148,7 +156,11 @@
       .then(function(response){
         $scope.bidlists = response.data;
       });
-    }, 1000);
+    }, 100);
+
+    $scope.$on('timer-tick', function (event, data) {
+      $scope.secondsLeft = data.millis;
+    });
   });
 </script>
 @endsection
