@@ -162,8 +162,10 @@
             <table datatable="ng" class="ui compact celled table">
               <thead>
                 <tr>
-                  <th>ID</th>
                   <th>Container</th>
+                  <th>ID</th>
+                  <th>Category</th>
+                  <th>Subcategory</th>
                   <th>Item</th>
                   <!--<th>Defect</th> -->
                   <th>Color</th>
@@ -173,8 +175,10 @@
               </thead>
               <tbody>
                   <tr ng-repeat="item in unexpectedItems">
-                    <td>@{{item.ItemID}}</td>
                     <td>@{{item.container.ContainerName}}</td>
+                    <td>@{{item.ItemID}}</td>
+                    <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+                    <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
                     <td>@{{item.item_model.ItemName}}</td>
                     <!--<td>@{{item.DefectDescription}}</td> -->
                     <td>@{{item.color}}</td>
@@ -210,6 +214,8 @@
                 <th></th>
                 <th>Container</th>
                 <th>ItemID</th>
+                <th>Category</th>
+                <th>Subcategory</th>
                 <th>Item</th>
                 <!--<th>Defect</th> -->
                 <th>Color</th>
@@ -226,6 +232,8 @@
                   </td>
                   <td>@{{item.container.ContainerName}}</td>
                   <td>@{{item.ItemID}}</td>
+                  <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+                  <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
                   <td>@{{item.item_model.ItemName}}</td>
                   <!--<td>@{{item.DefectDescription}}</td> -->
                   <td>@{{item.color}}</td>
