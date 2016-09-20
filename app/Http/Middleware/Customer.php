@@ -19,7 +19,7 @@ class Customer
             return $next($request);
         }
         else{
-            return 'Please login';
+            return redirect("login");
         }
     }
 }

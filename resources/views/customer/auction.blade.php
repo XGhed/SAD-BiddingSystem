@@ -54,6 +54,12 @@
       <div class="ui small modal" id="history">
           <i class="close icon"></i>
           <div class="ui segment center aligned" style="margin: 10px 10px 10px 10px;">
+            <div class="ui warning message">
+              <div class="header">
+              <i class="small warning sign icon"></i>
+                Note: If ever people bid the same amount, the first bid has priority. 
+              </div>
+            </div>
               <table class="ui celled table">
                 <thead>
                   <tr>
