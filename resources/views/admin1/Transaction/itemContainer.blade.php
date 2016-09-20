@@ -7,6 +7,7 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
       <h1 class="ui centered header">{{$container->ContainerName}}</h1>
+      <div class="ui divider"></div>
         @if($container->ActualArrival == NULL)
           <a class="ui basic blue button" id="addBtn">
             <i class="add square icon"></i>
@@ -110,7 +111,7 @@
               </div>
 
               <div class="ui divider"></div>
-              <div class="ui header">Defaul Values</div>
+              <div class="ui header">Default Values</div>
 
               <div class="equal width fields">
                 <div class="field">
@@ -134,7 +135,7 @@
         </div>
           <!-- END edit modal -->
 
-          <table datatable="ng" class="ui compact celled definition table" id="tableOutput">
+          <table datatable="ng" class="ui compact celled inverted definition table" id="tableOutput">
           <thead>
             <tr>
               <th></th>

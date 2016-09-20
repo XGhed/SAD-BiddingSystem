@@ -87,7 +87,7 @@
               <div class="equal width fields">
                 <div class="field">
                   <div class="ui sub header">Province</div>
-                  <select name="edit_province" class="ui search selection dropdown" id="provE"  style="height: 45px" required>
+                  <select name="edit_province" id="provE"  style="height: 45px" required>
                     <option value="" disabled selected>Province</option>
                     @foreach($provinces as $key => $province)
                       <option value="{{$province->ProvinceID}}">{{$province->ProvinceName}}</option>
@@ -96,7 +96,7 @@
                 </div>
                 <div class="field">
                   <div class="ui sub header">City</div>
-                  <select name="edit_city" class="ui search selection dropdown" id="cityE" style="height: 45px" required>
+                  <select name="edit_city" id="cityE" style="height: 45px" required>
                     <option value="" disabled selected>City</option>
                     
                   </select>
@@ -270,7 +270,7 @@
   });
 
   //address
-  $('.ui.normal.dropdown')
+  $('.ui.dropdown')
     .dropdown();
 
   //message

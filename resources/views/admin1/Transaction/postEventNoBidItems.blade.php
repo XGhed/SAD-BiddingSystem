@@ -7,7 +7,7 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
     <h1 class="ui centered header">POST EVENT</h1>
-      <table datatable="ng" class="ui compact celled definition table">
+      <table datatable="ng" class="ui compact celled inverted definition table">
         <thead>
           <tr>
             <th></th>
@@ -48,7 +48,7 @@
                   <tbody>
                     <tr ng-repeat="item_auction in selectedEvent.item_auction">
     						      <td class="collapsing">
-    					    	    <input type="checkbox" name="items[]" value="@{{item_auction.item.ItemID}}" REQUIRED/>
+    					    	    <input type="checkbox" name="items[]" value="@{{item_auction.item.ItemID}}"/>
     				          </td>
         					    <td>@{{item_auction.item.ItemID}}</td>
         					    <td>@{{item_auction.item.item_model.ItemName}}</td>
@@ -67,6 +67,11 @@
       </div>
       <!-- END of modal -->
 
+    <div class="ui basic modal" id="alert">
+        <h1 class='ui green centered header'>
+          Success!!
+        </h1>
+      </div>
       
 
     </div><!-- segment -->

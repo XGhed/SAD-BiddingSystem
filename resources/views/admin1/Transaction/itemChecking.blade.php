@@ -24,7 +24,7 @@
       </div>
 
       <div class="ui bottom attached active tab segment" data-tab="first">
-        <table datatable="ng" class="ui compact definition celled table" id="tableOutput">
+        <table datatable="ng" class="ui compact definition celled inverted table" id="tableOutput">
           <thead>
             <tr>
               <th></th>
@@ -89,7 +89,7 @@
       </div><!-- tab 1-->
 
       <div class="ui bottom attached tab segment" data-tab="second">
-        <table datatable="ng" class="ui compact definition celled table" id="tableOutput">
+        <table datatable="ng" class="ui compact definition inverted celled table" id="tableOutput">
           <thead>
             <tr>
               <th></th>

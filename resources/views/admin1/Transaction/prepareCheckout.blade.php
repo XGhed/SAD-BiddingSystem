@@ -16,7 +16,7 @@
       <div class="ui bottom attached active tab segment" data-tab="first">
        <div class="ui centered header">Prepare Delivery</div>
        
-        <table class="ui celled definition table" datatable="ng">
+        <table class="ui celled definition inverted table" datatable="ng">
           <thead>
             <tr>
               <th></th>
@@ -43,7 +43,7 @@
       <div class="ui bottom attached tab segment" data-tab="second">
        <div class="ui centered header">Prepare Pick up</div>
        
-        <table class="ui celled definition table" datatable="ng">
+        <table class="ui celled inverted definition table" datatable="ng">
           <thead>
             <tr>
               <th></th>
@@ -68,12 +68,12 @@
       </div>
             <div class="ui small modal" id="addModal">
               <i class="close icon"></i>
-                <div class="header">
-                  Pick-up Details
+                <div class="ui centered header">
+                   Details
                 </div>
                 <div class="content">
                   <form>
-                    <table class="ui celled table" datatable="ng">
+                    <table class="ui celled inverted table" datatable="ng">
                       <thead>
                         <tr>
                           <th>Item ID</th>
@@ -117,6 +117,12 @@
                 </div>
             </div>
 
+    <div class="ui basic modal" id="alert">
+        <h1 class='ui green centered header'>
+          Success!!
+        </h1>
+      </div>
+
     </div><!-- segment -->
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->
@@ -142,13 +148,13 @@
     });
 
     $scope.viewDeliveryRequest = function(index, request){
-      $('.ui.modal').modal('show');
+      $('#addModal').modal('show');
       $scope.requestItems = $scope.deliveryRequests[index].checkout_request__item;
       $scope.selectedRequest = request;
     }
 
     $scope.viewPickupRequest = function(index, request){
-      $('.ui.modal').modal('show');
+      $('#addModal').modal('show');
       $scope.requestItems = $scope.pickupRequests[index].checkout_request__item;
       $scope.selectedRequest = request;
       $('#selectedWarehouse').dropdown('set selected', $scope.selectedRequest.WarehouseNo);
@@ -158,7 +164,7 @@
       $http.get('/approveCheckoutRequest?warehouse=' + $scope.selectedWarehouse + '&checkoutRequestID=' + $scope.selectedRequest.CheckoutRequestID)
       .then(function(response){
         if(response.data == "success"){
-          alert('success');
+          $('#alert').modal('show');
           $('.ui.modal').modal('hide');
 
           //reload data

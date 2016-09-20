@@ -7,7 +7,7 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
 
-      <table datatable="ng" class="ui compact celled definition table">
+      <table datatable="ng" class="ui compact celled definition inverted table">
         <thead>
           <tr>
             <th></th>

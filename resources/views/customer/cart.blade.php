@@ -18,7 +18,9 @@
 						@foreach($itemsWon as $key => $itemWon)
 							<div class="ui grid">
 								<div class="five wide column">
-									<img class="ui small image" src="{{$itemWon->image_path}}">
+									<div class="ui inverted segment">
+										<img class="ui small centered image" src="{{$itemWon->image_path}}">
+									</div>
 								</div>
 								<div class="eight wide column">
 									<div class="header">{{$itemWon->itemModel->ItemName}}</div>
@@ -31,11 +33,10 @@
 							</div>
 							
 							<div class="ui divider"></div>
-							<div class="ui clearing basic segment">
+						@endforeach
+						<div class="ui clearing basic segment">
 							<a class="ui right floated blue button" href="/checkout">Proceed to Checkout<i class="arrow right icon"></i></a>
 							</div>
-						@endforeach
-						<!-- end loop -->
 				</div>	
 			</div>
 

@@ -10,15 +10,17 @@
 
           <div class="ui grid">
               <div class="six wide column" ng-click="showImage()">
+                <div class="ui inverted segment">
                   <div class="ui card" style="height: 350px; width: 350px;">
                     <a class="image" id="imgModal">
                       <img src="{{$item->image_path}}" style="height: 350px; width: 350px;">
                     </a>
                   </div>
+                </div>
               </div>
 
               <div class="ten wide column">
-                 <div class="ui header">{{$item->itemModel->ItemName}}</div>
+                 <h2 class="ui centered header">{{$item->itemModel->ItemName}}</h2>
                  <div class="ui divider"></div>
 
                  <div class="content">
@@ -87,7 +89,7 @@
       </div>
 
       <div class="ui basic modal" id="alert">
-        <h1 class='ui centered header'>
+        <h1 class='ui green centered header'>
           Success!!
         </h1>
       </div>

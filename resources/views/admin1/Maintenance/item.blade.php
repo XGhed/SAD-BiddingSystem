@@ -25,7 +25,7 @@
                 <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">Category</div>
-                    <select name="add_cat" id="cat">
+                    <select name="add_cat" class="ui search dropdown" id="cat">
                       <option value="" disabled selected>Choose Category</option>
                       @foreach($categories as $key => $category)
                         <option value="{{$category->CategoryID}}">{{$category->CategoryName}}</option>
@@ -34,7 +34,7 @@
                   </div>
                   <div class="field">
                     <div class="ui sub header">Subcategory</div>
-                    <select name="add_sub" id="add_sub" >
+                    <select name="add_sub" class="ui search dropdown" id="add_sub" >
                       <option value="" disabled selected>Choose Subcategory</option>
 
                     </select>
@@ -299,7 +299,7 @@ $(document).ready(function(){
   })
 ;
   //address
-  $('.ui.normal.dropdown')
+  $('.ui.dropdown')
     .dropdown();
 
   //message

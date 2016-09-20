@@ -14,7 +14,7 @@
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
       <!-- table -->
-        <table datatable="ng" class="ui celled definition table" id="tableOutput">
+        <table datatable="ng" class="ui celled definition inverted table" id="tableOutput">
           <thead>
             <tr>
               <th></th>
@@ -60,7 +60,7 @@
     <!--2nd tab-->
 
     <div class="ui bottom attached tab segment" data-tab="second">
-      <table class="ui celled table" datatable="ng">
+      <table class="ui celled inverted table" datatable="ng">
         <thead>
           <tr>
             <th></th>
@@ -89,7 +89,7 @@
 
     <div class="ui bottom attached tab segment" data-tab="third">
       <!-- table -->
-        <table datatable="ng" class="ui compact celled definition table">
+        <table datatable="ng" class="ui compact celled definition inverted table">
           <thead>
             <tr>
               <th></th>
@@ -145,7 +145,7 @@
                 </div>
                 <a id="prevPhoto" style="cursor:pointer;">Click to preview photo.</a>
               </div>
-              <table class="ui inverted celled table">
+              <table class="ui celled inverted table">
                 <thead>
                   <tr>
                     <th>Date</th>

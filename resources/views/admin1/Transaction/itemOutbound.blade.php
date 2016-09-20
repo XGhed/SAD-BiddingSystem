@@ -15,7 +15,7 @@
 
         
         <div class="ui bottom attached active tab segment" data-tab="first">
-            <table class="ui celled table">
+            <table class="ui celled inverted table">
               <thead>
                 <tr>
                   <th>View Info</th>
@@ -28,7 +28,7 @@
                <tr ng-repeat="deliveryRequest in deliveryRequests">
                   <td>
                     <a class="ui basic blue button" ng-click="viewRequest(deliveryRequest)">
-                      <i class="add user icon"></i>
+                      <i class="unhide icon"></i>
                       View
                     </a>
                   </td>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="ui bottom attached tab segment" data-tab="second">
-          <table class="ui celled table">
+          <table class="ui celled inverted table">
               <thead>
                 <tr>
                   <th>View Info</th>
@@ -106,6 +106,14 @@
             </div>
         </div>
 
+    <div class="ui basic modal" id="alert">
+        <h1 class='ui green centered header'>
+          Success!!
+        </h1>
+      </div>
+
+
+
     </div><!-- segment -->
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->
@@ -143,7 +151,7 @@
       $http.get('/approveOutbound?checkoutRequestID=' + checkoutRequestID)
       .then(function(response){
         if (response.data == "success"){
-          alert('success');
+          $('#alert').modal('show');
         }
         else {
           alert('something went wrong');

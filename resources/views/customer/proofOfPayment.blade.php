@@ -38,7 +38,7 @@
           Proofs
         </div>
         <div class="content">
-	        <table>
+	        <table class="ui inverted table">
 	        	<thead>
 	        		<th></th>
 	        		<th></th>
@@ -46,10 +46,10 @@
 	        	<tbody>
 	        		<tr ng-repeat="proof in selectedProofCheckoutRequest.proofs">
 	        			<td>
-	        				<div class="ui red button" ng-click="removeProof($index, proof.ProofPaymentID)">Remove</div>
+	        				<img class="ui medium image" src="@{{proof.image_path}}" ng-click="viewPhoto(proof.image_path)"/>
 	        			</td>
 	        			<td>
-	        				<img class="ui small image" src="@{{proof.image_path}}" ng-click="viewPhoto(proof.image_path)"/>
+	        				<div class="ui red button" ng-click="removeProof($index, proof.ProofPaymentID)">Remove</div>
 	        			</td>
 	        		</tr>
 	        	</tbody>
@@ -58,7 +58,7 @@
       </div>
 
 
-			<div class="ui small modal" id="detailsModal">
+	<div class="ui small modal" id="detailsModal">
       	<i class="close icon"></i>
         <div class="header">
           Details

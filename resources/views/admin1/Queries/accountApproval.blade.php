@@ -14,7 +14,7 @@
         <a class="item" data-tab="second">Account list</a>
       </div>
       <div class="ui bottom attached active tab segment" data-tab="first">
-       <table class="ui definition celled selectable table" datatable="ng">
+       <table class="ui definition celled selectable inverted table" datatable="ng">
           <thead>
             <tr>
             <th></th>
@@ -35,7 +35,7 @@
         </table>
       </div>
       <div class="ui bottom attached tab segment" data-tab="second">
-        <table class="ui definition celled selectable table" datatable="ng">
+        <table class="ui definition celled selectable inverted table" datatable="ng">
           <thead>
             <tr>
             <th></th>

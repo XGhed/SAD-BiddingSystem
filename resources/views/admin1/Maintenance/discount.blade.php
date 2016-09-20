@@ -29,7 +29,7 @@
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="seven wide field">
                   <div class="ui sub header">Account Type</div>
-                    <select name="add_Type">
+                    <select name="add_Type" class="ui search dropdown">
                       <option value="" disabled selected>Choose Account Type</option>
                       @foreach($accountTypes as $key => $accountType)
                       <option value="{{$accountType->AccountTypeID}}">{{$accountType->AccountTypeName}}</option>
@@ -179,7 +179,7 @@
 
 
     //accounttype
-    $('.ui.normal.dropdown')
+    $('.ui.dropdown')
     .dropdown();
 
 });   
@@ -193,5 +193,7 @@
     ;
   })
 ;
+
+
 </script>
 @endsection

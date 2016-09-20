@@ -87,14 +87,14 @@
               <div class="ui form ">
 
                 <div class="equal width fields">
-                  <div class="five wide field">
+                  <div class="field">
                     <div class="ui sub header">Category</div>
                     <select name="item" id="item" class="ui search selection dropdown" ng-model="category" ng-change="loadSubcat()" style="height: 45px" REQUIRED>
                       <option value="" disabled selected>Category</option>
                       <option ng-repeat="category in categories" value="@{{category.CategoryID}}">@{{category.CategoryName}}</option>
                     </select>
                   </div>
-                  <div class="five wide field">
+                  <div class="field">
                     <div class="ui sub header">Subcategory</div>
                     <select name="item" id="item" class="ui search selection dropdown" ng-model="subCategory" ng-change="loadModels()" style="height: 45px" REQUIRED>
                       <option value="" disabled selected>Subcategory</option>
@@ -108,20 +108,19 @@
                       <option ng-repeat="itemmodel in itemmodels" value="@{{itemmodel.ItemModelID}}">@{{itemmodel.ItemName}}</option>
                     </select>
                   </div>
+                </div>
 
+                <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">Stock ID</div>
                     <select name="item" class="ui search selection dropdown" ng-model="itemSelected" ng-change="loadItemInfo()"style="height: 45px" >
                       <option ng-repeat="item in items" value="@{{item.ItemID}}">@{{item.ItemID}}</option>
                     </select>
                   </div>
-                </div>
-
-                <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">Price</div>
                     <div class="ui input">
-                      <input type="text" ng-model="price" step="0.01">
+                      <input type="number" ng-model="price" step="0.01">
                     </div>
                   </div>
 

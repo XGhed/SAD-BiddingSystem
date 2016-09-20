@@ -8,7 +8,7 @@
     <div class="ui segment">
         <h2 class="ui centered header">Checkout Payment (Delivery)</h2>
 
-      <table class="ui definition celled selectable table">
+      <table class="ui definition celled inverted selectable table">
         <thead>
           <tr>
           <th></th>
@@ -75,7 +75,7 @@
       </table>
 
       <div class="sub header">Proofs</div>
-      <table>
+      <table class="inverted table">
         <thead>
           <th></th>
         </thead>
@@ -91,6 +91,13 @@
     <div class="actions">
       <button class="ui basic green button" ng-click="approvePayment(selectedRequest.CheckoutRequestID)"><i class="checkmark icon"></i>Approve</button> 
     </div>
+
+    <div class="ui basic modal" id="alert">
+        <h1 class='ui green centered header'>
+          Success!!
+        </h1>
+      </div>
+
   </div>
 </div><!-- ui grid -->
 
@@ -106,7 +113,7 @@
       $http.get('/approvePayment?checkoutRequestID=' + checkoutRequestID)
       .then(function(response){
         if (response.data == "success"){
-          alert('success');
+          $('#alert').modal('show');
         }
         else {
           alert('something happened');

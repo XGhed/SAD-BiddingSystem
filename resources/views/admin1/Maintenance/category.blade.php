@@ -139,7 +139,7 @@
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   <div class="field">
                     <div class="ui sub header">Category</div>
-                    <select name="add_ID" REQUIRED>
+                    <select name="add_ID" class="ui search dropdown" REQUIRED>
                       <option value="" disabled selected>Choose Category</option>
                         @foreach($results as $key => $result)
                           <option id="{{$key}}" value="{{$result->CategoryID}}">{{$result->CategoryName}}</option>
@@ -363,6 +363,9 @@
     ;
   })
 ;
+//address
+  $('.ui.dropdown')
+    .dropdown();
 
   //tab
   $('.tabular.menu .item').tab();

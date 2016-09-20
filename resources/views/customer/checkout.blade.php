@@ -122,7 +122,7 @@
 					</div>
 					<div class="ui one column center aligned page grid">
 						<div class="column">
-				  			<button class="ui button" type="submit">Submit</button>
+				  			<button class="ui blue button" type="submit"><i class="checkmark icon"></i> Submit</button>
 				  		</div>
 				  	</div>
 				

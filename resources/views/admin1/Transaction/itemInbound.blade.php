@@ -30,7 +30,7 @@
           </div>
 
           <form action="/itemInbound" method="POST">
-            <table datatable="ng" class="ui compact celled table">
+            <table datatable="ng" class="ui compact celled inverted table">
               <thead>
                 <tr>
                   <th>Filters</th>
@@ -162,7 +162,7 @@
           </div>
             <!-- END add modal -->
             <input type="hidden" name="samp" value="sa">
-            <table datatable="ng" class="ui compact celled table">
+            <table datatable="ng" class="ui compact celled inverted table">
               <thead>
                 <tr>
                   <th>Container</th>
@@ -218,7 +218,7 @@
             </div>
           </div>
 
-          <table datatable="ng" class="ui compact celled definition table">
+          <table datatable="ng" class="ui compact celled definition inverted table">
             <thead>
               <tr>
                 <th></th>
@@ -236,12 +236,14 @@
             <tbody>
                 <tr ng-repeat="item in itemsMissing">
                   <td class="collapsing">
-                    <div class="ui blue button" ng-click="itemFound(item, $index)">
-                      <div class="content">Found/Arrived</div>
-                    </div>
-                    <br>
-                    <div class="ui red button" ng-click="itemMissingRemove(item, $index)">
-                      <div class="content">Remove</div>
+                    <div class="ui tiny buttons">
+                      <div class="ui blue button" ng-click="itemFound(item, $index)">
+                        <div class="content">Found/Arrived</div>
+                      </div>
+                      <div class="or"></div>
+                      <div class="ui red button" ng-click="itemMissingRemove(item, $index)">
+                        <div class="content">Remove</div>
+                      </div>
                     </div>
                   </td>
                   <td>@{{item.container.ContainerName}}</td>

@@ -76,7 +76,7 @@
                 <div class="equal width fields">
                   <div class="field">
                     <div class="ui sub header">Supplier</div>
-                    <select name="supplier" id="edit_supplier" ng-model="edit_supplier" class="ui search selection dropdown" style="height:45px" REQUIRED>
+                    <select name="supplier" id="edit_supplier" ng-model="edit_supplier" style="height:45px" REQUIRED>
                       <option disabled selected>Supplier</option>
                       <option ng-repeat="supplier in suppliers" value="@{{supplier.SupplierID}}">@{{supplier.SupplierName}}</option>
                     </select>
@@ -85,7 +85,7 @@
                   <div class="equal width required fields">
                     <div class="field">
                       <div class="ui sub header">Warehouse</div>
-                      <select name="warehouse" id="edit_warehouse" ng-model="edit_warehouse" class="ui search selection dropdown" style="height:45px" REQUIRED>
+                      <select name="warehouse" id="edit_warehouse" ng-model="edit_warehouse"  style="height:45px" REQUIRED>
                         <option disabled selected>Warehouse</option>
                         <option ng-repeat="warehouse in addwarehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
                       </select>
@@ -117,7 +117,7 @@
         </div>
           <!-- END edit modal -->
 
-          <table class="ui celled striped table" datatable="ng">
+          <table class="ui celled striped inverted table" datatable="ng">
             <thead>
               <tr>
                 <th></th>
@@ -131,7 +131,7 @@
               <tr ng-repeat="container in containers">
                 <td class="collapsing inline field">
                   <div class="inline field">
-                    <div class="ui basic violet vertical animated button"  ng-click="addItems(container.ContainerID)" style="width:50px">
+                    <div class="ui basic yellow vertical animated button"  ng-click="addItems(container.ContainerID)" style="width:50px">
                       <div class="hidden content">View Items</div>
                       <div class="visible content">
                         <i class="ordered list icon"></i>
@@ -212,14 +212,8 @@
 });
 
 
-
-
-
-
-
-
   //supplier dropdown
-  $('ui.dropdown')
+  $('.ui.dropdown')
   .dropdown();
 
   var app = angular.module('myApp', ['datatables']);
