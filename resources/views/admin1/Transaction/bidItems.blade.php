@@ -23,7 +23,7 @@
               <span>Description: <span ng-bind="eventDetails.Description"></span></span>
             </div>
             <div class="ui middle aligned divided list">
-            <div class="item">
+            <div class="item" ng-if="ended == false">
               <div class="right floated content">
                 <div class="ui green button" ng-click="editModal(eventID)">Edit Information</div>
               </div>

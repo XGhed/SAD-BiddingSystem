@@ -1,4 +1,4 @@
-@extends('admin1.mainteParent')
+@extends('admin1.Queries.QueriesParent')
 
 @section('content')
 <div class="ui grid">
@@ -10,14 +10,7 @@
         <button type="submit" name="item" class="ui green button">Per Item</button>
         <button type="submit" name="category" class="ui blue button">Per Category</button>
     </form><br>
-<<<<<<< Updated upstream
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/modules/exporting.js"></script>
-        
-=======
-        <script src="js/js/highstock.js"></script>
-        <script src="js/js/modules/exporting.js"></script>
->>>>>>> Stashed changes
+
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
   </div>

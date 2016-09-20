@@ -19,6 +19,8 @@
       <script type="text/javascript" src="{!!URL::asset('js/humanize-duration.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/angular-timer.min.js')!!}"></script>
       <script type="text/javascript" src="{!!URL::asset('js/semantic.min.js')!!}"></script>
+      <script src="js/highcharts/js/highstock.js"></script>
+      <script src="js/highcharts/js/modules/exporting.js"></script>
 
       <!--calendar -->
       <link href="{!!URL::asset('css/fullcalendar.css')!!}" rel='stylesheet' />

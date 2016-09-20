@@ -58,7 +58,7 @@
           <!-- END edit modal -->
 
           <!-- table -->
-        <table class="ui compact celled definition table" id="tableOutput">
+        <table class="ui compact inverted celled definition table" id="tableOutput">
           <thead>
             <tr>
               <th></th>

@@ -1,4 +1,4 @@
-@extends('admin1.mainteParent')
+@extends('admin1.Queries.QueriesParent')
 
 @section('content')
 <div class="ui grid">
@@ -25,8 +25,6 @@
         <button class="ui green button" type="submit" name="region">Per Region</button>
     </form>
     <br>
-        <script src="js/js/highstock.js"></script>
-        <script src="js/js/modules/exporting.js"></script>
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
   </div>
