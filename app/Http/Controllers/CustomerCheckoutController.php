@@ -152,11 +152,20 @@ class CustomerCheckoutController extends Controller
 
         */
         //$checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
-        //return $this->index('/pdfFile?checkoutID='. $checkoutType->CheckoutRequest_ItemID);
+
+        //GANTO YUNG PAGPASA BHOI
+        //return $this->index($request, $checkoutRequest);
     }
 
 
-    public function index(Request $request){        
+    public function index(Request $request, $checkoutRequest){        
+        //ITO SAMPLE NG PAGGAMIT BHOI
+        //example irereturn mo lang ID nya, ganto. YUNG MGA NAKASULAT SA TAAS NA MGA PRICES, GAGANA RIN DITO YON
+        //return $checkoutRequest->CheckoutRequestID;
+
+
+
+
            // var_dump($request->checkoutType);
         //$dompdf = new Dompdf();
         $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
