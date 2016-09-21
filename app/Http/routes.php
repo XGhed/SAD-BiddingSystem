@@ -162,6 +162,14 @@ Route::get('/customerGraphReg', 'GraphController@customerGraphReg');
 
 Route::get('/customerGraphArea', 'GraphController@customerGraphArea');
 
+Route::get('/qcustomerStatus', 'PageController@qcustomerStatus');
+
+Route::get('/deliveryList', 'PageController@deliveryList');
+
+Route::get('/supplierStatus', 'PageController@supplierStatus');
+
+
+
 //Route::get('/itemChecking', 'ItemCheckingController@viewItems');
 //Route::get('/shipment', 'PageController@shipment');
 
@@ -265,6 +273,12 @@ Route::get('/itemModelsOfSubcat', 'AngularOutput@itemModelsOfSubcat');
 Route::get('/problemTypesList', 'AngularOutput@problemTypesList');
 
 Route::get('/accountInfo', 'AngularOutput@accountInfo');
+
+Route::get('/deliverList', 'AngularOutput@deliverList');
+
+Route::get('/customerStat', 'AngularOutput@customerStat');
+
+Route::get('/supplierStat', 'AngularOutput@supplierStat');
 
 //Route::get('/salesGraph', 'AngularOutput@salesGraph');
 

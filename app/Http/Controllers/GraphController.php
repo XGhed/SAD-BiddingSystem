@@ -23,7 +23,7 @@ class GraphController extends Controller
             return view('admin1.Reports.salesGraphReg')->with('item', $item);
         } else{
             return $this->salesGraphCat($request);
-            //return view('admin1.Queries.salesGraph')->with('item', $item);
+            //return view('admin1.Reports.salesGraph')->with('item', $item);
         }
     }
 
@@ -39,14 +39,15 @@ class GraphController extends Controller
     }
 
     public function customer(Request $request){
-        if (isset($_POST['region'])){
+        if(isset($_POST['area'])){
+            $customer = $this->customerGraphArea($request);
+            return view('admin1.Reports.customerGraphArea')->with('customer', $customer);
+        } else if(isset($_POST['region'])){
             $customer = $this->customerGraphReg($request);
             return view('admin1.Reports.customerGraphReg')->with('customer', $customer);
-        } else if (isset($_POST['area'])){
-            $customer = $this->customerGraphReg($request);
-            return view('admin1.Reports.customerGraphArea')->with('customer', $customer);
         } else{
-            return $this->customerGraph($request);
+            $customer = $this->customerGraph($request);
+            return view('admin1.Reports.customerGraph')->with('customer', $customer);
         }
     }
 
@@ -263,7 +264,7 @@ class GraphController extends Controller
                 }
             }
         }
-        //return view('admin1.Queries.salesGraphDate')->with('item', $item);
+        //return view('admin1.Reports.salesGraphDate')->with('item', $item);
 
         return $item;
     }
@@ -299,7 +300,7 @@ class GraphController extends Controller
 
         return $item;
 
-        //return view('admin1.Queries.mostBidItem')->with('item', $item);
+        //return view('admin1.Reports.mostBidItem')->with('item', $item);
     }
 
     public function mostBidCat(Request $request){
@@ -334,7 +335,7 @@ class GraphController extends Controller
 
         return $item;
 
-        //return view('admin1.Queries.mostBidCat')->with('item', $item);
+        //return view('admin1.Reports.mostBidCat')->with('item', $item);
     }
 
     public function customerGraph(Request $request){
@@ -368,9 +369,9 @@ class GraphController extends Controller
             }
         }
 
-        //return $customer;
+        return $customer;
 
-        return view('admin1.Reports.customerGraph')->with('customer', $customer);
+        //return view('admin1.Reports.customerGraph')->with('customer', $customer);
     }
 
     public function customerGraphReg(Request $request){
@@ -416,7 +417,7 @@ class GraphController extends Controller
 
         return $customer;
 
-        //return view('admin1.Queries.customerGraphReg')->with('customer', $customer);
+        //return view('admin1.Reports.customerGraphReg')->with('customer', $customer);
     }
 
     public function customerGraphArea(Request $request){
@@ -462,10 +463,10 @@ class GraphController extends Controller
 
         return $customer;
 
-        //return view('admin1.Queries.customerGraphArea')->with('customer', $customer);
+        //return view('admin1.Reports.customerGraphArea')->with('customer', $customer);
     }
 
-    /*public function totalBidders(Request $request){
+    public function totalBidders(Request $request){
         #
-    }*/
+    }
 }

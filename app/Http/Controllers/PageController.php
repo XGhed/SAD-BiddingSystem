@@ -161,11 +161,6 @@ class PageController extends Controller
        return view('admin1.Transaction.approvalOfMovingItems');
     } 
 
-    public function companyDetails(Request $request){
-
-       return view('admin1.Utilities.changeSystem');
-    } 
-
     public function bidItems1(Request $request){
 
        return view('admin1.bidItems');
@@ -193,11 +188,6 @@ class PageController extends Controller
     public function deliveryStatus(Request $request){
 
        return view('customer.deliveryStatus');
-    }
-
-    public function loginPage(Request $request){
-
-       return view('customer.loginPage');
     }
 
     public function listOfBidders(Request $request){
@@ -247,10 +237,20 @@ class PageController extends Controller
       return view('customer.proofOfPayment')->with('customerDiscount', $customerDiscount);
     }
 
-    public function sampleGraph(Request $request){
+    public function deliveryList(Request $request){
 
-      return view('admin1.Queries.sampleGraph');
-    }    
+      return view('admin1.Queries.deliveryList');
+    }
+
+    public function qcustomerStatus(Request $request){
+
+      return view('admin1.Queries.qcustomerStatus');
+    }
+
+    public function supplierStatus(Request $request){
+
+      return view('admin1.Queries.supplierStatus');
+    }
 }
 
 

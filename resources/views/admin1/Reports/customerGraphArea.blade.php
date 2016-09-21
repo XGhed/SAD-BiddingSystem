@@ -39,7 +39,7 @@ $(function() {
             type: 'column'
         },
         title: {
-            text: 'Approved Accounts of 2016 per Region'
+            text: 'Approved Accounts of 2016 per Area'
         },
         xAxis: {
             categories:[
