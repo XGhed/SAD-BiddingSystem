@@ -31,7 +31,7 @@
           <tbody>
             <tr ng-repeat="item in items" ng-if="item.pull_request.length == 0">
               <td class="collapsing">
-                <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
+                <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index, item)">
                   <div class="hidden content">Item Logs</div>
                   <div class="visible content">
                     <i class="large history icon"></i>
@@ -99,14 +99,14 @@
               <th>Subcategory</th>
               <th>Size</th>
               <th>Color</th>
+              <th>Defect</th>
               <th>Warehouse</th>
-              <th>Date Acquired</th>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="item in items" ng-if="item.pull_request.length > 0">
               <td class="collapsing">
-                <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
+                <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index, item)">
                   <div class="hidden content">Item Logs</div>
                   <div class="visible content">
                     <i class="large history icon"></i>
@@ -125,8 +125,8 @@
               <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
               <td>@{{item.size}}</td>
               <td>@{{item.color}}</td>
+              <td>@{{item.item_defect.DefectName}}</td>
               <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
-              <td>@{{item.container.ActualArrival.split(' ')[0]}}</td>
             </tr>
           </tbody>
         </table>
@@ -141,7 +141,15 @@
             <div class="content">
               <div class="ui message">
                 <div class="header">
-                  History/info/at kung anu-ano pa
+                  Details:
+                </div>
+                <div>
+                  Date Arrived: @{{selectedItem.container.ActualArrival}}
+                  <br>
+                  Defect: <span ng-if="selectedItem.item_defect.DefectName == NULL">None</span>@{{selectedItem.item_defect.DefectName}}
+                  <br>
+                  Defect Description: @{{selectedItem.DefectDescription}}
+                  <br>
                 </div>
                 <a id="prevPhoto" style="cursor:pointer;">Click to preview photo.</a>
               </div>
@@ -165,7 +173,7 @@
         <div class="ui small modal" id="photoPreview">
            <i class="close icon"></i>
             <div class="content">
-              <img src="/icons/avatar_3.png" class="ui centered large image">
+              <img src="@{{selectedItem.image_path}}" class="ui centered large image">
             </div>
         </div>
           <!-- END item history modal -->
@@ -300,7 +308,8 @@ $('.menu .item').tab();
       });
     }
 
-    $scope.viewItemHistory = function(index){
+    $scope.viewItemHistory = function(index, item){
+      $scope.selectedItem = item;
       $scope.histories = $scope.items[index].item_history;
       $('#itemHistory').modal('refresh');
       $timeout(function(){
