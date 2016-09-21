@@ -440,6 +440,12 @@ Route::get('/deliveryStatus', 'PageController@deliveryStatusCust');
 
 Route::get('/login', 'PageController@loginPage');
 
+Route::get('/changeDetails', 'PageController@companyDetails');
+
+Route::resource('/confirmDetails', 'adminDashboardController@addDetails');
+
+Route::get('/latestCompanyDetails', 'adminDashboardController@latestCompanyDetails');
+
 
 
 

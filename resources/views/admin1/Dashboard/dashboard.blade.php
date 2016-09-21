@@ -53,41 +53,52 @@
           </div><!-- statistics -->
         </div>
         <div class="ui divider"></div>
-        <div class="ui inverted segment">
+        <div class="ui inverted segment"  >
           <h2 class="ui center aligned icon header">
             <i class="circular building outline icon"></i>
             Company Details
           </h2>
           <div class="ui divider"></div>
-          <div class="ui two column grid">
+          <div class="ui two column grid" id="announcement" ng-app="announcementApp" ng-controller="adminDashboardController">
             <div class="column">
-              <h2 class="ui header">
-                <i class="circular building icon"></i>
+              <h2 class="ui inverted header">
+                <i class="circular building icon" ></i>
                 <div class="content">
-                  Company Name
+                Company Name:<br>
+                <u style="color:green">
+                  @{{company.CompanyName}}
+                </u>
                 </div>
               </h2>
-              <h2 class="ui header">
+              <h2 class="ui inverted header">
                 <i class="circular marker icon"></i>
                 <div class="content">
-                  Address
+                Address:<br>
+                <u style="color:red">
+                  @{{company.ComapanyAddress}}
+                </u>
                 </div>
               </h2>
-              <h2 class="ui header">
+              <h2 class="ui inverted header">
                 <i class="circular book icon"></i>
                 <div class="content">
-                  Contact Information
+                Contact Information:<br>
+                <u style="color:yellow">
+                  @{{company.CompanyEmail}}
+                  @{{company.CellphoneNo}}
+                  </u>
                 </div>
               </h2>
             </div>
             <div class="column">
-              <h2 class="ui header">
-                <i class="circular photo icon"></i>
+              <h2 class="ui inverted header">
+                <i class="photo icon"></i>
                 <div class="content">
-                  Company Logo
+                 <img class="ui rounded small image" src="@{{company.valid_id}}">
                 </div>
               </h2>            
             </div><!--2nd column-->
+
           </div>
 
         </div><!--company details-->
@@ -102,5 +113,20 @@
 <script>
   var d = new Date();
   document.getElementById("curDate").innerHTML = d.toDateString();
+
+  var app = angular.module('announcementApp', []);
+    app.controller('adminDashboardController', function($scope, $http){
+      $http.get('/latestCompanyDetails')
+      .then(function(response){
+        if(response.data != 'empty'){
+          $scope.company = response.data;
+        }
+        else {
+          $scope.company = null;
+        }
+      });
+    });
+
+    angular.bootstrap(document.getElementById("announcement"), ['announcementApp']);
 </script>
 @endsection

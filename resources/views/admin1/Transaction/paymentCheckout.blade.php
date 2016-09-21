@@ -74,15 +74,18 @@
         </tbody>
       </table>
 
-      <div class="sub header">Proofs</div>
+      <div class="ui divider"></div>
+      <div class="ui centered sub header">Proofs</div>
       <table class="inverted table">
         <thead>
           <th></th>
         </thead>
         <tbody>
-          <tr ng-repeat="proof in selectedRequest.proofs">
-            <td>
-              <img class="ui small image" src="@{{proof.image_path}}" ng-click="viewPhoto(proof.image_path)"/>
+          <tr>
+            <td ng-repeat="proof in selectedRequest.proofs">
+              <div class="ui small images segment">
+                 <img src="@{{proof.image_path}}" ng-click="viewPhoto(proof.image_path)" style="height:250px" />
+              </div>
             </td>
           </tr>
         </tbody>
