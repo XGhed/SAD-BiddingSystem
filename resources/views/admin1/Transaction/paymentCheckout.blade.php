@@ -8,22 +8,22 @@
     <div class="ui segment">
         <h2 class="ui centered header">Checkout Payment (Delivery)</h2>
 
-      <table class="ui definition celled inverted selectable table">
+      <table class="ui definition celled inverted selectable table" datatable="ng">
         <thead>
           <tr>
           <th></th>
-          <th>Account ID</th>
+          <th>Account</th>
           <th>Request Date</th>
-          <th>Price</th>
+          <th>Proofs Given</th>
         </tr></thead>
         <tbody>
           <tr ng-repeat="request in requests">
             <td class="collapsing">           
               <button class="ui basic green button" ng-click="viewDetails(request)">Details</button> 
             </td>
-            <td class="tableRow" >@{{request.AccountID}}</td>
+            <td class="tableRow" >@{{request.LastName}}, @{{request.FirstName}} @{{request.MiddleName}}</td>
             <td class="tableRow" >@{{request.RequestDate}}</td>
-            <td class="tableRow" >P@{{parseFloat(request.ItemPrice) + parseFloat(request.ShippingFee)}}</td>
+            <td class="tableRow" >@{{request.proofs.length}}</td>
           </tr>
         </tbody>
       </table>
@@ -65,6 +65,11 @@
             <td>Shipping fee:</td>
             <td></td>
             <td>@{{shippingFee}}</td>
+          </tr>
+          <tr class="warning">
+            <td>Event fees:</td>
+            <td></td>
+            <td>@{{selectedRequest.EventFee}}</td>
           </tr>
           <tr class="positive">
             <td>Total fee:</td>
@@ -154,7 +159,7 @@
       //subTotal = subTotal - discountAmount;
       $scope.subTotalPrice = $scope.subTotalPrice - ($scope.subTotalPrice * ($scope.customerDiscount / 100));
 
-      $scope.totalPrice = $scope.shippingFee*1 + $scope.subTotalPrice*1;
+      $scope.totalPrice = $scope.shippingFee*1 + $scope.subTotalPrice*1 + $scope.selectedRequest.EventFee*1;
         
     }
 

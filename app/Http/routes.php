@@ -105,6 +105,8 @@ Route::post('/sendMessageCustomer', 'CustomerMessageController@send');
 
 Route::post('/sendProofPayment', 'ProofPaymentController@insert');
 
+Route::post('/verifyDelivery', 'VerifyDeliveryController@verifyDelivery');
+
 Route::get('/salesGraphReg', 'GraphController@salesGraphReg');
 
 Route::any('/salesGraph', 'GraphController@salesGraph');

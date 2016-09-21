@@ -87,8 +87,9 @@ class PageController extends Controller
     } 
 
     public function deliveryStatusCust(Request $request){
+      $checkoutRequests = App\Models\Admin\CheckoutRequest::where('Status', 3)->get();
 
-       return view('admin1.Transaction.deliveryStatus');
+      return view('admin1.Transaction.deliveryStatus')->with('pendingRequests', $checkoutRequests);
     } 
 
  /*   public function supplier1(Request $request){

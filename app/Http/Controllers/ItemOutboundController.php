@@ -58,7 +58,13 @@ class ItemOutboundController extends Controller
         $checkoutRequest = App\Models\Admin\CheckoutRequest::find($request->checkoutRequestID);
 
         //MAKE SURE THAT ALL ITEMS ARE IN THE SAME WH!! 
-        $checkoutRequest->Status = 3;
+        if($checkoutRequest->CheckoutType == "Deliver"){
+            $checkoutRequest->Status = 3;
+        }
+        else if($checkoutRequest->CheckoutType == "Pick up"){
+            $checkoutRequest->Status = 4;
+        }
+        
         //items
         foreach ($checkoutRequest->checkoutRequest_Item as $key => $request_Item) {
             $item = App\Models\Admin\Item::find($request_Item->item->ItemID);

@@ -7,38 +7,53 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
         <h2 class="ui centered header">Delivery Status Of Customers</h2>
-
-        <table class="ui celled definition inverted table">
+        <form action="verifyDelivery" method="POST">
+        <table class="ui celled definition inverted table" id='tableOutput'>
           <thead>
             <tr>
               <th></th>
-              <th>Account Name</th>
-              <th>Delivery Number</th>
-              <th>Delivery Status</th>
+              <th>Request ID</th>
+              <th>Requested Date and Time</th>
+              <th>Recipient</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="collapsing">
-                <button class="ui blue button">
-                  <i class="checkmark icon"></i>
-                  Confirm
-                </button>
-              </td>
-              <td>Cell</td>
-              <td>Cell</td>
-              <td style="color:red;">
-                Pending
-              </td>
-            </tr>
+            @foreach($pendingRequests as $key => $pendingRequest)
+              <tr>
+                <td> <input type="checkbox" name="requests[]" value="{{$pendingRequest->CheckoutRequestID}}" /> </td>
+                <td>{{$pendingRequest->CheckoutRequestID}}</td>
+                <td>{{$pendingRequest->RequestDate}}</td>
+                <td>
+                  {{$pendingRequest->account->membership->first()->LastName}}, 
+                  {{$pendingRequest->account->membership->first()->FirstName}} 
+                  {{$pendingRequest->account->membership->first()->MiddleName}}
+                </td>
+              </tr>
+            @endforeach
           </tbody>
         </table>
-
+        <button class="ui green button" type="submit">Verify</button>
+        </form>
     </div><!-- segment -->
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->
 
 <script>
- 
+  $('#tableOutput').DataTable({
+      "lengthChange": false,
+      "pageLength": 5,
+      "columns": [
+        { "searchable": false },
+        null,
+        null,
+        null
+      ] 
+    });
+
+
+  var app = angular.module('myApp', ['datatables']);
+  app.controller('myControlelr', function($scope, $http){
+
+  });
 </script>
 @endsection
