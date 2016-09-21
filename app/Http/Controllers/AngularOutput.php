@@ -110,7 +110,7 @@ class AngularOutput extends Controller
     public function itemsInventory(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory',
-            'pullRequest')->where('DefectDescription', '!=', '')->where('image_path', '!=', '')
+            'pullRequest', 'itemDefect')->where('DefectDescription', '!=', '')->where('image_path', '!=', '')
             ->where('status', 1)->orWhere('status', 2)
             ->get();
 
