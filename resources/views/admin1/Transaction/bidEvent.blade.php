@@ -33,15 +33,15 @@
                     <div class="field">
                       <label>Start:</label>
                       <input type="date" id="startDate" name="startdate">
-                      <input type="time" name="starttime" id="starttime" required>
+                      <input type="time" name="starttime" id="starttime" onchange="document.getElementById('endtime').min=this.value" required>
                     </div>
                   </div>
                   
                   <div class="required inline fields">  
                     <div class="field">
                       <label>End:</label>
-                      <input type="date" id="endDate" name="enddate">
-                      <input type="time" name="endtime" id="endtime" required>
+                      <input type="date" id="endDate" name="enddate" >
+                      <input type="time" name="endtime" id="endtime" onchange="document.getElementById('starttime').max=this.value" required>
                     </div>
                   </div>
 

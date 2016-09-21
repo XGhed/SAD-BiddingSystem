@@ -7,6 +7,9 @@
         <a class="item" href="/messages">
           Messages
         </a>
+        <a class="item" href="/changeSystem">
+          Change Company Details
+        </a>
     </div>
   </div>
 

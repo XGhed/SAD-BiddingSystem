@@ -39,7 +39,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="container in containersWithPendingItems">
-                <td>
+                <td class="collapsing">
                   <div class="ui basic yellow vertical animated button"  ng-click="loadContainerInbound(container)" style="width:50px">
                     <div class="hidden content">View Items</div>
                     <div class="visible content">
@@ -61,23 +61,23 @@
             <div class="content">
               <form action="/itemInbound" method="POST">
                 <input type="hidden" name="containerID" value="@{{selectedContainer.ContainerID}}">
-                <table datatable="ng" class="ui compact celled inverted table">
+                <table datatable="ng" class="ui compact celled table">
                   <thead>
                     <tr>
                       <th>Filters</th>
-                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th>
-                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.ItemID" ></th>
-                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.sub_category.category.CategoryName" ></th>
-                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.sub_category.SubCategoryName" ></th>
-                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.ItemName" ></th>
+                      <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
+                      <th><input type="text" style="width:75px" data-ng-model="filterExpected.ItemID" ></th>
+                      <th><input type="text" style="width:125px" data-ng-model="filterExpected.item_model.sub_category.category.CategoryName" ></th>
+                      <th><input type="text" style="width:125px" data-ng-model="filterExpected.item_model.sub_category.SubCategoryName" ></th>
+                      <th><input type="text" style="width:115px" data-ng-model="filterExpected.item_model.ItemName" ></th>
                       <!--<th>Defect</th> -->
-                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.color" ></th>
-                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.size" ></th>
+                      <th><input type="text" style="width:105px" data-ng-model="filterExpected.color" ></th>
+                      <th><input type="text" style="width:105px" data-ng-model="filterExpected.size" ></th>
                       <!--<th>Image</th> -->
                     </tr>
                     <tr>
                       <th></th>
-                      <th>Container</th>
+                      <!--<th>Container</th> -->
                       <th>ItemID</th>
                       <th>Category</th>
                       <th>Subcategory</th>
@@ -91,7 +91,7 @@
                   <tbody>
                       <tr ng-repeat="item in itemsInbound | filter : filterExpected">
                         <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}"></td>
-                        <td>@{{item.container.ContainerName}}</td>
+                        <!--<td>@{{item.container.ContainerName}}</td>-->
                         <td>@{{item.ItemID}}</td>
                         <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
                         <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
@@ -235,8 +235,12 @@
               </table>
             </div>
             <div class="actions">
+              <div class="ui buttons">
+              <button class="ui green button" type="submit">Found</button>
+              <div class="or"></div>
               <button class="ui red button" type="submit">Remove</button>
               </form>
+              </div>
             </div>
           </div>
             <!-- END modal -->
@@ -252,7 +256,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="container in containersWithUnexpectedItems">
-                  <td>
+                  <td class="collapsing">
                     <div class="ui basic yellow vertical animated button"  ng-click="loadContainerUnexpected(container)" style="width:50px">
                       <div class="hidden content">View Items</div>
                       <div class="visible content">
@@ -303,7 +307,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="container in containersWithMissing">
-                  <td>
+                  <td class="collapsing">
                     <div class="ui basic yellow vertical animated button"  ng-click="loadContainerUnexpected(container)" style="width:50px">
                       <div class="hidden content">View Items</div>
                       <div class="visible content">
