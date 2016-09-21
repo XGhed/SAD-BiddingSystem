@@ -89,7 +89,7 @@
 					<div id="deliveryAddress" class="field">
 						<div class="field">
 						    <label>Complete Address</label>
-							<input type="text" name="address" id="address" placeholder="Complete Address...">
+							<input type="text" name="address" id="address" placeholder="Complete Address..." value="@{{account.Barangay_Street_Address}}">
 						</div>
 
 						<div class="equal width fields">

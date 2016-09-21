@@ -121,9 +121,10 @@ class CustomerCheckoutController extends Controller
 
             //kung ano mang gagawin mo
         }
-        $checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
+        return redirect('/checkout');
+        //$checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
 
-        return $this->index('/pdfFile?checkoutID='. $CheckoutType->CheckoutRequest_ItemID);
+        //return $this->index('/pdfFile?checkoutID='. $checkoutType->CheckoutRequest_ItemID);
     }
 
 
