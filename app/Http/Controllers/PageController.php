@@ -161,6 +161,11 @@ class PageController extends Controller
        return view('admin1.Transaction.approvalOfMovingItems');
     } 
 
+    public function companyDetails(Request $request){
+
+       return view('admin1.Utilities.changeSystem');
+    } 
+
     public function bidItems1(Request $request){
 
        return view('admin1.bidItems');

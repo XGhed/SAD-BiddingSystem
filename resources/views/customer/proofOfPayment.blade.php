@@ -171,6 +171,12 @@
           <!-- END add modal -->
 	</div>
 
+	<div class="ui basic modal" id="alert">
+        <h1 class='ui green centered header'>
+			Photo Removed!!
+        </h1>
+      </div>
+
 
 <script>
 	$('.ui.dropdown').dropdown();
@@ -256,7 +262,7 @@
 	  	$http.get('removeProof?proofID=' + ProofPaymentID)
 	  	.then(function(response){
 	  		if(response.data == "success"){
-	  			alert('success');
+          		$('#alert').modal('show');
 	  			$scope.selectedProofCheckoutRequest.proofs.splice(index, 1);
 	  		}
 	  		else {
