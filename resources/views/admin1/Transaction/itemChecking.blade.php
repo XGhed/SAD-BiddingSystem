@@ -68,13 +68,14 @@
                         @foreach($defects as $key => $defect)
                           <option value="{{$defect->ItemDefectID}}">{{$defect->DefectName}}</option>
                         @endforeach
-                        <option value="null">Others/None (Pls specify)</option>
+                        <option value="none">None</option>
+                        <option value="null">Others(Pls specify)</option>
                       </select>
                   </div>
                 </div>
 
                 <div class="fields">
-                  <div class="seven wide field" id="defectDesc" ng-show="dropDown=='null'">
+                  <div class="seven wide field" id="defectDesc" ng-show="dropDown!='none'">
                     <div class="ui sub header">OTHERS:</div>
                     <input id="defectDesc" type="text" name="defectDesc" placeholder="Put description of defect here..." />
                   </div>

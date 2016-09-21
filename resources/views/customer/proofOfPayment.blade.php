@@ -93,6 +93,10 @@
 					      <td></td>
 					      <td>@{{shippingFee}}</td>
 					    </tr>
+					    <tr class="warning">
+					      <td>Event fees:</td>
+					      <td>@{{selectedProofCheckoutRequest.EventFee}}</td>
+					    </tr>
 					    <tr class="positive">
 					      <td>Total fee:</td>
 					      <td></td>
@@ -148,6 +152,10 @@
 								      <td>Shipping fee:</td>
 								      <td></td>
 								      <td>@{{shippingFee}}</td>
+								    </tr>
+								    <tr class="warning">
+								      <td>Event fees:</td>
+								      <td>@{{eventFee}}</td>
 								    </tr>
 								    <tr class="positive">
 								      <td>Total fee:</td>
@@ -228,6 +236,7 @@
   			}
   		}
 
+  		$scope.eventFee = $scope.selectedCheckoutRequest.EventFee;
   		$scope.shippingFee = $scope.selectedCheckoutRequest.ShippingFee;
 
   		$scope.computePrice();
@@ -242,7 +251,7 @@
 	    	//subTotal = subTotal - discountAmount;
 	    	$scope.subTotalPrice = $scope.subTotalPrice - ($scope.subTotalPrice * ($scope.customerDiscount / 100));
 
-	    	$scope.totalPrice = $scope.shippingFee*1 + $scope.subTotalPrice*1;
+	    	$scope.totalPrice = $scope.shippingFee*1 + $scope.subTotalPrice*1 + $scope.eventFee*1;
 	    }
 
 	  $scope.computeReceiptPrice = function(){
@@ -255,7 +264,7 @@
 	    	//subTotal = subTotal - discountAmount;
 	    	$scope.subTotalPrice = $scope.subTotalPrice - ($scope.subTotalPrice * ($scope.customerDiscount / 100));
 
-	    	$scope.totalPrice = $scope.shippingFee*1 + $scope.subTotalPrice*1;
+	    	$scope.totalPrice = $scope.shippingFee*1 + $scope.subTotalPrice*1 + $scope.selectedProofCheckoutRequest.EventFee*1;
 	    }
 
 	  $scope.removeProof = function(index, ProofPaymentID){

@@ -3,7 +3,6 @@
 @section('profile')
 	<div class="ui inverted segment" id="requestsApp" ng-app="requestsApp" ng-controller="requestsController">
 		<a class="ui green button" href="/proofPayment"><i class="send icon"></i> Send Proof Payment</a>
-	<div class="ui inverted segment" ng-app="requestsApp" ng-controller="requestsController">
 		<h2>Transaction History</h2>
 		<table class="ui celled table" datatable="ng">
 		  <thead>
@@ -18,7 +17,7 @@
 		    <tr ng-repeat="request in requests">
 		      <td>@{{request.RequestDate}}</td>
 		      <td>@{{request.LastName}}, @{{request.FirstName}} @{{request.MiddleName}}</td>
-		      <td>@{{request.ItemPrice + request.ShippingFee}}</td>
+		      <td>@{{request.ItemPrice*1 + request.ShippingFee*1 + request.EventFee*1}}</td>
 		      <td>
 		      	<button class="ui green button">
 		      		<i class="print icon"></i>
@@ -38,5 +37,7 @@ app.controller('requestsController', function($scope, $http){
 		$scope.requests = response.data;
 	});
 });
+
+angular.bootstrap(document.getElementById("requestsApp"), ['requestsApp']);
 </script>
 @endsection

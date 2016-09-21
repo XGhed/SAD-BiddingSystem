@@ -148,7 +148,7 @@
                   <br>
                   Defect: <span ng-if="selectedItem.item_defect.DefectName == NULL">None</span>@{{selectedItem.item_defect.DefectName}}
                   <br>
-                  Defect Description: @{{selectedItem.DefectDescription}}
+                  Defect Description: <span ng-if="selectedItem.DefectDescription == ''">None</span>@{{selectedItem.DefectDescription}}
                   <br>
                 </div>
                 <a id="prevPhoto" style="cursor:pointer;">Click to preview photo.</a>

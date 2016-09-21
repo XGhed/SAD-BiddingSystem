@@ -53,7 +53,7 @@ class RegisterController extends Controller
             $membership->AccountTypeID = $request->input('accounttype');
 
             //upload files
-            if (($request->hasFile('ids')) {
+            if (($request->hasFile('ids'))) {
                 if($request->hasFile('ids')){
                     $filenameids = rand(1000,100000)."-".$request->file('ids')->getClientOriginalName();
                     $filepathids = "photos/credentials/";

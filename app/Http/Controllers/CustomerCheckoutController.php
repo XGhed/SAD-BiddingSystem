@@ -17,7 +17,13 @@ class CustomerCheckoutController extends Controller
         $account = App\Models\Admin\Account::find($request->session()->get('accountID'));
         $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
 
-        return view('customer.checkout')->with('account', $account)->with('customerDiscount', $customerDiscount);
+        $joinBid = App\Models\Admin\Joinbid::where('AccountID', $request->session()->get('accountID'))
+            ->where('Paid', 0)->get();
+
+        $eventFee = count($joinBid) * 500;
+
+        return view('customer.checkout')->with('account', $account)->with('customerDiscount', $customerDiscount)
+            ->with('joinBid', $joinBid)->with('eventFee', $eventFee);
     }
 
     public function itemsWon(Request $request){
@@ -74,7 +80,7 @@ class CustomerCheckoutController extends Controller
         foreach ($request->items as $key  => $itemRequestedID) {
             $lastBid = App\Models\Admin\Bid::where('ItemID', $itemRequestedID)->get()->last();
 
-            $ItemPrice = $ItemPrice + $lastBid->Price;
+            $ItemPrice = $ItemPrice + $lastBid->Price;  //YUNG $lastBid->Price DITO YUNG PRICE PER ITEM, PWEDENG KOPYAHIN MO TONG LOOP NA TO
         }
         //compute discounted price
         $ItemPrice = $ItemPrice - ($ItemPrice * ($customerDiscount / 100));
@@ -102,6 +108,19 @@ class CustomerCheckoutController extends Controller
             $checkoutRequest->ShippingFee = $shipment->ShipmentFee;
         }
 
+        //eventFees
+        $joinBid = App\Models\Admin\Joinbid::where('AccountID', $request->session()->get('accountID'))
+            ->where('Paid', 0)->get();
+
+        //tag event fees as paid
+        foreach ($joinBid as $key => $jB) {
+            $joinBidPaid = App\Models\Admin\Joinbid::find($jB->JoinbidID);
+            $joinBidPaid->Paid = 1;
+            $joinBidPaid->save();
+        }
+
+        $checkoutRequest->EventFee = count($joinBid) * 500;
+
         $checkoutRequest->save();
 
         //checkoutrequest_item
@@ -122,8 +141,17 @@ class CustomerCheckoutController extends Controller
             //kung ano mang gagawin mo
         }
         return redirect('/checkout');
-        //$checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
 
+        /*
+        ITO MGA KAILANGAN MO JOANNE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:)))
+        $checkoutRequest->CheckoutRequestID; //ID ng request
+        $checkoutRequest->ItemPrice = $ItemPrice; //total Item Price
+        $checkoutRequest->CheckoutType // either Deliver or Pick up
+        $checkoutRequest->EventFee // bayad sa event joining
+        $checkoutRequest->ShippingFee // shiping f33
+
+        */
+        //$checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
         //return $this->index('/pdfFile?checkoutID='. $checkoutType->CheckoutRequest_ItemID);
     }
 

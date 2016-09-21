@@ -32,6 +32,7 @@
                      </p>
                      <div class="ui inverted segment">
                           <div class="ui header">Starting Bid: Php @foreach($item->item_auction as $key => $ia) {{$ia->ItemPrice}} @endforeach</div>
+                          <div class="ui header">Next Minimum Bid: Php @{{ Math.floor(highestBid*1 + (highestBid*0.10)); }}</div>
                           <form class="ui form">
                               <div class="inline field">
                                   <input type="number" placeholder="Place bid here.." ng-model="price">
@@ -107,7 +108,7 @@
         <h1 class='ui red centered header'>
           INVALID BID!!
           <div class="ui divider"></div>
-          bid MUST be higher than previous bid.
+          bid MUST be higher than the next minimun bid.
           <div class="ui divider"></div>
           
         </h1>
@@ -118,6 +119,8 @@
 <script>
   var app = angular.module('myApp', ['datatables', 'timer']);
   app.controller('myController', function($scope, $http, $timeout){
+    $scope.Math = window.Math;
+    
     $scope.showImage = function(){
       $('#imge').modal('setting', 'transition', 'vertical flip').modal('show');    
     }

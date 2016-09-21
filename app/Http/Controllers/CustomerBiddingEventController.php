@@ -118,8 +118,9 @@ class CustomerBiddingEventController extends Controller
         $currentBids = App\Models\Admin\Bid::where('ItemID', $request->itemID)->where('AuctionID', $request->eventID)->get()->sortByDesc('price');
         if (count($currentBids) > 0){
             $highestBid = $currentBids->last()->Price;
+            $nextMinimumBid = $highestBid + floor($highestBid*0.10);
 
-            if($highestBid >= $request->price){
+            if($nextMinimumBid > $request->price){
                 return 'Someone bidded higher';
             }
         }

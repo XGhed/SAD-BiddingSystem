@@ -57,6 +57,14 @@ class CancelCheckoutRequest extends Command
                   ->toDateTimeString();
 
           if ($current->diffInDays($checkDateTime, false) <= -7){
+            //mark joinBids as unpaid
+            $joinBids = App\Models\Admin\Joinbid::where('CheckoutRequestID', $checkoutRequest->CheckoutRequestID)->get();
+            foreach ($joinBids as $key => $joinbid) {
+              $joinbidUnpaid = App\Models\Admin\Joinbid::find($joinbid);
+              $joinbidUnpaid->Paid = 0;
+              $joinbidUnpaid->save();
+            }
+
           	foreach ($checkoutRequest->checkoutRequest_Item as $key => $checkoutRequest_Item) {
           		$request_item = App\Models\Admin\CheckoutRequest_Item::find($checkoutRequest_Item->CheckoutRequest_ItemID);
           		$request_item->delete();

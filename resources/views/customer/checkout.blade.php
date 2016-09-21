@@ -1,7 +1,9 @@
 @extends('customer.homepage')
 
 @section('content')
-	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="customerDiscount = {{$customerDiscount}}; account = {{$account->membership[0]}}; account.ProvinceID = {{$account->membership[0]->city->province->ProvinceID}};">
+	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" 
+	ng-init="customerDiscount = {{$customerDiscount}}; account = {{$account->membership[0]}}; account.ProvinceID = {{$account->membership[0]->city->province->ProvinceID}}; 
+	eventFee = {{$eventFee}}; joinBid = {{$joinBid}}">
       @include('customer.topnav')
 	<form class="ui form" action="/submitCheckout" method="POST">
 		<a href="/cart/"><i class="arrow left icon"></i>back to cart</a>
@@ -165,6 +167,10 @@
 					      <td>Shipping fee:</td>
 					      <td>@{{shippingFee}}</td>
 					    </tr>
+					    <tr class="warning">
+					      <td>Event fees:</td>
+					      <td>@{{eventFee}}</td>
+					    </tr>
 					    <tr class="positive">
 					      <td>Total fee:</td>
 					      <td>@{{totalPrice}}</td>
@@ -289,7 +295,7 @@ $('.ui.normal.dropdown')
 	    	//subTotal = subTotal - discountAmount;
 	    	$scope.subTotalPrice = $scope.subTotalPrice - ($scope.subTotalPrice * ($scope.customerDiscount / 100));
 
-	    	$scope.totalPrice = $scope.shippingFee*1 + $scope.subTotalPrice*1;
+	    	$scope.totalPrice = $scope.shippingFee*1 + $scope.subTotalPrice*1 + $scope.eventFee*1;
 	    }
 
 	    $scope.shipmentFee = function(){
