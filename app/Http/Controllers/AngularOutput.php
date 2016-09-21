@@ -68,7 +68,7 @@ class AngularOutput extends Controller
     public function itemsInbound(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province')
-            ->where('status', 0)->whereHas('container', function($query){
+            ->where('status', 0)->where('ContainerID', $request->containerID)->whereHas('container', function($query){
                 $query->whereNotNull('ActualArrival');
             })->get();
 
@@ -193,6 +193,39 @@ class AngularOutput extends Controller
 
         $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province')
         ->where('ActualArrival', '!=', 'null')
+        ->get();
+
+        return $containers;
+    }
+
+    public function containersWithPendingItems(){
+
+        $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province')
+        ->where('ActualArrival', '!=', 'null')->whereHas('item', function($query){
+            $query->where('status', 0);
+        })
+        ->get();
+
+        return $containers;
+    }
+
+    public function containersWithUnexpectedItems(){
+
+        $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province', 'item', 'item.itemModel.subCategory', 'item.itemModel.subCategory.category')
+        ->where('ActualArrival', '!=', 'null')->whereHas('item', function($query){
+            $query->where('status', 1)->where('Unexpected', 1);
+        })
+        ->get();
+
+        return $containers;
+    }
+
+    public function containersWithMissing(){
+
+        $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province', 'item', 'item.itemModel.subCategory', 'item.itemModel.subCategory.category')
+        ->where('ActualArrival', '!=', 'null')->whereHas('item', function($query){
+            $query->where('status', -1);
+        })
         ->get();
 
         return $containers;

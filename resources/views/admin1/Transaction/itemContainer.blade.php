@@ -1,7 +1,7 @@
 @extends('admin1.mainteParent')
 
 @section('content')
-<div class="ui grid" ng-app="myApp" ng-controller="myController" ng-init="containerID = {{$container->ContainerID}}">
+<div class="ui grid" ng-app="myApp" ng-controller="myController" ng-init="containerID = {{$container->ContainerID}}; container = {{$container}};">
   @include('admin1.Transaction.sideNav')
 
   <div class="twelve wide stretched column">
@@ -157,7 +157,7 @@
                     <i class="large edit icon"></i>
                   </div>
                 </div>
-                <div class="ui vertical animated button" tabindex="0" ng-if="{{$container->ActualArrival}} != NULL" ng-click="deleteOrderedItem($index)">
+                <div class="ui vertical animated button" tabindex="0" ng-if="container.ActualArrival == NULL" ng-click="deleteOrderedItem($index)">
                   <div class="hidden content">Delete</div>
                   <div class="visible content">
                     <i class="large trash icon"></i>

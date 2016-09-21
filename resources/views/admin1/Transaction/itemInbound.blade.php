@@ -29,55 +29,91 @@
             </div>
           </div>
 
-          <form action="/itemInbound" method="POST">
-            <table datatable="ng" class="ui compact celled inverted table">
-              <thead>
-                <tr>
-                  <th>Filters</th>
-                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th>
-                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.ItemID" ></th>
-                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.sub_category.category.CategoryName" ></th>
-                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.sub_category.SubCategoryName" ></th>
-                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.ItemName" ></th>
-                  <!--<th>Defect</th> -->
-                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.color" ></th>
-                  <th><input type="text" style="width:20px" data-ng-model="filterExpected.size" ></th>
-                  <!--<th>Image</th> -->
-                </tr>
-                <tr>
-                  <th></th>
-                  <th>Container</th>
-                  <th>ItemID</th>
-                  <th>Category</th>
-                  <th>Subcategory</th>
-                  <th>Item</th>
-                  <!--<th>Defect</th> -->
-                  <th>Color</th>
-                  <th>Size</th>
-                  <!--<th>Image</th> -->
-                </tr>
-              </thead>
-              <tbody>
-                  <tr ng-repeat="item in itemsInbound | filter : filterExpected">
-                    <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}"></td>
-                    <td>@{{item.container.ContainerName}}</td>
-                    <td>@{{item.ItemID}}</td>
-                    <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
-                    <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
-                    <td>@{{item.item_model.ItemName}}</td>
-                    <!--<td>@{{item.DefectDescription}}</td> -->
-                    <td>@{{item.color}}</td>
-                    <td>@{{item.size}}</td>
-                   <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
-                  </tr>
-              </tbody>
-            </table>
-            <div class="ui buttons">
-            <button class="ui green button" type="submit" name="inbound">Inbound</button>
-            <div class="or"></div>
-            <button class="ui red button" type="submit" name="missing">Missing</button>
+          <table datatable="ng" class="ui compact celled inverted table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>ContainerName</th>
+                <th>Expected Arrival</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="container in containersWithPendingItems">
+                <td>
+                  <div class="ui basic yellow vertical animated button"  ng-click="loadContainerInbound(container)" style="width:50px">
+                    <div class="hidden content">View Items</div>
+                    <div class="visible content">
+                      <i class="ordered list icon"></i>
+                    </div>
+                  </div>
+                </td>
+                <td>@{{container.ContainerName}}</td>
+                <td>@{{container.Arrival}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="ui modal" id="expectedItemsModal">
+            <i class="close icon"></i>
+            <div class="ui centered header">
+              @{{selectedContainer.ContainerName}}
             </div>
-          </form>
+            <div class="content">
+              <form action="/itemInbound" method="POST">
+                <input type="hidden" name="containerID" value="@{{selectedContainer.ContainerID}}">
+                <table datatable="ng" class="ui compact celled inverted table">
+                  <thead>
+                    <tr>
+                      <th>Filters</th>
+                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th>
+                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.ItemID" ></th>
+                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.sub_category.category.CategoryName" ></th>
+                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.sub_category.SubCategoryName" ></th>
+                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.item_model.ItemName" ></th>
+                      <!--<th>Defect</th> -->
+                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.color" ></th>
+                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.size" ></th>
+                      <!--<th>Image</th> -->
+                    </tr>
+                    <tr>
+                      <th></th>
+                      <th>Container</th>
+                      <th>ItemID</th>
+                      <th>Category</th>
+                      <th>Subcategory</th>
+                      <th>Item</th>
+                      <!--<th>Defect</th> -->
+                      <th>Color</th>
+                      <th>Size</th>
+                      <!--<th>Image</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr ng-repeat="item in itemsInbound | filter : filterExpected">
+                        <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}"></td>
+                        <td>@{{item.container.ContainerName}}</td>
+                        <td>@{{item.ItemID}}</td>
+                        <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+                        <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
+                        <td>@{{item.item_model.ItemName}}</td>
+                        <!--<td>@{{item.DefectDescription}}</td> -->
+                        <td>@{{item.color}}</td>
+                        <td>@{{item.size}}</td>
+                       <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
+                      </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div class="actions">
+              <button class="ui green button" type="submit" name="inboundAll" value="true">Inbound All</button>
+              <div class="ui buttons">
+                <button class="ui green button" type="submit" name="inbound" value="true">Inbound</button>
+                <div class="or"></div>
+                <button class="ui red button" type="submit" name="missing" value="true">Missing</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
 
         <div class="ui bottom attached tab segment" data-tab="second">
@@ -101,7 +137,7 @@
                     <div class="ui sub header">Container</div>
                     <select name="containerID" id="item" class="ui search selection dropdown" ng-model="container" style="height:45px" REQUIRED>
                       <option selected disabled value="">Choose Containers</option>
-                      <option ng-repeat="container in containers" value="@{{container.ContainerID}}">@{{container.ContainerName}}</option>
+                      <option ng-repeat="container in containers" value="@{{container.ContainerID}}">@{{container.ContainerName}} (@{{container.ActualArrival.split(" ")[0]}})</option>
                     </select>
                   </div>
                 </div>
@@ -160,36 +196,75 @@
               </div>
             </form>
           </div>
-            <!-- END add modal -->
-            <input type="hidden" name="samp" value="sa">
-            <table datatable="ng" class="ui compact celled inverted table">
-              <thead>
-                <tr>
-                  <th>Container</th>
-                  <th>ID</th>
-                  <th>Category</th>
-                  <th>Subcategory</th>
-                  <th>Item</th>
-                  <!--<th>Defect</th> -->
-                  <th>Color</th>
-                  <th>Size</th>
-                  <!--<th>Image</th> -->
-                </tr>
-              </thead>
-              <tbody>
-                  <tr ng-repeat="item in unexpectedItems">
-                    <td>@{{item.container.ContainerName}}</td>
-                    <td>@{{item.ItemID}}</td>
-                    <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
-                    <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
-                    <td>@{{item.item_model.ItemName}}</td>
-                    <!--<td>@{{item.DefectDescription}}</td> -->
-                    <td>@{{item.color}}</td>
-                    <td>@{{item.size}}</td>
-                   <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
+          <!-- END modal -->
+
+          <div class="ui modal" id="unexpectedItemOfContainer">
+            <i class="close icon"></i>
+            <div class="ui centered header">
+              @{{unexpectedContainer.ContainerName}}
+            </div>
+            <div class="content">
+              <form action="/removeUnexpectedItems" method="POST">
+              <table datatable="ng" class="ui compact celled inverted table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>ID</th>
+                    <th>Category</th>
+                    <th>Subcategory</th>
+                    <th>Item</th>
+                    <!--<th>Defect</th> -->
+                    <th>Color</th>
+                    <th>Size</th>
+                    <!--<th>Image</th> -->
                   </tr>
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in unexpectedContainer.item">
+                      <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}" /></td>
+                      <td>@{{item.ItemID}}</td>
+                      <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+                      <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
+                      <td>@{{item.item_model.ItemName}}</td>
+                      <!--<td>@{{item.DefectDescription}}</td> -->
+                      <td>@{{item.color}}</td>
+                      <td>@{{item.size}}</td>
+                     <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="actions">
+              <button class="ui red button" type="submit">Remove</button>
+              </form>
+            </div>
+          </div>
+            <!-- END modal -->
+            <input type="hidden" name="samp" value="sa">
+
+          <table datatable="ng" class="ui compact celled inverted table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>ContainerName</th>
+                <th>Expected Arrival</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="container in containersWithUnexpectedItems">
+                  <td>
+                    <div class="ui basic yellow vertical animated button"  ng-click="loadContainerUnexpected(container)" style="width:50px">
+                      <div class="hidden content">View Items</div>
+                      <div class="visible content">
+                        <i class="ordered list icon"></i>
+                      </div>
+                    </div>
+                  </td>
+                  <td>@{{container.ContainerName}}</td>
+                  <td>@{{container.Arrival}}</td>
+                </tr>
+            </tbody>
+          </table>
         </div>  
 
         <div class="ui bottom attached tab segment" data-tab="third">
@@ -218,46 +293,74 @@
             </div>
           </div>
 
-          <table datatable="ng" class="ui compact celled definition inverted table">
+          <table datatable="ng" class="ui compact celled inverted table">
             <thead>
               <tr>
                 <th></th>
-                <th>Container</th>
-                <th>ItemID</th>
-                <th>Category</th>
-                <th>Subcategory</th>
-                <th>Item</th>
-                <!--<th>Defect</th> -->
-                <th>Color</th>
-                <th>Size</th>
-                <!--<th>Image</th> -->
+                <th>ContainerName</th>
+                <th>Expected Arrival</th>
               </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="item in itemsMissing">
-                  <td class="collapsing">
-                    <div class="ui tiny buttons">
-                      <div class="ui blue button" ng-click="itemFound(item, $index)">
-                        <div class="content">Found/Arrived</div>
-                      </div>
-                      <div class="or"></div>
-                      <div class="ui red button" ng-click="itemMissingRemove(item, $index)">
-                        <div class="content">Remove</div>
+                <tr ng-repeat="container in containersWithMissing">
+                  <td>
+                    <div class="ui basic yellow vertical animated button"  ng-click="loadContainerUnexpected(container)" style="width:50px">
+                      <div class="hidden content">View Items</div>
+                      <div class="visible content">
+                        <i class="ordered list icon"></i>
                       </div>
                     </div>
                   </td>
-                  <td>@{{item.container.ContainerName}}</td>
-                  <td>@{{item.ItemID}}</td>
-                  <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
-                  <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
-                  <td>@{{item.item_model.ItemName}}</td>
-                  <!--<td>@{{item.DefectDescription}}</td> -->
-                  <td>@{{item.color}}</td>
-                  <td>@{{item.size}}</td>
-                 <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
+                  <td>@{{container.ContainerName}}</td>
+                  <td>@{{container.Arrival}}</td>
                 </tr>
             </tbody>
           </table>
+
+          <div class="ui modal" id="missingItemsInContainer">
+            <i class="close icon"></i>
+            <div class="ui centered header">
+              @{{missingContainer.ContainerName}}
+            </div>
+            <table datatable="ng" class="ui compact celled definition inverted table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>ItemID</th>
+                  <th>Category</th>
+                  <th>Subcategory</th>
+                  <th>Item</th>
+                  <!--<th>Defect</th> -->
+                  <th>Color</th>
+                  <th>Size</th>
+                  <!--<th>Image</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="item in missingContainer.item">
+                    <td class="collapsing">
+                      <div class="ui tiny buttons">
+                        <div class="ui blue button" ng-click="itemFound(item, $index)">
+                          <div class="content">Found/Arrived</div>
+                        </div>
+                        <div class="or"></div>
+                        <div class="ui red button" ng-click="itemMissingRemove(item, $index)">
+                          <div class="content">Remove</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>@{{item.ItemID}}</td>
+                    <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+                    <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
+                    <td>@{{item.item_model.ItemName}}</td>
+                    <!--<td>@{{item.DefectDescription}}</td> -->
+                    <td>@{{item.color}}</td>
+                    <td>@{{item.size}}</td>
+                   <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
+                  </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
     </div><!-- segment -->
   </div><!-- twelve wide column -->
@@ -280,12 +383,7 @@
   $('.ui.dropdown').dropdown();
 
   var app = angular.module('myApp', ['datatables']);
-  app.controller('myController', function($scope, $http){
-    $http.get('itemsInbound')
-    .then(function(response){
-      $scope.itemsInbound = response.data;
-    });
-
+  app.controller('myController', function($scope, $http, $timeout){
     $http.get('itemsMissing')
     .then(function(response){
       $scope.itemsMissing = response.data;
@@ -305,6 +403,49 @@
     .then(function(response){
       $scope.containers = response.data;  
     });
+
+    $http.get('/containersWithPendingItems')
+    .then(function(response){
+      $scope.containersWithPendingItems = response.data;  
+    });
+
+    $http.get('/containersWithUnexpectedItems')
+    .then(function(response){
+      $scope.containersWithUnexpectedItems = response.data;  
+    });
+
+    $http.get('/containersWithMissing')
+    .then(function(response){
+      $scope.containersWithMissing = response.data;  
+    });
+
+    $scope.loadContainerInbound = function(container){
+      $scope.selectedContainer = container;
+      $http.get('itemsInbound?containerID=' + container.ContainerID)
+      .then(function(response){
+        $scope.itemsInbound = response.data;
+        $('#expectedItemsModal').modal('refresh');    
+        $timeout(function(){
+          $('#expectedItemsModal').modal('show');
+        }, 100);
+      });
+    }
+
+    $scope.loadContainerUnexpected = function(container){
+      $scope.unexpectedContainer = container;
+      $('#unexpectedItemOfContainer').modal('refresh');    
+      $timeout(function(){
+        $('#unexpectedItemOfContainer').modal('show');
+      }, 100);
+    }
+
+    $scope.loadContainerMissing = function(container){
+      $scope.missingContainer = container;
+      $('#missingItemsInContainer').modal('refresh');    
+      $timeout(function(){
+        $('#missingItemsInContainer').modal('show');
+      }, 100);
+    }
 
     $scope.loadSubcat = function(){
       $http.get('/subcatOptions?catID=' + $scope.category)
@@ -352,8 +493,6 @@
         }
       });
     }
-
-
   });
 
 

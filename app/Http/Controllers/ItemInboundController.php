@@ -19,11 +19,15 @@ class ItemInboundController extends Controller
     }
 
     public function itemInbound(Request $request){
-        if($request->has('inbound')){
+        if($request->inbound == "true"){
             $this->itemDelivered($request);
         }
-        else if ($request->has('missing')){
+        else if ($request->missing == "true"){
             $this->itemMissing($request);
+        }
+        else if ($request->inboundAll == "true"){
+
+            $this->inboundAll($request);
         }
 
         return redirect('/itemInbound');
@@ -32,6 +36,25 @@ class ItemInboundController extends Controller
     public function itemDelivered(Request $request){
         foreach ($request->items as $key => $itemID) {
             $item = App\Models\Admin\Item::find($itemID);
+            $item->status = 1;
+            $item->CurrentWarehouse = $item->container->warehouse->WarehouseNo;
+
+            $item->save();
+
+            $this->ItemLog(
+                $item, 
+                "Item successfully delivered to warehouse " . $item->current_warehouse->Barangay_Street_Address . ", " . $item->current_warehouse->city->province->ProvinceName . ", " . $item->current_warehouse->city->CityName
+                );
+        }
+        
+
+        return redirect('/itemInbound');
+    }
+
+    public function inboundAll(Request $request){
+        $container = App\Models\Admin\Container::find($request->containerID);
+        foreach ($container->Item as $key => $itemFromContainer) {
+            $item = App\Models\Admin\Item::find($itemFromContainer->ItemID);
             $item->status = 1;
             $item->CurrentWarehouse = $item->container->warehouse->WarehouseNo;
 
@@ -85,5 +108,14 @@ class ItemInboundController extends Controller
         $item->save();
         
         return 'success';
+    }
+
+    public function removeUnexpectedItems(Request $request){
+        foreach ($request->items as $key => $itemID) {
+            $item = App\Models\Admin\Item::find($itemID);
+            $item->delete();
+        }
+
+        return redirect('/itemInbound');
     }
 }

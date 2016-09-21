@@ -1,7 +1,7 @@
 item status:
 0 - not yet delivered
-1 - delivered (available on  inventory)
-2 - checked
+1 - delivered 
+2 - checked (available on  inventory)
 3 - pulled out
 
 checkoutreq status

@@ -73,9 +73,9 @@ Route::post('/addItemToContainer', 'ContainerController@addItemToContainer');
 
 Route::post('/editItemToContainer', 'ContainerController@editItemToContainer');
 
-Route::post('/itemInbound', 'ItemInboundController@itemDelivered');
+Route::post('/itemInbound', 'ItemInboundController@itemInbound');
 
-Route::post('/itemInbound', 'ItemInboundController@itemMissing');
+Route::post('/removeUnexpectedItems', 'ItemInboundController@removeUnexpectedItems');
 
 Route::post('/addUnexpectedItem', 'ContainerController@addUnexpectedItem');
 
@@ -221,6 +221,12 @@ Route::get('/itemsInContainer', 'AngularOutput@itemsInContainer');
 Route::get('/containers', 'AngularOutput@containers');
 
 Route::get('/allContainers', 'AngularOutput@allContainers');
+
+Route::get('/containersWithPendingItems', 'AngularOutput@containersWithPendingItems');
+
+Route::get('/containersWithUnexpectedItems', 'AngularOutput@containersWithUnexpectedItems');
+
+Route::get('/containersWithMissing', 'AngularOutput@containersWithMissing');
 
 Route::get('/singleItem', 'AngularOutput@singleItem');
 
