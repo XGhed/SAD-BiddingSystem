@@ -198,6 +198,39 @@ class AngularOutput extends Controller
         return $containers;
     }
 
+    public function containersWithPendingItems(){
+
+        $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province')
+        ->where('ActualArrival', '!=', 'null')->whereHas('item', function($query){
+            $query->where('status', 0);
+        })
+        ->get();
+
+        return $containers;
+    }
+
+    public function containersWithUnexpectedItems(){
+
+        $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province', 'item', 'item.itemModel.subCategory', 'item.itemModel.subCategory.category')
+        ->where('ActualArrival', '!=', 'null')->whereHas('item', function($query){
+            $query->where('status', 1)->where('Unexpected', 1);
+        })
+        ->get();
+
+        return $containers;
+    }
+
+    public function containersWithMissing(){
+
+        $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province', 'item', 'item.itemModel.subCategory', 'item.itemModel.subCategory.category')
+        ->where('ActualArrival', '!=', 'null')->whereHas('item', function($query){
+            $query->where('status', -1);
+        })
+        ->get();
+
+        return $containers;
+    }
+
     public function warehouses(){
         $warehouses = App\Models\Admin\Warehouse::with('city', 'city.province')->get();
         return $warehouses;
