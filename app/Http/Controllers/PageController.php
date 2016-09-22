@@ -181,6 +181,14 @@ class PageController extends Controller
       return view('customer.eventsList');
     }
 
+    public function auctionViewingOnly(Request $request){
+      return view('customer.auctionViewingOnly');
+    }
+
+    public function eventViewOnly(Request $request){
+      return view('customer.eventViewingOnly');
+    }
+
     public function userProfile(Request $request){
 
        return view('customer.transactionHistory');
@@ -258,6 +266,11 @@ class PageController extends Controller
     public function supplierStatus(Request $request){
 
       return view('admin1.Queries.supplierStatus');
+    }
+
+    public function pendingQuery(Request $request){
+
+      return view('admin1.Queries.pendingQuery');
     }
 }
 

@@ -297,6 +297,14 @@ Route::get('/customerStat', 'AngularOutput@customerStat');
 
 Route::get('/supplierStat', 'AngularOutput@supplierStat');
 
+Route::get('/pendingCustomer', 'AngularOutput@pendingCustomer');
+
+Route::get('/pendingContainer', 'AngularOutput@pendingContainer');
+
+Route::get('/pendingCheckout', 'AngularOutput@pendingCheckout');
+
+Route::get('/pendingItems', 'AngularOutput@pendingItems');
+
 //Route::get('/salesGraph', 'AngularOutput@salesGraph');
 
 //
@@ -475,11 +483,17 @@ Route::get('/login', 'PageController@loginPage');
 
 Route::get('/changeDetails', 'PageController@companyDetails');
 
+Route::get('/pendingQuery', 'PageController@pendingQuery');
+
 Route::resource('/confirmDetails', 'adminDashboardController@addDetails');
 
 Route::get('/latestCompanyDetails', 'adminDashboardController@latestCompanyDetails');
 
 Route::get('/Calendar_events', 'adminDashboardController@Calendar_events');
+
+Route::get('/eventViewOnly', 'PageController@eventViewOnly');
+
+Route::get('/auctionViewingOnly', 'PageController@auctionViewingOnly');
 
 
 
