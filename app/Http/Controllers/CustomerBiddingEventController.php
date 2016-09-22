@@ -21,9 +21,9 @@ class CustomerBiddingEventController extends Controller
         $auctionEndTime = explode(' ', $auction->EndDateTime);
         $currentDatetime = explode(' ', $currentDatetime);
 
-        if ($currentDatetime[0] > $auctionEndTime[0] || ($currentDatetime[0] == $auctionEndTime[0] && $currentDatetime[1] > $auctionEndTime[1])){
+        /*if ($currentDatetime[0] > $auctionEndTime[0] || ($currentDatetime[0] == $auctionEndTime[0] && $currentDatetime[1] > $auctionEndTime[1])){
             return "Event has ended";
-        }
+        }*/
 
         $joinbid = App\Models\Admin\Joinbid::where('AuctionID', $request->eventID)->where('AccountID', $request->session()->get('accountID'))->get();
 
@@ -38,7 +38,7 @@ class CustomerBiddingEventController extends Controller
     }
 
     public function allItemsInEvent(Request $request){
-        $items = App\Models\Admin\Item::with('itemModel', 'itemDefect', 'item_auction', 'bids')->get();
+        $items = App\Models\Admin\Item::with('itemModel', 'itemDefect', 'item_auction', 'bids', 'bids.account')->get();
         $itemsOnAuction = [];
 
         foreach ($items as $key => $item) {
@@ -53,7 +53,7 @@ class CustomerBiddingEventController extends Controller
     }
 
     public function itemsOfSubcategory(Request $request){
-    	$items = App\Models\Admin\Item::with('itemModel', 'itemDefect', 'item_auction', 'bids')->get();
+    	$items = App\Models\Admin\Item::with('itemModel', 'itemDefect', 'item_auction', 'bids', 'bids.account')->get();
     	$itemsOnAuction = [];
     	$returndata = [];
 

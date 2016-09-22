@@ -14,6 +14,7 @@ class Account extends Migration
         $table->String('Password', 15);
         $table->integer('Points');
         $table->dateTime('DateApproved');
+        $table->String('Avatar');
         $table->integer('status');
         $table->rememberToken();
     });

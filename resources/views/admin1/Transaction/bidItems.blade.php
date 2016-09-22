@@ -20,6 +20,12 @@
               <span>End Time: <span ng-bind="eventDetails.EndDateTime"></span> </span>
             </div>
             <div class="summary">
+              <span>Event Fee: <span ng-bind="eventDetails.EventFee"></span></span>
+            </div>
+            <div class="summary">
+              <span>Bid Increment (%): <span ng-bind="eventDetails.NextBidPercent"></span></span>
+            </div>
+            <div class="summary">
               <span>Description: <span ng-bind="eventDetails.Description"></span></span>
             </div>
             <div class="ui middle aligned divided list">
@@ -63,6 +69,15 @@
                     <div class="ui sub header">End Time</div>
                     <input type="time" name="endtime" value="@{{eventDetails.EndDateTime.split(' ')[1]}}">
                   </div>
+                </div>
+                <div class="field" ng-if="secondsLeft > 0">
+                  <div class="ui sub header">Event Fee</div>
+                  <input type="number" name="eventFee" id="edit_fee" value="@{{eventDetails.EventFee}}"/>
+                </div>
+
+                <div class="field" ng-if="secondsLeft > 0">
+                  <div class="ui sub header">Bid Increment (%)</div>
+                  <input type="number" name="increment" id="edit_increment" value="@{{eventDetails.NextBidPercent}}"/>
                 </div>
 
                   <div class="field">

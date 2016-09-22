@@ -85,7 +85,7 @@
                         <tr ng-repeat="requestItem in requestItems">
                           <td>@{{requestItem.ItemID}}</td>
                           <td>@{{requestItem.item.item_model.ItemName}}</td>
-                          <td>@{{requestItem.item.CurrentWarehouse}}</td>
+                          <td>@{{requestItem.item.current_warehouse.Barangay_Street_Address}}, @{{requestItem.item.current_warehouse.city.CityName}}, @{{requestItem.item.current_warehouse.city.province.ProvinceName}}</td>
                         </tr>
                       </tbody>
                     </table>

@@ -47,11 +47,11 @@
                   <div class="required inline fields">  
                     <div class="field">
                       <label>Event Fee:</label>
-                      <input type="number" name="fee">
+                      <input type="number" name="eventFee">
                     </div>  
                     <div class="field">
-                      <label>Minimum Bid increase:</label>
-                      <input type="number" name="">
+                      <label>Bid Increment (%):</label>
+                      <input type="number" name="increment">
                     </div>
                   </div>
 
@@ -89,6 +89,12 @@
                         </div>
                         <div class="summary">
                           <span>End Time: {{$event->EndDateTime}}</span>
+                        </div>
+                        <div class="summary">
+                          <span>Event Fee: {{$event->EventFee}}</span>
+                        </div>
+                        <div class="summary">
+                          <span>Bid Increment: {{$event->NextBidPercent}}</span>
                         </div>
                         <div class="summary">
                           <span>Description: {{$event->Description}}</span>

@@ -14,7 +14,7 @@ use Illuminate\Support\Collection;
 class PrepareCheckoutController extends Controller
 {
     public function deliveryRequests(Request $request){
-        $checkoutRequest = App\Models\Admin\CheckoutRequest::with('account', 'checkoutRequest_Item', 'checkoutRequest_Item.item', 'checkoutRequest_Item.item.itemModel', 'city', 'city.province')
+        $checkoutRequest = App\Models\Admin\CheckoutRequest::with('account', 'checkoutRequest_Item', 'checkoutRequest_Item.item', 'checkoutRequest_Item.item.current_warehouse', 'checkoutRequest_Item.item.current_warehouse.city', 'checkoutRequest_Item.item.current_warehouse.city.province', 'checkoutRequest_Item.item.itemModel', 'city', 'city.province')
             ->where('CheckoutType', 'Deliver')->where('Status', 0)->get();
 
         return $checkoutRequest;
@@ -57,7 +57,7 @@ class PrepareCheckoutController extends Controller
 
     public function pickupRequests(Request $request){
         $checkoutRequest = App\Models\Admin\CheckoutRequest::with('account', 'pickupLocation', 'pickupLocation.city', 'pickupLocation.city.province', 
-            'checkoutRequest_Item', 'checkoutRequest_Item.item', 'checkoutRequest_Item.item.itemModel')
+            'checkoutRequest_Item', 'checkoutRequest_Item.item', 'checkoutRequest_Item.item.current_warehouse', 'checkoutRequest_Item.item.itemModel')
             ->where('CheckoutType', 'Pick up')->where('Status', 0)->get();
 
         return $checkoutRequest;

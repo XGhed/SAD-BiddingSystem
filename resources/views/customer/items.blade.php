@@ -158,6 +158,9 @@
 							      <i class="thumbs up icon"></i>
 							      Bid Item
 							    </div>
+							    <div class="ui green bottom attached button" ng-if="secondsLeft == 0 || secondsLeft == NULL">
+							    	Winner: @{{item.bids[item.bids.length-1].account.Username}}
+							    </div>
 							</div>
 						</div>   
 					</div>
@@ -184,6 +187,11 @@
 			.then(function(response){
 				$scope.event = response.data;
 			});
+
+			$http.get('/myBidsTabData?eventID=' + $scope.eventID)
+	    .then(function(response){
+	    	$scope.myBidsList = response.data;
+	    });
 
 			$scope.allCategories();
 		}, 100);
@@ -247,7 +255,7 @@
 	    });
 
 	    if(data.millis == 0){
-
+	    	$window.location.reload();
 	    }
 	  });
 

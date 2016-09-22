@@ -14,8 +14,8 @@ class Auction extends Migration
         $table->string('EventName');
         $table->dateTime('StartDateTime');
         $table->dateTime('EndDateTime');
-        $table->time('TimeExtension');
-        $table->time('MaxTimeExtension');
+        $table->integer('EventFee');
+        $table->integer('NextBidPercent');
         $table->string('Description');
     });
 }

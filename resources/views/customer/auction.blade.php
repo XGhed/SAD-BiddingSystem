@@ -127,7 +127,7 @@
 
 <script>
   var app = angular.module('myApp', ['datatables', 'timer']);
-  app.controller('myController', function($scope, $http, $timeout){
+  app.controller('myController', function($scope, $http, $timeout, $window){
     $scope.Math = window.Math;
     
     $scope.showImage = function(){
@@ -184,6 +184,9 @@
 
     $scope.$on('timer-tick', function (event, data) {
       $scope.secondsLeft = data.millis;
+      if(data.millis == 0){
+        $window.location.reload();
+      }
     });
   });
 </script>

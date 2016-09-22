@@ -59,7 +59,7 @@ class BiddingEventController extends Controller
         ->toDateTimeString();
 
         $event->timeBeforeStart = Carbon::now('Asia/Manila')->diffInSeconds($startDateTime, false);
-        $event->remainingTime = Carbon::now('Asia/Manila')->diffInSeconds($endDateTime);
+        $event->remainingTime = Carbon::now('Asia/Manila')->diffInSeconds($endDateTime, false);
 
         return $event;
         
@@ -75,6 +75,8 @@ class BiddingEventController extends Controller
         $event->StartDateTime = $start;
         $event->EndDateTime = $end;
         $event->Description = $request->description;
+        $event->NextBidPercent = $request->increment;
+        $event->EventFee = $request->eventFee;
 
         $event->save();
 
@@ -90,6 +92,8 @@ class BiddingEventController extends Controller
         }
         if($request->has('eventname')){
             $event->EventName = $request->eventname;
+            $event->NextBidPercent = $request->increment;
+            $event->EventFee = $request->eventFee;
         }
 
         $end = $request->enddate . ' ' . $request->endtime;
