@@ -97,14 +97,14 @@
 						<div class="equal width fields">
 							<div class="field">
 							 	<div class="ui sub header">Province</div>
-								<select class="ui fluid search normal selection dropdown" id="province" ng-model="inputProvince" ng-change="reloadCities()">
+								<select class="ui fluid search normal selection dropdown" id="province" ng-model="inputProvince" ng-change="reloadCities()" REQUIRED>
 									<option value="" disabled selected>Select Province</option>
 									<option ng-repeat="province in provinces" value="@{{province.ProvinceID}}">@{{province.ProvinceName}}</option>
 								</select>
 							</div>
 							<div class="field">
 							 	<div class="ui sub header">City</div>
-								<select class="ui fluid search normal selection dropdown" name="city" id="city" ng-model="inputCity" ng-change="shipmentFee()">
+								<select class="ui fluid search normal selection dropdown" name="city" id="city" ng-model="inputCity" ng-change="shipmentFee()" REQUIRED>
 									<option value="" disabled selected>Select City</option>
 									<option ng-repeat="city in cities" value="@{{city.CityID}}">@{{city.CityName}}</option>
 								</select>

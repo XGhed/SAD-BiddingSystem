@@ -61,6 +61,11 @@ class PageController extends Controller
        return view('admin1.Dashboard.dashboard');
     } 
 
+    public function companyDetails(Request $request){
+
+       return view('admin1.Utilities.changeSystem');
+    } 
+
     public function announcements(Request $request){
 
        return view('admin1.Utilities.announcements');
