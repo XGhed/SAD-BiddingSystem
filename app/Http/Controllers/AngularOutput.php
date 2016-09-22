@@ -51,7 +51,7 @@ class AngularOutput extends Controller
 
     public function singleItem(Request $request){
         $item =  App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
-            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory', 'pullRequest')
+            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory', 'pullRequest', 'itemDefect')
             ->where('ItemID', $request->itemID)->first();
 
         return $item;

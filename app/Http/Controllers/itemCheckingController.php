@@ -28,10 +28,10 @@ class ItemCheckingController extends Controller
             
             $item->status = 2;
 
-            if($request->defect != "null"){
+            if($request->defect == "null"){
                 $item->DefectDescription = $request->defectDesc;
             }
-            else if($request->defect != "none"){
+            else if($request->defect == "none"){
                 $item->DefectDescription = 'None';
             }
             else {

@@ -137,6 +137,7 @@
               <table class="ui compact celled inverted table">
                 <thead>
                   <th>Defect</th>
+                  <th>Description</th>
                   <th>Size</th>
                   <th>Color</th>
                   <th>Image</th>
@@ -144,6 +145,7 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td>@{{itemInfo.item_defect.DefectName}}</td>
                     <td>@{{itemInfo.DefectDescription}}</td>
                     <td>@{{itemInfo.size}}</td>
                     <td>@{{itemInfo.color}}</td>
