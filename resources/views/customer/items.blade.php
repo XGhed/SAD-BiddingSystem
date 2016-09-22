@@ -154,7 +154,7 @@
 					              		Last Bid: @{{item.bids[item.bids.length - 1].Price}}
 					              	</div>
 					            </div>
-							    <div class="ui green bottom attached button" ng-click="bidItem($index)">
+							    <div class="ui green bottom attached button" ng-click="bidItem($index)" ng-if="secondsLeft > 0">
 							      <i class="thumbs up icon"></i>
 							      Bid Item
 							    </div>
