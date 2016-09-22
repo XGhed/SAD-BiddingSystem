@@ -64,6 +64,9 @@ class ItemOutboundController extends Controller
         else if($checkoutRequest->CheckoutType == "Pick up"){
             $checkoutRequest->Status = 4;
         }
+
+        //dateApproved / Outbounded
+        $checkoutRequest->DateOutbound = Carbon::now('Asia/Manila');
         
         //items
         foreach ($checkoutRequest->checkoutRequest_Item as $key => $request_Item) {

@@ -10,6 +10,8 @@
 		    	<th>Order Date</th>
 		    	<th>Receiver</th>
 		    	<th>Price</th>
+		    	<th>Status</th>
+		    	<th>Pickup/Delivery Date</th>
 		    	<th>Generate Receipt</th>
 		  	</tr>
 		  </thead>
@@ -19,9 +21,16 @@
 		      <td>@{{request.LastName}}, @{{request.FirstName}} @{{request.MiddleName}}</td>
 		      <td>@{{request.ItemPrice*1 + request.ShippingFee*1 + request.EventFee*1}}</td>
 		      <td>
+		      	<span ng-if="request.Status == 0">Pending Approval</span>
+		      	<span ng-if="request.Status == 1">Being Prepared</span>
+		      	<span ng-if="request.Status == 2">Payment Approve (Pending Delivery)</span>
+		      	<span ng-if="request.Status == 3">Being Delivered</span>
+		      	<span ng-if="request.Status == 4">Delivered / Picked up</span>
+		      </td>
+		      <td>@{{request.DateOutbound}}</td>
+		      <td>
 		      	<button class="ui green button">
 		      		<i class="print icon"></i>
-		      		Generate Receipt
 		      	</button>
 		      </td>
 		    </tr>

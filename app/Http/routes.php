@@ -213,6 +213,21 @@ Route::get('/admin', 'PageController@admin');
 Route::get('/tryLang', 'AngularOutput@customerDiscount');
 
 
+//Mainte data
+
+Route::get('/mainte_Warehouses', 'AngularOutput@mainte_Warehouses');
+
+Route::get('/mainte_Suppliers', 'AngularOutput@mainte_Suppliers');
+
+Route::get('/mainte_Categories', 'AngularOutput@mainte_Categories');
+
+Route::get('/mainte_SubcatOptions', 'AngularOutput@mainte_SubcatOptions');
+
+Route::get('/mainte_ItemModelsOfSubcat', 'AngularOutput@mainte_ItemModelsOfSubcat');
+
+Route::get('/mainte_ProblemTypesList', 'AngularOutput@mainte_ProblemTypesList');
+
+
 //Angular AngularOutput
 Route::get('/provinces', 'AngularOutput@provinces');
 

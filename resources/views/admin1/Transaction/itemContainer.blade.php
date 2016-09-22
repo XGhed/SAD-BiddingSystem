@@ -219,7 +219,7 @@
 
   var app = angular.module('myApp', ['datatables']);
   app.controller('myController', function($scope, $http, $timeout){
-    $http.get('/categories')
+    $http.get('/mainte_Categories')
     .then(function(response){
       $scope.categories = response.data;
       $timeout(function(){
@@ -253,7 +253,7 @@
     } , 1000);
 
     $scope.loadSubcat = function(){
-      $http.get('/subcatOptions?catID=' + $scope.category)
+      $http.get('/mainte_SubcatOptions?catID=' + $scope.category)
       .then(function(response){
         $scope.subCategories = response.data;  
       });

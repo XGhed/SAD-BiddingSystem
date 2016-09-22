@@ -202,7 +202,7 @@ class PageController extends Controller
     }
 
     public function itemChecking(Request $request){
-       $defects = App\Models\Admin\ItemDefect::all();
+       $defects = App\Models\Admin\ItemDefect::where('Status', 1)->get();
 
        return view('admin1.Transaction.itemChecking')->with('defects', $defects);
     }
