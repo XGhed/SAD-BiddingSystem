@@ -24,7 +24,16 @@
                  <div class="ui divider"></div>
 
                  <div class="content">
-                     Desription:<p>{{$item->DefectDescription}}.</p>
+                      <p>
+                         Defect: 
+                           @if($item->ItemDefectID == NULL)
+                            Others
+                           @else
+                            {{$item->itemDefect->DefectName}}
+
+                           @endif
+                      </p>
+                     <p>Description: {{$item->DefectDescription}}</p>
                      Time left: 
                      <p>
                        <timer class="ui centered header" countdown="event.remainingTime" max-time-unit="'hour'" interval="1000" ng-if="event.remainingTime > 0">
@@ -32,7 +41,7 @@
                      </p>
                      <div class="ui inverted segment">
                           <div class="ui header">Starting Bid: Php @foreach($item->item_auction as $key => $ia) {{$ia->ItemPrice}} @endforeach</div>
-                          <div class="ui header">Next Minimum Bid: Php @{{ Math.floor(highestBid*1 + (highestBid*0.10)); }}</div>
+                          <div class="ui header" ng-if="highestBid != NULL">Next Minimum Bid: Php @{{ Math.floor(highestBid*1 + (highestBid*0.10)); }}</div>
                           <form class="ui form">
                               <div class="inline field">
                                   <input type="number" placeholder="Place bid here.." ng-model="price">
@@ -43,7 +52,7 @@
                               </div>
                           </form>
                           <div class="ui divider"></div>
-                          <div class="ui header">Highest Bid: Php <span ng-bind="highestBid"></span> </div>
+                          <div class="ui header" ng-if="highestBid != NULL">Highest Bid: Php <span ng-bind="highestBid"></span> </div>
                      </div>
                   </div>
               </div>
@@ -130,24 +139,30 @@
     }
 
     $scope.bidItem = function(itemID){
-      $http.get('/bidItem?itemID=' + itemID + '&price=' + $scope.price + "&eventID=" + $scope.eventID)
-      .then(function(response){
-        if (response.data == 'success'){
-          $('#alert').modal('show');
-          $http.get('/getHighestBid?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
-          .then(function(response){
-            $scope.highestBid = response.data;
-          });
-        }
-        else {
-           $('#error').modal('show');
-        }
-        $http.get('/getBidHistory?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
+      //js validation
+      if($scope.price*1 < Math.floor($scope.highestBid*1 + ($scope.highestBid*0.10))){
+        $('#error').modal('show');
+      }
+      else{
+        $http.get('/bidItem?itemID=' + itemID + '&price=' + $scope.price + "&eventID=" + $scope.eventID)
         .then(function(response){
-          $scope.bidlists = response.data;
+          if (response.data == 'success'){
+            $('#alert').modal('show');
+            $http.get('/getHighestBid?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
+            .then(function(response){
+              $scope.highestBid = response.data;
+            });
+          }
+          else {
+             $('#error').modal('show');
+          }
+          $http.get('/getBidHistory?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
+          .then(function(response){
+            $scope.bidlists = response.data;
+          });
+          //refresh max bid
         });
-        //refresh max bid
-      });
+      }
     }
 
     $timeout(function(){

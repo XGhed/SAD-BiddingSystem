@@ -145,7 +145,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>@{{itemInfo.item_defect.DefectName}}</td>
+                    <td><span ng-if="itemInfo.ItemDefectID == NULL && itemInfo != NULL">None</span>@{{itemInfo.item_defect.DefectName}}</td>
                     <td>@{{itemInfo.DefectDescription}}</td>
                     <td>@{{itemInfo.size}}</td>
                     <td>@{{itemInfo.color}}</td>

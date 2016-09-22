@@ -135,7 +135,10 @@
 							    <div class="content">
 					              	<a class="header">@{{item.item_model.ItemName}}</a>
 					              	<div>
-					                	Defect: @{{item.DefectDescription}}
+					                	Defect: <span ng-if="item.item_defect.DefectName == NULL">Others</span> @{{item.item_defect.DefectName}}
+					              	</div>
+					              	<div>
+					                	Description: @{{item.DefectDescription}}
 					              	</div>
 					              	<div>
 					              		Starting Price: @{{item.item_auction[0].ItemPrice}}

@@ -110,7 +110,7 @@ class AngularOutput extends Controller
     public function itemsInventory(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory',
-            'pullRequest')->where('DefectDescription', '!=', '')->where('image_path', '!=', '')
+            'pullRequest', 'itemDefect')->where('DefectDescription', '!=', '')->where('image_path', '!=', '')
             ->where('status', 1)->orWhere('status', 2)
             ->get();
 
@@ -119,7 +119,8 @@ class AngularOutput extends Controller
 
     public function itemsOfModelInventory(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
-            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory')
+            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory',
+            'pullRequest', 'itemDefect')
             ->where('status', 2)
             ->where('ItemModelID', $request->itemID)
             ->get();
@@ -128,12 +129,13 @@ class AngularOutput extends Controller
     }
 
     public function itemmodelsInventory(Request $request){
-        $itemModels = App\Models\Admin\ItemModel::with('subCategory', 'subCategory.category', 'items')->get();
+        $itemModels = App\Models\Admin\ItemModel::with('subCategory', 'subCategory.category', 'items', 'items.container', 
+            'items.container.Supplier', 'items.container.warehouse', 'items.container.warehouse.city', 'items.container.warehouse.city.province', 'items.itemHistory',
+            'items.pullRequest', 'items.itemDefect')->get();
         $returnData = [];
 
         foreach ($itemModels as $key => $itemModel) {
-            $items = App\Models\Admin\Item::where('ItemModelID', $itemModel->ItemModelID)->where('DefectDescription', '!=', '')->where('image_path', '!=', '')
-            ->where('status', 1)->orWhere('status', 2)->get();
+            $items = App\Models\Admin\Item::where('ItemModelID', $itemModel->ItemModelID)->where('status', 2)->get();
             $itemModel->stocksCount = $items->count();
             array_push($returnData, $itemModel);
         }

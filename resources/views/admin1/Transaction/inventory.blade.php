@@ -146,7 +146,7 @@
                 <div>
                   Date Arrived: @{{selectedItem.container.ActualArrival}}
                   <br>
-                  Defect: <span ng-if="selectedItem.item_defect.DefectName == NULL">None</span>@{{selectedItem.item_defect.DefectName}}
+                  Defect: <span ng-if="selectedItem.ItemDefectID == NULL">Others</span>@{{selectedItem.item_defect.DefectName}}
                   <br>
                   Defect Description: <span ng-if="selectedItem.DefectDescription == ''">None</span>@{{selectedItem.DefectDescription}}
                   <br>
@@ -202,7 +202,7 @@
                 <tbody>
                   <tr ng-repeat="item in itemsOfModel">
                     <td class="collapsing">
-                      <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index)">
+                      <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index, item)">
                         <div class="hidden content">Item Logs</div>
                         <div class="visible content">
                           <i class="large history icon"></i>
