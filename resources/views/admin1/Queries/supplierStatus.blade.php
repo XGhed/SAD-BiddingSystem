@@ -7,6 +7,7 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
        <div class="ui centered header">Supplier Status</div>
+
        <div><a href = "\SuppliersItems">Print PDF</a></pdf>
 
       <div class="ui bottom attached active tab segment">
@@ -22,9 +23,11 @@
           <tbody>
              <tr ng-repeat="supplier in supplierStat">
               <td></td>
-              <td style="cursor: pointer;">@{{supplier.container.supplier.SupplierName}}</td>
-              <td style="cursor: pointer;">@{{supplier.container.supplier.Status}}</td>
-              <td style="cursor: pointer;">@{{supplier.container.supplier.Status}}</td>
+              <td style="cursor: pointer;">@{{supplier.SupplierName}}</td>
+              <td style="cursor: pointer;" ng-if="supplier.Status==1">Active</td>
+              <td style="cursor: pointer;" ng-if="supplier.Status==0">Not Active</td>
+              <td style="cursor: pointer;" ng-if="supplier.Status==0">Not Available</td>
+              <td style="cursor: pointer;" ng-if="supplier.Status==1">@{{supplier.Items}}</td>
              <tr>
           </tbody>
         </table>

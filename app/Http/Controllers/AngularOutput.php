@@ -309,13 +309,61 @@ class AngularOutput extends Controller
     }
 
     public function supplierStat(){
-        $supplier = App\Models\Admin\Container::with('item', 'supplier')->get();
-        /*$supplier = App\Models\Admin\Item::with('container', 'container.supplier', 'supplier')->
-        whereHas('item', function($query){
-            $query->where()
-        })->get();*/
+        $supplier = App\Models\Admin\Supplier::get();
+        $item = App\Models\Admin\Item::with('itemModel', 'container', 'container.supplier', 'supplier')->where('status', 1)->orWhere('status', 2)->get();
+        $returnData = NULL;
+        $previtem = NULL;
+        $holditem = NULL;
+        $ctr = 0;
+        $ctr2 = 0;
 
-        return $supplier;
+        foreach ($supplier as $key => $result) {
+            $a = count($item);
+            for ($i=0; $i < $a; $i++) { 
+                if($item[$i]->container->supplier->SupplierID==$result->SupplierID){
+                    if(!isset($returnData[$ctr])){
+                        $returnData[$ctr]["SupplierName"] = $result->SupplierName;
+                        $returnData[$ctr]["Status"] = $result->Status;
+                        $returnData[$ctr]["Items"] = $item[$i]->itemModel->ItemName;
+                        $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
+                        $ctr2++;
+                    } else{
+                        $j = count($previtem[0]);
+                        for($k=0; $k<$j; $k++){
+                            if($previtem[0][$k]==$item[$i]->itemModel->ItemName){
+                                break;
+                            }
+                            if($k+1==$j){
+                                $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
+                                $holditem[0] = $item[$i]->itemModel->ItemName.", ".$returnData[$ctr]["Items"];
+                                $returnData[$ctr]["Items"] = $holditem[0];
+                                $ctr2++;
+                            }
+                        }
+                    }
+                }
+            }
+            $ctr++;
+            $ctr2 = 0;
+            $previtem[0] = NULL;
+        }
+
+        $ctr = 2;
+        foreach ($supplier as $key => $result) {
+            $i = count($returnData);
+            for ($j=0; $j < $i; $j++) { 
+                if($returnData[$j]["SupplierName"]==$result->SupplierName){
+                    break;
+                }
+                if($j+1==$i){
+                    $returnData[$ctr]["SupplierName"] = $result->SupplierName;
+                    $returnData[$ctr]["Status"] = $result->Status;
+                    $ctr++;
+                }
+            }
+        }
+
+        return $returnData;
     }
 
     //mainte data
