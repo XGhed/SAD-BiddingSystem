@@ -481,6 +481,10 @@ Route::get('/latestCompanyDetails', 'adminDashboardController@latestCompanyDetai
 
 Route::get('/Calendar_events', 'adminDashboardController@Calendar_events');
 
+Route::get('/eventViewOnly', 'PageController@eventViewOnly');
+
+Route::get('/auctionViewingOnly', 'PageController@auctionViewingOnly');
+
 
 
 

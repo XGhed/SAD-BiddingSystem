@@ -181,6 +181,14 @@ class PageController extends Controller
       return view('customer.eventsList');
     }
 
+    public function auctionViewingOnly(Request $request){
+      return view('customer.auctionViewingOnly');
+    }
+
+    public function eventViewOnly(Request $request){
+      return view('customer.eventViewingOnly');
+    }
+
     public function userProfile(Request $request){
 
        return view('customer.transactionHistory');
