@@ -65,7 +65,7 @@
 		@foreach($members as $key)
 			<tr>
 				<td>{!! $key->LastName !!}, {!! $key->FirstName !!} {!! $key->MiddleName !!}</td>
-				<!-- <td>{!! $key-status!!}</d> -->
+				<td>{!! $key->account->status!!}</d>
 			</tr>
 		@endforeach
 		</tbody>

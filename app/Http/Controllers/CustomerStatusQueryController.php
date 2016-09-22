@@ -21,7 +21,6 @@ class CustomerStatusQueryController extends Controller
     {
 
             $member = App\Models\Admin\Membership::all();
-
            
 
                 $dompdf = App::make('dompdf.wrapper');
