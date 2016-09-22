@@ -27,7 +27,6 @@
       <!--calendar -->
       <link href="{!!URL::asset('css/fullcalendar.css')!!}" rel='stylesheet' />
       <script src="{!!URL::asset('js/moment.min.js')!!}"></script>
-
       <script src="{!!URL::asset('js/fullcalendar.min.js')!!}"></script>
 
       <link type="text/css" rel="stylesheet" href="{!!URL::asset('css/angular-datatables.css')!!}"/>

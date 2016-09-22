@@ -56,11 +56,9 @@
         <div class="ui divider"></div>
 
         <div class="ui inverted segment">
-          <div class="ui green compact message">
-              <div class="header">Click today to open Calendar</div>
-            </div>
-            <div id='calendar' ></div>
+          <div id='calendar'></div>
         </div>
+
   
 
         <div class="ui divider"></div>
@@ -114,16 +112,30 @@
           </div>  
         </div><!--company details-->
       </div>
+
+      
      
     </div><!-- segment -->
   </div><!-- column -->
 </div><!-- grid -->
 
-
-
 <script>
   var d = new Date();
   document.getElementById("curDate").innerHTML = d.toDateString();
+
+  $(document).ready(function() {
+      $('#calendar').fullCalendar({
+        defaultDate: '2016-06-12',
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        events: [
+          {
+            title: 'Click for Google',
+            start: '2016-06-28'
+          }
+        ]
+      });
+    });
 
   var app = angular.module('announcementApp', []);
     app.controller('adminDashboardController', function($scope, $http){
@@ -138,26 +150,8 @@
       });
     });
 
-    angular.bootstrap(document.getElementById("announcement"), ['announcementApp']);
+    //angular.bootstrap(document.getElementById("announcement"), ['announcementApp']);
 
-    // calendar
-     $(document).ready(function() {
-      $('#calendar').fullCalendar({
-        header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: ''
-        },
-        defaultDate: '',
-        editable: false,
-        eventLimit: true, // allow "more" link when too many events
-        events: [
-          {
-            title: 'Birthday ni sonia',
-            start: '2016-09-22'
-          }
-        ]
-      });
-    });
+    
 </script>
 @endsection

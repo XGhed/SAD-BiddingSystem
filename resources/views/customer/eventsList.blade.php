@@ -34,7 +34,8 @@
 					      <a class="ui bottom orange attached button" href="/items?eventID=@{{ongoingEvent.AuctionID}}">View Event!!</a>
 					  </div>
 					</div>
-					<!-- <h2>Upcoming Events</h2> 
+					<h2 class="ui centered header">UPCOMING EVENTS</h2>
+					<div class="ui divider"></div>
 					<div class="ui cards" ng-repeat="event in events" ng-if="event.StartDateTime > currentTime">
 					  <div class="card">
 					    <div class="content">
@@ -59,7 +60,7 @@
 					      <a href="/items?eventID=@{{event.AuctionID}}">View Event</a>
 					    </div>				    
 					  </div>
-					</div>-->
+					</div>
 
 				</div>
 			</div>
