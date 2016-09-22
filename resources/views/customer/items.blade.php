@@ -14,6 +14,23 @@
 			<i class="legal icon"></i>
 			You have joined this event!
 		</button>
+
+		<div class="ui blue basic button">
+			<i class="list icon"></i>
+			Show Bid List
+		</div>
+			<div class="ui flowing popup top left transition hidden">
+				<div class="ui three column divided grid">
+					<div class="column">
+						<a href='/'>
+						<h4 class="ui centered header">Item Name</h4>
+						<div class="ui sub header">Your Bid:</div>500
+						<div class="ui sub header">Current Highest:</div>600
+						</a>
+					</div>
+				</div>
+			</div>
+
 		<span ng-bind="subcatName" style="text-align:center;"></span>
 		<div class="ui basic modal" id="eventModal">
 		  <i class="close icon"></i>
@@ -69,6 +86,10 @@
 				</div>
 				<div class="five wide field">
 					<input type="text" data-ng-model="filterText.item_model.ItemName" placeholder="Search Item here...">
+				</div>
+				<div class="three wide field">
+										
+
 				</div>
 			</form>
 		</div>
@@ -207,5 +228,15 @@
 	  });
 
 	});
+
+	$('.button').popup({
+	    inline     : true,
+	    position   : 'bottom center',
+	    on         : 'hover',
+	    delay: {
+	      show: 500,
+	      hide: 800
+	    }
+	  });
 </script>
 @endsection
