@@ -183,7 +183,7 @@ class CustomerBiddingEventController extends Controller
 
         foreach ($myBids as $key => $myBid) {
             $biddedItem = App\Models\Admin\Item::with('itemModel')->where('ItemID', $myBid->last()->ItemID)->first();
-            $currentHighestBid = App\Models\Admin\Bid::where('ItemID', $myBid->last()->ItemID)->first();
+            $currentHighestBid = App\Models\Admin\Bid::where('ItemID', $myBid->last()->ItemID)->get()->last();
 
             $data = new \stdClass();
             $data->item = $biddedItem;
