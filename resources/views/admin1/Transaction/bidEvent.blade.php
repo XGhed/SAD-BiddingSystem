@@ -21,7 +21,6 @@
                 <form class="ui form" action="/addBiddingEvent" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                  <ul class="ui list">
                     <div class="required inline fields">
                       <div class="ten wide field">
                         <label>Event Name</label>
@@ -45,12 +44,22 @@
                     </div>
                   </div>
 
-                    <div class="inline fields">
-                      <label>Description</label>
+                  <div class="required inline fields">  
+                    <div class="field">
+                      <label>Event Fee:</label>
+                      <input type="number" name="fee">
+                    </div>  
+                    <div class="field">
+                      <label>Minimum Bid increase:</label>
+                      <input type="number" name="">
+                    </div>
+                  </div>
+
+                  <div class="inline fields">
+                    <label>Description</label>
                       <textarea rows="2" placeholder="Something about the event" name="description"></textarea>
-                    </div>
-                    </div>
-              </ul>
+                  </div>
+                </div>
               <div class="actions">
                 <button class="ui blue button" type="submit"><i class="checkmark icon"></i> Add Event</button>
                 </form>

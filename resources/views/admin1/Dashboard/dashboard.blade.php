@@ -59,8 +59,6 @@
           <div id='calendar'></div>
         </div>
 
-  
-
         <div class="ui divider"></div>
 
         <div class="ui inverted segment">
@@ -108,7 +106,6 @@
                 </div>
               </h2>            
             </div><!--2nd column-->
-
           </div>  
         </div><!--company details-->
       </div>
@@ -123,17 +120,15 @@
   var d = new Date();
   document.getElementById("curDate").innerHTML = d.toDateString();
 
+
+
   $(document).ready(function() {
       $('#calendar').fullCalendar({
-        defaultDate: '2016-06-12',
-        editable: true,
+        height: 650,
+        editable: false,
         eventLimit: true, // allow "more" link when too many events
-        events: [
-          {
-            title: 'Click for Google',
-            start: '2016-06-28'
-          }
-        ]
+        events: 'Calendar_events',
+        eventColor: '#378006'
       });
     });
 
@@ -146,6 +141,13 @@
         }
         else {
           $scope.company = null;
+        }
+      });
+
+      $http.get('/Calendar_events')
+      .then(function(response){
+        if(response.data != 'empty'){
+          $scope.events = response.data;
         }
       });
     });

@@ -479,6 +479,8 @@ Route::resource('/confirmDetails', 'adminDashboardController@addDetails');
 
 Route::get('/latestCompanyDetails', 'adminDashboardController@latestCompanyDetails');
 
+Route::get('/Calendar_events', 'adminDashboardController@Calendar_events');
+
 
 
 

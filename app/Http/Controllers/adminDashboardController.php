@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App;
 use App\Models\Admin;
 use Session;
+use DB;
 
 class adminDashboardController extends Controller
 {
@@ -42,6 +43,12 @@ class adminDashboardController extends Controller
         else {
             return 'empty';
         }
-    }   
+    }
+
+    public function Calendar_events(Request $request){
+        $events = DB::table('Auction')->select('EventName as title', 'StartDateTime as start', 'EndDateTime as end')->get();       
+
+        return $events;
+    }
    
 }
