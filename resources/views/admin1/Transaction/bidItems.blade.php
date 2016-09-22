@@ -188,7 +188,7 @@
             <th>Item Name</th>
             <th>Price</th>
             <th>Points</th>
-            <th ng-if="ended == false && eventDetails.timeBeforeStart > 0">Manage</th>
+            <th>Manage</th>
           </tr></thead>
           <tbody>
             <tr ng-repeat="auctionitem in auctionitems">
@@ -196,7 +196,10 @@
               <td>@{{auctionitem.item.item_model.ItemName}}</td>
               <td>@{{auctionitem.ItemPrice}}</td>
               <td>@{{auctionitem.Points}}</td>
-              <td><div class="ui basic red button" ng-click="removeFromEvent($index)" ng-if="ended == false && eventDetails.timeBeforeStart > 0">Remove</div></td>
+              <td>
+                <div class="ui basic red button" ng-click="removeFromEvent($index)" ng-if="ended == false && eventDetails.timeBeforeStart > 0">Remove</div>
+                <span ng-if="ended == false">Can't Remove</span>
+              </td>
             </tr>
           </tbody>
         </table>

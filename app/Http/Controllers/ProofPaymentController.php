@@ -16,7 +16,7 @@ class ProofPaymentController extends Controller
 {
     public function getPendingCheckoutRequests(Request $request){
         $checkoutRequests = App\Models\Admin\CheckoutRequest::with('checkoutRequest_Item', 'checkoutRequest_Item.item',
-        'checkoutRequest_Item.item.itemModel', 'checkoutRequest_Item.item.bids')
+        'checkoutRequest_Item.item.itemModel', 'checkoutRequest_Item.item.bids', 'account', 'account.membership', 'account.membership.accounttype')
         ->where('AccountID', $request->session()->get('accountID'))
             ->whereIn('Status', [0, 1])->get();
 
@@ -25,7 +25,7 @@ class ProofPaymentController extends Controller
 
     public function getPendingCheckoutRequestsWithProof(Request $request){
         $checkoutRequests = App\Models\Admin\CheckoutRequest::with('checkoutRequest_Item', 'checkoutRequest_Item.item',
-        'checkoutRequest_Item.item.itemModel', 'checkoutRequest_Item.item.bids', 'proofs')
+        'checkoutRequest_Item.item.itemModel', 'checkoutRequest_Item.item.bids', 'proofs', 'account', 'account.membership', 'account.membership.accounttype')
         ->whereHas('proofs', function($query){}, '>', 0)
         ->where('AccountID', $request->session()->get('accountID'))
             ->whereIn('Status', [0, 1])->get();

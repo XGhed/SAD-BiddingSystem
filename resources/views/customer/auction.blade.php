@@ -41,7 +41,7 @@
                      </p>
                      <div class="ui inverted segment">
                           <div class="ui header">Starting Bid: Php @foreach($item->item_auction as $key => $ia) {{$ia->ItemPrice}} @endforeach</div>
-                          <div class="ui header" ng-if="highestBid != NULL">Next Minimum Bid: Php @{{ Math.floor(highestBid*1 + (highestBid*0.10)); }}</div>
+                          <div class="ui header" ng-if="highestBid != NULL">Next Minimum Bid: Php @{{ Math.floor(highestBid*1 + ((highestBid*1) * ((event.NextBidPercent*1)/100)) ); }}</div>
                           <form class="ui form">
                               <div class="inline field">
                                   <input type="number" placeholder="Place bid here.." ng-model="price">
@@ -140,7 +140,7 @@
 
     $scope.bidItem = function(itemID){
       //js validation
-      if($scope.price*1 < Math.floor($scope.highestBid*1 + ($scope.highestBid*0.10))){
+      if($scope.price*1 < Math.floor($scope.highestBid*1 + (($scope.highestBid*1) * (($scope.event.NextBidPercent*1) /100)))){
         $('#error').modal('show');
       }
       else{

@@ -218,8 +218,9 @@ class PageController extends Controller
     }
 
     public function paymentCheckout(Request $request){
+      $account = App\Models\Admin\Account::find($request->session()->get('accountID'));
 
-       return view('admin1.Transaction.paymentCheckout');
+       return view('admin1.Transaction.paymentCheckout')->with('serviceFee', $account->membership[0]->accounttype->ServiceFee);
     }
 
     public function postEventNoBidItems(Request $request){
@@ -239,8 +240,9 @@ class PageController extends Controller
 
     public function proofPayment(Request $request){
       $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
+      $account = App\Models\Admin\Account::find($request->session()->get('accountID'));
 
-      return view('customer.proofOfPayment')->with('customerDiscount', $customerDiscount);
+      return view('customer.proofOfPayment')->with('customerDiscount', $customerDiscount)->with('serviceFee', $account->membership[0]->accounttype->ServiceFee);
     }
 
     public function deliveryList(Request $request){

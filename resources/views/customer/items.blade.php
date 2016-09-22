@@ -49,7 +49,7 @@
 		      <i class="legal icon"></i>
 		    </div>
 		    <div class="description">
-		      <p>Joining this event will immediately add P500.00 to your account but will grant you the ability to bid in
+		      <p>Joining this event will immediately add P@{{event.EventFee}} to your account but will grant you the ability to bid in
 		     	 the items here in this event. Are you sure you want to Join?</p>
 		    </div>
 		  </div>

@@ -1,7 +1,7 @@
 @extends('admin1.mainteParent')
 
 @section('content')
-<div class="ui grid" ng-app="myApp" ng-controller="myController">
+<div class="ui grid" ng-app="myApp" ng-controller="myController" ng-init="serviceFee = {{$serviceFee}};">
  @include('admin1.Transaction.sideNav')
 
   <div class="twelve wide stretched column">
@@ -54,27 +54,39 @@
           <tr class="warning">
             <td>Discount (%):</td>
             <td></td>
-            <td>@{{customerDiscount}}</td>
+            <td>@{{customerDiscount }}</td>
+          </tr>
+          <tr class="positive">
+            <td>Discounted Price:</td>
+            <td></td>
+            <td>@{{discountedPrice | currency : 'P' : 2}}</td>
+          </tr>
+          <tr><td></td><td></td><td></td></tr>
+          <tr class="warning">
+            <td>Service Fee (%):</td>
+            <td></td>
+            <td>@{{serviceFee}}</td>
           </tr>
           <tr class="positive">
             <td>Sub total:</td>
             <td></td>
-            <td>@{{subTotalPrice}}</td>
+            <td>@{{subTotalPrice | currency : 'P' : 2}}</td>
           </tr>
-          <tr class="warning" ng-if="selectedRequest.CheckoutType == 'Deliver'">
+          <tr><td></td><td></td><td></td></tr>
+          <tr class="warning" ng-if="checkoutType == 'Deliver'">
             <td>Shipping fee:</td>
             <td></td>
-            <td>@{{shippingFee}}</td>
+            <td>@{{shippingFee | currency : 'P' : 2}}</td>
           </tr>
           <tr class="warning">
             <td>Event fees:</td>
             <td></td>
-            <td>@{{selectedRequest.EventFee}}</td>
+            <td>@{{eventFee | currency : 'P' : 2}}</td>
           </tr>
           <tr class="positive">
             <td>Total fee:</td>
             <td></td>
-            <td>@{{totalPrice}}</td>
+            <td>@{{totalPrice | currency : 'P' : 2}}</td>
           </tr>
         </tbody>
       </table>
@@ -148,19 +160,22 @@
     }
 
     $scope.computeReceiptPrice = function(){
-
       $scope.customerDiscount = $scope.selectedRequest.discount;
-      $scope.subTotalPrice = 0;
       $scope.shippingFee = $scope.selectedRequest.ShippingFee;
+      $scope.eventFee = $scope.selectedRequest.EventFee;
+      $scope.discountedPrice = 0;
+      $scope.subTotalPrice = 0;
       for(var i=0; i<$scope.selectedRequest.checkout_request__item.length; i++){
-        $scope.subTotalPrice += $scope.selectedRequest.checkout_request__item[i].item.bids[$scope.selectedRequest.checkout_request__item[i].item.bids.length - 1].Price;
+        $scope.discountedPrice += $scope.selectedRequest.checkout_request__item[i].item.bids[$scope.selectedRequest.checkout_request__item[i].item.bids.length - 1].Price;
       }
 
       //subTotal = subTotal - discountAmount;
-      $scope.subTotalPrice = $scope.subTotalPrice - ($scope.subTotalPrice * ($scope.customerDiscount / 100));
+      $scope.discountedPrice = $scope.discountedPrice - ($scope.discountedPrice * ($scope.customerDiscount / 100));
 
-      $scope.totalPrice = $scope.shippingFee*1 + $scope.subTotalPrice*1 + $scope.selectedRequest.EventFee*1;
-        
+      $scope.subTotalPrice = Math.round(( ($scope.discountedPrice + ($scope.serviceFee*1/100 * $scope.discountedPrice)) + 0.00001) * 100) / 100;
+
+      $scope.totalPrice = Math.round(( ($scope.shippingFee*1 + $scope.subTotalPrice*1 + $scope.selectedRequest.EventFee*1) + 0.00001) * 100) / 100
+      
     }
 
     $scope.viewPhoto = function(url){

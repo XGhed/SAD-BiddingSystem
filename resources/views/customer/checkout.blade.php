@@ -2,7 +2,7 @@
 
 @section('content')
 	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" 
-	ng-init="customerDiscount = {{$customerDiscount}}; account = {{$account->membership[0]}}; account.ProvinceID = {{$account->membership[0]->city->province->ProvinceID}}; 
+	ng-init="customerDiscount = {{$customerDiscount}}; serviceFee = {{$serviceFee}}; account = {{$account->membership[0]}}; account.ProvinceID = {{$account->membership[0]->city->province->ProvinceID}}; 
 	eventFee = {{$eventFee}}; joinBid = {{$joinBid}}">
       @include('customer.topnav')
 	<form class="ui form" action="/submitCheckout" method="POST">
@@ -153,27 +153,44 @@
 				    			<input type="checkbox" class="ui checkbox" name="items[]" value="@{{item.ItemID}}" ng-click="removeFromCart(item, $index)" checked/>
 				    		</td>
 				      		<td>@{{item.Model}}</td>
-				      		<td>@{{item.Price}}</td>
+				      		<td>@{{item.Price | currency : 'P' : 2}}</td>
 				    	</tr>
 				    	<tr class="warning">
 					      <td>Discount (%):</td>
-					      <td>@{{customerDiscount}}</td>
+					      <td></td>
+					      <td>@{{customerDiscount }}</td>
+					    </tr>
+				    	<tr class="positive">
+					      <td>Discounted Price:</td>
+					      <td></td>
+					      <td>@{{discountedPrice | currency : 'P' : 2}}</td>
+					    </tr>
+					    <tr><td></td><td></td><td></td></tr>
+					    <tr class="warning">
+					      <td>Service Fee (%):</td>
+					      <td></td>
+					      <td>@{{serviceFee}}</td>
 					    </tr>
 				    	<tr class="positive">
 					      <td>Sub total:</td>
-					      <td>@{{subTotalPrice}}</td>
+					      <td></td>
+					      <td>@{{subTotalPrice | currency : 'P' : 2}}</td>
 					    </tr>
+					    <tr><td></td><td></td><td></td></tr>
 				    	<tr class="warning" ng-if="checkoutType == 'Deliver'">
 					      <td>Shipping fee:</td>
-					      <td>@{{shippingFee}}</td>
+					      <td></td>
+					      <td>@{{shippingFee | currency : 'P' : 2}}</td>
 					    </tr>
 					    <tr class="warning">
 					      <td>Event fees:</td>
-					      <td>@{{eventFee}}</td>
+					      <td></td>
+					      <td>@{{eventFee | currency : 'P' : 2}}</td>
 					    </tr>
 					    <tr class="positive">
 					      <td>Total fee:</td>
-					      <td>@{{totalPrice}}</td>
+					      <td></td>
+					      <td>@{{totalPrice | currency : 'P' : 2}}</td>
 					    </tr>
 				  	</tbody>
 				</table>
@@ -248,6 +265,7 @@ $('.ui.normal.dropdown')
 		$scope.cartItems = [];
 		$scope.shippingFee = 0;
 		$scope.subTotalPrice = 0;
+		$scope.discountedPrice = 0;
 		$scope.checkoutType = 'Deliver';
 
 		$http.get('/provinces')
@@ -287,15 +305,19 @@ $('.ui.normal.dropdown')
 	    }
 
 	    $scope.computePrice = function(){
+	    	$scope.discountedPrice = 0;
 	    	$scope.subTotalPrice = 0;
 	    	for(var i=0; i<$scope.cartItems.length; i++){
-	    		$scope.subTotalPrice += $scope.cartItems[i].Price;
+	    		$scope.discountedPrice += $scope.cartItems[i].Price;
 	    	}
 
 	    	//subTotal = subTotal - discountAmount;
-	    	$scope.subTotalPrice = $scope.subTotalPrice - ($scope.subTotalPrice * ($scope.customerDiscount / 100));
+	    	$scope.discountedPrice = $scope.discountedPrice - ($scope.discountedPrice * ($scope.customerDiscount / 100));
 
-	    	$scope.totalPrice = $scope.shippingFee*1 + $scope.subTotalPrice*1 + $scope.eventFee*1;
+	    	$scope.subTotalPrice = Math.round(( ($scope.discountedPrice + ($scope.serviceFee*1/100 * $scope.discountedPrice)) + 0.00001) * 100) / 100;
+
+	    	$scope.totalPrice = Math.round(( ($scope.shippingFee*1 + $scope.subTotalPrice*1 + $scope.eventFee*1) + 0.00001) * 100) / 100
+	    	
 	    }
 
 	    $scope.shipmentFee = function(){

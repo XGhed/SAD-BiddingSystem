@@ -20,10 +20,14 @@ class CustomerCheckoutController extends Controller
         $joinBid = App\Models\Admin\Joinbid::where('AccountID', $request->session()->get('accountID'))
             ->where('Paid', 0)->get();
 
-        $eventFee = count($joinBid) * 500;
+        $eventFee = 0;
+
+        foreach ($joinBid as $key => $j) {
+            $eventFee += $j->auction->EventFee;
+        }
 
         return view('customer.checkout')->with('account', $account)->with('customerDiscount', $customerDiscount)
-            ->with('joinBid', $joinBid)->with('eventFee', $eventFee);
+            ->with('joinBid', $joinBid)->with('eventFee', $eventFee)->with('serviceFee', $account->membership[0]->accounttype->ServiceFee);
     }
 
     public function itemsWon(Request $request){
@@ -64,6 +68,8 @@ class CustomerCheckoutController extends Controller
     }
 
     public function insert(Request $request){
+        $account = App\Models\Admin\Account::find($request->session()->get('accountID'));
+
         $checkoutRequest = new App\Models\Admin\CheckoutRequest;
         $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
 
@@ -83,7 +89,9 @@ class CustomerCheckoutController extends Controller
             $ItemPrice = $ItemPrice + $lastBid->Price;  //YUNG $lastBid->Price DITO YUNG PRICE PER ITEM, PWEDENG KOPYAHIN MO TONG LOOP NA TO
         }
         //compute discounted price
-        $ItemPrice = $ItemPrice - ($ItemPrice * ($customerDiscount / 100));
+        $discountedPrice = round($ItemPrice - ($ItemPrice * ($customerDiscount / 100)), 2);
+        $ItemPrice = round($discountedPrice + ($discountedPrice * ($account->membership[0]->accounttype->ServiceFee / 100)), 2);
+
         $checkoutRequest->ItemPrice = $ItemPrice;
 
         if($request->checkoutType == "Pick up"){
@@ -112,14 +120,19 @@ class CustomerCheckoutController extends Controller
         $joinBid = App\Models\Admin\Joinbid::where('AccountID', $request->session()->get('accountID'))
             ->where('Paid', 0)->get();
 
+        $eventFee = 0;
+
         //tag event fees as paid
         foreach ($joinBid as $key => $jB) {
             $joinBidPaid = App\Models\Admin\Joinbid::find($jB->JoinbidID);
             $joinBidPaid->Paid = 1;
             $joinBidPaid->save();
+
+            //compute Event fee
+            $eventFee += $jB->auction->EventFee;
         }
 
-        $checkoutRequest->EventFee = count($joinBid) * 500;
+        $checkoutRequest->EventFee = $eventFee;
 
         $checkoutRequest->save();
 
