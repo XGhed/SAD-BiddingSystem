@@ -368,6 +368,8 @@ Route::get('/getHighestBid', 'CustomerBiddingEventController@getHighestBid');
 
 Route::get('/getBidHistory', 'CustomerBiddingEventController@getBidHistory');
 
+Route::get('/myBidsTabData', 'CustomerBiddingEventController@myBidsTabData');
+
 Route::get('/approveCheckoutRequest', 'PrepareCheckoutController@approveCheckoutRequest');
 
 Route::get('/approvePayment', 'PaymentCheckoutController@approvePayment');

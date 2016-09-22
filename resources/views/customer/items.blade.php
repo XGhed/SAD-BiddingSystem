@@ -20,15 +20,22 @@
 			Show Bid List
 		</div>
 			<div class="ui flowing popup top left transition hidden">
-				<div class="ui three column divided grid">
-					<div class="column">
-						<a href='/'>
-						<h4 class="ui centered header">Item Name</h4>
-						<div class="ui sub header">Your Bid:</div>500
-						<div class="ui sub header">Current Highest:</div>600
-						</a>
-					</div>
-				</div>
+				<table class="ui very basic collapsing celled table">
+				  <thead>
+				    <tr>
+				 	  	<th>Item</th>
+				 	  	<th>My Bid</th>
+				 	  	<th>Current Highest Bid</th>
+				  	</tr>
+				  </thead>
+				  <tbody>
+				  	<tr ng-repeat="myBids in myBidsList" ng-click="reBidItem(myBids.item)">
+				  		<td>@{{myBids.item.item_model.ItemName}}</td>
+				  		<td>@{{myBids.myBid.Price}}</td>
+				  		<td>@{{myBids.highestBid.Price}}</td>
+				  	</tr>
+				  </tbody>
+				</table>
 			</div>
 
 		<span ng-bind="subcatName" style="text-align:center;"></span>
@@ -222,8 +229,22 @@
 			}
 		}
 
+		$scope.reBidItem = function(item){
+			if($scope.joined == true){
+				$window.open('/auction?itemID='+ item.ItemID + "&eventID=" + $scope.eventID);
+			}
+			else {
+				$('#eventModal').modal('show');
+			}
+		}
+
 		$scope.$on('timer-tick', function (event, data) {
 	    $scope.secondsLeft = data.millis;
+
+	    $http.get('/myBidsTabData?eventID=' + $scope.eventID)
+	    .then(function(response){
+	    	$scope.myBidsList = response.data;
+	    });
 
 	    if(data.millis == 0){
 
@@ -235,7 +256,8 @@
 	$('.button').popup({
 	    inline     : true,
 	    position   : 'bottom center',
-	    on         : 'hover',
+	    on         : 'click',
+	    closable   : 'false',
 	    delay: {
 	      show: 500,
 	      hide: 800

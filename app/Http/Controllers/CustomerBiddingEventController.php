@@ -174,4 +174,25 @@ class CustomerBiddingEventController extends Controller
 
         return view('customer.bidList')->with('bids', $bids);
     }
+
+    public function myBidsTabData(Request $request){
+        $returnData = [];
+
+        $myBids = App\Models\Admin\Bid::where('AccountID', $request->session()->get('accountID'))
+            ->where('AuctionID', $request->eventID)->get()->groupBy('ItemID');
+
+        foreach ($myBids as $key => $myBid) {
+            $biddedItem = App\Models\Admin\Item::with('itemModel')->where('ItemID', $myBid->last()->ItemID)->first();
+            $currentHighestBid = App\Models\Admin\Bid::where('ItemID', $myBid->last()->ItemID)->first();
+
+            $data = new \stdClass();
+            $data->item = $biddedItem;
+            $data->myBid = $myBid->last();
+            $data->highestBid = $currentHighestBid;
+
+            array_push($returnData, $data);
+        }
+
+        return $returnData;
+    }
 }
