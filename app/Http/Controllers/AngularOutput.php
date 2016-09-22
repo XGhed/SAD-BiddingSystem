@@ -402,4 +402,35 @@ class AngularOutput extends Controller
         $problemTypes = App\Models\Admin\ProblemType::all();
         return $problemTypes;
     }
+
+    public function pendingCustomer(){
+        $customer = App\Models\Admin\Account::with('membership')->where('Status', 0)->get();
+
+        return $customer;
+    }
+
+    public function pendingContainer(){
+
+        $containers = App\Models\Admin\Container::where('ActualArrival', NULL)->orderBy('ActualArrival', 'asc')
+        ->orderBy('Arrival', 'desc')
+        ->with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province')
+        ->get();
+
+        return $containers;
+    }
+
+    public function pendingCheckout(){
+        $checkoutRequest = App\Models\Admin\CheckoutRequest::with('account')
+            ->where('CheckoutType', 'Deliver')->orWhere('CheckoutType', 'Pickup')->where('Status', 0)->get();
+
+        return $checkoutRequest;
+    }
+
+    public function pendingItems(){
+        $items = App\Models\Admin\Item::with('itemModel', 'container', 
+            'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province')
+            ->where('Status', 0)->get();
+
+        return $items;
+    }
 }

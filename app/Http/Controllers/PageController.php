@@ -265,6 +265,11 @@ class PageController extends Controller
 
       return view('admin1.Queries.supplierStatus');
     }
+
+    public function pendingQuery(Request $request){
+
+      return view('admin1.Queries.pendingQuery');
+    }
 }
 
 

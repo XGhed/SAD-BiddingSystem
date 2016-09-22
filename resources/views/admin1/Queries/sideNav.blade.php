@@ -10,6 +10,9 @@
         <a class="item" href="/supplierStatus">
           Supplier Status
         </a>
+        <a class="item" href="/pendingQuery">
+          Pending
+        </a>
        
     </div>
   </div>
