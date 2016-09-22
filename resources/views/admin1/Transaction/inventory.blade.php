@@ -14,7 +14,7 @@
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
       <!-- table -->
-        <table datatable="ng" class="ui celled definition inverted table" id="tableOutput">
+        <table datatable="ng" class="ui celled very compact definition inverted table" id="tableOutput">
           <thead>
             <tr>
               <th></th>

@@ -61,6 +61,11 @@ class PageController extends Controller
        return view('admin1.Dashboard.dashboard');
     } 
 
+    public function companyDetails(Request $request){
+
+       return view('admin1.Utilities.changeSystem');
+    } 
+
     public function announcements(Request $request){
 
        return view('admin1.Utilities.announcements');
@@ -197,7 +202,7 @@ class PageController extends Controller
     }
 
     public function itemChecking(Request $request){
-       $defects = App\Models\Admin\ItemDefect::all();
+       $defects = App\Models\Admin\ItemDefect::where('Status', 1)->get();
 
        return view('admin1.Transaction.itemChecking')->with('defects', $defects);
     }

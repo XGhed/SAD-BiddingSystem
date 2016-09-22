@@ -20,7 +20,7 @@
             <div class="ui sub header">To Warehouse (Destination warehouse)</div>
             <select class="ui search selection dropdown" ng-model="warehouseTo" ng-change="loadItems()">
               <option disabled selected value="">Choose Warehouse</option>
-              <option ng-repeat="warehouse in warehouses" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
+              <option ng-repeat="warehouse in warehousesTo" value="@{{warehouse.WarehouseNo}}">@{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}</option>
             </select>
           </div>
         </form>
@@ -87,6 +87,11 @@ app.controller('myController', function($scope, $http){
   $http.get('warehouses')
   .then(function(response){
     $scope.warehouses = response.data;
+  });
+
+  $http.get('mainte_Warehouses')
+  .then(function(response){
+    $scope.warehousesTo = response.data;
   });
 });
 

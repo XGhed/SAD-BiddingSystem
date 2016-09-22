@@ -317,4 +317,39 @@ class AngularOutput extends Controller
 
         return $supplier;
     }
+
+    //mainte data
+    public function mainte_Warehouses(){
+        $warehouses = App\Models\Admin\Warehouse::with('city', 'city.province')
+        ->where('Status', 1)->get();
+        return $warehouses;
+    }
+
+    public function mainte_Suppliers(){
+        $suppliers = App\Models\Admin\Supplier::where('Status', 1)->get();
+        return $suppliers;
+    }
+
+    public function mainte_Categories(){
+        $categories = App\Models\Admin\Category::with('subCategory')->where('Status', 1)->get();
+
+        return $categories;
+    }
+
+    public function mainte_SubcatOptions(){
+        $catID = Input::get('catID');
+        $subCategories = App\Models\Admin\SubCategory::where('CategoryID', $catID)->where('Status', 1)->get();
+
+        return \Response::json($subCategories);
+    }
+
+    public function mainte_ItemModelsOfSubcat(Request $request){
+        $itemModels = App\Models\Admin\ItemModel::where('SubCategoryID', $request->subcatID)->where('Status', 1)->get();
+        return $itemModels;
+    }
+
+    public function mainte_ProblemTypesList(){
+        $problemTypes = App\Models\Admin\ProblemType::all();
+        return $problemTypes;
+    }
 }

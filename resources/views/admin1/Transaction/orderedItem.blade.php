@@ -218,7 +218,7 @@
 
   var app = angular.module('myApp', ['datatables']);
   app.controller('myController', function($scope, $http, $window){
-    $http.get('/suppliers')
+    $http.get('/mainte_Suppliers')
     .then(function(response){
       $scope.suppliers = response.data;
     });
@@ -228,7 +228,7 @@
       $scope.containers = response.data;
     });
 
-    $http.get('/warehouses')
+    $http.get('/mainte_Warehouses')
     .then(function(response){
       $scope.addwarehouses = response.data;
     });

@@ -110,7 +110,7 @@ $('.ui.normal.dropdown').dropdown();
 
 var app = angular.module('myApp', ['datatables']);
   app.controller('myController', function($scope, $http, $timeout){
-    $http.get('problemTypesList')
+    $http.get('mainte_ProblemTypesList')
     .then(function(response){
       $scope.problemTypes = response.data;
     });

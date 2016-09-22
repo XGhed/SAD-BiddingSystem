@@ -22,7 +22,7 @@
               <tr>
                 <td> <input type="checkbox" name="requests[]" value="{{$pendingRequest->CheckoutRequestID}}" /> </td>
                 <td>{{$pendingRequest->CheckoutRequestID}}</td>
-                <td>{{$pendingRequest->RequestDate}}</td>
+                <td>{{$pendingRequest->DateOutbound}}</td>
                 <td>
                   {{$pendingRequest->account->membership->first()->LastName}}, 
                   {{$pendingRequest->account->membership->first()->FirstName}} 

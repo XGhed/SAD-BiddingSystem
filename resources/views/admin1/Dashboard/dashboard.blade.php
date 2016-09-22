@@ -94,7 +94,7 @@
               <h2 class="ui inverted header">
                 <i class="photo icon"></i>
                 <div class="content">
-                 <img class="ui rounded small image" src="@{{company.valid_id}}">
+                 <img class="ui rounded small image" src="@{{company.valid_id}}" >
                 </div>
               </h2>            
             </div><!--2nd column-->

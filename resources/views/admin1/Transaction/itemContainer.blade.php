@@ -157,7 +157,7 @@
                     <i class="large edit icon"></i>
                   </div>
                 </div>
-                <div class="ui vertical animated button" tabindex="0" ng-if="container.ActualArrival == NULL" ng-click="deleteOrderedItem($index)">
+                <div class="ui basic red vertical animated button" tabindex="0" ng-if="container.ActualArrival == NULL" ng-click="deleteOrderedItem($index)">
                   <div class="hidden content">Delete</div>
                   <div class="visible content">
                     <i class="large trash icon"></i>
@@ -174,6 +174,12 @@
             </tr>
           </tbody>
         </table>
+
+        <div class="ui basic modal" id="alert">
+        <h1 class='ui red centered header'>
+          Item Removed!!
+        </h1>
+      </div>
 
     </div><!-- segment -->
   </div><!-- twelve wide column -->
@@ -213,7 +219,7 @@
 
   var app = angular.module('myApp', ['datatables']);
   app.controller('myController', function($scope, $http, $timeout){
-    $http.get('/categories')
+    $http.get('/mainte_Categories')
     .then(function(response){
       $scope.categories = response.data;
       $timeout(function(){
@@ -247,7 +253,7 @@
     } , 1000);
 
     $scope.loadSubcat = function(){
-      $http.get('/subcatOptions?catID=' + $scope.category)
+      $http.get('/mainte_SubcatOptions?catID=' + $scope.category)
       .then(function(response){
         $scope.subCategories = response.data;  
       });
@@ -274,7 +280,7 @@
       .then(function(response){
         if(response.data == 'success'){
           $scope.viewitems.splice(index, 1);
-          alert(response.data);
+          $('#alert').modal('show');
         }
         else {
           alert(response.data);
