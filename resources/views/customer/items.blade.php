@@ -19,17 +19,17 @@
 			<i class="list icon"></i>
 			Show Bid List
 		</div>
-			<div class="ui flowing popup top left transition hidden">
-				<table class="ui very basic collapsing celled table">
+			<div class="ui inverted flowing popup top left transition hidden">
+				<table class="ui very basic inverted collapsing selectable celled table">
 				  <thead>
 				    <tr>
-				 	  	<th>Item</th>
+				 	  	<th>Item Name</th>
 				 	  	<th>My Bid</th>
 				 	  	<th>Current Highest Bid</th>
 				  	</tr>
 				  </thead>
 				  <tbody>
-				  	<tr ng-repeat="myBids in myBidsList" ng-click="reBidItem(myBids.item)">
+				  	<tr ng-repeat="myBids in myBidsList" ng-click="reBidItem(myBids.item)" style="cursor: pointer;">
 				  		<td>@{{myBids.item.item_model.ItemName}}</td>
 				  		<td>@{{myBids.myBid.Price}}</td>
 				  		<td>@{{myBids.highestBid.Price}}</td>

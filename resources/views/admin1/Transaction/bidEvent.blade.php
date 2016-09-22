@@ -98,10 +98,7 @@
           {!! (new Landish\Pagination\SemanticUI($events))->render() !!}
           </div>
         </div>
-        <div class="ui green compact message">
-          <div class="header">Click today to open Calendar</div>
-        </div>
-         <div id='calendar' ></div>
+       
 
       </div><!-- segment -->
     </div><!-- column -->
@@ -162,26 +159,7 @@
         $window.open('/bidItems?eventID='+AuctionID);
       }
     });
-
-
-    // calendar
-     $(document).ready(function() {
-    $('#calendar').fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: ''
-      },
-      defaultDate: '',
-      editable: false,
-      eventLimit: true, // allow "more" link when too many events
-      events: [
-        {
-          title: 'Birthday ni sonia',
-          start: '2016-09-22'
-        }
-      ]
-    });
-  });
+    
+  
   </script>
 @endsection

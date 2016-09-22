@@ -52,8 +52,20 @@
             </div>
           </div><!-- statistics -->
         </div>
+
         <div class="ui divider"></div>
-        <div class="ui inverted segment"  >
+
+        <div class="ui inverted segment">
+          <div class="ui green compact message">
+              <div class="header">Click today to open Calendar</div>
+            </div>
+            <div id='calendar' ></div>
+        </div>
+  
+
+        <div class="ui divider"></div>
+
+        <div class="ui inverted segment">
           <h2 class="ui center aligned icon header">
             <i class="circular building outline icon"></i>
             Company Details
@@ -99,8 +111,7 @@
               </h2>            
             </div><!--2nd column-->
 
-          </div>
-
+          </div>  
         </div><!--company details-->
       </div>
      
@@ -128,5 +139,25 @@
     });
 
     angular.bootstrap(document.getElementById("announcement"), ['announcementApp']);
+
+    // calendar
+     $(document).ready(function() {
+      $('#calendar').fullCalendar({
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: ''
+        },
+        defaultDate: '',
+        editable: false,
+        eventLimit: true, // allow "more" link when too many events
+        events: [
+          {
+            title: 'Birthday ni sonia',
+            start: '2016-09-22'
+          }
+        ]
+      });
+    });
 </script>
 @endsection
