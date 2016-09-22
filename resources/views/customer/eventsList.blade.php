@@ -28,6 +28,10 @@
 						    	<br>
 						    	End: @{{ongoingEvent.EndDateTime}}
 						    	<br> 
+					        Event Fee: @{{ongoingEvent.EventFee}}
+					        <br> 
+					        Bid Increment: @{{ongoingEvent.NextBidPercent}}
+						    	<br> 
 					        Description: @{{ongoingEvent.Description}}
 					      </div>
 					    </div>
@@ -36,28 +40,33 @@
 					</div>
 					<h2 class="ui centered header">UPCOMING EVENTS</h2>
 					<div class="ui divider"></div>
-					<div class="ui cards" ng-repeat="event in events" ng-if="event.StartDateTime > currentTime">
+					<div class="ui cards" ng-repeat="upcomingEvent in upcomingEvents">
 					  <div class="card">
 					    <div class="content">
-					      <div class="header">
-					      	@{{event.EventName}}
+					      <div class="ui centered header">
+					      	@{{upcomingEvent.EventName}}
 					      </div>
 					      <div class="ui tiny images">
-						    <img src="@{{event.item_auction[randomInRangeOf(0, ongoingEvent.item_auction.length-1)].item.image_path}}">
-						    <img src="@{{event.item_auction[randomInRangeOf(0, ongoingEvent.item_auction.length-1)].item.image_path}}">
-						    <img src="@{{event.item_auction[randomInRangeOf(0, ongoingEvent.item_auction.length-1)].item.image_path}}">
+						    <img src="@{{upcomingEvent.item_auction[randomInRangeOf(0, upcomingEvent.item_auction.length-1)].item.image_path}}">
+						    <img src="@{{upcomingEvent.item_auction[randomInRangeOf(0, upcomingEvent.item_auction.length-1)].item.image_path}}">
+						    <img src="@{{upcomingEvent.item_auction[randomInRangeOf(0, upcomingEvent.item_auction.length-1)].item.image_path}}">
 						     PICTURE NG ITEMS AT LEAST 3 ITEMS
 						  </div>
 					      <div class="description">
-					      	Start: @{{event.StartDateTime}}
+						      Start: @{{upcomingEvent.StartDateTime}}
 						    	<br>
-						    	End: @{{event.EndDateTime}}
-					        @{{event.Description}}
+						    	End: @{{upcomingEvent.EndDateTime}}
+						    	<br> 
+					        Event Fee: @{{upcomingEvent.EventFee}}
+					        <br> 
+					        Bid Increment: @{{upcomingEvent.NextBidPercent}}
+						    	<br> 
+					        Description: @{{upcomingEvent.Description}}
 					      </div>
 					    </div>
 					    <div class="ui bottom attached button">
 					      <i class=" icon"></i>
-					      <a href="/items?eventID=@{{event.AuctionID}}">View Event</a>
+					      <a href="/items?eventID=@{{upcomingEvent.AuctionID}}">View Event</a>
 					    </div>				    
 					  </div>
 					</div>
@@ -73,10 +82,11 @@
 			$scope.randomInRangeOf = function(min, max){
 				return Math.floor((Math.random() * max)) + min;
 			}
-			$http.get('/eventList')
+			
+			$http.get('/getUpcomingEvent')
 			.then(function(response){
-				$scope.events = response.data;
-			});
+				$scope.upcomingEvents = response.data;
+			});			
 
 			$http.get('/getOngoingEvent')
 			.then(function(response){
