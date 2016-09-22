@@ -117,9 +117,9 @@ Route::get('/logout', 'LoginController@logout');
 
 Route::get('pdfFile', 'CustomerCheckoutController@index');
 
-Route::get('/customerStatus', 'CustomerStatusQueryController@CustomerStatus');
+Route::get('/customerStatus', 'CustomerStatusQueryController@Customerstatus');
 
-Route::get('/mostBidQuery', 'CustomerStatusQueryController@mostBids');
+//Route::get('/mostBidQuery', 'CustomerStatusQueryController@mostBids');
 
 Route::get('/DeliveryPlaces', 'CustomerStatusQueryController@DeliveryPlaces');
 

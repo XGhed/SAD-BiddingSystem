@@ -117,9 +117,9 @@
 	@foreach($checkout as $key)
 	<div>
 		<p class = "name">Name:</p>
-		<p class = "name1">{!! $key->FirstName !!}</p>
+		<p class = "name1">{!! $key->CheckoutRequest->FirstName !!}</p>
 		<p class = "cell">Cellphone #:</p>
-		<p class = "phone">{!! $key->CellphoneNo !!}</p>
+		<p class = "phone">{!! $key->CheckoutRequest->CellphoneNo !!}</p>
 		<p class = 'line'>-----------------------------------------------------------------------------------------------------------------------------------</p>
 	</div>
 	
@@ -127,7 +127,7 @@
 		<p class = "sub">Sub Total:</p>
 		<p class = "subt">SUB TOTAL DAW</p>
 		<p class = "ship">Shipping fee:</p>
-		<p class = "shipfee">{!! $key->ShippingFee !!}</p>
+		<p class = "shipfee">{!! $key->CheckoutRequest->ShippingFee !!}</p>
 		<p class = "total">Total:</p>
 		<p class = "totalfee">TOTAL MO</p>
 	</div>

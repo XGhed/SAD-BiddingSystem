@@ -61,10 +61,12 @@
 			</tr>
 		</thead>
 		<tbody>
+		@foreach($suppliers as $key)
 			<tr>
-				<td>Value</td>
-				<td>Value</d>
+				<td>{!! $key->Supplier->SupplierName!!}</td>
+				<td>{!!$key->Supplier->Status!!}</td>
 			</tr>
+		@endforeach
 		</tbody>
 	</table>
 </div>

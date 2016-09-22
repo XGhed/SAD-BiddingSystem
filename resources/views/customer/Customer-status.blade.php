@@ -62,10 +62,12 @@
 			</tr>
 		</thead>
 		<tbody>
+		@foreach($members as $key)
 			<tr>
-				<td>Value</td>
-				<td>Value</d>
+				<td>{!! $key->LastName !!}, {!! $key->FirstName !!} {!! $key->MiddleName !!}</td>
+				<!-- <td>{!! $key-status!!}</d> -->
 			</tr>
+		@endforeach
 		</tbody>
 	</table>
 </div>

@@ -7,7 +7,7 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
        <div class="ui centered header">List of Delivery Fees</div>
-
+       <div><a href = "\DeliveryPlaces">Print PDF</a></pdf>
       <div class="ui bottom attached active tab segment">
         <table datatable="ng" class="ui compact definition celled table" id="tableOutput">
           <thead>

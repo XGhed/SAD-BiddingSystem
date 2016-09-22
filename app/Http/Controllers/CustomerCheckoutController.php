@@ -154,7 +154,7 @@ class CustomerCheckoutController extends Controller
         //$checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
 
         //GANTO YUNG PAGPASA BHOI
-        //return $this->index($request, $checkoutRequest);
+        return $this->index($request, $checkoutRequest);
     }
 
 
@@ -163,14 +163,12 @@ class CustomerCheckoutController extends Controller
         //example irereturn mo lang ID nya, ganto. YUNG MGA NAKASULAT SA TAAS NA MGA PRICES, GAGANA RIN DITO YON
         //return $checkoutRequest->CheckoutRequestID;
 
-
-
-
            // var_dump($request->checkoutType);
         //$dompdf = new Dompdf();
-        $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
+        // $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
         $checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
 
+        
        /* $ItemPrice = 0;
         foreach ($request->items as $key  => $itemRequestedID) {
             $lastBid = App\Models\Admin\Bid::where('ItemID', $itemRequestedID)->get()->last();
@@ -190,7 +188,7 @@ class CustomerCheckoutController extends Controller
                 $dompdf->loadView('customer.Pdf', [
                     'checkout' => $checkoutType
                 ]);
-                
+                $check = $checkoutRequest->ItemPrice = $ItemPrice; //total Item Price        
 
                 return $dompdf->stream();
              
@@ -205,7 +203,8 @@ class CustomerCheckoutController extends Controller
                 ]);
                 return $dompdf->stream(); 
                 
-                return view('customer.pdfPickUp')->with('checkout', $key);  
+                $check = $checkoutRequest->ItemPrice = $ItemPrice; //total Item Price
+                return view('customer.pdfPickUp')->with('checkout', $key)->with('check', $check);  
             }
             
         }

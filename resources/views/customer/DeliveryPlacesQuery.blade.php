@@ -32,7 +32,6 @@
 			margin-top: 10%;
 			border: 1px solid black;
 			width: 100%;
-
 		
 		}
 		th, td{
@@ -52,7 +51,7 @@
 		<h4 class = "head3">TEL: 00-000000 CEL: 09123456789</h4>
 		<h2 class = "title">Customer Status</h2>
 	</div>
-
+ 
 	<div>
 	<table>
 		<thead>
@@ -62,10 +61,12 @@
 			</tr>
 		</thead>
 		<tbody>
+		@foreach($places as $key)
 			<tr>
-				<td>Value</td>
-				<td>Value</td>
+				<td>{!! $key->Province->ProvinceName!!}</td>
+				<td>{!! $key->ShipmentFee!!}</td>
 			</tr>
+		@endforeach
 		</tbody>
 	</table>
 </div>
