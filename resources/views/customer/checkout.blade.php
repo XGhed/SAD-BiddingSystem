@@ -21,13 +21,13 @@
 					<div class="row"></div>
 					<div class="field">
 				      <div class="ui radio checkbox">
-				        <input type="radio" name="checkoutType" id="radioDelivery" ng-click="checkoutType = 'Deliver'" checked="checked" value="Deliver">
+				        <input type="radio" name="checkoutType" id="radioDelivery" ng-click="checkoutType = 'Deliver'; computePrice();" checked="checked" value="Deliver">
 				        <label>Delivery</label>
 				      </div>
 				    </div>
 				    <div class="field">
 				      <div class="ui radio checkbox">
-				        <input type="radio" name="checkoutType" id="radioPickup" ng-click="checkoutType = 'Pick up'" value="Pick up">
+				        <input type="radio" name="checkoutType" id="radioPickup" ng-click="checkoutType = 'Pick up'; computePrice();" value="Pick up">
 				        <label>Pick up</label>
 				      </div>
 				    </div>
@@ -311,12 +311,19 @@ $('.ui.normal.dropdown')
 	    		$scope.discountedPrice += $scope.cartItems[i].Price;
 	    	}
 
+	    	if($scope.checkoutType=="Pick up"){
+	    		$scope.computeShippingFee = 0;
+	    	}
+	    	else {
+	    		$scope.computeShippingFee = $scope.shippingFee;
+	    	}
+
 	    	//subTotal = subTotal - discountAmount;
 	    	$scope.discountedPrice = $scope.discountedPrice - ($scope.discountedPrice * ($scope.customerDiscount / 100));
 
 	    	$scope.subTotalPrice = Math.round(( ($scope.discountedPrice + ($scope.serviceFee*1/100 * $scope.discountedPrice)) + 0.00001) * 100) / 100;
 
-	    	$scope.totalPrice = Math.round(( ($scope.shippingFee*1 + $scope.subTotalPrice*1 + $scope.eventFee*1) + 0.00001) * 100) / 100
+	    	$scope.totalPrice = Math.round(( ($scope.computeShippingFee*1 + $scope.subTotalPrice*1 + $scope.eventFee*1) + 0.00001) * 100) / 100
 	    	
 	    }
 

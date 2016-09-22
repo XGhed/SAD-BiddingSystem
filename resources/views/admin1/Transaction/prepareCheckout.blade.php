@@ -101,7 +101,7 @@
                         <option ng-repeat="warehouse in warehouses" ng-if="selectedRequest.CheckoutType == 'Deliver'" value="@{{warehouse.WarehouseNo}}">
                           @{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}
                         </option>
-                        <option ng-repeat="warehouse in warehouses" ng-if="selectedRequest.CheckoutType == 'Pick up' && warehouse.WarehouseNo == selectedRequest.WarehouseNo" value="@{{warehouse.WarehouseNo}}" selected>
+                        <option ng-repeat="warehouse in warehouses" ng-if="selectedRequest.CheckoutType == 'Pick up' && warehouse.WarehouseNo == selectedRequest.WarehouseNo" value="@{{warehouse.WarehouseNo}}">
                           @{{warehouse.Barangay_Street_Address}}, @{{warehouse.city.CityName}}, @{{warehouse.city.province.ProvinceName}}
                         </option>
                       </select>
@@ -131,7 +131,7 @@
 <script>
   var app = angular.module('myApp', ['datatables']);
 
-  app.controller('myController', function($scope, $http){
+  app.controller('myController', function($scope, $http, $timeout){
     $http.get('deliveryRequests')
     .then(function(response){
       $scope.deliveryRequests = response.data;
@@ -157,7 +157,9 @@
       $('#addModal').modal('show');
       $scope.requestItems = $scope.pickupRequests[index].checkout_request__item;
       $scope.selectedRequest = request;
-      $('#selectedWarehouse').dropdown('set selected', $scope.selectedRequest.WarehouseNo);
+      $timeout(function(){
+        $('#selectedWarehouse').dropdown('set selected', $scope.selectedRequest.WarehouseNo);
+      }, 100);
     }
 
     $scope.approve = function(){
