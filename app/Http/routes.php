@@ -358,7 +358,7 @@ Route::get('/disposeItem', 'AngularInput@disposeItem');
 
 Route::get('/cancelDisposeItem', 'AngularInput@cancelDisposeItem');
 
-Route::get('/confirmDispose', 'AngularInput@confirmDispose');
+Route::post('/pulloutItem', 'AngularInput@confirmDispose');
 
 Route::get('/approveAccount', 'AngularInput@approveAccount');
 

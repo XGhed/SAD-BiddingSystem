@@ -7,8 +7,22 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
 
+    <form action="/pulloutItem" method="POST">
       <table datatable="ng" class="ui compact celled definition inverted table">
         <thead>
+          <tr>
+            <th>Filters</th>
+            <th><input type="text" style="width:95%" data-ng-model="filterDispose.ItemID" ></th>
+            <th><input type="text" style="width:95%" data-ng-model="filterDispose.item_model.ItemName" ></th>
+            <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
+            <th><input type="text" style="width:95%" data-ng-model="filterDispose.item_model.sub_category.category.CategoryName" ></th>
+            <!--<th>Defect</th> -->
+            <th><input type="text" style="width:95%" data-ng-model="filterDispose.size" ></th>
+            <th><input type="text" style="width:95%" data-ng-model="filterDispose.color" ></th>
+            <th><input type="text" style="width:95%" data-ng-model="filterDispose.warehouse" ></th>
+            <th><input type="text" style="width:95%" data-ng-model="filterDispose.requestDate" ></th>
+            <!--<th>Image</th> -->
+          </tr>
           <tr>
             <th></th>
             <th>ID</th>
@@ -17,28 +31,26 @@
             <th>Size</th>
             <th>Color</th>
             <th>Warehouse</th>
+            <th>Request Date</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="item in items" ng-if="item.pull_request.length > 0">
-            <td class="collapsing">
-              <div class="ui red basic vertical animated button " tabindex="1" ng-click="confirmDispose($index)">
-                <div class="hidden content">Dispose</div>
-                <div class="visible content">
-                  <i class="large trash icon"></i>
-                </div>
-              </div>
-            </td>
+          <tr ng-repeat="item in items | filter: filterDispose" >
+            <td> <input type="checkbox" name="items[]" value="@{{item.ItemID}}" /> </td>
             <td>@{{item.ItemID}}</td>
             <td id="tableRow">@{{item.item_model.ItemName}}</td>
             <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
             <td>@{{item.size}}</td>
             <td>@{{item.color}}</td>
-            <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
+            <td>@{{item.warehouse}}</td>
+            <td>@{{item.requestDate}}</td>
           </tr>
         </tbody>
       </table>
 
+      <button class="ui red button" type="submit" name="pullout" value="true">Pull Out</button>
+      <button class="ui green button" type="submit" name="cancel" value="true">Cancel</button>
+    </form>
       <!-- account info modal -->
       <div class="ui small modal" id="infoModal">
         <i class="close icon"></i>
@@ -75,9 +87,17 @@ $(document).ready(function(){
 
 var app = angular.module('myApp', ['datatables']);
 app.controller('myController', function($scope, $http){
-  $http.get('itemsInventory')
+  $http.get('requestedToDispose')
     .then(function(response){
       $scope.items = response.data;
+
+      for(var i=0; i<$scope.items.length; i++){
+          $scope.items[i].warehouse = $scope.items[i].container.warehouse.Barangay_Street_Address + ', '
+            + $scope.items[i].container.warehouse.city.CityName + ', ' 
+            + $scope.items[i].container.warehouse.city.province.ProvinceName;
+
+          $scope.items[i].requestDate = $scope.items[i].pull_request[0].RequestDate;
+        }
     });
 
   $scope.confirmDispose = function(index){
