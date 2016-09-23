@@ -14,8 +14,22 @@
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
       <!-- table -->
-        <table datatable="ng" class="ui celled very compact definition inverted table" id="tableOutput">
+        <table datatable="ng" class="ui celled very compact definition table" id="tableOutput">
           <thead>
+            <tr>
+              <th>Filters</th>
+              <th><input type="text" style="width:95%" data-ng-model="filterPerStock.ItemID" ></th>
+              <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
+              <th><input type="text" style="width:95%" data-ng-model="filterPerStock.item_model.sub_category.SubCategoryName" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterPerStock.item_model.sub_category.category.CategoryName" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterPerStock.item_model.ItemName" ></th>
+              <!--<th>Defect</th> -->
+              <th><input type="text" style="width:95%" data-ng-model="filterPerStock.size" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterPerStock.color" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterPerStock.warehouse" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterPerStock.container.ActualArrival" ></th>
+              <!--<th>Image</th> -->
+            </tr>
             <tr>
               <th></th>
               <th>ID</th>
@@ -29,7 +43,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="item in items" ng-if="item.pull_request.length == 0">
+            <tr ng-repeat="item in items | filter: filterPerStock">
               <td class="collapsing">
                 <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index, item)">
                   <div class="hidden content">Item Logs</div>
@@ -50,8 +64,8 @@
               <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
               <td>@{{item.size}}</td>
               <td>@{{item.color}}</td>
-              <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
-              <td>@{{item.container.ActualArrival.split(' ')[0]}}</td>
+              <td>@{{item.warehouse}}</td>
+              <td>@{{item.container.ActualArrival}}</td>
             </tr>
           </tbody>
         </table>
@@ -92,6 +106,20 @@
         <table datatable="ng" class="ui compact celled definition inverted table">
           <thead>
             <tr>
+              <th>Filters</th>
+              <th><input type="text" style="width:95%" data-ng-model="filterDispose.ItemID" ></th>
+              <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
+              <th><input type="text" style="width:95%" data-ng-model="filterDispose.item_model.sub_category.SubCategoryName" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterDispose.item_model.sub_category.category.CategoryName" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterDispose.item_model.ItemName" ></th>
+              <!--<th>Defect</th> -->
+              <th><input type="text" style="width:95%" data-ng-model="filterDispose.size" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterDispose.color" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterDispose.warehouse" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterDispose.requestDate" ></th>
+              <!--<th>Image</th> -->
+            </tr>
+            <tr>
               <th></th>
               <th>ID</th>
               <th>Name</th>
@@ -99,12 +127,12 @@
               <th>Subcategory</th>
               <th>Size</th>
               <th>Color</th>
-              <th>Defect</th>
               <th>Warehouse</th>
+              <th>Request Date</th>
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="item in items" ng-if="item.pull_request.length > 0">
+            <tr ng-repeat="item in requestedToDispose | filter: filterDispose">
               <td class="collapsing">
                 <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index, item)">
                   <div class="hidden content">Item Logs</div>
@@ -125,8 +153,8 @@
               <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
               <td>@{{item.size}}</td>
               <td>@{{item.color}}</td>
-              <td>@{{item.item_defect.DefectName}}</td>
-              <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
+              <td>@{{item.warehouse}}</td>
+              <td>@{{item.requestDate}}</td>
             </tr>
           </tbody>
         </table>
@@ -188,19 +216,33 @@
               <table class="ui celled definition inverted table" datatable="ng">
                 <thead>
                   <tr>
+                    <th>Filters</th>
+                    <th><input type="text" style="width:95%" data-ng-model="filterItemsOfModel.ItemID" ></th>
+                    <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
+                    <th><input type="text" style="width:95%" data-ng-model="filterItemsOfModel.item_model.ItemName" ></th>
+                    <!--<th>Defect</th> -->
+                    <th><input type="text" style="width:95%" data-ng-model="filterItemsOfModel.size" ></th>
+                    <th><input type="text" style="width:95%" data-ng-model="filterItemsOfModel.color" ></th>
+                    <th><input type="text" style="width:95%" data-ng-model="filterItemsOfModel.item_defect.DefectName" ></th>
+                    <th><input type="text" style="width:95%" data-ng-model="filterItemsOfModel.DefectDescription" ></th>
+                    <th><input type="text" style="width:95%" data-ng-model="filterItemsOfModel.warehouse" ></th>
+                    <th><input type="text" style="width:95%" data-ng-model="filterItemsOfModel.requestDate" ></th>
+                    <!--<th>Image</th> -->
+                  </tr>
+                  <tr>
                     <th></th>
+                    <th>ID</th>
                     <th>Name</th>
-                    <th>Category</th>
-                    <th>Subcategory</th>
                     <th>Size</th>
                     <th>Color</th>
+                    <th>Defect</th>
+                    <th>Description</th>
                     <th>Warehouse</th>
-                    <th>Supplier</th>
                     <th>Date Acquired</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="item in itemsOfModel">
+                  <tr ng-repeat="item in itemsOfModel | filter: filterItemsOfModel">
                     <td class="collapsing">
                       <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index, item)">
                         <div class="hidden content">Item Logs</div>
@@ -215,13 +257,13 @@
                         </div>
                       </div> 
                     </td>
+                    <td>@{{item.ItemID}}</td>
                     <td id="tableRow">@{{item.item_model.ItemName}}</td>
-                    <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
-                    <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
                     <td>@{{item.size}}</td>
                     <td>@{{item.color}}</td>
-                    <td>@{{item.container.warehouse.Barangay_Street_Address}}, @{{item.container.warehouse.city.CityName}}, @{{item.container.warehouse.city.province.ProvinceName}}</td>
-                    <td>@{{item.container.supplier.SupplierName}}</td>
+                    <td>@{{item.item_defect.DefectName}}</td>
+                    <td>@{{item.DefectDescription}}</td>
+                    <td>@{{item.warehouse}}</td>
                     <td>@{{item.container.ActualArrival.split(' ')[0]}}</td>
                   </tr>
                 </tbody>
@@ -286,10 +328,31 @@ $('.menu .item').tab();
 ////////////////////////////////////////////////////////////////////////// 
   var app = angular.module('myApp', ['datatables']);
   app.controller('myController', function($scope, $http, $timeout){
-    $http.get('itemsInventory')
-    .then(function(response){
-      $scope.items = response.data;
-    });
+    $scope.reloadItems = function(){
+      $http.get('itemsInventory')
+      .then(function(response){
+        $scope.items = response.data;
+
+        for(var i=0; i<$scope.items.length; i++){
+          $scope.items[i].warehouse = $scope.items[i].container.warehouse.Barangay_Street_Address + ', '
+            + $scope.items[i].container.warehouse.city.CityName + ', ' 
+            + $scope.items[i].container.warehouse.city.province.ProvinceName;
+        }
+      });
+
+      $http.get('requestedToDispose')
+      .then(function(response){
+        $scope.requestedToDispose = response.data;
+
+        for(var i=0; i<$scope.requestedToDispose.length; i++){
+          $scope.requestedToDispose[i].warehouse = $scope.requestedToDispose[i].container.warehouse.Barangay_Street_Address + ', '
+            + $scope.requestedToDispose[i].container.warehouse.city.CityName + ', ' 
+            + $scope.requestedToDispose[i].container.warehouse.city.province.ProvinceName;
+
+          $scope.requestedToDispose[i].requestDate = $scope.requestedToDispose[i].pull_request[0].RequestDate;
+        }
+      });
+    }
 
     $http.get('itemmodelsInventory')
     .then(function(response){
@@ -301,6 +364,13 @@ $('.menu .item').tab();
       $http.get('itemsOfModelInventory?itemID=' + ItemModelID)
       .then(function(response){
         $scope.itemsOfModel = response.data;
+
+        for(var i=0; i<$scope.itemsOfModel.length; i++){
+          $scope.itemsOfModel[i].warehouse = $scope.itemsOfModel[i].container.warehouse.Barangay_Street_Address + ', '
+            + $scope.itemsOfModel[i].container.warehouse.city.CityName + ', ' 
+            + $scope.itemsOfModel[i].container.warehouse.city.province.ProvinceName;
+        }
+
         $('#itemLists').modal('refresh');    
         $timeout(function(){
           $('#itemLists').modal('show');
@@ -322,24 +392,20 @@ $('.menu .item').tab();
       .then(function(response){
         if(response.data == "success"){
         $('#requestDispose').modal('show');
-          return $http.get('singleItem?itemID=' + $scope.items[index].ItemID);
+          $scope.reloadItems();
         }
       })
-      .then(function(response){
-        $scope.items[index] = response.data;
-      });
     }
 
     $scope.cancelDispose = function(index){
-      $http.get('cancelDisposeItem?itemID=' + $scope.items[index].ItemID)
+      $http.get('cancelDisposeItem?itemID=' + $scope.requestedToDispose[index].ItemID)
       .then(function(response){
         $('#alert').modal('show');
-        return $http.get('singleItem?itemID=' + $scope.items[index].ItemID);
+        $scope.reloadItems();
       })
-      .then(function(response){
-        $scope.items[index] = response.data;
-      });
     }
+
+    $scope.reloadItems();
   });
 </script>
 @endsection

@@ -111,7 +111,7 @@
               <!--<th>Defect</th> -->
               <th><input type="text" style="width:95%" data-ng-model="filterChecked.color" ></th>
               <th><input type="text" style="width:95%" data-ng-model="filterChecked.size" ></th>
-              <th><input type="text" style="width:95%" data-ng-model="filterChecked.defect.DefectName" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterChecked.item_defect.DefectName" ></th>
               <th><input type="text" style="width:95%" data-ng-model="filterChecked.DefectDescription" ></th>
               <th><input type="text" style="width:95%" data-ng-model="filterChecked.warehouse" ></th>
               <!--<th>Image</th> -->
@@ -134,7 +134,7 @@
                     <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.item_model.ItemName}}</td>
                     <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.color}}</td>
                     <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.size}}</td>
-                    <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.defect.DefectName}}</td>
+                    <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)"><span ng-if="check.item_defect.DefectName == NULL">None</span>@{{check.item_defect.DefectName}}</td>
                     <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.DefectDescription}}</td>
                     <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.warehouse}}</td>
               </tr>

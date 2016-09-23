@@ -271,6 +271,8 @@ Route::get('/itemsChecked', 'AngularOutput@itemsChecked');
 
 Route::get('/itemsInventory', 'AngularOutput@itemsInventory');
 
+Route::get('/requestedToDispose', 'AngularOutput@requestedToDispose');
+
 Route::get('/itemsMoveSelect', 'AngularOutput@itemsMoveSelect');
 
 Route::get('/itemsMoveApprovalRequests', 'AngularOutput@itemsMoveApprovalRequests');
