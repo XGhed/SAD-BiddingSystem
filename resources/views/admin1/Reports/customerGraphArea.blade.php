@@ -39,22 +39,18 @@ $(function() {
             type: 'column'
         },
         title: {
-            text: 'Approved Accounts of 2016 per Area'
+            text: 'Approved Accounts per Area'
         },
         xAxis: {
             categories:[
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
+                <?php
+                    if(isset($customer)){
+                        $ctr = count($customer);
+                        for ($i=0; $i<$ctr; $i++) { 
+                            echo "'".$customer[$i][0]."',";
+                        }
+                    }
+                ?>
             ],
             crosshair: true
         },
@@ -67,7 +63,7 @@ $(function() {
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0"></td>' +
-                '<td style="padding:0"><b>Php {point.y:.2f}</b></td></tr>',
+                '<td style="padding:0"><b>Count {point.y:.0f}</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -78,44 +74,22 @@ $(function() {
                 borderWidth: 0
             }
         },
-        series: [{
+        series: [
             <?php
+                //echo "alert(JSON.stringify(".$item."))";
                 if(!is_null($customer)){
                     $ctr = count($customer);
                     for ($i=0; $i<$ctr; $i++) {
-                        $ctr2 = count($customer[$i]);
-                        $k = 1;
-                        echo "name: '".$customer[$i][0]."',data:[";
-                        for ($j=1; $j<=12; $j++) { 
-                            if($customer[$i][$k]==$j){
-                                echo $customer[$i][$k+1].",";
-                                $k+=2;
-                            } else{
-                                echo "0";
-                            }
-                            if ($k==$ctr2){
-                                $l = 12 - $j;
-                                for ($m=0; $m < $l; $m++) { 
-                                    echo "0,";
-                                }
-                                break;
-                            }
-                            if($j+1!=12){
-                                echo ",";
-                            }
-                        }
-                        echo "],";
+                        echo "{name: '".$customer[$i][0]."',data:[".$customer[$i][1]."]}";
                         if($i+1!=$ctr){
                             echo ",";
                         }
-                        //echo $ctr;
-                        //echo $ctr2;
                     }
                 } else{
                     echo "name: 'Nothing to show'";
                 }
             ?>
-        }]
+        ]
     });
 });
 

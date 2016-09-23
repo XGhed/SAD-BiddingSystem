@@ -72,7 +72,7 @@ $(function() {
                 borderWidth: 0
             }
         },
-        series: [{
+        series: [
             /*name: 'asdasd',
             data: [1,2,3],
             name: 'asdadasdasd',
@@ -84,7 +84,7 @@ $(function() {
                     for ($i=0; $i<$ctr; $i++) {
                         $ctr2 = count($item[$i]);
                         $k = 1;
-                        echo "name: '".$item[$i][0]."',data:[";
+                        echo "{name: '".$item[$i][0]."',data:[";
                         for ($j=1; $j<=12; $j++) { 
                             if($item[$i][$k]==$j){
                                 echo $item[$i][$k+1].",";
@@ -103,7 +103,7 @@ $(function() {
                                 echo ",";
                             }
                         }
-                        echo "]";
+                        echo "]}";
                         if($i+1!=$ctr){
                             echo ",";
                         }
@@ -114,7 +114,7 @@ $(function() {
                     echo "name: 'Nothing to show'";
                 }
             ?>
-        }]
+        ]
     });
 });
 

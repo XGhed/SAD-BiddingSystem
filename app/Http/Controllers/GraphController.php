@@ -389,18 +389,18 @@ class GraphController extends Controller
 
         foreach ($customers as $key => $result) {
             $i = count($result);
+            $ctr=0;
             for ($j=0; $j < $i; $j++) {
                 $date = $result->DateApproved;
                 $date = Carbon::parse($date);
                 if($date->between($start, $end)==true){
                     $month = $result->DateApproved[5].$result->DateApproved[6];
                     $month = intval($month);
-                    $ctr=0;
-                    if($customer[$ctr][0]==$month){
-                        $customer[$ctr][1] += 1;
-                    } else if(is_null($customer[$ctr])){
+                    if(is_null($customer[$ctr])){
                         $customer[$ctr][0] = $month;
                         $customer[$ctr][1] = 1;
+                    } else if($customer[$ctr][0]==$month){
+                        $customer[$ctr][1] += 1;
                     }else{
                         $ctr++;
                         $customer[$ctr][0] = $month;
@@ -460,10 +460,6 @@ class GraphController extends Controller
             }
         }
 
-        $ctr = count($customer);
-        $customer[$ctr][0] = $start;
-        $customer[$ctr][1] = $end;
-
         return $customer;
 
         //return view('admin1.Reports.customerGraphReg')->with('customer', $customer);
@@ -505,10 +501,6 @@ class GraphController extends Controller
                 }
             }
         }
-
-        $ctr = count($customer);
-        $customer[$ctr][0] = $start;
-        $customer[$ctr][1] = $end;
 
         return $customer;
 

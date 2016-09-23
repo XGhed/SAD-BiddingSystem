@@ -70,7 +70,7 @@ $(function() {
                 borderWidth: 0
             }
         },
-        series: [{
+        series: [
             /*name: 'asdasd',
             data: [1,2,3],
             name: 'asdadasdasd',
@@ -78,7 +78,7 @@ $(function() {
             <?php
                 //echo "alert(JSON.stringify(".$customer."))";
                 if(!is_null($customer)){
-                    echo "name: ' ',data:[";
+                    echo "{name: ' ',data:[";
                     $k=count($customer);
                     $j=0;
                     for ($i=1; $i<=12; $i++) { 
@@ -93,12 +93,12 @@ $(function() {
                             echo "0,";
                         }
                     }
-                    echo "]";
+                    echo "]}";
                 } else{
                     echo "name: 'Nothing to show'";
                 }
             ?>
-        }]
+        ]
     });
 });
 

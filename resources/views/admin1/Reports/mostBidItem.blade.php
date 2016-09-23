@@ -68,7 +68,7 @@ $(function() {
                 borderWidth: 0
             }
         },
-        series: [{
+        series: [
             /*name: 'asdasd',
             data: [1,2,3],
             name: 'asdadasdasd',
@@ -78,13 +78,16 @@ $(function() {
                 if(!is_null($item)){
                     $ctr = count($item);
                     for ($i=0; $i<$ctr; $i++) {
-                        echo "name: '".$item[$i][0]."',data:[".$item[$i][1]."],";
+                        echo "{name: '".$item[$i][0]."',data:[".$item[$i][1]."]}";
+                        if($i+1!=$ctr){
+                            echo ",";
+                        }
                     }
                 } else{
                     echo "name: 'Nothing to show'";
                 }
             ?>
-        }]
+        ]
     });
 });
 
