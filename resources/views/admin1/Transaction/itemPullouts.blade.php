@@ -4,11 +4,18 @@
 <div class="ui grid" ng-app="myApp" ng-controller="myController">
  @include('admin1.Transaction.sideNav')
 
+<style>
+  input[type="text"]{
+    color:black;
+  }
+
+</style>
+
   <div class="twelve wide stretched column">
     <div class="ui segment">
 
     <form action="/pulloutItem" method="POST">
-      <table datatable="ng" class="ui compact celled definition inverted table">
+      <table datatable="ng" class="ui compact celled inverted table">
         <thead>
           <tr>
             <th>Filters</th>
