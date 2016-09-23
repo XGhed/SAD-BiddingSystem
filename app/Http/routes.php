@@ -109,6 +109,8 @@ Route::post('/sendProofPayment', 'ProofPaymentController@insert');
 
 Route::post('/verifyDelivery', 'VerifyDeliveryController@verifyDelivery');
 
+Route::post('/missingItemsAction', 'ItemInboundController@missingItemsAction');
+
 Route::get('/salesGraphReg', 'GraphController@salesGraphReg');
 
 Route::any('/salesGraph', 'GraphController@salesGraph');
@@ -277,6 +279,8 @@ Route::get('/itemsChecked', 'AngularOutput@itemsChecked');
 
 Route::get('/itemsInventory', 'AngularOutput@itemsInventory');
 
+Route::get('/requestedToDispose', 'AngularOutput@requestedToDispose');
+
 Route::get('/itemsMoveSelect', 'AngularOutput@itemsMoveSelect');
 
 Route::get('/itemsMoveApprovalRequests', 'AngularOutput@itemsMoveApprovalRequests');
@@ -362,7 +366,7 @@ Route::get('/disposeItem', 'AngularInput@disposeItem');
 
 Route::get('/cancelDisposeItem', 'AngularInput@cancelDisposeItem');
 
-Route::get('/confirmDispose', 'AngularInput@confirmDispose');
+Route::post('/pulloutItem', 'AngularInput@confirmDispose');
 
 Route::get('/approveAccount', 'AngularInput@approveAccount');
 

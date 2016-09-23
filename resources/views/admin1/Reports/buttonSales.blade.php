@@ -3,7 +3,7 @@
         <div class="inline fields">
             <div class="five wide field">
                 <div class="ui sub header"> FROM: </div>
-                <input type="date" name="start" id="start" required>
+                <input type="date" name="start" id="start" onchange="minEnd()" required>
             </div>
             <div class="five wide field">
                 <div class="ui sub header"> TO: </div>

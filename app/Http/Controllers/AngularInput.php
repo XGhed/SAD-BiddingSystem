@@ -46,19 +46,38 @@ class AngularInput extends Controller
     }
 
     public function confirmDispose(Request $request){
-        $item = App\Models\Admin\Item::find($request->itemID);
+        if($request->pullout == "true"){
+            foreach ($request->items as $key => $item) {
+                $item = App\Models\Admin\Item::find($item);
 
-        if(count($item->pullRequest) > 0){
-            $item->status = 3;
-            $item->save();
+                if(count($item->pullRequest) > 0){
+                    $item->status = 3;
+                    $item->save();
 
-            $this->ItemLog(
-                $item, 
-                "Item successfully pulled out (disposed)"
-                );
-
-            return 'success';
+                    $this->ItemLog(
+                        $item, 
+                        "Item successfully pulled out (disposed)"
+                        );
+                }
+            }
         }
+        else if($request->cancel == "true"){
+            foreach ($request->items as $key => $item) {
+                $itemM = App\Models\Admin\Item::find($item);
+
+                if(count($itemM->pullRequest) > 0){
+                    $pulloutReq = App\Models\Admin\PullRequest::where("ItemID", $item)->first();
+                    $pulloutReq->delete();
+
+                    $this->ItemLog(
+                        $itemM, 
+                        "Item cacelled pull out (back to inventory)"
+                        );
+                }
+            }
+        }
+
+        return redirect('itemPullouts');
     }
 
     public function approveAccount(Request $request){

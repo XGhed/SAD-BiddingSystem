@@ -24,23 +24,35 @@
       </div>
 
       <div class="ui bottom attached active tab segment" data-tab="first">
-        <table datatable="ng" class="ui compact definition celled inverted table" id="tableOutput">
+        <table datatable="ng" class="ui compact celled inverted table" id="tableOutput">
           <thead>
             <tr>
+              <th>Filters</th>
+              <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
+              <th><input type="text" style="width:95%" data-ng-model="filterUncheck.item_model.ItemName" ></th>
+              <!--<th>Defect</th> -->
+              <th><input type="text" style="width:95%" data-ng-model="filterUncheck.color" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterUncheck.size" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterUncheck.warehouse" ></th>
+              <!--<th>Image</th> -->
+            </tr>
+            <tr>
               <th></th>
-              <th>Item ID</th>
               <th>Item Name</th>
-              <th>Container</th>
+              <th>Color</th>
+              <th>Size</th>
+              <th>Warehouse</th>
             </tr>
           </thead>
           <tbody>
-             <tr ng-repeat="uncheck in itemsChecking">
+             <tr ng-repeat="uncheck in itemsChecking | filter: filterUncheck">
                     <td class="collapsing">
                       <button ng-click="uncheckModal(uncheck.ItemID)" class="ui basic green button" name="tdID" value="@{{uncheck.ItemID}}">View Item</button>
                     </td>
-                    <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.ItemID}}</td>
                     <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.item_model.ItemName}}</td>
-                    <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.container.ContainerName}}</td>
+                    <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.color}}</td>
+                    <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.size}}</td>
+                    <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.warehouse}}</td>
                   </tr>
           </tbody>
         </table>
@@ -90,28 +102,41 @@
       </div><!-- tab 1-->
 
       <div class="ui bottom attached tab segment" data-tab="second">
-        <table datatable="ng" class="ui compact definition inverted celled table" id="tableOutput">
+        <table datatable="ng" class="ui compact inverted celled table" id="tableOutput">
           <thead>
             <tr>
+              <th>Filters</th>
+              <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
+              <th><input type="text" style="width:95%" data-ng-model="filterChecked.item_model.ItemName" ></th>
+              <!--<th>Defect</th> -->
+              <th><input type="text" style="width:95%" data-ng-model="filterChecked.color" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterChecked.size" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterChecked.item_defect.DefectName" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterChecked.DefectDescription" ></th>
+              <th><input type="text" style="width:95%" data-ng-model="filterChecked.warehouse" ></th>
+              <!--<th>Image</th> -->
+            </tr>
+            <tr>
               <th></th>
-              <th>Item ID</th>
               <th>Item Name</th>
+              <th>Color</th>
+              <th>Size</th>
               <th>Defect</th>
+              <th>Description</th>
               <th>Warehouse</th>
             </tr>
           </thead>
           <tbody>
-             <tr ng-repeat="check in itemsChecked">
+             <tr ng-repeat="check in itemsChecked | filter: filterChecked">
                     <td class="collapsing">
                       <button ng-click="checkModal(check.ItemID, check.image_path)" class="ui basic green button">View Item</button>
                     </td>
-                    <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.ItemID}}</td>
                     <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.item_model.ItemName}}</td>
+                    <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.color}}</td>
+                    <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.size}}</td>
+                    <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)"><span ng-if="check.item_defect.DefectName == NULL">None</span>@{{check.item_defect.DefectName}}</td>
                     <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.DefectDescription}}</td>
-                    <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.container.warehouse.Barangay_Street_Address}},
-                      @{{check.container.warehouse.city.CityName}}, @{{
-                      check.container.warehouse.city.province.ProvinceName
-                    }}</td>
+                    <td style="cursor: pointer;" ng-click="checkModal(check.ItemID, check.image_path)">@{{check.warehouse}}</td>
               </tr>
           </tbody>
         </table>
@@ -177,11 +202,23 @@ var app = angular.module('myApp', ['datatables']);
     $http.get('itemsChecking')
     .then(function(response){
       $scope.itemsChecking = response.data;
+
+      for(var i=0; i<$scope.itemsChecking.length; i++){
+        $scope.itemsChecking[i].warehouse = $scope.itemsChecking[i].current_warehouse.Barangay_Street_Address + ', '
+          + $scope.itemsChecking[i].current_warehouse.city.CityName + ', ' 
+          + $scope.itemsChecking[i].current_warehouse.city.province.ProvinceName;
+      }
     });
 
     $http.get('itemsChecked')
     .then(function(response){
       $scope.itemsChecked = response.data;
+
+      for(var i=0; i<$scope.itemsChecked.length; i++){
+        $scope.itemsChecked[i].warehouse = $scope.itemsChecked[i].current_warehouse.Barangay_Street_Address + ', '
+          + $scope.itemsChecked[i].current_warehouse.city.CityName + ', ' 
+          + $scope.itemsChecked[i].current_warehouse.city.province.ProvinceName;
+      }
     });
 
 

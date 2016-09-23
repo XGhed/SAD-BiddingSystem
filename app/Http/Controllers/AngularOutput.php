@@ -95,14 +95,14 @@ class AngularOutput extends Controller
 
     public function itemsChecking(Request $request){
          $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category',
-            'container')->where('status', 1)->get();
+            'container', 'current_warehouse', 'current_warehouse.city', 'current_warehouse.city.province')->where('status', 1)->get();
 
         return $items;
     }
 
     public function itemsChecked(Request $request){
          $items = App\Models\Admin\Item::with('itemModel', 'container', 'container.warehouse.city',
-            'container.warehouse.city.province')->where('status', 2)->get();
+            'container.warehouse.city.province', 'current_warehouse', 'current_warehouse.city', 'current_warehouse.city.province', 'itemDefect')->where('status', 2)->get();
 
         return $items;
     }
@@ -112,6 +112,18 @@ class AngularOutput extends Controller
             'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory',
             'pullRequest', 'itemDefect')->where('DefectDescription', '!=', '')->where('image_path', '!=', '')
             ->where('status', 1)->orWhere('status', 2)
+            ->whereHas('pullRequest', function($query){}, '=', 0)
+            ->get();
+
+        return $items;
+    }
+
+    public function requestedToDispose(Request $request){
+        $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category', 'container', 
+            'container.Supplier', 'container.warehouse', 'container.warehouse.city', 'container.warehouse.city.province', 'itemHistory',
+            'pullRequest', 'itemDefect')->where('DefectDescription', '!=', '')->where('image_path', '!=', '')
+            ->where('status', 1)->orWhere('status', 2)
+            ->whereHas('pullRequest', function($query){}, '>', 0)
             ->get();
 
         return $items;
@@ -136,6 +148,14 @@ class AngularOutput extends Controller
 
         foreach ($itemModels as $key => $itemModel) {
             $items = App\Models\Admin\Item::where('ItemModelID', $itemModel->ItemModelID)->where('status', 2)->get();
+
+            //remove will pull request
+            foreach ($items as $key => $item) {
+                if(count($item->pullRequest) > 0){
+                    $items->splice($key, 1);
+                }
+            }
+
             $itemModel->stocksCount = $items->count();
             array_push($returnData, $itemModel);
         }
