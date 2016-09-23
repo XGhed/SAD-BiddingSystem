@@ -95,14 +95,14 @@ class AngularOutput extends Controller
 
     public function itemsChecking(Request $request){
          $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category',
-            'container')->where('status', 1)->get();
+            'container', 'current_warehouse', 'current_warehouse.city', 'current_warehouse.city.province')->where('status', 1)->get();
 
         return $items;
     }
 
     public function itemsChecked(Request $request){
          $items = App\Models\Admin\Item::with('itemModel', 'container', 'container.warehouse.city',
-            'container.warehouse.city.province')->where('status', 2)->get();
+            'container.warehouse.city.province', 'current_warehouse', 'current_warehouse.city', 'current_warehouse.city.province')->where('status', 2)->get();
 
         return $items;
     }
