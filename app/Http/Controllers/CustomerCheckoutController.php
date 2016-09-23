@@ -165,8 +165,6 @@ class CustomerCheckoutController extends Controller
         }
 
         
-
-        if($checkoutRequest->CheckoutType == "Deliver"){
             $data = [];
             $data['checkoutRequest'] = $checkoutRequest;
             $data['customerDiscount'] = $customerDiscount;
@@ -179,7 +177,7 @@ class CustomerCheckoutController extends Controller
             $dompdf->loadView('customer.Pdf', $data);
 
             return $dompdf->stream();
-        }
+        
 
          
 
