@@ -154,6 +154,21 @@
 
     //angular.bootstrap(document.getElementById("announcement"), ['announcementApp']);
 
-    
+    var app = angular.module('myApp', ['datatables']);
+    app.controller('myController', function($scope, $http){
+      $scope.randomInRangeOf = function(min, max){
+        return Math.floor((Math.random() * max)) + min;
+      }
+
+      $http.get('/getOngoingEvent')
+      .then(function(response){
+        $scope.ongoingEvents = response.data;
+      });
+
+      $http.get('/currentTime')
+      .then(function(response){
+        $scope.currentTime = response.data;
+      });
+    });
 </script>
 @endsection

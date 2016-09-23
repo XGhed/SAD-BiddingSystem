@@ -1,6 +1,6 @@
 <div class="four wide column">
     <div class="ui vertical fluid tabular menu">
-      <div class="ui centered header">Reports</div>
+      <div class="ui centered header">Queries</div>
         <a class="item" href="/qcustomerStatus">
           Customer Status
         </a>

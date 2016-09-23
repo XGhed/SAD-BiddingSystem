@@ -9,12 +9,13 @@
        <div class="ui centered header">List of Delivery Fees</div>
        
         <div class="ui top attached tabular menu">
-        <a class="active item" data-tab="first">Company</a>
-        <a class="item" data-tab="second">Third Party</a>
-      </div>
+          <a class="active item" data-tab="first">Company</a>
+          <a class="item" data-tab="second">Third Party</a>
+        </div>
 
       <div class="ui bottom attached active tab segment" data-tab="first">
-       <div class="ui centered header">Company Delivery Fees</div>
+        <div class="ui centered header">Company Delivery Fees</div>
+        <div class="ui basic left aligned segment"><a href = "/DeliveryCompany" target="_blank">Click here to print PDF</a></div>
        
         <table class="ui celled definition inverted table" datatable="ng">
           <thead>
@@ -32,10 +33,11 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </div><!-- FIRST TAB -->
 
       <div class="ui bottom attached tab segment" data-tab="second">
        <div class="ui centered header">Company Delivery Fees</div>
+       <div class="ui basic left aligned segment"><a href = "/DeliveryThirdparty" target="_blank">Click here to print PDF</a></div>
        
         <table class="ui celled definition inverted table" datatable="ng">
           <thead>
@@ -53,7 +55,7 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </div><!-- SECOND TAB -->
 
     </div><!-- segment -->
   </div><!-- twelve wide column -->
