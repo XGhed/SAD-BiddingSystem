@@ -124,7 +124,7 @@ class CustomerBiddingEventController extends Controller
         $currentDatetime = explode(' ', $currentDatetime);
 
         if ($currentDatetime[0] > $auctionEndTime[0] || ($currentDatetime[0] == $auctionEndTime[0] && $currentDatetime[1] > $auctionEndTime[1])){
-            return "Event has ended";
+            return redirect('/items?eventID='.$request->eventID);
         }
 
         return view('customer.auction')->with('item', $item)->with('eventID', $request->eventID);
