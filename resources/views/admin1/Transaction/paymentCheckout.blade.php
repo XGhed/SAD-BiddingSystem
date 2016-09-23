@@ -1,7 +1,7 @@
 @extends('admin1.mainteParent')
 
 @section('content')
-<div class="ui grid" ng-app="myApp" ng-controller="myController" ng-init="serviceFee = {{$serviceFee}};">
+<div class="ui grid" ng-app="myApp" ng-controller="myController">
  @include('admin1.Transaction.sideNav')
 
   <div class="twelve wide stretched column">
@@ -163,6 +163,7 @@
       $scope.customerDiscount = $scope.selectedRequest.discount;
       $scope.shippingFee = $scope.selectedRequest.ShippingFee;
       $scope.eventFee = $scope.selectedRequest.EventFee;
+      $scope.serviceFee = $scope.selectedRequest.account.membership[0].accounttype.ServiceFee;
       $scope.discountedPrice = 0;
       $scope.subTotalPrice = 0;
       for(var i=0; i<$scope.selectedRequest.checkout_request__item.length; i++){

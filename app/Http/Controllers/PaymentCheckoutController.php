@@ -15,7 +15,7 @@ class PaymentCheckoutController extends Controller
 {
     public function unpaidRequests(Request $request){
         $checkoutRequests = App\Models\Admin\CheckoutRequest::with('checkoutRequest_Item', 'checkoutRequest_Item.item',
-        'checkoutRequest_Item.item.itemModel', 'checkoutRequest_Item.item.bids', 'proofs')
+        'checkoutRequest_Item.item.itemModel', 'checkoutRequest_Item.item.bids', 'proofs', 'account', 'account.membership', 'account.membership.accounttype')
         ->where('Status', 1)->get();
 
         foreach ($checkoutRequests as $key => $checkoutRequest) {

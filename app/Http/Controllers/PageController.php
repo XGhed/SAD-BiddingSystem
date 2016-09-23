@@ -226,9 +226,8 @@ class PageController extends Controller
     }
 
     public function paymentCheckout(Request $request){
-      $account = App\Models\Admin\Account::find($request->session()->get('accountID'));
 
-       return view('admin1.Transaction.paymentCheckout')->with('serviceFee', $account->membership[0]->accounttype->ServiceFee);
+       return view('admin1.Transaction.paymentCheckout');
     }
 
     public function postEventNoBidItems(Request $request){
