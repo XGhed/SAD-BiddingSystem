@@ -176,6 +176,12 @@ Route::get('/customerGraphReg', 'GraphController@customerGraphReg');
 
 Route::get('/customerGraphArea', 'GraphController@customerGraphArea');
 
+Route::get('/activeAreaDef', 'GraphController@activeAreaDef');
+
+Route::get('/activeAreaDate', 'GraphController@activeAreaDate');
+
+Route::get('/activeAreaReg', 'GraphController@activeAreaReg');
+
 Route::get('/qcustomerStatus', 'PageController@qcustomerStatus');
 
 Route::get('/deliveryList', 'PageController@deliveryList');

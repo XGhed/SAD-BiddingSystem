@@ -8,13 +8,12 @@
     <div class="ui segment">
        <div class="ui centered header">Supplier Status</div>
 
-       <div><a href = "\SuppliersItems">Print PDF</a></pdf>
+      <div class="ui basic left aligned segment"><a href = "/SuppliersItems" target="_blank">Click here to print PDF</a></div>
 
-      <div class="ui bottom attached active tab segment">
-        <table datatable="ng" class="ui compact definition celled table" id="tableOutput">
+      <div class="ui segment">
+        <table class="ui compact inverted celled table" datatable="ng">
           <thead>
             <tr>
-              <th></th>
               <th>Supplier Name</th>
               <th>Status</th>
               <th>Items Stocked</th>
@@ -22,7 +21,6 @@
           </thead>
           <tbody>
              <tr ng-repeat="supplier in supplierStat">
-              <td></td>
               <td style="cursor: pointer;">@{{supplier.SupplierName}}</td>
               <td style="cursor: pointer;" ng-if="supplier.Status==1">Active</td>
               <td style="cursor: pointer;" ng-if="supplier.Status==0">Not Active</td>
@@ -31,7 +29,7 @@
              <tr>
           </tbody>
         </table>
-      </div><!-- tab 1-->
+      </div>
 
     </div><!-- segment -->
   </div><!-- twelve wide column -->

@@ -17,6 +17,7 @@
 
       <div class="ui bottom attached active tab segment" data-tab="first">
        <div class="ui centered header">Container Arrival</div>
+       <div class="ui basic left aligned segment"><a href = "/PendingContainer" target="_blank">Click here to print PDF</a></div>
        
         <table class="ui celled definition inverted table" datatable="ng">
           <thead>
@@ -42,6 +43,7 @@
 
       <div class="ui bottom attached tab segment" data-tab="second">
        <div class="ui centered header">Item Arrival</div>
+       <div class="ui basic left aligned segment"><a href="/PendingItem" target="_blank">Click here to print PDF</a></div>
        
         <table class="ui celled definition inverted table" datatable="ng">
           <thead>
@@ -65,6 +67,7 @@
 
       <div class="ui bottom attached tab segment" data-tab="third">
        <div class="ui centered header">Checkout Approval</div>
+       <div class="ui basic left aligned segment"><a href="/PendingCheckout" target="_blank">Click here to print PDF</a></div>
        
         <table class="ui celled definition inverted table" datatable="ng">
           <thead>
@@ -88,6 +91,7 @@
 
       <div class="ui bottom attached tab segment" data-tab="fourth">
        <div class="ui centered header">Account Approval</div>
+       <div class="ui basic left aligned segment"><a href="/PendingAccount" target="_blank">Click here to print PDF</a></div>
        
         <table class="ui celled definition inverted table" datatable="ng">
           <thead>

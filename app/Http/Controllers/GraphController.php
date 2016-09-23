@@ -506,7 +506,102 @@ class GraphController extends Controller
         //return view('admin1.Reports.customerGraphArea')->with('customer', $customer);
     }
 
-    public function totalBidders(Request $request){
-        #
+    public function activeAreaDate(Request $request){
+        $bid = App\Models\Admin\Bid::with('account', 'account.membership', 'account.membership.city')->get();
+
+        $start = Carbon::create(2016, 1, 1);
+        $end = Carbon:: create(2016, 12, 31);
+        $start->timezone = 'Asia/Manila';
+        $end->timezone = 'Asia/Manila';
+
+        $ctr = 0;
+        $returnData = NULL;
+        foreach ($bid as $key => $result) {
+            if(is_null($returnData)){
+                $returnData[$ctr][0] = $result->account->membership[0]->city->CityName;
+                $returnData[$ctr][1] = 1;
+            } else if($returnData[$ctr][0]==$result->account->membership[0]->city->CityName){
+                $returnData[$ctr][1]++;
+            } else{
+                $ctr++;
+                $returnData[$ctr][0] = $result->account->membership[0]->city->CityName;
+                $returnData[$ctr][1] = 1;
+            }
+
+            if($ctr==10) break;
+        }
+
+        //return $returnData;
+        return view('admin1.Reports.activeAreaDate')->with('data', $returnData);
+    }
+
+    public function activeAreaDef(Request $request){
+        $bid = App\Models\Admin\Bid::with('account', 'account.membership', 'account.membership.city')->get();
+
+        $start = Carbon::create(2016, 1, 1);
+        $end = Carbon:: create(2016, 12, 31);
+        $start->timezone = 'Asia/Manila';
+        $end->timezone = 'Asia/Manila';
+
+        $ctr = 0;
+        $ctr2 = 3;
+        $returnData = NULL;
+        foreach ($bid as $key => $result) {
+            $month = $result->DateTime[5].$result->DateTime[6];
+            $month = intval($month);
+            if(is_null($returnData)){
+                $returnData[$ctr][0] = $result->account->membership[0]->city->CityName;
+                $returnData[$ctr][1] = $month;
+                $returnData[$ctr][2] = 1;
+            } else if($returnData[$ctr][0]==$result->account->membership[0]->city->CityName){
+                if($returnData[$ctr][1]==$month){
+                    $returnData[$ctr][2]++;
+                } else{
+                    $returnData[$ctr][$ctr2] = $month;
+                    $returnData[$ctr][$ctr2+1] = 1;
+                    $ctr2+=2;
+                }
+            } else{
+                $ctr++;
+                $returnData[$ctr][0] = $result->account->membership[0]->city->CityName;
+                $returnData[$ctr][1] = $month;
+                $returnData[$ctr][2] = 1;
+                $ctr2 = 3;
+            }
+
+            if($ctr==10) break;
+        }
+
+        //return $bid;
+        return view('admin1.Reports.activeAreaDef')->with('data', $returnData);
+    }
+
+    public function activeAreaReg(Request $request){
+        $bid = App\Models\Admin\Bid::with('account', 'account.membership', 'account.membership.city',
+            'account.membership.city.province', 'account.membership.city.province.region')->get();
+
+        $start = Carbon::create(2016, 1, 1);
+        $end = Carbon:: create(2016, 12, 31);
+        $start->timezone = 'Asia/Manila';
+        $end->timezone = 'Asia/Manila';
+
+        $ctr = 0;
+        $returnData = NULL;
+        foreach ($bid as $key => $result) {
+            if(is_null($returnData)){
+                $returnData[$ctr][0] = $result->account->membership[0]->city->province->region->RegionName;
+                $returnData[$ctr][1] = 1;
+            } else if($returnData[$ctr][0]==$result->account->membership[0]->city->province->region->RegionName){
+                $returnData[$ctr][1]++;
+            } else{
+                $ctr++;
+                $returnData[$ctr][0] = $result->account->membership[0]->city->province->region->RegionName;
+                $returnData[$ctr][1] = 1;
+            }
+        }
+
+        //return $returnData;
+
+        return view('admin1.Reports.activeAreaReg')->with('data', $returnData);
     }
 }
