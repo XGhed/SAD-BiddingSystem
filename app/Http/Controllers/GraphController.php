@@ -33,6 +33,9 @@ class GraphController extends Controller
             //return $item;
             return $item;
             return view('admin1.Reports.mostBidCat')->with('item', $item);
+        } else if(isset($_POST['item'])){
+            $item = $this->mostBidItemDate($request);
+            return view('admin1.Reports.mostBidItem')->with('item', $item);
         } else{
             $item = $this->mostBidItem($request);
             return $item;
@@ -114,6 +117,8 @@ class GraphController extends Controller
         $end = $request->end;
         $start = Carbon::createFromFormat('Y-m-d', $start);
         $end = Carbon::createFromFormat('Y-m-d', $end);
+        $start->timezone = 'Asia/Manila';
+        $end->timezone = 'Asia/Manila';
 
         $item = NULL;
 
@@ -171,6 +176,8 @@ class GraphController extends Controller
         $end = $request->end;
         $start = Carbon::createFromFormat('Y-m-d', $start);
         $end = Carbon::createFromFormat('Y-m-d', $end);
+        $start->timezone = 'Asia/Manila';
+        $end->timezone = 'Asia/Manila';
 
         $item = NULL;
 
@@ -229,6 +236,8 @@ class GraphController extends Controller
         ->whereHas('checkoutrequest_item.checkoutrequest', function($query){
                 $query->where('status', 2)->orWhere('status', 3);
         })->get();
+        $start->timezone = 'Asia/Manila';
+        $end->timezone = 'Asia/Manila';
 
         $item = NULL;
 
@@ -279,23 +288,50 @@ class GraphController extends Controller
         foreach ($bid as $key => $result) {
             $i = count($bid);
             $itemName = $result->item->itemModel->ItemName;
-            for ($j=0; $j<$i; $j++) {
-                $ctr = count($item);
-                if($ctr==0){
+            $ctr=0;
+            if(!isset($item[$ctr])){
+                $item[$ctr][0] = $itemName;
+                $item[$ctr][1] = 1;
+            } else if($item[$ctr][0]==$itemName){
+                $item[$ctr][1]++;
+            } else{
+                $ctr++;
+                $item[$ctr][0] = $itemName;
+                $item[$ctr][1] = 1;
+            }
+        }
+
+        return $item;
+
+        //return view('admin1.Reports.mostBidItem')->with('item', $item);
+    }
+
+    public function mostBidItemDate(Request $request){
+        $bid = App\Models\Admin\Bid::with('Item', 'Item.itemModel')
+        ->get();
+        $item = NULL;
+
+        $start = $request->start;
+        $end = $request->end;
+        $start = Carbon::createFromFormat('Y-m-d', $start);
+        $end = Carbon::createFromFormat('Y-m-d', $end);
+
+        foreach ($bid as $key => $result) {
+            $i = count($bid);
+            $itemName = $result->item->itemModel->ItemName;
+            $date = $result->DateTime;
+            $date = Carbon::parse($date);
+            $ctr=0;
+            if($date->between($start, $end)==true){
+                if(!isset($item[$ctr])){
                     $item[$ctr][0] = $itemName;
                     $item[$ctr][1] = 1;
+                } else if($item[$ctr][0]==$itemName){
+                    $item[$ctr][1]++;
                 } else{
-                    $ctr2=0;
-                    for ($k=0; $k<$ctr; $k++) { 
-                        if($item[$k][0]==$itemName){
-                            $item[$k][1]++;
-                            $ctr2=$k;
-                        }
-                    }
-                    if($ctr2!=0){
-                        $item[$ctr2][0] = $itemName;
-                        $item[$ctr2][1] = 1;
-                    }
+                    $ctr++;
+                    $item[$ctr][0] = $itemName;
+                    $item[$ctr][1] = 1;
                 }
             }
         }
@@ -310,26 +346,29 @@ class GraphController extends Controller
         ->get();
         $item = NULL;
 
+        $start = $request->start;
+        $end = $request->end;
+        $start = Carbon::createFromFormat('Y-m-d', $start);
+        $end = Carbon::createFromFormat('Y-m-d', $end);
+        /*$start = Carbon::create(2016,9,1);
+        $end = Carbon::create(2016,10,1);*/
+
         foreach ($bid as $key => $result) {
             $i = count($bid);
             $cat = $result->item->itemModel->subCategory->category->CategoryName;
-            for ($j=0; $j<$i; $j++) {
-                $ctr = count($item);
-                if($ctr==0){
+            $date = $result->DateTime;
+            $date = Carbon::parse($date);
+            $ctr=0;
+            if($date->between($start, $end)==true){
+                if(!isset($item[$ctr])){
                     $item[$ctr][0] = $cat;
                     $item[$ctr][1] = 1;
+                } else if($item[$ctr][0]==$cat){
+                    $item[$ctr][1]++;
                 } else{
-                    $ctr2=0;
-                    for ($k=0; $k<$ctr; $k++) { 
-                        if($item[$k][0]==$cat){
-                            $item[$k][1]++;
-                            $ctr2=$k;
-                        }
-                    }
-                    if($ctr2!=0){
-                        $item[$ctr2][0] = $cat;
-                        $item[$ctr2][1] = 1;
-                    }
+                    $ctr++;
+                    $item[$ctr][0] = $cat;
+                    $item[$ctr][1] = 1;
                 }
             }
             //echo $result->item->itemModel->subCategory->category->CategoryName;
@@ -345,31 +384,37 @@ class GraphController extends Controller
 
         $start = Carbon::create(2016, 1, 1);
         $end = Carbon:: create(2016, 12, 31);
+        $start->timezone = 'Asia/Manila';
+        $end->timezone = 'Asia/Manila';
 
         $customer = NULL;
 
         foreach ($customers as $key => $result) {
-            $i = count($result);
-            for ($j=0; $j < $i; $j++) {
-                $date = $result->DateApproved;
-                $date = Carbon::parse($date);
-                if($date->between($start, $end)==true){
-                    $month = $result->DateApproved[5].$result->DateApproved[6];
-                    $month = intval($month);
-                    $ctr=0;
-                    if($customer[$ctr][0]==$month){
-                        $customer[$ctr][1] += 1;
-                    } else if(is_null($customer[$ctr])){
-                        $customer[$ctr][0] = $month;
-                        $customer[$ctr][1] = 1;
-                    }else{
-                        $ctr++;
-                        $customer[$ctr][0] = $month;
-                        $customer[$ctr][1] = 1;
-                    }
+            $ctr=0;
+            $date = $result->DateApproved;
+            $date = Carbon::parse($date);
+            if($date->between($start, $end)==true){
+                $month = $result->DateApproved[5].$result->DateApproved[6];
+                $month = intval($month);
+                if(is_null($customer[$ctr])){
+                    $customer[$ctr][0] = $month;
+                    $customer[$ctr][1] = 1;
+                } else if($customer[$ctr][0]==$month){
+                    $customer[$ctr][1] += 1;
+                }else{
+                    $ctr++;
+                    $customer[$ctr][0] = $month;
+                    $customer[$ctr][1] = 1;
                 }
             }
         }
+
+        $ctr = count($customer);
+        //$customer[$ctr][0] = $start;
+        //$customer[$ctr][1] = $end;
+
+        //$customer["start"] = $start;
+        //$customer["end"] = $end;
 
         return $customer;
 
@@ -380,8 +425,12 @@ class GraphController extends Controller
         $customers = App\Models\Admin\Account::with('membership')
         ->where('status', 1)->orderBy('DateApproved')->get();
 
-        $start = Carbon::create(2016, 1, 1);
-        $end = Carbon:: create(2016, 12, 31);
+        $start = $request->start;
+        $end = $request->end;
+        $start = Carbon::createFromFormat('Y-m-d', $start);
+        $end = Carbon::createFromFormat('Y-m-d', $end);
+        $start->timezone = 'Asia/Manila';
+        $end->timezone = 'Asia/Manila';
 
         $customer = NULL;
 
@@ -391,28 +440,21 @@ class GraphController extends Controller
                 $city = $result->membership[$j]->CityID;
                 $list = App\Models\Admin\City::with('province', 'province.region')->find($city);
                 $region = $list->province->region->RegionName;
-                $month = $result->DateApproved[5].$result->DateApproved[6];
-
                 $ctr = 0;
                 $ctr2 = 3;
-                if(is_null($customer[$ctr])){
-                    $customer[$ctr][0] = $region;
-                    $customer[$ctr][1] = $month;
-                    $customer[$ctr][2] = 1;
-                } else if($customer[$ctr][0]==$region){
-                    if($customer[$ctr][1]==$month){
-                        $customer[$ctr][2] += 1;
+                $date = $result->DateApproved;
+                $date = Carbon::parse($date);
+                if($date->between($start, $end)==true){
+                    if(is_null($customer[$ctr])){
+                        $customer[$ctr][0] = $region;
+                        $customer[$ctr][1] = 1;
+                    } else if($customer[$ctr][0]==$region){
+                        $customer[$ctr][1] += 1;
                     } else{
-                        $customer[$ctr][$ctr2] = $month;
-                        $ctr2 ++;
-                        $customer[$ctr][$ctr2] = 1;
+                        $ctr++;
+                        $customer[$ctr][0] = $region;
+                        $customer[$ctr][1] = 1;
                     }
-                } else{
-                    $ctr++;
-                    $customer[$ctr][0] = $region;
-                    $customer[$ctr][1] = $month;
-                    $customer[$ctr][2] = 1;
-                    $ctr2 = 3;
                 }
             }
         }
@@ -426,8 +468,12 @@ class GraphController extends Controller
         $customers = App\Models\Admin\Account::with('membership')
         ->where('status', 1)->orderBy('DateApproved')->get();
 
-        $start = Carbon::create(2016, 1, 1);
-        $end = Carbon:: create(2016, 12, 31);
+        $start = $request->start;
+        $end = $request->end;
+        $start = Carbon::createFromFormat('Y-m-d', $start);
+        $end = Carbon::createFromFormat('Y-m-d', $end);
+        $start->timezone = 'Asia/Manila';
+        $end->timezone = 'Asia/Manila';
 
         $customer = NULL;
 
@@ -437,28 +483,20 @@ class GraphController extends Controller
                 $city = $result->membership[$j]->CityID;
                 $list = App\Models\Admin\City::with('province')->find($city);
                 $area = $list->CityName;
-                $month = $result->DateApproved[5].$result->DateApproved[6];
-
                 $ctr = 0;
-                $ctr2 = 3;
-                if(is_null($customer[$ctr])){
-                    $customer[$ctr][0] = $area;
-                    $customer[$ctr][1] = $month;
-                    $customer[$ctr][2] = 1;
-                } else if($customer[$ctr][0]==$area){
-                    if($customer[$ctr][1]==$month){
-                        $customer[$ctr][2] += 1;
+                $date = $result->DateApproved;
+                $date = Carbon::parse($date);
+                if($date->between($start, $end)==true){
+                    if(is_null($customer[$ctr])){
+                        $customer[$ctr][0] = $area;
+                        $customer[$ctr][1] = 1;
+                    } else if($customer[$ctr][0]==$area){
+                        $customer[$ctr][1] += 1;
                     } else{
-                        $customer[$ctr][$ctr2] = $month;
-                        $ctr2 ++;
-                        $customer[$ctr][$ctr2] = 1;
+                        $ctr++;
+                        $customer[$ctr][0] = $area;
+                        $customer[$ctr][1] = 1;
                     }
-                } else{
-                    $ctr++;
-                    $customer[$ctr][0] = $region;
-                    $customer[$ctr][1] = $month;
-                    $customer[$ctr][2] = 1;
-                    $ctr2 = 3;
                 }
             }
         }

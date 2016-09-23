@@ -2,32 +2,15 @@
 
 @section('content')
 <div class="ui grid">
-  @include('admin1.Reports.sideNav')
+  <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript" src="http://code.highcharts.com/modules/exporting.js"></script>
 
-  <div class="twelve wide stretched column">
-    @include('admin1.Reports.buttonMostBid')
-
-        <div id="container" style="height: 600px;margin-top:20px;width: 600px"></div>
-    </div>
-  </div>
-
-  <div class="ui basic modal" id="alert">
-        <h1 class='ui red centered header'>
-          There is nothing to display yet
-        <div class="ui divider"></div>
-           Invalid Inputs!
-        </h1>
-    </div>
+<div id="container" style="height: 600px;margin-top:20px;width: 600px"></div>
 </div>
 
 
-<script>
-    <?php
-        if(is_null($item)){
-            echo "$('#alert').modal('show');";
-        }
-    ?>
 
+<script>
 Highcharts.drawTable = function() {
     
     // user options
@@ -36,8 +19,8 @@ Highcharts.drawTable = function() {
         tableLeft = 20,
         rowHeight = 20,
         cellPadding = 2.5,
-        valueDecimals = 0,
-        valueSuffix = ' Count';
+        valueDecimals = 1,
+        valueSuffix = ' °C';
         
     // internal variables
     var chart = this,
@@ -163,10 +146,12 @@ Highcharts.tableLine = function (renderer, x1, y1, x2, y2) {
         .add();
 }
 
+/**
+ * Create the chart
+ */
 window.chart = new Highcharts.Chart({
 
     chart: {
-        type: 'column',
         renderTo: 'container',
         events: {
             load: Highcharts.drawTable
@@ -175,25 +160,16 @@ window.chart = new Highcharts.Chart({
     },
     
     title: {
-        text: 'Most Bid Items'
+        text: 'Average monthly temperatures'
     },
     
     xAxis: {
-        categories: [
-        <?php
-                    if(!is_null($item)){
-                        $ctr = count($item);
-                        for ($i=0; $i<$ctr; $i++) { 
-                            echo "'".$item[$i][0]."',";
-                        }
-                    }
-                ?>
-        ]
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     },
     
     yAxis: {
         title: {
-            text: 'Items'
+            text: 'Temperature (°C)'
         }
     },
 
@@ -201,83 +177,19 @@ window.chart = new Highcharts.Chart({
         y: -300
     },
 
-    series: [
-        <?php
-                //echo "alert(JSON.stringify(".$item."))";
-                if(!is_null($item)){
-                    $ctr = count($item);
-                    for ($i=0; $i<$ctr; $i++) {
-                        echo "{name: ' ',data:[".$item[$i][1]."]}";
-                        if($i+1!=$ctr){
-                            echo ",";
-                        }
-                    }
-                } else{
-                    echo "{name: 'Nothing to show'}";
-                }
-            ?>
-    ]
+    series: [{
+         name: 'Tokyo',
+         data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+      }, {
+         name: 'New York',
+         data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+      }, {
+         name: 'Berlin',
+         data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+      }, {
+         name: 'London',
+         data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+      }]
 });
-
-/*$(function() {
-    $('#container').highcharts({
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: 'Most Bid Items'
-        },
-        xAxis: {
-            categories: [
-                <?php
-                    if(!is_null($item)){
-                        $ctr = count($item);
-                        for ($i=0; $i<$ctr; $i++) { 
-                            echo "'".$item[$i][0]."',";
-                        }
-                    }
-                ?>
-            ],
-            crosshair: true
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: 'Number of Bids'
-            }
-        },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0"></td>' +
-                '<td style="padding:0"><b>Count: {point.y:.0f}</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
-        },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
-        },
-        series: [
-            <?php
-                //echo "alert(JSON.stringify(".$item."))";
-                if(!is_null($item)){
-                    $ctr = count($item);
-                    for ($i=0; $i<$ctr; $i++) {
-                        echo "{name: '".$item[$i][0]."',data:[".$item[$i][1]."]}";
-                        if($i+1!=$ctr){
-                            echo ",";
-                        }
-                    }
-                } else{
-                    echo "name: 'Nothing to show'";
-                }
-            ?>
-        ]
-    });
-});
-*/
 </script>
 @endsection
