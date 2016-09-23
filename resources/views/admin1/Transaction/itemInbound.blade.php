@@ -29,7 +29,7 @@
             </div>
           </div>
 
-          <table datatable="ng" class="ui compact celled inverted table">
+          <table datatable="ng" class="ui definition compact celled inverted table">
             <thead>
               <tr>
                 <th></th>
@@ -61,19 +61,19 @@
             <div class="content">
               <form action="/itemInbound" method="POST">
                 <input type="hidden" name="containerID" value="@{{selectedContainer.ContainerID}}">
-                <table datatable="ng" class="ui compact celled table">
+                <table datatable="ng" class="ui compact definition inverted celled table" style="width:100%">
                   <thead>
-                    <tr>
+                    <!--<tr>
                       <th>Filters</th>
-                      <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
+                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> 
                       <th><input type="text" style="width:95%" data-ng-model="filterExpected.item_model.sub_category.category.CategoryName" ></th>
                       <th><input type="text" style="width:95%" data-ng-model="filterExpected.item_model.sub_category.SubCategoryName" ></th>
                       <th><input type="text" style="width:95%" data-ng-model="filterExpected.item_model.ItemName" ></th>
-                      <!--<th>Defect</th> -->
+                      <th>Defect</th> 
                       <th><input type="text" style="width:95%" data-ng-model="filterExpected.color" ></th>
                       <th><input type="text" style="width:95%" data-ng-model="filterExpected.size" ></th>
-                      <!--<th>Image</th> -->
-                    </tr>
+                      <th>Image</th> 
+                    </tr>-->
                     <tr>
                       <th></th>
                       <!--<th>Container</th> -->
@@ -202,19 +202,19 @@
             </div>
             <div class="content">
               <form action="/removeUnexpectedItems" method="POST">
-              <table datatable="ng" class="ui compact celled inverted table">
+              <table datatable="ng" class="ui compact definition celled inverted table">
                 <thead>
-                  <tr>
+                 <!-- <tr>
                     <th>Filters</th>
-                    <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
-                    <th><input type="text" style="width:95%" data-ng-model="filterUnexpected.item_model.sub_category.category.CategoryName" ></th>
+                    <th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> 
+                    <th><input type="text" style="width:95%; color:black" data-ng-model="filterUnexpected.item_model.sub_category.category.CategoryName" ></th>
                     <th><input type="text" style="width:95%" data-ng-model="filterUnexpected.item_model.sub_category.SubCategoryName" ></th>
                     <th><input type="text" style="width:95%" data-ng-model="filterUnexpected.item_model.ItemName" ></th>
-                    <!--<th>Defect</th> -->
+                   <th>Defect</th> 
                     <th><input type="text" style="width:95%" data-ng-model="filterUnexpected.color" ></th>
                     <th><input type="text" style="width:95%" data-ng-model="filterUnexpected.size" ></th>
-                    <!--<th>Image</th> -->
-                  </tr>
+                    <th>Image</th> 
+                  </tr>-->
                   <tr>
                     <th></th>
                     <th>Category</th>
@@ -250,7 +250,7 @@
             <!-- END modal -->
             <input type="hidden" name="samp" value="sa">
 
-          <table datatable="ng" class="ui compact celled inverted table">
+          <table datatable="ng" class="ui compact definition celled inverted table">
             <thead>
               <tr>
                 <th></th>
@@ -301,7 +301,7 @@
             </div>
           </div>
 
-          <table datatable="ng" class="ui compact celled inverted table">
+          <table datatable="ng" class="ui compact definition celled inverted table">
             <thead>
               <tr>
                 <th></th>
@@ -330,48 +330,54 @@
             <div class="ui centered header">
               @{{missingContainer.ContainerName}}
             </div>
-            <form action="/missingItemsAction" method="POST">
-            <table datatable="ng" class="ui compact celled definition table">
-              <thead>
-                <tr>
-                  <th>Filters</th>
-                  <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
-                  <th><input type="text" style="width:95%" data-ng-model="filterMissing.item_model.sub_category.category.CategoryName" ></th>
-                  <th><input type="text" style="width:95%" data-ng-model="filterMissing.item_model.sub_category.SubCategoryName" ></th>
-                  <th><input type="text" style="width:95%" data-ng-model="filterMissing.item_model.ItemName" ></th>
-                  <!--<th>Defect</th> -->
-                  <th><input type="text" style="width:95%" data-ng-model="filterMissing.color" ></th>
-                  <th><input type="text" style="width:95%" data-ng-model="filterMissing.size" ></th>
-                  <!--<th>Image</th> -->
-                </tr>
-                <tr>
-                  <th></th>
-                  <th>Category</th>
-                  <th>Subcategory</th>
-                  <th>Item</th>
-                  <!--<th>Defect</th> -->
-                  <th>Color</th>
-                  <th>Size</th>
-                  <!--<th>Image</th> -->
-                </tr>
-              </thead>
-              <tbody>
-                  <tr ng-repeat="item in missingContainer.item | filter: filterMissing">
-                    <td class="collapsing">
-                      <input type="checkbox" name="items[]" value="@{{item.ItemID}}" />
-                    </td>
-                    <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
-                    <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
-                    <td>@{{item.item_model.ItemName}}</td>
-                    <!--<td>@{{item.DefectDescription}}</td> -->
-                    <td>@{{item.color}}</td>
-                    <td>@{{item.size}}</td>
-                   <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
-                  </tr>
-              </tbody>
-            </table>
-            <button type="submit" class="ui blue button" name="found" value="true">Found/Arrived</button>
-            <button type="submit" class="ui blue button" name="remove" value="true">Remove</button>
+            <div class="content">
+              <form action="/missingItemsAction" method="POST">
+                <table datatable="ng" class="ui compact celled definition inverted table" width="100%">
+                  <thead>
+                  <!--  <tr>
+                      <th>Filters</th>
+                      <th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> 
+                      <th><input type="text" style="width:95%; color:black;" data-ng-model="filterMissing.item_model.sub_category.category.CategoryName" ></th>
+                      <th><input type="text" style="width:95%" data-ng-model="filterMissing.item_model.sub_category.SubCategoryName" ></th>
+                      <th><input type="text" style="width:95%" data-ng-model="filterMissing.item_model.ItemName" ></th>
+                      <th>Defect</th> 
+                      <th><input type="text" style="width:95%" data-ng-model="filterMissing.color" ></th>
+                      <th><input type="text" style="width:95%" data-ng-model="filterMissing.size" ></th>
+                      <th>Image</th> 
+                    </tr>-->
+                    <tr>
+                      <th></th>
+                      <th>Category</th>
+                      <th>Subcategory</th>
+                      <th>Item</th>
+                      <!--<th>Defect</th> -->
+                      <th>Color</th>
+                      <th>Size</th>
+                      <!--<th>Image</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr ng-repeat="item in missingContainer.item | filter: filterMissing">
+                        <td class="collapsing">
+                          <input type="checkbox" name="items[]" value="@{{item.ItemID}}" />
+                        </td>
+                        <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
+                        <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
+                        <td>@{{item.item_model.ItemName}}</td>
+                        <!--<td>@{{item.DefectDescription}}</td> -->
+                        <td>@{{item.color}}</td>
+                        <td>@{{item.size}}</td>
+                       <!-- <td> <img src="@{{item.image_path}}" style="width:60px;height:60px;"/> </td> -->
+                      </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div class="actions">
+              <div class="ui buttons">
+                <button type="submit" class="ui blue button" name="found" value="true">Found/Arrived</button>
+                <div class="or"></div>
+                <button type="submit" class="ui red button" name="remove" value="true">Remove</button>
+            </div>
             </form>
           </div>
         </div>

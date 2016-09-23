@@ -224,5 +224,37 @@ window.chart = new Highcharts.Chart({
     ]
 });
 
+//startDate
+      var date = new Date();
+
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
+
+      var today = year + "-" + month + "-" + day;
+      document.getElementById("start").value = today;
+
+    //endDate
+      var date = new Date();
+
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
+
+      var today = year + "-" + month + "-" + day;
+      document.getElementById("end").value = today;
+      document.getElementById("end").min = document.getElementById("start").value;
+
+      function minEnd(){
+        document.getElementById("end").value = document.getElementById("start").value;
+        document.getElementById("end").min = document.getElementById("start").value;
+      }
+
 </script>
 @endsection

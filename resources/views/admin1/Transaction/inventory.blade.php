@@ -4,6 +4,12 @@
 <div class="ui grid" ng-app="myApp" ng-controller="myController">
  @include('admin1.Transaction.sideNav')
 
+<style type="text/css">
+ input[type="text"]{
+  color:black;
+ }
+</style>
+
   <div class="twelve wide stretched column">
     <div class="ui segment">
 
@@ -14,7 +20,7 @@
     </div>
     <div class="ui bottom attached active tab segment" data-tab="first">
       <!-- table -->
-        <table datatable="ng" class="ui celled very compact definition table" id="tableOutput">
+        <table datatable="ng" class="ui celled very inverted compact table" id="tableOutput">
           <thead>
             <tr>
               <th>Filters</th>
@@ -45,13 +51,13 @@
           <tbody>
             <tr ng-repeat="item in items | filter: filterPerStock">
               <td class="collapsing">
-                <div class="ui blue basic vertical animated button " tabindex="1" ng-click="viewItemHistory($index, item)">
+                <div class="ui blue basic tiny vertical animated button " tabindex="1" ng-click="viewItemHistory($index, item)">
                   <div class="hidden content">Item Logs</div>
                   <div class="visible content">
                     <i class="large history icon"></i>
                   </div>
                 </div><br>
-                <div class="ui red basic vertical animated button" tabindex="0" ng-click="dispose($index)">
+                <div class="ui red basic tiny vertical animated button" tabindex="0" ng-click="dispose($index)">
                   <div class="hidden content">Dispose</div>
                   <div class="visible content">
                     <i class="large trash icon"></i>
@@ -74,7 +80,7 @@
     <!--2nd tab-->
 
     <div class="ui bottom attached tab segment" data-tab="second">
-      <table class="ui celled inverted table" datatable="ng">
+      <table class="ui celled definition inverted table" datatable="ng">
         <thead>
           <tr>
             <th></th>
@@ -103,7 +109,7 @@
 
     <div class="ui bottom attached tab segment" data-tab="third">
       <!-- table -->
-        <table datatable="ng" class="ui compact celled definition inverted table">
+        <table datatable="ng" class="ui compact celled inverted table">
           <thead>
             <tr>
               <th>Filters</th>
