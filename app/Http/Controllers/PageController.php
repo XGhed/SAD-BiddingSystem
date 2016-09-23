@@ -271,6 +271,11 @@ class PageController extends Controller
 
       return view('admin1.Queries.pendingQuery');
     }
+
+    public function test(Request $request){
+
+      return view('admin1.Reports.test');
+    }
 }
 
 
