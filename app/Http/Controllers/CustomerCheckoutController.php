@@ -164,13 +164,16 @@ class CustomerCheckoutController extends Controller
             //kung ano mang gagawin mo
         }
 
-        
+        $dash = App\Models\Admin\adminDashboard::get()->last();
             $data = [];
+            $data['dashboard'] = $dash;
             $data['checkoutRequest'] = $checkoutRequest;
             $data['customerDiscount'] = $customerDiscount;
             $data['discountedPrice'] = $discountedPrice;
             $data['customerServiceFee'] = $customerServiceFee;
             $data['itemsCheckedOut'] = $itemsCheckedOut;
+
+            
 
             $dompdf = App::make('dompdf.wrapper');
                 

@@ -1,8 +1,11 @@
 <html>
 <body>
 <head>
-	<link type="text/css" rel="stylesheet" href="css/angular-datatables.css"/>
 	<style>
+		@page{
+			size: 800px 3500px; 
+      		margin: 35px;
+    	}
 		.image{
 			width: 100px;
 			height: 100px;
@@ -11,14 +14,14 @@
 		}
 		.head1{
 			float:left;
-			font-size: 25;
+			font-size: 30;
 			margin-left: 2%;
 			margin-top: 0;	
 		}
 
 		.head2{
-			margin-top: 5%;
-			margin-left: 25%;
+			margin-top: 2%;
+			margin-left: 30%;
 		}
 		.head3{
 			margin-top: 0%;
@@ -30,11 +33,9 @@
 		}
 		table{
 			position: absolute;
-			margin-top: 10%;
+			margin-top: 5%;
 			border: 1px solid black;
-			width: 100%;
-
-		
+			width: 100%;	
 		}
 		th, td{
 			vertical-align: middle;
@@ -46,10 +47,10 @@
 </head>
 <body>
 	<div>
-		<img src = "icons/LOGO.jpg" class ="image" >
-		<h3 class = "head1">Online Bidding System with Logistics</h3>
-		<h4 class = "head2">6552, Santol st. Centennial 2, Pinagbuhatan, Pasig City</h4>
-		<h4 class = "head3">TEL: 00-000000 CEL: 09123456789</h4>
+		<img src = "{{$dashboard->valid_id}}" class ="image" >
+		<h3 class = "head1">{{$dashboard->CompanyName}}</h3>
+		<h4 class = "head2">{{$dashboard->ComapanyAddress}}</h4>
+		<h4 class = "head3">{{$dashboard->CompanyEmail}} - {{$dashboard->CellphoneNo}}</h4>
 		<h2 class = "title">Customer Status</h2>
 	</div>
 	<div>

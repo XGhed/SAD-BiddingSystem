@@ -3,7 +3,10 @@
 <head>
 	<title>Example Muna</title>
 	<style type="text/css">
-
+		@page{
+			size: 800px 3500px; 
+      		margin: 35px;
+    	}
 		.image{
 			width: 100px;
 			height: 100px;
@@ -19,7 +22,7 @@
 		}
 
 		.head2{
-			margin-top: 5%;
+			margin-top: 3%;
 			margin-left: 25%;
 			color: DarkBlue;
 		}
@@ -42,40 +45,57 @@
 		.name{
 			position: absolute;
 			text-align: left;
-			margin-top: 10%;
+			margin-top: 3%;
 		}
 		.address{
 			position: absolute;
 			text-align: left;
-			margin-top: 15%;
+			margin-top: 5%;
 		}
 		.cell{
 			position: absolute;
 			text-align: left;
-			margin-top: 20%;
+			margin-top: 7%;
 		}
-		.email{
+		.id{
 			position: absolute;
 			text-align: left;
-			margin-top: 25%;
+			margin-top: 9%;
+		}
+		.date{
+			position: absolute;
+			text-align: left;
+			margin-top: 12%;
 		}
 		.name1{
 			position: absolute;
 			text-align: left;
-			margin-left: 50;
-			margin-top: 10%;	
+			margin-left: 10%;
+			margin-top: 3%;	
 		}
 		.add{
 			position: absolute;
 			text-align: left;
-			margin-left: 100;
-			margin-top: 15%;	
+			margin-left: 20%;
+			margin-top: 5%;	
 		}
 		.phone{
 			position: absolute;
 			text-align: left;
-			margin-left: 70;
-			margin-top: 20%;	
+			margin-left: 13%;
+			margin-top: 7%;	
+		}
+		.id2{
+			position: absolute;
+			text-align: left;
+			margin-left: 20%;
+			margin-top: 9%;
+		}
+		.date2{
+			position: absolute;
+			text-align: left;
+			margin-left: 23%;
+			margin-top: 12%;
 		}
 		.note1{
 			position: absolute;
@@ -96,7 +116,7 @@
 		}
 		table{
 			position: absolute;
-			margin-top: 25%;
+			margin-top: 15%;
 			width: 100%;
 			background-color: #F0E0B0;
 		}
@@ -111,27 +131,31 @@
 </head>
 <body>
 	<div>
-		<img src = "icons/LOGO.jpg" class ="image" >
-		<h3 class = "head1">Online Bidding System with Logistics</h3>
-		<h4 class = "head2">6552, Santol st. Centennial 2, Pinagbuhatan, Pasig City</h4>
-		<h4 class = "head3">TEL: 00-000000 CEL: 09123456789</h4>
+		<img src = "{{$dashboard->valid_id}}" class ="image" >
+		<h3 class = "head1">{{$dashboard->CompanyName}}</h3>
+		<h4 class = "head2">{{$dashboard->ComapanyAddress}}</h4>
+		<h4 class = "head3">{{$dashboard->CompanyEmail}} - {{$dashboard->CellphoneNo}}</h4>
 		<h3 class = "head4">Customer's Voucher</h3>
 	</div>
 
 	<div>
 		<p class = "name">Name:</p>
-		<p class = "name1">Customer Name</p>
+		<p class = "name1">{{$checkoutRequest->Account->Membership->first()->LastName}}, {{$checkoutRequest->Account->Membership->first()->FirstName}} {{$checkoutRequest->Account->Membership->first()->MiddleName}}</p>
 		<p class = "address">Delivery Address:</p>
-		<p class = "add">Customer Delivery Address</p>
+		<p class = "add">{{$checkoutRequest->Account->Membership->first()->Barangay_Street_Address}}, {{$checkoutRequest->Account->Membership->first()->City->CityName}}, {{$checkoutRequest->Account->Membership->first()->City->Province->ProvinceName}}</p>
 		<p class = "cell">Cellphone #:</p>
-		<p class = "phone">09xxxxxxxxx</p>
+		<p class = "phone">{{$checkoutRequest->Account->Membership->first()->CellphoneNo}}</p>
+		<p class = "id">Checkout Request ID:</p>
+		<p class = "id2">{{$checkoutRequest->CheckoutRequestID}}</p>
+		<p class = "date">Checkout Request Date:</p>
+		<p class = "date2">{{$checkoutRequest->RequestDate}}</p>
 	</div>
 
 	<div>
 			<table>
 			<thead>
 				<tr>
-					<th colspan = "3" height = "5%">DETAILS</th>
+					<th colspan = "3" height = "3%">DETAILS</th>
 				</tr>
 				<tr>
 					<th></th>
@@ -192,9 +216,10 @@
 	</div>
 
 
+
 	<div>
-		<p class = "note1">STANDARD SHIPPING/DELIVERY DAYS: 2-3 WORKING DAYS</p>
-		<p class = "note2">This will serve as your proof of purchase. Thank you!</p>
+		<p class = "note1">WARNING: PLEASE SAVE THIS VOUCHER TOGETHER WITH YOUR PROOF OF PAYMENT. THIS WILL SERVE AS YOUR PROOF OF PURCHASE.</p>
+		<p class = "note2">STANDARD SHIPPING/DELIVERY DAYS: 2-3 WORKING DAYS</p>
 	</div>
 </body>
 </html>
