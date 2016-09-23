@@ -19,7 +19,7 @@
     </div>
   </div>
 
-    <div class="ui basic modal" id="alert">
+  <div class="ui basic modal" id="alert">
         <h1 class='ui red centered header'>
           There is nothing to display yet
         </h1>

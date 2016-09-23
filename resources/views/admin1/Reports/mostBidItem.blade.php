@@ -5,11 +5,7 @@
   @include('admin1.Reports.sideNav')
 
   <div class="twelve wide stretched column">
-    <div class="ui segment">
-    <form method="post" action="/mostBid" class="ui form">
-        <button type="submit" name="item" class="ui green button">Per Item</button>
-        <button type="submit" name="category" class="ui blue button">Per Category</button>
-    </form><br>
+    @include('admin1.Reports.buttonMostBid')
 
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
@@ -82,7 +78,7 @@ $(function() {
                 if(!is_null($item)){
                     $ctr = count($item);
                     for ($i=0; $i<$ctr; $i++) {
-                        echo "name: '".$item[$i][0]."',data:[".$item[$i][1]."]";
+                        echo "name: '".$item[$i][0]."',data:[".$item[$i][1]."],";
                     }
                 } else{
                     echo "name: 'Nothing to show'";

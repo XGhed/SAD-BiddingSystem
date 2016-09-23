@@ -16,7 +16,7 @@
       </div>
 
       <div class="ui bottom attached active tab segment" data-tab="first">
-       <div class="ui centered header">Container</div>
+       <div class="ui centered header">Container Arrival</div>
        
         <table class="ui celled definition inverted table" datatable="ng">
           <thead>
@@ -41,7 +41,7 @@
       </div>
 
       <div class="ui bottom attached tab segment" data-tab="second">
-       <div class="ui centered header">Item</div>
+       <div class="ui centered header">Item Arrival</div>
        
         <table class="ui celled definition inverted table" datatable="ng">
           <thead>
@@ -64,7 +64,7 @@
       </div>
 
       <div class="ui bottom attached tab segment" data-tab="third">
-       <div class="ui centered header">Checkout</div>
+       <div class="ui centered header">Checkout Approval</div>
        
         <table class="ui celled definition inverted table" datatable="ng">
           <thead>
@@ -87,7 +87,7 @@
       </div>
 
       <div class="ui bottom attached tab segment" data-tab="fourth">
-       <div class="ui centered header">Account</div>
+       <div class="ui centered header">Account Approval</div>
        
         <table class="ui celled definition inverted table" datatable="ng">
           <thead>

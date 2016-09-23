@@ -350,11 +350,12 @@ class AngularOutput extends Controller
             $previtem[0] = NULL;
         }
 
-        $ctr = 2;
+        $ctr = 0;
         foreach ($supplier as $key => $result) {
             $i = count($returnData);
             for ($j=0; $j < $i; $j++) { 
                 if($returnData[$j]["SupplierName"]==$result->SupplierName){
+                    $ctr++;
                     break;
                 }
                 if($j+1==$i){

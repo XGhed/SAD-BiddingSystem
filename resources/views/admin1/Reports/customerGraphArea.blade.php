@@ -12,14 +12,14 @@
         <button type="submit" name="area">Per Area</button>
         <button type="submit" name="region">Per Region</button>
     </form><br>
+    -->
         <script src="js/js/highstock.js"></script>
         <script src="js/js/modules/exporting.js"></script>
-    -->
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
   </div>
 
-    <div class="ui basic modal" id="alert">
+  <div class="ui basic modal" id="alert">
         <h1 class='ui red centered header'>
           There is nothing to display yet
         </h1>

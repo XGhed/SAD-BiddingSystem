@@ -7,16 +7,6 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
     @include('admin1.Reports.buttonSales')
-    <!--<form method="post" action="/salesGraph">
-    
-         <label>From: </label>
-        <input type="date" name="start" id="start" required>
-        <label>To: </label>
-        <input type="date" name="end" id="end" required>
-        <button type="submit" name="date">Go!</button>
-        <button type="submit" name="area">Per Area</button>
-        <button type="submit" name="region">Per Region</button>
-    </form>-->
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
   </div>

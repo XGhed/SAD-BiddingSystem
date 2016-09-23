@@ -5,23 +5,19 @@
   @include('admin1.Reports.sideNav')
 
   <div class="twelve wide stretched column">
-    <div class="ui segment">
-    <form method="post" action="/mostBid" class="ui form">
-        <button type="submit" name="item" class="ui green button">Per Item</button>
-        <button type="submit" name="category" class="ui blue button">Per Category</button>
-    </form><br>
-
+    @include('admin1.Reports.buttonMostBid')
+    <br>
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
-  </div>
 
-  <div class="ui basic modal" id="alert">
+      <div class="ui basic modal" id="alert">
         <h1 class='ui red centered header'>
           There is nothing to display yet
         <div class="ui divider"></div>
            Invalid Inputs!
         </h1>
     </div>
+  </div>
 </div>
 
 
