@@ -66,19 +66,17 @@
                     <tr>
                       <th>Filters</th>
                       <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
-                      <th><input type="text" style="width:75px" data-ng-model="filterExpected.ItemID" ></th>
-                      <th><input type="text" style="width:125px" data-ng-model="filterExpected.item_model.sub_category.category.CategoryName" ></th>
-                      <th><input type="text" style="width:125px" data-ng-model="filterExpected.item_model.sub_category.SubCategoryName" ></th>
-                      <th><input type="text" style="width:115px" data-ng-model="filterExpected.item_model.ItemName" ></th>
+                      <th><input type="text" style="width:95%" data-ng-model="filterExpected.item_model.sub_category.category.CategoryName" ></th>
+                      <th><input type="text" style="width:95%" data-ng-model="filterExpected.item_model.sub_category.SubCategoryName" ></th>
+                      <th><input type="text" style="width:95%" data-ng-model="filterExpected.item_model.ItemName" ></th>
                       <!--<th>Defect</th> -->
-                      <th><input type="text" style="width:105px" data-ng-model="filterExpected.color" ></th>
-                      <th><input type="text" style="width:105px" data-ng-model="filterExpected.size" ></th>
+                      <th><input type="text" style="width:95%" data-ng-model="filterExpected.color" ></th>
+                      <th><input type="text" style="width:95%" data-ng-model="filterExpected.size" ></th>
                       <!--<th>Image</th> -->
                     </tr>
                     <tr>
                       <th></th>
                       <!--<th>Container</th> -->
-                      <th>ItemID</th>
                       <th>Category</th>
                       <th>Subcategory</th>
                       <th>Item</th>
@@ -92,7 +90,6 @@
                       <tr ng-repeat="item in itemsInbound | filter : filterExpected">
                         <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}"></td>
                         <!--<td>@{{item.container.ContainerName}}</td>-->
-                        <td>@{{item.ItemID}}</td>
                         <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
                         <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
                         <td>@{{item.item_model.ItemName}}</td>
@@ -208,8 +205,18 @@
               <table datatable="ng" class="ui compact celled inverted table">
                 <thead>
                   <tr>
+                    <th>Filters</th>
+                    <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
+                    <th><input type="text" style="width:95%" data-ng-model="filterUnexpected.item_model.sub_category.category.CategoryName" ></th>
+                    <th><input type="text" style="width:95%" data-ng-model="filterUnexpected.item_model.sub_category.SubCategoryName" ></th>
+                    <th><input type="text" style="width:95%" data-ng-model="filterUnexpected.item_model.ItemName" ></th>
+                    <!--<th>Defect</th> -->
+                    <th><input type="text" style="width:95%" data-ng-model="filterUnexpected.color" ></th>
+                    <th><input type="text" style="width:95%" data-ng-model="filterUnexpected.size" ></th>
+                    <!--<th>Image</th> -->
+                  </tr>
+                  <tr>
                     <th></th>
-                    <th>ID</th>
                     <th>Category</th>
                     <th>Subcategory</th>
                     <th>Item</th>
@@ -220,9 +227,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in unexpectedContainer.item">
-                      <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}" /></td>
-                      <td>@{{item.ItemID}}</td>
+                    <tr ng-repeat="item in unexpectedContainer.item | filter: filterUnexpected" ng-if="item.Unexpected == 1">
+                      <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}" /> </td>
                       <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
                       <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
                       <td>@{{item.item_model.ItemName}}</td>
@@ -236,8 +242,6 @@
             </div>
             <div class="actions">
               <div class="ui buttons">
-              <button class="ui green button" type="submit">Found</button>
-              <div class="or"></div>
               <button class="ui red button" type="submit">Remove</button>
               </form>
               </div>
@@ -308,7 +312,7 @@
             <tbody>
                 <tr ng-repeat="container in containersWithMissing">
                   <td class="collapsing">
-                    <div class="ui basic yellow vertical animated button"  ng-click="loadContainerUnexpected(container)" style="width:50px">
+                    <div class="ui basic yellow vertical animated button"  ng-click="loadContainerMissing(container)" style="width:50px">
                       <div class="hidden content">View Items</div>
                       <div class="visible content">
                         <i class="ordered list icon"></i>
@@ -326,11 +330,22 @@
             <div class="ui centered header">
               @{{missingContainer.ContainerName}}
             </div>
-            <table datatable="ng" class="ui compact celled definition inverted table">
+            <form action="/missingItemsAction" method="POST">
+            <table datatable="ng" class="ui compact celled definition table">
               <thead>
                 <tr>
+                  <th>Filters</th>
+                  <!--<th><input type="text" style="width:20px" data-ng-model="filterExpected.container.ContainerName"></th> -->
+                  <th><input type="text" style="width:95%" data-ng-model="filterMissing.item_model.sub_category.category.CategoryName" ></th>
+                  <th><input type="text" style="width:95%" data-ng-model="filterMissing.item_model.sub_category.SubCategoryName" ></th>
+                  <th><input type="text" style="width:95%" data-ng-model="filterMissing.item_model.ItemName" ></th>
+                  <!--<th>Defect</th> -->
+                  <th><input type="text" style="width:95%" data-ng-model="filterMissing.color" ></th>
+                  <th><input type="text" style="width:95%" data-ng-model="filterMissing.size" ></th>
+                  <!--<th>Image</th> -->
+                </tr>
+                <tr>
                   <th></th>
-                  <th>ItemID</th>
                   <th>Category</th>
                   <th>Subcategory</th>
                   <th>Item</th>
@@ -341,19 +356,10 @@
                 </tr>
               </thead>
               <tbody>
-                  <tr ng-repeat="item in missingContainer.item">
+                  <tr ng-repeat="item in missingContainer.item | filter: filterMissing"">
                     <td class="collapsing">
-                      <div class="ui tiny buttons">
-                        <div class="ui blue button" ng-click="itemFound(item, $index)">
-                          <div class="content">Found/Arrived</div>
-                        </div>
-                        <div class="or"></div>
-                        <div class="ui red button" ng-click="itemMissingRemove(item, $index)">
-                          <div class="content">Remove</div>
-                        </div>
-                      </div>
+                      <input type="checkbox" name="items[]" value="@{{item.ItemID}}" />
                     </td>
-                    <td>@{{item.ItemID}}</td>
                     <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
                     <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
                     <td>@{{item.item_model.ItemName}}</td>
@@ -364,6 +370,9 @@
                   </tr>
               </tbody>
             </table>
+            <button type="submit" class="ui blue button" name="found" value="true">Found/Arrived</button>
+            <button type="submit" class="ui blue button" name="remove" value="true">Remove</button>
+            </form>
           </div>
         </div>
     </div><!-- segment -->
@@ -480,7 +489,7 @@
 
     $scope.itemFound = function(item, index){
       $http.get('/itemFound?itemID=' + item.ItemID)
-      .then(function(response){
+      .then(function(response){alert(JSON.stringify(response.data));
         $scope.showFound = true;
         if(response.data == 'success'){
           $scope.itemsMissing.splice(index, 1);

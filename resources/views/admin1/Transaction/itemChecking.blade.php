@@ -40,7 +40,7 @@
                     </td>
                     <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.ItemID}}</td>
                     <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.item_model.ItemName}}</td>
-                    <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.container.ContainerName}}</td>
+                    <td style="cursor: pointer;" ng-click="uncheckModal(uncheck.ItemID)">@{{uncheck.container.warehouse.address}}</td>
                   </tr>
           </tbody>
         </table>

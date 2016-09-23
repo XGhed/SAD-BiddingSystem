@@ -3,6 +3,8 @@ item status:
 1 - delivered 
 2 - checked (available on  inventory)
 3 - pulled out
+-1 - missing
+-2 - never found (deleted missing)
 
 checkoutreq status
 0 - requested

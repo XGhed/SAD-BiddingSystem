@@ -107,6 +107,8 @@ Route::post('/sendProofPayment', 'ProofPaymentController@insert');
 
 Route::post('/verifyDelivery', 'VerifyDeliveryController@verifyDelivery');
 
+Route::post('/missingItemsAction', 'ItemInboundController@missingItemsAction');
+
 Route::get('/salesGraphReg', 'GraphController@salesGraphReg');
 
 Route::any('/salesGraph', 'GraphController@salesGraph');

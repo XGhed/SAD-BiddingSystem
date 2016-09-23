@@ -97,13 +97,13 @@ class ItemInboundController extends Controller
             "Item was found or was redelivered to warehouse " . $item->current_warehouse->Barangay_Street_Address . ", " . $item->current_warehouse->city->province->ProvinceName . ", " . $item->current_warehouse->city->CityName
             );
         
-
+        return $item;
         return 'success';
     }
 
     public function itemMissingRemove(Request $request){
         $item = App\Models\Admin\Item::find($request->itemID);
-        $item->status = -1;
+        $item->status = -2;
 
         $item->save();
         
@@ -114,6 +114,25 @@ class ItemInboundController extends Controller
         foreach ($request->items as $key => $itemID) {
             $item = App\Models\Admin\Item::find($itemID);
             $item->delete();
+        }
+
+        return redirect('/itemInbound');
+    }
+
+    public function missingItemsAction(Request $request){
+        if($request->found == "true"){
+            foreach ($request->items as $key => $itemID) {
+                $item = App\Models\Admin\Item::find($itemID);
+                $item->status = 1;
+                $item->save();
+            }
+        }
+        else if($request->remove == "true"){
+            foreach ($request->items as $key => $itemID) {
+                $item = App\Models\Admin\Item::find($itemID);
+                $item->status = -2;
+                $item->save();
+            }
         }
 
         return redirect('/itemInbound');

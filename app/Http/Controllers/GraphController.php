@@ -31,9 +31,11 @@ class GraphController extends Controller
         if (isset($_POST['category'])) {
             $item = $this->mostBidCat($request);
             //return $item;
+            return $item;
             return view('admin1.Reports.mostBidCat')->with('item', $item);
         } else{
             $item = $this->mostBidItem($request);
+            return $item;
             return view('admin1.Reports.mostBidItem')->with('item', $item);
         }
     }
