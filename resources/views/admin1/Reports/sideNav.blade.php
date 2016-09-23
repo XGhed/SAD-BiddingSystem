@@ -10,6 +10,9 @@
         <a class="item" href="/customer">
           Customers
         </a>
+        <a class="item" href="/activeArea">
+          Active Areas
+        </a>
        
     </div>
   </div>

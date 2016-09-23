@@ -172,7 +172,7 @@ window.chart = new Highcharts.Chart({
     },
     
     title: {
-        text: 'Approved Accounts in 2016'
+        text: 'Active Areas in 2016'
     },
     
     xAxis: {

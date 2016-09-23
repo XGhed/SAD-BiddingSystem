@@ -176,6 +176,8 @@ Route::get('/customerGraphReg', 'GraphController@customerGraphReg');
 
 Route::get('/customerGraphArea', 'GraphController@customerGraphArea');
 
+Route::any('/activeArea', 'GraphController@activeArea');
+
 Route::get('/activeAreaDef', 'GraphController@activeAreaDef');
 
 Route::get('/activeAreaDate', 'GraphController@activeAreaDate');

@@ -56,6 +56,19 @@ class GraphController extends Controller
         }
     }
 
+    public function activeArea(Request $request){
+        if(isset($_POST['date'])){
+            $data = $this->activeAreaDate($request);
+            return view('admin1.Reports.activeAreaDate')->with('data', $data);
+        } else if(isset($_POST['region'])){
+            $data = $this->activeAreaReg($request);
+            return view('admin1.Reports.activeAreaReg')->with('data', $data);
+        } else{
+            $data = $this->activeAreaDef($request);
+            return view('admin1.Reports.activeAreaDef')->with('data', $data);
+        }
+    }
+
     public function salesGraphCat(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category',
             'item_auction', 'checkoutrequest_item', 'checkoutrequest_item.checkoutrequest')
@@ -509,8 +522,12 @@ class GraphController extends Controller
     public function activeAreaDate(Request $request){
         $bid = App\Models\Admin\Bid::with('account', 'account.membership', 'account.membership.city')->get();
 
-        $start = Carbon::create(2016, 1, 1);
-        $end = Carbon:: create(2016, 12, 31);
+        //$start = Carbon::create(2016, 1, 1);
+        //$end = Carbon:: create(2016, 12, 31);
+        $start = $request->start;
+        $end = $request->end;
+        $start = Carbon::createFromFormat('Y-m-d', $start);
+        $end = Carbon::createFromFormat('Y-m-d', $end);
         $start->timezone = 'Asia/Manila';
         $end->timezone = 'Asia/Manila';
 
@@ -531,8 +548,8 @@ class GraphController extends Controller
             if($ctr==10) break;
         }
 
-        //return $returnData;
-        return view('admin1.Reports.activeAreaDate')->with('data', $returnData);
+        return $returnData;
+        //return view('admin1.Reports.activeAreaDate')->with('data', $returnData);
     }
 
     public function activeAreaDef(Request $request){
@@ -572,16 +589,20 @@ class GraphController extends Controller
             if($ctr==10) break;
         }
 
-        //return $bid;
-        return view('admin1.Reports.activeAreaDef')->with('data', $returnData);
+        return $returnData;
+        //return view('admin1.Reports.activeAreaDef')->with('data', $returnData);
     }
 
     public function activeAreaReg(Request $request){
         $bid = App\Models\Admin\Bid::with('account', 'account.membership', 'account.membership.city',
             'account.membership.city.province', 'account.membership.city.province.region')->get();
 
-        $start = Carbon::create(2016, 1, 1);
-        $end = Carbon:: create(2016, 12, 31);
+        //$start = Carbon::create(2016, 1, 1);
+        //$end = Carbon:: create(2016, 12, 31);
+        $start = $request->start;
+        $end = $request->end;
+        $start = Carbon::createFromFormat('Y-m-d', $start);
+        $end = Carbon::createFromFormat('Y-m-d', $end);
         $start->timezone = 'Asia/Manila';
         $end->timezone = 'Asia/Manila';
 
@@ -600,8 +621,8 @@ class GraphController extends Controller
             }
         }
 
-        //return $returnData;
+        return $returnData;
 
-        return view('admin1.Reports.activeAreaReg')->with('data', $returnData);
+        //return view('admin1.Reports.activeAreaReg')->with('data', $returnData);
     }
 }

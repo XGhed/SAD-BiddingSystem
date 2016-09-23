@@ -332,7 +332,8 @@ class AngularOutput extends Controller
 
     public function supplierStat(){
         $supplier = App\Models\Admin\Supplier::get();
-        $item = App\Models\Admin\Item::with('itemModel', 'container', 'container.supplier', 'supplier')->where('status', 1)->orWhere('status', 2)->get();
+        $item = App\Models\Admin\Item::with('itemModel', 'container', 'container.supplier', 'supplier')->where('status', 1)
+        ->orWhere('status', 2)->orWhere('status', -1)->get();
         $returnData = NULL;
         $previtem = NULL;
         $holditem = NULL;
@@ -346,19 +347,56 @@ class AngularOutput extends Controller
                     if(!isset($returnData[$ctr])){
                         $returnData[$ctr]["SupplierName"] = $result->SupplierName;
                         $returnData[$ctr]["Status"] = $result->Status;
-                        $returnData[$ctr]["Items"] = $item[$i]->itemModel->ItemName;
+                        if($item[$i]->status==1){
+                            $returnData[$ctr]["Items"] = $item[$i]->itemModel->ItemName;
+                            $returnData[$ctr]["Found"] = 1;
+                            $returnData[$ctr]["Missing"] = 0;
+                        }
+                        if($item[$i]->status==2){
+                            $returnData[$ctr]["Items"] = $item[$i]->itemModel->ItemName;
+                            $returnData[$ctr]["Found"] = 1;
+                            $returnData[$ctr]["Missing"] = 0;
+                        }
+                        if($item[$i]->status==-1){
+                            $returnData[$ctr]["Found"] = 0;
+                            $returnData[$ctr]["Missing"] = 1;
+                        }
                         $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
                         $ctr2++;
                     } else{
                         $j = count($previtem[0]);
                         for($k=0; $k<$j; $k++){
                             if($previtem[0][$k]==$item[$i]->itemModel->ItemName){
+                                if($item[$i]->status==1){
+                                    $returnData[$ctr]["Found"]++;
+                                }
+                                if($item[$i]->status==2){
+                                    $returnData[$ctr]["Found"]++;
+                                }
+                                if($item[$i]->status==-1){
+                                    $returnData[$ctr]["Missing"]++;
+                                }
                                 break;
                             }
                             if($k+1==$j){
-                                $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
-                                $holditem[0] = $item[$i]->itemModel->ItemName.", ".$returnData[$ctr]["Items"];
-                                $returnData[$ctr]["Items"] = $holditem[0];
+                                if($item[$i]->status==1){
+                                    $returnData[$ctr]["Found"]++;
+                                    $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
+                                    $holditem[0] = $item[$i]->itemModel->ItemName.", ".$returnData[$ctr]["Items"];
+                                    $returnData[$ctr]["Items"] = $holditem[0];
+                                }
+                                if($item[$i]->status==2){
+                                    $returnData[$ctr]["Found"]++;
+                                    $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
+                                    $holditem[0] = $item[$i]->itemModel->ItemName.", ".$returnData[$ctr]["Items"];
+                                    $returnData[$ctr]["Items"] = $holditem[0];
+                                }
+                                if($item[$i]->status==-1){
+                                    $returnData[$ctr]["Missing"]++;
+                                    $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
+                                    $holditem[0] = $item[$i]->itemModel->ItemName.", ".$returnData[$ctr]["Items"];
+                                    $returnData[$ctr]["Items"] = $holditem[0];
+                                }
                                 $ctr2++;
                             }
                         }

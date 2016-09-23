@@ -172,7 +172,7 @@ window.chart = new Highcharts.Chart({
     },
     
     title: {
-        text: 'Approved Accounts in Region'
+        text: 'Active Areas in a Specific Date'
     },
     
     xAxis: {

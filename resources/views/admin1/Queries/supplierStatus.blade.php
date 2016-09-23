@@ -8,28 +8,36 @@
     <div class="ui segment">
        <div class="ui centered header">Supplier Status</div>
 
-      <div class="ui basic left aligned segment"><a href = "/SuppliersItems" target="_blank">Click here to print PDF</a></div>
+       <div><a href = "\SuppliersItems">Print PDF</a></pdf>
 
-      <div class="ui segment">
-        <table class="ui compact inverted celled table" datatable="ng">
+      <div class="ui bottom attached active tab segment">
+        <table datatable="ng" class="ui compact definition celled table" id="tableOutput">
           <thead>
             <tr>
+              <th></th>
               <th>Supplier Name</th>
               <th>Status</th>
               <th>Items Stocked</th>
+              <th>Items Missing</th>
+              <th>Items Found</th>
             </tr>
           </thead>
           <tbody>
              <tr ng-repeat="supplier in supplierStat">
+              <td></td>
               <td style="cursor: pointer;">@{{supplier.SupplierName}}</td>
               <td style="cursor: pointer;" ng-if="supplier.Status==1">Active</td>
               <td style="cursor: pointer;" ng-if="supplier.Status==0">Not Active</td>
               <td style="cursor: pointer;" ng-if="supplier.Status==0">Not Available</td>
+              <td style="cursor: pointer;" ng-if="supplier.Found!=NULL">@{{supplier.Found}}</td>
+              <td style="cursor: pointer;" ng-if="supplier.Found==NULL">0</td>
+              <td style="cursor: pointer;" ng-if="supplier.Missing!=NULL">@{{supplier.Missing}}</td>
+              <td style="cursor: pointer;" ng-if="supplier.Missing==NULL">0</td>
               <td style="cursor: pointer;" ng-if="supplier.Status==1">@{{supplier.Items}}</td>
              <tr>
           </tbody>
         </table>
-      </div>
+      </div><!-- tab 1-->
 
     </div><!-- segment -->
   </div><!-- twelve wide column -->
