@@ -123,11 +123,19 @@ Route::get('pdfFile', 'CustomerCheckoutController@index');
 
 Route::get('/customerStatus', 'CustomerStatusQueryController@Customerstatus');
 
-//Route::get('/mostBidQuery', 'CustomerStatusQueryController@mostBids');
+Route::get('/PendingContainer', 'CustomerStatusQueryController@PendingContainer');
 
-Route::get('/DeliveryPlaces', 'CustomerStatusQueryController@DeliveryPlaces');
+Route::get('/DeliveryCompany', 'CustomerStatusQueryController@DeliveryCompany');
+
+Route::get('/DeliveryThirdparty', 'CustomerStatusQueryController@DeliveryThirdparty');
 
 Route::get('/SuppliersItems', 'CustomerStatusQueryController@SuppliersItems');
+
+Route::get('/PendingItem', 'CustomerStatusQueryController@PendingItem');
+
+Route::get('/PendingCheckout', 'CustomerStatusQueryController@PendingCheckout');
+
+Route::get('/PendingAccount', 'CustomerStatusQueryController@PendingAccount');
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');

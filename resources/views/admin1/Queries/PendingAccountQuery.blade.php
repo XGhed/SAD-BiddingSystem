@@ -1,6 +1,7 @@
 <html>
 <body>
 <head>
+	<link type="text/css" rel="stylesheet" href="css/angular-datatables.css"/>
 	<style>
 		.image{
 			width: 100px;
@@ -25,23 +26,23 @@
 		}
 		.title{
 			margin-top: 0;
-			margin-left: 40%
+			margin-left: 45%
 		}
 		table{
 			position: absolute;
 			margin-top: 10%;
 			border: 1px solid black;
 			width: 100%;
+
 		
 		}
 		th, td{
 			vertical-align: middle;
-			padding-left: 100;
-			padding-right: 100;
 			text-align: center;
 			border: 1px solid black;
 		}
 	</style>
+
 </head>
 <body>
 	<div>
@@ -49,22 +50,26 @@
 		<h3 class = "head1">Online Bidding System with Logistics</h3>
 		<h4 class = "head2">6552, Santol st. Centennial 2, Pinagbuhatan, Pasig City</h4>
 		<h4 class = "head3">TEL: 00-000000 CEL: 09123456789</h4>
-		<h2 class = "title">Customer Status</h2>
+		<h2 class = "title">Pending</h2>
 	</div>
- 
+
 	<div>
 	<table>
 		<thead>
 			<tr>
-				<th>Places</th>
-				<th>Delivery Fee</th>
+				<th>Username</th>
+				<th>Name</th>
+				<th>Date Of Registration</th>
+				<th>Email Address</th>
 			</tr>
 		</thead>
 		<tbody>
-		@foreach($places as $key)
+		@foreach($pendingAcc as $key)
 			<tr>
-				<td>{!! $key->Province->ProvinceName!!}</td>
-				<td>{!! $key->ShipmentFee!!}</td>
+				<td>{!! $key->Username !!}</td>
+				<td>{!!$key->Membership->first()->LastName!!}, {!!$key->Membership->first()->FirstName!!} {!!$key->Membership->first()->MiddleName!!}</td>
+				<td>{!! $key->Membership->first()->DateOfRegistration!!}</td>
+				<td>{!! $key->Membership->first()->EmailAdd!!}</td>
 			</tr>
 		@endforeach
 		</tbody>

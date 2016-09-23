@@ -7,7 +7,7 @@
   <div class="twelve wide stretched column">
     <div class="ui segment">
        <div class="ui centered header">List of Delivery Fees</div>
-       <div><a href = "\DeliveryPlaces">Print PDF</a></pdf>
+       
         <div class="ui top attached tabular menu">
         <a class="active item" data-tab="first">Company</a>
         <a class="item" data-tab="second">Third Party</a>

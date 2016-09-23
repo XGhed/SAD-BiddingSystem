@@ -27,20 +27,25 @@
 			margin-top: 0;
 			margin-left: 40%
 		}
-		table{
+		.table{
 			position: absolute;
 			margin-top: 10%;
 			border: 1px solid black;
 			width: 100%;
-
+			page-break-after: always;
 		
 		}
-		th, td{
+		.row{
 			vertical-align: middle;
-			padding-left: 100;
-			padding-right: 100;
 			text-align: center;
 			border: 1px solid black;
+		}
+		.items{
+			position: absolute;
+			display: inline;
+			margin-left: 30%;
+			margin-top: -100px;
+
 		}
 	</style>
 </head>
@@ -50,22 +55,34 @@
 		<h3 class = "head1">Online Bidding System with Logistics</h3>
 		<h4 class = "head2">6552, Santol st. Centennial 2, Pinagbuhatan, Pasig City</h4>
 		<h4 class = "head3">TEL: 00-000000 CEL: 09123456789</h4>
-		<h2 class = "title">Customer Status</h2>
+		<h2 class = "title">Supplier Status</h2>
 	</div>
 
 	<div>
-	<table>
+		<span style = "font-weight:bold">Item's Status</span><br>
+		<span>0 = Not Yet Delivered</span><br>
+		<span>1 = Delivered</span><br>
+		<span>2 = Available on inventory</span><br>
+		<span>3 = Pulled out</span>
+	</div>
+
+	<div>
+	<table class = "table">
 		<thead>
 			<tr>
-				<th>Customer Name</th>
-				<th>Customer Status</th>
+				<th class = "row">Item Name</th>
+				<th class = "row">Container Name</th>
+				<th class = "row">Warehouse</th>
 			</tr>
 		</thead>
 		<tbody>
-		@foreach($members as $key)
+		@foreach($pendingItem as $key)
 			<tr>
-				<td>{!! $key->LastName !!}, {!! $key->FirstName !!} {!! $key->MiddleName !!}</td>
-				<td>{!! $key->account->status!!}</d>
+				<td class = "row">{!! $key->ItemModel->ItemName!!}</td>
+				<td class = "row">{!! $key->Container->ContainerName!!}</td>
+				<td class = "row">{!! $key->Container->Warehouse->Barangay_Street_Address!!}, 
+					{!! $key->Container->Warehouse->City->CityName!!}, 
+					{!! $key->Container->Warehouse->City->Province->ProvinceName!!}</td>
 			</tr>
 		@endforeach
 		</tbody>
