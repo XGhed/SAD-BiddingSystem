@@ -311,7 +311,7 @@ window.chart = new Highcharts.Chart({
     });
 });
 */
-      //startDate
+//startDate
       var date = new Date();
 
       var day = date.getDate();
@@ -323,7 +323,6 @@ window.chart = new Highcharts.Chart({
 
       var today = year + "-" + month + "-" + day;
       document.getElementById("start").value = today;
-      document.getElementById("start").min = today;
 
     //endDate
       var date = new Date();
@@ -337,7 +336,12 @@ window.chart = new Highcharts.Chart({
 
       var today = year + "-" + month + "-" + day;
       document.getElementById("end").value = today;
-      document.getElementById("end").min = today;
+      document.getElementById("end").min = document.getElementById("start").value;
+
+      function minEnd(){
+        document.getElementById("end").value = document.getElementById("start").value;
+        document.getElementById("end").min = document.getElementById("start").value;
+      }
 
 </script>
 @endsection
