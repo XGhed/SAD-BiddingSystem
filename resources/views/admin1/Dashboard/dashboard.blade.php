@@ -7,12 +7,12 @@
     <div class="ui segment">
       <h1 class="ui centered header">DASHBOARD</h1>
       <p id="curDate" style="font-size:25px" class="ui basic right aligned segment"></p>
-      <div class="ui segment">
+      <div class="ui segment" ng-app="announcementApp" ng-controller="adminDashboardController">
         <div class="ui inverted segment">
           <div class="ui three statistics">
             <div class="ui inverted statistic">
               <div class="value">
-                6969
+                 @{{customerStat}}
               </div>
               <div class="label">
                 Current Bidders
@@ -20,7 +20,7 @@
             </div>
             <div class="ui red inverted statistic">
               <div class="value">
-                6969
+                @{{ongoingEvents}}
               </div>
               <div class="label">
                 Current ongoing event
@@ -28,26 +28,18 @@
             </div>
             <div class="ui orange inverted statistic">
               <div class="value">
-                6969
+                @{{pendingCheckout}}
               </div>
               <div class="label">
-                Pending Delivery requests
+                Pending Checkout requests
               </div>
             </div>
             <div class="ui yellow inverted statistic">
               <div class="value">
-                6969
+                @{{items}}
               </div>
               <div class="label">
-                Pending Pick-up requests
-              </div>
-            </div>
-            <div class="ui yellow inverted statistic">
-              <div class="value">
-                6969
-              </div>
-              <div class="label">
-                Pending Accounts to be approved
+                Items In Inventory
               </div>
             </div>
           </div><!-- statistics -->
@@ -67,7 +59,7 @@
             Company Details
           </h2>
           <div class="ui divider"></div>
-          <div class="ui two column grid" id="announcement" ng-app="announcementApp" ng-controller="adminDashboardController">
+          <div class="ui two column grid" id="announcement" >
             <div class="column">
               <h2 class="ui inverted header">
                 <i class="circular building icon" ></i>
@@ -132,7 +124,7 @@
       });
     });
 
-  var app = angular.module('announcementApp', []);
+  var app = angular.module('announcementApp', ['datatables']);
     app.controller('adminDashboardController', function($scope, $http){
       $http.get('/latestCompanyDetails')
       .then(function(response){
@@ -150,25 +142,44 @@
           $scope.events = response.data;
         }
       });
-    });
 
-    //angular.bootstrap(document.getElementById("announcement"), ['announcementApp']);
-
-    var app = angular.module('myApp', ['datatables']);
-    app.controller('myController', function($scope, $http){
       $scope.randomInRangeOf = function(min, max){
         return Math.floor((Math.random() * max)) + min;
       }
 
       $http.get('/getOngoingEvent')
       .then(function(response){
-        $scope.ongoingEvents = response.data;
+        $scope.ongoingEvents = response.data.length;
       });
 
       $http.get('/currentTime')
       .then(function(response){
         $scope.currentTime = response.data;
       });
+
+      $http.get('customerStat')
+      .then(function(response){
+        $scope.customerStat = response.data.length;
+      });
+
+      $http.get('pendingCheckout')
+      .then(function(response){
+        $scope.pendingCheckout = response.data.length;
+      });
+
+
+      $http.get('itemsInventory')
+      .then(function(response){
+        $scope.items = response.data.length;
+      });
     });
+
+    //angular.bootstrap(document.getElementById("announcement"), ['announcementApp']);
+
+  /* var app = angular.module('myApp', ['datatables']);
+    app.controller('myController', function($scope, $http){
+      
+
+    }); */
 </script>
 @endsection

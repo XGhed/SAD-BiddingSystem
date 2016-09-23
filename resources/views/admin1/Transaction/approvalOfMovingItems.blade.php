@@ -15,7 +15,7 @@
         </thead>
         <tr ng-repeat="request in requests">
           <td>
-            <div class="ui blue basic button" ng-click="viewRequest(request.item_moving_request)">View Reqest</div>
+            <div class="ui blue basic button" ng-click="viewRequest(request.item_moving_request)">View Request</div>
           </td>
           <td>@{{request.MovingRequestID}}</td>
           <td>@{{request.item_moving_request.length}}</td>
