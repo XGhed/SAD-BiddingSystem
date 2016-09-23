@@ -331,6 +331,8 @@ Route::get('/getOngoingEvent', 'CustomerDashboardController@getOngoingEvent');
 
 Route::get('/getUpcomingEvent', 'CustomerDashboardController@getUpcomingEvent');
 
+Route::get('/getPastEvent', 'CustomerDashboardController@getPastEvent');
+
 Route::get('/deliveryRequests', 'PrepareCheckoutController@deliveryRequests');
 
 Route::get('/pickupRequests', 'PrepareCheckoutController@pickupRequests');
@@ -505,7 +507,7 @@ Route::get('/latestCompanyDetails', 'adminDashboardController@latestCompanyDetai
 
 Route::get('/Calendar_events', 'adminDashboardController@Calendar_events');
 
-Route::get('/eventViewOnly', 'PageController@eventViewOnly');
+Route::get('/itemsView', 'CustomerBiddingEventController@itemsView');
 
 Route::get('/auctionViewingOnly', 'PageController@auctionViewingOnly');
 

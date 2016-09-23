@@ -12,7 +12,6 @@
 		    	<th>Price</th>
 		    	<th>Status</th>
 		    	<th>Pickup/Delivery Date</th>
-		    	<th>Generate Receipt</th>
 		  	</tr>
 		  </thead>
 		  <tbody>
@@ -28,11 +27,6 @@
 		      	<span ng-if="request.Status == 4">Delivered / Picked up</span>
 		      </td>
 		      <td>@{{request.DateOutbound}}</td>
-		      <td>
-		      	<button class="ui green button">
-		      		<i class="print icon"></i>
-		      	</button>
-		      </td>
 		    </tr>
 		  </tbody>
 		</table>

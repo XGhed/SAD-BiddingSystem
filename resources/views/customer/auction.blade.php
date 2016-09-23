@@ -45,7 +45,7 @@
                           <form class="ui form">
                               <div class="inline field">
                                   <input type="number" placeholder="Place bid here.." ng-model="price">
-                                  <button class="ui inverted button" ng-click="bidItem({{$item->ItemID}})">
+                                  <button class="ui inverted button" ng-click="bidItem({{$item->ItemID}})" ng-if="secondsLeft > 0">
                                     <i class="legal icon"></i>Place bid
                                   </button>
                                   <a ng-click="showHistory()">[<span ng-bind="bidlists.length"></span> bids]</a>
@@ -122,6 +122,16 @@
           
         </h1>
       </div>
+
+      <div class="ui basic modal" id="error_consecutive">
+        <h1 class='ui red centered header'>
+          INVALID BID!!
+          <div class="ui divider"></div>
+          You can't bid consecutively.
+          <div class="ui divider"></div>
+          
+        </h1>
+      </div>
   </div>
 
 
@@ -152,6 +162,9 @@
             .then(function(response){
               $scope.highestBid = response.data;
             });
+          }
+          else if(response.data == "Can't bid consecutively"){
+            $('#error_consecutive').modal('show');
           }
           else {
              $('#error').modal('show');
@@ -185,7 +198,9 @@
     $scope.$on('timer-tick', function (event, data) {
       $scope.secondsLeft = data.millis;
       if(data.millis == 0){
-        $window.location.reload();
+        $timeout(function(){
+          $window.location.reload();
+        }, 100);
       }
     });
   });

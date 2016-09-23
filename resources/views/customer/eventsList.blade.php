@@ -72,7 +72,7 @@
 						        Description: @{{upcomingEvent.Description}}
 						      </div>
 						    </div>
-						      <a  class="ui bottom blue attached button" href="/items?eventID=@{{upcomingEvent.AuctionID}}">View Event</a>				    
+						      <a  class="ui bottom blue attached button" href="/itemsView?eventID=@{{upcomingEvent.AuctionID}}">View Event</a>				    
 						  </div>
 						</div>
 					  </div>
@@ -82,31 +82,31 @@
 					  </div>
 					  <div class="content">
 					    <div class="ui raised link three cards transition hidden" >
-						  <div class="ui red card" ng-repeat="ongoingEvent in ongoingEvents">
+						  <div class="ui red card" ng-repeat="pastEvent in pastEvents">sadsadsad
 						    <div class="content">
 						      <div class="ui centered header">
-						      	@{{ongoingEvent.EventName}}
+						      	@{{pastEvent.EventName}}
 						      </div>
 						      <div class="ui divider"></div>
 						      <div class="ui tiny images">
-							    <img src="@{{ongoingEvent.item_auction[randomInRangeOf(0, ongoingEvent.item_auction.length-1)].item.image_path}}">
-							    <img src="@{{ongoingEvent.item_auction[randomInRangeOf(0, ongoingEvent.item_auction.length-1)].item.image_path}}">
-							    <img src="@{{ongoingEvent.item_auction[randomInRangeOf(0, ongoingEvent.item_auction.length-1)].item.image_path}}">
+							    <img src="@{{pastEvent.item_auction[randomInRangeOf(0, pastEvent.item_auction.length-1)].item.image_path}}">
+							    <img src="@{{pastEvent.item_auction[randomInRangeOf(0, pastEvent.item_auction.length-1)].item.image_path}}">
+							    <img src="@{{pastEvent.item_auction[randomInRangeOf(0, pastEvent.item_auction.length-1)].item.image_path}}">
 							    <!-- PICTURE NG ITEMS AT LEAST 3 ITEMS-->
 							  </div>
 						      <div class="description">
-							      Start: @{{ongoingEvent.StartDateTime}}
+							      Start: @{{pastEvent.StartDateTime}}
 							    	<br>
-							    	End: @{{ongoingEvent.EndDateTime}}
+							    	End: @{{pastEvent.EndDateTime}}
 							    	<br> 
-						        Event Fee: @{{ongoingEvent.EventFee}}
+						        Event Fee: @{{pastEvent.EventFee}}
 						        <br> 
-						        Bid Increment: @{{ongoingEvent.NextBidPercent}}
+						        Bid Increment: @{{pastEvent.NextBidPercent}}
 							    	<br> 
-						        Description: @{{ongoingEvent.Description}}
+						        Description: @{{pastEvent.Description}}
 						      </div>
 						    </div>
-						      <a class="ui bottom orange attached button" href="/items?eventID=@{{ongoingEvent.AuctionID}}">View Event!!</a>
+						      <a class="ui bottom orange attached button" href="/items?eventID=@{{pastEvent.AuctionID}}">View Event!!</a>
 						  </div>
 						</div>
 					  </div>
@@ -137,6 +137,11 @@
 			$http.get('/getOngoingEvent')
 			.then(function(response){
 				$scope.ongoingEvents = response.data;
+			});
+
+			$http.get('/getPastEvent')
+			.then(function(response){
+				$scope.pastEvents = response.data;
 			});
 
 			$http.get('/currentTime')
