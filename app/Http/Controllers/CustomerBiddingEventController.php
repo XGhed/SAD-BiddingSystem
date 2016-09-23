@@ -37,6 +37,23 @@ class CustomerBiddingEventController extends Controller
     	return view('customer.items')->with('categories', $categories)->with('eventID', $request->eventID)->with('joined', $joined);
     }
 
+    public function itemsView(Request $request){
+        $categories = App\Models\Admin\Category::with('subCategory')->get();
+
+        $auction = App\Models\Admin\Auction::find($request->eventID);
+
+        $currentDatetime = Carbon::now('Asia/Manila');
+        $auctionEndTime = explode(' ', $auction->EndDateTime);
+        $currentDatetime = explode(' ', $currentDatetime);
+
+        /*if ($currentDatetime[0] > $auctionEndTime[0] || ($currentDatetime[0] == $auctionEndTime[0] && $currentDatetime[1] > $auctionEndTime[1])){
+            return "Event has ended";
+        }*/
+
+
+        return view('customer.eventViewingOnly')->with('categories', $categories)->with('eventID', $request->eventID);
+    }
+
     public function allItemsInEvent(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'itemDefect', 'item_auction', 'bids', 'bids.account')->get();
         $itemsOnAuction = [];
@@ -117,6 +134,12 @@ class CustomerBiddingEventController extends Controller
         $auction = App\Models\Admin\Auction::find($request->eventID);
         //if bid is lower than highest bid
         $currentBids = App\Models\Admin\Bid::where('ItemID', $request->itemID)->where('AuctionID', $request->eventID)->get()->sortByDesc('price');
+
+        //cant bid twice in a row
+        if($currentBids->last()->AccountID == $request->session()->get('accountID')){
+            return "Can't bid consecutively"
+        }
+
         if (count($currentBids) > 0){
             $highestBid = $currentBids->last()->Price;
             $nextMinimumBid = $highestBid + floor($highestBid * ($auction->NextBidPercent / 100));

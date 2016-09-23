@@ -1,21 +1,17 @@
 @extends('customer.homepage')
 
 @section('content')
-	<div style="margin: 100px 0 0 0" class="ui container segment">
+	<div style="margin: 100px 0 0 0" class="ui container segment" ng-app="myApp" ng-controller="myController" ng-init="eventID = {{$eventID}};">
       @include('customer.topnav')
       <a href="/eventsList"><i class="left arrow icon"></i>Back to previous page</a>
-		<h1 class="ui center aligned header">Event name</h1>
-
+		<h1 class="ui center aligned header">@{{event.EventName}}</h1>
 
 		<span ng-bind="subcatName" style="text-align:center;"></span>
-		<div class="ui divider"></div>
 
+		<div class="ui divider"></div>
 		<div class="ui sub header">
 			<form class="ui form">
-			<div class="field">
-				<timer class="ui centered header" countdown="event.remainingTime" max-time-unit="'hour'" interval="1000" ng-if="event.remainingTime > 0">
-				<h2 class="ui centered header inverted segment">Countdown till event starts: @{{hhours}} hour@{{hourS}}, @{{mminutes}} minute@{{minutesS}}, @{{sseconds}} second@{{secondsS}}</h2></timer>
-			</div>
+			
 			<div class="fields">
 				<div class="two widefield">
 					<div class="ui subheader inverted segment">Filter by:</div>
@@ -49,21 +45,21 @@
 		  		<div class="three wide compact column">
 			        <div class="ui vertical menu">
 			        	<a class="item" ng-click="allCategories()">All Categories</a>
-
-			        		<a class="item"></a>
+			        	@foreach($categories as $key => $category)
+			        		<a class="item">{{$category->CategoryName}}</a>
 					        <div class="ui fluid popup">
 					         	<div class="ui grid">
 					            	<div class="column">
-					                	<h4 class="ui header center aligned"></h4>
+					                	<h4 class="ui header center aligned">{{$category->CategoryName}}</h4>
 					                	<div class="ui link list">
-						                  	
-						                  		<a class="item" ></a>
-						                  	
+						                  	@foreach($category->subCategory as $key2 => $subcat)
+						                  		<a class="item" ng-click="subcatViewItems({{$subcat->SubCategoryID}}, {{$subcat->SubCategoryName}})">{{$subcat->SubCategoryName}}</a>
+						                  	@endforeach
 						                </div>
 					              	</div>
 					            </div>
 					        </div>
-			        	
+			        	@endforeach
 				    </div>
 				</div>
 			    <div class="column">
@@ -97,13 +93,6 @@
 					              		Last Bid: @{{item.bids[item.bids.length - 1].Price}}
 					              	</div>
 					            </div>
-							    <a class="ui green bottom attached button" href="/auctionViewingOnly" ng-click="bidItem($index)" ng-if="secondsLeft > 0">
-							      <i class="thumbs up icon"></i>
-							      View Item
-							    </a>
-							    <div class="ui green bottom attached button" ng-if="secondsLeft == 0 || secondsLeft == NULL">
-							    	Winner: @{{item.bids[item.bids.length-1].account.Username}}
-							    </div>
 							</div>
 						</div>   
 					</div>
@@ -125,11 +114,6 @@
 				$scope.event = response.data;
 			});
 
-			$http.get('/myBidsTabData?eventID=' + $scope.eventID)
-	    .then(function(response){
-	    	$scope.myBidsList = response.data;
-	    });
-
 			$scope.allCategories();
 		}, 100);
 
@@ -150,55 +134,10 @@
 			$scope.subcatName = subcatname;
 		}
 
-		/*$scope.joinEvent = function(){
-			$http.get('/joinEvent?eventID=' + $scope.eventID)
-			.then(function(response){
-				if (response.data == 'success'){
-					$("#join0").hide();
-					$("#join1").show();
-					$scope.joined = true;
-				}
-			});
-		}
-
-		/* $scope.showJoinConfirmation = function(){
-			$('#eventModal').modal('show');
-		} */
-
-		 $scope.bidItem = function(index){
-			if($scope.joined == true){
-				$window.open('/auction?itemID='+$scope.itemsView[index].ItemID + "&eventID=" + $scope.eventID);
-			}
-			else {
-				$('#eventModal').modal('show');
-			}
-		}
-
-		$scope.reBidItem = function(item){
-			if($scope.joined == true){
-				$window.open('/auction?itemID='+ item.ItemID + "&eventID=" + $scope.eventID);
-			}
-			else {
-				$('#eventModal').modal('show');
-			}
-		}
-
-		$scope.$on('timer-tick', function (event, data) {
-	    $scope.secondsLeft = data.millis;
-
-	    $http.get('/myBidsTabData?eventID=' + $scope.eventID)
-	    .then(function(response){
-	    	$scope.myBidsList = response.data;
-	    });
-
-	    if(data.millis == 0){
-	    	$window.location.reload();
-	    }
-	  });
 
 	});
 
-/* $('.button').popup({
+	$('.button').popup({
 	    inline     : true,
 	    position   : 'bottom center',
 	    on         : 'click',
@@ -207,6 +146,6 @@
 	      show: 500,
 	      hide: 800
 	    }
-	  });*/ 
+	  });
 </script>
 @endsection
