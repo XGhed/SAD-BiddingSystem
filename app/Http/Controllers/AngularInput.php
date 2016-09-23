@@ -65,6 +65,7 @@ class AngularInput extends Controller
         $account = App\Models\Admin\Account::where('accountID', $request->accountID)->first();
 
         $account->status = 1;
+        $account->DateApproved = Carbon::now('Asia/Manila');
         $account->save();
 
         return 'success';
