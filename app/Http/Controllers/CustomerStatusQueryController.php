@@ -25,38 +25,103 @@ class CustomerStatusQueryController extends Controller
 
                 $dompdf = App::make('dompdf.wrapper');
             
-                $dompdf->loadView('customer.Customer-status', [
+                $dompdf->loadView('admin1.Queries.Customer-status', [
                     'members' => $member
                 ]);
 
                 return $dompdf->stream();
-                return view('customer.Customer-status')->with('members', $member);
+                return view('admin1.Queries.Customer-status')->with('members', $member);
     }
 
-    public function DeliveryPlaces()
+    public function DeliveryCompany()
     {
-        $place = App\Models\Admin\Shipment::where('ShipmentFee', '>', 0)->get();
+        $place = App\Models\Admin\Shipment::where('CompanyCourier', '=', 1)->get();
                 $dompdf = App::make('dompdf.wrapper');
             
-                $dompdf->loadView('customer.DeliveryPlacesQuery', [
+                $dompdf->loadView('admin1.Queries.DeliveryCompanyQuery', [
                     'places' => $place
                 ]);
 
                 return $dompdf->stream();
-                return view('customer.DeliveryPlacesQuery')->with('places', $place);
+                return view('admin1.Queries.DeliveryCompanyQuery')->with('places', $place);
+    }
+
+    public function DeliveryThirdparty()
+    {
+        $place = App\Models\Admin\Shipment::where('CompanyCourier', '=', 0)->get();
+                $dompdf = App::make('dompdf.wrapper');
+            
+                $dompdf->loadView('admin1.Queries.DeliveryThirdPartyQuery', [
+                    'places' => $place
+                ]);
+
+                return $dompdf->stream();
+                return view('admin1.Queries.DeliveryThirdPartyQuery')->with('places', $place);
     }
 
     public function SuppliersItems()
     {
-        $supplier = App\Models\Admin\Container::all();
+        $supplier = App\Models\Admin\Item::all();
                 $dompdf = App::make('dompdf.wrapper');
             
-                $dompdf->loadView('customer.SupplierItemQuery',[
+                $dompdf->loadView('admin1.Queries.SupplierItemQuery',[
                     'suppliers' => $supplier
                 ]);
 
                 return $dompdf->stream();
-                return view('customer.SupplierItemQuery')->with('suppliers', $supplier);
+                return view('admin1.Queries.SupplierItemQuery')->with('suppliers', $supplier);
+    }
+
+    public function PendingContainer()
+    {
+        $pend = App\Models\Admin\Container::where('ActualArrival', '=', NULL)->get();
+                $dompdf = App::make('dompdf.wrapper');
+            
+                $dompdf->loadView('admin1.Queries.PendingContainerQuery',[
+                    'pending' => $pend
+                ]);
+
+                return $dompdf->stream();
+                return view('admin1.Queries.PendingContainerQuery')->with('pending', $pend);
+    }
+
+    public function PendingItem()
+    {
+        $pending = App\Models\Admin\Item::where('status', '=', 0)->get();
+                $dompdf = App::make('dompdf.wrapper');
+            
+                $dompdf->loadView('admin1.Queries.PendingItemQuery',[
+                    'pendingItem' => $pending
+                ]);
+
+                return $dompdf->stream();
+                return view('admin1.Queries.PendingItemQuery')->with('pendingItem', $pending);
+    }
+
+    public function PendingCheckout()
+    {
+        $pendingCheck = App\Models\Admin\CheckoutRequest::where('Status', '=', 0)->get();
+                $dompdf = App::make('dompdf.wrapper');
+            
+                $dompdf->loadView('admin1.Queries.PendingCheckoutQuery',[
+                    'pendingCheckout' => $pendingCheck
+                ]);
+
+                return $dompdf->stream();
+                return view('admin1.Queries.PendingCheckoutQuery')->with('pendingCheckout', $pendingCheck);
+    }
+
+    public function PendingAccount()
+    {
+        $pendingAccount = App\Models\Admin\Account::where('status', '=', 0)->get();
+                $dompdf = App::make('dompdf.wrapper');
+            
+                $dompdf->loadView('admin1.Queries.PendingAccountQuery',[
+                    'pendingAcc' => $pendingAccount
+                ]);
+
+                return $dompdf->stream();
+                return view('admin1.Queries.PendingAccountQuery')->with('pendingAcc', $PendingAccount);
     }
 
     /**

@@ -32,13 +32,13 @@
 			margin-top: 10%;
 			border: 1px solid black;
 			width: 100%;
-
 		
 		}
 		th, td{
 			vertical-align: middle;
 			padding-left: 100;
 			padding-right: 100;
+			text-align: center;
 			border: 1px solid black;
 		}
 	</style>
@@ -49,22 +49,22 @@
 		<h3 class = "head1">Online Bidding System with Logistics</h3>
 		<h4 class = "head2">6552, Santol st. Centennial 2, Pinagbuhatan, Pasig City</h4>
 		<h4 class = "head3">TEL: 00-000000 CEL: 09123456789</h4>
-		<h2 class = "title">Customer Status</h2>
+		<h2 class = "title">Delivery Fee</h2>
 	</div>
-
+ 
 	<div>
 	<table>
 		<thead>
 			<tr>
-				<th>Supplier Name</th>
-				<th>Number Of Items supplied</th>
+				<th>Places</th>
+				<th>Delivery Fee</th>
 			</tr>
 		</thead>
 		<tbody>
-		@foreach($suppliers as $key)
+		@foreach($places as $key)
 			<tr>
-				<td>{!! $key->Supplier->SupplierName!!}</td>
-				<td>{!!$key->Supplier->Status!!}</td>
+				<td>{!! $key->Province->ProvinceName!!}</td>
+				<td>{!! $key->ShipmentFee!!}</td>
 			</tr>
 		@endforeach
 		</tbody>
