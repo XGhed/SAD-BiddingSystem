@@ -77,67 +77,33 @@
 			margin-left: 70;
 			margin-top: 20%;	
 		}
-		.sub{
-			position: absolute;
-			text-align: left;
-			margin-top: 35%;	
-		}
-		.ship{
-			position: absolute;
-			text-align: left;
-			margin-top: 40%;	
-		}
-		.discount{
-			position: absolute;
-			text-align: left;
-			margin-top: 45%;
-
-		}
-		.total{
-			position: absolute;
-			text-align: left;
-			margin-top: 50%;	
-		}
-		.subt{
-			position: absolute;
-			text-align: left;
-			margin-left: 70;
-			margin-top: 35%;	
-		}
-		.shipfee{
-			position: absolute;
-			text-align: left;
-			margin-left: 70;
-			margin-top: 40%;	
-		}
-		.bawas{
-			position: absolute;
-			text-align: left;
-			margin-left: 50;
-			margin-top: 45%;
-		}
-		.totalfee{
-			position: absolute;
-			text-align: left;
-			margin-left: 50;
-			margin-top: 50%;	
-		}
 		.note1{
 			position: absolute;
 			text-align: left;
-			margin-top: 70%;
+			margin-top: 90%;
 			font-weight: bold;
 		}
 		.note2{
 			position: absolute;
 			text-align: left;
-			margin-top: 75%;
+			margin-top: 95%;
 			font-weight: bold;
 		}
 		.line{
 			position: absolute;
 			text-align: left;
 			margin-top: 60%;
+		}
+		table{
+			position: absolute;
+			margin-top: 25%;
+			width: 100%;
+			background-color: #F0E0B0;
+		}
+		th, td{
+			vertical-align: middle;
+			text-align: center;
+			border: 1px solid;
 		}
 	
 	
@@ -152,30 +118,79 @@
 		<h3 class = "head4">Customer's Voucher</h3>
 	</div>
 
-	@foreach($checkout as $key)
 	<div>
 		<p class = "name">Name:</p>
-		<p class = "name1">{!! $key->CheckoutRequest->FirstName !!} {!! $key->CheckoutRequest->LastName !!}</p>
+		<p class = "name1">Customer Name</p>
 		<p class = "address">Delivery Address:</p>
-		<p class = "add">{!! $key->CheckoutRequest->Barangay_Street_Address !!} {!! $key->CheckoutRequest->City->CityName !!}, {!! $key->CheckoutRequest->City->Province->ProvinceName!!}</p>
+		<p class = "add">Customer Delivery Address</p>
 		<p class = "cell">Cellphone #:</p>
-		<p class = "phone">{!! $key->CheckoutRequest->CellphoneNo !!}</p>
-		<p class = 'line'>-----------------------------------------------------------------------------------------------------------------------------------</p>
+		<p class = "phone">09xxxxxxxxx</p>
 	</div>
-	
 
 	<div>
-		<p class = "sub">Sub Total:</p>
-		<p class = "subt">SUB TOTAL DAW</p>
-		<p class = "ship">Delivery fee:</p>
-		<p class = "discount">Discount:</p>
-		<p class = "bawas">DISCOUNT</p>
-		<p class = "shipfee">{!! $key->CheckoutRequest->ShippingFee !!}</p>
-		<h4 class = "total">Total:</h4>
-		<h4 class = "totalfee">TOTAL MO</h4>
+			<table>
+			<thead>
+				<tr>
+					<th colspan = "3" height = "5%">DETAILS</th>
+				</tr>
+				<tr>
+					<th></th>
+					<th>Items</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($itemsCheckedOut as $key => $item)
+					<tr>
+						<td></td>
+						<td>{{$item->itemName}}</td>
+						<td>{{$item->price}}</td>
+					</tr>
+				@endforeach
+				<tr>
+					<td colspan = "2">Discount:</td>
+					<td>{{$customerDiscount}}</td>
+				</tr>
+				<tr>
+					<td colspan = "2">Discounted Price:</td>
+					<td>{{$discountedPrice}}</td>
+				</tr>
+				<tr>
+					<td colspan = "2"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan = "2">Service Fee:</td>
+					<td>{{$customerServiceFee}}</td>
+				</tr>
+				<tr>
+					<td colspan = "2">Sub Total:</td>
+					<td >{{$checkoutRequest->ItemPrice}}</td>
+				</tr>
+				<tr>
+					<td colspan = "2"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan = "2">Shipping Fee:</td>
+					<td>{{$checkoutRequest->ShippingFee}}</td>
+				</tr>
+				<tr>
+					<td colspan = "2">Event Fees:</td>
+					<td>{{$checkoutRequest->EventFee}}</td>
+				</tr>
+				<tr>
+					<td colspan = "2"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan = "2">Total:</td>
+					<td>{{$checkoutRequest->ItemPrice + $checkoutRequest->ShippingFee + $checkoutRequest->EventFee}}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
-	@endforeach
 
 	<div>
 		<p class = "note1">STANDARD SHIPPING/DELIVERY DAYS: 2-3 WORKING DAYS</p>

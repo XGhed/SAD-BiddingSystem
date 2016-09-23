@@ -72,6 +72,8 @@ class CustomerCheckoutController extends Controller
 
         $checkoutRequest = new App\Models\Admin\CheckoutRequest;
         $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
+        $customerServiceFee = $account->membership[0]->accounttype->ServiceFee;
+        $itemsCheckedOut = [];
 
         $checkoutRequest->CheckoutType = $request->checkoutType;
         $checkoutRequest->AccountID = $request->session()->get('accountID');
@@ -87,10 +89,18 @@ class CustomerCheckoutController extends Controller
             $lastBid = App\Models\Admin\Bid::where('ItemID', $itemRequestedID)->get()->last();
 
             $ItemPrice = $ItemPrice + $lastBid->Price;  //YUNG $lastBid->Price DITO YUNG PRICE PER ITEM, PWEDENG KOPYAHIN MO TONG LOOP NA TO
+
+            $it = App\Models\Admin\Item::find($itemRequestedID);
+
+            $itemPush = new \stdClass();
+            $itemPush->itemName = $it->itemModel->ItemName;
+            $itemPush->price = $lastBid->Price;
+
+            array_push($itemsCheckedOut, $itemPush);
         }
         //compute discounted price
         $discountedPrice = round($ItemPrice - ($ItemPrice * ($customerDiscount / 100)), 2);
-        $ItemPrice = round($discountedPrice + ($discountedPrice * ($account->membership[0]->accounttype->ServiceFee / 100)), 2);
+        $ItemPrice = round($discountedPrice + ($discountedPrice * ($customerServiceFee / 100)), 2);
 
         $checkoutRequest->ItemPrice = $ItemPrice;
 
@@ -153,12 +163,35 @@ class CustomerCheckoutController extends Controller
 
             //kung ano mang gagawin mo
         }
-        return redirect('/checkout');
+
+        
+
+        if($checkoutRequest->CheckoutType == "Deliver"){
+            $data = [];
+            $data['checkoutRequest'] = $checkoutRequest;
+            $data['customerDiscount'] = $customerDiscount;
+            $data['discountedPrice'] = $discountedPrice;
+            $data['customerServiceFee'] = $customerServiceFee;
+            $data['itemsCheckedOut'] = $itemsCheckedOut;
+
+            $dompdf = App::make('dompdf.wrapper');
+                
+            $dompdf->loadView('customer.Pdf', $data);
+
+            return $dompdf->stream();
+        }
+
+         
+
+        //return redirect('/checkout');
 
         /*
         ITO MGA KAILANGAN MO JOANNE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:)))
         $checkoutRequest->CheckoutRequestID; //ID ng request
         $checkoutRequest->ItemPrice = $ItemPrice; //total Item Price
+        $customerDiscount;
+        $discountedPrice;
+        $customerServiceFee;
         $checkoutRequest->CheckoutType // either Deliver or Pick up
         $checkoutRequest->EventFee // bayad sa event joining
         $checkoutRequest->ShippingFee // shiping f33
@@ -167,11 +200,20 @@ class CustomerCheckoutController extends Controller
         //$checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
 
         //GANTO YUNG PAGPASA BHOI
-        return $this->index($request, $checkoutRequest);
+        //return $this->index($request, $checkoutRequest);
     }
 
 
-    public function index(Request $request, $checkoutRequest){        
+    public function index(){      
+        $dompdf = App::make('dompdf.wrapper');
+            
+        $dompdf->loadView('customer.Pdf', []);
+        //$check = $checkoutRequest->ItemPrice = $ItemPrice; //total Item Price        
+
+        return $dompdf->stream();
+     
+        return view('customer.Pdf')->with('checkout', $key); 
+
         //ITO SAMPLE NG PAGGAMIT BHOI
         //example irereturn mo lang ID nya, ganto. YUNG MGA NAKASULAT SA TAAS NA MGA PRICES, GAGANA RIN DITO YON
         //return $checkoutRequest->CheckoutRequestID;
@@ -179,7 +221,7 @@ class CustomerCheckoutController extends Controller
            // var_dump($request->checkoutType);
         //$dompdf = new Dompdf();
         // $customerDiscount = $this->customerDiscount($request->session()->get('accountID'));
-        $checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
+        //$checkoutType = array(App\Models\Admin\CheckoutRequest_Item::all()->last());
 
         
        /* $ItemPrice = 0;
@@ -192,7 +234,7 @@ class CustomerCheckoutController extends Controller
         $ItemPrice = $ItemPrice - ($ItemPrice * ($customerDiscount / 100));
         $checkoutRequest->ItemPrice = $ItemPrice;*/
 
-        foreach ($checkoutType as $key) {
+        /*foreach ($checkoutType as $key) {
             
             if($key->CheckoutRequest->CheckoutType == 'Deliver'){
 
@@ -221,7 +263,7 @@ class CustomerCheckoutController extends Controller
             }
             
         }
-     
+     */
     }
 
     public function checkoutList(Request $request){

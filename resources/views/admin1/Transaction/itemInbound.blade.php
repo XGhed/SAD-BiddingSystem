@@ -227,7 +227,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in unexpectedContainer.item | filter: filterUnexpected" ng-if="item.Unexpected == 1">
+                    <tr ng-repeat="item in unexpectedContainer.item | filter: filterUnexpected">
                       <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}" /> </td>
                       <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
                       <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
