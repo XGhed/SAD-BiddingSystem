@@ -6,18 +6,26 @@
 
 
 		<div class="ui sub header"><i class="yellow star icon"></i>
-		Current Points: @{{details.points}}<br>
-		Current Discount: @{{details.discount}}<br>
-		<br>
-		Next Discount Required Points: @{{details.nextDiscountGoal.RequiredPoints}}<br>
-		Next Discount: @{{details.nextDiscountGoal.Discount}}<br>
+		Current Points: @{{details.points}}
 		</div>
-		<div class="ui sub header"><i class="blue shop icon"></i>
+		<div class="ui sub header"><i class="green tags icon"></i>
+		Current Discount: @{{details.discount}}
+		</div>
+		<div class="ui sub header"><i class="red tag icon"></i>
+		Next Discount Required Points: @{{details.nextDiscountGoal.RequiredPoints}}
+		</div>
+		<div class="ui sub header"><i class="purple ticket icon"></i>
+		Next Discount: @{{details.nextDiscountGoal.Discount}}
+		</div>
+		<div class="ui sub header"><i class="orange thumbs up icon"></i>
 		Total Bids: @{{details.totalBids}}
-		Total Items Bidded: @{{details.itemBids}} 
+		</div>
+		<div class="ui sub header"><i class="pink smile icon"></i>
+		Total Items Bidded: @{{details.itemBids}}
+		</div>
+		<div class="ui sub header"><i class="blue in cart icon"></i>
 		Total Items Won: @{{details.itemWon}}
 		</div>
-		<div class="ui sub header"><i class="green cart icon"></i>Current Points:</div>
 		
 		
 	</div>
