@@ -1,7 +1,7 @@
 
 <html>
 <head>
-	<title>Example Muna</title>
+	<title>Checkout Voucher</title>
 	<style type="text/css">
 		@page{
 			size: 800px 3500px; 

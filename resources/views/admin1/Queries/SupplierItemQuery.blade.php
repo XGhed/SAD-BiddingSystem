@@ -82,18 +82,16 @@
 				<th class = "row">Supplier Name</th>
 				<th class = "row">Supplier Status</th>
 				<th class = "row">Items Stocked</th>
-				<th class = "row">Items Missing</th>
-				<th class = "row">Items Found</th>
+				<th class = "row">Items Status</th>
 			</tr>
 		</thead>
 		<tbody>
-		 @foreach($data as $key)
+		 @foreach($suppliers as $key)
 			<tr>
-				<td class = "row">{!!$key->Supplier.SupplierName!!}</td>
-				<td class = "row">{!!$key->Supplier.Status!!}</td>
-				<td class = "row">VALUE</td>
-				<td class = "row">VALUE</td>
-				<td class = "row">VALUE</td>
+				<td class = "row">{!!$key->Container->Supplier->SupplierName!!}</td>
+				<td class = "row">{!!$key->Container->Supplier->Status!!}</td>
+				<td class = "row">{!!$key->ItemModel->ItemName!!}</td>
+				<td class = "row">{!!$key->status!!}</td>
 			</tr>
 		 @endforeach
 		</tbody>
