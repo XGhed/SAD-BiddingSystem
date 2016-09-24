@@ -80,7 +80,7 @@
 
                   <div class="field">
                     <div class="ui subheader">TYPE OF REPORT:</div>
-				            <select class="ui fluid multiple search normal selection dropdown" name="subject">
+				            <select class="ui fluid search normal selection dropdown" name="subject">
 				            <option value="">Select Problem</option>
 				            	<option ng-repeat="problemType in problemTypes" value="@{{problemType.ProblemTypeID}}">@{{problemType.Problem}}</option>
 				            </select>                        
