@@ -10,8 +10,8 @@
 
        <div class="ui basic left aligned segment"><a href = "\customerStatus" target="_blank">Click here to print PDF</a></div>
 
-      <div class="ui bottom attached active tab segment">
-        <table datatable="ng" class="ui compact definition celled table" id="tableOutput">
+      <div class="ui segment">
+        <table class="ui compact inverted celled table" datatable="ng">
           <thead>
             <tr>
               <th></th>
