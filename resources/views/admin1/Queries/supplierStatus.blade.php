@@ -8,8 +8,6 @@
     <div class="ui segment">
        <div class="ui centered header">Supplier Status</div>
 
-
-       <div><a href = "\SuppliersItems" target = "_blank">Print PDF</a></pdf>
        <div class="ui basic left aligned segment"><a href = "/SuppliersItems" target="_blank">Click here to print PDF</a></div>
 
       <div class="ui segment">
