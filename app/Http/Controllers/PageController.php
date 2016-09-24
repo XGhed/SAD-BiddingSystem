@@ -194,6 +194,11 @@ class PageController extends Controller
        return view('customer.transactionHistory');
     }
 
+    public function statusTab(Request $request){
+
+       return view('customer.statusCustomer');
+    }
+
     public function bidHistory(Request $request){
 
        return view('customer.bidHistory');

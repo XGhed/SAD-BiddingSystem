@@ -3,7 +3,6 @@
 @section('profile')
 	<div class="ui inverted segment" id="requestsApp" ng-app="requestsApp" ng-controller="requestsController">
 		<a class="ui green button" href="/proofPayment"><i class="send icon"></i> Send Proof Payment</a>
-		<div class="ui sub header"><i class="yellow star icon"></i>Current Points:</div>
 		<h2>Transaction History</h2>
 		<table class="ui celled table" datatable="ng">
 		  <thead>
