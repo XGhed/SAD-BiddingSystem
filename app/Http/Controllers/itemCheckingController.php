@@ -64,12 +64,16 @@ class ItemCheckingController extends Controller
         try {
             $item = App\Models\Admin\Item::find($request->input('itemID2'));
 
-            if($request->defect != "null"){
-                $item->ItemDefectID = $request->defect;
+            if($request->defect == "null"){
                 $item->DefectDescription = $request->defectDesc;
             }
-            else {
+            else if($request->defect == "none"){
+                $item->ItemDefectID = NULL;
                 $item->DefectDescription = 'None';
+            }
+            else {
+                $item->ItemDefectID = $request->defect;
+                $item->DefectDescription = $request->defectDesc;
             }
 
             if($request->hasFile('add_photo')){
