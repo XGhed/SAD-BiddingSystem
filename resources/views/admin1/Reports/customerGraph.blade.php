@@ -34,7 +34,7 @@ Highcharts.drawTable = function() {
         rowHeight = 20,
         cellPadding = 2.5,
         valueDecimals = 0,
-        valueSuffix = ' Account';
+        valueSuffix = ' Account/s';
         
     // internal variables
     var chart = this,

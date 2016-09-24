@@ -318,8 +318,14 @@ class AngularOutput extends Controller
         return $account;
     }
 
-    public function deliverList(){
+    public function deliverComList(){
         $shipment = App\Models\Admin\Shipment::with('province')->where('CompanyCourier', 1)->get();
+
+        return $shipment;
+    }
+
+    public function deliverList(){
+        $shipment = App\Models\Admin\Shipment::with('province')->where('CompanyCourier', 0)->get();
 
         return $shipment;
     }
