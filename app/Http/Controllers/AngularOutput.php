@@ -333,7 +333,7 @@ class AngularOutput extends Controller
     public function supplierStat(){
         $supplier = App\Models\Admin\Supplier::get();
         $item = App\Models\Admin\Item::with('itemModel', 'container', 'container.supplier', 'supplier')->where('status', 1)
-        ->orWhere('status', 2)->orWhere('status', -1)->get();
+        ->orWhere('status', 2)->orWhere('status', -1)->orWhere('status', -2)->get();
         $returnData = NULL;
         $previtem = NULL;
         $holditem = NULL;
@@ -361,6 +361,10 @@ class AngularOutput extends Controller
                             $returnData[$ctr]["Found"] = 0;
                             $returnData[$ctr]["Missing"] = 1;
                         }
+                        if($item[$i]->status==-2){
+                            $returnData[$ctr]["Found"] = 0;
+                            $returnData[$ctr]["Missing"] = 1;
+                        }
                         $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
                         $ctr2++;
                     } else{
@@ -374,6 +378,9 @@ class AngularOutput extends Controller
                                     $returnData[$ctr]["Found"]++;
                                 }
                                 if($item[$i]->status==-1){
+                                    $returnData[$ctr]["Missing"]++;
+                                }
+                                if($item[$i]->status==-2){
                                     $returnData[$ctr]["Missing"]++;
                                 }
                                 break;
@@ -392,6 +399,12 @@ class AngularOutput extends Controller
                                     $returnData[$ctr]["Items"] = $holditem[0];
                                 }
                                 if($item[$i]->status==-1){
+                                    $returnData[$ctr]["Missing"]++;
+                                    $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
+                                    $holditem[0] = $item[$i]->itemModel->ItemName.", ".$returnData[$ctr]["Items"];
+                                    $returnData[$ctr]["Items"] = $holditem[0];
+                                }
+                                if($item[$i]->status==-2){
                                     $returnData[$ctr]["Missing"]++;
                                     $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
                                     $holditem[0] = $item[$i]->itemModel->ItemName.", ".$returnData[$ctr]["Items"];
