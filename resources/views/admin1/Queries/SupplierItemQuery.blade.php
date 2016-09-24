@@ -70,7 +70,9 @@
 		<span>0 = Not Yet Delivered</span><br>
 		<span>1 = Delivered</span><br>
 		<span>2 = Available on inventory</span><br>
-		<span>3 = Pulled out</span>
+		<span>3 = Pulled out</span><br>
+		<span>-1 = Missing Item</span><br>
+		<span>-2 = Item Never Found</span>
 	</div>
 
 	<div>
@@ -81,19 +83,19 @@
 				<th class = "row">Supplier Status</th>
 				<th class = "row">Items Stocked</th>
 				<th class = "row">Items Missing</th>
-				<th class = "row">Items Missing</th>
+				<th class = "row">Items Found</th>
 			</tr>
 		</thead>
 		<tbody>
-		@foreach($suppliers as $key)
+		 @foreach($data as $key)
 			<tr>
-				<td class = "row">{!! $key->Container->Supplier->SupplierName!!}</td>
-				<td class = "row">{!! $key->Container->Supplier->Status!!}</td>
-				<td class = "row">{!! $key->ItemModel->ItemName !!}</td>
-				<td class = "row">{!! $key->status!!}</td>
-				<td class = "row"></td>
+				<td class = "row">{!!$key->Supplier.SupplierName!!}</td>
+				<td class = "row">{!!$key->Supplier.Status!!}</td>
+				<td class = "row">VALUE</td>
+				<td class = "row">VALUE</td>
+				<td class = "row">VALUE</td>
 			</tr>
-		@endforeach
+		 @endforeach
 		</tbody>
 	</table>
 </div>

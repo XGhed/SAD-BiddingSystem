@@ -72,12 +72,110 @@ class CustomerStatusQueryController extends Controller
 
     public function SuppliersItems()
     {
-        $supplier = App\Models\Admin\Item::all();
+        // $supplier = App\Models\Admin\Item::distinct('Item')->where('status', '2')->get();
         // $missing = App\Models\Admin\Item::where('status', '2');
         $dash = App\Models\Admin\adminDashboard::get()->last();
+
+        $supplier = App\Models\Admin\Supplier::get();
+        $item = App\Models\Admin\Item::with('itemModel', 'container', 'container.supplier', 'supplier')->where('status', 1)
+        ->orWhere('status', 2)->orWhere('status', -1)->get();
+        $returnData = NULL;
+        $previtem = NULL;
+        $holditem = NULL;
+        $ctr = 0;
+        $ctr2 = 0;
+
+        foreach ($supplier as $key => $result) {
+            $a = count($item);
+            for ($i=0; $i < $a; $i++) { 
+                if($item[$i]->container->supplier->SupplierID==$result->SupplierID){
+                    if(!isset($returnData[$ctr])){
+                        $returnData[$ctr]["SupplierName"] = $result->SupplierName;
+                        $returnData[$ctr]["Status"] = $result->Status;
+                        if($item[$i]->status==1){
+                            $returnData[$ctr]["Items"] = $item[$i]->itemModel->ItemName;
+                            $returnData[$ctr]["Found"] = 1;
+                            $returnData[$ctr]["Missing"] = 0;
+                        }
+                        if($item[$i]->status==2){
+                            $returnData[$ctr]["Items"] = $item[$i]->itemModel->ItemName;
+                            $returnData[$ctr]["Found"] = 1;
+                            $returnData[$ctr]["Missing"] = 0;
+                        }
+                        if($item[$i]->status==-1){
+                            $returnData[$ctr]["Found"] = 0;
+                            $returnData[$ctr]["Missing"] = 1;
+                        }
+                        $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
+                        $ctr2++;
+                    } else{
+                        $j = count($previtem[0]);
+                        for($k=0; $k<$j; $k++){
+                            if($previtem[0][$k]==$item[$i]->itemModel->ItemName){
+                                if($item[$i]->status==1){
+                                    $returnData[$ctr]["Found"]++;
+                                }
+                                if($item[$i]->status==2){
+                                    $returnData[$ctr]["Found"]++;
+                                }
+                                if($item[$i]->status==-1){
+                                    $returnData[$ctr]["Missing"]++;
+                                }
+                                break;
+                            }
+                            if($k+1==$j){
+                                if($item[$i]->status==1){
+                                    $returnData[$ctr]["Found"]++;
+                                    $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
+                                    $holditem[0] = $item[$i]->itemModel->ItemName.", ".$returnData[$ctr]["Items"];
+                                    $returnData[$ctr]["Items"] = $holditem[0];
+                                }
+                                if($item[$i]->status==2){
+                                    $returnData[$ctr]["Found"]++;
+                                    $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
+                                    $holditem[0] = $item[$i]->itemModel->ItemName.", ".$returnData[$ctr]["Items"];
+                                    $returnData[$ctr]["Items"] = $holditem[0];
+                                }
+                                if($item[$i]->status==-1){
+                                    $returnData[$ctr]["Missing"]++;
+                                    $previtem[0][$ctr2] = $item[$i]->itemModel->ItemName;
+                                    $holditem[0] = $item[$i]->itemModel->ItemName.", ".$returnData[$ctr]["Items"];
+                                    $returnData[$ctr]["Items"] = $holditem[0];
+                                }
+                                $ctr2++;
+                            }
+                        }
+                    }
+                }
+            }
+            $ctr++;
+            $ctr2 = 0;
+            $previtem[0] = NULL;
+        }
+
+        $ctr = 0;
+        foreach ($supplier as $key => $result) {
+            $i = count($returnData);
+            for ($j=0; $j < $i; $j++) { 
+                if($returnData[$j]["SupplierName"]==$result->SupplierName){
+                    $ctr++;
+                    break;
+                }
+                if($j+1==$i){
+                    $returnData[$ctr]["SupplierName"] = $result->SupplierName;
+                    $returnData[$ctr]["Status"] = $result->Status;
+                    $ctr++;
+                }
+            }
+        }
+
+        // return $returnData;
+
+
             $data = [];
             $data['dashboard'] = $dash;
-            $data['suppliers'] = $supplier;
+            // $data['suppliers'] = $supplier;
+            $data['data'] = $returnData;
             // $data['statusmissing'] = $missing;
 
                 $dompdf = App::make('dompdf.wrapper');

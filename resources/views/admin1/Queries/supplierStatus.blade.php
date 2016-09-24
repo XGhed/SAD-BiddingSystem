@@ -8,7 +8,7 @@
     <div class="ui segment">
        <div class="ui centered header">Supplier Status</div>
 
-       <div><a href = "\SuppliersItems">Print PDF</a></pdf>
+       <div><a href = "\SuppliersItems" target = "_blank">Print PDF</a></pdf>
 
       <div class="ui bottom attached active tab segment">
         <table datatable="ng" class="ui compact definition celled table" id="tableOutput">

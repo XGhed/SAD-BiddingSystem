@@ -65,7 +65,7 @@
 		.date{
 			position: absolute;
 			text-align: left;
-			margin-top: 12%;
+			margin-top: 11%;
 		}
 		.name1{
 			position: absolute;
@@ -95,7 +95,7 @@
 			position: absolute;
 			text-align: left;
 			margin-left: 23%;
-			margin-top: 12%;
+			margin-top: 11%;
 		}
 		.note1{
 			position: absolute;
