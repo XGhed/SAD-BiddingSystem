@@ -135,12 +135,13 @@ class CustomerBiddingEventController extends Controller
         //if bid is lower than highest bid
         $currentBids = App\Models\Admin\Bid::where('ItemID', $request->itemID)->where('AuctionID', $request->eventID)->get()->sortByDesc('price');
 
-        //cant bid twice in a row
-        if($currentBids->last()->AccountID == $request->session()->get('accountID')){
-            return "Can't bid consecutively"
-        }
-
         if (count($currentBids) > 0){
+            //cant bid twice in a row
+            if($currentBids->last()->AccountID == $request->session()->get('accountID')){
+                return "Can't bid consecutively";
+            }
+
+            //check if passed min bid
             $highestBid = $currentBids->last()->Price;
             $nextMinimumBid = $highestBid + floor($highestBid * ($auction->NextBidPercent / 100));
 

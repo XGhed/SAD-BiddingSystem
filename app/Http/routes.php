@@ -315,6 +315,8 @@ Route::get('/accountInfo', 'AngularOutput@accountInfo');
 
 Route::get('/deliverList', 'AngularOutput@deliverList');
 
+Route::get('/deliverComList', 'AngularOutput@deliverComList');
+
 Route::get('/customerStat', 'AngularOutput@customerStat');
 
 Route::get('/supplierStat', 'AngularOutput@supplierStat');
@@ -539,7 +541,9 @@ Route::group(['middleware' => 'customer'], function () {
 
 	Route::get('/inbox', 'PageController@inbox');
 
-		Route::get('/userProfile', 'PageController@userProfile');
+	Route::get('/userProfile', 'PageController@userProfile');
+
+	Route::get('/customerStatus', 'PageController@statusTab');
 });
 
 

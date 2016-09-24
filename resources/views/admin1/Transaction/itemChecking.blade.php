@@ -88,7 +88,7 @@
 
                 <div class="fields">
                   <div class="seven wide field" id="defectDesc" ng-show="dropDown!='none'">
-                    <div class="ui sub header">OTHERS:</div>
+                    <div class="ui sub header">Description:</div>
                     <input id="defectDesc" type="text" name="defectDesc" placeholder="Put description of defect here..." />
                   </div>
                 </div>
@@ -171,16 +171,17 @@
                   </div>
 
                   <div class="nine wide field">
-                    <select id="checkselect" name="defect" class="ui search selection dropdown" ng-model="dropDown" ng-show="checkDef" style="height:45px">
+                    <select id="checkselect" name="defect" class="ui search selection dropdown" ng-model="dropDown2" ng-show="checkDef" style="height:45px">
                       <option value="" disabled selected>Choose Defect</option>
                       @foreach($defects as $key => $defect)
                       <option value="{{$defect->ItemDefectID}}">{{$defect->DefectName}}</option>
                       @endforeach
-                      <option value="null">Others</option>
+                      <option value="none">None</option>
+                      <option value="null">Others(Pls specify)</option>
                     </select>
                   </div>
 
-                  <div class="seven wide field" ng-show="dropDown=='null'">
+                  <div class="seven wide field" ng-show="dropDown2!='none'">
                     <input id="defectDesc" type="text" name="defectDesc" placeholder="Description" />
                   </div>
           </div>
@@ -265,7 +266,7 @@ $('.menu .item').tab();
       $('#checkselect').change(function(){
         var checkbox = document.getElementById('checkselect');
         //alert(checkbox.options[checkbox.selectedIndex].text);
-        if(checkbox.options[checkbox.selectedIndex].text=='Others'){
+        if(checkbox.options[checkbox.selectedIndex].text!='None'){
           document.getElementById('checkdefectDesc').style.display = 'block';
         } else{
           document.getElementById('checkdefectDesc').style.display = 'none';

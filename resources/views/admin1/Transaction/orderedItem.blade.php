@@ -203,13 +203,19 @@
     $('.ui.modal').modal('hide'); 
   }
 
+  //startDate
+      var date = new Date();
 
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
 
-  $(function(){
-    $('#mindate').prop('min', function(){
-        return new Date().toJSON().split('T')[0];
-    });
-});
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
+
+      var today = year + "-" + month + "-" + day;
+      document.getElementById("mindate").value = today;
+      document.getElementById("mindate").min = today;
 
 
   //supplier dropdown

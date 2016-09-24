@@ -198,7 +198,7 @@
               <td>@{{auctionitem.Points}}</td>
               <td>
                 <div class="ui basic red button" ng-click="removeFromEvent($index)" ng-if="ended == false && eventDetails.timeBeforeStart > 0">Remove</div>
-                <span ng-if="ended == false">Can't Remove</span>
+                <span ng-if="eventDetails.timeBeforeStart <= 0">Can't Remove</span>
               </td>
             </tr>
           </tbody>
