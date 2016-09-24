@@ -21,7 +21,7 @@ class CustomerStatusQueryController extends Controller
     {
 
             $member = App\Models\Admin\Membership::all();
-            $dash = App\Models\Admin\adminDashboard::get()->last();
+            $dash = App\Models\Admin\AdminDashboard::get()->last();
 
             $data = [];
             $data['dashboard'] = $dash;
@@ -39,7 +39,7 @@ class CustomerStatusQueryController extends Controller
     {
         $place = App\Models\Admin\Shipment::where('CompanyCourier', '=', 1)->get();
 
-        $dash = App\Models\Admin\adminDashboard::get()->last();
+        $dash = App\Models\Admin\AdminDashboard::get()->last();
 
             $data = [];
             $data['dashboard'] = $dash;
@@ -57,7 +57,7 @@ class CustomerStatusQueryController extends Controller
     {
         $place = App\Models\Admin\Shipment::where('CompanyCourier', '=', 0)->get();
 
-        $dash = App\Models\Admin\adminDashboard::get()->last();
+        $dash = App\Models\Admin\AdminDashboard::get()->last();
             $data = [];
             $data['dashboard'] = $dash;
             $data['places'] = $place;
@@ -74,7 +74,7 @@ class CustomerStatusQueryController extends Controller
     {
         // $supplier = App\Models\Admin\Item::distinct('Item')->where('status', '2')->get();
         // $missing = App\Models\Admin\Item::where('status', '2');
-        $dash = App\Models\Admin\adminDashboard::get()->last();
+        $dash = App\Models\Admin\AdminDashboard::get()->last();
 
         $supplier = App\Models\Admin\Supplier::get();
         $item = App\Models\Admin\Item::with('itemModel', 'container', 'container.supplier', 'supplier')->where('status', 1)
@@ -190,7 +190,7 @@ class CustomerStatusQueryController extends Controller
     {
         $pend = App\Models\Admin\Container::where('ActualArrival', '=', NULL)->get();
 
-        $dash = App\Models\Admin\adminDashboard::get()->last();
+        $dash = App\Models\Admin\AdminDashboard::get()->last();
             $data = [];
             $data['dashboard'] = $dash;
             $data['pending'] = $pend;
@@ -207,7 +207,7 @@ class CustomerStatusQueryController extends Controller
     {
         $pending = App\Models\Admin\Item::where('status', '=', 0)->get();
 
-        $dash = App\Models\Admin\adminDashboard::get()->last();
+        $dash = App\Models\Admin\AdminDashboard::get()->last();
             $data = [];
             $data['dashboard'] = $dash;
             $data['pendingItem'] = $pending;
@@ -224,7 +224,7 @@ class CustomerStatusQueryController extends Controller
     {
         $pendingCheck = App\Models\Admin\CheckoutRequest::where('Status', '=', 0)->get();
 
-        $dash = App\Models\Admin\adminDashboard::get()->last();
+        $dash = App\Models\Admin\AdminDashboard::get()->last();
             $data = [];
             $data['dashboard'] = $dash;
             $data['pendingCheckout'] = $pendingCheck;
@@ -241,7 +241,7 @@ class CustomerStatusQueryController extends Controller
     {
         $pendingAccount = App\Models\Admin\Account::where('status', '=', 0)->get();
 
-        $dash = App\Models\Admin\adminDashboard::get()->last();
+        $dash = App\Models\Admin\AdminDashboard::get()->last();
             $data = [];
             $data['dashboard'] = $dash;
             $data['pendingAcc'] = $pendingAccount;
