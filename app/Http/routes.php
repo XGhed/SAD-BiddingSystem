@@ -315,6 +315,8 @@ Route::get('/accountInfo', 'AngularOutput@accountInfo');
 
 Route::get('/deliverList', 'AngularOutput@deliverList');
 
+Route::get('/deliverComList', 'AngularOutput@deliverComList');
+
 Route::get('/customerStat', 'AngularOutput@customerStat');
 
 Route::get('/supplierStat', 'AngularOutput@supplierStat');
