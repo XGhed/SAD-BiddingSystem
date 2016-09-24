@@ -15,11 +15,20 @@ class AnnouncementController extends Controller
     public function makeAnnouncement(Request $request){
         $announcement = new App\Models\Admin\Announcement;
 
-        $announcement->DateAndTime = Carbon::now('Asia/Manila');
-        $announcement->Subject = $request->subject;
-        $announcement->Content = $request->content;
+        if($request->subject != 'null'){
+            $announcement->DateAndTime = Carbon::now('Asia/Manila');
+            $announcement->Subject = $request->subject;
+            $announcement->Content = $request->content;
 
-        $announcement->save();
+            $announcement->save();
+        }
+        else {
+            $announcement->DateAndTime = Carbon::now('Asia/Manila');
+            $announcement->Subject = "NULL";
+            $announcement->Content = "NULL";
+
+            $announcement->save();
+        }
 
         return redirect('/announcements');
     }
@@ -27,7 +36,10 @@ class AnnouncementController extends Controller
     public function latestAnnouncement(Request $request){
         $latestAnnouncement = App\Models\Admin\Announcement::all()->last();
 
-        if($latestAnnouncement != null){
+        if ($latestAnnouncement->Subject == "NULL" && $latestAnnouncement->Content == "NULL"){
+            return 'No Announcement';
+        }
+        else if($latestAnnouncement != null){
             return $latestAnnouncement;
         }
         else {
