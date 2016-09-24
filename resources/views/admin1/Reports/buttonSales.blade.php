@@ -20,3 +20,6 @@
             </div>
         </div>
     </form>
+    <form method="post" action="/salesGraph" class="ui form">
+        <button class="ui green button" type="submit">Sales of 2016</button>
+    </form>
