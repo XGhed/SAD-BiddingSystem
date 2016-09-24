@@ -72,10 +72,9 @@ class CustomerStatusQueryController extends Controller
 
     public function SuppliersItems()
     {
-         $supplier = App\Models\Admin\Item::distinct('Item')->where('status', '2')->get();
+         $supplier = App\Models\Admin\Item::all();
         // $missing = App\Models\Admin\Item::where('status', '2');
         $dash = App\Models\Admin\AdminDashboard::get()->last();
-
             $data = [];
             $data['dashboard'] = $dash;
              $data['suppliers'] = $supplier;

@@ -164,7 +164,7 @@ class CustomerCheckoutController extends Controller
             //kung ano mang gagawin mo
         }
 
-        $dash = App\Models\Admin\AdminDashboard::first();
+        $dash = App\Models\Admin\AdminDashboard::get()->last();
             $data = [];
             $data['dashboard'] = $dash;
             $data['checkoutRequest'] = $checkoutRequest;
