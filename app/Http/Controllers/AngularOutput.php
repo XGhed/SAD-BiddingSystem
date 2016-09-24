@@ -511,4 +511,44 @@ class AngularOutput extends Controller
 
         return $items;
     }
+
+    public function accountDetails(Request $request){
+        $returnData = collect();
+
+        $account = App\Models\Admin\Account::find($request->session()->get('accountID'));
+
+        $bids = App\Models\Admin\Bid::where('AccountID', $request->session()->get('accountID'))->get();
+
+        $itemBids = $bids->groupBy('ItemID');
+
+        //
+        $itemWon = 0;
+        $allBids = App\Models\Admin\Bid::all();
+        $allBids = $allBids->groupBy('ItemID');
+        foreach ($allBids as $key => $allBid) {
+            if($allBid->last()->AccountID == $request->session()->get('accountID')){
+                $itemWon++;
+            }
+        }
+
+        $nextDiscountGoal = NULL;
+        $allDiscounts = App\Models\Admin\Discount::where('AccountTypeID', $account->membership->first()
+                ->AccountTypeID)->orderBy('RequiredPoints', 'asc')->get();
+        foreach ($allDiscounts as $key => $allDiscount) {
+            if($allDiscount->RequiredPoints <= $account->Points){
+                if($key+1 < count($allDiscounts)){
+                    $nextDiscountGoal = $allDiscounts[$key+1];
+                }
+            }
+        }
+
+        $returnData->put('points', $account->Points);
+        $returnData->put('discount', $this->customerDiscount($request->session()->get('accountID')));
+        $returnData->put('totalBids', count($bids));
+        $returnData->put('itemBids', count($itemBids));
+        $returnData->put('itemWon', $itemWon);
+        $returnData->put('nextDiscountGoal', $nextDiscountGoal);
+
+        return $returnData;
+    }
 }

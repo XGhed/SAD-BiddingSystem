@@ -329,6 +329,8 @@ Route::get('/pendingCheckout', 'AngularOutput@pendingCheckout');
 
 Route::get('/pendingItems', 'AngularOutput@pendingItems');
 
+Route::get('/accountDetails', 'AngularOutput@accountDetails');
+
 //Route::get('/salesGraph', 'AngularOutput@salesGraph');
 
 //
