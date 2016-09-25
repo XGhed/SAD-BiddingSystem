@@ -50,8 +50,10 @@
 
 		}
 	</style>
+	<script type="text/javascript" src="js/angular.min.js"></script>
 </head>
 <body>
+	<div data-ng-app="myApp" data-ng-controller="myController">
 	<div>
 		<img src = "{{$dashboard->valid_id}}" class ="image" >
 		<h3 class = "head1">{{$dashboard->CompanyName}}</h3>
@@ -82,20 +84,24 @@
 				<th class = "row">Supplier Name</th>
 				<th class = "row">Supplier Status</th>
 				<th class = "row">Items Stocked</th>
-				<th class = "row">Items Status</th>
+				<th class = "row">Items Missing</th>
+				<th class = "row">Items Found</th>
 			</tr>
 		</thead>
 		<tbody>
-		 @foreach($suppliers as $key)
+		@foreach($suppliers as $key)
 			<tr>
-				<td class = "row">{!!$key->Container->Supplier->SupplierName!!}</td>
-				<td class = "row">{!!$key->Container->Supplier->Status!!}</td>
-				<td class = "row">{!!$key->ItemModel->ItemName!!}</td>
-				<td class = "row">{!!$key->status!!}</td>
+				<td class = "row">{!!$key['SupplierName']!!}</td>
+              	<td class = "row">{!!$key['Status']!!}</td>
+              	<td class = "row">{!!$key['Items']!!}</td>
+              	<td class = "row">{!!$key['Missing']!!}</td>
+              	<td class = "row">{!!$key['Found']!!}</td>
 			</tr>
-		 @endforeach
+		@endforeach
 		</tbody>
 	</table>
 </div>
+</div>
+
 </body>
 </html>

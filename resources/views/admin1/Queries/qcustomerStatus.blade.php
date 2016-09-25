@@ -8,7 +8,7 @@
     <div class="ui segment">
        <div class="ui centered header">Customer Status</div>
 
-       <div class="ui basic left aligned segment"><a href = "\customerStatus" target="_blank">Click here to print PDF</a></div>
+       <div class="ui basic left aligned segment"><a href = "\customer-Status" target="_blank">Click here to print PDF</a></div>
 
       <div class="ui segment">
         <table class="ui compact inverted celled table" datatable="ng">
