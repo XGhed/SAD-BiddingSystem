@@ -93,9 +93,9 @@
 			<tr>
 				<td class = "row">{!!$key['SupplierName']!!}</td>
               	<td class = "row">{!!$key['Status']!!}</td>
-              	<td class = "row">{!!$key['Items']!!}</td>
-              	<td class = "row">{!!$key['Missing']!!}</td>
               	<td class = "row">{!!$key['Found']!!}</td>
+              	<td class = "row">{!!$key['Missing']!!}</td>
+              	<td class = "row">{!!$key['Items']!!}</td>
 			</tr>
 		@endforeach
 		</tbody>
