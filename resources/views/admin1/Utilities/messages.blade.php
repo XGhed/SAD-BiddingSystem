@@ -93,7 +93,7 @@
               <div class="ui subheader">TO:</div>
               <select class="ui fluid multiple search normal selection dropdown" name="receivers[]">
                 <option value="" selected disabled>Select Customer</option>
-                <option ng-repeat="customer in customers" value="@{{customer.AccountID}}">@{{customer.AccountID}} @{{customer.membership[0].LastName}}, @{{customer.membership[0].FirstName}} @{{customer.membership[0].MiddleName}}</option>
+                <option ng-repeat="customer in customers" value="@{{customer.AccountID}}">@{{customer.membership[0].LastName}}, @{{customer.membership[0].FirstName}} @{{customer.membership[0].MiddleName}} @{{customer.AccountID}}</option>
               </select>
             </div>
 

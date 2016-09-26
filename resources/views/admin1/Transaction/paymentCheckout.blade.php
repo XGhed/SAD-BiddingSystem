@@ -12,6 +12,7 @@
         <thead>
           <tr>
           <th></th>
+          <th>Account ID</th>
           <th>Account</th>
           <th>Request Date</th>
           <th>Proofs Given</th>
@@ -21,6 +22,7 @@
             <td class="collapsing">           
               <button class="ui basic green button" ng-click="viewDetails(request)">Details</button> 
             </td>
+            <td class="tableRow" >@{{request.AccountID}}</td>
             <td class="tableRow" >@{{request.LastName}}, @{{request.FirstName}} @{{request.MiddleName}}</td>
             <td class="tableRow" >@{{request.RequestDate}}</td>
             <td class="tableRow" >@{{request.proofs.length}}</td>
