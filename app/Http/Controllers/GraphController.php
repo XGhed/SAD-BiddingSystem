@@ -126,12 +126,12 @@ class GraphController extends Controller
                 $query->where('status', 2)->orWhere('status', 3);
         })->get();
 
-        /*$start = $request->start;
+        $start = $request->start;
         $end = $request->end;
         $start = Carbon::createFromFormat('Y-m-d', $start);
-        $end = Carbon::createFromFormat('Y-m-d', $end);*/
-        $start = Carbon::create(2016, 9, 1);
-        $end = Carbon::create(2016, 9, 30);
+        $end = Carbon::createFromFormat('Y-m-d', $end);
+        /*$start = Carbon::create(2016, 9, 1);
+        $end = Carbon::create(2016, 9, 30);*/
         $start->timezone = 'Asia/Manila';
         $end->timezone = 'Asia/Manila';
 
