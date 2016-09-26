@@ -19,4 +19,9 @@ class Thread extends Model
 		{
 		    return $this->hasOne('App\Models\Admin\Account', 'AccountID', 'AccountID');
 		}
+
+		public function problemType()
+		{
+		    return $this->hasOne('App\Models\Admin\ProblemType', 'ProblemTypeID', 'ProblemTypeID');
+		}
 }

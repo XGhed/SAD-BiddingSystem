@@ -43,6 +43,10 @@
                     <p>@{{selectedThread.Subject}}</p>
                   </div>
 
+                  <div class="ui inverted segment" ng-if="selectedThread.ProblemTypeID != NULL">
+                    <p>@{{selectedThread.problem_type.Problem}}</p>
+                  </div>
+
                 <div class="ui sub header">MESSAGE:</div>
                   <div class="ui inverted segment">
                     <div ng-repeat="message in selectedThread.messages">

@@ -59,19 +59,37 @@ class ItemWonOneWeekReturn extends Command
                   ->toDateTimeString();
 
           if ($current->diffInDays($endDateTime, false) <= -7){
-          	$item = App\Models\Admin\Item::find($winner->ItemID);
-          	$this->ItemLog(
-          		$item,
-          		'Item forfeited. Going back to inventory.'
-          		);
+            $item = App\Models\Admin\Item::find($winner->ItemID);
+            $this->ItemLog(
+              $item,
+              'Item forfeited. Going back to inventory.'
+              );
 
-          	//delete item_auction
-          	$item_auction = App\Models\Admin\Item_Auction::find($winner->ItemID);
-          	$item_auction->delete();
+            //send msg
+            $thread = new App\Models\Admin\Thread;
 
-          	//delete winner
-          	$winner = App\Models\Admin\Winner::find($winner->WinnerID);
-          	$winner->delete();
+            $thread->AccountID = $winner->AccountID;
+            $thread->Subject = "Item Forfeited";
+            
+            $thread->save();
+
+            $message = new App\Models\Admin\Message;
+
+            $message->ThreadID = $thread->ThreadID;
+            $message->DateAndTime = Carbon::now('Asia/Manila');
+            $message->Sender = 'Admin';
+            $message->Message = "Item ". $item->itemModel->ItemName . " that you won on " .  $winner->auction->EndDateTime
+              . " has been forfeited.";
+
+            $message->save();
+
+            //delete item_auction
+            $item_auction = App\Models\Admin\Item_Auction::find($winner->ItemID);
+            $item_auction->delete();
+
+            //delete winner
+            $winner = App\Models\Admin\Winner::find($winner->WinnerID);
+            $winner->delete();
           }
         }
     }

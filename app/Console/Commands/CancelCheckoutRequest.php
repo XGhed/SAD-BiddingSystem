@@ -35,10 +35,10 @@ class CancelCheckoutRequest extends Command
      */
     public function handle()
     {
-        $checkoutRequests = App\Models\Admin\CheckoutRequest::all();
+        $checkoutRequests = App\Models\Admin\CheckoutRequest::where('Status', '<', 2)->get();
 
         foreach ($checkoutRequests as $key => $checkoutRequest) {
-        	$current = Carbon::now('Asia/Manila');
+          $current = Carbon::now('Asia/Manila');
 
           $checkoutDate = collect(explode(' ', $checkoutRequest->RequestDate));
 
@@ -65,17 +65,35 @@ class CancelCheckoutRequest extends Command
               $joinbidUnpaid->save();
             }
 
-          	foreach ($checkoutRequest->checkoutRequest_Item as $key => $checkoutRequest_Item) {
-          		$request_item = App\Models\Admin\CheckoutRequest_Item::find($checkoutRequest_Item->CheckoutRequest_ItemID);
-          		$request_item->delete();
+            foreach ($checkoutRequest->checkoutRequest_Item as $key => $checkoutRequest_Item) {
+              $request_item = App\Models\Admin\CheckoutRequest_Item::find($checkoutRequest_Item->CheckoutRequest_ItemID);
+              $request_item->delete();
 
-          		$item = App\Models\Admin\Item::find($request_item->ItemID);
-          		$this->ItemLog(
-          				$item,
-          				'Checkout request for this item has been forfeited.'
-          			);
-          	}
-          	$checkoutRequest->delete();
+              $item = App\Models\Admin\Item::find($request_item->ItemID);
+              $this->ItemLog(
+                  $item,
+                  'Checkout request for this item has been forfeited.'
+                );
+            }
+
+            //send msg
+            $thread = new App\Models\Admin\Thread;
+
+            $thread->AccountID = $checkoutRequest->AccountID;
+            $thread->Subject = "Checkout Forfeited";
+            
+            $thread->save();
+
+            $message = new App\Models\Admin\Message;
+
+            $message->ThreadID = $thread->ThreadID;
+            $message->DateAndTime = Carbon::now('Asia/Manila');
+            $message->Sender = 'Admin';
+            $message->Message = "Your checkout on ". $checkoutRequest->RequestDate . " has been forfeited.";
+
+            $message->save();
+
+            $checkoutRequest->delete();
           }
         }
     }

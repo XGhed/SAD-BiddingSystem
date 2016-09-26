@@ -35,7 +35,7 @@ class MessageController extends Controller
     }
 
     public function threadList(){
-    	$threads = App\Models\Admin\Thread::with('account', 'account.membership', 'messages')
+    	$threads = App\Models\Admin\Thread::with('account', 'account.membership', 'messages', 'problemType')
         ->orderBy('ThreadID', 'desc')->get();
 
     	return $threads;
