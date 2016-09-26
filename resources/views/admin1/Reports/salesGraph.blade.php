@@ -37,7 +37,7 @@ Highcharts.drawTable = function() {
         rowHeight = 20,
         cellPadding = 2.5,
         valueDecimals = 2,
-        valuePrefix = 'Php ';
+        valueSuffix = ' pesos';
         
     // internal variables
     var chart = this,

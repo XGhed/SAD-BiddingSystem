@@ -126,10 +126,12 @@ class GraphController extends Controller
                 $query->where('status', 2)->orWhere('status', 3);
         })->get();
 
-        $start = $request->start;
+        /*$start = $request->start;
         $end = $request->end;
         $start = Carbon::createFromFormat('Y-m-d', $start);
-        $end = Carbon::createFromFormat('Y-m-d', $end);
+        $end = Carbon::createFromFormat('Y-m-d', $end);*/
+        $start = Carbon::create(2016, 9, 1);
+        $end = Carbon::create(2016, 9, 30);
         $start->timezone = 'Asia/Manila';
         $end->timezone = 'Asia/Manila';
 
@@ -138,7 +140,8 @@ class GraphController extends Controller
         foreach ($items as $key => $result) {
             $city = $result->checkoutrequest_item[0]->checkoutrequest->CityID;
             $list = App\Models\Admin\City::with('province', 'province.region')->find($city);
-            $region = $list->province->region->RegionName;
+            $region = $list["province"]["region"]["RegionName"];
+            //echo $list["province"]["region"]["RegionName"];
 
             $i = count($result->checkoutrequest_item);
             for ($j=0; $j < $i; $j++) {

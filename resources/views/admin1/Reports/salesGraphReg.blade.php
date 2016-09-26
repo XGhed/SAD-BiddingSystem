@@ -32,12 +32,12 @@ Highcharts.drawTable = function() {
     
     // user options
     var tableTop = 310,
-        colWidth = 100,
+        colWidth = 140,
         tableLeft = 20,
         rowHeight = 20,
         cellPadding = 2.5,
-        valueDecimals = 2,
-        valuePrefix = 'Php ';
+        valueDecimals = 0,
+        valueSuffix = ' pesos';
         
     // internal variables
     var chart = this,
@@ -185,8 +185,8 @@ window.chart = new Highcharts.Chart({
                         $ctr = count($item);
                         for ($i=0; $i<$ctr; $i++) { 
                             $ctr2 = count($item[$i]);
-                            for ($j=1; $j<$ctr2; $j++) { 
-                                echo "'".$item[$i][$j]."',";
+                            for ($j=0; $j<$ctr2; $j++) { 
+                                echo "' ',";
                                 $j+=2;
                             }
                         }
@@ -210,17 +210,17 @@ window.chart = new Highcharts.Chart({
                if(!is_null($item)){
                     $ctr = count($item);
                     for ($i=0; $i<$ctr; $i++) {
-                        $ctr2 = count($item[$i]);
+                        //$ctr2 = count($item[$i]);
                         $k = 1;
-                        echo "{name: '".$item[$i][0]."',data:[";
-                        for ($j=2; $j<$ctr2; $j++) { 
+                        echo "{name: '".$item[$i][0]."',data:[".$item[$i][2]."]}";
+                        /*for ($j=2; $j<$ctr2; $j++) { 
                             echo $item[$i][$j];
                             $j++;
                             if($j+1!=$ctr2){
                                 echo ",";
                             }
                         }
-                        echo "]}";
+                        echo "]}";*/
                         if($i+1!=$ctr){
                             echo ",";
                         }

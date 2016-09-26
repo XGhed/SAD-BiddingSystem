@@ -32,7 +32,7 @@ Highcharts.drawTable = function() {
     
     // user options
     var tableTop = 310,
-        colWidth = 100,
+        colWidth = 140,
         tableLeft = 20,
         rowHeight = 20,
         cellPadding = 2.5,
@@ -184,7 +184,7 @@ window.chart = new Highcharts.Chart({
                     if(!is_null($item)){
                         $ctr = count($item);
                         for ($i=0; $i<$ctr; $i++) { 
-                            echo "'".$item[$i][0]."',";
+                            echo "' ',";
                         }
                     }
                 ?>
@@ -207,7 +207,7 @@ window.chart = new Highcharts.Chart({
                 if(!is_null($item)){
                     $ctr = count($item);
                     for ($i=0; $i<$ctr; $i++) {
-                        echo "{name: ' ',data:[".$item[$i][1]."]}";
+                        echo "{name: '".$item[$i][0]."',data:[".$item[$i][1]."]}";
                         if($i+1!=$ctr){
                             echo ",";
                         }

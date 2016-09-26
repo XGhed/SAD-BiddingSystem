@@ -29,7 +29,7 @@ Highcharts.drawTable = function() {
     
     // user options
     var tableTop = 310,
-        colWidth = 100,
+        colWidth = 150,
         tableLeft = 20,
         rowHeight = 20,
         cellPadding = 2.5,
