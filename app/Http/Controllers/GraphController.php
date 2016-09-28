@@ -163,8 +163,6 @@ class GraphController extends Controller
                             $date = $date->format('Y-m-d');
                             $item[$ctr][$ctr2] = $date;
                             $ctr2++;
-                            $item[$ctr][$ctr2] = $region;
-                            $ctr2++;
                             $item[$ctr][$ctr2] = intval($result->checkoutrequest_item[$j]->checkoutrequest->ItemPrice);
                         }
                     } else{
