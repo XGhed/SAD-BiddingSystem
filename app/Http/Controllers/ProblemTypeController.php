@@ -18,6 +18,13 @@ class ProblemTypeController extends Controller
     } 
 
     public function insert(Request $request){
+        //check if existing
+        $check = App\Models\Admin\ProblemType::where('Problem', $request->input('problem'))->get();
+        if(count($check) > 0){
+            Session::put('message', '-1');
+            return redirect('problemTypes');
+        }
+
         $problemType = new App\Models\Admin\ProblemType;
 
         $problemType->Problem = $request->problem;
@@ -28,6 +35,13 @@ class ProblemTypeController extends Controller
     }
 
     public function update(Request $request){
+        //check if existing
+        $check = App\Models\Admin\ProblemType::where('Problem', $request->input('problem'))->get();
+        if(count($check) > 0){
+            Session::put('message', '-1');
+            return redirect('problemTypes');
+        }
+        
         $problemType = App\Models\Admin\ProblemType::find($request->problemtypeID);
 
         $problemType->Problem = $request->problem;

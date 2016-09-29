@@ -24,30 +24,35 @@ class CategoryController extends Controller
 
 		if (isset($_POST['add'])) {
 			Session::put('message', '1');
-			$this->insertCategory($request);
-			return redirect('category');
+			return $this->insertCategory($request);
 		}
 		elseif (isset($_POST['edit'])) {
 	        Session::put('message', '2');
-	        $this->updateCategory($request);
-	        return redirect('category');
+	        return $this->updateCategory($request);
 	    }
 	    elseif (isset($_POST['delete'])) {
 	        Session::put('message', '3');
-	        $this->deleteCategory($request);
-	        return redirect('category');
+	        return $this->deleteCategory($request);
 	    }
     }
 
     public function insertCategory(Request $request){
 
 		try {
+		//check if existing
+		$check = App\Models\Admin\Category::where('CategoryName', $request->input('add_name'))->get();
+		if(count($check) > 0){
+			Session::put('message', '-1');
+			return redirect('category');
+		}
+
 		$category = new App\Models\Admin\Category;
 
 		$category->CategoryName = trim($request->input('add_name'));
 		$category->Description = trim($request->input('add_desc'));
 
 			$category->save();
+			return redirect('category');
 		} catch (Exception $e) {
 			Session::put('message', '-1');
 			return redirect('category');
@@ -57,6 +62,13 @@ class CategoryController extends Controller
 	public function updateCategory(Request $request){
 
 		try {
+		//check if existing
+		$check = App\Models\Admin\Category::where('CategoryName', $request->input('edit_name'))->get();
+		if(count($check) > 0){
+			Session::put('message', '-1');
+			return redirect('category');
+		}
+
 		$category = new App\Models\Admin\Category;
 		$category = App\Models\Admin\Category::find($request->input('edit_ID'));
 
@@ -64,6 +76,7 @@ class CategoryController extends Controller
 		$category->Description = trim($request->input('edit_desc'));
 
 			$category->save();
+			return redirect('category');
 		} catch (Exception $e) {
 			Session::put('message', '-1');
 			return redirect('category');
@@ -81,6 +94,7 @@ class CategoryController extends Controller
 		}
 
 			$category->delete();
+			return redirect('category');
 		} catch (Exception $e) {
 			Session::put('message', '-1');
 			return redirect('category');

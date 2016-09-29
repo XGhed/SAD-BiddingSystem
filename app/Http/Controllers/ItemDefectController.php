@@ -18,6 +18,13 @@ class ItemDefectController extends Controller
     } 
 
     public function insert(Request $request){
+        //check if existing
+        $check = App\Models\Admin\ItemDefect::where('DefectName', $request->input('defect'))->get();
+        if(count($check) > 0){
+            Session::put('message', '-1');
+            return redirect('defects');
+        }
+
         $itemDefect = new App\Models\Admin\ItemDefect;
 
         $itemDefect->DefectName = $request->defect;
@@ -27,6 +34,13 @@ class ItemDefectController extends Controller
     }
 
     public function update(Request $request){
+        //check if existing
+        $check = App\Models\Admin\ItemDefect::where('DefectName', $request->input('defect'))->get();
+        if(count($check) > 0){
+            Session::put('message', '-1');
+            return redirect('defects');
+        }
+        
         $itemDefect = App\Models\Admin\ItemDefect::find($request->defectID);
 
         $itemDefect->DefectName = $request->defect;

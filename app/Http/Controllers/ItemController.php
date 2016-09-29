@@ -26,25 +26,29 @@ class ItemController extends Controller
     public function confirmItem(Request $request){
 
         if (isset($_POST['add'])) {
-            $this->insertItem($request);
             Session::put('message', '1');
-            return redirect('item');
+            return $this->insertItem($request);
         }
         elseif (isset($_POST['edit'])) {
-            $this->updateItem($request);
             Session::put('message', '2');
-            return redirect('item');
+            return $this->updateItem($request);
         }
         elseif (isset($_POST['delete'])) {
-            $this->deleteItem($request);
             Session::put('message', '3');
-            return redirect('item');
+            return $this->deleteItem($request);
         }
     }
 
     public function insertItem(Request $request){
 
         try {
+            //check if existing
+            $check = App\Models\Admin\ItemModel::where('ItemName', $request->input('add_name'))->get();
+            if(count($check) > 0){
+                Session::put('message', '-1');
+                return redirect('item');
+            }
+
             $request->add_color = $this->colorDatabase($request->add_color);
 
             $item = new App\Models\Admin\ItemModel;
@@ -55,7 +59,7 @@ class ItemController extends Controller
             $item->color = trim($request->input('add_color'));
 
             $item->save();
-            
+            return redirect('item');
         } catch (Exception $e) {
             Session::put('message', '-1');
             return redirect('item');
@@ -65,6 +69,13 @@ class ItemController extends Controller
     public function updateItem(Request $request){
 
         try {
+            //check if existing
+            $check = App\Models\Admin\ItemModel::where('ItemName', $request->input('edit_name'))->get();
+            if(count($check) > 0){
+                Session::put('message', '-1');
+                return redirect('item');
+            }
+
             $request->add_color = $this->colorDatabase($request->add_color);
             
             $item = new App\Models\Admin\ItemModel;
@@ -89,7 +100,7 @@ class ItemController extends Controller
             }
 
             $item->save();
-
+            return redirect('item');
         } catch (Exception $e) {
             Session::put('message', '-1');
             return redirect('item');
@@ -102,6 +113,7 @@ class ItemController extends Controller
             $item = App\Models\Admin\ItemModel::find($request->input('del_ID'));
             
             $item->delete();
+            return redirect('item');
         } catch (Exception $e) {
             Session::put('message', '-1');
             return redirect('item');

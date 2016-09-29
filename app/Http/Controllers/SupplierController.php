@@ -38,25 +38,30 @@ class SupplierController extends Controller
     public function confirmSupplier(Request $request){
 
 		if (isset($_POST['add'])) {
-			$this->insertSupplier($request);
 			Session::put('message', '1');
-			return redirect('supplier');
+			return $this->insertSupplier($request);
 		}
 		elseif (isset($_POST['edit'])) {
-	        $this->updateSupplier($request);
-	        Session::put('message', '2');
-			return redirect('supplier');
+        Session::put('message', '2');
+        return $this->updateSupplier($request);
 	    }
 	    elseif (isset($_POST['delete'])) {
-	        $this->deleteSupplier($request);
 	        Session::put('message', '3');
-			return redirect('supplier');
+	        return $this->deleteSupplier($request);
 	    }
     }    
 
 	public function insertSupplier(Request $request){
 
 		try {
+			//check if existing
+			$check = App\Models\Admin\Supplier::where('SupplierName', $request->input('add_name'))->get();
+			if(count($check) > 0){
+				Session::put('message', '-1');
+				return redirect('supplier');
+			}
+
+
 			$supplier = new App\Models\Admin\Supplier;
 
 			$supplier->SupplierName = trim($request->input('add_name'));
@@ -66,6 +71,7 @@ class SupplierController extends Controller
 			$supplier->SupplierEmail = trim($request->input('add_email'));
 
 			$supplier->save();
+			return redirect('supplier');
 		} catch (Exception $e) {
 			Session::put('message', '-1');
 			return redirect('supplier');
@@ -75,6 +81,13 @@ class SupplierController extends Controller
 	public function updateSupplier(Request $request){
 
 		try {
+			//check if existing
+			$check = App\Models\Admin\Supplier::where('SupplierName', $request->input('edit_name'))->get();
+			if(count($check) > 0){
+				Session::put('message', '-1');
+				return redirect('supplier');
+			}
+
 			$supplier = new App\Models\Admin\Supplier;
 			$supplier = App\Models\Admin\Supplier::find($request->input('edit_ID'));
 
@@ -85,6 +98,7 @@ class SupplierController extends Controller
 			$supplier->SupplierEmail = trim($request->input('edit_email'));
 
 			$supplier->save();
+			return redirect('supplier');
 		} catch (Exception $e) {
 			Session::put('message', '-1');
 			return redirect('supplier');
@@ -97,6 +111,7 @@ class SupplierController extends Controller
 			$supplier = App\Models\Admin\Supplier::find($request->input('edit_ID'));
 		
 			$supplier->delete();
+			return redirect('supplier');
 		} catch (Exception $e) {
 			Session::put('message', '-1');
 			return redirect('supplier');

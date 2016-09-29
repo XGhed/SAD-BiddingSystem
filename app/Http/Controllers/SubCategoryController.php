@@ -15,25 +15,29 @@ class SubCategoryController extends Controller
     public function confirmSubCategory(Request $request){
 
 		if (isset($_POST['add'])) {
-			$this->insertSubCategory($request);
 			Session::put('message', '1');
-			return redirect('category');
+			return $this->insertSubCategory($request);
 		}
 		elseif (isset($_POST['edit'])) {
-	        $this->updateSubCategory($request);
 	        Session::put('message', '2');
-			return redirect('category');
+	        return $this->updateSubCategory($request);
 	    }
 	    elseif (isset($_POST['delete'])) {
-	        $this->deleteSubCategory($request);
 	        Session::put('message', '3');
-			return redirect('category');
+	        return $this->deleteSubCategory($request);
 	    }
     }
 
     public function insertSubCategory(Request $request){
 
 		try {
+		//check if existing
+		$check = App\Models\Admin\SubCategory::where('SubCategoryName', $request->input('add_name'))->get();
+		if(count($check) > 0){
+			Session::put('message', '-1');
+			return redirect('category');
+		}
+
 		$subCategory = new App\Models\Admin\SubCategory;
 
 		$subCategory->CategoryID = trim($request->input('add_ID'));
@@ -41,6 +45,7 @@ class SubCategoryController extends Controller
 		$subCategory->Description = trim($request->input('add_desc'));
 
 			$subCategory->save();
+			return redirect('category');
 		} catch (Exception $e) {
 			Session::put('message', '-1');
 			return redirect('category');
@@ -50,6 +55,13 @@ class SubCategoryController extends Controller
 	public function updateSubCategory(Request $request){
 
 		try {
+		//check if existing
+		$check = App\Models\Admin\SubCategory::where('SubCategoryName', $request->input('edit_name'))->get();
+		if(count($check) > 0){
+			Session::put('message', '-1');
+			return redirect('category');
+		}
+
 		$subCategory = new App\Models\Admin\SubCategory;
 		$subCategory = App\Models\Admin\SubCategory::find($request->input('edit_ID'));
 
@@ -58,6 +70,7 @@ class SubCategoryController extends Controller
 		$subCategory->Description = trim($request->input('edit_desc'));
 
 			$subCategory->save();
+			return redirect('category');
 		} catch (Exception $e) {
 			Session::put('message', '-1');
 			return redirect('category');
@@ -70,6 +83,7 @@ class SubCategoryController extends Controller
 		$subCategory = App\Models\Admin\SubCategory::find($request->input('del_ID'));
 		
 			$subCategory->delete();
+			return redirect('category');
 		} catch (Exception $e) {
 			Session::put('message', '-1');
 			return redirect('category');
