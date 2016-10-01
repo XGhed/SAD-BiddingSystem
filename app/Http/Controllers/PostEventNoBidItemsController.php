@@ -30,6 +30,9 @@ class PostEventNoBidItemsController extends Controller
                     if(count($item_auction->item->bids) < 1){
                         $noBidItems++;
                     }
+                    else {
+                        $auctions[$key]->item_auction->splice($key2, 1);
+                    }
                 }
                 
                 $auctions[$key]['noBidItems'] = $noBidItems;

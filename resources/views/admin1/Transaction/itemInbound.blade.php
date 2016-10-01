@@ -227,7 +227,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in unexpectedContainer.item | filter: filterUnexpected">
+                    <tr ng-repeat="item in unexpectedContainer.item" ng-if="item.Unexpected == 1">
                       <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}" /> </td>
                       <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
                       <td>@{{item.item_model.sub_category.SubCategoryName}}</td>
@@ -357,7 +357,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                      <tr ng-repeat="item in missingContainer.item | filter: filterMissing">
+                      <tr ng-repeat="item in missingContainer.item" ng-if="item.status == -1">
                         <td class="collapsing">
                           <input type="checkbox" name="items[]" value="@{{item.ItemID}}" />
                         </td>

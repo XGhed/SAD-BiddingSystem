@@ -21,12 +21,13 @@
           </div>
           <button class="ui green button"><i class="send icon"></i>Make Announcement</button>
 
+      </form>
+
           <form>
             <input type="hidden" name="subject" value="null">
             <button type="submit" class="ui red button"><i class="send icon"></i>Remove Announcement</button>
           </form>
         </div>
-      </form>
     </div>
   </div>
 </div>
