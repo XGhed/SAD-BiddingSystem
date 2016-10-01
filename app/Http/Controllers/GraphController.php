@@ -73,7 +73,7 @@ class GraphController extends Controller
         $items = App\Models\Admin\Item::with('itemModel', 'itemModel.subCategory', 'itemModel.subCategory.category',
             'item_auction', 'checkoutrequest_item', 'checkoutrequest_item.checkoutrequest')
         ->where('status', 3)->whereHas('checkoutrequest_item.checkoutrequest', function($query){
-                $query->where('status', 2)->orWhere('status', 3);
+                $query->where('status', 2)->orWhere('status', 3)->orWhere('status', 4);
         })->get();
 
         $item = NULL;
@@ -123,7 +123,7 @@ class GraphController extends Controller
     public function salesGraphReg(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'checkoutrequest_item', 'checkoutrequest_item.checkoutrequest')
         ->where('status', 3)->whereHas('checkoutrequest_item.checkoutrequest', function($query){
-                $query->where('status', 2)->orWhere('status', 3);
+                $query->where('status', 2)->orWhere('status', 3)->orWhere('status', 4);
         })->get();
 
         $start = $request->start;
@@ -183,7 +183,7 @@ class GraphController extends Controller
     public function salesGraphArea(Request $request){
         $items = App\Models\Admin\Item::with('itemModel', 'checkoutrequest_item', 'checkoutrequest_item.checkoutrequest')
         ->where('status', 3)->whereHas('checkoutrequest_item.checkoutrequest', function($query){
-                $query->where('status', 2)->orWhere('status', 3);
+                $query->where('status', 2)->orWhere('status', 3)->orWhere('status', 4);
         })->get();
 
         $start = $request->start;
@@ -248,7 +248,7 @@ class GraphController extends Controller
             'item_auction', 'checkoutrequest_item')
         ->where('status', 3)
         ->whereHas('checkoutrequest_item.checkoutrequest', function($query){
-                $query->where('status', 2)->orWhere('status', 3);
+                $query->where('status', 2)->orWhere('status', 3)->orWhere('status', 4);
         })->get();
         $start->timezone = 'Asia/Manila';
         $end->timezone = 'Asia/Manila';
