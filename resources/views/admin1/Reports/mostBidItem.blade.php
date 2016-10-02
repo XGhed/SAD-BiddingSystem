@@ -184,7 +184,7 @@ window.chart = new Highcharts.Chart({
                     if(!is_null($item)){
                         $ctr = count($item);
                         for ($i=0; $i<$ctr; $i++) { 
-                            echo "' ',";
+                            echo "'".$item[$i][0]."',";
                         }
                     }
                 ?>
@@ -206,12 +206,11 @@ window.chart = new Highcharts.Chart({
                 //echo "alert(JSON.stringify(".$item."))";
                 if(!is_null($item)){
                     $ctr = count($item);
+                    echo "{name: ' ', data:[";
                     for ($i=0; $i<$ctr; $i++) {
-                        echo "{name: '".$item[$i][0]."',data:[".$item[$i][1]."]}";
-                        if($i+1!=$ctr){
-                            echo ",";
-                        }
+                        echo $item[$i][1].",";
                     }
+                    echo "]}";
                 } else{
                     echo "{name: 'Nothing to show'}";
                 }

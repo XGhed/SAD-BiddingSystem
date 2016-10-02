@@ -205,12 +205,11 @@ window.chart = new Highcharts.Chart({
                 //echo "alert(JSON.stringify(".$item."))";
                 if(!is_null($item)){
                     $ctr = count($item);
+                    echo "{name: ' ', data:[";
                     for ($i=0; $i<$ctr; $i++) {
-                        echo "{name: ' ',data:[".$item[$i][1]."]}";
-                        if($i+1!=$ctr){
-                            echo ",";
-                        }
+                        echo $item[$i][1].",";
                     }
+                    echo "]}";
                 } else{
                     echo "{name: 'Nothing to show'}";
                 }

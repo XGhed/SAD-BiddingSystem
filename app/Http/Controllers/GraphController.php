@@ -30,8 +30,6 @@ class GraphController extends Controller
     public function mostBid(Request $request){
         if (isset($_POST['category'])) {
             $item = $this->mostBidCat($request);
-            //return $item;
-            //return $item;
             return view('admin1.Reports.mostBidCat')->with('item', $item);
         } else if(isset($_POST['item'])){
             $item = $this->mostBidItemDate($request);
@@ -296,22 +294,27 @@ class GraphController extends Controller
 
     public function mostBidItem(Request $request){
         $bid = App\Models\Admin\Bid::with('Item', 'Item.itemModel')
-        ->get();
+        ->orderBy('ItemID')->get();
         $item = NULL;
 
         foreach ($bid as $key => $result) {
-            $i = count($bid);
             $itemName = $result->item->itemModel->ItemName;
             $ctr=0;
             if(!isset($item[$ctr])){
                 $item[$ctr][0] = $itemName;
                 $item[$ctr][1] = 1;
-            } else if($item[$ctr][0]==$itemName){
-                $item[$ctr][1]++;
             } else{
-                $ctr++;
-                $item[$ctr][0] = $itemName;
-                $item[$ctr][1] = 1;
+                $k = count($item);
+                for ($j=0; $j < $k; $j++) { 
+                    if($item[$j][0]==$itemName){
+                        $item[$j][1]++;
+                        break;
+                    }
+                    if($j+1==$k){
+                        $item[$j+1][0] = $itemName;
+                        $item[$j+1][1] = 1;
+                    }
+                }
             }
         }
 
@@ -340,12 +343,18 @@ class GraphController extends Controller
                 if(!isset($item[$ctr])){
                     $item[$ctr][0] = $itemName;
                     $item[$ctr][1] = 1;
-                } else if($item[$ctr][0]==$itemName){
-                    $item[$ctr][1]++;
                 } else{
-                    $ctr++;
-                    $item[$ctr][0] = $itemName;
-                    $item[$ctr][1] = 1;
+                    $k = count($item);
+                    for ($j=0; $j < $k; $j++) { 
+                        if($item[$j][0]==$itemName){
+                            $item[$j][1]++;
+                            break;
+                        }
+                        if($j+1==$k){
+                            $item[$j+1][0] = $itemName;
+                            $item[$j+1][1] = 1;
+                        }
+                    }
                 }
             }
         }
@@ -377,12 +386,18 @@ class GraphController extends Controller
                 if(!isset($item[$ctr])){
                     $item[$ctr][0] = $cat;
                     $item[$ctr][1] = 1;
-                } else if($item[$ctr][0]==$cat){
-                    $item[$ctr][1]++;
                 } else{
-                    $ctr++;
-                    $item[$ctr][0] = $cat;
-                    $item[$ctr][1] = 1;
+                    $k = count($item);
+                    for ($j=0; $j < $k; $j++) { 
+                        if($item[$j][0]==$cat){
+                            $item[$j][1]++;
+                            break;
+                        }
+                        if($j+1==$k){
+                            $item[$j+1][0] = $cat;
+                            $item[$j+1][1] = 1;
+                        }
+                    }
                 }
             }
             //echo $result->item->itemModel->subCategory->category->CategoryName;

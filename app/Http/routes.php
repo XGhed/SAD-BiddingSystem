@@ -170,6 +170,8 @@ Route::get('/mostBidItem', 'GraphController@mostBidItem');
 
 Route::get('/mostBidCat', 'GraphController@mostBidCat');
 
+Route::get('/mostBidItemDate', 'GraphController@mostBidItemDate');
+
 Route::get('/customerGraph', 'GraphController@customerGraph');
 
 Route::get('/customerGraphReg', 'GraphController@customerGraphReg');
