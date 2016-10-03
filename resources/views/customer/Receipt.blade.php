@@ -151,28 +151,33 @@
 </head>
 <body>
 	<div>
-		<img src = "" class ="image" >
-		<h3 class = "head1">COMPANY NAME</h3>
-		<h4 class = "head2">COMPANY ADDRESS</h4>
-		<h4 class = "head3">COMPANY EMAIL AND CONTACT NO</h4>
-		<h3 class = "head4">Oficial Receipt</h3>
+		<img src = "{{$dashboard->valid_id}}" class ="image" >
+		<h3 class = "head1">{{$dashboard->CompanyName}}</h3>
+		<h4 class = "head2">{{$dashboard->ComapanyAddress}}</h4>
+		<h4 class = "head3">{{$dashboard->CompanyEmail}} - {{$dashboard->CellphoneNo}}</h4>
+		<h3 class = "head4">Official Receipt</h3>
 	</div>
 
 	<div>
 		<p class = "name">Name:</p>
-		<p class = "name1">CUSTOMER NAME</p>
+		<p class = "name1">{{$checkoutRequest->Account->Membership->first()->LastName}}, {{$checkoutRequest->Account->Membership->first()->FirstName}} {{$checkoutRequest->Account->Membership->first()->MiddleName}}</p>
+		@if ($checkoutRequest->CheckoutType == "Deliver")
 		<p class = "address">Delivery Address:</p>
-		<p class = "add">CUSTOMER ADDRESS</p>
+		<p class = "add">{{$checkoutRequest->Barangay_Street_Address}}, {{$checkoutRequest->City->CityName}}, {{$checkoutRequest->City->Province->ProvinceName}}</p>
+		@elseif ($checkoutRequest->CheckoutType == "Pick up")
+		<p class = "address">Pick up Warehouse:</p>
+		<p class = "add">{{$checkoutRequest->Account->Membership->first()->Barangay_Street_Address}}, {{$checkoutRequest->Account->Membership->first()->City->CityName}}, {{$checkoutRequest->Account->Membership->first()->City->Province->ProvinceName}}</p>
+		@endif
 		<p class = "cell">Cellphone #:</p>
-		<p class = "phone">CUSTOMER CONTACT NO</p>
+		<p class = "phone">{{$checkoutRequest->Account->Membership->first()->CellphoneNo}}</p>
 		<p class = "check">Checkout Type:</p>
-		<p class = "checkout">CHECKOUT TYPE</p>
+		<p class = "checkout">{{$checkoutRequest->CheckoutType}}</p>
 		<p class = "id">Checkout Request ID:</p>
-		<p class = "id2">CHECKOUT REQUEST ID</p>
+		<p class = "id2">{{$checkoutRequest->CheckoutRequestID}}</p>
 		<p class = "cdate">Checkout Request Date and Time:</p>
-		<p class = "cdate2">CHECKOUT DATE AND TIME</p>
+		<p class = "cdate2">{{$checkoutRequest->RequestDate}}</p>
 		<p class = "date">Payment Date and Time:</p>
-		<p class = "date2">PAYMENT DATE AND TIME</p>
+		<p class = "date2">{{$checkoutRequest->PaymentDate}}</p>
 		<p class = "note1">THIS WILL SERVE AS YOUR OFICIAL RECEIPT. THANK YOU!</p>	
 	</div>
 
@@ -188,17 +193,19 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach($itemsCheckedOut as $key => $item)
 					<tr>
-						<td colspan = "2" class = "row">LIST OF ITEMS</td>
-						<td class = "row">PRICE OF ITEMS</td>
+						<td colspan = "2" class = "row">{{$item->itemName}}</td>
+						<td class = "row">{{$item->price}}</td>
 					</tr>
+				@endforeach
 				<tr>
 					<td colspan = "2"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td class = "rows" colspan = "2" height = "1%">Discount:</td>
-					<td class = "row">DISCOUNT </td>
+					<td class = "row">{{$customerDiscount}}</td>
 				</tr>
 				<tr>
 					<td colspan = "2"></td>
@@ -206,7 +213,7 @@
 				</tr>
 				<tr>
 					<td class = "rows" colspan = "2" height = "1%">Discounted Price:</td>
-					<td class = "row">DISCOUNTED PRICE</td>
+					<td class = "row">{{$discountedPrice}}</td>
 				</tr>
 				<tr>
 					<td colspan = "2"></td>
@@ -214,23 +221,23 @@
 				</tr>
 				<tr>
 					<td class = "rows" colspan = "2" height = "1%">Service Fee:</td>
-					<td class = "row">SERVICE FEE</td>
+					<td class = "row">{{$customerServiceFee}}%</td>
 				</tr>
 				<tr>
 					<td class = "rows" colspan = "2" height = "1%">Sub Total:</td>
-					<td class = "row">SUBTOTAL</td>
+					<td class = "row">{{$checkoutRequest->ItemPrice}}</td>
 				</tr>
 				<tr>
 					<td colspan = "2"></td>
 					<td></td>
 				</tr>
 				<tr>
-					<td class = "rows" colspan = "2" height = "1%">Delivery Fee:</td>
-					<td class = "row">DELIVERY FEE</td>
+					<td class = "rows" colspan = "2" height = "1%">Shipping Fee:</td>
+					<td class = "row">{{$checkoutRequest->ShippingFee}}</td>
 				</tr>
 				<tr>
 					<td class = "rows" colspan = "2" height = "1%">Event Fees:</td>
-					<td class = "row">EVENT FEE</td>
+					<td class = "row">{{$checkoutRequest->EventFee}}</td>
 				</tr>
 				<tr>
 					<td colspan = "2"></td>
@@ -238,7 +245,7 @@
 				</tr>
 				<tr>
 					<td style = "font-weight: bold" class = "rows" colspan = "2" height = "1%">Total:</td>
-					<th class = "row">TOTAL</th>
+					<th class = "row">{{$checkoutRequest->ItemPrice + $checkoutRequest->ShippingFee + $checkoutRequest->EventFee}}</th>
 				</tr>
 			</tbody>
 		</table>

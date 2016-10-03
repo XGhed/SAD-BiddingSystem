@@ -31,6 +31,7 @@ class CheckoutRequest extends Migration
             $table->String('CellphoneNo', 15);
             $table->String('Landline', 10)->nullable();
             $table->boolean('Status')->default(0);
+            $table->datetime('PaymentDate');
             $table->foreign('AccountID')->references('AccountID')->on('Account');
             $table->foreign('WarehouseNo')->references('WarehouseNo')->on('Warehouse');
             $table->foreign('CityID')->references('CityID')->on('City');

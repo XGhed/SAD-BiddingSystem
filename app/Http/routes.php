@@ -443,6 +443,8 @@ Route::get('/joinEvent', 'CustomerBiddingEventController@joinEvent');
 
 Route::get('/bidItem', 'CustomerBiddingEventController@bidItem');
 
+Route::get('/generateReceipt', 'GenerateReceiptController@view');
+
 
 /*
 |--------------------------------------------------------------------------

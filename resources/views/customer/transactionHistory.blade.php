@@ -29,7 +29,7 @@
 		      </td>
 		      <td>@{{request.DateOutbound}}</td>
 		      <td>
-		      	<a href="#"><i class="green print icon"></i>Generate Receipt</a>
+		      	<a href="generateReceipt?checkoutID=@{{request.CheckoutRequestID}}"><i class="green print icon"></i>Generate Receipt</a>
 		      </td>
 		    </tr>
 		  </tbody>

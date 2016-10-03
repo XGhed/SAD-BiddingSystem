@@ -29,6 +29,7 @@ class PaymentCheckoutController extends Controller
         $checkoutRequest = App\Models\Admin\CheckoutRequest::find($request->checkoutRequestID);
 
         $checkoutRequest->Status = 2;
+        $checkoutRequest->PaymentDate = Carbon::now('Asia/Manila');
 
         $checkoutRequest->save();
 

@@ -213,7 +213,7 @@
 				</tr>
 				<tr>
 					<td class = "rows" colspan = "2" height = "1%">Service Fee:</td>
-					<td class = "row">{{$customerServiceFee}}</td>
+					<td class = "row">{{$customerServiceFee}}%</td>
 				</tr>
 				<tr>
 					<td class = "rows" colspan = "2" height = "1%">Sub Total:</td>
