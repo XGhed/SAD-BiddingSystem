@@ -21,7 +21,7 @@
 		}
 
 		.head2{
-			margin-top: 3.5%;
+			margin-top: 4%;
 			margin-left: 15%;
 		}
 		.head3{
@@ -46,25 +46,25 @@
 		.address{
 			position: absolute;
 			text-align: left;
-			margin-top: 2%;
+			margin-top: 3%;
 			font-weight: bold;
 		}
 		.cell{
 			position: absolute;
 			text-align: left;
-			margin-top: 4%;
+			margin-top: 6%;
 			font-weight: bold;
 		}
 		.id{
 			position: absolute;
 			text-align: left;
-			margin-top: 8%;
+			margin-top: 12%;
 			font-weight: bold;
 		}
 		.date{
 			position: absolute;
 			text-align: left;
-			margin-top: 6%;
+			margin-top: 9%;
 			font-weight: bold;
 		}
 		.name1{
@@ -77,48 +77,48 @@
 			position: absolute;
 			text-align: left;
 			margin-left: 18%;
-			margin-top: 2%;	
+			margin-top: 3%;	
 		}
 		.phone{
 			position: absolute;
 			text-align: left;
 			margin-left: 13%;
-			margin-top: 4%;	
+			margin-top: 6%;	
 		}
 		.id2{
 			position: absolute;
 			text-align: left;
 			margin-left: 23%;
-			margin-top: 8%;
+			margin-top: 12%;
 		}
 		.date2{
 			position: absolute;
 			text-align: left;
 			margin-left: 35%;
-			margin-top: 6%;
+			margin-top: 9%;
 		}
 		.note1{
 			position: absolute;
 			text-align: left;
-			margin-top: 12%;
+			margin-top: 18%;
 			font-weight: bold;
 		}
 		.note2{
 			position: absolute;
 			text-align: left;
 			margin-left: 13%;
-			margin-top: 19%;
+			margin-top: 30%;
 			font-weight: bold;
 		}
 		.deliveryimg{
 			width: 75px;
 			height: 75px;
 			float: left;
-			margin-top: 16%;
+			margin-top: 25%;
 		}
 		table{
 			position: absolute;
-			margin-top: 25%;
+			margin-top: 35%;
 			width: 100%;
 			background-color: Mintcream;
 		}
