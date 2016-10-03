@@ -137,9 +137,9 @@ Route::get('/PendingCheckout', 'CustomerStatusQueryController@PendingCheckout');
 
 Route::get('/PendingAccount', 'CustomerStatusQueryController@PendingAccount');
 
-// Route::get('/Receipt', function(){
-// 	return view('customer.Receipt');
-// });
+Route::get('/Receipt', function(){
+	return view('customer.Receipt');
+});
 
 //GET
 Route::get('/supplier', 'SupplierController@manageSupplier');

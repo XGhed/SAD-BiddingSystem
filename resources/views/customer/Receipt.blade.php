@@ -55,16 +55,28 @@
 			margin-top: 4%;
 			font-weight: bold;
 		}
-	/*	.id{
+		.check{
+			position: absolute;
+			text-align: left;
+			margin-top: 6%;
+			font-weight: bold;
+		}
+		.id{
 			position: absolute;
 			text-align: left;
 			margin-top: 8%;
 			font-weight: bold;
-		}*/
+		}
+		.cdate{
+			position: absolute;
+			text-align: left;
+			margin-top: 10%;
+			font-weight: bold;
+		}
 		.date{
 			position: absolute;
 			text-align: left;
-			margin-top: 6%;
+			margin-top: 12%;
 			font-weight: bold;
 		}
 		.name1{
@@ -76,38 +88,50 @@
 		.add{
 			position: absolute;
 			text-align: left;
-			margin-left: 18%;
+			margin-left: 10%;
 			margin-top: 2%;	
 		}
 		.phone{
 			position: absolute;
 			text-align: left;
-			margin-left: 13%;
+			margin-left: 8%;
 			margin-top: 4%;	
 		}
-		/*.id2{
+		.checkout{
 			position: absolute;
 			text-align: left;
-			margin-left: 23%;
+			margin-left: 10%;
+			margin-top: 6%;	
+		}
+		.id2{
+			position: absolute;
+			text-align: left;
+			margin-left: 12%;
 			margin-top: 8%;
-		}*/
+		}
+		.cdate2{
+			position: absolute;
+			text-align: left;
+			margin-left: 20%;
+			margin-top: 10%;
+		}
 		.date2{
 			position: absolute;
 			text-align: left;
-			margin-left: 35%;
-			margin-top: 6%;
+			margin-left: 15%;
+			margin-top: 12%;
+		}
+		table{
+			position: absolute;
+			margin-top: 18%;
+			width: 100%;
+			background-color: Mintcream;
 		}
 		.note1{
 			position: absolute;
 			text-align: left;
-			margin-top: 10%;
+			margin-top: 40%;
 			font-weight: bold;
-		}
-		table{
-			position: absolute;
-			margin-top: 15%;
-			width: 100%;
-			background-color: Mintcream;
 		}
 		.tdth{
 			vertical-align: middle;
@@ -141,9 +165,15 @@
 		<p class = "add">CUSTOMER ADDRESS</p>
 		<p class = "cell">Cellphone #:</p>
 		<p class = "phone">CUSTOMER CONTACT NO</p>
+		<p class = "check">Checkout Type:</p>
+		<p class = "checkout">CHECKOUT TYPE</p>
+		<p class = "id">Checkout Request ID:</p>
+		<p class = "id2">CHECKOUT REQUEST ID</p>
+		<p class = "cdate">Checkout Request Date and Time:</p>
+		<p class = "cdate2">CHECKOUT DATE AND TIME</p>
 		<p class = "date">Payment Date and Time:</p>
 		<p class = "date2">PAYMENT DATE AND TIME</p>
-		<p class = "note1">THIS WILL SERVE AS YOUR OFICIAL RECEIPT.</p>	
+		<p class = "note1">THIS WILL SERVE AS YOUR OFICIAL RECEIPT. THANK YOU!</p>	
 	</div>
 
 	<div>

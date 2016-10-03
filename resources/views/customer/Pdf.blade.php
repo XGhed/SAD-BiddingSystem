@@ -164,11 +164,11 @@
 		<p class = "date">Checkout Request Date and Time:</p>
 		<p class = "date2">{{$checkoutRequest->RequestDate->format('F-j-Y g:i A')}}</p>
 		@if ($checkoutRequest->CheckoutType == "Deliver")
-		<p class = "note1">PLEASE SAVE THIS VOUCHER TOGETHER WITH YOUR PROOF OF PAYMENT. THIS WILL SERVE AS YOUR PROOF OF PURCHASE.</p>	
+		<p class = "note1">PLEASE SAVE THIS VOUCHER TOGETHER WITH YOUR PROOF OF PAYMENT. THIS WILL SERVE AS YOUR PROOF OF PURCHASE. THANK YOU!</p>	
 		<img src = "photos\deliverytruck.JPG" class ="deliveryimg" >
 		<p class = "note2">STANDARD SHIPPING/DELIVERY DAYS: 2-3 WORKING DAYS</p>
 		@elseif ($checkoutRequest->CheckoutType == "Pick up")
-		<p class = "note1">PLEASE SAVE THIS VOUCHER TOGETHER WITH YOUR PROOF OF PAYMENT. THIS WILL SERVE AS YOUR PROOF OF PURCHASE.</p>	
+		<p class = "note1">PLEASE SAVE THIS VOUCHER TOGETHER WITH YOUR PROOF OF PAYMENT. THIS WILL SERVE AS YOUR PROOF OF PURCHASE. THANK YOU!</p>	
 		@endif
 
 	</div>
