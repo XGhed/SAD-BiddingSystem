@@ -12,6 +12,7 @@
 		    	<th>Price</th>
 		    	<th>Status</th>
 		    	<th>Pickup/Delivery Date</th>
+		    	<th></th>
 		  	</tr>
 		  </thead>
 		  <tbody>
@@ -27,6 +28,9 @@
 		      	<span ng-if="request.Status == 4">Delivered / Picked up</span>
 		      </td>
 		      <td>@{{request.DateOutbound}}</td>
+		      <td>
+		      	<a href="#"><i class="green print icon"></i>Generate Receipt</a>
+		      </td>
 		    </tr>
 		  </tbody>
 		</table>
