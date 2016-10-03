@@ -177,7 +177,6 @@ class CustomerStatusQueryController extends Controller
                 }
             }
         }
-
         $dash = App\Models\Admin\AdminDashboard::get()->last();
 
         $data = [];

@@ -2,10 +2,10 @@
 <body>
 <head>
 	<style>
-		@page{
+	/*	@page{
 			size: 800px 3500px; 
       		margin: 35px;
-    	}
+    	}*/
 		.image{
 			width: 100px;
 			height: 100px;
@@ -14,18 +14,18 @@
 		}
 		.head1{
 			float:left;
-			font-size: 25;
-			margin-left: 2%;
-			margin-top: 0%;	
+			font-size: 30;
+			margin-left: 0%;
+			margin-top: 0;	
 		}
 
 		.head2{
-			margin-top: 2%;
-			margin-left: 25%;
+			margin-top: 3.5%;
+			margin-left: 15%;
 		}
 		.head3{
-			margin-top: 0%;
-			margin-left: 33%;
+			margin-top: -15%;
+			margin-left: 15%;
 		}
 		.title{
 			margin-top: 0;

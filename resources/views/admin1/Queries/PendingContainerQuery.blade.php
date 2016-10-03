@@ -4,7 +4,7 @@
 	<link type="text/css" rel="stylesheet" href="css/angular-datatables.css"/>
 	<style>
 		@page{
-			size: 800px 3500px; 
+			size: 800px 1500px; 
       		margin: 35px;
     	}
 		.image{
@@ -15,18 +15,18 @@
 		}
 		.head1{
 			float:left;
-			font-size: 25;
-			margin-left: 2%;
+			font-size: 30;
+			margin-left: 0%;
 			margin-top: 0;	
 		}
 
 		.head2{
-			margin-top: 2%;
-			margin-left: 25%;
+			margin-top: 3.5%;
+			margin-left: 15%;
 		}
 		.head3{
-			margin-top: 0%;
-			margin-left: 32%;
+			margin-top: -15%;
+			margin-left: 15%;
 		}
 		.title{
 			margin-top: 0;

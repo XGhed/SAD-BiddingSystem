@@ -3,7 +3,7 @@
 <head>
 	<style>
 		@page{
-			size: 800px 3500px; 
+			size: 800px 1500px; 
       		margin: 35px;
     	}
 		.image{
@@ -14,18 +14,18 @@
 		}
 		.head1{
 			float:left;
-			font-size: 25;
-			margin-left: 2%;
+			font-size: 30;
+			margin-left: 0%;
 			margin-top: 0;	
 		}
 
 		.head2{
-			margin-top: 2%;
-			margin-left: 25%;
+			margin-top: 3.5%;
+			margin-left: 15%;
 		}
 		.head3{
-			margin-top: 0%;
-			margin-left: 35%;
+			margin-top: -15%;
+			margin-left: 15%;
 		}
 		.title{
 			margin-top: 0;
@@ -53,7 +53,7 @@
 	<script type="text/javascript" src="js/angular.min.js"></script>
 </head>
 <body>
-	<div data-ng-app="myApp" data-ng-controller="myController">
+	<div>
 	<div>
 		<img src = "{{$dashboard->valid_id}}" class ="image" >
 		<h3 class = "head1">{{$dashboard->CompanyName}}</h3>
@@ -61,13 +61,13 @@
 		<h4 class = "head3">{{$dashboard->CompanyEmail}} - {{$dashboard->CellphoneNo}}</h4>
 		<h2 class = "title">Supplier Status</h2>
 	</div>
-
+<!-- 
 	<div>
 		<span style = "font-weight:bold">Supplier's Status</span><br>
 		<span>0 = Not Active Supplier </span><br>
 		<span>1 = Active Supplier</span><br><br>
 	</div>
-	<div>
+ -->	<!-- <div>
 		<span style = "font-weight:bold">Item's Status</span><br>
 		<span>0 = Not Yet Delivered</span><br>
 		<span>1 = Delivered</span><br>
@@ -76,7 +76,7 @@
 		<span>-1 = Missing Item</span><br>
 		<span>-2 = Item Never Found</span>
 	</div>
-
+ -->
 	<div>
 	<table class = "table">
 		<thead>
@@ -92,9 +92,26 @@
 		@foreach($suppliers as $key)
 			<tr>
 				<td class = "row">{!!$key['SupplierName']!!}</td>
-              	<td class = "row">{!!$key['Status']!!}</td>
+				
+				@if ($key['Status'] == 1 )
+              	<td class = "row">Active</td>
+              	
+              	@elseif ($key['Status'] == 0)
+              	<td class = "row">Not Active</td>
+              	@endif
+              	
+              	@if ($key['Found'] != NULL)
               	<td class = "row">{!!$key['Found']!!}</td>
+              	@elseif ($key['Found'] == NULL)
+              	<td class = "row">0</td>
+              	@endif
+
+              	@if($key['Missing'] != NULL)
               	<td class = "row">{!!$key['Missing']!!}</td>
+              	@elseif($key['Missing'] == NULL)
+              	<td class = "row">0</td>
+              	@endif
+
               	<td class = "row">{!!$key['Items']!!}</td>
 			</tr>
 		@endforeach

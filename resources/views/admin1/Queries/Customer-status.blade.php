@@ -3,7 +3,7 @@
 <head>
 	<style>
 		@page{
-			size: 800px 3500px; 
+			size: 800px 1500px; 
       		margin: 35px;
     	}
 		.image{
@@ -15,17 +15,17 @@
 		.head1{
 			float:left;
 			font-size: 30;
-			margin-left: 2%;
+			margin-left: 0%;
 			margin-top: 0;	
 		}
 
 		.head2{
-			margin-top: 2%;
-			margin-left: 30%;
+			margin-top: 3.5%;
+			margin-left: 15%;
 		}
 		.head3{
-			margin-top: 0%;
-			margin-left: 35%;
+			margin-top: -15%;
+			margin-left: 15%;
 		}
 		.title{
 			margin-top: 0;
@@ -33,7 +33,7 @@
 		}
 		table{
 			position: absolute;
-			margin-top: 5%;
+			margin-top: 0%;
 			border: 1px solid black;
 			width: 100%;	
 		}
@@ -48,16 +48,16 @@
 <body>
 	<div>
 		<img src = "{{$dashboard->valid_id}}" class ="image" >
-		<h3 class = "head1">{{$dashboard->CompanyName}}</h3>
+		<h2 class = "head1">{{$dashboard->CompanyName}}</h2>
 		<h4 class = "head2">{{$dashboard->ComapanyAddress}}</h4>
 		<h4 class = "head3">{{$dashboard->CompanyEmail}} - {{$dashboard->CellphoneNo}}</h4>
 		<h2 class = "title">Customer Status</h2>
 	</div>
-	<div>
-		<span style = "font-weight:bold">Customer's Status</span><br>
+	<!-- <div>
+		<span style = "font-weight:bold;">Customer's Status</span><br>
 		<span>0 = Not yet Approved Customer </span><br>
 		<span>1 = Approved Customer</span>
-	</div>
+	</div> -->
 
 	<div>
 	<table>
@@ -73,7 +73,11 @@
 		@foreach($members as $key)
 			<tr>
 				<td>{!! $key->LastName !!}, {!! $key->FirstName !!} {!! $key->MiddleName !!}</td>
-				<td>{!! $key->Account->status!!}</td>
+				@if($key->Account->status == 1)
+				<td>Active</td>
+				@elseif ($key->Account->status == 0)
+				<td>Not Active</td>
+				@endif
 				<td>{!! $key->Account->DateApproved!!}</td>
 				<td>{!! $key->Account->Points!!}</td>
 			</tr>

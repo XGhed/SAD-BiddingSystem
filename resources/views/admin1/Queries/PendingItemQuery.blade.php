@@ -3,7 +3,7 @@
 <head>
 	<style>
 		@page{
-			size: 800px 3500px; 
+			size: 800px 1500px; 
       		margin: 35px;
     	}
 		.image{
@@ -14,18 +14,18 @@
 		}
 		.head1{
 			float:left;
-			font-size: 25;
-			margin-left: 2%;
+			font-size: 30;
+			margin-left: 0%;
 			margin-top: 0;	
 		}
 
 		.head2{
-			margin-top: 2%;
-			margin-left: 25%;
+			margin-top: 3.5%;
+			margin-left: 15%;
 		}
 		.head3{
-			margin-top: 0%;
-			margin-left: 33%;
+			margin-top: -15%;
+			margin-left: 15%;
 		}
 		.title{
 			margin-top: 0;
@@ -61,15 +61,6 @@
 		<h4 class = "head3">{{$dashboard->CompanyEmail}} - {{$dashboard->CellphoneNo}}</h4>
 		<h2 class = "title">Pending Item</h2>
 	</div>
-
-	<div>
-		<span style = "font-weight:bold">Item's Status</span><br>
-		<span>0 = Not Yet Delivered</span><br>
-		<span>1 = Delivered</span><br>
-		<span>2 = Available on inventory</span><br>
-		<span>3 = Pulled out</span>
-	</div>
-
 	<div>
 	<table class = "table">
 		<thead>

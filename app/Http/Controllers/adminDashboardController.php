@@ -14,7 +14,7 @@ use DB;
 class adminDashboardController extends Controller
 {
     public function addDetails(Request $request){
-        $company = new App\Models\Admin\adminDashboard;
+        $company = new App\Models\Admin\AdminDashboard;
 
         $company->CompanyName = trim($request->input('add_name'));
         $company->ComapanyAddress = trim($request->input('add_address'));
@@ -35,7 +35,7 @@ class adminDashboardController extends Controller
     }
 
     public function latestCompanyDetails(Request $request){
-        $company = App\Models\Admin\adminDashboard::all()->last();
+        $company = App\Models\Admin\AdminDashboard::all()->last();
 
         if($company != null){
             return $company;
