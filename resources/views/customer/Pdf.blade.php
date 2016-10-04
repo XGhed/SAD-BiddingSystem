@@ -149,7 +149,7 @@
 
 	<div>
 		<p class = "name">Name:</p>
-		<p class = "name1">{{$checkoutRequest->Account->Membership->first()->LastName}}, {{$checkoutRequest->Account->Membership->first()->FirstName}} {{$checkoutRequest->Account->Membership->first()->MiddleName}}</p>
+		<p class = "name1">{{$checkoutRequest->LastName}}, {{$checkoutRequest->FirstName}} {{$checkoutRequest->MiddleName}}</p>
 		@if ($checkoutRequest->CheckoutType == "Deliver")
 		<p class = "address">Delivery Address:</p>
 		<p class = "add">{{$checkoutRequest->Barangay_Street_Address}}, {{$checkoutRequest->City->CityName}}, {{$checkoutRequest->City->Province->ProvinceName}}</p>
@@ -196,7 +196,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<td class = "rows" colspan = "2" height = "1%">Discount:</td>
+					<td class = "rows" colspan = "2" height = "1%">Discount(%):</td>
 					<td class = "row">{{$customerDiscount}}</td>
 				</tr>
 				<tr>
@@ -212,7 +212,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<td class = "rows" colspan = "2" height = "1%">Service Fee:</td>
+					<td class = "rows" colspan = "2" height = "1%">Service Fee(%):</td>
 					<td class = "row">{{$customerServiceFee}}%</td>
 				</tr>
 				<tr>

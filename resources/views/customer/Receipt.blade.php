@@ -118,7 +118,7 @@
 		.date2{
 			position: absolute;
 			text-align: left;
-			margin-left: 15%;
+			margin-left: 25%;
 			margin-top: 18%;
 		}
 		table{
@@ -160,7 +160,7 @@
 
 	<div>
 		<p class = "name">Name:</p>
-		<p class = "name1">{{$checkoutRequest->Account->Membership->first()->LastName}}, {{$checkoutRequest->Account->Membership->first()->FirstName}} {{$checkoutRequest->Account->Membership->first()->MiddleName}}</p>
+		<p class = "name1">{{$checkoutRequest->LastName}}, {{$checkoutRequest->FirstName}} {{$checkoutRequest->MiddleName}}</p>
 		@if ($checkoutRequest->CheckoutType == "Deliver")
 		<p class = "address">Delivery Address:</p>
 		<p class = "add">{{$checkoutRequest->Barangay_Street_Address}}, {{$checkoutRequest->City->CityName}}, {{$checkoutRequest->City->Province->ProvinceName}}</p>
@@ -177,7 +177,7 @@
 		<p class = "cdate">Checkout Request Date and Time:</p>
 		<p class = "cdate2">{{Carbon\Carbon::parse($checkoutRequest->RequestDate)->format('F-j-Y g:i A')}}</p>
 		<p class = "date">Payment Date and Time:</p>
-		<p class = "date2">{{$checkoutRequest->PaymentDate}}</p>
+		<p class = "date2">{{Carbon\Carbon::parse($checkoutRequest->PaymentDate)->format('F-j-Y g:i A')}}</p>
 		<p class = "note1">THIS WILL SERVE AS YOUR OFICIAL RECEIPT. THANK YOU!</p>	
 	</div>
 
@@ -204,7 +204,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<td class = "rows" colspan = "2" height = "1%">Discount:</td>
+					<td class = "rows" colspan = "2" height = "1%">Discount(%):</td>
 					<td class = "row">{{$customerDiscount}}</td>
 				</tr>
 				<tr>
@@ -220,7 +220,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<td class = "rows" colspan = "2" height = "1%">Service Fee:</td>
+					<td class = "rows" colspan = "2" height = "1%">Service Fee(%):</td>
 					<td class = "row">{{$customerServiceFee}}%</td>
 				</tr>
 				<tr>

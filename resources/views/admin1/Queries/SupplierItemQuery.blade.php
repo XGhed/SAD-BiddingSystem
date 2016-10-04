@@ -1,5 +1,4 @@
 <html>
-<body>
 <head>
 	<style>
 		@page{
@@ -50,7 +49,7 @@
 
 		}
 	</style>
-	<script type="text/javascript" src="js/angular.min.js"></script>
+	
 </head>
 <body>
 	<div>
@@ -89,6 +88,7 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php echo $suppliers['Found']; ?>
 		@foreach($suppliers as $key)
 			<tr>
 				<td class = "row">{!!$key['SupplierName']!!}</td>
@@ -99,11 +99,13 @@
               	@elseif ($key['Status'] == 0)
               	<td class = "row">Not Active</td>
               	@endif
-              	
-              	@if ($key['Found'] != NULL)
-              	<td class = "row">{!!$key['Found']!!}</td>
-              	@elseif ($key['Found'] == NULL)
+
+              	@if ($key['Status'] == 0)
+              	<td class = "row">Not Available</td>
+              	@elseif (count($key['Found'] == 0))
               	<td class = "row">0</td>
+              	@elseif (count($key['Found'] != 0))
+              	<td class = "row">{!!$key['Found']!!}</td>
               	@endif
 
               	@if($key['Missing'] != NULL)
@@ -112,7 +114,9 @@
               	<td class = "row">0</td>
               	@endif
 
+              	@if($key['Status'] == 1)
               	<td class = "row">{!!$key['Items']!!}</td>
+              	@endif
 			</tr>
 		@endforeach
 		</tbody>
