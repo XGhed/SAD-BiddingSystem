@@ -222,7 +222,7 @@ class AngularOutput extends Controller
 
     public function containersWithPendingItems(){
 
-        $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province')
+        $containers = App\Models\Admin\Container::with('Supplier', 'warehouse', 'warehouse.city', 'warehouse.city.province', 'item', 'item.itemModel.subCategory', 'item.itemModel.subCategory.category')
         ->where('ActualArrival', '!=', 'null')->whereHas('item', function($query){
             $query->where('status', 0);
         })

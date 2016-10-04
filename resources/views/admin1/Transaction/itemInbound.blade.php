@@ -87,7 +87,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                      <tr ng-repeat="item in itemsInbound | filter : filterExpected">
+                      <tr ng-repeat="item in selectedContainer.item"  ng-if="item.status == 0">
                         <td><input type="checkbox" name="items[]" value="@{{item.ItemID}}"></td>
                         <!--<td>@{{item.container.ContainerName}}</td>-->
                         <td>@{{item.item_model.sub_category.category.CategoryName}}</td>
@@ -440,14 +440,10 @@
 
     $scope.loadContainerInbound = function(container){
       $scope.selectedContainer = container;
-      $http.get('itemsInbound?containerID=' + container.ContainerID)
-      .then(function(response){
-        $scope.itemsInbound = response.data;
-        $('#expectedItemsModal').modal('refresh');    
-        $timeout(function(){
-          $('#expectedItemsModal').modal('show');
-        }, 100);
-      });
+      $('#expectedItemsModal').modal('refresh');    
+      $timeout(function(){
+        $('#expectedItemsModal').modal('show');
+      }, 100);
     }
 
     $scope.loadContainerUnexpected = function(container){
