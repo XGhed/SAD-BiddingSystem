@@ -29,7 +29,8 @@
 		      </td>
 		      <td>@{{request.DateOutbound}}</td>
 		      <td>
-		      	<a href="generateReceipt?checkoutID=@{{request.CheckoutRequestID}}"><i class="green print icon"></i>Generate Receipt</a>
+		      	<a href="generateReceipt?checkoutID=@{{request.CheckoutRequestID}}" ng-if="request.Status >= 2"><i class="green print icon"></i>Generate Receipt</a>
+		      	<span ng-if="request.Status < 2">Not yet available</span>
 		      </td>
 		    </tr>
 		  </tbody>

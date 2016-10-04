@@ -158,10 +158,6 @@
         .then(function(response){
           if (response.data == 'success'){
             $('#alert').modal('show');
-            $http.get('/getHighestBid?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
-            .then(function(response){
-              $scope.highestBid = response.data;
-            });
           }
           else if(response.data == "Can't bid consecutively"){
             $('#error_consecutive').modal('show');
@@ -169,13 +165,18 @@
           else {
              $('#error').modal('show');
           }
-          $http.get('/getBidHistory?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
-          .then(function(response){
-            $scope.bidlists = response.data;
-          });
-          //refresh max bid
         });
       }
+
+      //refresh max bid
+      $http.get('/getHighestBid?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
+      .then(function(response){
+        $scope.highestBid = response.data;
+      });
+      $http.get('/getBidHistory?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
+      .then(function(response){
+        $scope.bidlists = response.data;
+      });
     }
 
     $timeout(function(){

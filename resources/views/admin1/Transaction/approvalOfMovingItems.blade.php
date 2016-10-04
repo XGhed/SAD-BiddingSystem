@@ -52,8 +52,8 @@
                   <td>
                     <input name="approvedItems[]" value="@{{item_movingrequest.item.ItemID}}" type="checkbox" class="ui checkbox">
                   </td>
-                  <td>@{{item_movingrequest.item.current_warehouse.Barangay_Street_Address}}, @{{item.current_warehouse.city.CityName}}, @{{item.current_warehouse.city.province.ProvinceName}}</td>
-                  <td>@{{item_movingrequest.item.requested_warehouse.Barangay_Street_Address}}, @{{item.requested_warehouse.city.CityName}}, @{{item.requested_warehouse.city.province.ProvinceName}}</td>
+                  <td>@{{item_movingrequest.item.current_warehouse.Barangay_Street_Address}}, @{{item_movingrequest.item.current_warehouse.city.CityName}}, @{{item_movingrequest.item.current_warehouse.city.province.ProvinceName}}</td>
+                  <td>@{{item_movingrequest.item.requested_warehouse.Barangay_Street_Address}}, @{{item_movingrequest.item.requested_warehouse.city.CityName}}, @{{item_movingrequest.item.requested_warehouse.city.province.ProvinceName}}</td>
                   <td>@{{item_movingrequest.item.ItemID}}</td>
                   <td>@{{item_movingrequest.item.item_model.ItemName}}</td>
                   <td>@{{item_movingrequest.item.color}}</td>
