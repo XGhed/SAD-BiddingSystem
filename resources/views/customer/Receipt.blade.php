@@ -21,7 +21,7 @@
 		}
 
 		.head2{
-			margin-top: 3.5%;
+			margin-top: 4%;
 			margin-left: 15%;
 		}
 		.head3{
@@ -46,37 +46,37 @@
 		.address{
 			position: absolute;
 			text-align: left;
-			margin-top: 2%;
+			margin-top: 3%;
 			font-weight: bold;
 		}
 		.cell{
 			position: absolute;
 			text-align: left;
-			margin-top: 4%;
+			margin-top: 6%;
 			font-weight: bold;
 		}
 		.check{
 			position: absolute;
 			text-align: left;
-			margin-top: 6%;
+			margin-top: 9%;
 			font-weight: bold;
 		}
 		.id{
 			position: absolute;
 			text-align: left;
-			margin-top: 8%;
+			margin-top: 12%;
 			font-weight: bold;
 		}
 		.cdate{
 			position: absolute;
 			text-align: left;
-			margin-top: 10%;
+			margin-top: 15%;
 			font-weight: bold;
 		}
 		.date{
 			position: absolute;
 			text-align: left;
-			margin-top: 12%;
+			margin-top: 18%;
 			font-weight: bold;
 		}
 		.name1{
@@ -88,42 +88,42 @@
 		.add{
 			position: absolute;
 			text-align: left;
-			margin-left: 10%;
-			margin-top: 2%;	
+			margin-left: 18%;
+			margin-top: 3%;	
 		}
 		.phone{
 			position: absolute;
 			text-align: left;
-			margin-left: 8%;
-			margin-top: 4%;	
+			margin-left: 13%;
+			margin-top: 6%;	
 		}
 		.checkout{
 			position: absolute;
 			text-align: left;
-			margin-left: 10%;
-			margin-top: 6%;	
+			margin-left: 16%;
+			margin-top: 9%;	
 		}
 		.id2{
 			position: absolute;
 			text-align: left;
-			margin-left: 12%;
-			margin-top: 8%;
+			margin-left: 22%;
+			margin-top: 12%;
 		}
 		.cdate2{
 			position: absolute;
 			text-align: left;
-			margin-left: 20%;
-			margin-top: 10%;
+			margin-left: 34%;
+			margin-top: 15%;
 		}
 		.date2{
 			position: absolute;
 			text-align: left;
 			margin-left: 15%;
-			margin-top: 12%;
+			margin-top: 18%;
 		}
 		table{
 			position: absolute;
-			margin-top: 18%;
+			margin-top: 25%;
 			width: 100%;
 			background-color: Mintcream;
 		}
@@ -175,7 +175,7 @@
 		<p class = "id">Checkout Request ID:</p>
 		<p class = "id2">{{$checkoutRequest->CheckoutRequestID}}</p>
 		<p class = "cdate">Checkout Request Date and Time:</p>
-		<p class = "cdate2">{{$checkoutRequest->RequestDate}}</p>
+		<p class = "cdate2">{{Carbon\Carbon::parse($checkoutRequest->RequestDate)->format('F-j-Y g:i A')}}</p>
 		<p class = "date">Payment Date and Time:</p>
 		<p class = "date2">{{$checkoutRequest->PaymentDate}}</p>
 		<p class = "note1">THIS WILL SERVE AS YOUR OFICIAL RECEIPT. THANK YOU!</p>	
