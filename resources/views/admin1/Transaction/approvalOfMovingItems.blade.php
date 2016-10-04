@@ -32,8 +32,8 @@
         <i class="close icon"></i>
           
         <div class="content">
-         <input type="hidden" name="requestID" value="@{{requestID}}" />
           <form action="approveMovingOfItems" method="POST">
+            <input type="hidden" name="requestID" value="@{{requestID}}" />
             <table class="ui celled table" datatable="ng">
               <thead>
                 <tr>
