@@ -1,7 +1,7 @@
 
 <html>
 <head>
-	<title>Checkout Voucher</title>
+	<title>Generate Receipt</title>
 	<style type="text/css">
 		/*@page{
 			size: 800px 1500px; 
@@ -88,7 +88,7 @@
 		.add{
 			position: absolute;
 			text-align: left;
-			margin-left: 18%;
+			margin-left: 20%;
 			margin-top: 3%;	
 		}
 		.phone{
