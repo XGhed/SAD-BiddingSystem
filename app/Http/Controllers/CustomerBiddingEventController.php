@@ -127,7 +127,7 @@ class CustomerBiddingEventController extends Controller
             return redirect('/items?eventID='.$request->eventID);
         }
 
-        return view('customer.auction')->with('item', $item)->with('eventID', $request->eventID);
+        return view('customer.auction')->with('item', $item)->with('eventID', $request->eventID)->with('accountID', $request->session()->get('accountID'));
     }
 
     public function bidItem(Request $request){

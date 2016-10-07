@@ -1,7 +1,7 @@
 @extends('customer.homepage')
 
 @section('content')
-	<div ng-app="myApp" ng-controller="myController" ng-init="itemID = {{$item->ItemID}}; eventID = {{$eventID}}">
+	<div ng-app="myApp" ng-controller="myController" ng-init="itemID = {{$item->ItemID}}; eventID = {{$eventID}}; accountID = {{$accountID}};">
     <div style="margin: 100px 0 0 0" class="ui container segment">
       @include('customer.topnav')
 
@@ -148,9 +148,25 @@
       $('#history').modal('setting', 'transition', 'vertical flip').modal('show');
     }
 
+    $scope.refreshBids = function(){
+      //refresh max bid
+      $http.get('/getHighestBid?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
+      .then(function(response){
+        $scope.highestBid = response.data;
+      });
+      $http.get('/getBidHistory?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
+      .then(function(response){
+        $scope.bidlists = response.data;
+      });
+    }
+
     $scope.bidItem = function(itemID){
+      $scope.refreshBids();
       //js validation
-      if($scope.price*1 < Math.floor($scope.highestBid*1 + (($scope.highestBid*1) * (($scope.event.NextBidPercent*1) /100)))){
+      if($scope.bidlists[0].AccountID == $scope.accountID){
+        $('#error_consecutive').modal('show');
+      }
+      else if($scope.price*1 < Math.floor($scope.highestBid*1 + (($scope.highestBid*1) * (($scope.event.NextBidPercent*1) /100)))){
         $('#error').modal('show');
       }
       else{
@@ -167,16 +183,7 @@
           }
         });
       }
-
-      //refresh max bid
-      $http.get('/getHighestBid?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
-      .then(function(response){
-        $scope.highestBid = response.data;
-      });
-      $http.get('/getBidHistory?itemID=' + $scope.itemID + "&eventID=" + $scope.eventID)
-      .then(function(response){
-        $scope.bidlists = response.data;
-      });
+      $scope.refreshBids();
     }
 
     $timeout(function(){
