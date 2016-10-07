@@ -88,7 +88,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php echo $suppliers['Found']; ?>
+			
 		@foreach($suppliers as $key)
 			<tr>
 				<td class = "row">{!!$key['SupplierName']!!}</td>

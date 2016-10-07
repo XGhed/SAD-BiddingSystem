@@ -205,7 +205,7 @@
 				</tr>
 				<tr>
 					<td class = "rows" colspan = "2" height = "1%">Discount(%):</td>
-					<td class = "row">{{$customerDiscount}}</td>
+					<td class = "row">{{$customerDiscount}}%</td>
 				</tr>
 				<tr>
 					<td colspan = "2"></td>

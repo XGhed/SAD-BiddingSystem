@@ -88,6 +88,8 @@ class CustomerStatusQueryController extends Controller
                     if(!isset($returnData[$ctr])){
                         $returnData[$ctr]["SupplierName"] = $result->SupplierName;
                         $returnData[$ctr]["Status"] = $result->Status;
+                        $returnData[$ctr]["Found"] = 0;
+                        $returnData[$ctr]["Missing"] = 0;
                         if($item[$i]->status==1){
                             $returnData[$ctr]["Items"] = $item[$i]->itemModel->ItemName;
                             $returnData[$ctr]["Found"] = 1;
@@ -173,11 +175,16 @@ class CustomerStatusQueryController extends Controller
                 if($j+1==$i){
                     $returnData[$ctr]["SupplierName"] = $result->SupplierName;
                     $returnData[$ctr]["Status"] = $result->Status;
+                    $returnData[$ctr]["Found"] = 0;
+                    $returnData[$ctr]["Missing"] = 0;
+                    $returnData[$ctr]["Items"] = "Not Available";
                     $ctr++;
                 }
             }
         }
         $dash = App\Models\Admin\AdminDashboard::get()->last();
+
+        // return $returnData;
 
         $data = [];
         $data['dashboard'] = $dash;
