@@ -163,10 +163,10 @@
     $scope.bidItem = function(itemID){
       $scope.refreshBids();
       //js validation
-      if($scope.bidlists.length > 0){
-        if($scope.bidlists[0].AccountID == $scope.accountID){
-          $('#error_consecutive').modal('show');
-        }
+      if($scope.bidlists.length > 0 && $scope.bidlists[0].AccountID == $scope.accountID){
+        
+        $('#error_consecutive').modal('show');
+        
       }
       else if($scope.price*1 < Math.floor($scope.highestBid*1 + (($scope.highestBid*1) * (($scope.event.NextBidPercent*1) /100)))){
         $('#error').modal('show');
