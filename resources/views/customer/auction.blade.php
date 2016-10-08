@@ -163,30 +163,31 @@
     $scope.bidItem = function(itemID){
       $scope.refreshBids();
       //js validation
-      if($scope.bidlists.length > 0 && $scope.bidlists[0].AccountID == $scope.accountID){
-        
-        $('#error_consecutive').modal('show');
-        
-      }
-      else if($scope.price*1 < Math.floor($scope.highestBid*1 + (($scope.highestBid*1) * (($scope.event.NextBidPercent*1) /100)))){
-        $('#error').modal('show');
-      }
-      else{
-        $http.get('/bidItem?itemID=' + itemID + '&price=' + $scope.price + "&eventID=" + $scope.eventID)
-        .then(function(response){
-          if (response.data == 'success'){
-            $('#alert').modal('show');
-          }
-          else if(response.data == "Can't bid consecutively"){
-            $('#error_consecutive').modal('show');
-          }
-          else {
-             $('#error').modal('show');
-          }
-        });
-      }
-      $scope.refreshBids();
-
+      $timeout(function(){
+        if($scope.bidlists.length > 0 && $scope.bidlists[0].AccountID == $scope.accountID){
+          
+          $('#error_consecutive').modal('show');
+          
+        }
+        else if($scope.price*1 < Math.floor($scope.highestBid*1 + (($scope.highestBid*1) * (($scope.event.NextBidPercent*1) /100)))){
+          $('#error').modal('show');
+        }
+        else{
+          $http.get('/bidItem?itemID=' + itemID + '&price=' + $scope.price + "&eventID=" + $scope.eventID)
+          .then(function(response){
+            if (response.data == 'success'){
+              $('#alert').modal('show');
+            }
+            else if(response.data == "Can't bid consecutively"){
+              $('#error_consecutive').modal('show');
+            }
+            else {
+               $('#error').modal('show');
+            }
+          });
+        }
+        $scope.refreshBids();
+      }, 100);
     }
 
     $timeout(function(){
