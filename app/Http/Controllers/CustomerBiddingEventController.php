@@ -133,7 +133,7 @@ class CustomerBiddingEventController extends Controller
     public function bidItem(Request $request){
         $auction = App\Models\Admin\Auction::find($request->eventID);
         //if bid is lower than highest bid
-        $currentBids = App\Models\Admin\Bid::where('ItemID', $request->itemID)->where('AuctionID', $request->eventID)->get()->sortByDesc('price');
+        $currentBids = App\Models\Admin\Bid::where('ItemID', $request->itemID)->where('AuctionID', $request->eventID)->orderBy('Price', 'desc')->get();
 
         if (count($currentBids) > 0){
             //cant bid twice in a row
