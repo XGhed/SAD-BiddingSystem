@@ -164,12 +164,7 @@
       $scope.refreshBids();
       //js validation
       $timeout(function(){
-        if($scope.bidlists.length > 0 && $scope.bidlists[0].AccountID == $scope.accountID){
-          
-          $('#error_consecutive').modal('show');
-          
-        }
-        else if($scope.price*1 < Math.floor($scope.highestBid*1 + (($scope.highestBid*1) * (($scope.event.NextBidPercent*1) /100)))){
+        if($scope.price*1 < Math.floor($scope.highestBid*1 + (($scope.highestBid*1) * (($scope.event.NextBidPercent*1) /100)))){
           $('#error').modal('show');
         }
         else{

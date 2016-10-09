@@ -137,12 +137,12 @@ class CustomerBiddingEventController extends Controller
 
         if (count($currentBids) > 0){
             //cant bid twice in a row
-            if($currentBids->last()->AccountID == $request->session()->get('accountID')){
+            if($currentBids->first()->AccountID == $request->session()->get('accountID')){
                 return "Can't bid consecutively";
             }
 
             //check if passed min bid
-            $highestBid = $currentBids->last()->Price;
+            $highestBid = $currentBids->first()->Price;
             $nextMinimumBid = $highestBid + floor($highestBid * ($auction->NextBidPercent / 100));
 
             if($nextMinimumBid > $request->price){
