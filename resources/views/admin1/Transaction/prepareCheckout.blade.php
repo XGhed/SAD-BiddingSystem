@@ -123,6 +123,12 @@
         </h1>
       </div>
 
+      <div class="ui basic modal" id="error">
+        <h1 class='ui green centered header'>
+          Error!!
+        </h1>
+      </div>
+
     </div><!-- segment -->
   </div><!-- twelve wide column -->
 </div><!-- ui grid -->
@@ -179,6 +185,9 @@
           .then(function(response){
             $scope.pickupRequests = response.data;
           });
+        }
+        else {
+          $('#error').modal('show');
         }
       });
     }

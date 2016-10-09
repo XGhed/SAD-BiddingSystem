@@ -100,7 +100,7 @@
 					      <td>@{{subTotalPrice | currency : 'P' : 2}}</td>
 					    </tr>
 					    <tr><td></td><td></td><td></td></tr>
-				    	<tr class="warning" ng-if="checkoutType == 'Deliver'">
+				    	<tr class="warning" ng-if="selectedProofCheckoutRequest.CheckoutType == 'Deliver'">
 					      <td>Shipping fee:</td>
 					      <td></td>
 					      <td>@{{shippingFee | currency : 'P' : 2}}</td>
@@ -173,7 +173,7 @@
 								      <td>@{{subTotalPrice | currency : 'P' : 2}}</td>
 								    </tr>
 								    <tr><td></td><td></td><td></td></tr>
-							    	<tr class="warning" ng-if="checkoutType == 'Deliver'">
+							    	<tr class="warning" ng-if="selectedCheckoutRequest.CheckoutType == 'Deliver'">
 								      <td>Shipping fee:</td>
 								      <td></td>
 								      <td>@{{shippingFee | currency : 'P' : 2}}</td>
