@@ -318,6 +318,19 @@ class GraphController extends Controller
             }
         }
 
+        $i = count($item);
+
+        //sorting
+        for($j=0; $j<$i-1; $j++){
+            for($k=0; $k<$i-$j-1; $k++){
+                if($item[$k][1]<$item[$k+1][1]){
+                    $swap = $item[$k];
+                    $item[$k] = $item[$k+1];
+                    $item[$k+1] = $swap;
+                }
+            }
+        }
+
         return $item;
 
         //return view('admin1.Reports.mostBidItem')->with('item', $item);
@@ -355,6 +368,19 @@ class GraphController extends Controller
                             $item[$j+1][1] = 1;
                         }
                     }
+                }
+            }
+        }
+
+        $i = count($item);
+
+        //sorting
+        for($j=0; $j<$i-1; $j++){
+            for($k=0; $k<$i-$j-1; $k++){
+                if($item[$k][1]<$item[$k+1][1]){
+                    $swap = $item[$k];
+                    $item[$k] = $item[$k+1];
+                    $item[$k+1] = $swap;
                 }
             }
         }
