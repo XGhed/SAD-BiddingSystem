@@ -198,7 +198,7 @@ window.chart = new Highcharts.Chart({
     
     yAxis: {
         title: {
-            text: 'Approved Accounts'
+            text: 'Approved Accounts per Region'
         }
     },
 
@@ -210,78 +210,17 @@ window.chart = new Highcharts.Chart({
         <?php
                 if(!is_null($customer)){
                     $ctr = count($customer);
+                    echo "{name: ' ', data:[";
                     for ($i=0; $i<$ctr; $i++) {
-                        echo "{name: ' ',data:[".$customer[$i][1]."]}";
-                        if($i+1!=$ctr){
-                            echo ",";
-                        }
+                        echo $customer[$i][1].",";
                     }
+                    echo "]}";
                 } else{
                     echo "{name: 'Nothing to show'}";
                 }
             ?>
     ]
 });
-
-/*$(function() {
-    $('#container').highcharts({
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: 'Approved Accounts of 2016 per Region'
-        },
-        xAxis: {
-            categories:[
-                <?php
-                    if(isset($customer)){
-                        $ctr = count($customer);
-                        for ($i=0; $i<$ctr; $i++) { 
-                            echo "'".$customer[$i][0]."',";
-                        }
-                    }
-                ?>
-            ],
-            crosshair: true
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: 'Accounts'
-            }
-        },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0"></td>' +
-                '<td style="padding:0"><b>Php {point.y:.2f}</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
-        },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
-        },
-        series: [
-            <?php
-                if(!is_null($customer)){
-                    $ctr = count($customer);
-                    for ($i=0; $i<$ctr; $i++) {
-                        echo "{name: '".$customer[$i][0]."',data:[".$customer[$i][1]."]}";
-                        if($i+1!=$ctr){
-                            echo ",";
-                        }
-                    }
-                } else{
-                    echo "name: 'Nothing to show'";
-                }
-            ?>
-        ]
-    });
-});
-*/
 
 //startDate
       var date = new Date();

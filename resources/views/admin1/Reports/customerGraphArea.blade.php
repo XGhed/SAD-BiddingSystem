@@ -37,7 +37,7 @@ Highcharts.drawTable = function() {
     
     // user options
     var tableTop = 310,
-        colWidth = 100,
+        colWidth = 150,
         tableLeft = 20,
         rowHeight = 20,
         cellPadding = 2.5,
@@ -198,7 +198,7 @@ window.chart = new Highcharts.Chart({
     
     yAxis: {
         title: {
-            text: 'Approved Accounts'
+            text: 'Approved Accounts per Area'
         }
     },
 
@@ -209,14 +209,13 @@ window.chart = new Highcharts.Chart({
     series: [
         <?php
                 //echo "alert(JSON.stringify(".$item."))";
-                if(!is_null($customer)){
+               if(!is_null($customer)){
                     $ctr = count($customer);
+                    echo "{name: ' ', data:[";
                     for ($i=0; $i<$ctr; $i++) {
-                        echo "{name: ' ',data:[".$customer[$i][1]."]}";
-                        if($i+1!=$ctr){
-                            echo ",";
-                        }
+                        echo $customer[$i][1].",";
                     }
+                    echo "]}";
                 } else{
                     echo "{name: 'Nothing to show'}";
                 }

@@ -470,19 +470,25 @@ class GraphController extends Controller
                 $list = App\Models\Admin\City::with('province', 'province.region')->find($city);
                 $region = $list->province->region->RegionName;
                 $ctr = 0;
-                $ctr2 = 3;
                 $date = $result->DateApproved;
                 $date = Carbon::parse($date);
                 if($date->between($start, $end)==true){
                     if(is_null($customer[$ctr])){
-                        $customer[$ctr][0] = $region;
-                        $customer[$ctr][1] = 1;
-                    } else if($customer[$ctr][0]==$region){
-                        $customer[$ctr][1] += 1;
+                        $customer[0][0] = $region;
+                        $customer[0][1] = 1;
                     } else{
-                        $ctr++;
-                        $customer[$ctr][0] = $region;
-                        $customer[$ctr][1] = 1;
+                        $i = count($customer);
+                        for ($j=0; $j < $i; $j++) {
+                            $ctr2 = 0;
+                            if($customer[$j][0]==$region){
+                                $customer[$j][1]++;
+                                $ctr2 = 1;
+                            }
+                        }
+                        if($ctr2==0){
+                            $customer[$j][0] = $region;
+                            $customer[$j][1] = 1;
+                        }
                     }
                 }
             }
@@ -517,14 +523,21 @@ class GraphController extends Controller
                 $date = Carbon::parse($date);
                 if($date->between($start, $end)==true){
                     if(is_null($customer[$ctr])){
-                        $customer[$ctr][0] = $area;
-                        $customer[$ctr][1] = 1;
-                    } else if($customer[$ctr][0]==$area){
-                        $customer[$ctr][1] += 1;
+                        $customer[0][0] = $area;
+                        $customer[0][1] = 1;
                     } else{
-                        $ctr++;
-                        $customer[$ctr][0] = $area;
-                        $customer[$ctr][1] = 1;
+                        $i = count($customer);
+                        for ($j=0; $j < $i; $j++) {
+                            $ctr2 = 0;
+                            if($customer[$j][0]==$area){
+                                $customer[$j][1]++;
+                                $ctr2 = 1;
+                            }
+                        }
+                        if($ctr2==0){
+                            $customer[$j][0] = $area;
+                            $customer[$j][1] = 1;
+                        }
                     }
                 }
             }
