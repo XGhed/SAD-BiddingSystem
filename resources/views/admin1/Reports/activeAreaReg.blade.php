@@ -202,12 +202,11 @@ window.chart = new Highcharts.Chart({
         <?php
                 if(!is_null($data)){
                     $ctr = count($data);
+                    echo "{name: ' ', data:[";
                     for ($i=0; $i<$ctr; $i++) {
-                        echo "{name: ' ',data:[".$data[$i][1]."]}";
-                        if($i+1!=$ctr){
-                            echo ",";
-                        }
+                        echo $data[$i][1].",";
                     }
+                    echo "]}";
                 } else{
                     echo "{name: 'Nothing to show'}";
                 }

@@ -553,12 +553,20 @@ class GraphController extends Controller
             if(is_null($returnData)){
                 $returnData[$ctr][0] = $result->account->membership[0]->city->CityName;
                 $returnData[$ctr][1] = 1;
-            } else if($returnData[$ctr][0]==$result->account->membership[0]->city->CityName){
-                $returnData[$ctr][1]++;
             } else{
-                $ctr++;
-                $returnData[$ctr][0] = $result->account->membership[0]->city->CityName;
-                $returnData[$ctr][1] = 1;
+                $i = count($returnData);
+                $ctr3 = 0;
+                for ($j=0; $j<$i; $j++){
+                    if($returnData[$j][0]==$result->account->membership[0]->city->CityName){
+                        $returnData[$j][1]++;
+                        $ctr3 = 1;
+                    }
+                    if(($j==$i-1)&&($ctr3==0)){
+                        $ctr++;
+                        $returnData[$ctr][0] = $result->account->membership[0]->city->CityName;
+                        $returnData[$ctr][1] = 1;
+                    }
+                }
             }
 
             if($ctr==10) break;
@@ -595,11 +603,27 @@ class GraphController extends Controller
                     $ctr2+=2;
                 }
             } else{
-                $ctr++;
-                $returnData[$ctr][0] = $result->account->membership[0]->city->CityName;
-                $returnData[$ctr][1] = $month;
-                $returnData[$ctr][2] = 1;
-                $ctr2 = 3;
+                $i = count($returnData);
+                $ctr3 = 0;
+                for ($j=0; $j<$i; $j++){
+                    if($returnData[$j][0]==$result->account->membership[0]->city->CityName){
+                        if($returnData[$j][1]==$month){
+                            $returnData[$j][2]++;
+                            $ctr3 = 1;
+                        } else{
+                            $returnData[$j][$ctr2] = $month;
+                            $returnData[$j][$ctr2+1] = 1;
+                            $ctr2+=2;
+                            $ctr3 = 1;
+                        }
+                    }
+                    if(($j==$i-1)&&($ctr3==0)){
+                        $ctr++;
+                        $returnData[$ctr][0] = $result->account->membership[0]->city->CityName;
+                        $returnData[$ctr][1] = $month;
+                        $returnData[$ctr][2] = 1;
+                    }
+                }
             }
 
             if($ctr==10) break;
@@ -613,8 +637,8 @@ class GraphController extends Controller
         $bid = App\Models\Admin\Bid::with('account', 'account.membership', 'account.membership.city',
             'account.membership.city.province', 'account.membership.city.province.region')->get();
 
-        //$start = Carbon::create(2016, 1, 1);
-        //$end = Carbon:: create(2016, 12, 31);
+        /*$start = Carbon::create(2016, 1, 1);
+        $end = Carbon:: create(2016, 12, 31);*/
         $start = $request->start;
         $end = $request->end;
         $start = Carbon::createFromFormat('Y-m-d', $start);
@@ -628,13 +652,23 @@ class GraphController extends Controller
             if(is_null($returnData)){
                 $returnData[$ctr][0] = $result->account->membership[0]->city->province->region->RegionName;
                 $returnData[$ctr][1] = 1;
-            } else if($returnData[$ctr][0]==$result->account->membership[0]->city->province->region->RegionName){
-                $returnData[$ctr][1]++;
             } else{
-                $ctr++;
-                $returnData[$ctr][0] = $result->account->membership[0]->city->province->region->RegionName;
-                $returnData[$ctr][1] = 1;
+                $i = count($returnData);
+                $ctr3 = 0;
+                for ($j=0; $j<$i; $j++){
+                    if($returnData[$j][0]==$result->account->membership[0]->city->province->region->RegionName){
+                        $returnData[$j][1]++;
+                        $ctr3 = 1;
+                    }
+                    if(($j==$i-1)&&($ctr3==0)){
+                        $ctr++;
+                        $returnData[$ctr][0] = $result->account->membership[0]->city->province->region->RegionName;
+                        $returnData[$ctr][1] = 1;
+                    }
+                }
             }
+
+            if($ctr==10) break;
         }
 
         return $returnData;
