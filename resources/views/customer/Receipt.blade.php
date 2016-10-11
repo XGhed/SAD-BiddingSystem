@@ -165,7 +165,7 @@
 		position: absolute;
 		text-align: left;
 		margin-left: 25%;
-		margin-top: 18%;
+		margin-top: 17.5%;
 	}
 	.note1{
 		position: absolute;

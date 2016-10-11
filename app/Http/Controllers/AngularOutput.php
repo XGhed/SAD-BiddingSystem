@@ -499,7 +499,7 @@ class AngularOutput extends Controller
 
     public function pendingCheckout(){
         $checkoutRequest = App\Models\Admin\CheckoutRequest::with('account')
-            ->where('CheckoutType', 'Deliver')->orWhere('CheckoutType', 'Pickup')->where('Status', 0)->get();
+            ->where('Status', 0)->get();
 
         return $checkoutRequest;
     }
