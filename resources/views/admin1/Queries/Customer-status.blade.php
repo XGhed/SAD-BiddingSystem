@@ -1,50 +1,84 @@
-<html>
-<body>
-<head>
-	<style>
-		@page{
-			size: 800px 1500px; 
-      		margin: 35px;
-    	}
-		.image{
-			width: 100px;
-			height: 100px;
-			float: left;
-			margin-left: 0%;
-		}
-		.head1{
-			float:left;
-			font-size: 30;
-			margin-left: 0%;
-			margin-top: 0;	
-		}
+<style>
+    .image{
+        margin-top: -20px;
+        margin-left: -25px;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        z-index: 99;
+    }
+    .head1{
+        float:left;
+        font-size: 30;
+        margin-left: 12%;
+        margin-top: 0;  
+    }
+    .head2{
+        margin-top: 7%;
+        margin-left: 13%;
+    }
+    .head3{
+        margin-top: -15%;
+        margin-left: 13%;
+    }
+    .title{
+        margin-top: 0;
+        margin-left: 35%
+    }
+    span {
+        font-weight: normal;
+    }
+    .table th {
+        background-color: teal;
+        color: white;
+        font-size: 13px;
+    }
+    .table {
+        margin-right: 10px;
+        margin-left: 10px;
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .stable td, th {
+        border: 1px solid black;
+        text-align: left;
+        padding: 8px;
+    }
+    .table td {
+        border-collapse: collapse;
+        border: 1px solid black;
+        font-weight: bold;
+    }
+    span {
+        font-weight: normal;
+    }
+    h3 {
+        margin-top: 30px;
+    }
+    h4 {
+        padding-top: -20px;
+    }
+    .margin {
+        padding-top: -20px;
+        padding-right: 10px;
+    }
+    .margin2 {
+        padding-right: 10px;
+    }
+    .date {
+        padding-top: -20px;
+    }
+    .to {
+        padding-left: 10px;
+    }
+    .from {
+        padding-left: 10px;
+        padding-top: -20px;
+    }
+</style>
 
-		.head2{
-			margin-top: 3.5%;
-			margin-left: 15%;
-		}
-		.head3{
-			margin-top: -15%;
-			margin-left: 15%;
-		}
-		.title{
-			margin-top: 0;
-			margin-left: 40%
-		}
-		table{
-			position: absolute;
-			margin-top: 0%;
-			border: 1px solid black;
-			width: 100%;	
-		}
-		th, td{
-			vertical-align: middle;
-			text-align: center;
-			border: 1px solid black;
-		}
-	</style>
-
-</head>
 <body>
 	<div>
 		<img src = "{{$dashboard->valid_id}}" class ="image" >
@@ -60,7 +94,7 @@
 	</div> -->
 
 	<div>
-	<table>
+	<table class = "table">
 		<thead>
 			<tr>
 				<th>Customer Name</th>
@@ -78,7 +112,7 @@
 				@elseif ($key->Account->status == 0)
 				<td>Not Active</td>
 				@endif
-				<td>{!! $key->Account->DateApproved!!}</td>
+				<td>{!! Carbon\Carbon::parse($key->Account->DateApproved)->format('F-j-Y g:i A')!!}</td>
 				<td>{!! $key->Account->Points!!}</td>
 			</tr>
 		@endforeach
